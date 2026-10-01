@@ -18,3 +18,7 @@ uv run --with pillow --with numpy python -c "
 from PIL import Image; from detect import detect_page
 for s in detect_page(Image.open('/tmp/p2.png')): print(round(s['top'],3), len(s['barlines']))"
 ```
+
+## License
+
+MIT. See [LICENSE](LICENSE).
