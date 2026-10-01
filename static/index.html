@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuscript Labeler</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="banner" hidden></div>
+
+<aside id="left">
+  <header>
+    <h1>Manuscript Labeler</h1>
+    <select id="source" aria-label="Source"></select>
+  </header>
+  <section id="meta"></section>
+  <section>
+    <h2>Bar counts</h2>
+    <div id="counts"><p class="muted">No bars yet.</p></div>
+  </section>
+  <section class="grow">
+    <h2>Pages</h2>
+    <ol id="pages"></ol>
+  </section>
+</aside>
+
+<main id="center">
+  <div id="toolbar">
+    <button id="prev" title="Previous page (,)">‹</button>
+    <span id="pagelabel">–</span>
+    <button id="next" title="Next page (.)">›</button>
+    <span class="sep"></span>
+    <button id="fit" title="Fit page (f)">Fit</button>
+    <button id="fitw" title="Fit width (w)">Width</button>
+    <span class="sep"></span>
+    <button data-place="bl" title="Add bar lines: hold b and click, or double-click a staff">+ Bar line</button>
+    <button data-place="sys" title="Add a staff: hold s and click">+ Staff</button>
+    <button data-place="mark" title="Add a mark: hold m and click">+ Mark</button>
+    <span class="sep"></span>
+    <button id="redetect" title="Re-run detection on this page, keeping your edits">Re-detect</button>
+    <button id="review" title="Mark reviewed and go to next page (Enter)">Reviewed ⏎</button>
+    <span class="grow"></span>
+    <span id="savestatus" class="muted"></span>
+    <button id="helpbtn" title="Keyboard shortcuts (?)">?</button>
+  </div>
+  <div id="stage">
+    <svg id="canvas" preserveAspectRatio="xMidYMid meet">
+      <image id="scan" x="0" y="0"/>
+      <g id="overlay"></g>
+    </svg>
+    <div id="loading" hidden>Rendering page…</div>
+  </div>
+  <div id="detail" hidden>
+    <div class="detailhead"><span id="detaillabel"></span><button id="detailclose" title="Close (z)">×</button></div>
+    <canvas id="detailcanvas"></canvas>
+  </div>
+</main>
+
+<aside id="right">
+  <section id="pageform">
+    <h2>Page <span id="pagenum"></span> <span id="pagestatus" class="pill"></span></h2>
+    <label>Kind <select id="f-kind"></select></label>
+    <label>Part <select id="f-part"></select></label>
+    <label>Clef <select id="f-clef"></select></label>
+    <label>Notes <textarea id="f-notes" rows="2"></textarea></label>
+    <button id="f-corners" title="Show and adjust the paper's corners (or click outside the page)">Page corners</button>
+  </section>
+  <section id="inspector"><h2>Selection</h2><p class="muted">Click a staff, bar line or mark.</p></section>
+  <section id="warnings"></section>
+  <section id="help" hidden>
+    <h2>Keys</h2>
+    <dl>
+      <dt>hold b + click</dt><dd>add a bar line (also: double-click a staff, or ⇧-click)</dd>
+      <dt>hold s + click</dt><dd>add a staff</dd>
+      <dt>hold m + click</dt><dd>add a mark</dd>
+      <dt>d / Del</dt><dd>delete selection</dd>
+      <dt>← →</dt><dd>nudge (⇧ ×10); ⌥ moves only the top end of a bar line</dd>
+      <dt>↑ ↓</dt><dd>nudge staff or mark</dd>
+      <dt>Tab</dt><dd>next bar line (⇧ previous)</dd>
+      <dt>1–6</dt><dd>bar line kind: single, double, repeat start, repeat end, both, final</dd>
+      <dt>e</dt><dd>toggle “movement ends here”</dd>
+      <dt>z</dt><dd>detail view: exactly what the selected bar, staff, mark or page covers</dd>
+      <dt>Enter</dt><dd>mark reviewed, next page</dd>
+      <dt>, .</dt><dd>previous / next page</dd>
+      <dt>f / w</dt><dd>fit page / fit width</dd>
+      <dt>+ −</dt><dd>zoom; pinch or ⌃-scroll also zooms</dd>
+      <dt>⌘Z ⇧⌘Z</dt><dd>undo / redo</dd>
+      <dt>Esc</dt><dd>deselect</dd>
+    </dl>
+    <p class="muted">Drag empty space or scroll to pan. Drag items or their handles to adjust.</p>
+  </section>
+</aside>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -6,7 +6,11 @@ writes a JSON description of each manuscript that other tools read. The first
 consumer is a synoptic edition, which shows the same bar from every source
 side by side.
 
-Status: spec plus prototype code. No UI yet.
+Status (2026-10-01): working first version. `server.py` serves the editor
+(`static/`), proposes staves and bar lines, numbers bars live, checks counts
+against `Structure.ily`, and autosaves `.labels.json` and `.bars.json`.
+Not built yet: per-bar crop export, cross-source alignment, multi-staff
+systems, note-head overlay (see Requirements).
 
 ## Why it exists
 
@@ -162,7 +166,8 @@ the page width and height (0–1), so they don't depend on render resolution.
       "systems": [
         {
           "id": "p2s1",
-          "top": 0.112, "bottom": 0.142, "left": 0.008, "right": 0.943,
+          "top": 0.112, "bottom": 0.142, "left": 0.146, "right": 0.962,
+          "start": 0.171,
           "auto": false,
           "barlines": [
             { "id": "p2s1b1", "x0": 0.154, "x1": 0.151, "kind": "single",
@@ -184,8 +189,38 @@ The rules:
 - **A bar** is the space between consecutive bar lines in a system. The
   first bar of a system runs from the end of the clef and key signature to
   the first bar line.
+- **`start`** (on a system) is where the music starts, after the clef and
+  key signature. The first bar of the system runs from there.
+- **`bend`** (on a system, optional): the staff's vertical offset at 5
+  evenly spaced points from `left` to `right`, linearly interpolated, so a
+  staff can follow a slanted or curled page (page 2 of KHM 602 rises about
+  a staff space at the right). `top` / `bottom` are the staff without it.
+- **`above` / `below`** (on a system, optional, default 2.5): how many staff
+  spaces the bar crops reach beyond the staff, to keep ledger-line notes,
+  dynamics and text. Shown as a dashed band in the editor.
+- **`above` / `below` on a bar line** (optional) override the staff's crop
+  for the bar it ends, for tight spacing where one band doesn't fit every
+  bar. Crops of neighbouring staves may overlap; each bar is cut out on
+  its own.
+- **`corners`** (on a page, optional): `{"points": [TL, TR, BR, BL],
+  "auto": bool}`, the paper's corners as `[x, y]` page fractions. Proposed
+  from the bright paper against the scanner bed; dragged into place by the
+  editor.
+- **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`.
+  Tempo marks (e.g. "Andante Moderato") are shown per movement next to the
+  `\tempo` texts in `Structure.ily`, as a check that movements line up.
+- **`rejected`** (on a system) and **`rejected_staves`** (on a page),
+  optional: x of bar lines / y of staves the editor deleted, so re-running
+  detection doesn't bring them back.
+- **`role`** (on a system, optional): `"cue"` for a cue staff (e.g. the
+  violin I cue at the start of the cello part). It's drawn but not counted.
+  Absent means `"part"`.
 - **`bar_count`** sits on the bar line that *ends* the bar. It is 1 by
-  default, and N for an N-bar rest.
+  default, and N for an N-bar rest. 0 marks a pickup: it isn't counted and
+  shares the number before it (bar 0 at the start of a movement), matching
+  `\partial` in `Structure.ily`.
+- **Bar line `kind`:** `single`, `double`, `repeat_start`, `repeat_end`,
+  `repeat_both`, `final`.
 - **Bar numbers aren't stored.** They're derived (part, page order, systems
   top to bottom, `ends_movement`), so they can't go stale.
 - **Formatting:** keys sorted and pretty-printed, so git diffs stay readable.
@@ -207,7 +242,7 @@ to know how bar numbers are derived. So the labeler also writes a flat
   "bars": [
     {
       "part": "va", "movement": "I", "bar": 5, "count": 1,
-      "page": 2, "system": "p2s1",
+      "page": 2, "system": "p2s1", "barline": "p2s1b5",
       "quad": [[0.312, 0.098], [0.398, 0.098], [0.396, 0.156], [0.310, 0.156]],
       "staff": { "top": 0.112, "bottom": 0.142 },
       "reviewed": true,
@@ -222,13 +257,23 @@ The fields:
 - **`quad`:** the bar's four corners, in this order: top-left, top-right,
   bottom-right, bottom-left. Coordinates are page fractions. It includes a
   vertical margin above and below the staff, so notes and dynamics that
-  stick out are kept (default: 2.5 staff spaces each side). It is a
-  quadrilateral, not a rectangle, because bar lines lean.
+  stick out are kept (default: 2.5 staff spaces each side; set per staff). It is a
+  quadrilateral, not a rectangle, because bar lines lean and staves bend.
+  Each side's top and bottom follow the staff at that bar line, plus the
+  system's `above` / `below`.
 - **`count` > 1:** one image stands for several bars, e.g. a two-bar rest.
-  The build shows it once, spread across those bars.
+  The build shows it once, spread across those bars. `count` 0 is a pickup.
+- **`barline`:** the id of the bar line that ends the bar, for tracing a
+  bar back to the labels file.
+- **`marks`:** ids of marks whose centre lies in the bar's crop. A mark
+  outside every crop (a tempo or title above the music) goes to the first
+  bar of the nearest staff below it.
+- **`pages`:** `{"2": {"corners": [TL, TR, BR, BL]}}` for pages whose
+  paper corners are set, for cropping or straightening whole pages.
 - **`complete`:** which part and movement runs are fully labeled and
-  reviewed. The build should only use complete runs, or clearly mark
-  partial ones.
+  reviewed: every bar's page is reviewed, the run ends with a bar line
+  marked `ends_movement`, and no earlier page is unlabeled. The build should
+  only use complete runs, or clearly mark partial ones.
 - **`reviewed`:** a per-bar flag. Unreviewed bars can be shown, greyed or
   flagged.
 
@@ -273,17 +318,43 @@ These are from hand-transcribing the viola part of D-B KHM 602.
 
 ### About detection (`detect.py`)
 
-On page 2 of KHM 602, rendered at 200 dpi:
+Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
+200 dpi for KHM 602).
 
-- **Staves.** It found 8 of the 10 staves; the last two were missed.
-  - Earlier versions failed in two ways: each staff line was counted twice,
-    and the dark scanner border swamped the profile.
-  - Fixes: estimate the staff-line spacing by autocorrelation, use a
-    threshold of 0.45 (staff lines reach about 0.7 of the band, note heads
-    about 0.3), and ignore near-solid rows and the outer 2% margins.
-- **Bar lines.** They lean, so each column is tested along several slants.
-  Results are noisy: line 1 truly has 10 bar lines; the detector found 9,
-  at somewhat wrong places. The cause is note stems that span the staff, and
+- **Staves.** All 10 staves on page 2 of KHM 602 are found now, and every
+  staff on the Paris pages tried (BnF photo, Gallica scan).
+  - Hand-ruled lines on a curled page are *wavy*, not just tilted: a line
+    drifts up and down by several pixels across the page. A full-width row
+    profile smears them, which is why the last two staves were missed.
+  - Fix: cut the page into 24 narrow vertical strips, score each row of each
+    strip for "staff here" (five dark rows a staff space apart, lighter rows
+    between), and trace each staff across the strips with a little drift
+    allowed per strip (dynamic programming). Each staff is then straightened
+    along its traced path before bar lines are searched.
+  - The staff space is the most common distance between neighbouring dark
+    *runs* of rows. Lines are 4–5 px thick, so counting peaks instead of
+    runs gave 5 px. Autocorrelation was fooled by thick note ink.
+  - "Near-solid row" filtering (for scanner borders) must look at the whole
+    page width: in a narrow strip a thick staff line is near-solid too.
+  - Empty ruled staves (title pages, after a part ends) have under 1% ink
+    between the lines and are dropped. A page with staves but no bar lines
+    is proposed as a title page.
+- **Staff end.** A staff is proposed to end just after its last bar line
+  when the ruled lines beyond it are blank (under 1% ink). Ink there, such
+  as a custos, a missed bar line or a bar running on to the next line,
+  keeps the full length. The editor's "End at last bar line" trims by hand.
+- **Staff extent and music start.** The ruled lines often run into the
+  margin before the clef. A column counts as staff when the line rows are
+  dark and the spaces aren't. The music start is after the first heavy ink
+  (the clef) and the next clear stretch (after the key signature). A thin
+  stroke with clear paper after it is the system's opening line, not the
+  clef. Where the guess fails, the page's typical clef width is used. It's
+  good on KHM 602 and the BnF copy, rougher on Gallica scans.
+- **Bar lines.** They lean, so each column is tested along several slants
+  (on the straightened staff).
+  Results are noisy: line 1 truly has 10 bar lines; the detector finds 9.
+  Page 2 gets 78 proposals for about 74 bars. On the Paris copies, thin
+  grey bar lines are often missed (41 found on a BnF page of 12 lines). The cause is note stems that span the staff, and
   faint or broken bar lines.
   - The automatic proposal is a starting point only. The UI has to make
     fixing it fast.

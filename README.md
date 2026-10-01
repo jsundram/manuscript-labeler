@@ -4,20 +4,49 @@ Label scanned music manuscripts page by page: staves, bar lines, bar numbers,
 and confusing marks. Output is a JSON description of each source, for a
 synoptic edition and for proofreading an engraving against its sources.
 
-Early stage: see [SPEC.md](SPEC.md) for the plan, what's known, and the open
-questions.
+See [SPEC.md](SPEC.md) for the design, the file formats, what's been
+learned, and the open questions.
 
-- `detect.py`: automatic staff and bar-line proposals (numpy + Pillow).
-- `prototypes/`: scratch reading aids from the first hand transcription.
+## Run it
 
-Try the detector on one page:
+Needs [uv](https://docs.astral.sh/uv/) and poppler (`brew install poppler`).
 
 ```bash
-pdftoppm -f 2 -l 2 -r 200 -png -singlefile some.pdf /tmp/p2
-uv run --with pillow --with numpy python -c "
-from PIL import Image; from detect import detect_page
-for s in detect_page(Image.open('/tmp/p2.png')): print(round(s['top'],3), len(s['barlines']))"
+uv run server.py ~/path/to/edition-repo
 ```
+
+The edition repo holds the PDFs under `sources/`. The browser opens at
+http://127.0.0.1:8048/. Pick a source and work through it page by page:
+
+- Each page opens with proposed staves and bar lines (dashed orange = not
+  yet touched). Fix them by dragging, or with the keys below.
+- Set the page's kind, part and clef on the right. Part and clef carry over
+  from the previous page.
+- Bar numbers update as you go, and the left panel compares counted bars
+  with `Op48-N/Structure.ily` when it exists.
+- **Enter** marks the page reviewed and opens the next.
+
+Labels save automatically next to the PDF: `<pdf>.labels.json` (the working
+file) and `<pdf>.bars.json` (the flat export for the synoptic build). Every
+save is atomic. A save is refused if the file changed since it was loaded
+(e.g. in another tab). Backups go to `~/.cache/manuscript-labeler/backups`.
+
+Main keys (press **?** in the app for all of them): hold **b** and click to
+add a bar line (or double-click a staff), hold **s** / **m** and click to add
+a staff / mark, **d** or **Del** delete, **arrows** nudge, **Tab** next bar
+line, **1–6** bar line kind, **e** movement ends here, **z** bar detail view
+with pitch names, **⌘Z** undo, **, .** previous/next page. Re-detect is a
+toolbar button: it re-runs detection on the page and keeps your edits.
+
+## Files
+
+- `server.py`: local web server (rendering, detection, saving).
+- `labels.py`: the labels schema, validation, bar numbering and bar export.
+- `detect.py`: automatic staff and bar-line proposals (numpy + Pillow).
+- `static/`: the editor (plain HTML/JS/SVG, no build step).
+- `prototypes/`: scratch reading aids from the first hand transcription.
+
+Tests: `uv run --with pytest --with numpy --with pillow pytest tests`
 
 ## License
 
