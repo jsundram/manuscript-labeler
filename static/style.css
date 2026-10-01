@@ -170,3 +170,4 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .handlelabel.croplabel { fill: var(--staff-line); }
 .crop.sel { opacity: 1; stroke-width: 1.5; }
 #inspector button { margin: 2px 0 8px; }
+#pagestatus { cursor: pointer; }

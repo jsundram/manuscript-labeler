@@ -211,8 +211,11 @@ const barLabel = (nb) => nb.count > 1 ? `${nb.bar}–${nb.bar + nb.count - 1}` :
 
 // ------------------------------------------------------------------ saving
 
+// An edit makes an untouched (auto) page "edited". A reviewed page stays
+// reviewed: fixes made while reviewing shouldn't silently undo the review.
+// Clicking the status badge un-reviews a page on purpose.
 function touchPage(page = pg()) {
-  if (page && page.status !== 'edited') page.status = 'edited';
+  if (page && page.status === 'auto') page.status = 'edited';
 }
 
 function snapshot() {
@@ -1270,6 +1273,10 @@ $('#review').onclick = markReviewedAndNext;
 $('#helpbtn').onclick = () => { $('#help').hidden = !$('#help').hidden; };
 $('#detailclose').onclick = () => { S.detail = false; renderDetail(); };
 
+$('#pagestatus').onclick = () => {
+  if (!pg() || S.readonly) return;
+  mutate((p) => { p.status = p.status === 'reviewed' ? 'edited' : 'reviewed'; }, { status: false });
+};
 $('#f-kind').addEventListener('change', (e) => mutate((p) => { p.kind = e.target.value; }));
 $('#f-part').addEventListener('change', (e) => mutate((p) => {
   p.part = e.target.value || null;
