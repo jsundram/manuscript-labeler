@@ -1,0 +1,379 @@
+{
+ "source": "sources/G226/D-B_KHM-602.pdf",
+ "note": "Staff left edges and crop margins the editor set on reviewed pages, frozen 2026-10-02 for tests/test_detect.py. above/below only where the editor set them.",
+ "pages": {
+  "2": {
+   "clef": "alto",
+   "staves": [
+    {
+     "top": 0.1112,
+     "bottom": 0.142,
+     "left": 0.1536
+    },
+    {
+     "top": 0.1897,
+     "bottom": 0.2205,
+     "left": 0.1436,
+     "above": 2.5
+    },
+    {
+     "top": 0.2629,
+     "bottom": 0.2937,
+     "left": 0.1404
+    },
+    {
+     "top": 0.3409,
+     "bottom": 0.3717,
+     "left": 0.1454
+    },
+    {
+     "top": 0.4112,
+     "bottom": 0.442,
+     "left": 0.1514
+    },
+    {
+     "top": 0.4901,
+     "bottom": 0.5209,
+     "left": 0.1561
+    },
+    {
+     "top": 0.5595,
+     "bottom": 0.5903,
+     "left": 0.1454
+    },
+    {
+     "top": 0.637,
+     "bottom": 0.6678,
+     "left": 0.1393
+    },
+    {
+     "top": 0.7116,
+     "bottom": 0.7424,
+     "left": 0.1443
+    },
+    {
+     "top": 0.7896,
+     "bottom": 0.8204,
+     "left": 0.15,
+     "below": 4.5
+    }
+   ]
+  },
+  "3": {
+   "clef": "alto",
+   "staves": [
+    {
+     "top": 0.1073,
+     "bottom": 0.1369,
+     "left": 0.0418,
+     "above": 3.5,
+     "below": 4
+    },
+    {
+     "top": 0.1856,
+     "bottom": 0.2152,
+     "left": 0.0514,
+     "above": 3,
+     "below": 3.5
+    },
+    {
+     "top": 0.2562,
+     "bottom": 0.2858,
+     "left": 0.0436,
+     "below": 4
+    },
+    {
+     "top": 0.334,
+     "bottom": 0.3635,
+     "left": 0.0399,
+     "above": 2,
+     "below": 4
+    },
+    {
+     "top": 0.4132,
+     "bottom": 0.4427,
+     "left": 0.0392,
+     "below": 4.5
+    },
+    {
+     "top": 0.4914,
+     "bottom": 0.521,
+     "left": 0.0446
+    },
+    {
+     "top": 0.5592,
+     "bottom": 0.5887,
+     "left": 0.0554,
+     "above": 3.5,
+     "below": 3.5
+    }
+   ]
+  },
+  "4": {
+   "clef": "alto",
+   "staves": [
+    {
+     "top": 0.1108,
+     "bottom": 0.1402,
+     "left": 0.1393,
+     "above": 4.5,
+     "below": 4
+    },
+    {
+     "top": 0.1888,
+     "bottom": 0.2182,
+     "left": 0.1393,
+     "below": 3.5
+    },
+    {
+     "top": 0.2635,
+     "bottom": 0.2929,
+     "left": 0.1401,
+     "below": 4.5
+    },
+    {
+     "top": 0.341,
+     "bottom": 0.3704,
+     "left": 0.1329,
+     "below": 5
+    },
+    {
+     "top": 0.4894,
+     "bottom": 0.5188,
+     "left": 0.1506,
+     "above": 7,
+     "below": 3.5
+    },
+    {
+     "top": 0.5607,
+     "bottom": 0.5901,
+     "left": 0.1468,
+     "above": 3,
+     "below": 3.5
+    },
+    {
+     "top": 0.6368,
+     "bottom": 0.6662,
+     "left": 0.1436,
+     "above": 3.5,
+     "below": 4
+    },
+    {
+     "top": 0.7119,
+     "bottom": 0.7413,
+     "left": 0.1436
+    }
+   ]
+  },
+  "6": {
+   "clef": "treble",
+   "staves": [
+    {
+     "top": 0.104,
+     "bottom": 0.1334,
+     "left": 0.1271,
+     "above": 3.5,
+     "below": 3
+    },
+    {
+     "top": 0.184,
+     "bottom": 0.2134,
+     "left": 0.1192
+    },
+    {
+     "top": 0.2558,
+     "bottom": 0.2852,
+     "left": 0.1244,
+     "above": 4,
+     "below": 4
+    },
+    {
+     "top": 0.3343,
+     "bottom": 0.3637,
+     "left": 0.1171,
+     "above": 4,
+     "below": 2
+    },
+    {
+     "top": 0.4041,
+     "bottom": 0.4335,
+     "left": 0.1185,
+     "above": 4,
+     "below": 3
+    },
+    {
+     "top": 0.4812,
+     "bottom": 0.5106,
+     "left": 0.1159,
+     "above": 5,
+     "below": 2
+    },
+    {
+     "top": 0.552,
+     "bottom": 0.5814,
+     "left": 0.1171,
+     "above": 4.5,
+     "below": 3.5
+    },
+    {
+     "top": 0.6301,
+     "bottom": 0.6594,
+     "left": 0.1078,
+     "below": 3.5
+    },
+    {
+     "top": 0.7047,
+     "bottom": 0.7341,
+     "left": 0.1166,
+     "above": 3,
+     "below": 4
+    },
+    {
+     "top": 0.7828,
+     "bottom": 0.8121,
+     "left": 0.1109,
+     "above": 3,
+     "below": 3.5
+    },
+    {
+     "top": 0.8565,
+     "bottom": 0.8858,
+     "left": 0.1135,
+     "above": 4,
+     "below": 6
+    }
+   ]
+  },
+  "7": {
+   "clef": "treble",
+   "staves": [
+    {
+     "top": 0.106,
+     "bottom": 0.1354,
+     "left": 0.0404,
+     "above": 6.5,
+     "below": 3
+    },
+    {
+     "top": 0.184,
+     "bottom": 0.2134,
+     "left": 0.0355
+    },
+    {
+     "top": 0.2543,
+     "bottom": 0.2837,
+     "left": 0.0295,
+     "above": 3,
+     "below": 3.5
+    },
+    {
+     "top": 0.3329,
+     "bottom": 0.3622,
+     "left": 0.0301,
+     "above": 4,
+     "below": 3.5
+    },
+    {
+     "top": 0.4094,
+     "bottom": 0.4388,
+     "left": 0.0239,
+     "above": 3,
+     "below": 4
+    },
+    {
+     "top": 0.4884,
+     "bottom": 0.5178,
+     "left": 0.0251,
+     "above": 3.5,
+     "below": 3
+    },
+    {
+     "top": 0.5588,
+     "bottom": 0.5882,
+     "left": 0.0282,
+     "below": 3.5
+    },
+    {
+     "top": 0.6368,
+     "bottom": 0.6662,
+     "left": 0.0249,
+     "below": 4
+    },
+    {
+     "top": 0.7091,
+     "bottom": 0.7384,
+     "left": 0.0229,
+     "below": 5
+    },
+    {
+     "top": 0.7885,
+     "bottom": 0.8179,
+     "left": 0.0228
+    }
+   ]
+  },
+  "8": {
+   "clef": "treble",
+   "staves": [
+    {
+     "top": 0.1127,
+     "bottom": 0.1435,
+     "left": 0.1311,
+     "above": 3.5,
+     "below": 3
+    },
+    {
+     "top": 0.1892,
+     "bottom": 0.22,
+     "left": 0.1247,
+     "below": 3
+    },
+    {
+     "top": 0.2648,
+     "bottom": 0.2956,
+     "left": 0.1257,
+     "below": 3
+    },
+    {
+     "top": 0.3447,
+     "bottom": 0.3755,
+     "left": 0.131,
+     "above": 3,
+     "below": 3.5
+    },
+    {
+     "top": 0.4901,
+     "bottom": 0.5209,
+     "left": 0.1359,
+     "below": 2
+    },
+    {
+     "top": 0.5614,
+     "bottom": 0.5922,
+     "left": 0.139,
+     "above": 4.5,
+     "below": 3
+    },
+    {
+     "top": 0.6389,
+     "bottom": 0.6697,
+     "left": 0.139,
+     "above": 3.5,
+     "below": 3
+    },
+    {
+     "top": 0.714,
+     "bottom": 0.7448,
+     "left": 0.1379,
+     "above": 3.5
+    },
+    {
+     "top": 0.7906,
+     "bottom": 0.8214,
+     "left": 0.1317,
+     "below": 3.5
+    }
+   ]
+  }
+ }
+}

@@ -354,6 +354,20 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such
   as a custos, a missed bar line or a bar running on to the next line,
   keeps the full length. The editor's "End at last bar line" trims by hand.
+- **Left edge and crop margins**, measured against what the editor set on
+  KHM 602 pp. 2-4 and 6-8:
+  - On the treble-clef pages the editor moved nearly every left edge 2-3
+    staff spaces left; on alto pages, not at all. This copyist writes the
+    treble clef partly left of where the ruled lines begin, and its curl
+    reaches well left of its heavy middle. The left edge now follows the
+    clef's ink left (up to 4 spaces past the ruled lines) plus half a
+    space: within a space of the editor's on 80% of staves (was 56%).
+  - The editor set crops of 3-7 spaces above (usually 3.5-4.5) and 2-6
+    below, against a fixed default of 2.5. Now each staff's crop reaches
+    its own outermost ink (ledger notes, slurs, dynamics, text) plus one
+    space, stopping at a clear staff space or where the space shared with
+    the next staff is emptiest. Off by about half a space on average
+    (the fixed 2.5 was off by 1.2-1.3).
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink

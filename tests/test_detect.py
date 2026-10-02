@@ -62,3 +62,24 @@ def test_bar_lines_match_the_editors_corrections(tmp_path):
     total = found + missed
     assert found / total >= 0.90, f"found {found} of {total}"
     assert false <= 5, f"{false} false bar lines"
+
+
+def test_staff_edges_and_crops_match_the_editors(tmp_path):
+    """Left edges (the clef included) and crop margins against what the
+    editor set by hand (tests/fixtures/khm602_staves.json). 2026-10-02:
+    left within a staff space on 80% of staves; crops off by about half a
+    space on average, where the old fixed 2.5 was off by 1.2-1.3."""
+    truth = json.loads((Path(__file__).parent / "fixtures" / "khm602_staves.json").read_text())
+    left_ok, crop_err, n_left = 0, [], 0
+    for n, page in truth["pages"].items():
+        img = render(int(n), tmp_path)
+        w, h = img.size
+        det = detect.detect_page(img)
+        for s in page["staves"]:
+            d = min(det, key=lambda q: abs(q["top"] - s["top"]))
+            space = (s["bottom"] - s["top"]) / 4 * h
+            n_left += 1
+            left_ok += abs(s["left"] - d["left"]) * w <= space
+            crop_err += [abs(s[k] - d[k]) for k in ("above", "below") if k in s]
+    assert left_ok / n_left >= 0.75, f"left edge within a space on {left_ok} of {n_left} staves"
+    assert sum(crop_err) / len(crop_err) <= 0.8, f"crops off by {sum(crop_err) / len(crop_err):.2f} spaces"

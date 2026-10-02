@@ -176,6 +176,77 @@ def note_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
     return float((zone[keep] < 120).mean()) if keep.any() and zone.size else 0.0
 
 
+def clef_left(g: np.ndarray, staff: dict, clef: int, left: int) -> int:
+    """Leftmost ink of the clef found at `clef`, by walking left until a
+    clear half staff space. A treble clef's curl reaches well left of its
+    heavy middle stroke (and above and below the staff), so the rows looked
+    at span two spaces beyond the staff; staff-line rows are skipped. Some
+    copyists write the clef partly left of where the ruled lines begin, so
+    the walk may go up to 4 spaces past `left`."""
+    gap = staff["gap"]
+    lines = staff["lines"]
+    y0, y1 = max(0, int(lines[0] - 2 * gap)), min(g.shape[0], int(lines[-1] + 2 * gap))
+    rows = np.ones(y1 - y0, bool)
+    for y in lines:
+        rows[max(0, y - y0 - 2): y - y0 + 3] = False
+    ink = (g[y0:y1][rows] < 120).sum(axis=0)
+    clear = max(2, int(gap * 0.5))
+    x = clef
+    stop = max(0, left - int(gap * 4))
+    while x - clear > stop and ink[x - clear:x].max() > 1:
+        x -= 1
+    return x
+
+
+def crop_margins(g: np.ndarray, staves: list[dict]) -> list[tuple[float, float]]:
+    """(above, below) in staff spaces for each staff: how far its own ink
+    (notes on ledger lines, slurs, dynamics, text) reaches.
+
+    Going out from the staff, the crop stops at the first clear stretch of
+    a staff space, or where the space shared with the next staff is
+    emptiest, whichever comes first, plus a little margin. Neighbours
+    split the space between them at that emptiest row.
+    """
+    h = g.shape[0]
+    ink = (g < 120)
+    out = []
+    for i, st in enumerate(staves):
+        gap = st["gap"]
+        xs = slice(int(st["x_left"]), int(st["x_right"]))
+        prof = ink[:, xs].mean(axis=1)
+        k = max(1, int(gap * 0.3))
+        prof = np.convolve(prof, np.ones(k) / k, mode="same")
+        blank = prof < 0.002
+        clear = max(2, int(gap))
+
+        def reach(start: int, step: int, limit: int) -> int:
+            """Rows from the staff edge to where its ink ends, going `step`."""
+            y = start
+            while (y + step * clear - limit) * step < 0:
+                if blank[min(y, y + step * clear): max(y, y + step * clear)].all():
+                    break
+                y += step
+            return abs(y - start)
+
+        # the emptiest row between this staff and each neighbour
+        def split(a: int, b: int) -> int:
+            lo, hi = a + int(gap), b - int(gap)
+            if hi <= lo:
+                return (a + b) // 2
+            seg = prof[lo:hi]
+            best = np.flatnonzero(seg <= seg.min() + 1e-4)
+            mid = (hi - lo) / 2
+            return lo + int(best[np.argmin(np.abs(best - mid))])
+
+        top, bottom = st["top_px"], st["bottom_px"]
+        up_limit = split(staves[i - 1]["bottom_px"], top) if i > 0 else max(0, int(top - 8 * gap))
+        down_limit = split(bottom, staves[i + 1]["top_px"]) if i + 1 < len(staves) else min(h - 1, int(bottom + 8 * gap))
+        above = reach(top, -1, up_limit) / gap + CROP_PAD
+        below = reach(bottom, 1, down_limit) / gap + CROP_PAD
+        out.append((round(max(CROP_MIN, above) * 2) / 2, round(max(CROP_MIN, below) * 2) / 2))
+    return out
+
+
 def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int, int]:
     """(clef x, music start x), a guess for the editor to adjust.
 
@@ -214,6 +285,8 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
 # the editor's corrections; see SPEC.md).
 ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
+CROP_PAD = 1.0        # staff spaces of paper kept beyond a staff's outermost ink
+CROP_MIN = 1.5        # never crop closer to the staff than this
 MIN_BAR = 4.0         # bars are rarely narrower (about 1 cm in KHM 602)
 COVER = 0.88          # share of the staff's height the stroke must cover
 BEYOND = 0.9          # ink share past the staff above which a stroke is a stem
@@ -456,7 +529,7 @@ def detect_page(img: Image.Image) -> list[dict]:
     widths = [(s - c) / st["gap"] for st, _, _, _, _, c, s in found if s - c >= 2 * st["gap"]]
     typical = float(np.median(widths)) if widths else 4.0
 
-    systems = []
+    systems, crops = [], []
     for st, band, local, left, right, clef, start in found:
         if start - clef < 2 * st["gap"]:
             clef = left
@@ -474,14 +547,18 @@ def detect_page(img: Image.Image) -> list[dict]:
             tail = last + int(st["gap"] * 0.5)
             if right - tail > st["gap"] * 1.5 and note_ink(band, local, tail, right) < 0.01:
                 right = tail
+        # the staff starts half a space before its clef's leftmost ink
+        left = max(0, clef_left(band, local, clef, left) - int(st["gap"] * 0.5))
         # how the staff rises and falls along its length (see labels.bend_at)
         px, py = zip(*st["path"])
         xs = np.linspace(left, right, 5)
         bend = [(float(np.interp(x, px, py)) - st["top"]) / h for x in xs]
+        crops.append({"gap": st["gap"], "top_px": st["top"], "bottom_px": st["bottom"],
+                      "x_left": left, "x_right": right})
         systems.append({
             "top": st["top"] / h,
             "bottom": st["bottom"] / h,
-            "left": max(left, clef - int(st["gap"])) / w,
+            "left": left / w,
             "right": right / w,
             # where the music starts, after clef and key signature (a guess)
             "start": start / w,
@@ -490,4 +567,7 @@ def detect_page(img: Image.Image) -> list[dict]:
                 {"x0": b["x0"] / w, "x1": b["x1"] / w, "kind": b["kind"]} for b in bars
             ],
         })
+    # how far each staff's own ink reaches above and below it
+    for sys_, (above, below) in zip(systems, crop_margins(g, crops)):
+        sys_["above"], sys_["below"] = above, below
     return systems

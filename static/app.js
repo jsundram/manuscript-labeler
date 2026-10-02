@@ -398,6 +398,8 @@ function newSystem(page, d) {
     auto: true, barlines: [],
   };
   if (d.bend) s.bend = d.bend;
+  if (d.above != null) s.above = d.above;  // how far this staff's own ink reaches
+  if (d.below != null) s.below = d.below;
   page.systems.push(s);
   for (const b of d.barlines) newBarline(page, s, b);
   return s;
@@ -453,7 +455,7 @@ async function redetect() {
       const ex = page.systems.find((s) => !used.has(s) && overlaps(s, d));
       if (!ex) { if (!rejectedStaff(d)) used.add(newSystem(page, d)); continue; }
       used.add(ex);
-      if (ex.auto) Object.assign(ex, { top: d.top, bottom: d.bottom, left: d.left, right: d.right, start: d.start ?? d.left, bend: d.bend });
+      if (ex.auto) Object.assign(ex, { top: d.top, bottom: d.bottom, left: d.left, right: d.right, start: d.start ?? d.left, bend: d.bend, above: d.above, below: d.below });
       else if (!ex.bend && d.bend) ex.bend = d.bend;  // labeled before bends existed
       const manual = ex.barlines.filter((b) => !b.auto);
       ex.barlines = manual;
