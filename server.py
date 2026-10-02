@@ -273,14 +273,15 @@ class Edition:
         r = detect.snap_start(g, top * h, bottom * h, x * w)
         return {"x": r / w} if r is not None else {}
 
-    def detect(self, rel: str, page: int) -> dict:
+    def detect(self, rel: str, page: int, room: float | None = None) -> dict:
         from PIL import Image
 
         import detect
 
         img = Image.open(self.render(rel, page))
         corners = detect.find_page_corners(img)
-        return {"systems": detect.detect_page(img), "corners": corners, "look": detect.page_look(img, corners)}
+        return {"systems": detect.detect_page(img, room), "corners": corners,
+                "look": detect.page_look(img, corners)}
 
 
 def dump(doc) -> bytes:
@@ -357,7 +358,8 @@ class Handler(BaseHTTPRequestHandler):
                 ed.prerender(q["pdf"], page + 1)
                 return self.send_file(f, cache=True)
             if path == "/api/detect":
-                return self.send_json(ed.detect(q["pdf"], int(q["page"])))
+                room = float(q["room"]) if q.get("room") else None
+                return self.send_json(ed.detect(q["pdf"], int(q["page"]), room))
             if path == "/api/snap":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
                 return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))

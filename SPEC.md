@@ -422,6 +422,18 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   into the margin (reaching further made other pages worse). The left edge
   is cosmetic for the export (each line's first bar is cut from the music
   start); the start matters.
+- **Calibration on two reviewed sources** (2026-10-03: KHM 602 and 603
+  fully reviewed, 1404 bar lines). Re-fitting the bar-line thresholds on
+  both found the two copyists want the same settings (no per-copyist
+  values needed); 89% found, 24 false. The "ink past the staff" stem test
+  is now off: the note-head test catches stems, and it only cost long bar
+  lines. Crops (off by ~0.4 space) and left edges (80% within a space)
+  carried over to KHM 603. The music start didn't: detection was 4-5
+  spaces early on KHM 603's staggered key signatures (30% within 1.5
+  spaces). New pages now take the clef-and-key room from the editor's
+  previous page of the same part (not across a title page), snapped to
+  clear paper: 58% on KHM 603, 63% on KHM 602 (was 53%). Tests now hold
+  detection to frozen corrections from both sources.
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink

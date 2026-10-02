@@ -666,8 +666,17 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
             meet(lines["right"], lines["bottom"]), meet(lines["left"], lines["bottom"])]
 
 
-def detect_page(img: Image.Image) -> list[dict]:
-    """Proposed systems for one page, normalized coordinates."""
+def detect_page(img: Image.Image, room: float | None = None) -> list[dict]:
+    """Proposed systems for one page, normalized coordinates.
+
+    `room`: the clef-and-key room (left edge to music start, in staff
+    spaces) the editor set on their previous page of the same part. Each
+    staff's music start is then put that far from its left edge, snapped
+    to clear paper (snap_start). Reading where the key signature ends from
+    the ink is unreliable across hands, and the room repeats from page to
+    page: on reviewed pages, within 1.5 spaces of the editor's start went
+    from 30% to 58% (KHM 603) and 53% to 63% (KHM 602).
+    """
     g = _gray(img)
     h, w = g.shape
     found = []
@@ -691,9 +700,20 @@ def detect_page(img: Image.Image) -> list[dict]:
         if start - clef < 2 * st["gap"]:
             clef = left
             start = min(right, left + int(typical * st["gap"]))
+        ruled = left
+        # the staff starts half a space before its clef's leftmost ink
+        bound = brace if brace > left else None
+        left = max(bound or 0, clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
+        # with the editor's room from their previous page, the music start
+        # goes that far from the left edge, snapped to clear paper; decided
+        # before the bar-line search, which starts there
+        if room:
+            x = left + room * st["gap"]
+            snapped = snap_start(band, local["top"], local["bottom"], x)
+            start = int(min(right, max(left, snapped if snapped is not None else x)))
         # search a little past the ruled end: a final bar line often sits on it
         reach = min(band.shape[1], right + int(st["gap"]))
-        bars = find_barlines(band, local, left, reach, skip_to=start)
+        bars = find_barlines(band, local, ruled, reach, skip_to=start)
         if bars:
             right = max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2)
         # End the staff just after its last bar line when the ruled lines
@@ -718,9 +738,6 @@ def detect_page(img: Image.Image) -> list[dict]:
                 # it flagged turned out to end there, untrimmed by hand.)
                 if right - end >= gap * TAIL_BLANK:
                     right = max(tail, end + int(gap * 0.5))
-        # the staff starts half a space before its clef's leftmost ink
-        bound = brace if brace > left else None
-        left = max(bound or 0, clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
         # how the staff rises and falls along its length (see labels.bend_at)
         px, py = zip(*st["path"])
         xs = np.linspace(left, right, 5)

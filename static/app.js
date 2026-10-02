@@ -449,9 +449,29 @@ function newBarline(page, s, d, auto = true) {
   return b;
 }
 
+// The clef-and-key room (left edge to music start, in staff spaces) the
+// editor set on their previous page of this part, if they've worked on
+// it: lines after the first, median. Detection uses it to place each
+// line's music start (it repeats from page to page until the key changes).
+function roomFromPreviousPage(n) {
+  let prev = null;
+  for (let k = n - 1; k >= 1 && !prev; k--) {
+    const p = S.doc.pages[k];
+    // not opened yet: it might be the title page of a new part, so stop
+    if (!p) return null;
+    if (p.kind === 'title') return null;  // a new part starts: its clef and key may differ
+    if (p.kind === 'music' && p.status !== 'auto') prev = p;
+  }
+  if (!prev) return null;
+  const lines = prev.systems.filter((s) => (s.role || 'part') === 'part').sort((a, b) => a.top - b.top).slice(1);
+  const rooms = lines.map((s) => ((s.start ?? s.left) - s.left) * S.W / (space(s) * S.H)).filter((r) => r > 1).sort((a, b) => a - b);
+  return rooms.length ? rooms[Math.floor(rooms.length / 2)] : null;
+}
+
 async function autoLabel(n, token) {
   let systems = [], corners = null, look = null;
-  try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
+  const room = roomFromPreviousPage(n);
+  try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
   catch (e) { banner(`Detection failed on page ${n}: ${e.message}`); }
   if (token !== S.loadToken || S.doc.pages[n]) return;
   // Music: staves with bar lines. Otherwise a blank page has no dark ink,
@@ -487,7 +507,8 @@ async function redetect() {
   if (S.readonly || !pg()) return;
   const n = S.page;
   let systems, corners;
-  try { ({ systems, corners } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
+  const room = roomFromPreviousPage(n);
+  try { ({ systems, corners } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
   catch (e) { banner(`Detection failed: ${e.message}`); return; }
   if (n !== S.page) return;
   mutate((page) => {
