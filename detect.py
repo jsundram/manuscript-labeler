@@ -557,6 +557,28 @@ def snap_barline(g: np.ndarray, top: float, bottom: float, x0: float, x1: float,
     return {"x0": xc + (t - yc) * slope, "x1": xc + (b - yc) * slope, "cover": float(cover)}
 
 
+def snap_start(g: np.ndarray, top: float, bottom: float, x: float, reach: float = 2.0) -> float | None:
+    """The music start nearest x: where a clear stretch (0.8 of a space, no
+    ink from two spaces above the staff to one below, see ink_around)
+    begins, within `reach` spaces. None if there's none that close.
+
+    For carrying one line's start to the lines below it: the same place on
+    the page, snapped to where the clear paper after the key signature is.
+    (Backtested on KHM 602/603: beats measuring from each line's left edge.)
+    """
+    gap = (bottom - top) / 4
+    if gap < 2:
+        return None
+    staff = {"gap": gap, "lines": [int(round(top + i * gap)) for i in range(5)]}
+    lo, hi = int(x - reach * gap), int(x + reach * gap)
+    around = ink_around(g, staff, lo, hi + int(gap))
+    lo = max(0, lo)
+    clear = max(2, int(gap * 0.8))
+    ok = [not around[i:i + clear].any() for i in range(max(0, len(around) - clear))]
+    cands = [lo + i for i, v in enumerate(ok) if v and (i == 0 or not ok[i - 1])]
+    return float(min(cands, key=lambda c: abs(c - x))) if cands else None
+
+
 def find_page_corners(img: Image.Image) -> list[list[float]]:
     """The paper's four corners, TL TR BR BL, as page fractions.
 

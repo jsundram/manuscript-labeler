@@ -119,6 +119,30 @@ function setExtent(s, left, right) {
   s.right = right;
 }
 
+// Clef and key take the same room on every line until the key changes,
+// but reading where they end from the ink is unreliable across hands. So
+// the editor fixes one line, and this carries its music start to the
+// lines below it: the same place on the page, snapped to the nearest clear
+// paper (where the key signature ends). Lines above are left alone, so at
+// a key change: fix that line and apply again. Backtested on KHM 602/603
+// against the editor's starts: better than measuring from each line's
+// left edge, whose detection is the weak part. One undo step.
+async function applyStartToPage(src) {
+  const n = S.page;
+  const x = src.start ?? src.left;
+  const below = pg().systems.filter((s) => s !== src && s.top > src.top && (s.role || 'part') === 'part');
+  const snapped = await Promise.all(below.map(async (s) => {
+    const params = `top=${topAt(s, x)}&bottom=${bottomAt(s, x)}&x=${x}`;
+    try { return (await getJSON(`/api/snapstart?${q(S.pdf, n)}&${params}`)).x ?? x; }
+    catch { return x; }
+  }));
+  if (n !== S.page) return;
+  mutate(() => {
+    below.forEach((s, i) => { s.start = clamp(snapped[i], s.left, s.right); s.auto = false; });
+    src.auto = false;
+  });
+}
+
 // end a staff just after its last bar line
 function trimToLastBarline(s) {
   if (!s.barlines.length) return;
@@ -728,6 +752,7 @@ function renderInspector() {
       <p>${item.barlines.length} bar lines</p>
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
       <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
+      <button data-act="start-all"${dis} title="Carry this line's music start to the lines below it, snapped to clear paper. At a key change, fix that line and click again.">Use this music start on the lines below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
       <label>Crop below (staff spaces) <input data-f="below" type="number" min="0" step="0.5" value="${cropBelow(item)}"${dis}></label>
       <p class="muted">The dashed band is what each bar's image includes; drag its round handles or set it here.
@@ -1430,6 +1455,7 @@ $('#inspector').addEventListener('click', (e) => {
   const item = find(S.sel);
   if (act === 'trim' && item && S.sel.t === 'sys') mutate(() => { trimToLastBarline(item); item.auto = false; });
   if (act === 'reset-corners') resetCorners();
+  if (act === 'start-all' && item && S.sel.t === 'sys') applyStartToPage(item);
   if (act === 'snap' && item && S.sel.t === 'bl') snapBarline(item, systemOf(item), { undoable: true });
 });
 

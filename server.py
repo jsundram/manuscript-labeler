@@ -244,6 +244,15 @@ class Edition:
         r = detect.snap_barline(g, top * h, bottom * h, x0 * w, x1 * w)
         return {"x0": r["x0"] / w, "x1": r["x1"] / w, "cover": r["cover"]} if r else {}
 
+    def snap_start(self, rel: str, page: int, top: float, bottom: float, x: float) -> dict:
+        """A music start near x snapped to clear paper (detect.snap_start), page fractions."""
+        import detect
+
+        g = self.gray(rel, page)
+        h, w = g.shape
+        r = detect.snap_start(g, top * h, bottom * h, x * w)
+        return {"x": r / w} if r is not None else {}
+
     def detect(self, rel: str, page: int) -> dict:
         from PIL import Image
 
@@ -329,6 +338,9 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/snap":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
                 return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))
+            if path == "/api/snapstart":
+                f = {k: float(q[k]) for k in ("top", "bottom", "x")}
+                return self.send_json(ed.snap_start(q["pdf"], int(q["page"]), **f))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
