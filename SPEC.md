@@ -136,6 +136,13 @@ The server reads these, if present:
   = 48 bars, inside `\repeat volta 2 { }`. Parse each movement's total and
   where its repeats fall. Example (Op48-1): movement I is 48 + 82 bars;
   movement II is Minuet 8 + 28, Trio 16 + 20.
+  With a `\time`, bars are counted by duration, as LilyPond numbers them:
+  the `\partial` pickup is bar 0, and a section's short last bar plus the
+  next section's upbeat are one bar (G227's Minuet, `\partial 4 s4
+  s2.*7 s2 } { s4 s2.*19 s2`, is 8 + 20). In the labels the matching
+  upbeats have `bar_count` 0. Time changes, alternative endings, block
+  comments and `\repeat unfold` are handled; a `\partial` mid-movement
+  isn't.
 
 Example source: `sources/G226/D-B_KHM-602.pdf`, Berlin, Staatsbibliothek,
 KHM 602, RISM 1001015844. It is a set of parts, 17 pages:

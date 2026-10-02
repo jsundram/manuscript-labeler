@@ -190,6 +190,46 @@ README = """
 """
 
 
+def test_parse_structure_counts_by_duration_with_upbeats():
+    """A minuet whose halves start with an upbeat and end with a short bar:
+    LilyPond numbers the short bar and the next upbeat as one bar."""
+    text = r"""
+\tag #'mvtII {
+  \time 3/4 \key d \major
+  \tempo "Tempo di Minuetto"
+  \repeat volta 2 { \partial 4 s4 s2.*7 s2 }
+  \repeat volta 2 { s4 s2.*19 s2 }
+  \key g \major
+  \tempo "Trio"
+  \repeat volta 2 { s4 s2.*7 s2 }
+  \repeat volta 2 { s4 s2.*23 s2 }
+}
+\tag #'mvtI {
+  \time 2/4
+  s2*88
+  \bar "|."
+}
+"""
+    got = labels.parse_structure(text)
+    assert [s["bars"] for s in got["II"]["segments"]] == [8, 20, 8, 24]
+    assert got["II"]["total"] == 60 and got["II"]["pickup"]
+    assert got["II"]["tempos"] == ["Tempo di Minuetto", "Trio"]
+    assert got["I"] == {"total": 88, "pickup": False, "tempos": [],
+                        "segments": [{"bars": 88, "repeat": False}]}
+
+
+@pytest.mark.parametrize("body, want", [
+    (r"\time 3/4 \repeat volta 2 { s2.*4 } \time 2/4 \repeat volta 2 { s2*6 }", [4, 6]),  # meter change
+    (r"\time 2/4 \repeat volta 2 { s2*11 \alternative { { s2 } { s2 } } } s2*4", [13, 4]),
+    (r"\time 2/4 %{ s2*99 %} s2*8", [8]),                                  # block comment
+    (r'\time 2/4 \mark \markup { "segue s" } s2*8', [8]),                   # s-words in text
+    (r"\time 2/4 \repeat unfold 2 { s2*4 }", [8]),                          # written out twice
+])
+def test_parse_structure_edge_cases(body, want):
+    got = labels.parse_structure("\\tag #'mvtI { " + body + " }")["I"]
+    assert [s["bars"] for s in got["segments"]] == want
+
+
 def test_parse_sources_readme_and_source_info(tmp_path):
     rows = labels.parse_sources_readme(README)
     r = rows["sources/G228/F-Po_RES-507-14.pdf"]

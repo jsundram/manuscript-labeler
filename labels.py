@@ -6,7 +6,9 @@ server or a browser. The front end has its own copy of the numbering rules
 authority for what gets written to disk.
 """
 
+import math
 import re
+from fractions import Fraction
 from pathlib import Path
 
 SCHEMA = 1
@@ -413,43 +415,73 @@ def structure_path(edition: Path, work: str) -> Path | None:
 
 _TOKEN = re.compile(
     r"(?P<repeat>\\repeat\s+volta\s+\d+\s*\{)"
+    r"|(?P<unfold>\\repeat\s+(?:unfold|percent)\s+(?P<times>\d+)\s*\{)"
     r"|(?P<partial>\\partial\s+[\d.]+(?:\*\d+(?:/\d+)?)?)"
+    r"|(?P<time>\\time\s+(?P<tn>\d+)\s*/\s*(?P<td>\d+))"
     r"|(?P<open>\{)|(?P<close>\})"
-    r"|(?P<spacer>(?<![\\\w])s(?:\d+\.*)?(?:\*(?P<n>\d+)(?:/\d+)?)?(?![\w]))"
+    r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\*(?P<n>\d+)(?:/(?P<m>\d+))?)?(?![\w]))"
 )
+
+
+def _length(t) -> Fraction | None:
+    """A spacer's length in whole notes (s2. = 3/4, s2*7 = 7/2); None if
+    it gives no duration."""
+    if not t.group("dur"):
+        return None
+    base = Fraction(1, int(t.group("dur")))
+    length = base * (2 - Fraction(1, 2 ** len(t.group("dots"))))
+    return length * int(t.group("n") or 1) / int(t.group("m") or 1)
 
 
 def parse_structure(text: str) -> dict[str, dict]:
     """Expected bars per movement from a `Structure.ily` skeleton.
 
     Returns {"I": {"total": 130, "pickup": False, "segments": [
-    {"bars": 48, "repeat": True}, ...]}}. A spacer right after `\\partial`
-    is a pickup and isn't counted, matching `bar_count` 0 in the labels.
+    {"bars": 48, "repeat": True}, ...], "tempos": [...]}}.
+
+    With a \\time, bars are counted by duration, as LilyPond numbers them:
+    a spacer after \\partial is the pickup (bar 0, not counted), and a
+    section's short last bar plus the next section's upbeat make one bar
+    (`\\partial 4 s4 s2.*7 s2 } { s4 s2.*19 s2` is 8 + 20 bars). A
+    segment's bars are those that end in it. Without a \\time every
+    spacer counts as its multiplier in bars. `bar_count` 0 in the labels
+    matches: the pickup, and the upbeat that completes a short bar.
     """
+    text = re.sub(r"%\{.*?%\}", "", text, flags=re.S)  # block comments first
     text = re.sub(r"%[^\n]*", "", text)
     out: dict[str, dict] = {}
     for m in re.finditer(r"\\tag\s+#'mvt(\w+)\s*\{", text):
         name = m.group(1)
-        depth, i = 1, m.end()
-        segments: list[dict] = []
-        stack: list[bool] = []  # is this brace a repeat?
-        current = None  # the open segment
+        depth = 1
+        stack: list = []        # per open brace: True (volta repeat), False, or an unfold frame
+        bar = None              # bar length in whole notes, once \time is seen
+        meters: list[tuple] = []  # (position, bar length) at each \time
+        pos = Fraction(0)       # position from the start of bar 1, whole notes
+        count = 0               # bars so far, when there's no \time
+        marks: list[tuple] = [] # (position or count, repeat?) where segments end
+        repeat_open = False
         pickup_next, pickup = False, False
 
-        def seg(repeat: bool):
-            nonlocal current
-            if current is None or current["repeat"] != repeat or repeat:
-                current = {"bars": 0, "repeat": repeat}
-                segments.append(current)
-            return current
+        def here():
+            return pos if bar is not None else count
+
+        def close_segment(repeat: bool):
+            marks.append((here(), repeat))
 
         end = len(text)
-        for t in _TOKEN.finditer(text, i):
-            if t.group("repeat"):
+        for t in _TOKEN.finditer(text, m.end()):
+            if t.group("time"):
+                bar = Fraction(int(t.group("tn")), int(t.group("td")))
+                meters.append((pos, bar))
+            elif t.group("unfold"):
+                # written out N times: count what's inside N times
+                depth += 1
+                stack.append({"times": int(t.group("times")), "pos": pos, "count": count})
+            elif t.group("repeat"):
                 depth += 1
                 stack.append(True)
-                current = None
-                seg(True)
+                close_segment(False)  # music before the repeat, if any
+                repeat_open = True
             elif t.group("open"):
                 depth += 1
                 stack.append(False)
@@ -458,19 +490,46 @@ def parse_structure(text: str) -> dict[str, dict]:
                 if depth == 0:
                     end = t.start()
                     break
-                if stack.pop():
-                    current = None
+                frame = stack.pop()
+                if isinstance(frame, dict):
+                    pos += (pos - frame["pos"]) * (frame["times"] - 1)
+                    count += (count - frame["count"]) * (frame["times"] - 1)
+                elif frame:
+                    close_segment(True)
             elif t.group("partial"):
                 pickup_next = True
             elif t.group("spacer"):
+                length = _length(t)
                 if pickup_next:
-                    pickup_next = False
-                    pickup = True
-                    continue
-                in_repeat = any(stack)
-                s = current if current is not None else seg(in_repeat)
-                s["bars"] += int(t.group("n") or 1)
-        segments = [s for s in segments if s["bars"]]
+                    pickup_next, pickup = False, True
+                    if bar is not None and length is not None:
+                        pos -= length  # the pickup sits before bar 1
+                    else:
+                        continue
+                if bar is not None and length is not None:
+                    pos += length
+                else:
+                    count += int(t.group("n") or 1)
+        close_segment(False)
+
+        def bars_at(v) -> int:
+            """Bars that have begun by position v, meter by meter."""
+            if bar is None:
+                return int(v)
+            total = Fraction(0)
+            for k, (start, length) in enumerate(meters):
+                start = max(start, Fraction(0))
+                end = meters[k + 1][0] if k + 1 < len(meters) else v
+                if v > start:
+                    total += (min(end, v) - start) / length
+            return math.ceil(total - Fraction(1, 10 ** 6)) if total > 0 else 0
+
+        segments, prev = [], 0
+        for v, repeat in marks:
+            n = bars_at(v) - prev
+            if n > 0:
+                segments.append({"bars": n, "repeat": repeat})
+            prev += max(0, n)
         out[name] = {"total": sum(s["bars"] for s in segments),
                      "pickup": pickup, "segments": segments,
                      "tempos": re.findall(r'\\tempo\s+"([^"]*)"', text[m.end():end])}
