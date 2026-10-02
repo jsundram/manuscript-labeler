@@ -247,6 +247,21 @@ def crop_margins(g: np.ndarray, staves: list[dict]) -> list[tuple[float, float]]
     return out
 
 
+def ink_around(g: np.ndarray, staff: dict, x_from: int, x_to: int) -> np.ndarray:
+    """Per column, whether there's ink from two spaces above the staff to
+    one below it, staff-line rows left out. Accidentals of a key signature
+    are often written above the staff (a bass clef's B flat on the top
+    line or over it), where the staff's own spaces don't see them."""
+    gap = staff["gap"]
+    lines = staff["lines"]
+    y0, y1 = max(0, int(lines[0] - 2 * gap)), min(g.shape[0], int(lines[-1] + gap))
+    rows = np.ones(y1 - y0, bool)
+    for y in lines:
+        rows[max(0, y - y0 - 2): y - y0 + 3] = False
+    x_from, x_to = max(0, x_from), min(g.shape[1], x_to)
+    return (g[y0:y1][rows][:, x_from:x_to] < 120).sum(axis=0) >= 2
+
+
 def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int, int]:
     """(clef x, music start x), a guess for the editor to adjust.
 
@@ -274,8 +289,9 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
     clear = int(gap)
     lo, hi = clef + int(gap * 2.5), min(right - left, clef + int(gap * 9))
     start = clef + int(gap * 5)
+    around = ink_around(g, staff, left, right)
     for x in range(lo, hi - clear):
-        if ink[x:x + clear].max() < 0.25:
+        if not around[x:x + clear].any():
             start = x
             break
     return left + clef, left + start

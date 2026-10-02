@@ -368,6 +368,17 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     space, stopping at a clear staff space or where the space shared with
     the next staff is emptiest. Off by about half a space on average
     (the fixed 2.5 was off by 1.2-1.3).
+- **Music start on the cello part.** The start landed between the bass
+  clef and its key signature, 2.6 spaces early (median) on page 14. The
+  editor spotted why: this copyist writes the bass clef's B flat on or
+  above the top line, where the clear-paper test, which looked only at
+  the staff's own spaces, didn't see it. It now looks from two spaces
+  above the staff to one below (staff lines left out). Lines 2+ of
+  reviewed pages, within 1.5 spaces of the editor's start: bass 25% ->
+  62%, treble and alto unchanged (~70% / ~60%). Tried and dropped:
+  reading the clef and key as separate glyphs (this hand breaks into
+  irregular pieces: worse everywhere), and a hint from the previous page's
+  clef+key width (57% -> 61%, not worth it; key changes defeat it).
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink
