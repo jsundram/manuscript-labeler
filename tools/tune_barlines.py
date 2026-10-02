@@ -35,7 +35,6 @@ from score_barlines import render, score_page, truth_systems  # noqa: E402
 GRID = {
     "COVER": [0.8, 0.84, 0.88, 0.92],
     "LEAN": [0.18, 0.24, 0.3, 0.36],
-    "BEYOND": [0.5, 0.7, 0.9, 1.01],
     "ATTACH_WIDTH": [0.7, 0.85, 1.0],
     "ATTACH_ROWS": [0.15, 0.25, 0.35, 0.5],
     "MIN_BAR": [3.0, 3.5, 4.0, 5.0],

@@ -382,7 +382,6 @@ CROP_PAD = 1.0        # staff spaces of paper kept beyond a staff's outermost in
 CROP_MIN = 1.5        # never crop closer to the staff than this
 MIN_BAR = 4.0         # bars are rarely narrower (about 1 cm in KHM 602)
 COVER = 0.88          # share of the staff's height the stroke must cover
-BEYOND = 0.9          # ink share past the staff above which a stroke is a stem
 LEAN = 0.3            # steepest lean tried, dx per dy
 END_SLACK = 0.0       # staff spaces a bar line may stop short of the outer staff lines
 FAINT = 0.7           # weaker cover accepted where a gap is too wide for one bar...
@@ -431,10 +430,7 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
     Returns [{x0, x1}] in pixels: x at the top and bottom staff line.
     """
     top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
-    height = bottom - top
     ink = g < 120
-    pad = int(gap * 1.6)
-    y0, y1 = max(0, top - pad), min(g.shape[0], bottom + pad)
     best_cover = np.zeros(right - left)
     best_slope = np.zeros(right - left)
     slack = int(gap * END_SLACK)
@@ -480,16 +476,9 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
         slope = best_slope[i]
         x_mid = left + i
 
-        # reject note stems: ink continuing well above or below the staff
-        def ink_beyond(y_from, y_to):
-            ys = np.arange(y_from, y_to)
-            xs = (x_mid + (ys - (top + bottom) / 2) * slope).astype(int)
-            ok = (xs >= 0) & (xs < g.shape[1])
-            return ink[ys[ok], xs[ok]].mean() if ok.any() else 0.0
-        above = ink_beyond(y0, top - int(gap * 0.6))
-        below = ink_beyond(bottom + int(gap * 0.6), y1)
-        if max(above, below) > BEYOND:
-            return None
+        # (A stroke whose ink ran on past the staff used to be taken for a
+        # stem. The note-head test below catches stems; that test only cost
+        # long bar lines, so it was dropped after re-tuning on KHM 602+603.)
         att = attachment(ink, staff, x_mid, slope)
         if att > ATTACH_ROWS:
             return None
