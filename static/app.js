@@ -713,6 +713,7 @@ function renderInspector() {
     const what = nb ? `Ends ${PART_NAMES[nb.part] || nb.part} ${nb.movement}, bar ${barLabel(nb)}` : 'Not counted (page isn’t music or has no part)';
     el.innerHTML = `<h2>Bar line ${item.auto ? '<span class="pill auto">auto</span>' : ''}</h2>
       <p>${esc(what)}</p>
+      <button data-act="snap"${dis}>Snap to the ink (a)</button>
       <label>Kind <select data-f="kind"${dis}>${options(BARLINE_KINDS, item.kind)}</select></label>
       <label>Bars it ends <input data-f="bar_count" type="number" min="0" step="1" value="${item.bar_count ?? 1}"${dis}></label>
       <p class="muted">2+ for a multi-bar rest; 0 for a pickup.</p>
@@ -1018,7 +1019,25 @@ function addBarline() {
   mutate((page) => {
     const b = newBarline(page, s, { x0: S.mouse.x, x1: S.mouse.x }, false);
     S.sel = { t: 'bl', id: b.id };
+    snapBarline(b, s);
   });
+}
+
+// Fit a hand-placed bar line to the stroke under it: a fine adjustment of
+// position and lean (detect.snap_barline searches about a staff space
+// either side). Placing or dragging a line snaps it as part of that same
+// edit; `undoable` makes it its own undo step (the a key, the button).
+async function snapBarline(b, s, { undoable = false } = {}) {
+  if (S.readonly) return;
+  const n = S.page, m = mid(b);
+  const params = `top=${topAt(s, m)}&bottom=${bottomAt(s, m)}&x0=${b.x0}&x1=${b.x1}`;
+  let r;
+  try { r = await getJSON(`/api/snap?${q(S.pdf, n)}&${params}`); }
+  catch { return; }
+  if (r.x0 == null || n !== S.page || !s.barlines.includes(b)) return;
+  const apply = () => { b.x0 = r.x0; b.x1 = r.x1; b.auto = false; };
+  if (undoable) mutate(apply);
+  else { apply(); changed(); }
 }
 
 function addSystem() {
@@ -1247,7 +1266,13 @@ svg.addEventListener('pointerup', () => {
     if (!d.moved && S.sel && !d.keepSel) { S.sel = null; renderAll(); }
     return;
   }
-  if (d.moved) { touchPage(); changed(); }
+  if (d.moved) {
+    touchPage();
+    changed();
+    // a bar line dragged to a new place snaps to the ink there; dragging
+    // its end handles is setting the lean by hand, so that's left alone
+    if (d.kind === 'move' && S.sel?.t === 'bl') { const b = find(S.sel); if (b) snapBarline(b, systemOf(b)); }
+  }
 });
 
 svg.addEventListener('wheel', (e) => {
@@ -1291,6 +1316,7 @@ document.addEventListener('keydown', (e) => {
   else if (k === 'ArrowUp' || k === 'ArrowDown') { handled(); nudge(0, (k === 'ArrowUp' ? -step : step) / S.H); }
   else if (k === 'Tab') { handled(); cycleBarline(e.shiftKey ? -1 : 1); }
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
+  else if (k === 'a') { handled(); const b = find(S.sel); if (b && S.sel.t === 'bl') snapBarline(b, systemOf(b), { undoable: true }); }
   else if (k === 'e') { handled(); setBarline((b) => { b.ends_movement = !b.ends_movement; }); }
   else if (k === 'z') { handled(); S.detail = !S.detail; renderDetail(); renderOverlay(); }
   else if (k === 'Enter') { handled(); markReviewedAndNext(); }
@@ -1355,6 +1381,7 @@ $('#inspector').addEventListener('click', (e) => {
   const item = find(S.sel);
   if (act === 'trim' && item && S.sel.t === 'sys') mutate(() => { trimToLastBarline(item); item.auto = false; });
   if (act === 'reset-corners') resetCorners();
+  if (act === 'snap' && item && S.sel.t === 'bl') snapBarline(item, systemOf(item), { undoable: true });
 });
 
 $('#inspector').addEventListener('change', (e) => {

@@ -411,6 +411,15 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     this tool to *feed* `Structure.ily`, so using it to steer detection
     would be circular. Independent checks are the editor's review and
     agreement between sources of the same work.
+- **Snapping hand-placed bar lines.** The editor places bar lines within
+  millimetres but upright, while many are slanted. Placing or dragging one
+  now fits it to the stroke under it: within about a staff space either
+  side, every lean up to 0.4, the column of ink covering most of the
+  staff's height, centred on the stroke. Nothing convincing (60% cover)
+  that close: left where it was put. Dragging an end handle (setting the
+  lean by hand) never snaps. On the 399 bar lines of KHM 602's reviewed
+  pages, moved up to 0.8 spaces and stood upright: snapped back to within
+  0.03 spaces (median) of where they belong.
 - **Bar counting by eye** worked best from whole-line strips, counting bar
   lines and cross-checking against the expected total.
 

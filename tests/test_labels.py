@@ -244,3 +244,26 @@ def test_pdf_paths_cannot_escape_the_edition(edition, tmp_path):
         edition.pdf("../outside.pdf")
     with pytest.raises(LookupError):
         edition.pdf("sources/G1/X_Y.labels.json")
+
+
+def test_snap_fits_a_slanted_bar_line_and_ignores_far_ones():
+    """detect.snap_barline on a drawn staff: a slanted bar line placed
+    upright a little off is fitted to the stroke; nothing near, no change."""
+    import numpy as np
+    from PIL import Image, ImageDraw
+
+    import detect
+
+    img = Image.new("L", (400, 200), 230)
+    d = ImageDraw.Draw(img)
+    top, gap = 60, 16
+    for i in range(5):
+        d.line([(0, top + i * gap), (400, top + i * gap)], fill=140, width=2)
+    bottom = top + 4 * gap
+    d.line([(206, top), (194, bottom)], fill=30, width=4)  # leans 12 px over the staff
+    g = np.asarray(img, dtype=np.float32)
+
+    r = detect.snap_barline(g, top, bottom, 205, 205)
+    assert r is not None
+    assert abs(r["x0"] - 206) <= 2 and abs(r["x1"] - 194) <= 2  # within the 4 px stroke
+    assert detect.snap_barline(g, top, bottom, 300, 300) is None  # nothing within a space

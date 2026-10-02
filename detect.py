@@ -285,6 +285,8 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
 # the editor's corrections; see SPEC.md).
 ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
+SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
+SNAP_COVER = 0.6      # ...for a stroke covering at least this much of the staff height
 CROP_PAD = 1.0        # staff spaces of paper kept beyond a staff's outermost ink
 CROP_MIN = 1.5        # never crop closer to the staff than this
 MIN_BAR = 4.0         # bars are rarely narrower (about 1 cm in KHM 602)
@@ -441,6 +443,59 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
                     kept.append({**best, "kind": "single"})
         kept.sort(key=lambda b: b["x0"])
     return [{k: v for k, v in b.items() if k not in ("att", "cover")} for b in kept]
+
+
+def snap_barline(g: np.ndarray, top: float, bottom: float, x0: float, x1: float,
+                 reach: float = SNAP_REACH) -> dict | None:
+    """Fit a bar line the editor placed by hand to the stroke under it.
+
+    Searches `reach` staff spaces either side of where it was put, at every
+    lean from upright to steep, for the column of ink covering the most of
+    the staff's height, and returns its centre line as {x0, x1, cover}
+    (x on the top and bottom staff lines, in pixels). A fine adjustment:
+    if nothing covers SNAP_COVER of the staff that close, returns None and
+    the line stays where it was put. `top`/`bottom` are the staff's lines
+    at this point (bend included).
+    """
+    h, w = g.shape
+    t, b = int(round(top)), int(round(bottom))
+    if b - t < 8:
+        return None
+    gap = (b - t) / 4
+    ys = np.arange(t, b + 1)
+    yc = (t + b) / 2
+    xm = (x0 + x1) / 2
+    r = int(np.ceil(reach * gap))
+    lean = 0.4  # dx per dy, steeper than any bar line seen so far
+    pad = r + int(np.ceil(lean * (b - t) / 2)) + 2
+    lo, hi = int(xm) - pad, int(xm) + pad + 1
+    if lo < 0 or hi > w:
+        return None
+    ink = g[t:b + 1, lo:hi] < 135
+    # allow a pixel of wobble
+    ink = ink | np.roll(ink, 1, axis=1) | np.roll(ink, -1, axis=1)
+    offsets = np.arange(-r, r + 1)
+    best = None
+    for slope in np.linspace(-lean, lean, 81):
+        shift = np.round((ys - yc) * slope).astype(int)
+        cols = (int(xm) - lo) + offsets[None, :] + shift[:, None]
+        cover = ink[np.arange(len(ys))[:, None], cols].mean(axis=0)
+        # prefer the nearer of two equally good strokes
+        score = cover - 0.1 * np.abs(offsets) / max(1, r)
+        i = int(np.argmax(score))
+        if best is None or score[i] > best[0]:
+            best = (score[i], cover[i], slope, i, cover)
+    _, cover, slope, i, covers = best
+    if cover < SNAP_COVER:
+        return None
+    # the stroke is several pixels wide: take the middle of its run
+    j, k = i, i
+    while j > 0 and covers[j - 1] >= cover - 0.05:
+        j -= 1
+    while k < len(covers) - 1 and covers[k + 1] >= cover - 0.05:
+        k += 1
+    xc = int(xm) + offsets[(j + k) // 2] + ((j + k) % 2) * 0.5
+    return {"x0": xc + (t - yc) * slope, "x1": xc + (b - yc) * slope, "cover": float(cover)}
 
 
 def find_page_corners(img: Image.Image) -> list[list[float]]:

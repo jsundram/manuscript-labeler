@@ -55,6 +55,7 @@ class Edition:
         self.render_locks_lock = threading.Lock()
         self.page_counts: dict[str, int] = {}
         self.prerendering: set[str] = set()
+        self.grays: dict[str, object] = {}  # a few decoded pages, for snapping
 
     # -- paths ---------------------------------------------------------------
 
@@ -220,6 +221,29 @@ class Edition:
                     self.prerendering.discard(rel)
         threading.Thread(target=go, daemon=True).start()
 
+    def gray(self, rel: str, page: int):
+        """The page as a grayscale array, keeping the last few decoded."""
+        from PIL import Image
+
+        import detect
+
+        key = f"{rel}:{page}"
+        if key not in self.grays:
+            if len(self.grays) >= 4:
+                self.grays.pop(next(iter(self.grays)))
+            self.grays[key] = detect._gray(Image.open(self.render(rel, page)))
+        return self.grays[key]
+
+    def snap(self, rel: str, page: int, top: float, bottom: float, x0: float, x1: float) -> dict:
+        """Fit a hand-placed bar line to the ink under it (detect.snap_barline).
+        Everything in page fractions; {} if there's no stroke close enough."""
+        import detect
+
+        g = self.gray(rel, page)
+        h, w = g.shape
+        r = detect.snap_barline(g, top * h, bottom * h, x0 * w, x1 * w)
+        return {"x0": r["x0"] / w, "x1": r["x1"] / w, "cover": r["cover"]} if r else {}
+
     def detect(self, rel: str, page: int) -> dict:
         from PIL import Image
 
@@ -302,6 +326,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_file(f, cache=True)
             if path == "/api/detect":
                 return self.send_json(ed.detect(q["pdf"], int(q["page"])))
+            if path == "/api/snap":
+                f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
+                return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
