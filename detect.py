@@ -163,6 +163,16 @@ def staff_extent(g: np.ndarray, staff: dict) -> tuple[int, int]:
     return int(max(0, xs[0] - k // 2)), int(min(w, xs[-1] + k // 2))
 
 
+def inner_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
+    """Share of dark pixels between a staff's lines (the middle of each space).
+    Every staff with music on it in KHM 602/603 has at least 3%; empty ruled
+    staves at most 0.6%, even with a title or "Segue il Trio" just above or
+    below them, which note_ink counted."""
+    lines = staff["lines"]
+    mids = [(a + b) // 2 for a, b in zip(lines, lines[1:])]
+    return float((g[mids, left:right] < 120).mean()) if right > left else 0.0
+
+
 def note_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
     """Fraction of dark pixels around a staff, staff lines excluded.
     Empty ruled staves are near 0; written ones are a few percent or more."""
@@ -343,6 +353,7 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
 ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
 TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
+EMPTY_INK = 0.01      # less ink than this between its lines: an empty staff, dropped
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
 SNAP_COVER = 0.6      # ...for a stroke covering at least this much of the staff height
@@ -655,8 +666,8 @@ def detect_page(img: Image.Image) -> list[dict]:
         local = {**st, "top": st["top"] - y0, "bottom": st["bottom"] - y0,
                  "lines": [y - y0 for y in st["lines"]]}
         left, right = staff_extent(band, local)
-        if note_ink(band, local, left, right) < 0.01:
-            continue  # an empty ruled staff
+        if inner_ink(band, local, left, right) < EMPTY_INK:
+            continue  # an empty ruled staff (text above or below doesn't count)
         clef, start, brace = music_start(band, local, left, right)
         found.append((st, band, local, left, right, clef, start, brace))
 

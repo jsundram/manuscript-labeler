@@ -347,9 +347,11 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     runs gave 5 px. Autocorrelation was fooled by thick note ink.
   - "Near-solid row" filtering (for scanner borders) must look at the whole
     page width: in a narrow strip a thick staff line is near-solid too.
-  - Empty ruled staves (title pages, after a part ends) have under 1% ink
-    between the lines and are dropped. A page with staves but no bar lines
-    is proposed as a title page.
+  - Empty ruled staves (title pages, after a part ends, under "Segue il
+    Trio") are dropped when the ink *between their lines* is under 1%.
+    Counting the 2.5 spaces around a staff, as at first, kept staves with
+    a title or text just above or below them. In KHM 602/603 every staff
+    with music has at least 3% between its lines, empty ones at most 0.6%.
 - **Staff end.** A staff is proposed to end just after its last bar line
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such
   as a custos, a missed bar line or a bar running on to the next line,
