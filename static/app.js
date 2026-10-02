@@ -758,7 +758,7 @@ function renderInspector() {
       <p>${item.barlines.length} bar lines</p>
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
       <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
-      <button data-act="start-all"${dis} title="Carry this line's music start to the lines below it, snapped to clear paper. At a key change, fix that line and click again.">Use this music start on the lines below</button>
+      <button data-act="start-all"${dis} title="Carry this line's music start to the lines below it, snapped to clear paper. At a key change, fix that line and click again.">Apply Start Below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
       <label>Crop below (staff spaces) <input data-f="below" type="number" min="0" step="0.5" value="${cropBelow(item)}"${dis}></label>
       <p class="muted">The dashed band is what each bar's image includes; drag its round handles or set it here.
