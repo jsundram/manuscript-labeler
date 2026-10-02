@@ -276,9 +276,12 @@ The fields:
   The build shows it once, spread across those bars. `count` 0 is a pickup.
 - **`barline`:** the id of the bar line that ends the bar, for tracing a
   bar back to the labels file.
-- **`marks`:** ids of marks whose centre lies in the bar's crop. A mark
-  outside every crop (a tempo or title above the music) goes to the first
-  bar of the nearest staff below it.
+- **`marks`:** ids of marks whose centre lies in the bar's crop. A tempo
+  outside every crop (written above the music) goes to the first bar of
+  the nearest staff below it. Any other mark outside every crop goes to
+  the last bar of the nearest staff that its text reaches: "Segue il
+  Trio" and "Da capo il Minuetto" refer to the end of the music they're
+  written under, wherever along it the text begins.
 - **`pages`:** `{"2": {"corners": [TL, TR, BR, BL]}}` for pages whose
   paper corners are set, for cropping or straightening whole pages.
 - **`complete`:** which part and movement runs are fully labeled and

@@ -122,6 +122,13 @@ def test_tempo_mark_above_the_music_goes_to_first_bar_below():
     assert out["pages"] == {"1": {"corners": [[0, 0], [1, 0], [1, 1], [0, 1]]}}
 
 
+def test_text_below_the_last_line_goes_to_the_nearest_bar():
+    p = page("va", [system("p1s1", 0.2, [bl("a", 0.5), bl("b", 0.8)])])
+    p["marks"] = [{"id": "dc", "x": 0.7, "y": 0.35, "w": 0.2, "h": 0.03, "kind": "text", "text": "Da capo"}]
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["marks"] for b in bars] == [[], ["dc"]]
+
+
 def test_validate_catches_bad_data():
     good = doc({"1": page("va", [system("s1", 0.1, [bl("a", 0.5)])])})
     assert labels.validate(good) == []
