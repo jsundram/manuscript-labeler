@@ -437,17 +437,23 @@ function newBarline(page, s, d, auto = true) {
 }
 
 async function autoLabel(n, token) {
-  let systems = [], corners = null;
-  try { ({ systems, corners } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
+  let systems = [], corners = null, look = null;
+  try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
   catch (e) { banner(`Detection failed on page ${n}: ${e.message}`); }
   if (token !== S.loadToken || S.doc.pages[n]) return;
-  const prev = previousPage(n);
-  const part = prev ? prev.part : null;
-  // staves but (almost) no bar lines: a title page on ruled paper
+  // Music: staves with bar lines. Otherwise a blank page has no dark ink,
+  // a photographer's colour chart has strong colour (both: no part, no
+  // clef), and anything else is a title page, which keeps the part so the
+  // editor can set the next part there and have later pages inherit it.
   const music = systems.reduce((k, d) => k + d.barlines.length, 0) >= 2;
+  const kind = music ? 'music'
+    : look && look.colour > 0.02 ? 'other'
+    : look && look.dark < 0.001 ? 'blank' : 'title';
+  const prev = previousPage(n, (p) => p.kind === 'music' || p.kind === 'title');
+  const part = kind === 'music' || kind === 'title' ? (prev ? prev.part : null) : null;
   const page = {
-    status: 'auto', kind: music ? 'music' : 'title', part,
-    clef: clefFor(n, part), notes: '', systems: [], marks: [],
+    status: 'auto', kind, part,
+    clef: part ? clefFor(n, part) : null, notes: '', systems: [], marks: [],
   };
   if (corners) page.corners = { points: corners, auto: true };
   S.doc.pages[n] = page;
@@ -1436,7 +1442,10 @@ $('#pagestatus').onclick = () => {
   if (!pg() || S.readonly) return;
   mutate((p) => { p.status = p.status === 'reviewed' ? 'edited' : 'reviewed'; }, { status: false });
 };
-$('#f-kind').addEventListener('change', (e) => mutate((p) => { p.kind = e.target.value; }));
+$('#f-kind').addEventListener('change', (e) => mutate((p) => {
+  p.kind = e.target.value;
+  if (p.kind === 'blank' || p.kind === 'other') { p.part = null; p.clef = null; }  // nothing to carry
+}));
 $('#f-part').addEventListener('change', (e) => mutate((p) => {
   p.part = e.target.value || null;
   p.clef = clefFor(S.page, p.part) || p.clef;

@@ -173,6 +173,27 @@ def inner_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
     return float((g[mids, left:right] < 120).mean()) if right > left else 0.0
 
 
+def page_look(img: Image.Image, corners: list[list[float]]) -> dict:
+    """What the page holds besides staves, inside its corners (3% in):
+    `dark`, the share of dark ink (text is darker than ruled lines; a blank
+    page has none), and `colour`, the share of strongly coloured pixels (a
+    photographer's colour chart; manuscript ink and paper have none)."""
+    small = img.convert("RGB").copy()
+    small.thumbnail((700, 700))
+    a = np.asarray(small, dtype=np.float32)
+    h, w, _ = a.shape
+    xs = [p[0] for p in corners]
+    ys = [p[1] for p in corners]
+    x0, x1 = int((max(xs[0], xs[3]) + 0.03) * w), int((min(xs[1], xs[2]) - 0.03) * w)
+    y0, y1 = int((max(ys[0], ys[1]) + 0.03) * h), int((min(ys[2], ys[3]) - 0.03) * h)
+    if x1 <= x0 or y1 <= y0:
+        x0, x1, y0, y1 = 0, w, 0, h
+    reg = a[y0:y1, x0:x1]
+    lum = reg.mean(axis=2)
+    sat = reg.max(axis=2) - reg.min(axis=2)
+    return {"dark": float((lum < 100).mean()), "colour": float((sat > 80).mean())}
+
+
 def note_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
     """Fraction of dark pixels around a staff, staff lines excluded.
     Empty ruled staves are near 0; written ones are a few percent or more."""

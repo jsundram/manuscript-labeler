@@ -259,7 +259,8 @@ class Edition:
         import detect
 
         img = Image.open(self.render(rel, page))
-        return {"systems": detect.detect_page(img), "corners": detect.find_page_corners(img)}
+        corners = detect.find_page_corners(img)
+        return {"systems": detect.detect_page(img), "corners": corners, "look": detect.page_look(img, corners)}
 
 
 def dump(doc) -> bytes:

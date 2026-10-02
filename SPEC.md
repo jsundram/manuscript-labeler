@@ -352,6 +352,13 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     Counting the 2.5 spaces around a staff, as at first, kept staves with
     a title or text just above or below them. In KHM 602/603 every staff
     with music has at least 3% between its lines, empty ones at most 0.6%.
+  - A page's kind: music if its staves have bar lines; otherwise blank if
+    it has no dark ink (text is darker than ruled lines), "other" if over
+    2% of it is strongly coloured (the photographer's colour charts), and
+    a title page otherwise. Blank and other pages get no part or clef;
+    title pages keep inheriting the part, as the editor sets the next part
+    there. All 15 non-music pages of KHM 602/603 come out as the editor
+    marked them.
 - **Staff end.** A staff is proposed to end just after its last bar line
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such
   as a custos, a missed bar line or a bar running on to the next line,
