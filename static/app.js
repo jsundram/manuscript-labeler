@@ -53,6 +53,7 @@ const S = {
   version: 0, savedVersion: 0, saving: false, saveTimer: null, conflict: false,
   bars: [], byBarline: new Map(),
   detail: loadPref('detail', true),  // the detail view: open unless closed last time
+  heldCrop: null,      // 'above' | 'below' while t / g is held: arrows move that crop edge
   handle: null,        // { h, for }: the handle the arrow keys move (clicked, highlighted)
   placing: null,       // 'bl' | 'sys' | 'mark': the next click on the page adds one
   held: null,          // the key being held down to place ('b', 's', 'm')
@@ -1132,6 +1133,7 @@ function deleteSelection() {
 // The clicked handle, if it still belongs to the current selection.
 const selKey = () => JSON.stringify(S.sel);
 function activeHandle() {
+  if (S.heldCrop && S.sel?.t === 'sys') return S.heldCrop;  // t / g held
   return S.handle && S.handle.for === selKey() ? S.handle.h : null;
 }
 
@@ -1159,6 +1161,21 @@ function nudgeHandle(h, dx, dy, big) {
       item[h] = Math.max(0, (item[h] ?? 2.5) + step);
     } else if (h === 'br') { item.w = Math.max(0.005, item.w + mx); item.h = Math.max(0.005, item.h + my); }
     if (t !== 'mark' && 'auto' in item) item.auto = false;
+  });
+}
+
+// t / g + up/down: a quarter staff space a press (Shift: one). Up moves the
+// edge up: more room above, less below. A staff's crop, or with a bar line
+// selected, that bar's own (starting from the staff's).
+function nudgeCrop(edge, dy, big) {
+  const item = find(S.sel);
+  if (!item || (S.sel.t !== 'sys' && S.sel.t !== 'bl')) return;
+  const s = S.sel.t === 'sys' ? item : systemOf(item);
+  const step = (big ? 1 : 0.25) * (edge === 'above' ? -dy : dy);
+  mutate(() => {
+    const now = edge === 'above' ? cropAbove(s, S.sel.t === 'bl' ? item : null) : cropBelow(s, S.sel.t === 'bl' ? item : null);
+    item[edge] = Math.max(0, now + step);
+    if (S.sel.t === 'sys') item.auto = false;
   });
 }
 
@@ -1405,6 +1422,13 @@ document.addEventListener('keydown', (e) => {
   const k = e.key;
   const handled = () => e.preventDefault();
   if (PLACE_KEY[k]) { handled(); if (!e.repeat) { S.held = k; setPlacing(PLACE_KEY[k]); } }
+  // hold t (top) or g (the key below it: bottom) and press up/down to move
+  // the selected staff's crop edge, or the selected bar's own crop
+  else if (k === 't' || k === 'g') { handled(); if (!e.repeat) { S.heldCrop = k === 't' ? 'above' : 'below'; renderOverlay(); } }
+  else if (S.heldCrop && (k === 'ArrowUp' || k === 'ArrowDown')) {
+    handled();
+    nudgeCrop(S.heldCrop, k === 'ArrowUp' ? -1 : 1, e.shiftKey);
+  }
   else if (k === 'Delete' || k === 'Backspace' || k === 'd') { handled(); deleteSelection(); }
   else if (k.startsWith('Arrow') && activeHandle()) {
     handled();
@@ -1429,13 +1453,17 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
+  if (S.heldCrop && (e.key === 't' || e.key === 'g')) { S.heldCrop = null; renderOverlay(); }
   if (S.held && e.key.toLowerCase() === S.held) {
     S.held = null;
     setPlacing(null);
     if (S.sel?.t === 'mark') $('#inspector [data-f="text"]')?.focus();
   }
 });
-window.addEventListener('blur', () => { if (S.held) { S.held = null; setPlacing(null); } });
+window.addEventListener('blur', () => {
+  if (S.held) { S.held = null; setPlacing(null); }
+  if (S.heldCrop) { S.heldCrop = null; renderOverlay(); }
+});
 
 // ------------------------------------------------------------------ form wiring
 

@@ -36,7 +36,8 @@ add a bar line (or double-click a staff; it snaps to the ink, and **a**
 snaps a selected one), hold **s** / **m** and click to add
 a staff / mark, **d** or **Del** delete, **arrows** nudge, **Tab** next bar
 line (or staff, or mark, whichever is selected), **1–6** bar line kind,
-**e** movement ends here, **z** detail view with pitch names, **⌘Z**
+**e** movement ends here, hold **t** / **g** + **↑ ↓** move the top /
+bottom crop edge, **z** detail view with pitch names, **⌘Z**
 undo, **, .** previous/next page. Re-detect is a toolbar button: it
 re-runs detection on the page and keeps your edits.
 
