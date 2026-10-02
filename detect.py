@@ -210,10 +210,58 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
     return left + clef, left + start
 
 
+# Bar-line tests, in staff spaces (tuned on D-B KHM 602 pp. 2, 3, 6 against
+# the editor's corrections; see SPEC.md).
+ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
+ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
+MIN_BAR = 4.0         # bars are rarely narrower (about 1 cm in KHM 602)
+COVER = 0.88          # share of the staff's height the stroke must cover
+BEYOND = 0.9          # ink share past the staff above which a stroke is a stem
+LEAN = 0.3            # steepest lean tried, dx per dy
+END_SLACK = 0.0       # staff spaces a bar line may stop short of the outer staff lines
+FAINT = 0.7           # weaker cover accepted where a gap is too wide for one bar...
+WIDE_GAP = 1.6        # ...i.e. wider than this many times the line's typical bar
+
+
+def attachment(ink: np.ndarray, staff: dict, x_mid: float, slope: float) -> float:
+    """How much of a stroke has wide ink across it (note heads, beams), in
+    staff spaces of height. A bar line is thin all the way; a stem has a
+    head at one end and often beams across it. Staff-line rows are skipped,
+    since every stroke crosses those. (Judging width against the stroke's
+    own width, to spare thick final bars, let more stems through: worse.)"""
+    top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
+    h, w = ink.shape
+    c = (top + bottom) / 2
+    lines = staff["lines"]
+    wide = 0
+    cap = int(gap * 2)
+    for y in range(max(0, int(top - gap)), min(h, int(bottom + gap) + 1)):
+        if any(abs(y - ly) <= 2 for ly in lines):
+            continue
+        x = int(round(x_mid + (y - c) * slope))
+        if not (0 <= x < w):
+            continue
+        # the ink run through the stroke (allowing a pixel of wobble)
+        hit = [xx for xx in (x - 1, x, x + 1) if 0 <= xx < w and ink[y, xx]]
+        if not hit:
+            continue
+        lo = hi = hit[0]
+        while lo > 0 and ink[y, lo - 1] and hi - lo < cap:
+            lo -= 1
+        while hi < w - 1 and ink[y, hi + 1] and hi - lo < cap:
+            hi += 1
+        if hi - lo + 1 > ATTACH_WIDTH * gap:
+            wide += 1
+    return wide / gap
+
+
 def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: int | None = None) -> list[dict]:
     """Near-vertical strokes that span the whole staff and don't continue far beyond it.
 
     Handwritten bar lines lean, so each column is tested along several slants.
+    Stems are told apart by what's attached to them (`attachment`), and by
+    spacing: bars are wider than MIN_BAR staff spaces, so of strokes closer
+    than that, only the cleanest is kept.
     Returns [{x0, x1}] in pixels: x at the top and bottom staff line.
     """
     top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
@@ -223,8 +271,9 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
     y0, y1 = max(0, top - pad), min(g.shape[0], bottom + pad)
     best_cover = np.zeros(right - left)
     best_slope = np.zeros(right - left)
-    for slope in np.linspace(-0.18, 0.18, 13):  # dx per dy
-        ys = np.arange(top, bottom + 1)
+    slack = int(gap * END_SLACK)
+    for slope in np.linspace(-LEAN, LEAN, 2 * int(LEAN / 0.03) + 1):  # dx per dy
+        ys = np.arange(top + slack, bottom - slack + 1)
         shifts = np.round((ys - (top + bottom) / 2) * slope).astype(int)
         acc = np.zeros(right - left)
         for y, s in zip(ys, shifts):
@@ -237,29 +286,34 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
             r[1:] |= row[:-1]
             r[:-1] |= row[1:]
             acc += r
-        cover = acc / (height + 1)
+        cover = acc / len(ys)
         better = cover > best_cover
         best_cover[better] = cover[better]
         best_slope[better] = slope
 
     # clef + key signature at the start of each line
     clef_skip = (skip_to - left) if skip_to is not None else int(gap * 4)
-    cands = [i for i in np.where(best_cover > 0.88)[0] if i > clef_skip]
-    # group adjacent columns into strokes
-    strokes: list[list[int]] = []
-    for i in cands:
-        if strokes and i - strokes[-1][-1] <= 3:
-            strokes[-1].append(i)
-        else:
-            strokes.append([i])
 
-    found = []
-    for s in strokes:
-        if len(s) > gap * 0.6:  # too wide: a beam or a smudge, not a line
-            continue
-        i = int(np.mean(s))
+    def strokes_over(threshold: float, lo: int = 0, hi: int | None = None) -> list[list[int]]:
+        """Runs of adjacent columns covering more than `threshold` of the staff."""
+        hi = len(best_cover) if hi is None else hi
+        cands = [i for i in np.where(best_cover > threshold)[0] if max(clef_skip, lo) < i < hi]
+        out: list[list[int]] = []
+        for i in cands:
+            if out and i - out[-1][-1] <= 3:
+                out[-1].append(i)
+            else:
+                out.append([i])
+        return out
+
+    def test(stroke: list[int]) -> dict | None:
+        """The bar line this stroke makes, or None if it's a stem, beam or smudge."""
+        if len(stroke) > gap * 0.6:  # too wide: a beam or a smudge, not a line
+            return None
+        i = int(np.mean(stroke))
         slope = best_slope[i]
         x_mid = left + i
+
         # reject note stems: ink continuing well above or below the staff
         def ink_beyond(y_from, y_to):
             ys = np.arange(y_from, y_to)
@@ -268,21 +322,52 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
             return ink[ys[ok], xs[ok]].mean() if ok.any() else 0.0
         above = ink_beyond(y0, top - int(gap * 0.6))
         below = ink_beyond(bottom + int(gap * 0.6), y1)
-        if max(above, below) > 0.5:
-            continue
-        found.append({
+        if max(above, below) > BEYOND:
+            return None
+        att = attachment(ink, staff, x_mid, slope)
+        if att > ATTACH_ROWS:
+            return None
+        return {
             "x0": x_mid + (top - (top + bottom) / 2) * slope,
             "x1": x_mid + (bottom - (top + bottom) / 2) * slope,
-        })
+            "att": att, "cover": float(best_cover[i]),
+        }
+
+    found = [b for b in map(test, strokes_over(COVER)) if b]
 
     # merge strokes closer than ~a staff space: double bars / repeat signs
     merged: list[dict] = []
     for b in found:
         if merged and b["x0"] - merged[-1]["x0"] < gap * 1.2:
             merged[-1]["kind"] = "double"
+            merged[-1]["att"] = min(merged[-1]["att"], b["att"])
             continue
         merged.append({**b, "kind": "single"})
-    return merged
+
+    # bars are wider than MIN_BAR: in a tighter cluster keep the cleanest
+    # stroke (least attached), cleanest first so it claims its neighbourhood
+    kept: list[dict] = []
+    for b in sorted(merged, key=lambda b: b["att"]):
+        if all(abs(b["x0"] - k["x0"]) >= gap * MIN_BAR for k in kept):
+            kept.append(b)
+    kept.sort(key=lambda b: b["x0"])
+
+    # Bars on a line are roughly even. A gap much wider than the line's
+    # typical bar probably hides a faint or broken bar line: accept a
+    # weaker stroke there, the strongest one near the middle of the gap.
+    if len(kept) >= 3:
+        typical = float(np.median(np.diff([b["x0"] for b in kept])))
+        for a, c in zip(list(kept), list(kept)[1:]):
+            if c["x0"] - a["x0"] > WIDE_GAP * typical:
+                lo = int(a["x0"] - left + gap * MIN_BAR)
+                hi = int(c["x0"] - left - gap * MIN_BAR)
+                extra = [b for b in map(test, strokes_over(FAINT, lo, hi)) if b]
+                if extra:
+                    centre = (a["x0"] + c["x0"]) / 2
+                    best = max(extra, key=lambda b: b["cover"] - abs(b["x0"] - centre) / (c["x0"] - a["x0"]))
+                    kept.append({**best, "kind": "single"})
+        kept.sort(key=lambda b: b["x0"])
+    return [{k: v for k, v in b.items() if k not in ("att", "cover")} for b in kept]
 
 
 def find_page_corners(img: Image.Image) -> list[list[float]]:
@@ -340,7 +425,11 @@ def detect_page(img: Image.Image) -> list[dict]:
         if start - clef < 2 * st["gap"]:
             clef = left
             start = min(right, left + int(typical * st["gap"]))
-        bars = find_barlines(band, local, left, right, skip_to=start)
+        # search a little past the ruled end: a final bar line often sits on it
+        reach = min(band.shape[1], right + int(st["gap"]))
+        bars = find_barlines(band, local, left, reach, skip_to=start)
+        if bars:
+            right = max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2)
         # End the staff just after its last bar line when the ruled lines
         # beyond it are blank. Music there (a missed bar line, a bar that
         # runs on to the next line) keeps the full length.

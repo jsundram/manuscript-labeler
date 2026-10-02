@@ -44,6 +44,8 @@ toolbar button: it re-runs detection on the page and keeps your edits.
 - `labels.py`: the labels schema, validation, bar numbering and bar export.
 - `detect.py`: automatic staff and bar-line proposals (numpy + Pillow).
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
+- `tools/score_barlines.py`: scores bar-line detection against your
+  reviewed pages; run it before and after changing `detect.py`.
 - `prototypes/`: scratch reading aids from the first hand transcription.
 
 Tests: `uv run --with pytest --with numpy --with pillow pytest tests`

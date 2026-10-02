@@ -351,17 +351,34 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   clef. Where the guess fails, the page's typical clef width is used. It's
   good on KHM 602 and the BnF copy, rougher on Gallica scans.
 - **Bar lines.** They lean, so each column is tested along several slants
-  (on the straightened staff).
-  Results are noisy: line 1 truly has 10 bar lines; the detector finds 9.
-  Page 2 gets 78 proposals for about 74 bars. On the Paris copies, thin
-  grey bar lines are often missed (41 found on a BnF page of 12 lines). The cause is note stems that span the staff, and
-  faint or broken bar lines.
-  - The automatic proposal is a starting point only. The UI has to make
-    fixing it fast.
-  - Ideas to try:
-    - require ink above *and* below the staff to be absent;
-    - use the median bar width per line as a prior;
-    - learn from the editor's corrections.
+  (on the straightened staff). Measured with `tools/score_barlines.py`
+  against the editor's reviewed pages of KHM 602 (pp. 2, 3, 6; 194 bar
+  lines):
+  - First version: 168 found, **107 false**, 26 missed. Nearly all the
+    false ones were stems of beamed sixteenths crossing the staff (violin I
+    page 6 alone: 86).
+  - Two rules from the editor fixed that: a bar line has no note head on it
+    (a stem has a head at one end and beams across it), and bars are at
+    least about 1 cm wide (4 staff spaces). A stroke with wide ink across
+    it for more than 0.35 staff spaces of its height is dropped; of strokes
+    closer than 4 spaces, only the cleanest is kept. Now: 165 found,
+    **2 false**, 29 missed.
+  - Tried and dropped: judging "wide" against the stroke's own width, to
+    spare thick final bars. It let many stems back in (16-20 false).
+  - Of the 29 still missed, 18 were faint or broken (covering 73-88% of
+    the staff height against a required 88%), 6 ran past the staff and
+    were taken for stems, 3 had a note or dynamic touching them, 2 lost the
+    spacing rule. With stems now caught by the head test, the other tests
+    could relax: steeper leans tried (0.3), more ink allowed past the staff
+    (0.9), a stricter head test (0.25 spaces). Lowering the required cover
+    overall brought stems back, so instead a second pass looks only where
+    a gap is over 1.6x the line's typical bar, and accepts a weaker stroke
+    (70% cover) near its middle. Now: **179 found (92%), 3 false**, 15
+    missed (8 faint, 4 touched, 3 long), stable across nearby settings.
+  - Ideas to try: use the expected bar count from `Structure.ily` as a
+    prior; learn per-source thresholds from the editor's corrections;
+    more reviewed pages before trusting any of these numbers (three pages,
+    one copyist, so far).
 - **Bar counting by eye** worked best from whole-line strips, counting bar
   lines and cross-checking against the expected total.
 
