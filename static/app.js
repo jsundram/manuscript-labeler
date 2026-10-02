@@ -22,6 +22,15 @@ const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 const CLEF_BOTTOM = { treble: [2, 4], alto: [3, 3], tenor: [1, 3], bass: [4, 2] };
 
 const $ = (s) => document.querySelector(s);
+
+// small per-browser preferences (a closed panel stays closed); storage may be unavailable
+function loadPref(key, fallback) {
+  try { const v = localStorage.getItem('labeler.' + key); return v === null ? fallback : JSON.parse(v); }
+  catch { return fallback; }
+}
+function savePref(key, value) {
+  try { localStorage.setItem('labeler.' + key, JSON.stringify(value)); } catch { /* fine */ }
+}
 const svg = $('#canvas');
 const overlay = $('#overlay');
 
@@ -43,7 +52,7 @@ const S = {
   undo: [], redo: [],
   version: 0, savedVersion: 0, saving: false, saveTimer: null, conflict: false,
   bars: [], byBarline: new Map(),
-  detail: false,
+  detail: loadPref('detail', true),  // the detail view: open unless closed last time
   handle: null,        // { h, for }: the handle the arrow keys move (clicked, highlighted)
   placing: null,       // 'bl' | 'sys' | 'mark': the next click on the page adds one
   held: null,          // the key being held down to place ('b', 's', 'm')
@@ -1408,7 +1417,7 @@ document.addEventListener('keydown', (e) => {
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
   else if (k === 'a') { handled(); const b = find(S.sel); if (b && S.sel.t === 'bl') snapBarline(b, systemOf(b), { undoable: true }); }
   else if (k === 'e') { handled(); setBarline((b) => { b.ends_movement = !b.ends_movement; }); }
-  else if (k === 'z') { handled(); S.detail = !S.detail; renderDetail(); renderOverlay(); }
+  else if (k === 'z') { handled(); S.detail = !S.detail; savePref('detail', S.detail); renderDetail(); renderOverlay(); }
   else if (k === 'Enter') { handled(); markReviewedAndNext(); }
   else if (k === '.' || k === 'PageDown') { handled(); openPage(S.page + 1); }
   else if (k === ',' || k === 'PageUp') { handled(); openPage(S.page - 1); }
@@ -1446,7 +1455,7 @@ $('#review').onclick = () => {
   else markReviewedAndNext();
 };
 $('#helpbtn').onclick = () => { $('#help').hidden = !$('#help').hidden; };
-$('#detailclose').onclick = () => { S.detail = false; renderDetail(); };
+$('#detailclose').onclick = () => { S.detail = false; savePref('detail', false); renderDetail(); };
 
 $('#pagestatus').onclick = () => {
   if (!pg() || S.readonly) return;
