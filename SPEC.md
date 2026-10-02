@@ -354,6 +354,15 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such
   as a custos, a missed bar line or a bar running on to the next line,
   keeps the full length. The editor's "End at last bar line" trims by hand.
+  Where a line ends mid-staff (a movement's end, a cue that stops, "da
+  capo" text), the ink after the last bar line isn't blank, so a second
+  rule: end the staff where the ink *between its lines* stops, if 8 or
+  more empty spaces follow to the ruled end. Text above or below doesn't
+  count; music running on to the next line leaves no such gap. Against
+  the editor's right edges on reviewed pages, the big misses (70-96
+  spaces) shrank to 5-16 (trailing flourishes). Limiting it to short tails
+  (for fear of cutting music after a missed bar line) lost most of the
+  gain, and the lines it flagged did end there.
 - **Left edge and crop margins**, measured against what the editor set on
   KHM 602 pp. 2-4 and 6-8:
   - On the treble-clef pages the editor moved nearly every left edge 2-3

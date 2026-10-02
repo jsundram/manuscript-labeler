@@ -342,6 +342,7 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
 # the editor's corrections; see SPEC.md).
 ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
+TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
 SNAP_COVER = 0.6      # ...for a stroke covering at least this much of the staff height
@@ -660,6 +661,20 @@ def detect_page(img: Image.Image) -> list[dict]:
             tail = last + int(st["gap"] * 0.5)
             if right - tail > st["gap"] * 1.5 and note_ink(band, local, tail, right) < 0.01:
                 right = tail
+            else:
+                # Ink between the staff lines that stops for good well before
+                # the ruled end (a movement ending mid-line, text such as "da
+                # capo" above or below it, a flourish): end the staff there.
+                gap = st["gap"]
+                mids = [(a + b) // 2 for a, b in zip(local["lines"], local["lines"][1:])]
+                inner = (band[mids, tail:right] < 120).any(axis=0)
+                on = np.flatnonzero(inner)
+                end = tail + (int(on[-1]) + 1 if len(on) else 0)
+                # (Limiting this to short tails, for fear of cutting music
+                # after a missed bar line, lost most of the gain; the lines
+                # it flagged turned out to end there, untrimmed by hand.)
+                if right - end >= gap * TAIL_BLANK:
+                    right = max(tail, end + int(gap * 0.5))
         # the staff starts half a space before its clef's leftmost ink
         bound = brace if brace > left else None
         left = max(bound or 0, clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
