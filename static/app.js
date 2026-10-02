@@ -53,7 +53,8 @@ const S = {
   version: 0, savedVersion: 0, saving: false, saveTimer: null, conflict: false,
   bars: [], byBarline: new Map(),
   detail: loadPref('detail', true),  // the detail view: open unless closed last time
-  heldCrop: null,      // 'above' | 'below' while t / g is held: arrows move that crop edge
+  heldCrop: null,
+  markTexts: [],       // [{text, n, kind}] used anywhere in the edition, most used first      // 'above' | 'below' while t / g is held: arrows move that crop edge
   handle: null,        // { h, for }: the handle the arrow keys move (clicked, highlighted)
   placing: null,       // 'bl' | 'sys' | 'mark': the next click on the page adds one
   held: null,          // the key being held down to place ('b', 's', 'm')
@@ -284,6 +285,7 @@ function mutate(fn, { status = true } = {}) {
 }
 
 function changed() {
+  if (S.markTextIndex) renderMarkTexts();
   S.version++;
   renumber();
   renderAll();
@@ -377,6 +379,7 @@ async function loadSource(pdf, page) {
   if (S.readonly) banner(`Read-only: ${S.readonly}`);
   renumber();
   renderMeta();
+  loadMarkTexts();
   setSaveStatus(j.etag === 'none' ? 'no labels file yet' : 'saved');
   await openPage(clamp(page || firstUnreviewed(), 1, S.numPages));
 }
@@ -689,6 +692,26 @@ function options(list, value, names = {}, blank = false) {
     list.map((v) => `<option value="${v}"${v === value ? ' selected' : ''}>${esc(names[v] || v)}</option>`).join('');
 }
 
+// Texts already used for marks, anywhere in the edition, offered as you
+// type (a datalist on the text field), most used first.
+async function loadMarkTexts() {
+  try { S.markTexts = (await getJSON('/api/marktexts')).texts; } catch { S.markTexts = []; }
+  renderMarkTexts();
+}
+function renderMarkTexts() {
+  const counts = new Map(S.markTexts.map((e) => [e.text, e]));
+  // this source's latest marks too, before they reach the server's list
+  for (const p of Object.values(S.doc?.pages || {})) {
+    for (const m of p.marks || []) {
+      const t = (m.text || '').trim();
+      if (t && !counts.has(t)) counts.set(t, { text: t, n: 1, kind: m.kind });
+    }
+  }
+  S.markTextIndex = counts;
+  const list = $('#marktexts');
+  list.innerHTML = [...counts.values()].sort((a, b) => b.n - a.n).map((e) => `<option value="${esc(e.text)}">`).join('');
+}
+
 function renderMeta() {
   const { source: s, display: d } = S.info;
   const rows = [
@@ -777,7 +800,7 @@ function renderInspector() {
   } else {
     el.innerHTML = `<h2>Mark</h2>
       <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind)}</select></label>
-      <label>Text <input data-f="text" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>
+      <label>Text <input data-f="text" list="marktexts" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>
       <label>Note <textarea data-f="note" rows="3"${dis}>${esc(item.note || '')}</textarea></label>`;
   }
 }
@@ -1530,6 +1553,11 @@ $('#inspector').addEventListener('change', (e) => {
     else if (f === 'ends_movement') item.ends_movement = e.target.checked;
     else if (f === 'role') { if (e.target.value === 'part') delete item.role; else item.role = e.target.value; }
     else item[f] = e.target.value;
+    // a text used before brings its usual kind, unless a kind was chosen
+    if (t === 'mark' && f === 'text' && item.kind === 'text') {
+      const known = S.markTextIndex?.get(e.target.value.trim());
+      if (known && known.kind !== 'text') item.kind = known.kind;
+    }
     if (t !== 'mark') item.auto = false;
   });
 });

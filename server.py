@@ -108,6 +108,26 @@ class Edition:
             out.append({**info, "pdf": rel, "pages": self.num_pages(pdf), "statuses": statuses})
         return out
 
+    def mark_texts(self) -> list[dict]:
+        """Every mark text used in this edition's labels, most used first,
+        with the kind it's usually given: suggestions for the editor."""
+        seen: dict[str, dict] = {}
+        for lp in self.root.glob("sources/**/*.labels.json"):
+            try:
+                doc = json.loads(lp.read_text())
+            except (ValueError, OSError):
+                continue
+            for page in doc.get("pages", {}).values():
+                for m in page.get("marks", []):
+                    text = (m.get("text") or "").strip()
+                    if not text:
+                        continue
+                    e = seen.setdefault(text, {"text": text, "n": 0, "kinds": {}})
+                    e["n"] += 1
+                    e["kinds"][m.get("kind", "text")] = e["kinds"].get(m.get("kind", "text"), 0) + 1
+        out = sorted(seen.values(), key=lambda e: (-e["n"], e["text"].lower()))
+        return [{"text": e["text"], "n": e["n"], "kind": max(e["kinds"], key=e["kinds"].get)} for e in out]
+
     def load(self, rel: str) -> dict:
         pdf = self.pdf(rel)
         rows = self.readme_rows()
@@ -325,6 +345,8 @@ class Handler(BaseHTTPRequestHandler):
                 if STATIC.resolve() not in f.parents or not f.is_file():
                     return self.error(HTTPStatus.NOT_FOUND, "not found")
                 return self.send_file(f)
+            if path == "/api/marktexts":
+                return self.send_json({"texts": ed.mark_texts()})
             if path == "/api/sources":
                 return self.send_json({"edition": str(ed.root), "sources": ed.list_sources()})
             if path == "/api/source":
