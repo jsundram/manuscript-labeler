@@ -32,11 +32,14 @@ def mid(b):
 
 
 def render(pdf: Path, page: int, tmp: Path) -> Image.Image:
-    base = tmp / f"p{page}"
+    # named by source too: several sources' pages share a temporary folder
+    base = tmp / f"{pdf.stem}-p{page}"
     subprocess.run(["pdftoppm", "-f", str(page), "-l", str(page), "-scale-to", str(RENDER_PX),
                     "-jpeg", "-jpegopt", f"quality={JPEG_QUALITY}", "-singlefile", str(pdf), str(base)],
                    check=True)
-    return Image.open(base.with_suffix(".jpg"))
+    img = Image.open(base.with_suffix(".jpg"))
+    img.load()  # read it now, not lazily after the file may be gone
+    return img
 
 
 def truth_systems(page: dict) -> list[dict]:
