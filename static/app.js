@@ -1171,13 +1171,23 @@ function setBarline(fn) {
   mutate(() => { fn(item); item.auto = false; });
 }
 
-function cycleBarline(dir) {
-  const order = numberBars({ pages: { [S.page]: { ...pg(), kind: 'music', part: pg().part || 'x' } } }).map((nb) => nb.right.id);
+// Tab moves to the next item of the kind selected: bar line to bar line
+// (in reading order), staff to staff (top to bottom), mark to mark. With
+// nothing selected it starts at the first bar line.
+function cycleSelection(dir) {
   const page = pg();
-  const all = order.length ? order : page.systems.flatMap((s) => s.barlines.map((b) => b.id));
+  if (!page) return;
+  const t = S.sel?.t === 'sys' || S.sel?.t === 'mark' ? S.sel.t : 'bl';
+  let all;
+  if (t === 'sys') all = [...page.systems].sort((a, b) => a.top - b.top).map((s) => s.id);
+  else if (t === 'mark') all = [...page.marks].sort((a, b) => a.y - b.y || a.x - b.x).map((m) => m.id);
+  else {
+    const order = numberBars({ pages: { [S.page]: { ...page, kind: 'music', part: page.part || 'x' } } }).map((nb) => nb.right.id);
+    all = order.length ? order : page.systems.flatMap((s) => s.barlines.map((b) => b.id));
+  }
   if (!all.length) return;
-  const i = S.sel && S.sel.t === 'bl' ? all.indexOf(S.sel.id) : -1;
-  S.sel = { t: 'bl', id: all[(i + dir + all.length) % all.length] };
+  const i = S.sel && S.sel.t === t ? all.indexOf(S.sel.id) : -1;
+  S.sel = { t, id: all[(i + dir + all.length) % all.length] };
   renderAll();
 }
 
@@ -1394,7 +1404,7 @@ document.addEventListener('keydown', (e) => {
   }
   else if (k === 'ArrowLeft' || k === 'ArrowRight') { handled(); nudge((k === 'ArrowLeft' ? -step : step) / S.W, 0, e.altKey); }
   else if (k === 'ArrowUp' || k === 'ArrowDown') { handled(); nudge(0, (k === 'ArrowUp' ? -step : step) / S.H); }
-  else if (k === 'Tab') { handled(); cycleBarline(e.shiftKey ? -1 : 1); }
+  else if (k === 'Tab') { handled(); cycleSelection(e.shiftKey ? -1 : 1); }
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
   else if (k === 'a') { handled(); const b = find(S.sel); if (b && S.sel.t === 'bl') snapBarline(b, systemOf(b), { undoable: true }); }
   else if (k === 'e') { handled(); setBarline((b) => { b.ends_movement = !b.ends_movement; }); }
