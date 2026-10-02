@@ -379,6 +379,21 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   reading the clef and key as separate glyphs (this hand breaks into
   irregular pieces: worse everywhere), and a hint from the previous page's
   clef+key width (57% -> 61%, not worth it; key changes defeat it).
+- **Clef vs. opening line, brace and label** (cello p. 16). A thin stroke
+  followed by clear paper was taken for a system's opening line and
+  skipped, but a bass clef starts with exactly that (a thin arc, then a
+  gap before its body and dots), so the clef was skipped and the staff
+  started after it. Now a stroke is only skipped if it also runs the
+  staff's full height; and a treble clef's spine (thin, full height) is
+  told from a brace by the brace running on 3 spaces to the next staff or
+  an opening line having clear paper after it. A brace is looked for
+  first, since a part's name ("Violoncello") is often written over the
+  ruled lines before it. Reviewed pages: left within a space 84%, start
+  within 1.5 spaces 69% (both up slightly). Still wrong: curly braces
+  wider than half a space, and bass-clef arcs reaching more than 4 spaces
+  into the margin (reaching further made other pages worse). The left edge
+  is cosmetic for the export (each line's first bar is cut from the music
+  start); the start matters.
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink

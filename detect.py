@@ -176,13 +176,14 @@ def note_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
     return float((zone[keep] < 120).mean()) if keep.any() and zone.size else 0.0
 
 
-def clef_left(g: np.ndarray, staff: dict, clef: int, left: int) -> int:
+def clef_left(g: np.ndarray, staff: dict, clef: int, left: int, bound: int | None = None) -> int:
     """Leftmost ink of the clef found at `clef`, by walking left until a
     clear half staff space. A treble clef's curl reaches well left of its
     heavy middle stroke (and above and below the staff), so the rows looked
     at span two spaces beyond the staff; staff-line rows are skipped. Some
-    copyists write the clef partly left of where the ruled lines begin, so
-    the walk may go up to 4 spaces past `left`."""
+    copyists write the clef partly left of where the ruled lines begin (a
+    bass clef's arc reaching well into the margin), so the walk may go up
+    to CLEF_REACH spaces past `left`, but never past `bound` (a brace)."""
     gap = staff["gap"]
     lines = staff["lines"]
     y0, y1 = max(0, int(lines[0] - 2 * gap)), min(g.shape[0], int(lines[-1] + 2 * gap))
@@ -192,7 +193,7 @@ def clef_left(g: np.ndarray, staff: dict, clef: int, left: int) -> int:
     ink = (g[y0:y1][rows] < 120).sum(axis=0)
     clear = max(2, int(gap * 0.5))
     x = clef
-    stop = max(0, left - int(gap * 4))
+    stop = max(0, left - int(gap * CLEF_REACH), bound if bound is not None else 0)
     while x - clear > stop and ink[x - clear:x].max() > 1:
         x -= 1
     return x
@@ -262,11 +263,15 @@ def ink_around(g: np.ndarray, staff: dict, x_from: int, x_to: int) -> np.ndarray
     return (g[y0:y1][rows][:, x_from:x_to] < 120).sum(axis=0) >= 2
 
 
-def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int, int]:
-    """(clef x, music start x), a guess for the editor to adjust.
+def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int, int, int]:
+    """(clef x, music start x, brace x), a guess for the editor to adjust.
 
-    The first heavy ink in the staff's spaces is the clef, unless it is a
-    thin stroke with clear paper after it: that's the system's opening line.
+    The clef is the first heavy ink in the staff's spaces after any thin
+    stroke running the staff's full height: a system's opening line or the
+    brace joining a cue staff to the part (a part's name, written over the
+    ruled lines, sits left of the brace). A bass clef's thin first arc
+    isn't full height, so it isn't skipped. Brace x is where such a stroke
+    ends (or `left`), so the clef's leftward search stops there.
     The music starts after the clef and key signature, at the first clear
     stretch of about a staff space.
     """
@@ -275,17 +280,53 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
     mids = [(a + b) // 2 for a, b in zip(lines, lines[1:])]
     ink = (g[mids, left:right] < 120).mean(axis=0)
     heavy = np.flatnonzero(ink >= 0.5)
-    clef = 0
-    if len(heavy) and heavy[0] < gap * 6:
-        clef = int(heavy[0])
-        end = clef
-        while end < len(ink) and ink[end] >= 0.25:
-            end += 1
-        after = ink[end:end + int(gap * 0.6)]
-        if end - clef < gap * 0.4 and len(after) and after.max() < 0.25:
-            later = heavy[heavy > end]
-            if len(later) and later[0] < end + gap * 4:
-                clef = int(later[0])
+    clef, brace = 0, 0
+
+    def stroke(a: int, b: int) -> tuple[bool, bool, bool]:
+        """(thin and full staff height, clear paper after, runs on 3 spaces
+        above or below the staff), for the heavy run [a, b)."""
+        rows = g[lines[0]:lines[-1] + 1, left + a:left + b] < 120
+        full = bool(rows.size) and rows.any(axis=1).mean() >= 0.9 and b - a < gap * 0.5
+        clear_after = ink[b:b + int(gap * 0.6)].max(initial=0) < 0.25
+        y_lo = max(0, int(lines[0] - 3 * gap))
+        y_hi = min(g.shape[0], int(lines[-1] + 3 * gap))
+        out = ((g[y_lo:lines[0], left + a:left + b] < 120).any(axis=1).mean() > 0.8
+               or (g[lines[-1]:y_hi, left + a:left + b] < 120).any(axis=1).mean() > 0.8)
+        return full, clear_after, out
+
+    # heavy runs in the first stretch of the staff, left to right, each
+    # widened to the stroke's lighter edges
+    runs: list[list[int]] = []
+    for x in heavy[heavy < gap * 20]:
+        if runs and x - runs[-1][1] <= 1:
+            runs[-1][1] = int(x) + 1
+        else:
+            runs.append([int(x), int(x) + 1])
+    for r in runs:
+        while r[1] < len(ink) and ink[r[1]] >= 0.25:
+            r[1] += 1
+    # A brace joining a cue staff to the part runs on to the next staff;
+    # the part's name may be written over the ruled lines before it, so
+    # look for one first and read the clef only after it.
+    for a, b in runs:
+        full, _, out = stroke(a, b)
+        if full and out:
+            brace = b
+            break
+    for a, b in runs:
+        if b <= brace:
+            continue
+        full, clear_after, out = stroke(a, b)
+        # an opening line (clear paper after it) or a brace: not the clef.
+        # A treble clef's spine is thin and full height too, but has neither.
+        if full and (clear_after or out):
+            brace = b
+            continue
+        if a < brace + gap * 6:
+            clef = a
+        break
+    if not runs or clef < brace:
+        clef = brace
     clear = int(gap)
     lo, hi = clef + int(gap * 2.5), min(right - left, clef + int(gap * 9))
     start = clef + int(gap * 5)
@@ -294,13 +335,14 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
         if not around[x:x + clear].any():
             start = x
             break
-    return left + clef, left + start
+    return left + clef, left + start, left + brace
 
 
 # Bar-line tests, in staff spaces (tuned on D-B KHM 602 pp. 2, 3, 6 against
 # the editor's corrections; see SPEC.md).
 ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head or beam
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
+CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
 SNAP_COVER = 0.6      # ...for a stroke covering at least this much of the staff height
 CROP_PAD = 1.0        # staff spaces of paper kept beyond a staff's outermost ink
@@ -592,16 +634,16 @@ def detect_page(img: Image.Image) -> list[dict]:
         left, right = staff_extent(band, local)
         if note_ink(band, local, left, right) < 0.01:
             continue  # an empty ruled staff
-        clef, start = music_start(band, local, left, right)
-        found.append((st, band, local, left, right, clef, start))
+        clef, start, brace = music_start(band, local, left, right)
+        found.append((st, band, local, left, right, clef, start, brace))
 
     # Where the clef guess failed, the start sits at the staff's edge. Clef
     # and key take about the same room on every staff of a page: borrow it.
-    widths = [(s - c) / st["gap"] for st, _, _, _, _, c, s in found if s - c >= 2 * st["gap"]]
+    widths = [(s - c) / st["gap"] for st, _, _, _, _, c, s, _ in found if s - c >= 2 * st["gap"]]
     typical = float(np.median(widths)) if widths else 4.0
 
     systems, crops = [], []
-    for st, band, local, left, right, clef, start in found:
+    for st, band, local, left, right, clef, start, brace in found:
         if start - clef < 2 * st["gap"]:
             clef = left
             start = min(right, left + int(typical * st["gap"]))
@@ -619,7 +661,8 @@ def detect_page(img: Image.Image) -> list[dict]:
             if right - tail > st["gap"] * 1.5 and note_ink(band, local, tail, right) < 0.01:
                 right = tail
         # the staff starts half a space before its clef's leftmost ink
-        left = max(0, clef_left(band, local, clef, left) - int(st["gap"] * 0.5))
+        bound = brace if brace > left else None
+        left = max(bound or 0, clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
         # how the staff rises and falls along its length (see labels.bend_at)
         px, py = zip(*st["path"])
         xs = np.linspace(left, right, 5)
