@@ -44,6 +44,7 @@ const S = {
   version: 0, savedVersion: 0, saving: false, saveTimer: null, conflict: false,
   bars: [], byBarline: new Map(),
   detail: false,
+  handle: null,        // { h, for }: the handle the arrow keys move (clicked, highlighted)
   placing: null,       // 'bl' | 'sys' | 'mark': the next click on the page adds one
   held: null,          // the key being held down to place ('b', 's', 'm')
   loadToken: 0,
@@ -605,7 +606,8 @@ function renderOverlay() {
 
   // handles for the selection, drawn last so they sit on top
   const item = find(sel);
-  const circle = (h, x, y, title) => `<circle class="handle h-${h.replace(/\d/, '')}" data-h="${h}" cx="${x * W}" cy="${y * H}" r="${r}"><title>${title}</title></circle>`;
+  const act = (h) => (activeHandle() === h ? ' active' : '');
+  const circle = (h, x, y, title) => `<circle class="handle h-${h.replace(/\d/, '')}${act(h)}" data-h="${h}" cx="${x * W}" cy="${y * H}" r="${r}"><title>${title}</title></circle>`;
   const label = (x, y, text, cls = '') => `<text class="handlelabel ${cls}" x="${x * W + 1.6 * r}" y="${y * H + 0.5 * r}" font-size="${11 * u}">${text}</text>`;
   if (item && sel.t === 'bl') {
     const s = systemOf(item);
@@ -619,11 +621,11 @@ function renderOverlay() {
     out.push(circle('bottom', at(1 / 8), bottomAt(s, at(1 / 8)), 'bottom line'));
     out.push(circle('left', s.left, (topAt(s, s.left) + bottomAt(s, s.left)) / 2, 'left end'));
     out.push(circle('right', s.right, (topAt(s, s.right) + bottomAt(s, s.right)) / 2, 'right end'));
-    out.push(`<rect class="handle h-start" data-h="start" x="${st * W - r}" y="${(bottomAt(s, st) + sp) * H - r}" width="${2 * r}" height="${2 * r}"><title>music start: after clef, key and time signature</title></rect>`);
+    out.push(`<rect class="handle h-start${act('start')}" data-h="start" x="${st * W - r}" y="${(bottomAt(s, st) + sp) * H - r}" width="${2 * r}" height="${2 * r}"><title>music start: after clef, key and time signature</title></rect>`);
     // bend: drag these up or down where the staff rises or falls
     for (let i = 0; i < 5; i++) {
       const x = at(i / 4) * W, y = topAt(s, at(i / 4)) * H;
-      out.push(`<rect class="handle bend" data-h="bend${i}" x="${x - r}" y="${y - r}" width="${2 * r}" height="${2 * r}" transform="rotate(45 ${x} ${y})"><title>bend: drag to follow the staff</title></rect>`);
+      out.push(`<rect class="handle bend${act(`bend${i}`)}" data-h="bend${i}" x="${x - r}" y="${y - r}" width="${2 * r}" height="${2 * r}" transform="rotate(45 ${x} ${y})"><title>bend: drag to follow the staff</title></rect>`);
     }
     out.push(circle('above', at(3 / 8), topAt(s, at(3 / 8)) - cropAbove(s) * sp, 'crop above the staff'));
     out.push(circle('below', at(3 / 8), bottomAt(s, at(3 / 8)) + cropBelow(s) * sp, 'crop below the staff'));
@@ -1087,6 +1089,39 @@ function deleteSelection() {
   });
 }
 
+// The clicked handle, if it still belongs to the current selection.
+const selKey = () => JSON.stringify(S.sel);
+function activeHandle() {
+  return S.handle && S.handle.for === selKey() ? S.handle.h : null;
+}
+
+// Arrow keys move the active handle alone: a pixel per press (Shift: 10).
+// Crop margins move a quarter staff space (Shift: a whole one).
+function nudgeHandle(h, dx, dy, big) {
+  const item = find(S.sel);
+  if (!item) return;
+  const t = S.sel.t;
+  const px = (big ? 10 : 1);
+  const mx = dx * px / S.W, my = dy * px / S.H;
+  mutate(() => {
+    if (/^c\d$/.test(h)) { const p = item.points[+h[1]]; item.points[+h[1]] = [clamp(p[0] + mx, 0, 1), clamp(p[1] + my, 0, 1)]; }
+    else if (h === 'x0') item.x0 += mx;
+    else if (h === 'x1') item.x1 += mx;
+    else if (h === 'top') item.top = Math.min(item.top + my, item.bottom - 0.004);
+    else if (h === 'bottom') item.bottom = Math.max(item.bottom + my, item.top + 0.004);
+    else if (h === 'left') setExtent(item, Math.min(item.left + mx, item.right - 0.01), item.right);
+    else if (h === 'right') setExtent(item, item.left, Math.max(item.right + mx, item.left + 0.01));
+    else if (h === 'start') item.start = clamp((item.start ?? item.left) + mx, item.left, item.right);
+    else if (h.startsWith('bend')) { if (!item.bend) item.bend = [0, 0, 0, 0, 0]; item.bend[+h.slice(4)] += my; }
+    else if (h === 'above' || h === 'below') {
+      // up grows the band above and shrinks the one below
+      const step = (big ? 1 : 0.25) * (h === 'above' ? -dy : dy);
+      item[h] = Math.max(0, (item[h] ?? 2.5) + step);
+    } else if (h === 'br') { item.w = Math.max(0.005, item.w + mx); item.h = Math.max(0.005, item.h + my); }
+    if (t !== 'mark' && 'auto' in item) item.auto = false;
+  });
+}
+
 function nudge(dx, dy, topOnly) {
   const item = find(S.sel);
   if (!item) return;
@@ -1170,6 +1205,9 @@ svg.addEventListener('pointerdown', (e) => {
   }
   if (t.h && S.sel) {
     S.drag = { kind: 'handle', h: t.h, start: { x: fx, y: fy }, moved: false };
+    // a click on a handle (no drag) makes it the one the arrow keys move;
+    // clicking it again lets go
+    S.drag.clickToggle = true;
   } else if (t.t === 'page') {
     S.sel = { t: 'page' };
     renderAll();
@@ -1262,6 +1300,11 @@ svg.addEventListener('pointerup', () => {
     addMark(tiny ? null : { x: x0, y: y0, w, h });
     return;
   }
+  if (d.kind === 'handle' && !d.moved) {
+    S.handle = activeHandle() === d.h ? null : { h: d.h, for: selKey() };
+    renderOverlay();
+    return;
+  }
   if (d.kind === 'pan') {
     if (!d.moved && S.sel && !d.keepSel) { S.sel = null; renderAll(); }
     return;
@@ -1293,6 +1336,7 @@ window.addEventListener('resize', () => { renderOverlay(); renderDetail(); });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     setPlacing(null);
+    if (activeHandle() && !inField()) { S.handle = null; renderOverlay(); return; }
     if (inField()) document.activeElement.blur();
     else { S.sel = null; renderAll(); }
     return;
@@ -1312,6 +1356,11 @@ document.addEventListener('keydown', (e) => {
   const handled = () => e.preventDefault();
   if (PLACE_KEY[k]) { handled(); if (!e.repeat) { S.held = k; setPlacing(PLACE_KEY[k]); } }
   else if (k === 'Delete' || k === 'Backspace' || k === 'd') { handled(); deleteSelection(); }
+  else if (k.startsWith('Arrow') && activeHandle()) {
+    handled();
+    const dir = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[k];
+    nudgeHandle(activeHandle(), dir[0], dir[1], e.shiftKey);
+  }
   else if (k === 'ArrowLeft' || k === 'ArrowRight') { handled(); nudge((k === 'ArrowLeft' ? -step : step) / S.W, 0, e.altKey); }
   else if (k === 'ArrowUp' || k === 'ArrowDown') { handled(); nudge(0, (k === 'ArrowUp' ? -step : step) / S.H); }
   else if (k === 'Tab') { handled(); cycleBarline(e.shiftKey ? -1 : 1); }

@@ -173,3 +173,5 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 #pagestatus { cursor: pointer; }
 #review.todo { background: #fdecea; border-color: var(--bad); color: var(--bad); font-weight: 600; }
 #review.done { background: var(--ok); border-color: var(--ok); color: #fff; font-weight: 600; }
+/* the handle the arrow keys move */
+.handle.active { fill: #ffd400; stroke: #d81b60; stroke-width: 3; }
