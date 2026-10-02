@@ -109,6 +109,15 @@ One editor at a time, on their own machine.
 
 ### Later
 
+- **Feed `Structure.ily` from the labels.** Today `Structure.ily`'s bar
+  counts (`s2*48`, repeats) are filled in by counting bars in a
+  manuscript by eye. The labels already hold those counts per movement,
+  with repeat positions and pickups, so the labeler could export them
+  (e.g. a `structure.json`, or the `\repeat volta 2 { s2*48 }` lines
+  themselves; the time signature would need labelling). That makes
+  bar-line accuracy matter twice, so: only from reviewed runs, and with a
+  cross-check that sources of the same work agree.
+
 - Export per-bar crop images, keyed by source, part, movement and bar
   number, for the synoptic page.
 - Align bar numbers across sources when one source has an extra or missing
@@ -375,10 +384,17 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     a gap is over 1.6x the line's typical bar, and accepts a weaker stroke
     (70% cover) near its middle. Now: **179 found (92%), 3 false**, 15
     missed (8 faint, 4 touched, 3 long), stable across nearby settings.
-  - Ideas to try: use the expected bar count from `Structure.ily` as a
-    prior; learn per-source thresholds from the editor's corrections;
-    more reviewed pages before trusting any of these numbers (three pages,
-    one copyist, so far).
+  - **Improving with more data:** `tools/tune_barlines.py` re-fits the
+    thresholds (one at a time, keeping what helps) to every reviewed page;
+    `tests/test_detect.py` holds detection to a frozen snapshot of the
+    editor's corrections (`tests/fixtures/khm602_barlines.json`). After
+    tuning on more pages, re-freeze both together. If the Paris copies
+    want different thresholds than KHM 602, keep per-copyist settings
+    rather than a compromise.
+  - **Not** a prior from `Structure.ily`: the goal is for bar counts from
+    this tool to *feed* `Structure.ily`, so using it to steer detection
+    would be circular. Independent checks are the editor's review and
+    agreement between sources of the same work.
 - **Bar counting by eye** worked best from whole-line strips, counting bar
   lines and cross-checking against the expected total.
 
