@@ -694,7 +694,7 @@ function renderInspector() {
   if (!item) {
     el.innerHTML = `<h2>Selection</h2><p class="muted">Click a staff, bar line or mark to edit it.</p>
       <p class="muted">To add a bar line, hold <b>b</b> and click where it goes, or double-click on the staff.
-      Hold <b>s</b> or <b>m</b> and click to add a staff or a mark.</p>`;
+      Hold <b>s</b> and click to add a staff; hold <b>m</b> and drag a box around a marking.</p>`;
     return;
   }
   const dis = S.readonly ? ' disabled' : '';
@@ -1034,9 +1034,12 @@ function addSystem() {
   });
 }
 
-function addMark() {
+// A mark covers the box dragged out with m held (or after + Mark); a plain
+// click makes a small default box there.
+function addMark(box = null) {
+  const b = box || { x: clamp(S.mouse.x - 0.02, 0, 0.96), y: clamp(S.mouse.y - 0.01, 0, 0.98), w: 0.04, h: 0.02 };
   mutate((page) => {
-    const m = { id: nextId(page, `p${S.page}m`), x: clamp(S.mouse.x - 0.02, 0, 0.96), y: clamp(S.mouse.y - 0.01, 0, 0.98), w: 0.04, h: 0.02, kind: 'text', text: '', note: '' };
+    const m = { id: nextId(page, `p${S.page}m`), ...b, kind: 'text', text: '', note: '' };
     page.marks.push(m);
     S.sel = { t: 'mark', id: m.id };
   });
@@ -1137,6 +1140,10 @@ svg.addEventListener('pointerdown', (e) => {
     S.mouse = { x: fx, y: fy };
     const kind = S.placing || 'bl';
     if (!S.held) setPlacing(null);  // a toolbar button places one; a held key keeps going
+    if (kind === 'mark') {  // drag out the box; the mark is made on release
+      S.drag = { kind: 'draw', start: { x: fx, y: fy } };
+      return;
+    }
     PLACE[kind]();
     return;
   }
@@ -1161,6 +1168,16 @@ svg.addEventListener('pointermove', (e) => {
   S.mouse = { x: p.x / S.W, y: p.y / S.H };
   const d = S.drag;
   if (!d) return;
+  if (d.kind === 'draw') {
+    const { W, H } = S;
+    const x0 = Math.min(d.start.x, S.mouse.x), y0 = Math.min(d.start.y, S.mouse.y);
+    const w = Math.abs(S.mouse.x - d.start.x), h = Math.abs(S.mouse.y - d.start.y);
+    let r = overlay.querySelector('.drawing');
+    if (!r) { r = document.createElementNS('http://www.w3.org/2000/svg', 'rect'); r.setAttribute('class', 'mark drawing'); overlay.appendChild(r); }
+    r.setAttribute('x', x0 * W); r.setAttribute('y', y0 * H);
+    r.setAttribute('width', w * W); r.setAttribute('height', h * H);
+    return;
+  }
   if (d.kind === 'pan') {
     const u = unit();
     const dx = (e.clientX - d.sx) * u, dy = (e.clientY - d.sy) * u;
@@ -1216,6 +1233,14 @@ svg.addEventListener('pointerup', () => {
   const d = S.drag;
   S.drag = null;
   if (!d) return;
+  if (d.kind === 'draw') {
+    const x0 = clamp(Math.min(d.start.x, S.mouse.x), 0, 1), y0 = clamp(Math.min(d.start.y, S.mouse.y), 0, 1);
+    const w = Math.abs(clamp(S.mouse.x, 0, 1) - d.start.x), h = Math.abs(clamp(S.mouse.y, 0, 1) - d.start.y);
+    // a drag of a few pixels is a click: default box
+    const tiny = w * S.W < 4 * unit() || h * S.H < 4 * unit();
+    addMark(tiny ? null : { x: x0, y: y0, w, h });
+    return;
+  }
   if (d.kind === 'pan') {
     if (!d.moved && S.sel && !d.keepSel) { S.sel = null; renderAll(); }
     return;
