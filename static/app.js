@@ -505,6 +505,7 @@ function renderAll() {
   renderCounts();
   renderDetail();
   $('#pagelabel').textContent = `Page ${S.page} / ${S.numPages}`;
+  renderReviewButton();
 }
 
 function renderOverlay() {
@@ -644,6 +645,20 @@ function renderMeta() {
   $('#meta').innerHTML = '<dl>' + rows.filter((r) => r[1]).map(([k, v]) =>
     `<dt>${k}</dt><dd>${k === 'RISM' || k === 'Online' || k === 'Bars from' ? v : esc(v)}</dd>`).join('') + '</dl>' +
     (d.description ? `<p class="desc">${esc(d.description)}</p>` : '');
+}
+
+// The toolbar button shows whether this page is done: red until reviewed,
+// then green. Clicking a reviewed page's button takes the review back.
+function renderReviewButton() {
+  const btn = $('#review');
+  const page = pg();
+  const done = page?.status === 'reviewed';
+  btn.classList.toggle('done', done);
+  btn.classList.toggle('todo', !!page && !done);
+  btn.disabled = !page || !!S.readonly;
+  btn.textContent = done ? '✓ Reviewed' : 'Not reviewed · mark ⏎';
+  btn.title = done ? 'This page is reviewed. Click to mark it not reviewed.'
+    : 'Mark this page reviewed and go to the next (Enter)';
 }
 
 function renderPageForm() {
@@ -1269,7 +1284,10 @@ $('#next').onclick = () => openPage(S.page + 1);
 $('#fit').onclick = fitPage;
 $('#fitw').onclick = fitWidth;
 $('#redetect').onclick = redetect;
-$('#review').onclick = markReviewedAndNext;
+$('#review').onclick = () => {
+  if (pg()?.status === 'reviewed') mutate((p) => { p.status = 'edited'; }, { status: false });
+  else markReviewedAndNext();
+};
 $('#helpbtn').onclick = () => { $('#help').hidden = !$('#help').hidden; };
 $('#detailclose').onclick = () => { S.detail = false; renderDetail(); };
 

@@ -171,3 +171,5 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .crop.sel { opacity: 1; stroke-width: 1.5; }
 #inspector button { margin: 2px 0 8px; }
 #pagestatus { cursor: pointer; }
+#review.todo { background: #fdecea; border-color: var(--bad); color: var(--bad); font-weight: 600; }
+#review.done { background: var(--ok); border-color: var(--ok); color: #fff; font-weight: 600; }
