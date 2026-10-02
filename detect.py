@@ -374,12 +374,13 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
     """The paper's four corners, TL TR BR BL, as page fractions.
 
     The paper is the bright region against the darker scanner bed, felt or
-    binding (an Otsu threshold on a small copy). Its corners are the
-    extreme points along the diagonals, which also follows a page
-    photographed at a slight angle.
+    binding (an Otsu threshold on a small copy). A straight line is fitted
+    to each of its four edges and the corners are where they meet, so a
+    torn or rounded corner doesn't pull the result inward (taking the
+    outermost paper pixel did). A page photographed at an angle still works.
     """
     small = img.convert("L").copy()
-    small.thumbnail((400, 400))
+    small.thumbnail((500, 500))
     lum = np.asarray(small, dtype=np.float32)
     h, w = lum.shape
     hist, edges = np.histogram(lum, bins=64, range=(0, 255))
@@ -393,11 +394,46 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         v = w0 * w1 * (m0 - m1) ** 2
         if v > best:
             best, thr = v, float(edges[i])
-    ys, xs = np.nonzero(lum > thr)
-    if len(xs) < 0.3 * h * w:  # no clear paper: the whole image
-        return [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]]
-    pick = [np.argmin(xs + ys), np.argmax(xs - ys), np.argmax(xs + ys), np.argmin(xs - ys)]
-    return [[float(xs[i] + 0.5) / w, float(ys[i] + 0.5) / h] for i in pick]
+    paper = lum > thr
+    whole = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]]
+    if paper.mean() < 0.3:  # no clear paper: the whole image
+        return whole
+
+    def edge(mask: np.ndarray, from_end: bool) -> tuple[np.ndarray, np.ndarray]:
+        """Per row of `mask`: the first paper pixel from the start (or end).
+        Only the middle 80% of rows, away from the corners."""
+        n, m = mask.shape
+        rows = np.arange(int(n * 0.1), int(n * 0.9))
+        sub = mask[rows]
+        has = sub.any(axis=1)
+        pos = (m - 1 - np.argmax(sub[:, ::-1], axis=1)) if from_end else np.argmax(sub, axis=1)
+        return rows[has].astype(float), pos[has].astype(float)
+
+    def fit(t: np.ndarray, p: np.ndarray) -> tuple[float, float]:
+        """p = a*t + b, refitted once without the worst outliers (tears, tabs)."""
+        a, b = np.polyfit(t, p, 1)
+        r = np.abs(p - (a * t + b))
+        keep = r <= np.percentile(r, 80)
+        return tuple(np.polyfit(t[keep], p[keep], 1)) if keep.sum() > 10 else (a, b)
+
+    lines = {}
+    for name, mask, end in (("left", paper, False), ("right", paper, True),
+                            ("top", paper.T, False), ("bottom", paper.T, True)):
+        t, p = edge(mask, end)
+        if len(t) < 20:
+            return whole
+        lines[name] = fit(t, p)
+
+    def meet(vert: tuple, horiz: tuple) -> list[float]:
+        # vertical edge: x = a*y + b; horizontal edge: y = c*x + d
+        a, b = vert
+        c, d = horiz
+        y = (c * b + d) / (1 - a * c)
+        x = a * y + b
+        return [min(1.0, max(0.0, (x + 0.5) / w)), min(1.0, max(0.0, (y + 0.5) / h))]
+
+    return [meet(lines["left"], lines["top"]), meet(lines["right"], lines["top"]),
+            meet(lines["right"], lines["bottom"]), meet(lines["left"], lines["bottom"])]
 
 
 def detect_page(img: Image.Image) -> list[dict]:

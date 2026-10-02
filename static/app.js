@@ -464,6 +464,18 @@ async function redetect() {
   }, { status: false });
 }
 
+// detected corners for this page, replacing any the editor moved
+async function resetCorners() {
+  const n = S.page;
+  let corners;
+  try { ({ corners } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
+  catch (e) { banner(`Detection failed: ${e.message}`); return; }
+  if (n !== S.page || !corners) return;
+  mutate((page) => { page.corners = { points: corners, auto: true }; });
+  S.sel = { t: 'page' };
+  renderAll();
+}
+
 // ------------------------------------------------------------------ view
 
 function setView(v) {
@@ -689,7 +701,9 @@ function renderInspector() {
   if (S.sel.t === 'page') {
     el.innerHTML = `<h2>Page corners ${item.auto ? '<span class="pill auto">auto</span>' : ''}</h2>
       <p class="muted">Drag the four corners onto the corners of the paper. They're saved with the bars,
-      for cropping and straightening the page. Delete (d) removes them.</p>`;
+      for cropping and straightening the page. Delete (d) removes them.</p>
+      <button data-act="reset-corners"${S.readonly ? ' disabled' : ''}>Reset to detected</button>
+      <p class="muted">Re-detect keeps corners you've moved; this replaces them (⌘Z undoes it).</p>`;
     return;
   }
   if (S.sel.t === 'bl') {
@@ -1313,6 +1327,7 @@ $('#inspector').addEventListener('click', (e) => {
   const act = e.target.dataset?.act;
   const item = find(S.sel);
   if (act === 'trim' && item && S.sel.t === 'sys') mutate(() => { trimToLastBarline(item); item.auto = false; });
+  if (act === 'reset-corners') resetCorners();
 });
 
 $('#inspector').addEventListener('change', (e) => {

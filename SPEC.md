@@ -213,8 +213,10 @@ The rules:
   its own.
 - **`corners`** (on a page, optional): `{"points": [TL, TR, BR, BL],
   "auto": bool}`, the paper's corners as `[x, y]` page fractions. Proposed
-  from the bright paper against the scanner bed; dragged into place by the
-  editor.
+  by fitting a line to each edge of the bright paper (against the scanner
+  bed) and intersecting them, so torn or rounded corners don't pull them
+  inward; dragged into place by the editor. Re-detect keeps moved corners;
+  "Reset to detected" replaces them.
 - **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`.
   Tempo marks (e.g. "Andante Moderato") are shown per movement next to the
   `\tempo` texts in `Structure.ily`, as a check that movements line up.
