@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["numpy", "pillow"]
+# dependencies = ["numpy", "pillow", "scikit-learn"]
 # ///
 """Local labeling server.
 
@@ -56,6 +56,12 @@ class Edition:
         self.page_counts: dict[str, int] = {}
         self.prerendering: set[str] = set()
         self.grays: dict[str, object] = {}  # a few decoded pages, for snapping
+        # the learned bar-line filter (learn.py): trained in the background
+        # from the reviewed pages, retrained when they change
+        self.model = None
+        self.model_state = "not trained"
+        self.model_lock = threading.Lock()
+        self.model_again = False
 
     # -- paths ---------------------------------------------------------------
 
@@ -157,6 +163,7 @@ class Edition:
             "expected": expected,
             "structure": self.rel(sp) if sp else None,
             "labels_file": self.rel(lp),
+            "barline_model": self.model_state,
         }
 
     # -- saving --------------------------------------------------------------
@@ -184,6 +191,9 @@ class Edition:
             data = dump(doc)
             atomic_write(lp, data)
             atomic_write(self.bars_path(pdf), dump(labels.round_floats(labels.bars_export(doc))))
+            # what the model learns from changed: retrain (in the background)
+            if reviewed_truth(current) != reviewed_truth(data):
+                self.train_model()
             return {"etag": hashlib.sha1(data).hexdigest()}
 
     def backup(self, lp: Path, data: bytes):
@@ -280,8 +290,56 @@ class Edition:
 
         img = Image.open(self.render(rel, page))
         corners = detect.find_page_corners(img)
-        return {"systems": detect.detect_page(img, room), "corners": corners,
+        return {"systems": detect.detect_page(img, room, model=self.model), "corners": corners,
                 "look": detect.page_look(img, corners)}
+
+    def train_model(self):
+        """(Re)train the learned bar-line filter in the background. A request
+        while training is running queues one more run after it."""
+        if not self.model_lock.acquire(blocking=False):
+            self.model_again = True
+            return
+
+        def go():
+            from PIL import Image
+
+            import learn
+
+            try:
+                while True:
+                    self.model_again = False
+                    self.model_state = "training"
+                    try:
+                        def render(pdf, n):
+                            img = Image.open(self.render(self.rel(pdf), n))
+                            img.load()
+                            return img
+                        m = learn.load_or_train(self.root, self.cache, render)
+                        self.model = m
+                        self.model_state = (f"learned from {m['pages']} reviewed pages ({m['bar_lines']} bar lines)"
+                                            if m else "no reviewed pages yet: hand-tuned rules")
+                    except Exception as e:  # keep the hand-tuned rules
+                        self.model_state = f"not trained ({e}): hand-tuned rules"
+                    print(f"bar lines: {self.model_state}", flush=True)
+                    if not self.model_again:
+                        break
+            finally:
+                self.model_lock.release()
+        threading.Thread(target=go, daemon=True).start()
+
+
+def reviewed_truth(data: bytes | None):
+    """The parts of a labels file the bar-line model learns from: each
+    reviewed music page's staves and bar lines."""
+    if not data:
+        return None
+    try:
+        doc = json.loads(data)
+    except ValueError:
+        return None
+    return {n: [(s.get("top"), s.get("role"), [(b.get("x0"), b.get("x1")) for b in s.get("barlines", [])])
+                for s in p.get("systems", [])]
+            for n, p in doc.get("pages", {}).items() if p.get("status") == "reviewed" and p.get("kind") == "music"}
 
 
 def dump(doc) -> bytes:
@@ -404,6 +462,7 @@ def main():
 
     cache = Path(os.environ.get("MANUSCRIPT_LABELER_CACHE", Path.home() / ".cache" / "manuscript-labeler"))
     Handler.edition = Edition(args.edition, cache)
+    Handler.edition.train_model()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     url = f"http://127.0.0.1:{args.port}/"
     print(f"Labeling {Handler.edition.root} at {url}  (Ctrl-C to stop)")

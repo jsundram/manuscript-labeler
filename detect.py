@@ -420,22 +420,17 @@ def attachment(ink: np.ndarray, staff: dict, x_mid: float, slope: float) -> floa
     return wide / gap
 
 
-def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: int | None = None) -> list[dict]:
-    """Near-vertical strokes that span the whole staff and don't continue far beyond it.
-
-    Handwritten bar lines lean, so each column is tested along several slants.
-    Stems are told apart by what's attached to them (`attachment`), and by
-    spacing: bars are wider than MIN_BAR staff spaces, so of strokes closer
-    than that, only the cleanest is kept.
-    Returns [{x0, x1}] in pixels: x at the top and bottom staff line.
-    """
-    top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
+def stroke_cover(g: np.ndarray, staff: dict, left: int, right: int, slack: int = 0) -> tuple[np.ndarray, np.ndarray]:
+    """For each column from left to right: the largest share of the staff's
+    height (less `slack` rows at each end) covered by ink along a straight
+    stroke through it, over every lean tried, and that lean (dx per dy).
+    Rows whose stroke would leave the image don't count."""
+    top, bottom = staff["top"], staff["bottom"]
     ink = g < 120
     best_cover = np.zeros(right - left)
     best_slope = np.zeros(right - left)
-    slack = int(gap * END_SLACK)
-    for slope in np.linspace(-LEAN, LEAN, 2 * int(LEAN / 0.03) + 1):  # dx per dy
-        ys = np.arange(top + slack, bottom - slack + 1)
+    ys = np.arange(top + slack, bottom - slack + 1)
+    for slope in np.linspace(-LEAN, LEAN, 2 * int(LEAN / 0.03) + 1):
         shifts = np.round((ys - (top + bottom) / 2) * slope).astype(int)
         acc = np.zeros(right - left)
         for y, s in zip(ys, shifts):
@@ -452,6 +447,101 @@ def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: in
         better = cover > best_cover
         best_cover[better] = cover[better]
         best_slope[better] = slope
+    return best_cover, best_slope
+
+
+# The learned filter (see learn.py): candidates are strokes covering more
+# than CAND_COVER of the staff, each described by these measurements.
+CAND_COVER = 0.5
+FEATURES = ["cover", "cover_top", "cover_mid", "cover_bot", "lean", "width", "attach", "dark",
+            "above", "below", "busy_left", "busy_right", "gap_prev", "gap_next", "from_start", "rel_x"]
+
+
+def candidates(g: np.ndarray, staff: dict, left: int, right: int, start: int) -> list[dict]:
+    """Candidate bar-line strokes on a straightened staff, loosely (faint and
+    broken ones included), each with its x0/x1 and the measurements in
+    FEATURES, for a learned model to accept or reject. The same measurements
+    as experiments/barlines/run_learned.py, where this was tested."""
+    top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
+    ink = g < 120
+    w = g.shape[1]
+    best, slope_at = stroke_cover(g, staff, left, right)
+    runs: list[list[int]] = []
+    for i in np.flatnonzero(best > CAND_COVER):
+        if runs and i - runs[-1][-1] <= 3:
+            runs[-1].append(int(i))
+        else:
+            runs.append([int(i)])
+    ys = np.arange(top, bottom + 1)
+    thirds = np.array_split(ys, 3)
+    band = g[top:bottom + 1]
+    out = []
+    for r in runs:
+        i = r[int(np.argmax(best[r]))]
+        slope, x = float(slope_at[i]), left + i
+
+        def col(yy):
+            yy = yy[(yy >= 0) & (yy < g.shape[0])]
+            if not len(yy):
+                return 0.0
+            xs = np.clip(np.round(x + (yy - (top + bottom) / 2) * slope).astype(int), 0, w - 1)
+            return float(ink[yy, xs].mean())
+
+        span = int(gap)
+        out.append({
+            "x0": x + (top - (top + bottom) / 2) * slope,
+            "x1": x + (bottom - (top + bottom) / 2) * slope,
+            "x": float(x),
+            "cover": float(best[i]),
+            "cover_top": col(thirds[0]), "cover_mid": col(thirds[1]), "cover_bot": col(thirds[2]),
+            "lean": abs(slope), "width": len(r) / gap,
+            "attach": float(attachment(ink, staff, x, slope)),
+            "dark": float(255 - np.mean(g[ys, np.clip(np.round(x + (ys - (top + bottom) / 2) * slope).astype(int), 0, w - 1)])),
+            "above": col(np.arange(int(top - 1.6 * gap), int(top - 0.6 * gap))),
+            "below": col(np.arange(int(bottom + 0.6 * gap), int(bottom + 1.6 * gap))),
+            "busy_left": float((band[:, max(0, x - span - 3):x - 3] < 120).mean()) if x - 3 > 0 else 0.0,
+            "busy_right": float((band[:, x + 4:x + span + 4] < 120).mean()) if x + 4 < w else 0.0,
+            "from_start": (x - start) / gap, "rel_x": (x - left) / max(1, right - left),
+        })
+    for k, c in enumerate(out):
+        c["gap_prev"] = (c["x"] - out[k - 1]["x"]) / gap if k else 99.0
+        c["gap_next"] = (out[k + 1]["x"] - c["x"]) / gap if k + 1 < len(out) else 99.0
+    return out
+
+
+def choose(cands: list[dict], model: dict, gap: float) -> list[dict]:
+    """The bar lines a learned model accepts among `cands`: likeliest first,
+    none closer than MIN_BAR staff spaces to a likelier one; a second stroke
+    within 1.2 spaces of an accepted one makes it a double bar."""
+    if not cands:
+        return []
+    p = model["clf"].predict_proba(np.array([[c[f] for f in model["features"]] for c in cands]))[:, 1]
+    kept: list[int] = []
+    for k in np.argsort(-p):
+        if p[k] < model["threshold"]:
+            break
+        if all(abs(cands[k]["x"] - cands[j]["x"]) >= gap * MIN_BAR for j in kept):
+            kept.append(int(k))
+    out = []
+    for k in sorted(kept, key=lambda k: cands[k]["x"]):
+        double = any(j != k and p[j] >= model["threshold"] and abs(cands[j]["x"] - cands[k]["x"]) < gap * 1.2
+                     for j in range(len(cands)))
+        out.append({"x0": cands[k]["x0"], "x1": cands[k]["x1"], "kind": "double" if double else "single"})
+    return out
+
+
+def find_barlines(g: np.ndarray, staff: dict, left: int, right: int, skip_to: int | None = None) -> list[dict]:
+    """Near-vertical strokes that span the whole staff and don't continue far beyond it.
+
+    Handwritten bar lines lean, so each column is tested along several slants.
+    Stems are told apart by what's attached to them (`attachment`), and by
+    spacing: bars are wider than MIN_BAR staff spaces, so of strokes closer
+    than that, only the cleanest is kept.
+    Returns [{x0, x1}] in pixels: x at the top and bottom staff line.
+    """
+    top, bottom, gap = staff["top"], staff["bottom"], staff["gap"]
+    ink = g < 120
+    best_cover, best_slope = stroke_cover(g, staff, left, right, int(gap * END_SLACK))
 
     # clef + key signature at the start of each line
     clef_skip = (skip_to - left) if skip_to is not None else int(gap * 4)
@@ -666,7 +756,8 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
             meet(lines["right"], lines["bottom"]), meet(lines["left"], lines["bottom"])]
 
 
-def detect_page(img: Image.Image, room: float | None = None) -> list[dict]:
+def detect_page(img: Image.Image, room: float | None = None, model: dict | None = None,
+                collect: list | None = None) -> list[dict]:
     """Proposed systems for one page, normalized coordinates.
 
     `room`: the clef-and-key room (left edge to music start, in staff
@@ -676,6 +767,12 @@ def detect_page(img: Image.Image, room: float | None = None) -> list[dict]:
     the ink is unreliable across hands, and the room repeats from page to
     page: on reviewed pages, within 1.5 spaces of the editor's start went
     from 30% to 58% (KHM 603) and 53% to 63% (KHM 602).
+
+    `model`: a learned bar-line filter (learn.py) to choose among loose
+    candidate strokes instead of the hand-tuned tests in find_barlines.
+    `collect`: if given, each staff's candidates are appended to it as
+    (staff top, staff bottom, candidates) in page fractions / pixels, for
+    training such a model on the same steps detection takes.
     """
     g = _gray(img)
     h, w = g.shape
@@ -713,7 +810,14 @@ def detect_page(img: Image.Image, room: float | None = None) -> list[dict]:
             start = int(min(right, max(left, snapped if snapped is not None else x)))
         # search a little past the ruled end: a final bar line often sits on it
         reach = min(band.shape[1], right + int(st["gap"]))
-        bars = find_barlines(band, local, ruled, reach, skip_to=start)
+        if model is not None or collect is not None:
+            # all of them, as in training: the model weighs the distance to
+            # the music start itself (a wrong start mustn't drop a bar line)
+            cands = candidates(band, local, ruled, reach, start)
+            if collect is not None:
+                collect.append((st["top"] / h, st["bottom"] / h, cands))
+        bars = choose(cands, model, st["gap"]) if model is not None else \
+            find_barlines(band, local, ruled, reach, skip_to=start)
         if bars:
             right = max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2)
         # End the staff just after its last bar line when the ruled lines

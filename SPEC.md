@@ -434,6 +434,18 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   previous page of the same part (not across a title page), snapped to
   clear paper: 58% on KHM 603, 63% on KHM 602 (was 53%). Tests now hold
   detection to frozen corrections from both sources.
+- **Learned bar-line filter** (2026-10-05). A bake-off on 1404 labelled
+  bar lines (experiments/barlines) found that trained detectors (Detectron2,
+  D-FINE, YOLO) and a small learned filter all beat the hand-tuned rules,
+  mostly by missing far fewer bar lines; the filter matched the deep models
+  within noise while training in seconds. So detection now proposes loose
+  candidate strokes (`detect.candidates`) and a gradient-boosted classifier
+  (`learn.py`), trained on the editor's reviewed pages through the same
+  detection steps, keeps the bar lines. The server trains it in the
+  background at start-up (cached by the reviewed labels), retrains when a
+  reviewed page changes, and falls back to the hand-tuned rules until a
+  model exists. Trained on one quartet, tested on the other: edits (false +
+  missed) 85 -> 47 (KHM 603) and 100 -> 62 (KHM 602).
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink

@@ -46,6 +46,10 @@ re-runs detection on the page and keeps your edits.
 - `server.py`: local web server (rendering, detection, saving).
 - `labels.py`: the labels schema, validation, bar numbering and bar export.
 - `detect.py`: automatic staff and bar-line proposals (numpy + Pillow).
+- `learn.py`: a bar-line filter learned from your reviewed pages (scikit-learn);
+  the server trains it in the background and uses it once ready.
+- `experiments/barlines/`: the bake-off that chose it (YOLO, D-FINE,
+  Detectron2, MeasureDetector, rules, learned filter).
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
 - `tools/score_barlines.py`: scores bar-line detection against your
   reviewed pages; run it before and after changing `detect.py`.
