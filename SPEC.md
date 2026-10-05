@@ -446,6 +446,20 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   reviewed page changes, and falls back to the hand-tuned rules until a
   model exists. Trained on one quartet, tested on the other: edits (false +
   missed) 85 -> 47 (KHM 603) and 100 -> 62 (KHM 602).
+- **Odd bar widths as a check.** Counting beats would need reading the
+  rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
+  into one about twice as wide as its neighbours. On pages not yet
+  reviewed, bars over 1.8x or under 0.4x their line's typical width are
+  outlined and listed in Warnings (with the ratio), and so is music after
+  a line's last bar line longer than half a typical bar (detection trims
+  a blank end, so it suggests a missed final bar line). A line's first bar
+  is left out: its width depends on the music start. On the reviewed pages
+  of KHM 602/603 (all bars correct) 2.2% of bars are flagged anyway
+  (notes-dense bars, so it's hidden once a page is reviewed); a removed
+  bar line is flagged 57% of the time, an added one 11% (halves of a bar
+  often look normal). The
+  bar counts against Structure.ily say *whether* a movement is off; the
+  widths suggest *where*.
 - **Staff extent and music start.** The ruled lines often run into the
   margin before the clef. A column counts as staff when the line rows are
   dark and the spaces aren't. The music start is after the first heavy ink

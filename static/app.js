@@ -179,6 +179,44 @@ function strip(s, x0, x1, above = 0, below = 0, n = 12) {
   return top.concat(bot).join(' ');
 }
 
+// Bars much wider or narrower than their line's typical bar: a missed bar
+// line merges two bars (about twice as wide), an extra one splits one.
+// Widths vary with how many notes a bar holds, so it's a hint. Thresholds
+// from the reviewed pages of KHM 602/603 (correct bars): 2.2% flagged
+// anyway; a removed bar line flagged 57% of the time. A line's first bar
+// is left out (its width depends on the music start), as are bars that
+// stand for several bars or none. Music after the last bar line more than
+// half a typical bar long (detection trims a blank end) suggests a missed
+// final bar line.
+const ODD_WIDE = 1.8, ODD_NARROW = 0.4, ODD_TAIL = 0.5;
+function oddBars(s) {
+  if ((s.role || 'part') !== 'part') return [];
+  const bls = [...s.barlines].sort((a, c) => mid(a) - mid(c));
+  const bars = bls.slice(1).map((b, k) => ({ b, prev: bls[k], w: mid(b) - mid(bls[k]), one: (b.bar_count ?? 1) === 1, pos: k + 2 }));
+  const ws = bars.filter((x) => x.one).map((x) => x.w).sort((a, c) => a - c);
+  if (ws.length < 3) return [];
+  const n = ws.length;
+  const med = n % 2 ? ws[(n - 1) / 2] : (ws[n / 2 - 1] + ws[n / 2]) / 2;
+  const out = bars.filter((x) => x.one && (x.w > ODD_WIDE * med || x.w < ODD_NARROW * med))
+    .map((x) => ({ barline: x.b, prev: x.prev, kind: x.w > med ? 'wide' : 'narrow', ratio: x.w / med, pos: x.pos }));
+  const last = bls[bls.length - 1];
+  const tail = s.right - Math.max(last.x0, last.x1);
+  if (tail > ODD_TAIL * med) out.push({ barline: null, prev: last, kind: 'tail', ratio: tail / med, pos: bls.length + 1 });
+  return out;
+}
+
+// The odd bars of the open page, once per redraw; none on a reviewed page
+// (there the flagged bars are just dense with notes).
+function pageOddBars() {
+  const page = pg();
+  const key = `${S.pdf}:${S.page}:${S.version}`;
+  if (S.oddCache?.key !== key) {
+    const lines = page && page.status !== 'reviewed' ? [...page.systems].sort((a, b) => a.top - b.top) : [];
+    S.oddCache = { key, items: lines.flatMap((s, i) => oddBars(s).map((o) => ({ ...o, staff: s, line: i + 1 }))) };
+  }
+  return S.oddCache.items;
+}
+
 // bar numbers after which Structure.ily puts a repeat sign, per movement
 function repeatEnds(movement) {
   const e = S.info?.expected?.[movement];
@@ -604,6 +642,7 @@ function renderOverlay() {
     out.push(`<polygon class="pageedge${sel?.t === 'page' ? ' sel' : ''}${page.corners.auto ? ' auto' : ''}" points="${c.join(' ')}"/>`);
   }
 
+  const odd = pageOddBars();
   for (const s of page.systems) {
     const cue = (s.role || 'part') === 'cue';
     const sp = space(s);
@@ -619,6 +658,12 @@ function renderOverlay() {
     const end = bls.length ? Math.max(bls[bls.length - 1].x0, bls[bls.length - 1].x1) : st;
     if (end < s.right) out.push(`<polygon class="outside" points="${strip(s, end, s.right, 0, 0, 4)}"/>`);
     out.push(`<line class="start" x1="${st * W}" x2="${st * W}" y1="${(topAt(s, st) - sp) * H}" y2="${(bottomAt(s, st) + sp) * H}"/>`);
+
+    for (const o of odd.filter((o) => o.staff === s)) {
+      const right = o.barline || { x0: s.right, x1: s.right };  // 'tail': to the staff's end
+      const q = barQuad(s, o.prev, right).map(([x, y]) => `${x * W},${y * H}`);
+      out.push(`<polygon class="oddbar" points="${q.join(' ')}"/>`);
+    }
 
     let firstOnLine = null;
     for (const b of bls) {
@@ -902,6 +947,24 @@ function renderCounts() {
     }
   }
   $('#counts').innerHTML = rows.length ? `<table>${rows.join('')}</table>` : '<p class="muted">No bars yet.</p>';
+  // odd bar widths on this page, by bar number (with the movement if the
+  // page has more than one), or by line and position if not yet numbered
+  const odd = pageOddBars();
+  const mvts = new Set(S.bars.filter((b) => b.page === S.page).map((b) => b.movement));
+  const name = (o) => {
+    const nb = o.barline ? S.byBarline.get(o.barline.id) : S.byBarline.get(o.prev.id);
+    const ratio = ` (${o.ratio.toFixed(1)}×)`;
+    if (!nb) return `line ${o.line}, bar ${o.pos} on the line${ratio}`;
+    const mv = mvts.size > 1 ? `${nb.movement}:` : '';
+    return (o.kind === 'tail' ? `after bar ${mv}${lastBarOf(nb)}` : `bar ${mv}${barLabel(nb)}`) + ratio;
+  };
+  const say = { wide: 'much wider than the line\'s typical bar: missed bar line?',
+                narrow: 'much narrower than the line\'s typical bar: extra bar line?',
+                tail: 'music after the last bar line: missed final bar line?' };
+  for (const kind of ['wide', 'tail', 'narrow']) {
+    const these = odd.filter((o) => o.kind === kind);
+    if (these.length) warnings.push(`This page, ${these.map(name).join('; ')}: ${say[kind]}`);
+  }
   $('#warnings').innerHTML = warnings.length ? `<h2>Warnings</h2><ul>${warnings.map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '';
 }
 

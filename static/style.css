@@ -175,3 +175,5 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 #review.done { background: var(--ok); border-color: var(--ok); color: #fff; font-weight: 600; }
 /* the handle the arrow keys move */
 .handle.active { fill: #ffd400; stroke: #d81b60; stroke-width: 3; }
+/* a bar much wider or narrower than its line's typical bar (missed / extra bar line?) */
+.oddbar { fill: rgba(217, 130, 43, .08); stroke: var(--auto); stroke-width: 2; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; pointer-events: none; }
