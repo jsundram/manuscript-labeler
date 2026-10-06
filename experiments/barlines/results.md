@@ -60,6 +60,37 @@ the cheap methods:
 | learned filter | 1333 | 27 | 71 | 98 | 95.0% ± 0.6% | 98.0% ± 0.8% |
 | classical | 1242 | 16 | 162 | 178 | 88.5% ± 2.9% | 98.7% ± 0.6% |
 
+## Do they make the same mistakes? Voting
+
+Mostly not (`ensemble.py`, the saved test-line results; MeasureDetector
+left out). Of the 287 bar lines, all six methods below find 256; of the 31
+any method misses, 18 are missed by only one method and 2 by all six. Of
+35 false bar lines (merged across methods within the tolerance), 23 come
+from one method only. The two learned filters share the most (7 of their 10
+misses; they share a first pass, so their votes aren't independent); the
+deep detectors share 2.
+
+A vote pools the methods' bar lines, merges those within the tolerance and
+keeps those most methods propose (a majority, fixed in advance):
+
+| vote | found | false | missed | errors | per line (sum) |
+|---|---|---|---|---|---|
+| 2 of 3: YOLO11n, learned + widths, classical | 282 | 3 | 5 | 8 | ~170 ms |
+| 2 of 3: D-FINE, YOLO11n, learned + widths | 285 | 6 | 2 | 8 | ~750 ms |
+| 2 of 3: Detectron2, D-FINE, YOLO11n | 285 | 6 | 2 | 8 | ~1750 ms |
+| 2 of 3: Detectron2, YOLO11n, learned + widths | 282 | 5 | 5 | 10 | ~1220 ms |
+| 2 of 3: YOLO11n, both learned filters | 280 | 5 | 7 | 12 | ~185 ms |
+| 3 of 5: all but Detectron2 | 283 | 2 | 4 | 6 | ~790 ms |
+| 4 of 6: all six | 279 | 1 | 8 | 9 | ~1860 ms |
+| best single (Detectron2) | 280 | 5 | 7 | 12 | 1066 ms |
+
+Votes of unlike methods (a deep detector and the candidate filter) cut
+errors by a third to a half against the best single method. Caveats: one
+split, several groupings tried (choosing the best is hindsight), and a few
+errors either way is noise; the deep detectors are too slow to train to
+cross-validate here. Not in the labeler: it would mean running YOLO
+(PyTorch, AGPL-3.0) in the server.
+
 ## Reading it
 
 - Every trained method beats the hand-tuned rules, mainly by missing far

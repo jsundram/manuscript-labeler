@@ -26,6 +26,8 @@ uv run --python 3.12 experiments/barlines/run_measuredetector.py $C $E   # weigh
 <venv-with-detectron2>/bin/python experiments/barlines/run_detectron2.py $C
 uv run experiments/barlines/crossval.py $C         # 5-fold CV, classical vs learned
 uv run experiments/barlines/harness.py $C table
+uv run experiments/barlines/ensemble.py $C           # shared mistakes, majority vote
+uv run experiments/barlines/ensemble.py $C yolo-yolo11n learned-gbm-widths classical   # a chosen few
 ```
 
 ## Design
