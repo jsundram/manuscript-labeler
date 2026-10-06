@@ -445,7 +445,14 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   background at start-up (cached by the reviewed labels), retrains when a
   reviewed page changes, and falls back to the hand-tuned rules until a
   model exists. Trained on one quartet, tested on the other: edits (false +
-  missed) 85 -> 47 (KHM 603) and 100 -> 62 (KHM 602).
+  missed) 85 -> 47 (KHM 603) and 100 -> 62 (KHM 602). A second pass
+  (2026-10-05) sees the bar widths the first implies (a missed bar line
+  leaves a bar twice the typical width), learned from first passes
+  cross-fitted over 5 groups of pages: 12% fewer errors under
+  cross-validation; end to end on the bake-off's test lines 28 -> 26.
+  The deep detectors and the filter mostly err on different bar lines, so
+  a vote of unlike methods would halve errors again, but would put PyTorch
+  in the server; not done.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet

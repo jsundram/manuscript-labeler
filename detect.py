@@ -509,13 +509,52 @@ def candidates(g: np.ndarray, staff: dict, left: int, right: int, start: int) ->
     return out
 
 
+# The second pass (learn.py): each candidate's first-pass probability and
+# the bars it would make with the provisional bar lines on each side.
+WIDTH_FEATURES = ["p1", "w_left", "w_right", "w_merged", "typical"]
+
+
+def with_widths(cands: list[dict], p1: np.ndarray, gap: float) -> list[dict]:
+    """`cands` with WIDTH_FEATURES added: the first-pass probability p1; the
+    bars to the other provisional bar lines (first pass p >= 0.5, MIN_BAR
+    apart) left and right of it, and the bar there'd be without it, relative
+    to the line's typical provisional bar (-1 if there's none that side);
+    and that typical bar in staff spaces. A stroke just beside a provisional
+    bar line (a stem, a double bar's partner) so sees a tiny bar."""
+    prov: list[int] = []
+    for k in np.argsort(-p1):
+        if p1[k] < 0.5:
+            break
+        if all(abs(cands[k]["x"] - cands[j]["x"]) >= MIN_BAR * gap for j in prov):
+            prov.append(int(k))
+    xs = sorted(cands[k]["x"] for k in prov)
+    typical = float(np.median(np.diff(xs))) if len(xs) >= 3 else 6.0 * gap
+    out = []
+    for k, (c, pk) in enumerate(zip(cands, p1)):
+        others = [cands[j]["x"] for j in prov if j != k]
+        left = max((x for x in others if x < c["x"]), default=None)
+        right = min((x for x in others if x > c["x"]), default=None)
+        out.append({**c, "p1": float(pk), "typical": typical / gap,
+                    "w_left": (c["x"] - left) / typical if left is not None else -1.0,
+                    "w_right": (right - c["x"]) / typical if right is not None else -1.0,
+                    "w_merged": (right - left) / typical if left is not None and right is not None else -1.0})
+    return out
+
+
 def choose(cands: list[dict], model: dict, gap: float) -> list[dict]:
     """The bar lines a learned model accepts among `cands`: likeliest first,
     none closer than MIN_BAR staff spaces to a likelier one; a second stroke
-    within 1.2 spaces of an accepted one makes it a double bar."""
+    within 1.2 spaces of an accepted one makes it a double bar. A model with
+    a `stage1` first weighs each candidate alone, then again with the bar
+    widths that implies (with_widths). That rejects a double bar's partner
+    stroke (it makes a tiny bar), so partners are judged by the first pass."""
     if not cands:
         return []
+    if model.get("stage1") is not None:
+        p1 = model["stage1"].predict_proba(np.array([[c[f] for f in FEATURES] for c in cands]))[:, 1]
+        cands = with_widths(cands, p1, gap)
     p = model["clf"].predict_proba(np.array([[c[f] for f in model["features"]] for c in cands]))[:, 1]
+    partner = p1 >= 0.5 if model.get("stage1") is not None else p >= model["threshold"]
     kept: list[int] = []
     for k in np.argsort(-p):
         if p[k] < model["threshold"]:
@@ -524,7 +563,7 @@ def choose(cands: list[dict], model: dict, gap: float) -> list[dict]:
             kept.append(int(k))
     out = []
     for k in sorted(kept, key=lambda k: cands[k]["x"]):
-        double = any(j != k and p[j] >= model["threshold"] and abs(cands[j]["x"] - cands[k]["x"]) < gap * 1.2
+        double = any(j != k and partner[j] and abs(cands[j]["x"] - cands[k]["x"]) < gap * 1.2
                      for j in range(len(cands)))
         out.append({"x0": cands[k]["x0"], "x1": cands[k]["x1"], "kind": "double" if double else "single"})
     return out
@@ -771,8 +810,8 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     `model`: a learned bar-line filter (learn.py) to choose among loose
     candidate strokes instead of the hand-tuned tests in find_barlines.
     `collect`: if given, each staff's candidates are appended to it as
-    (staff top, staff bottom, candidates) in page fractions / pixels, for
-    training such a model on the same steps detection takes.
+    (staff top, staff bottom, candidates, staff space) in page fractions /
+    pixels, for training such a model on the same steps detection takes.
     """
     g = _gray(img)
     h, w = g.shape
@@ -815,7 +854,7 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
             # the music start itself (a wrong start mustn't drop a bar line)
             cands = candidates(band, local, ruled, reach, start)
             if collect is not None:
-                collect.append((st["top"] / h, st["bottom"] / h, cands))
+                collect.append((st["top"] / h, st["bottom"] / h, cands, st["gap"]))
         bars = choose(cands, model, st["gap"]) if model is not None else \
             find_barlines(band, local, ruled, reach, skip_to=start)
         if bars:
