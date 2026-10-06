@@ -53,6 +53,37 @@ def match(pred: list[float], true: list[float], tol: float) -> tuple[int, int, i
     return len(used_t), len(pred) - len(used_p), len(true) - len(used_t)
 
 
+# The labeler's bar-width hints (static/app.js, oddBars): a bar over 1.8x or
+# under 0.4x its line's typical width (median, the line's first bar left
+# out), or music after the last bar line longer than half a typical bar.
+ODD_WIDE, ODD_NARROW, ODD_TAIL = 1.8, 0.4, 0.5
+
+
+def flagged_bars(pred: list[float], width: float) -> list[tuple[float, float]]:
+    """Intervals (x from, x to) the hints would outline, given the bar lines
+    a method proposed on a line of this width."""
+    xs = sorted(pred)
+    if len(xs) < 4:
+        return []
+    bars = list(zip(xs, xs[1:]))
+    med = float(np.median([b - a for a, b in bars]))
+    out = [(a, b) for a, b in bars if b - a > ODD_WIDE * med or b - a < ODD_NARROW * med]
+    if width - xs[-1] > ODD_TAIL * med:
+        out.append((xs[-1], width))
+    return out
+
+
+def hinted(pred: list[float], true: list[float], width: float, tol: float) -> tuple[int, int]:
+    """Of a method's errors on one line, how many the width hints point at:
+    (missed bar lines inside a flagged bar, false ones at a flagged bar's edge)."""
+    flags = flagged_bars(pred, width)
+    missed = [t for t in true if not any(abs(p - t) <= tol for p in pred)]
+    false = [p for p in pred if not any(abs(p - t) <= tol for t in true)]
+    m = sum(any(a + tol < t < b - tol for a, b in flags) for t in missed)
+    f = sum(any(abs(p - a) < 1 or abs(p - b) < 1 for a, b in flags) for p in false)
+    return m, f
+
+
 def score(corpus: Path, result: dict) -> dict:
     c = load(corpus)
     out = {"found": 0, "false": 0, "missed": 0, "by_source": {}}
@@ -60,7 +91,11 @@ def score(corpus: Path, result: dict) -> dict:
         if line["split"] != "test":
             continue
         pred = result["lines"].get(line["id"], [])
-        f, fp, m = match(pred, [b["x"] for b in line["bars"]], c["tolerance_frac"] * line["page_w"])
+        tol = c["tolerance_frac"] * line["page_w"]
+        true = [b["x"] for b in line["bars"]]
+        f, fp, m = match(pred, true, tol)
+        hm, hf = hinted(pred, true, line["width"], tol)
+        out["hinted"] = out.get("hinted", 0) + hm + hf
         for d in (out, out["by_source"].setdefault(line["source"], {"found": 0, "false": 0, "missed": 0})):
             d["found"] += f
             d["false"] += fp
@@ -109,13 +144,14 @@ def table(corpus: Path):
     for f in sorted((corpus / "results").glob("*.json")):
         r = json.loads(f.read_text())
         rows.append((r, score(corpus, r)))
-    rows.sort(key=lambda rs: -rs[1]["f1"])
-    print("| method | found | false | missed | recall | precision | F1 | train | per line | notes |")
-    print("|---|---|---|---|---|---|---|---|---|---|")
+    rows.sort(key=lambda rs: (rs[1]["false"] + rs[1]["missed"] - rs[1].get("hinted", 0), -rs[1]["f1"]))
+    print("| method | found | false | missed | recall | precision | F1 | errors | flagged by width hints | silent errors | train | per line |")
+    print("|---|---|---|---|---|---|---|---|---|---|---|---|")
     for r, s in rows:
+        err = s["false"] + s["missed"]
         print(f"| {r['method']} | {s['found']} | {s['false']} | {s['missed']} | {s['recall']:.1%} | "
-              f"{s['precision']:.1%} | {s['f1']:.3f} | {r['train_s'] / 60:.1f} min | "
-              f"{r['infer_s'] * 1000:.0f} ms | {r.get('notes', '')} |")
+              f"{s['precision']:.1%} | {s['f1']:.3f} | {err} | {s.get('hinted', 0)} | {err - s.get('hinted', 0)} | "
+              f"{r['train_s'] / 60:.1f} min | {r['infer_s'] * 1000:.0f} ms |")
 
 
 if __name__ == "__main__":

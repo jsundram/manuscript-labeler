@@ -17,6 +17,9 @@ uv run experiments/barlines/corpus.py $E $C        # lines + labels, train/test 
 uv run experiments/barlines/tiles.py $C            # detector tiles (YOLO + COCO), val ids
 uv run experiments/barlines/harness.py $C classical
 uv run experiments/barlines/run_learned.py $C
+uv run experiments/barlines/run_learned.py $C --widths   # second pass with bar widths
+uv run experiments/barlines/run_labeler.py $C $E         # learn.py end to end on whole pages
+uv run experiments/barlines/run_labeler.py $C $E --rules # the hand-tuned rules, end to end
 uv run experiments/barlines/run_yolo.py $C
 uv run experiments/barlines/run_dfine.py $C        # CPU (see below)
 uv run --python 3.12 experiments/barlines/run_measuredetector.py $C $E   # weights: see its docstring

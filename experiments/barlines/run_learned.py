@@ -118,10 +118,23 @@ def labelled(corpus: Path, ls: list[dict], tol_frac: float):
     return np.array(X), np.array(y), per_line
 
 
-def predict(model, line: dict, cands: list[dict], th: float) -> list[float]:
+WIDTH_FEATURES = detect.WIDTH_FEATURES
+
+
+def with_widths(stage1, line: dict, cands: list[dict]) -> list[dict]:
+    """The second pass's context for each candidate (detect.with_widths, as
+    the labeler computes it)."""
+    if not cands:
+        return cands
+    p = stage1.predict_proba(np.array([[c[f] for f in FEATURES] for c in cands]))[:, 1]
+    return detect.with_widths(cands, p, line["space"])
+
+
+def predict(model, line: dict, cands: list[dict], th: float, feats=None) -> list[float]:
+    feats = feats or FEATURES
     if not cands:
         return []
-    p = model.predict_proba(np.array([[c[f] for f in FEATURES] for c in cands]))[:, 1]
+    p = model.predict_proba(np.array([[c[f] for f in feats] for c in cands]))[:, 1]
     # of candidates closer than detect.MIN_BAR spaces, keep the likelier
     kept = []
     for k in np.argsort(-p):
@@ -132,8 +145,37 @@ def predict(model, line: dict, cands: list[dict], th: float) -> list[float]:
     return sorted(cands[k]["x"] for k in kept)
 
 
-def main():
+def fit(corpus: Path, train: list[dict], tol: float, widths: bool):
+    """(model, stage1 or None, features) trained on these lines."""
     from sklearn.ensemble import HistGradientBoostingClassifier
+
+    gbm = lambda: HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=15,
+                                                 class_weight="balanced", random_state=0)
+    X, y, tlines = labelled(corpus, train, tol)
+    model = gbm().fit(X, y)
+    if not widths:
+        return model, None, FEATURES
+    # second pass: trained on first-pass probabilities from held-out folds
+    # (5 groups of pages, as learn.py), so it doesn't learn to trust an
+    # overfit first pass
+    ids = [l["id"] for l in train]
+    pages = sorted({(l["pdf"], l["page"]) for l in train})
+    X2, y2 = [], []
+    for k in range(5):
+        fold = set(pages[k::5])
+        held = {l["id"] for l in train if (l["pdf"], l["page"]) in fold}
+        rest = [i for i in ids if i not in held]
+        s1 = gbm().fit(np.array([[c[f] for f in FEATURES] for i in rest for c in tlines[i][0]]),
+                       np.array([v for i in rest for v in tlines[i][1]]))
+        for line in train:
+            if line["id"] in held:
+                cands, lab = tlines[line["id"]]
+                X2 += [[c[f] for f in FEATURES + WIDTH_FEATURES] for c in with_widths(s1, line, cands)]
+                y2 += lab
+    return gbm().fit(np.array(X2), np.array(y2)), model, FEATURES + WIDTH_FEATURES
+
+
+def main():
 
     corpus = Path(sys.argv[1])
     c = json.loads((corpus / "corpus.json").read_text())
@@ -143,18 +185,19 @@ def main():
     val = [l for l in c["lines"] if l["id"] in val_ids]
     test = [l for l in c["lines"] if l["split"] == "test"]
 
+    widths = "--widths" in sys.argv
     t0 = time.perf_counter()
-    X, y, _ = labelled(corpus, train, tol)
-    model = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=15,
-                                           class_weight="balanced", random_state=0).fit(X, y)
+    model, stage1, feats = fit(corpus, train, tol, widths)
     train_s = time.perf_counter() - t0
 
     _, _, vlines = labelled(corpus, val, tol)
+    if widths:
+        vlines = {k: (with_widths(stage1, next(l for l in val if l["id"] == k), v[0]), v[1]) for k, v in vlines.items()}
     best = (0.5, -1)
     for th in [i / 20 for i in range(1, 20)]:
         f = fp = m = 0
         for line in val:
-            a, b, d = match(predict(model, line, vlines[line["id"]][0], th), [bb["x"] for bb in line["bars"]], tol * line["page_w"])
+            a, b, d = match(predict(model, line, vlines[line["id"]][0], th, feats), [bb["x"] for bb in line["bars"]], tol * line["page_w"])
             f, fp, m = f + a, fp + b, m + d
         f1 = 2 * f / (2 * f + fp + m) if f else 0
         if f1 > best[1]:
@@ -166,14 +209,16 @@ def main():
     for line in test:
         g = np.asarray(Image.open(corpus / line["file"]).convert("L"), dtype=np.float32)
         cands = candidates(g, line)
-        preds[line["id"]] = predict(model, line, cands, th)
+        if widths:
+            cands = with_widths(stage1, line, cands)
+        preds[line["id"]] = predict(model, line, cands, th, feats)
         for b in line["bars"]:
             total += 1
             ceiling += any(abs(cc["x"] - b["x"]) <= tol * line["page_w"] for cc in cands)
     per_line = (time.perf_counter() - t1) / len(test)
-    write(corpus, {"method": "learned-gbm", "train_s": train_s, "infer_s": per_line, "threshold": th, "lines": preds,
-                   "notes": f"gradient boosting on detect.py's loose candidates (cover > {LOOSE}); "
-                            f"{len(y)} training candidates, {int(y.sum())} bar lines; candidates reach "
+    write(corpus, {"method": "learned-gbm" + ("-widths" if widths else ""), "train_s": train_s, "infer_s": per_line, "threshold": th, "lines": preds,
+                   "notes": ("two passes, the second with bar widths; " if widths else "") +
+                            f"gradient boosting on detect.py's loose candidates (cover > {LOOSE}); candidates reach "
                             f"{ceiling}/{total} test bar lines; threshold {th:.2f} (chosen on val)"})
 
 

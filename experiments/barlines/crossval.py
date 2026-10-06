@@ -23,7 +23,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent.parent))
 import detect  # noqa: E402
 from harness import match, staff_of  # noqa: E402
-from run_learned import labelled, predict  # noqa: E402
+from run_learned import FEATURES, fit, labelled, predict, with_widths  # noqa: E402
 
 
 def classical(g, line):
@@ -36,7 +36,6 @@ def classical(g, line):
 
 
 def main():
-    from sklearn.ensemble import HistGradientBoostingClassifier
 
     corpus = Path(sys.argv[1])
     c = json.loads((corpus / "corpus.json").read_text())
@@ -44,26 +43,34 @@ def main():
     ls = list(c["lines"])
     random.Random(3).shuffle(ls)
     folds = [ls[k::5] for k in range(5)]
-    totals = {"classical": [], "learned": []}
+    totals = {"classical": [], "learned": [], "learned+widths": []}
     for k, test in enumerate(folds):
         rest = [l for j, f in enumerate(folds) if j != k for l in f]
         val, train = rest[: len(rest) // 10], rest[len(rest) // 10:]
-        X, y, _ = labelled(corpus, train, tol)
-        model = HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=15,
-                                               class_weight="balanced", random_state=0).fit(X, y)
-        _, _, vl = labelled(corpus, val, tol)
-        best = (0.5, -1)
-        for th in [i / 20 for i in range(1, 20)]:
-            s = np.sum([match(predict(model, l, vl[l["id"]][0], th), [b["x"] for b in l["bars"]], tol * l["page_w"]) for l in val], axis=0)
-            f1 = 2 * s[0] / (2 * s[0] + s[1] + s[2])
-            if f1 > best[1]:
-                best = (th, f1)
+        models = {}
+        # one fit gives both: the two-pass model's first pass is the plain filter
+        model2, stage1, feats2 = fit(corpus, train, tol, True)
+        _, _, vl0 = labelled(corpus, val, tol)
+        for name, (model, s1, feats) in (("learned", (stage1, None, FEATURES)),
+                                         ("learned+widths", (model2, stage1, feats2))):
+            vl = vl0 if s1 is None else {l["id"]: (with_widths(s1, l, vl0[l["id"]][0]), vl0[l["id"]][1]) for l in val}
+            best = (0.5, -1)
+            for th in [i / 20 for i in range(1, 20)]:
+                s = np.sum([match(predict(model, l, vl[l["id"]][0], th, feats), [b["x"] for b in l["bars"]], tol * l["page_w"]) for l in val], axis=0)
+                f1 = 2 * s[0] / (2 * s[0] + s[1] + s[2])
+                if f1 > best[1]:
+                    best = (th, f1)
+            models[name] = (model, s1, feats, best[0])
         _, _, tl = labelled(corpus, test, tol)
         for name in totals:
             s = np.zeros(3)
             for l in test:
-                pred = predict(model, l, tl[l["id"]][0], best[0]) if name == "learned" else \
-                    classical(np.asarray(Image.open(corpus / l["file"]).convert("L"), dtype=np.float32), l)
+                if name == "classical":
+                    pred = classical(np.asarray(Image.open(corpus / l["file"]).convert("L"), dtype=np.float32), l)
+                else:
+                    model, stage1, feats, th = models[name]
+                    cands = tl[l["id"]][0] if stage1 is None else with_widths(stage1, l, tl[l["id"]][0])
+                    pred = predict(model, l, cands, th, feats)
                 s += match(pred, [b["x"] for b in l["bars"]], tol * l["page_w"])
             totals[name].append(s)
             print(f"fold {k + 1} {name}: found {int(s[0])}, false {int(s[1])}, missed {int(s[2])}")
