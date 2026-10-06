@@ -195,32 +195,40 @@ function strip(s, x0, x1, above = 0, below = 0, n = 12) {
 // is left out (its width depends on the music start), as are bars that
 // stand for several bars or none. Music after the last bar line more than
 // half a typical bar long (detection trims a blank end) suggests a missed
-// final bar line.
-const ODD_WIDE = 1.8, ODD_NARROW = 0.4, ODD_TAIL = 0.5;
+// final bar line. Two bar lines closer than ODD_STACKED staff spaces are
+// one stroke labelled twice (an editor's bar line snapped onto a detected
+// one): always an error, flagged even on reviewed pages.
+const ODD_WIDE = 1.8, ODD_NARROW = 0.4, ODD_TAIL = 0.5, ODD_STACKED = 0.5;
+// bar lines closer than this (page widths) are one stroke
+const stackedGap = (s) => ODD_STACKED * space(s) * S.H / S.W;
 function oddBars(s) {
   if ((s.role || 'part') !== 'part') return [];
   const bls = [...s.barlines].sort((a, c) => mid(a) - mid(c));
+  const close = stackedGap(s);
   const bars = bls.slice(1).map((b, k) => ({ b, prev: bls[k], w: mid(b) - mid(bls[k]), one: (b.bar_count ?? 1) === 1, pos: k + 2 }));
-  const ws = bars.filter((x) => x.one).map((x) => x.w).sort((a, c) => a - c);
-  if (ws.length < 3) return [];
+  const stacked = bars.filter((x) => x.w < close)
+    .map((x) => ({ barline: x.b, prev: x.prev, kind: 'stacked', ratio: 0, pos: x.pos }));
+  const ws = bars.filter((x) => x.one && x.w >= close).map((x) => x.w).sort((a, c) => a - c);
+  if (ws.length < 3) return stacked;
   const n = ws.length;
   const med = n % 2 ? ws[(n - 1) / 2] : (ws[n / 2 - 1] + ws[n / 2]) / 2;
-  const out = bars.filter((x) => x.one && (x.w > ODD_WIDE * med || x.w < ODD_NARROW * med))
-    .map((x) => ({ barline: x.b, prev: x.prev, kind: x.w > med ? 'wide' : 'narrow', ratio: x.w / med, pos: x.pos }));
+  const out = stacked.concat(bars.filter((x) => x.one && x.w >= close && (x.w > ODD_WIDE * med || x.w < ODD_NARROW * med))
+    .map((x) => ({ barline: x.b, prev: x.prev, kind: x.w > med ? 'wide' : 'narrow', ratio: x.w / med, pos: x.pos })));
   const last = bls[bls.length - 1];
   const tail = s.right - Math.max(last.x0, last.x1);
   if (tail > ODD_TAIL * med) out.push({ barline: null, prev: last, kind: 'tail', ratio: tail / med, pos: bls.length + 1 });
   return out;
 }
 
-// The odd bars of the open page, once per redraw; none on a reviewed page
-// (there the flagged bars are just dense with notes).
+// The odd bars of the open page, once per redraw; on a reviewed page only
+// stacked bar lines (the other flagged bars are just dense with notes).
 function pageOddBars() {
   const page = pg();
-  const key = `${S.pdf}:${S.page}:${S.version}`;
+  const key = `${S.pdf}:${S.page}:${S.version}:${S.W}x${S.H}`;
   if (S.oddCache?.key !== key) {
-    const lines = page && page.status !== 'reviewed' ? [...page.systems].sort((a, b) => a.top - b.top) : [];
-    S.oddCache = { key, items: lines.flatMap((s, i) => oddBars(s).map((o) => ({ ...o, staff: s, line: i + 1 }))) };
+    const lines = page ? [...page.systems].sort((a, b) => a.top - b.top) : [];
+    const keep = (o) => page.status !== 'reviewed' || o.kind === 'stacked';
+    S.oddCache = { key, items: lines.flatMap((s, i) => oddBars(s).filter(keep).map((o) => ({ ...o, staff: s, line: i + 1 }))) };
   }
   return S.oddCache.items;
 }
@@ -670,6 +678,11 @@ function renderOverlay() {
     out.push(`<line class="start" x1="${st * W}" x2="${st * W}" y1="${(topAt(s, st) - sp) * H}" y2="${(bottomAt(s, st) + sp) * H}"/>`);
 
     for (const o of odd.filter((o) => o.staff === s)) {
+      if (o.kind === 'stacked') {  // a zero-width bar has no outline: ring the bar line
+        const m = mid(o.barline), y = (topAt(s, m) + bottomAt(s, m)) / 2;
+        out.push(`<ellipse class="oddbar" cx="${m * W}" cy="${y * H}" rx="${1.5 * sp * H}" ry="${3.5 * sp * H}"/>`);
+        continue;
+      }
       const right = o.barline || { x0: s.right, x1: s.right };  // 'tail': to the staff's end
       const q = barQuad(s, o.prev, right).map(([x, y]) => `${x * W},${y * H}`);
       out.push(`<polygon class="oddbar" points="${q.join(' ')}"/>`);
@@ -963,15 +976,16 @@ function renderCounts() {
   const mvts = new Set(S.bars.filter((b) => b.page === S.page).map((b) => b.movement));
   const name = (o) => {
     const nb = o.barline ? S.byBarline.get(o.barline.id) : S.byBarline.get(o.prev.id);
-    const ratio = ` (${o.ratio.toFixed(1)}×)`;
+    const ratio = o.kind === 'stacked' ? '' : ` (${o.ratio.toFixed(1)}×)`;
     if (!nb) return `line ${o.line}, bar ${o.pos} on the line${ratio}`;
     const mv = mvts.size > 1 ? `${nb.movement}:` : '';
     return (o.kind === 'tail' ? `after bar ${mv}${lastBarOf(nb)}` : `bar ${mv}${barLabel(nb)}`) + ratio;
   };
   const say = { wide: 'much wider than the line\'s typical bar: missed bar line?',
                 narrow: 'much narrower than the line\'s typical bar: extra bar line?',
-                tail: 'music after the last bar line: missed final bar line?' };
-  for (const kind of ['wide', 'tail', 'narrow']) {
+                tail: 'music after the last bar line: missed final bar line?',
+                stacked: 'two bar lines on top of each other: delete one' };
+  for (const kind of ['stacked', 'wide', 'tail', 'narrow']) {
     const these = odd.filter((o) => o.kind === kind);
     if (these.length) warnings.push(`This page, ${these.map(name).join('; ')}: ${say[kind]}`);
   }
@@ -1175,12 +1189,12 @@ function addBarline() {
   const s = systemAt(S.mouse.y);
   if (!s) { banner('Click on a staff to add a bar line.'); setTimeout(() => banner(null), 1500); return; }
   // clicking right on an existing bar line selects it instead of stacking a duplicate
-  const near = s.barlines.find((b) => Math.abs(xAt(b, s, S.mouse.y) - S.mouse.x) < 0.4 * space(s) * S.H / S.W);
+  const near = s.barlines.find((b) => Math.abs(xAt(b, s, S.mouse.y) - S.mouse.x) < stackedGap(s));
   if (near) { S.sel = { t: 'bl', id: near.id }; renderAll(); return; }
   mutate((page) => {
     const b = newBarline(page, s, { x0: S.mouse.x, x1: S.mouse.x }, false);
     S.sel = { t: 'bl', id: b.id };
-    snapBarline(b, s);
+    snapBarline(b, s, { fresh: true });
   });
 }
 
@@ -1188,7 +1202,7 @@ function addBarline() {
 // position and lean (detect.snap_barline searches about a staff space
 // either side). Placing or dragging a line snaps it as part of that same
 // edit; `undoable` makes it its own undo step (the a key, the button).
-async function snapBarline(b, s, { undoable = false } = {}) {
+async function snapBarline(b, s, { undoable = false, fresh = false } = {}) {
   if (S.readonly) return;
   const n = S.page, m = mid(b);
   const params = `top=${topAt(s, m)}&bottom=${bottomAt(s, m)}&x0=${b.x0}&x1=${b.x1}`;
@@ -1196,7 +1210,19 @@ async function snapBarline(b, s, { undoable = false } = {}) {
   try { r = await getJSON(`/api/snap?${q(S.pdf, n)}&${params}`); }
   catch { return; }
   if (r.x0 == null || n !== S.page || !s.barlines.includes(b)) return;
-  const apply = () => { b.x0 = r.x0; b.x1 = r.x1; b.auto = false; };
+  // a bar line just placed (nothing set on it yet) that snaps onto a stroke
+  // already labelled: keep that one (now the editor's) rather than stack a
+  // duplicate. A moved or edited bar line is never dropped.
+  const x = (r.x0 + r.x1) / 2;
+  const plain = fresh && b.kind === 'single' && (b.bar_count ?? 1) === 1 && !b.ends_movement && b.above == null && b.below == null;
+  const others = plain ? s.barlines.filter((o) => o !== b && Math.abs(mid(o) - x) < stackedGap(s)) : [];
+  const other = others.sort((a, c) => Math.abs(mid(a) - x) - Math.abs(mid(c) - x))[0];
+  const apply = other
+    ? () => {
+      s.barlines.splice(s.barlines.indexOf(b), 1); other.auto = false; S.sel = { t: 'bl', id: other.id };
+      banner('That stroke already has a bar line: selected it.'); setTimeout(() => banner(null), 1500);
+    }
+    : () => { b.x0 = r.x0; b.x1 = r.x1; b.auto = false; };
   if (undoable) mutate(apply);
   else { apply(); changed(); }
 }
