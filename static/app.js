@@ -154,12 +154,13 @@ async function applyStartToPage(src) {
   });
 }
 
-// end a staff just after its last bar line
+// end a staff just after its last bar line: shortened if it runs on,
+// lengthened if it stops short of it
 function trimToLastBarline(s) {
   if (!s.barlines.length) return;
   const last = Math.max(...s.barlines.map((b) => Math.max(b.x0, b.x1)));
-  const right = last + 0.5 * space(s) * S.H / S.W;
-  if (right < s.right) setExtent(s, s.left, right);
+  const right = Math.min(1, last + 0.5 * space(s) * S.H / S.W);
+  if (right > s.left) setExtent(s, s.left, right);
 }
 
 // x of a bar line at height y (page fractions), following its lean:
