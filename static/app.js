@@ -126,6 +126,8 @@ function setExtent(s, left, right) {
     const pts = Array.from({ length: n + 1 }, (_, i) => left + (right - left) * i / n);
     s.bend = pts.map((x) => bendAt(s, x));
   }
+  // the music start moves with the left end (the clef and key move with it)
+  if (s.start != null && left !== s.left) s.start = clamp(s.start + left - s.left, left, right);
   s.left = left;
   s.right = right;
 }
@@ -1248,7 +1250,8 @@ function activeHandle() {
   return S.handle && S.handle.for === selKey() ? S.handle.h : null;
 }
 
-// Arrow keys move the active handle alone: a pixel per press (Shift: 10).
+// Arrow keys move the active handle alone (a staff's left end carries its
+// music start, as when dragged): a pixel per press (Shift: 10).
 // Crop margins move a quarter staff space (Shift: a whole one).
 function nudgeHandle(h, dx, dy, big) {
   const item = find(S.sel);
