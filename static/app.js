@@ -782,7 +782,9 @@ function options(list, value, names = {}, blank = false) {
 }
 
 // Texts already used for marks, anywhere in the edition, offered as you
-// type (a datalist on the text field), most used first.
+// type (a datalist on the text field), most used first. A mark of a
+// particular kind (tempo, dynamic...) is offered only texts usually of that
+// kind; a plain text mark, all of them.
 async function loadMarkTexts() {
   try { S.markTexts = (await getJSON('/api/marktexts')).texts; } catch { S.markTexts = []; }
   renderMarkTexts();
@@ -793,13 +795,24 @@ function renderMarkTexts() {
   for (const p of Object.values(S.doc?.pages || {})) {
     for (const m of p.marks || []) {
       const t = (m.text || '').trim();
-      if (t && !counts.has(t)) counts.set(t, { text: t, n: 1, kind: m.kind });
+      if (t && !counts.has(t)) counts.set(t, { text: t, n: 1, kind: m.kind, kinds: [m.kind] });
     }
   }
   S.markTextIndex = counts;
-  const list = $('#marktexts');
-  list.innerHTML = [...counts.values()].sort((a, b) => b.n - a.n).map((e) => `<option value="${esc(e.text)}">`).join('');
+  const all = [...counts.values()].sort((a, b) => b.n - a.n);
+  const sig = all.map((e) => `${e.text}\t${e.n}\t${e.kinds || e.kind}`).join('\n');
+  if (sig === S.markTextSig) return;  // unchanged: keep the lists
+  S.markTextSig = sig;
+  const opts = (es) => es.map((e) => `<option value="${esc(e.text)}">`).join('');
+  const of = (k) => all.filter((e) => (e.kinds || [e.kind]).includes(k));
+  $('#marktexts').innerHTML = opts(all);
+  S.markKindsWithTexts = new Set(MARK_KINDS.filter((k) => k !== 'text' && of(k).length));
+  $('#marktexts-kinds').innerHTML = [...S.markKindsWithTexts]
+    .map((k) => `<datalist id="marktexts-${k}">${opts(of(k))}</datalist>`).join('');
 }
+// a tempo (dynamic...) mark is offered texts used with that kind; a plain
+// text mark, or a kind with none yet, every text
+const markTextList = (kind) => (S.markKindsWithTexts?.has(kind) ? `marktexts-${kind}` : 'marktexts');
 
 function renderMeta() {
   const { source: s, display: d } = S.info;
@@ -890,7 +903,7 @@ function renderInspector() {
   } else {
     el.innerHTML = `<h2>Mark</h2>
       <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind)}</select></label>
-      <label>Text <input data-f="text" list="marktexts" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>
+      <label>Text <input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>
       <label>Note <textarea data-f="note" rows="3"${dis}>${esc(item.note || '')}</textarea></label>`;
   }
 }

@@ -132,7 +132,8 @@ class Edition:
                     e["n"] += 1
                     e["kinds"][m.get("kind", "text")] = e["kinds"].get(m.get("kind", "text"), 0) + 1
         out = sorted(seen.values(), key=lambda e: (-e["n"], e["text"].lower()))
-        return [{"text": e["text"], "n": e["n"], "kind": max(e["kinds"], key=e["kinds"].get)} for e in out]
+        return [{"text": e["text"], "n": e["n"], "kind": max(e["kinds"], key=e["kinds"].get),
+                 "kinds": sorted(e["kinds"])} for e in out]
 
     def load(self, rel: str) -> dict:
         pdf = self.pdf(rel)
