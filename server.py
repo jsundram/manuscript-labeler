@@ -283,14 +283,15 @@ class Edition:
         r = detect.snap_start(g, top * h, bottom * h, x * w)
         return {"x": r / w} if r is not None else {}
 
-    def detect(self, rel: str, page: int, room: float | None = None) -> dict:
+    def detect(self, rel: str, page: int, room: float | None = None, corners: list | None = None) -> dict:
+        """Detection on one page; `corners`, the editor's, else detected."""
         from PIL import Image
 
         import detect
 
         img = Image.open(self.render(rel, page))
-        corners = detect.find_page_corners(img)
-        return {"systems": detect.detect_page(img, room, model=self.model), "corners": corners,
+        corners = corners or detect.find_page_corners(img)
+        return {"systems": detect.detect_page(img, room, model=self.model, corners=corners), "corners": corners,
                 "look": detect.page_look(img, corners)}
 
     def train_model(self):
@@ -417,7 +418,15 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_file(f, cache=True)
             if path == "/api/detect":
                 room = float(q["room"]) if q.get("room") else None
-                return self.send_json(ed.detect(q["pdf"], int(q["page"]), room))
+                corners = None
+                if q.get("corners"):
+                    try:
+                        corners = [[float(x), float(y)] for x, y in json.loads(q["corners"])]
+                    except TypeError as e:
+                        raise ValueError(f"corners: {e}") from e
+                    if len(corners) != 4:
+                        raise ValueError("corners: four points")
+                return self.send_json(ed.detect(q["pdf"], int(q["page"]), room, corners))
             if path == "/api/snap":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
                 return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))

@@ -140,27 +140,53 @@ def straighten(g: np.ndarray, staff: dict, pad_gaps: float = 4.0) -> tuple[np.nd
     return g[ys, np.arange(w)[None, :]], y0
 
 
-def staff_extent(g: np.ndarray, staff: dict) -> tuple[int, int]:
-    """Left and right x of the ruled staff lines (pixels).
+def staff_extent(g: np.ndarray, staff: dict, paper: tuple[int, int] | None = None) -> tuple[int, int]:
+    """Left and right x of the ruled staff lines (pixels), within `paper`
+    (its left and right edge at this staff, if known).
 
     A column belongs to the staff when most of its five line rows are dark
     and the spaces between them are not: that rejects dark page edges and
-    scanner borders, which are dark everywhere.
+    scanner borders, which are dark everywhere (but not a textured scanner
+    felt, hence `paper`). A wide clef and key (9 spaces in the Paris copies,
+    whose ruling before the clef is too faint to see) can hide the lines
+    from the window test, so the staff reaches back over ink just left of
+    it (gaps under REACH_GAP spaces), up to REACH_BACK spaces.
     """
     h, w = g.shape
+    lo, hi = paper if paper else (0, w)
     ink = g < 175
     lines = [min(h - 1, max(0, y)) for y in staff["lines"]]
     on = np.stack([ink[max(0, y - 1): y + 2].any(axis=0) for y in lines]).mean(axis=0)
     mids = [(a + b) // 2 for a, b in zip(lines, lines[1:])]
     off = ink[mids].mean(axis=0)
     col = (on >= 0.8) & (off <= 0.5)
+    col[:lo] = False
+    col[hi:] = False
     # notes and clefs hide the lines locally; judge by windows of 4 spaces
     k = max(3, int(staff["gap"] * 4))
     cover = np.convolve(col.astype(float), np.ones(k) / k, mode="same")
     xs = np.flatnonzero(cover >= 0.35)
     if len(xs) == 0:
-        return 0, w
-    return int(max(0, xs[0] - k // 2)), int(min(w, xs[-1] + k // 2))
+        return lo, hi
+    left, right = int(max(lo, xs[0] - k // 2)), int(min(hi, xs[-1] + k // 2))
+    gap = staff["gap"]
+    rows = g[max(0, int(lines[0] - gap)):int(lines[-1] + gap) + 1] < 120
+    # ink, but not a scanner border (dark the whole way down)
+    dark = rows.any(axis=0) & (rows.mean(axis=0) < 0.8)
+    first, x = left, left - 1
+    while x >= max(lo, left - int(gap * REACH_BACK)) and first - x <= gap * REACH_GAP:
+        if dark[x]:
+            first = x
+        x -= 1
+    return first, right
+
+
+def paper_x(corners: list[list[float]], y: float, w: int) -> tuple[int, int]:
+    """The paper's left and right edge (pixels) at height y (a page
+    fraction), from find_page_corners."""
+    (tlx, tly), (trx, try_), (brx, bry), (blx, bly) = corners
+    at = lambda x0, y0, x1, y1: x0 + (x1 - x0) * (y - y0) / (y1 - y0) if y1 != y0 else x0
+    return int(max(0, at(tlx, tly, blx, bly)) * w), int(min(1, at(trx, try_, brx, bry)) * w)
 
 
 def inner_ink(g: np.ndarray, staff: dict, left: int, right: int) -> float:
@@ -353,7 +379,7 @@ def music_start(g: np.ndarray, staff: dict, left: int, right: int) -> tuple[int,
         if full and (clear_after or out):
             brace = b
             continue
-        if a < brace + gap * 6:
+        if a < brace + gap * CLEF_FAR:
             clef = a
         break
     if not runs or clef < brace:
@@ -376,6 +402,9 @@ ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
 TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
 EMPTY_INK = 0.01      # less ink than this between its lines: an empty staff, dropped
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
+CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy stroke may be
+REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
+REACH_GAP = 4.0       # ...across gaps narrower than this
 SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
 SNAP_COVER = 0.6      # ...for a stroke covering at least this much of the staff height
 CROP_PAD = 1.0        # staff spaces of paper kept beyond a staff's outermost ink
@@ -796,7 +825,7 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
 
 
 def detect_page(img: Image.Image, room: float | None = None, model: dict | None = None,
-                collect: list | None = None) -> list[dict]:
+                collect: list | None = None, corners: list | None = None) -> list[dict]:
     """Proposed systems for one page, normalized coordinates.
 
     `room`: the clef-and-key room (left edge to music start, in staff
@@ -812,34 +841,38 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     `collect`: if given, each staff's candidates are appended to it as
     (staff top, staff bottom, candidates, staff space) in page fractions /
     pixels, for training such a model on the same steps detection takes.
+    `corners`: the paper's corners (find_page_corners, or the editor's);
+    no staff reaches past the paper.
     """
     g = _gray(img)
     h, w = g.shape
+    corners = corners or find_page_corners(img)
     found = []
     for st in find_staves(g):
         band, y0 = straighten(g, st)
         local = {**st, "top": st["top"] - y0, "bottom": st["bottom"] - y0,
                  "lines": [y - y0 for y in st["lines"]]}
-        left, right = staff_extent(band, local)
+        paper = paper_x(corners, (st["top"] + st["bottom"]) / 2 / h, w)
+        left, right = staff_extent(band, local, paper)
         if inner_ink(band, local, left, right) < EMPTY_INK:
             continue  # an empty ruled staff (text above or below doesn't count)
         clef, start, brace = music_start(band, local, left, right)
-        found.append((st, band, local, left, right, clef, start, brace))
+        found.append((st, band, local, left, right, clef, start, brace, paper))
 
     # Where the clef guess failed, the start sits at the staff's edge. Clef
     # and key take about the same room on every staff of a page: borrow it.
-    widths = [(s - c) / st["gap"] for st, _, _, _, _, c, s, _ in found if s - c >= 2 * st["gap"]]
+    widths = [(s - c) / st["gap"] for st, _, _, _, _, c, s, _, _ in found if s - c >= 2 * st["gap"]]
     typical = float(np.median(widths)) if widths else 4.0
 
     systems, crops = [], []
-    for st, band, local, left, right, clef, start, brace in found:
+    for st, band, local, left, right, clef, start, brace, paper in found:
         if start - clef < 2 * st["gap"]:
             clef = left
             start = min(right, left + int(typical * st["gap"]))
         ruled = left
         # the staff starts half a space before its clef's leftmost ink
         bound = brace if brace > left else None
-        left = max(bound or 0, clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
+        left = max(bound or 0, paper[0], clef_left(band, local, clef, left, bound) - int(st["gap"] * 0.5))
         # with the editor's room from their previous page, the music start
         # goes that far from the left edge, snapped to clear paper; decided
         # before the bar-line search, which starts there

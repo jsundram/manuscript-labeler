@@ -546,7 +546,9 @@ async function redetect() {
   const n = S.page;
   let systems, corners;
   const room = roomFromPreviousPage(n);
-  try { ({ systems, corners } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
+  // the editor's corners, if they moved them, bound the staves
+  const own = pg().corners && !pg().corners.auto ? `&corners=${encodeURIComponent(JSON.stringify(pg().corners.points))}` : '';
+  try { ({ systems, corners } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}${own}`)); }
   catch (e) { banner(`Detection failed: ${e.message}`); return; }
   if (n !== S.page) return;
   mutate((page) => {
