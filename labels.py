@@ -272,9 +272,10 @@ def bars_export(doc: dict) -> dict:
     numbered = number_bars(doc)
     pages = dict(sorted_pages(doc))
 
-    # A mark belongs to the bar whose crop holds its centre. A tempo outside
-    # every crop (written above the music) belongs to the first bar of the
-    # nearest staff below it; any other mark outside every crop ("Da capo
+    # A mark belongs to the bar whose crop holds its centre; one left of a
+    # line's music, within its height, to that line's first bar. A tempo
+    # outside every crop (written above the music) belongs to the first bar
+    # of the nearest staff below it; any other mark outside every crop ("Da capo
     # il Minuetto" under the last line, "Segue il Trio") to the last bar of
     # the nearest staff that its text reaches.
     quads = [bar_quad(nb["system"], nb["left"], nb["right"]) for nb in numbered]
@@ -289,6 +290,18 @@ def bars_export(doc: dict) -> dict:
                 if min(xs) <= cx <= max(xs) and min(ys) <= cy <= max(ys):
                     owner.setdefault(m["id"], i)
             if m["id"] not in owner and idx:
+                # written wholly left of a line's music, within its height
+                # (a "Trio" before the clef): that line's first bar, the
+                # nearest staff's where crops overlap
+                beside = [i for i in idx if numbered[i]["left"] is None
+                          and min(q[1] for q in quads[i]) <= cy <= max(q[1] for q in quads[i])
+                          and m["x"] + m["w"] <= min(q[0] for q in quads[i])]
+                if beside:
+                    def to_staff(i):
+                        s = numbered[i]["system"]
+                        return abs((s["top"] + s["bottom"]) / 2 - cy)
+                    owner[m["id"]] = min(beside, key=to_staff)
+                    continue
                 below = [i for i in idx if numbered[i]["system"]["top"] > cy]
                 if m.get("kind") == "tempo" and below:
                     owner[m["id"]] = min(below, key=lambda i: (numbered[i]["system"]["top"], i))

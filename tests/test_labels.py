@@ -122,6 +122,25 @@ def test_tempo_mark_above_the_music_goes_to_first_bar_below():
     assert out["pages"] == {"1": {"corners": [[0, 0], [1, 0], [1, 1], [0, 1]]}}
 
 
+def test_mark_left_of_a_lines_music_goes_to_its_first_bar():
+    # "Trio" written before the clef of the second line, not the line below
+    p = page("va", [system("p1s1", 0.2, [bl("a", 0.5), bl("b", 0.8)]),
+                    system("p1s2", 0.3, [bl("c", 0.5), bl("d", 0.8)]),
+                    system("p1s3", 0.4, [bl("e", 0.5), bl("f", 0.8)])])
+    p["marks"] = [{"id": "trio", "x": 0.01, "y": 0.305, "w": 0.06, "h": 0.03, "kind": "tempo", "text": "Trio"}]
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["marks"] for b in bars] == [[], [], ["trio"], [], [], []]
+
+
+
+def test_mark_left_of_music_where_crops_overlap_goes_to_the_nearer_line():
+    # staves 0.05 apart: crops (2.5 spaces each way) overlap
+    p = page("va", [system("p1s1", 0.2, [bl("a", 0.5)]), system("p1s2", 0.25, [bl("b", 0.5)])])
+    p["marks"] = [{"id": "trio", "x": 0.01, "y": 0.245, "w": 0.06, "h": 0.01, "kind": "tempo", "text": "Trio"}]
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["marks"] for b in bars] == [[], ["trio"]]
+
+
 def test_text_below_the_last_line_goes_to_the_nearest_bar():
     p = page("va", [system("p1s1", 0.2, [bl("a", 0.5), bl("b", 0.8)])])
     p["marks"] = [{"id": "dc", "x": 0.7, "y": 0.35, "w": 0.2, "h": 0.03, "kind": "text", "text": "Da capo"}]
