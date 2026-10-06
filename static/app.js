@@ -177,14 +177,29 @@ function xAt(b, s, y) {
   return h > 0 ? b.x0 + (b.x1 - b.x0) * (y - t) / h : b.x0;
 }
 
-// polygon points for a stretch of a staff from x0 to x1, widened by
-// `above` / `below` staff spaces, following its bend
-function strip(s, x0, x1, above = 0, below = 0, n = 12) {
+// the top and bottom edges ("x,y" screen points, left to right) of a
+// stretch of a staff from x0 to x1, widened by `above` / `below` staff
+// spaces, following its bend
+function edges(s, x0, x1, above = 0, below = 0, n = 12) {
   const sp = space(s);
   const xs = Array.from({ length: n + 1 }, (_, i) => x0 + (x1 - x0) * i / n);
-  const top = xs.map((x) => `${x * S.W},${(topAt(s, x) - above * sp) * S.H}`);
-  const bot = xs.reverse().map((x) => `${x * S.W},${(bottomAt(s, x) + below * sp) * S.H}`);
-  return top.concat(bot).join(' ');
+  return { top: xs.map((x) => `${x * S.W},${(topAt(s, x) - above * sp) * S.H}`),
+           bot: xs.map((x) => `${x * S.W},${(bottomAt(s, x) + below * sp) * S.H}`) };
+}
+// that stretch as polygon points
+function strip(s, x0, x1, above = 0, below = 0, n = 12) {
+  const e = edges(s, x0, x1, above, below, n);
+  return e.top.concat(e.bot.reverse()).join(' ');
+}
+// its outline as a path: the top and bottom edges, the left end, and the
+// right end only when no bar line is within a staff space of it (there
+// it would read as a second stroke beside the bar line)
+function outline(s, x0, x1, above = 0, below = 0) {
+  const e = edges(s, x0, x1, above, below);
+  const near = s.barlines.some((b) => Math.abs(mid(b) - x1) < space(s) * S.H / S.W);
+  const last = e.top.length - 1;
+  return `M${e.top.join(' L')} M${e.bot.join(' L')} M${e.top[0]} L${e.bot[0]}`
+    + (near ? '' : ` M${e.top[last]} L${e.bot[last]}`);
 }
 
 // Bars much wider or narrower than their line's typical bar: a missed bar
@@ -667,9 +682,11 @@ function renderOverlay() {
     const st = s.start ?? s.left;
     const bls = [...s.barlines].sort((a, b) => mid(a) - mid(b));
     // what the bar images will include, above and below the staff
-    out.push(`<polygon class="crop${isSel('sys', s.id) ? ' sel' : ''}" points="${strip(s, s.left, s.right, cropAbove(s), cropBelow(s))}"/>`);
-    const cls = ['staff', s.auto ? 'auto' : '', cue ? 'cue' : '', isSel('sys', s.id) ? 'sel' : ''].join(' ');
-    out.push(`<polygon class="${cls}" data-t="sys" data-id="${s.id}" points="${strip(s, s.left, s.right)}"/>`);
+    out.push(`<path class="crop${isSel('sys', s.id) ? ' sel' : ''}" d="${outline(s, s.left, s.right, cropAbove(s), cropBelow(s))}"/>`);
+    // the staff: a fill (what's clicked and dragged) and its outline
+    const mods = [s.auto ? 'auto' : '', cue ? 'cue' : '', isSel('sys', s.id) ? 'sel' : ''].join(' ');
+    out.push(`<polygon class="staff ${mods}" data-t="sys" data-id="${s.id}" points="${strip(s, s.left, s.right)}"/>`);
+    out.push(`<path class="staffedge ${mods}" d="${outline(s, s.left, s.right)}"/>`);
     // dim what lies in no bar: clef and key before the music start, and
     // anything after the last bar line
     if (st > s.left) out.push(`<polygon class="outside" points="${strip(s, s.left, st, 0, 0, 2)}"/>`);

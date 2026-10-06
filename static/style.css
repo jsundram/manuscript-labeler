@@ -119,10 +119,13 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 #help dd { margin: 0; }
 
 /* overlay */
-.staff { fill: var(--staff); stroke: var(--staff-line); stroke-width: 1.5; vector-effect: non-scaling-stroke; cursor: move; }
-.staff.auto { stroke-dasharray: 6 4; }
-.staff.cue { fill: rgba(120, 120, 120, .12); stroke: #777; }
-.staff.sel { stroke: var(--sel); stroke-width: 2.5; }
+/* a transparent stroke keeps the click area the outline used to give */
+.staff { fill: var(--staff); stroke: transparent; stroke-width: 1.5; vector-effect: non-scaling-stroke; cursor: move; }
+.staff.cue { fill: rgba(120, 120, 120, .12); }
+.staffedge { fill: none; stroke: var(--staff-line); stroke-width: 1.5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.staffedge.auto { stroke-dasharray: 6 4; }
+.staffedge.cue { stroke: #777; }
+.staffedge.sel { stroke: var(--sel); stroke-width: 2.5; }
 .start { stroke: var(--staff-line); stroke-width: 1.5; stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; pointer-events: none; }
 .bl { stroke: var(--accent); stroke-width: 3; vector-effect: non-scaling-stroke; pointer-events: none; }
 .bl.auto { stroke: var(--auto); stroke-dasharray: 7 4; }
