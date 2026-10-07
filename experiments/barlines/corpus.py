@@ -48,13 +48,15 @@ def render(pdf: Path, page: int, tmp: Path) -> np.ndarray:
     return np.asarray(Image.open(base.with_suffix(".jpg")).convert("L"))
 
 
-def straight_band(g: np.ndarray, s: dict) -> tuple[np.ndarray, dict]:
-    """The staff from left to right, MARGIN spaces above and below, each
-    column shifted by the staff's bend so the lines run level."""
+def straight_band(g: np.ndarray, s: dict, x0: int | None = None, x1: int | None = None) -> tuple[np.ndarray, dict]:
+    """The staff from left to right (or from pixel x0 to x1), MARGIN
+    spaces above and below, each column shifted by the staff's bend so the
+    lines run level (beyond the staff's ends, the bend at its nearer end)."""
     h, w = g.shape
     top, bottom = s["top"] * h, s["bottom"] * h
     space = (bottom - top) / 4
-    x0, x1 = int(round(s["left"] * w)), int(round(s["right"] * w))
+    if x0 is None or x1 is None:
+        x0, x1 = int(round(s["left"] * w)), int(round(s["right"] * w))
     xs = np.arange(x0, x1)
     shift = np.array([labels.bend_at(s, x / w) * h for x in xs])
     y_top = top - MARGIN * space
@@ -64,6 +66,18 @@ def straight_band(g: np.ndarray, s: dict) -> tuple[np.ndarray, dict]:
     geo = {"x_off": x0, "y_top": float(rows[0]), "space": float(space),
            "staff_top": float(top - rows[0]), "staff_bottom": float(bottom - rows[0])}
     return band, geo
+
+
+def paper_band(g: np.ndarray, s: dict, corners: list) -> tuple[np.ndarray, dict]:
+    """straight_band across the paper's whole width at the staff's height
+    (its corners: find_page_corners or the editor's): what the bar-line
+    detectors' cached predictions are made on, so a staff's ends, where
+    detection and the editor most often disagree, don't limit them."""
+    sys.path.insert(0, str(HERE.parent.parent))
+    import detect
+    h, w = g.shape
+    lo, hi = detect.paper_x(corners, (s["top"] + s["bottom"]) / 2, w)
+    return straight_band(g, s, max(0, lo), min(w, max(hi, lo + 1)))
 
 
 def main():

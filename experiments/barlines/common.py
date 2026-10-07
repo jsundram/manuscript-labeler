@@ -38,23 +38,27 @@ def lines(corpus: Path, which: str) -> list[dict]:
     return [l for l in c["lines"] if l["split"] == which]
 
 
-def run(corpus: Path, ls: list[dict], detect_tile) -> tuple[dict, float]:
-    """{line id: [(x, conf)]} merged across tiles, and seconds per line.
+def detect_line(img: Image.Image, space: float, detect_tile) -> list[tuple[float, float]]:
+    """[(x, conf)] along one straightened line image, from its TILE-wide
+    windows, the same bar line seen in two tiles kept once (the surer).
     detect_tile(PIL image) -> [(x_center, conf)] in tile pixels."""
+    found = []
+    for x in windows(img.size[0]):
+        tile = img.crop((x, 0, x + TILE, img.size[1]))
+        found += [(x + xc, conf) for xc, conf in detect_tile(tile)]
+    tol = 0.3 * space * 2
+    kept = []
+    for xc, conf in sorted(found, key=lambda d: -d[1]):
+        if all(abs(xc - k) > tol for k, _ in kept):
+            kept.append((xc, conf))
+    return sorted(kept)
+
+
+def run(corpus: Path, ls: list[dict], detect_tile) -> tuple[dict, float]:
+    """{line id: [(x, conf)]} merged across tiles, and seconds per line."""
     out, t0 = {}, time.perf_counter()
     for line in ls:
-        img = Image.open(corpus / line["file"]).convert("RGB")
-        found = []
-        for x in windows(line["width"]):
-            tile = img.crop((x, 0, x + TILE, line["height"]))
-            found += [(x + xc, conf) for xc, conf in detect_tile(tile)]
-        # the same bar line seen in two tiles: keep the surer one
-        tol = 0.3 * line["space"] * 2
-        kept = []
-        for xc, conf in sorted(found, key=lambda d: -d[1]):
-            if all(abs(xc - k) > tol for k, _ in kept):
-                kept.append((xc, conf))
-        out[line["id"]] = sorted(kept)
+        out[line["id"]] = detect_line(Image.open(corpus / line["file"]).convert("RGB"), line["space"], detect_tile)
     return out, (time.perf_counter() - t0) / max(1, len(ls))
 
 
