@@ -60,6 +60,15 @@ const S = {
   held: null,          // the key being held down to place ('b', 's', 'm')
   loadToken: 0,
 };
+// Selecting anything forgets where a delete left Tab (S.tabFrom)
+{
+  let sel = S.sel;
+  Object.defineProperty(S, 'sel', {
+    get: () => sel,
+    set: (v) => { sel = v; S.tabFrom = null; },
+    enumerable: true,
+  });
+}
 
 // ------------------------------------------------------------------ helpers
 
@@ -336,6 +345,7 @@ function pushUndo() {
 function restore(from, to) {
   const snap = from.pop();
   if (!snap) return;
+  S.tabFrom = null;  // the deleted item may be back
   if (snap.page !== S.page) { from.push(snap); openPage(snap.page); return; }  // press again to undo there
   to.push(snapshot());
   const p = JSON.parse(snap.json);
@@ -1288,6 +1298,11 @@ function deleteSelection() {
   const item = find(S.sel);
   if (!item) return;
   const sel = S.sel;
+  // Tab carries on from here: the next Tab selects what came after the
+  // deleted item, Shift-Tab what came before (nothing is selected now, so
+  // a second d can't delete a neighbour by accident)
+  const order = sel.t === 'bl' || sel.t === 'sys' || sel.t === 'mark' ? tabOrder(sel.t) : [];
+  const at = order.indexOf(sel.id);
   mutate((page) => {
     // remember what was deleted, so re-detection doesn't bring it back
     if (sel.t === 'mark') page.marks = page.marks.filter((m) => m !== item);
@@ -1302,6 +1317,7 @@ function deleteSelection() {
     }
     S.sel = null;
   });
+  if (at >= 0) S.tabFrom = { page: S.page, t: sel.t, next: order[at + 1] ?? null, prev: order[at - 1] ?? null };
 }
 
 // The clicked handle, if it still belongs to the current selection.
@@ -1372,23 +1388,43 @@ function setBarline(fn) {
   mutate(() => { fn(item); item.auto = false; });
 }
 
-// Tab moves to the next item of the kind selected: bar line to bar line
-// (in reading order), staff to staff (top to bottom), mark to mark. With
-// nothing selected it starts at the first bar line.
+// The open page's items of one kind in Tab order: staves top to bottom,
+// marks in reading order, bar lines in bar order (those on staves that
+// aren't counted, such as cue staves, after them, top to bottom)
+function tabOrder(t) {
+  const page = pg();
+  if (t === 'sys') return [...page.systems].sort((a, b) => a.top - b.top).map((s) => s.id);
+  if (t === 'mark') return [...page.marks].sort((a, b) => a.y - b.y || a.x - b.x).map((m) => m.id);
+  const numbered = S.bars.filter((nb) => nb.page === S.page).map((nb) => nb.right.id);
+  const seen = new Set(numbered);
+  const rest = [...page.systems].sort((a, b) => a.top - b.top)
+    .flatMap((s) => [...s.barlines].sort((a, b) => mid(a) - mid(b)).map((b) => b.id))
+    .filter((id) => !seen.has(id));
+  return numbered.concat(rest);
+}
+
+// Tab moves to the next item of the kind selected: bar line to bar line,
+// staff to staff, mark to mark (see tabOrder). With nothing selected it
+// starts at the first bar line, or, just after a delete, carries on from
+// where the deleted item was.
+
 function cycleSelection(dir) {
   const page = pg();
   if (!page) return;
-  const t = S.sel?.t === 'sys' || S.sel?.t === 'mark' ? S.sel.t : 'bl';
-  let all;
-  if (t === 'sys') all = [...page.systems].sort((a, b) => a.top - b.top).map((s) => s.id);
-  else if (t === 'mark') all = [...page.marks].sort((a, b) => a.y - b.y || a.x - b.x).map((m) => m.id);
-  else {
-    const order = numberBars({ pages: { [S.page]: { ...page, kind: 'music', part: page.part || 'x' } } }).map((nb) => nb.right.id);
-    all = order.length ? order : page.systems.flatMap((s) => s.barlines.map((b) => b.id));
-  }
+  // just after a delete: carry on from where the deleted item was
+  const from = !S.sel && S.tabFrom?.page === S.page ? S.tabFrom : null;
+  S.tabFrom = null;
+  const t = from ? from.t : S.sel?.t === 'sys' || S.sel?.t === 'mark' ? S.sel.t : 'bl';
+  const all = tabOrder(t);
   if (!all.length) return;
-  const i = S.sel && S.sel.t === t ? all.indexOf(S.sel.id) : -1;
-  S.sel = { t, id: all[(i + dir + all.length) % all.length] };
+  const target = from && (dir > 0 ? from.next : from.prev);
+  if (target && all.includes(target)) S.sel = { t, id: target };
+  else {
+    // after deleting the last (first) item, or if its neighbour has gone
+    // since: start again from the first (last)
+    const i = from ? (dir > 0 ? -1 : 0) : S.sel && S.sel.t === t ? all.indexOf(S.sel.id) : -1;
+    S.sel = { t, id: all[(i + dir + all.length) % all.length] };
+  }
   renderAll();
 }
 
