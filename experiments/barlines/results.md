@@ -1,7 +1,7 @@
 # Bar-line bake-off: results
 
 Three rounds, newest first. 2026-10-07 teaches the line detector where
-staves start and end, and tries MUSCIMA++ pretraining; 2026-10-06
+staves start and end, and tries MUSCIMA++ pretraining and Zeus; 2026-10-06
 adds a second source in two hands; 2026-10-05 is KHM 602/603 alone. Per-model detail,
 training curves and checkpoints: the model cards (static/models/, served
 by the labeler at /static/models/; written by cards.py). See README.md
@@ -79,6 +79,34 @@ staff space: 92/85/97% familiar, 87/89/97% Vma), with no "end" on 6 Vma
 lines. Better on the hands it trained on, worse on the unseen one (which
 pretraining was meant to help), from one run each: not worth a
 non-commercial dataset in the training data.
+
+### Zeus: reads the music, not the clefs (zeus_eval.py)
+
+Zeus (OmniOMR; code MIT, weights CC BY-NC-SA) reads a cropped staff into
+the notes as text (LMX), with no positions. Its newest solo-staff model
+(ayce, 2026-08), zero-shot on the test staves, grey (thresholding to
+black and white read worse), 0.1 to 0.3 s a staff on the CPU:
+
+- **Bar counts**: its count of measures equals the editor's bar lines on
+  28 of 29 viola lines, 21 of 27 cello lines and 17 of 18 violin lines.
+  Counting doesn't depend on the clef. A disagreement could flag a staff
+  whose bar lines need a look.
+- **Notes**: a Vma violin line read almost note for note (grace notes,
+  key, 2/4).
+- **Clefs**: it doesn't read ours. Of 29 viola lines (alto), it read
+  treble on 19, bass on 4, alto on 4, soprano and tenor on one each. Of the 6 cello lines it didn't
+  read as bass, all 6 were wrong: Berlin's bass clef (a C with two dots)
+  read as treble 4 times, a real tenor clef as treble, a bass as tenor.
+  The editor's clef (the page's clef and clef marks) has to replace it.
+  Keeping the staff positions it read and swapping in the part's usual
+  clef afterwards (zeus_eval.py's reclef; not yet the clef marks, so a
+  tenor passage would come out wrong) reads right on the viola lines
+  checked by hand. Forcing the
+  clef while it decodes (--hint) changes the notes it reads after it,
+  for the worse on the viola lines checked (octave leaps flattened, notes
+  below the staff moved into it).
+
+Not used by the labeler.
 
 ## Three hands (2026-10-06)
 
