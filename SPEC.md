@@ -463,8 +463,12 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   detectors' predictions are made ahead of time for every page
   (tools/predict_barlines.py, about a second a page, into the cache;
   staves cut across the paper's width so the editor's edits to staff
-  ends don't invalidate them), for the labeler to vote with its learned
-  filter when they're there.
+  ends don't invalidate them). Detection votes them, staff by staff,
+  with its own bar lines (the learned filter's, or the rules') before
+  each staff's end is decided (detections.py, detect_page's `vote`): a
+  bar line stays if two of the three propose it, taking its own bar
+  line's position and kind where there is one. Without two detectors'
+  predictions for a page, detection is as before.
   Two dead ends, written up there: segmenting whole pages into staff,
   clef-key-time and crop outlines (YOLO26/YOLO11-seg) didn't learn; and
   oemer couldn't run. Staff finding itself is sound (every staff found

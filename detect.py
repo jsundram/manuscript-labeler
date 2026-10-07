@@ -847,7 +847,7 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
 
 
 def detect_page(img: Image.Image, room: float | None = None, model: dict | None = None,
-                collect: list | None = None, corners: list | None = None) -> list[dict]:
+                collect: list | None = None, corners: list | None = None, vote=None) -> list[dict]:
     """Proposed systems for one page, normalized coordinates.
 
     `room`: the clef-and-key room (left edge to music start, in staff
@@ -865,6 +865,9 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     pixels, for training such a model on the same steps detection takes.
     `corners`: the paper's corners (find_page_corners, or the editor's);
     no staff reaches past the paper.
+    `vote`: if given, each staff's bar lines are put to it before the staff's
+    end is decided, vote(staff, band, local, bars, left, right, paper) ->
+    bars (detections.make_vote: with the detectors' cached predictions).
     """
     g = _gray(img)
     h, w = g.shape
@@ -914,8 +917,10 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
                 collect.append((st["top"] / h, st["bottom"] / h, cands, st["gap"]))
         bars = choose(cands, model, st["gap"]) if model is not None else \
             find_barlines(band, local, ruled, reach, skip_to=start)
+        if vote is not None:
+            bars = vote(st, band, local, bars, left, right, paper)
         if bars:
-            right = max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2)
+            right = min(paper[1], max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2))
         # End the staff just after its last bar line when the ruled lines
         # beyond it are blank. Music there (a missed bar line, a bar that
         # runs on to the next line) keeps the full length.

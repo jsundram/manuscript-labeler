@@ -23,7 +23,8 @@ staff's top, bottom and bend to match it to the labeler's staves by height.
 
 One cache per detector (its name, weights and threshold in the folder's
 key: a retrain or new threshold gets a new folder; adding a detector
-doesn't redo the others), one file per edition and PDF, which records the
+doesn't redo the others; layout and keys in detections.py, which the
+labeler reads them with), one file per edition and PDF, which records the
 PDF's size and modification time: a changed PDF is predicted afresh.
 Pages already done are skipped; a page that fails is recorded with its
 error and skipped too (--retry tries those again).
@@ -32,7 +33,6 @@ error and skipped too (--retry tries those again).
 import argparse
 import hashlib
 import json
-import os
 import shutil
 import sys
 import time
@@ -48,23 +48,9 @@ sys.path[:0] = [str(ROOT), str(ROOT / "experiments" / "barlines")]
 import detect  # noqa: E402
 from common import detect_line  # noqa: E402
 from corpus import paper_band  # noqa: E402
+from detections import cache_dir, cache_file, detectors, pdf_identity  # noqa: E402
 
 MIN_CONF = 0.05
-VERSION = 2  # bump when the crops or the output change
-
-
-def cache_dir() -> Path:
-    return Path(os.environ.get("MANUSCRIPT_LABELER_CACHE", Path.home() / ".cache" / "manuscript-labeler"))
-
-
-def detectors() -> list[dict]:
-    out = []
-    for m in sorted((cache_dir() / "models" / "detectors").glob("*/manifest.json")):
-        d = json.loads(m.read_text())
-        d["weights"] = m.parent / "best.pt"
-        d["key"] = f"{d['name']}-{d['sha'][:8]}-t{d['threshold']}-v{VERSION}"
-        out.append(d)
-    return out
 
 
 def install(name: str, weights: Path, threshold: float, notes: str):
@@ -76,17 +62,6 @@ def install(name: str, weights: Path, threshold: float, notes: str):
         "name": name, "kind": "yolo", "threshold": threshold, "sha": sha, "source": str(weights),
         "installed": date.today().isoformat(), "notes": notes}, indent=1))
     print(f"installed {name} ({sha}), threshold {threshold}")
-
-
-def pdf_identity(pdf: Path) -> str:
-    st = pdf.stat()
-    return f"{st.st_size}:{st.st_mtime_ns}"
-
-
-def cache_file(det: dict, edition: Path, rel: str) -> Path:
-    """The predictions of one detector for one PDF of one edition."""
-    ed = f"{edition.resolve().name}-{hashlib.sha1(str(edition.resolve()).encode()).hexdigest()[:8]}"
-    return cache_dir() / "detections" / det["key"] / ed / (rel.replace("/", "__") + ".json")
 
 
 def main():

@@ -112,7 +112,8 @@ As the labeler would run it: staves detected on whole pages, the learned
 filter (learn.py) on them, and the detectors on those staves cut out
 across the paper's width (corpus.paper_band, with the editor's corners
 where set: the crops tools/predict_barlines.py caches), their bar lines
-kept within each staff's ends plus a space. The test lines' labels are
+kept from each staff's left end to a space past its right end (the
+labeler's rule: detections.py). The test lines' labels are
 hidden from the learned filter's training (on the three-hand test, the
 other staves of their pages are not: that corpus is split by line, so
 the filter's numbers there are a little flattering; on Vma ms 1067 (1)

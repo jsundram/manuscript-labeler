@@ -6,7 +6,7 @@
 whole pages, the learned filter (learn.py) choosing bar lines on them, and
 detectors predicting on the detected staves cut out across the paper's
 width (corpus.paper_band: the crops tools/predict_barlines.py caches),
-kept within each staff's ends (a space either side), as the labeler would
+kept within each staff's ends (a space past its right end), as the labeler would
 use them; a bar line kept if most of them propose it. Scored on a
 corpus's test lines; those lines' labels are hidden from the learned
 filter's training (the other staves on their pages are not: the
@@ -42,7 +42,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent.parent))
 
-REACH = 1.0  # staff spaces beyond a staff's ends a detector's bar line may be
+from detections import MATCH, REACH  # noqa: E402  (the labeler's own: its reach past a staff's end, staff matching)
 
 
 def stage(corpus: Path, edition: Path):
@@ -92,7 +92,7 @@ def stage(corpus: Path, edition: Path):
             systems = detect.detect_page(img, model=model, corners=corners)
             for l in ls:
                 s = min(systems, key=lambda s: abs(s["top"] - l["top_frac"]), default=None)
-                if s is None or abs(s["top"] - l["top_frac"]) > 0.015:
+                if s is None or abs(s["top"] - l["top_frac"]) > MATCH:
                     learned[l["id"]] = []
                     continue
                 learned[l["id"]] = [(b["x0"] + b["x1"]) / 2 * w - l["left"] for b in s["barlines"]]
@@ -101,8 +101,8 @@ def stage(corpus: Path, edition: Path):
                 # crop x + offset = page x; page x - line's left = the line's x
                 crops.append({"id": l["id"], "file": f"e2e/crops/{l['id']}.png", "width": band.shape[1],
                               "height": band.shape[0], "space": geo["space"], "offset": geo["x_off"] - l["left"],
-                              # the detected staff's ends, in the line's x
-                              "lo": s["left"] * w - l["left"] - REACH * geo["space"],
+                              # the detected staff's ends (a space past the right one), in the line's x
+                              "lo": s["left"] * w - l["left"],
                               "hi": s["right"] * w - l["left"] + REACH * geo["space"]})
     (corpus / "e2e" / "crops.json").write_text(json.dumps(crops, indent=1))
     write(corpus, {"method": "e2e-learned", "train_s": train_s, "infer_s": 0.0, "lines": learned,

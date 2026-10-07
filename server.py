@@ -164,7 +164,7 @@ class Edition:
             "expected": expected,
             "structure": self.rel(sp) if sp else None,
             "labels_file": self.rel(lp),
-            "barline_model": self.model_state,
+            "barline_model": self.barline_state(),
         }
 
     # -- saving --------------------------------------------------------------
@@ -285,15 +285,42 @@ class Edition:
         return {"x": r / w} if r is not None else {}
 
     def detect(self, rel: str, page: int, room: float | None = None, corners: list | None = None) -> dict:
-        """Detection on one page; `corners`, the editor's, else detected."""
+        """Detection on one page; `corners`, the editor's, else detected. Its
+        bar lines are voted with the detectors' cached predictions for the
+        page when there are any (detections.py); if reading them fails,
+        detection goes ahead without."""
         from PIL import Image
 
         import detect
+        import detections
 
         img = Image.open(self.render(rel, page))
         corners = corners or detect.find_page_corners(img)
-        return {"systems": detect.detect_page(img, room, model=self.model, corners=corners), "corners": corners,
-                "look": detect.page_look(img, corners)}
+        try:  # a bad cache mustn't stop detection
+            preds = detections.page_predictions(self.root, rel, page, self.cache)
+            vote = detections.make_vote(preds, img.size[0], img.size[1]) if preds else None
+        except Exception as e:
+            print(f"bar-line predictions unreadable for {rel} p{page}: {type(e).__name__}: {e}", flush=True)
+            vote = None
+        try:
+            systems = detect.detect_page(img, room, model=self.model, corners=corners, vote=vote)
+        except Exception as e:
+            if vote is None:
+                raise
+            print(f"bar-line vote failed on {rel} p{page}: {type(e).__name__}: {e}", flush=True)
+            systems = detect.detect_page(img, room, model=self.model, corners=corners)
+        return {"systems": systems, "corners": corners, "look": detect.page_look(img, corners)}
+
+    def barline_state(self) -> str:
+        """How bar lines are found, for the source panel."""
+        import detections
+        try:
+            names = detections.has_predictions(self.root, self.cache)
+        except Exception:
+            names = []
+        if len(names) < 2:  # the vote needs two detectors
+            return self.model_state
+        return f"{self.model_state}; voted with {', '.join(names)} (cached predictions)"
 
     def train_model(self):
         """(Re)train the learned bar-line filter in the background. A request

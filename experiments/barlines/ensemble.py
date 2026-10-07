@@ -26,22 +26,11 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from harness import load, score  # noqa: E402
 
+sys.path.insert(0, str(HERE.parent.parent))
+from detections import vote  # noqa: E402  (the labeler's own vote)
+
 DEFAULT = ["detectron2-faster-rcnn-r50", "dfine-dfine-small-coco", "yolo-yolo11n",
            "learned-gbm-widths", "learned-gbm", "classical"]
-
-
-def vote(proposals: dict[str, list[float]], tol: float, need: int) -> list[float]:
-    """Bar lines (x) proposed by at least `need` of the methods: each
-    method's proposals pooled, those within `tol` of a group's first one
-    merged, a group kept at its mean if `need` methods are in it."""
-    pts = sorted((x, m) for m, xs in proposals.items() for x in xs)
-    groups: list[list] = []
-    for x, m in pts:
-        if groups and x - groups[-1][0][0] <= tol:
-            groups[-1].append((x, m))
-        else:
-            groups.append([(x, m)])
-    return [sum(x for x, _ in g) / len(g) for g in groups if len({m for _, m in g}) >= need]
 
 
 def main():
