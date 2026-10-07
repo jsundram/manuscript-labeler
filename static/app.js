@@ -839,7 +839,7 @@ function renderMeta() {
     ['RISM', d.rism_url ? `<a href="${esc(d.rism_url)}" target="_blank">${esc(s.rism)}</a>` : esc(s.rism)],
     ['Online', d.online ? `<a href="${esc(d.online)}" target="_blank">${esc(d.online_label || 'link')}</a>` : esc(d.online_label || '')],
     ['Bars from', esc(S.info.structure || 'no Structure.ily found')],
-    ['Bar lines', esc(S.info.barline_model || '')],
+    ['Bar lines', `${esc(S.info.barline_model || '')} · <a href="/static/models/index.html" target="_blank">model cards</a>`],
   ];
   $('#meta').innerHTML = '<dl>' + rows.filter((r) => r[1]).map(([k, v]) =>
     `<dt>${k}</dt><dd>${k === 'RISM' || k === 'Online' || k === 'Bars from' || k === 'Bar lines' ? v : esc(v)}</dd>`).join('') + '</dl>' +
