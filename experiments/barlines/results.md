@@ -1,7 +1,7 @@
 # Bar-line bake-off: results
 
 Three rounds, newest first. 2026-10-07 teaches the line detector where
-staves start and end; 2026-10-06
+staves start and end, and tries MUSCIMA++ pretraining; 2026-10-06
 adds a second source in two hands; 2026-10-05 is KHM 602/603 alone. Per-model detail,
 training curves and checkpoints: the model cards (static/models/, served
 by the labeler at /static/models/; written by cards.py). See README.md
@@ -57,6 +57,28 @@ most of all on the familiar hands.
 Mosaics (on in training) can clip a start or end box at a seam, which
 tiles.py otherwise avoids; turning them off for these classes is a
 next try.
+
+### MUSCIMA++ pretraining: no gain (muscima_corpus.py)
+
+MUSCIMA++ v2.0 (CC BY-NC-SA 4.0): 140 pages of the CVC-MUSCIMA set, 20
+pieces each rewritten by 50 musicians on printed staff paper, scanned to
+black and white. Converted to the same lines (883 lines, 4746 bar lines
+after dropping each system's opening line, which the editor's labels
+don't count; 839 clef-key-time regions), drawn as grey ink on grey paper
+with a little blur and noise. YOLO26n trained 10 epochs on it (77 min;
+mAP50 0.98 on its own validation tiles), then 50 epochs on ours, against
+the same 50 from YOLO's COCO weights:
+
+| | familiar hands | Vma ms 1067 (1) |
+|---|---|---|
+| bar line errors, from COCO | 13 (5 false, 8 missed) | 21 (3, 18) |
+| bar line errors, from MUSCIMA++ | 8 (2, 6) | 30 (2, 28) |
+
+The staff's ends and music start came out about the same (within 1
+staff space: 92/85/97% familiar, 87/89/97% Vma), with no "end" on 6 Vma
+lines. Better on the hands it trained on, worse on the unseen one (which
+pretraining was meant to help), from one run each: not worth a
+non-commercial dataset in the training data.
 
 ## Three hands (2026-10-06)
 

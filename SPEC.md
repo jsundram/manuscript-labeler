@@ -499,7 +499,7 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   on 97–99% of test lines, where the labeler's detection (with the
   learned filter and the vote) manages 56–79%; music starts and left
   ends better too (experiments/barlines/results.md). Not yet
-  used by the labeler.
+  used by the labeler. Pretraining on MUSCIMA++ didn't help.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet
