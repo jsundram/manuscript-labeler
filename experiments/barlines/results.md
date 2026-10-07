@@ -78,6 +78,64 @@ a couple of errors either way is noise. The learned filter here is the
 straightened-lines run; in the labeler it also inherits staff detection's
 errors.
 
+### An unseen copy: F-Pn Vma ms 1067 (1)
+
+A later copy (1810-40), photographed rather than scanned, in a new hand:
+its reviewed pages (Violin I pp. 3-6, Violin II p. 9, Viola p. 15, Cello
+p. 21; 72 lines, 376 bar lines), scored with the models trained on the
+three-hand corpus above, none of which saw it. Errors (false + missed):
+
+| method | Violin I | Violin II | Viola | Cello | all | per line |
+|---|---|---|---|---|---|---|
+| D-FINE small | 15 | 1 | 3 | 5 | 24 | 187 ms |
+| YOLO26n | 14 | 1 | 1 | 11 | 27 | 70 ms |
+| YOLO11n | 16 | 2 | 4 | 10 | 32 | 139 ms |
+| YOLO26n on MLX | 19 | 4 | 7 | 3 | 33 | 46 ms |
+| Detectron2 | 64 | 35 | 3 | 19 | 121 | 912 ms |
+| learned filter + bar widths | 49 | 47 | 38 | 4 | 138 | 44 ms |
+| learned filter, end to end | 52 | 56 | 31 | 11 | 150 | 43 ms |
+| hand-tuned rules | 88 | 66 | 53 | 4 | 211 | 10 ms |
+| vote, 2 of 3: YOLO26n, YOLO11n, learned filter | | | | | 17 | |
+
+The detectors carry to a new copy (6-9 per 100 bar lines); the learned
+filter doesn't (its candidates and measurements are tied to the hands it
+learned). Detectron2 goes quiet again (all its errors are misses). Of the
+17 bar lines most detectors missed, about 8 sit at the very end of the
+test crop (cut in half: a test-set artifact; the labeler searches a space
+past the staff's end), about 5 are this copyist's repeat signs (one
+slashed stroke with dots, unlike any training hand), one a stray bar
+line on a clef.
+
+### The vote end to end (e2e_vote.py)
+
+As the labeler would run it: staves detected on whole pages, the learned
+filter (learn.py) on them, and the detectors on those staves cut out
+across the paper's width (corpus.paper_band, with the editor's corners
+where set: the crops tools/predict_barlines.py caches), their bar lines
+kept within each staff's ends plus a space. The test lines' labels are
+hidden from the learned filter's training (on the three-hand test, the
+other staves of their pages are not: that corpus is split by line, so
+the filter's numbers there are a little flattering; on Vma ms 1067 (1)
+every reviewed line is a test line). The detectors are the three-hand
+corpus's. Errors:
+
+| method | three-hand test lines (431) | Vma ms 1067 (1) (376) |
+|---|---|---|
+| learned filter alone (the labeler today) | 41 | 150 |
+| YOLO11n | 22 | 51 |
+| YOLO26n | 28 | 35 |
+| D-FINE | 49 | 44 |
+| vote: learned filter, YOLO26n, YOLO11n | 21 | 37 |
+| vote: YOLO26n, YOLO11n, D-FINE | 24 | 39 |
+| vote: learned filter, YOLO26n, D-FINE | 32 | 34 |
+
+Anything with a YOLO in it halves the labeler's errors on familiar hands
+and cuts them by about three-quarters on a new copy. Which is best
+varies by test set and is within noise; YOLO26n is the steadiest single
+detector, the vote of the learned filter and both YOLOs the best on
+familiar hands. Detected staves cost the detectors several errors
+against the editor's staves (YOLO26n 16 -> 28 on the three-hand test).
+
 ## Round 1: KHM 602/603 (2026-10-05)
 
 43 test lines, 287 bar lines (21 lines from KHM 602, 22 from KHM 603),

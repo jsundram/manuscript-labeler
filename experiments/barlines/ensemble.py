@@ -30,6 +30,20 @@ DEFAULT = ["detectron2-faster-rcnn-r50", "dfine-dfine-small-coco", "yolo-yolo11n
            "learned-gbm-widths", "learned-gbm", "classical"]
 
 
+def vote(proposals: dict[str, list[float]], tol: float, need: int) -> list[float]:
+    """Bar lines (x) proposed by at least `need` of the methods: each
+    method's proposals pooled, those within `tol` of a group's first one
+    merged, a group kept at its mean if `need` methods are in it."""
+    pts = sorted((x, m) for m, xs in proposals.items() for x in xs)
+    groups: list[list] = []
+    for x, m in pts:
+        if groups and x - groups[-1][0][0] <= tol:
+            groups[-1].append((x, m))
+        else:
+            groups.append([(x, m)])
+    return [sum(x for x, _ in g) / len(g) for g in groups if len({m for _, m in g}) >= need]
+
+
 def main():
     corpus = Path(sys.argv[1])
     methods = sys.argv[2:] or DEFAULT
@@ -73,17 +87,8 @@ def main():
 
     print("\nvoting (kept if proposed by at least k of the methods):")
     for k in range(1, n + 1):
-        lines = {}
-        for line in test:
-            tol = c["tolerance_frac"] * line["page_w"]
-            pts = sorted((p, m) for m in methods for p in res[m]["lines"].get(line["id"], []))
-            groups: list[list] = []
-            for p, m in pts:
-                if groups and p - groups[-1][0][0] <= tol:
-                    groups[-1].append((p, m))
-                else:
-                    groups.append([(p, m)])
-            lines[line["id"]] = [sum(p for p, _ in g) / len(g) for g in groups if len({m for _, m in g}) >= k]
+        lines = {line["id"]: vote({m: res[m]["lines"].get(line["id"], []) for m in methods},
+                                  c["tolerance_frac"] * line["page_w"], k) for line in test}
         r = {"method": f"vote-{k}of{n}", "train_s": 0.0, "infer_s": sum(res[m]["infer_s"] for m in methods),
              "lines": lines, "notes": f"kept if at least {k} of {', '.join(methods)} propose it"}
         s = score(corpus, r)

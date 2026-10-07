@@ -453,6 +453,18 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   The deep detectors and the filter mostly err on different bar lines, so
   a vote of unlike methods would halve errors again, but would put PyTorch
   in the server; not done.
+- **Detectors for new hands; a cached vote** (2026-10-07). With a third
+  and fourth copy labelled (F-Po RES 507 (14), two hands; F-Pn Vma ms
+  1067 (1), photographed), the learned filter proved tied to the hands it
+  learned: end to end on Vma ms 1067 (1), which it never saw, 150 errors
+  in 376 bar lines, where YOLO26n trained on the other sources made 35.
+  The YOLOs carry to new copies; votes with the filter are within noise
+  of the best single YOLO (experiments/barlines/results.md). So the
+  detectors' predictions are made ahead of time for every page
+  (tools/predict_barlines.py, about a second a page, into the cache;
+  staves cut across the paper's width so the editor's edits to staff
+  ends don't invalidate them), for the labeler to vote with its learned
+  filter when they're there.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet
