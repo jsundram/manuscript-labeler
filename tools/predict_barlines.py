@@ -89,7 +89,8 @@ def main():
 
         def tile(t, m=m):
             r = m.predict(t, imgsz=640, conf=MIN_CONF, device=device, verbose=False)[0]
-            return [(float((b[0] + b[2]) / 2), float(c)) for b, c in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist())]
+            return [(float((b[0] + b[2]) / 2), float(c)) for b, c, k in
+                    zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist()) if int(k) == 0]  # bar lines only
         models.append((d, tile))
     ed = server.Edition(args.edition, cache_dir())
     print(f"detectors {', '.join(d['key'] for d in dets)} on {device}")

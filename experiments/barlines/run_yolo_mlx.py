@@ -26,6 +26,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import finish  # noqa: E402
+from tiles import tile_classes  # noqa: E402
 
 NAME = "yolo26n-mlx"
 EPOCH = re.compile(r"Epoch (\d+)/\d+: loss=([\d.]+), mAP50=([\d.]+), mAP50-95=([\d.]+), P=([\d.]+), R=([\d.]+), time=([\d.]+)s")
@@ -73,6 +74,9 @@ def main():
     tiles = args.corpus / "tiles" / "yolo"
     data = runs / f"{NAME}-data.yaml"
     runs.mkdir(parents=True, exist_ok=True)
+    if len(tile_classes(args.corpus)) > 1:
+        raise SystemExit("these tiles also hold start and end boxes (corpus.py --paper): "
+                         "yolo-mlx is set up for bar lines only; build the tiles without --paper")
     data.write_text(f"path: {tiles}\ntrain: images/train\nval: images/val\nnc: 1\nnames: ['barline']\n")
 
     # (yolo-mlx's checkpoints hold the weights only, not the optimiser or the
@@ -97,7 +101,9 @@ def main():
 
     def detect_tile(tile):
         r = best.predict(tile, conf=0.05, imgsz=640)[0]
-        return [(float((b[0] + b[2]) / 2), float(c)) for b, c in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist())]
+        cls = r.boxes.cls.tolist() if hasattr(r.boxes, "cls") else [0] * len(r.boxes.conf.tolist())
+        return [(float((b[0] + b[2]) / 2), float(c)) for b, c, k in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), cls)
+                if int(k) == 0]  # bar lines only
 
     finish(args.corpus, f"yolo-mlx-{NAME.removesuffix('-mlx')}", detect_tile, train_s,
            "yolo-mlx (MLX on Metal), yolo26n converted from Ultralytics' COCO weights, imgsz 640 tiles")

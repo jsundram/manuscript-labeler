@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import finish  # noqa: E402
+from tiles import tile_classes  # noqa: E402
 
 
 def main():
@@ -31,6 +32,9 @@ def main():
     from detectron2.engine import DefaultPredictor, DefaultTrainer
 
     tiles = args.corpus / "tiles"
+    if len(tile_classes(args.corpus)) > 1:
+        raise SystemExit("these tiles also hold start and end boxes (corpus.py --paper): "
+                         "run_detectron2 is set up for bar lines only; build the tiles without --paper")
     for split in ("train", "val"):
         register_coco_instances(f"bl_{split}", {}, str(tiles / "coco" / f"{split}.json"), str(tiles / "yolo" / "images" / split))
 

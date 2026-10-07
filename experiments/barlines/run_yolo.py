@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import cumulative_times, finish  # noqa: E402
+from tiles import tile_classes  # noqa: E402
 
 
 def main():
@@ -33,6 +34,7 @@ def main():
     from ultralytics import YOLO
 
     runs = args.corpus / "runs"
+    landmarks = len(tile_classes(args.corpus)) > 1  # corpus.py --paper's start and end classes
     model = YOLO(str(runs / args.model) if (runs / args.model).exists() else args.model)
     run = runs / Path(args.model).stem
     def total_seconds():
@@ -53,13 +55,17 @@ def main():
         t0 = time.perf_counter()
         model.train(data=str(args.corpus / "tiles" / "data.yaml"), epochs=args.epochs, imgsz=640, batch=16,
                     device="mps", patience=25, project=str(runs), name=Path(args.model).stem, exist_ok=True,
-                    plots=False, verbose=False, workers=2, fliplr=0.5, mosaic=1.0, save_period=args.save_period)
+                    plots=False, verbose=False, workers=2, mosaic=1.0, save_period=args.save_period,
+                    # mirroring is fine for bar lines, but would turn a staff's right end
+                    # into a left end (Ultralytics doesn't swap classes when it flips)
+                    fliplr=0.0 if landmarks else 0.5)
         train_s = time.perf_counter() - t0
     best = YOLO(str(run / "weights" / "best.pt"))
 
     def detect_tile(tile):
         r = best.predict(tile, imgsz=640, conf=0.05, device="mps", verbose=False)[0]
-        return [(float((b[0] + b[2]) / 2), float(c)) for b, c in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist())]
+        return [(float((b[0] + b[2]) / 2), float(c)) for b, c, k in
+                    zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist()) if int(k) == 0]  # bar lines only
 
     finish(args.corpus, f"yolo-{Path(args.model).stem}", detect_tile, train_s,
            f"Ultralytics {Path(args.model).stem}, COCO-pretrained, MPS, imgsz 640 tiles")

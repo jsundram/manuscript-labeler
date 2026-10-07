@@ -56,7 +56,8 @@ def main():
         c = json.loads((tiles / "coco" / f"{split}.json").read_text())
         anns = {}
         for a in c["annotations"]:
-            anns.setdefault(a["image_id"], []).append(a)
+            if a["category_id"] == 1:  # bar lines only (tiles may also hold start and end boxes)
+                anns.setdefault(a["image_id"], []).append(a)
         return [(tiles / "yolo" / "images" / split / im["file_name"], im, anns.get(im["id"], [])) for im in c["images"]]
 
     def batch(items, flip):

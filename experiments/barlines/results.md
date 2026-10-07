@@ -1,10 +1,62 @@
 # Bar-line bake-off: results
 
-Two rounds. The newer (2026-10-06) adds a second source in two hands; the
-first (2026-10-05, below it) is KHM 602/603 alone. Per-model detail,
+Three rounds, newest first. 2026-10-07 teaches the line detector where
+staves start and end; 2026-10-06
+adds a second source in two hands; 2026-10-05 is KHM 602/603 alone. Per-model detail,
 training curves and checkpoints: the model cards (static/models/, served
 by the labeler at /static/models/; written by cards.py). See README.md
 for the design.
+
+## Staff ends and music starts, as detector classes (2026-10-07)
+
+The corpus rebuilt with corpus.py --paper (each staff cut straightened
+across the paper's whole width, as the labeler's cached predictions are,
+with the editor's left end, right end and music start recorded) and
+--test-source F-Pn_Vma-ms-1067-1 (all of it held out, unseen by
+training): 250 training lines from KHM 602/603 and RES 507 (14), 1724 bar
+lines; 135 test lines, 807 bar lines (63 lines of familiar hands, 431 bar
+lines; 72 lines of Vma ms 1067 (1), 376). tiles.py adds two classes beside
+"barline": "start", from the staff's left end to the music start (the
+clef, key and time), and "end", a staff space wide around the staff's
+right end; a box only where the tile holds all of it. YOLO26n, 50
+epochs, mirroring off (it would turn an end into a start).
+
+**Bar lines**: YOLO26n made 13 errors on the familiar hands and 21 on
+Vma ms 1067 (1), where it made 16 and 27 before the new classes. Not like
+for like: the earlier lines were cut from staff end to staff end, which
+cut some bar lines at a staff's end in half (about 8 of the 27), and the
+paper-wide lines add margins to err in. No sign the new classes cost bar
+lines.
+
+**The staff's ends and music start** (landmarks.py): the model's most
+confident "start" box gives the left end (its left edge) and music start
+(its right edge), its "end" box the right end (its centre); against
+detect.py as the labeler runs it (the editor's page corners, the music
+start hint from the previous page, the learned filter, and the vote with
+the cached YOLO11n and YOLO26n, both of which move where a staff's right
+end is trimmed). Errors from the editor's, on the lines where both
+answer; share within 1 staff space / over 3:
+
+| | familiar: labeler | familiar: model | Vma: labeler | Vma: model |
+|---|---|---|---|---|
+| left end | 71% / 21% | 94% / 2% | 81% / 13% | 90% / 0% |
+| music start | 44% / 37% | 79% / 10% | 81% / 17% | 84% / 3% |
+| right end | 56% / 22% | 97% / 0% | 79% / 3% | 99% / 0% |
+
+The model found no "start" or "end" on 2 of the 72 Vma lines. The
+labeler's numbers are flattered three ways: the learned filter learns
+from every reviewed page, these test pages included; the cached YOLOs
+were trained on an earlier split, which may hold some of these familiar
+test lines; and the editor's labels start from the labeler's own
+detection, so a start or end accepted as it was is the labeler's answer
+(the music start is recorded wherever it lies right of the left end,
+whether set or accepted; on Vma the labeler's median error is 0). The
+right end, which the editor edits most, is nearly solved by the model,
+most of all on the familiar hands.
+
+Mosaics (on in training) can clip a start or end box at a seam, which
+tiles.py otherwise avoids; turning them off for these classes is a
+next try.
 
 ## Three hands (2026-10-06)
 

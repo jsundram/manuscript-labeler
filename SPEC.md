@@ -493,6 +493,13 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   oemer couldn't run. Staff finding itself is sound (every staff found
   on the test pages); its weak points are each staff's right end and
   music start.
+- **Staff ends as detector classes** (2026-10-07). The line detector also
+  learns "start" (left end to music start) and "end" (the right end) on
+  the paper-wide lines. Within a staff space of the editor's right end
+  on 97–99% of test lines, where the labeler's detection (with the
+  learned filter and the vote) manages 56–79%; music starts and left
+  ends better too (experiments/barlines/results.md). Not yet
+  used by the labeler.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet

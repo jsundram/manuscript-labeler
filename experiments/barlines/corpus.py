@@ -35,6 +35,7 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent.parent))
+import detect  # noqa: E402
 import labels  # noqa: E402
 from server import JPEG_QUALITY, RENDER_PX  # noqa: E402
 
@@ -73,8 +74,6 @@ def paper_band(g: np.ndarray, s: dict, corners: list) -> tuple[np.ndarray, dict]
     (its corners: find_page_corners or the editor's): what the bar-line
     detectors' cached predictions are made on, so a staff's ends, where
     detection and the editor most often disagree, don't limit them."""
-    sys.path.insert(0, str(HERE.parent.parent))
-    import detect
     h, w = g.shape
     lo, hi = detect.paper_x(corners, (s["top"] + s["bottom"]) / 2, w)
     return straight_band(g, s, max(0, lo), min(w, max(hi, lo + 1)))
@@ -86,6 +85,11 @@ def main():
     ap.add_argument("out", type=Path)
     ap.add_argument("--test", type=float, default=0.2, help="share of lines held out for testing")
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--paper", action="store_true",
+                    help="cut each staff across the paper's width (paper_band, as the labeler's cache does) "
+                         "and record its left end, music start and right end, for landmark classes")
+    ap.add_argument("--test-source", action="append", default=[],
+                    help="put every line of this source (pdf stem) in the test split: an unseen copy")
     args = ap.parse_args()
     (args.out / "lines").mkdir(parents=True, exist_ok=True)
 
@@ -99,10 +103,16 @@ def main():
                     continue
                 g = render(pdf, int(n), Path(tmp))
                 h, w = g.shape
+                if args.paper:  # the editor's corners if they set them, else detected: as the labeler's cache
+                    cs = p.get("corners")
+                    corners = cs["points"] if cs and not cs.get("auto") else detect.find_page_corners(Image.fromarray(g))
                 for k, s in enumerate(sorted(p["systems"], key=lambda s: s["top"])):
                     if s.get("role", "part") != "part" or not s["barlines"]:
                         continue
-                    band, geo = straight_band(g, s)
+                    if args.paper:
+                        band, geo = paper_band(g, s, corners)
+                    else:
+                        band, geo = straight_band(g, s)
                     lid = f"{pdf.stem}-p{int(n):02d}-l{k + 1:02d}"
                     Image.fromarray(band).save(args.out / "lines" / f"{lid}.png")
                     bars = []
@@ -118,12 +128,21 @@ def main():
                         "page_w": w, "page_h": h, "left": geo["x_off"], "top_frac": s["top"],
                         "bars": sorted(bars, key=lambda b: b["x"]),
                     })
+                    if args.paper:  # the staff's ends and (where the editor set one) music start, crop pixels
+                        lines[-1].update({"staff_left": s["left"] * w - geo["x_off"],
+                                          "staff_right": s["right"] * w - geo["x_off"]})
+                        if s.get("start") is not None and s["start"] > s["left"]:
+                            lines[-1]["music_start"] = s["start"] * w - geo["x_off"]
                 print(f"{pdf.stem} p{n}: {sum(1 for l in lines if l['page'] == int(n) and l['source'] == pdf.stem)} lines")
 
     # split by line, stratified by source
     rng = random.Random(args.seed)
     for src in sorted({l["source"] for l in lines}):
         ids = [l for l in lines if l["source"] == src]
+        if src in args.test_source:
+            for l in ids:
+                l["split"] = "test"
+            continue
         rng.shuffle(ids)
         k = round(len(ids) * args.test)
         for i, l in enumerate(ids):

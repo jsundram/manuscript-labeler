@@ -112,7 +112,8 @@ def yolo_checkpoints(run: Path):
 
         def tile(t):
             r = m.predict(t, imgsz=640, conf=0.05, device="mps", verbose=False)[0]
-            return [(float((b[0] + b[2]) / 2), float(cf)) for b, cf in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist())]
+            return [(float((b[0] + b[2]) / 2), float(cf)) for b, cf, k in
+                    zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist()) if int(k) == 0]  # bar lines only
         return tile
     return out, detector
 
@@ -129,7 +130,9 @@ def mlx_checkpoints(run: Path):
 
         def tile(t):
             r = m.predict(t, conf=0.05, imgsz=640)[0]
-            return [(float((b[0] + b[2]) / 2), float(cf)) for b, cf in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist())]
+            cls = r.boxes.cls.tolist() if hasattr(r.boxes, "cls") else [0] * len(r.boxes.conf.tolist())
+            return [(float((b[0] + b[2]) / 2), float(cf)) for b, cf, k in
+                    zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), cls) if int(k) == 0]  # bar lines only
         return tile
     return out, detector
 

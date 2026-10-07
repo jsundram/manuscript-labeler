@@ -19,6 +19,7 @@ Writes <corpus>/tiles/{yolo,coco}/... and <corpus>/tiles/data.yaml.
 
 import json
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -27,16 +28,32 @@ from PIL import Image
 TILE, STEP = 640, 480
 
 
-def boxes(line: dict) -> list[tuple[float, float, float, float]]:
-    """Bar-line boxes in crop pixels: (x0, y0, x1, y1)."""
+CLASSES = ["barline", "start", "end"]
+
+
+def boxes(line: dict) -> list[tuple[int, float, float, float, float]]:
+    """(class, x0, y0, x1, y1) in crop pixels: each bar line; and, where the
+    corpus recorded them (corpus.py --paper), the clef-key-time region from
+    the staff's left end to its music start ("start") and a box a staff
+    space wide on its right end ("end")."""
     sp = line["space"]
     y0, y1 = line["staff_top"] - 0.5 * sp, line["staff_bottom"] + 0.5 * sp
     out = []
     for b in line["bars"]:
         lean = abs(b["x1"] - b["x0"])
         half = (lean + 0.8 * sp) / 2
-        out.append((b["x"] - half, y0, b["x"] + half, y1))
+        out.append((0, b["x"] - half, y0, b["x"] + half, y1))
+    if "music_start" in line and line["music_start"] - line["staff_left"] >= 0.5 * sp:
+        out.append((1, line["staff_left"], y0, line["music_start"], y1))
+    if "staff_right" in line:
+        out.append((2, line["staff_right"] - 0.5 * sp, y0, line["staff_right"] + 0.5 * sp, y1))
     return out
+
+
+def tile_classes(corpus: Path) -> list[str]:
+    """The class names the corpus's tiles were built with (data.yaml)."""
+    text = (corpus / "tiles" / "data.yaml").read_text()
+    return re.findall(r"^\s+\d+: (\S+)$", text.split("names:", 1)[1], re.M)
 
 
 def windows(width: int) -> list[int]:
@@ -54,7 +71,9 @@ def main():
     rng.shuffle(train)
     val_ids = {l["id"] for l in train[: max(1, len(train) // 10)]}
     out = corpus / "tiles"
-    coco = {s: {"images": [], "annotations": [], "categories": [{"id": 1, "name": "barline"}]} for s in ("train", "val")}
+    named = CLASSES if any("staff_right" in l for l in c["lines"]) else CLASSES[:1]  # corpus.py --paper
+    coco = {s: {"images": [], "annotations": [], "categories": [{"id": i + 1, "name": n} for i, n in enumerate(named)]}
+            for s in ("train", "val")}
     n_img = n_ann = 0
     for line in train:
         split = "val" if line["id"] in val_ids else "train"
@@ -69,20 +88,23 @@ def main():
             n_img += 1
             coco[split]["images"].append({"id": n_img, "file_name": f"{name}.png", "width": TILE, "height": line["height"]})
             yl = []
-            for (a, b0, c1, d) in bx:
+            for (cls, a, b0, c1, d) in bx:
                 a2, c2 = max(a - x, 0), min(c1 - x, TILE)
                 if c2 - a2 < (c1 - a) * 0.6:  # mostly outside this tile
                     continue
+                if cls and (a < x or c1 > x + TILE):  # a start or end box only whole: its edges are what's read
+                    continue
                 w, h = c2 - a2, d - b0
-                yl.append(f"0 {(a2 + w / 2) / TILE:.6f} {(b0 + h / 2) / line['height']:.6f} {w / TILE:.6f} {h / line['height']:.6f}")
+                yl.append(f"{cls} {(a2 + w / 2) / TILE:.6f} {(b0 + h / 2) / line['height']:.6f} {w / TILE:.6f} {h / line['height']:.6f}")
                 n_ann += 1
-                coco[split]["annotations"].append({"id": n_ann, "image_id": n_img, "category_id": 1,
+                coco[split]["annotations"].append({"id": n_ann, "image_id": n_img, "category_id": cls + 1,
                                                    "bbox": [a2, b0, w, h], "area": w * h, "iscrowd": 0})
             (out / "yolo/labels" / split / f"{name}.txt").write_text("\n".join(yl))
     for split in coco:
         (out / "coco" / f"{split}.json").write_text(json.dumps(coco[split]))
     (out / "val_ids.json").write_text(json.dumps(sorted(val_ids)))
-    (out / "data.yaml").write_text(f"path: {out / 'yolo'}\ntrain: images/train\nval: images/val\nnames:\n  0: barline\n")
+    (out / "data.yaml").write_text(f"path: {out / 'yolo'}\ntrain: images/train\nval: images/val\nnames:\n"
+                                   + "".join(f"  {i}: {n}\n" for i, n in enumerate(named)))
     for split in coco:
         print(f"{split}: {len(coco[split]['images'])} tiles, {len(coco[split]['annotations'])} boxes")
 
