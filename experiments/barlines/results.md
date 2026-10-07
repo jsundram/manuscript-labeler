@@ -1,10 +1,89 @@
-# Bar-line bake-off: results (2026-10-05)
+# Bar-line bake-off: results
+
+Two rounds. The newer (2026-10-06) adds a second source in two hands; the
+first (2026-10-05, below it) is KHM 602/603 alone. Per-model detail,
+training curves and checkpoints: the model cards (static/models/, served
+by the labeler at /static/models/; written by cards.py). See README.md
+for the design.
+
+## Three hands (2026-10-06)
+
+The corpus rebuilt from every reviewed page: 313 lines, 2155 bar lines.
+KHM 602/603 (one copyist, 213 lines) and F-Po RES 507 (14) (Op. 48 No.
+3), whose Violin I and Cello are one paper and hand ("Paris A", 46
+lines) and Violin II and Viola another ("Paris B", 54 lines). Split by
+line as before (seed 1, stratified by source): 63 test lines, 431 bar
+lines (287 KHM, 68 Paris A, 76 Paris B). Every model retrained on the
+training lines.
+
+### Errors on the test lines (false + missed)
+
+| method | KHM | Paris A | Paris B | all | per line |
+|---|---|---|---|---|---|
+| Detectron2 Faster R-CNN R50-FPN | 7 | 1 | 3 | 11 | 1021 ms |
+| YOLO11n (Ultralytics, 50 epochs) | 10 | 1 | 4 | 15 | 53 ms |
+| YOLO26n (Ultralytics, 50 epochs) | 12 | 2 | 2 | 16 | 50 ms |
+| learned filter + bar widths, ink relative to the paper | 16 | 4 | 4 | 24 | 48 ms |
+| learned filter + bar widths, ink cutoff 120 | 12 | 6 | 16 | 34 | 137 ms |
+| YOLO26n on MLX (yolo-mlx, 25 epochs) | 23 | 1 | 11 | 35 | 42 ms |
+| D-FINE small (40 epochs, kept epoch 8) | 18 | 10 | 7 | 35 | 206 ms |
+| hand-tuned rules | 30 | 22 | 51 | 103 | 17 ms |
+| learned filter, end to end (learn.py on whole pages) | 27 | 10 | 4 | 41 | 176 ms |
+
+- **The faint hand.** Paris B writes bar lines in fainter ink: with a
+  fixed ink cutoff of 120, a third of them never became candidates, so
+  the learned filter couldn't find them whatever it learned (16 of its
+  34 errors). Judging ink relative to each staff's paper (66 levels
+  darker; detect.PAPER) brings 98% of them in. Under 5-fold
+  cross-validation (learned filter + widths): RES 507 (14) 162 -> 45
+  errors, KHM 77 -> 89; all 239 -> 134. Now in the labeler.
+- **A new hand needs a few pages** (crosshand.py, ink relative to the
+  paper, errors per 100 bar lines, KHM plus k pages of the new hand,
+  tested on its other pages): Paris A 4.3 with none of its own pages
+  (it reads like KHM); Paris B 32.9, 18.2, 15.7, 10.6 with 0, 1, 2, 4.
+  Adding the other Paris hand doesn't help (Paris A 4.3 -> 7.5).
+- **Trained on KHM alone**, the detectors carry over unevenly: YOLO11n
+  9.4 / 19.5 errors per 100 on Paris A / B, Detectron2 41 / 57 at its
+  KHM threshold (its confidences fall on unfamiliar ink).
+- **YOLO26 is no better than YOLO11** here (16 against 15: noise).
+- **yolo-mlx** trained more slowly than Ultralytics on this Mac (about 4
+  minutes an epoch against 83 s; its batches are prepared on one CPU
+  thread, the GPU 13-43% busy, other work running) and can't resume, so
+  ran 25 epochs; twice YOLO26n's errors, mostly false bar lines.
+- **D-FINE** trains on the Mac's GPU with dfine_patch.py (transformers'
+  D-FINE uses F.linear with a 1-D weight, whose backward fails on MPS:
+  pytorch/pytorch#188891); its validation errors were 4-8 from epoch 5
+  on, its test errors higher, mostly missed.
+
+### Voting
+
+ensemble.py on the same test lines: proposals within the tolerance
+merged, kept if a majority of the methods propose them. All seven agree
+on 322 of 431 bar lines; of the 109 any of them misses, 85 are missed by
+one method only (and 2 by all seven); 29 of 41 false bar lines come from
+one method only. The YOLOs and Detectron2 miss the same few bar lines;
+the learned filter's mistakes are its own.
+
+| vote (majority) | errors | per line (sum) |
+|---|---|---|
+| 2 of 3: YOLO26n, YOLO11n, learned filter | 9 | ~150 ms |
+| 2 of 3: Detectron2, YOLO26n, learned filter | 10 | ~1.1 s |
+| 2 of 3: Detectron2, YOLO26n, YOLO11n | 10 | ~1.1 s |
+| 4 of all 7 | 11 | ~1.5 s |
+| 2 of 3: YOLO26n, learned filter, hand-tuned rules | 14 | ~115 ms |
+| best single (Detectron2) | 11 | 1021 ms |
+
+One split, several groupings tried (choosing the best is hindsight), and
+a couple of errors either way is noise. The learned filter here is the
+straightened-lines run; in the labeler it also inherits staff detection's
+errors.
+
+## Round 1: KHM 602/603 (2026-10-05)
 
 43 test lines, 287 bar lines (21 lines from KHM 602, 22 from KHM 603),
-same split for every method; thresholds chosen on validation lines. See
-README.md for the design.
+same split for every method; thresholds chosen on validation lines.
 
-## On the straightened test lines
+### On the straightened test lines
 
 Every method gets the same input: the line, its staff known (the editor's).
 
@@ -30,7 +109,7 @@ Every method gets the same input: the line, its staff known (the editor's).
 on the CPU. \*\* YOLO hit the 2-hour job limit at epoch 85 (best at epoch
 71); its time is the limit, not convergence.
 
-## End to end, as the labeler runs
+### End to end, as the labeler runs
 
 Whole pages through detect.py: the staves, edges and music start are
 detected, not the editor's; only the test lines are scored (their labels
@@ -49,7 +128,7 @@ third of the errors, and with the width hints leaves about half as many
 silent ones (17 vs 35). Its second pass (bar widths) saves 2 errors end
 to end; the misses here are mostly detection's.
 
-## Cross-validation
+### Cross-validation
 
 5 folds over all 213 lines (1404 bar lines), every line tested once, for
 the cheap methods:
@@ -60,7 +139,7 @@ the cheap methods:
 | learned filter | 1333 | 27 | 71 | 98 | 95.0% ± 0.6% | 98.0% ± 0.8% |
 | classical | 1242 | 16 | 162 | 178 | 88.5% ± 2.9% | 98.7% ± 0.6% |
 
-## Do they make the same mistakes? Voting
+### Do they make the same mistakes? Voting
 
 Mostly not (`ensemble.py`, the saved test-line results; MeasureDetector
 left out). Of the 287 bar lines, all six methods below find 256; of the 31
@@ -91,7 +170,7 @@ errors either way is noise; the deep detectors are too slow to train to
 cross-validate here. Not in the labeler: it would mean running YOLO
 (PyTorch, AGPL-3.0) in the server.
 
-## Reading it
+### Reading it
 
 - Every trained method beats the hand-tuned rules, mainly by missing far
   fewer bar lines.
