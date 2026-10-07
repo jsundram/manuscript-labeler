@@ -26,7 +26,7 @@ import numpy as np
 import detect
 
 TOLERANCE = 0.006  # page widths, as tools/score_barlines.py
-VERSION = 2        # bump when detect.FEATURES or the labelling changes
+VERSION = 3        # bump when detect.FEATURES or the labelling changes
 FOLDS = 5          # the second pass learns from first passes that didn't see its pages
 
 

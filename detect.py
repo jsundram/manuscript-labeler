@@ -482,8 +482,30 @@ def stroke_cover(g: np.ndarray, staff: dict, left: int, right: int, slack: int =
 # The learned filter (see learn.py): candidates are strokes covering more
 # than CAND_COVER of the staff, each described by these measurements.
 CAND_COVER = 0.5
+# With a learned model, the staff is judged shifted so its paper (the
+# median over its ruled extent, 3 spaces above and below: the corpus's
+# line crop) is PAPER: ink then means at least 66 levels darker than the
+# staff's own paper (about 140 on these scans, not a fixed 120). Used for
+# the candidates and for trimming the staff after its last bar line; the
+# hand-tuned rules and the empty-staff test keep the fixed cutoffs they
+# were tuned with. The second hand of the Paris copy RES 507 (14) writes
+# bar lines in fainter ink: 98% of them become candidates (was 76%).
+# Under cross-validation over all three hands (learned filter with bar
+# widths, on straightened lines): RES 507 (14) errors 162 -> 45, KHM
+# 602/603 77 -> 89 (more false bar lines). End to end (run_labeler.py, one
+# split): 45 -> 41 errors; KHM 19 -> 27, Paris 26 -> 14.
+PAPER = 186.0
 FEATURES = ["cover", "cover_top", "cover_mid", "cover_bot", "lean", "width", "attach", "dark",
             "above", "below", "busy_left", "busy_right", "gap_prev", "gap_next", "from_start", "rel_x"]
+
+
+def paper_shifted(band: np.ndarray, staff: dict, left: int, right: int) -> np.ndarray:
+    """`band` shifted so its paper (the median over the staff's ruled extent,
+    3 spaces above and below) reads PAPER."""
+    gap = staff["gap"]
+    y0, y1 = max(0, int(staff["top"] - 3 * gap)), min(band.shape[0], int(staff["bottom"] + 3 * gap) + 1)
+    region = band[y0:y1, max(0, left):max(left + 1, right)]
+    return band - (float(np.median(region)) - PAPER) if region.size else band
 
 
 def candidates(g: np.ndarray, staff: dict, left: int, right: int, start: int) -> list[dict]:
@@ -882,10 +904,12 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
             start = int(min(right, max(left, snapped if snapped is not None else x)))
         # search a little past the ruled end: a final bar line often sits on it
         reach = min(band.shape[1], right + int(st["gap"]))
+        seen = band
         if model is not None or collect is not None:
+            seen = paper_shifted(band, local, ruled, right)
             # all of them, as in training: the model weighs the distance to
             # the music start itself (a wrong start mustn't drop a bar line)
-            cands = candidates(band, local, ruled, reach, start)
+            cands = candidates(seen, local, ruled, reach, start)
             if collect is not None:
                 collect.append((st["top"] / h, st["bottom"] / h, cands, st["gap"]))
         bars = choose(cands, model, st["gap"]) if model is not None else \
@@ -898,7 +922,7 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
         if bars:
             last = int(max(max(b["x0"], b["x1"]) for b in bars))
             tail = last + int(st["gap"] * 0.5)
-            if right - tail > st["gap"] * 1.5 and note_ink(band, local, tail, right) < 0.01:
+            if right - tail > st["gap"] * 1.5 and note_ink(seen, local, tail, right) < 0.01:
                 right = tail
             else:
                 # Ink between the staff lines that stops for good well before
@@ -906,7 +930,7 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
                 # capo" above or below it, a flourish): end the staff there.
                 gap = st["gap"]
                 mids = [(a + b) // 2 for a, b in zip(local["lines"], local["lines"][1:])]
-                inner = (band[mids, tail:right] < 120).any(axis=0)
+                inner = (seen[mids, tail:right] < 120).any(axis=0)
                 on = np.flatnonzero(inner)
                 end = tail + (int(on[-1]) + 1 if len(on) else 0)
                 # (Limiting this to short tails, for fear of cutting music
