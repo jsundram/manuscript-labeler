@@ -12,6 +12,24 @@ from harness import match, write
 from tiles import TILE, windows
 
 
+def cumulative_times(epochs: list[int], times: list[float], run: Path | None = None) -> list[float]:
+    """Seconds since the run began, per logged epoch. Ultralytics (and our
+    D-FINE runner's log) restart the clock when a run resumes: a restart is
+    where run/resumes.txt (written by --resume) says one happened, or else
+    where the clock goes backwards (missing a resume after a single slow
+    epoch, which only resumes.txt catches)."""
+    marks = set()
+    if run is not None and (run / "resumes.txt").exists():
+        marks = {int(x) for x in (run / "resumes.txt").read_text().split()}
+    out, offset, prev = [], 0.0, 0.0
+    for i, (ep, t) in enumerate(zip(epochs, times)):
+        if i and (ep - 1 in marks or t < times[i - 1]):
+            offset = prev
+        prev = t + offset
+        out.append(prev)
+    return out
+
+
 def lines(corpus: Path, which: str) -> list[dict]:
     c = json.loads((corpus / "corpus.json").read_text())
     val = set(json.loads((corpus / "tiles" / "val_ids.json").read_text()))

@@ -44,6 +44,7 @@ def main():
     random.Random(3).shuffle(ls)
     folds = [ls[k::5] for k in range(5)]
     totals = {"classical": [], "learned": [], "learned+widths": []}
+    by_source = {}
     for k, test in enumerate(folds):
         rest = [l for j, f in enumerate(folds) if j != k for l in f]
         val, train = rest[: len(rest) // 10], rest[len(rest) // 10:]
@@ -71,7 +72,10 @@ def main():
                     model, stage1, feats, th = models[name]
                     cands = tl[l["id"]][0] if stage1 is None else with_widths(stage1, l, tl[l["id"]][0])
                     pred = predict(model, l, cands, th, feats)
-                s += match(pred, [b["x"] for b in l["bars"]], tol * l["page_w"])
+                one = match(pred, [b["x"] for b in l["bars"]], tol * l["page_w"])
+                s += one
+                by_source.setdefault((name, l["source"]), np.zeros(3))
+                by_source[(name, l["source"])] += one
             totals[name].append(s)
             print(f"fold {k + 1} {name}: found {int(s[0])}, false {int(s[1])}, missed {int(s[2])}")
     for name, ss in totals.items():
@@ -81,6 +85,9 @@ def main():
         f, fp, m = ss.sum(axis=0)
         print(f"{name}: all {len(ls)} lines: found {int(f)}, false {int(fp)}, missed {int(m)}; recall "
               f"{rec.mean():.1%} ± {rec.std():.1%}, precision {prec.mean():.1%} ± {prec.std():.1%} (mean ± sd over folds)")
+        for (n, src), (f, fp, m) in sorted(by_source.items()):
+            if n == name:
+                print(f"    {src}: found {int(f)}, false {int(fp)}, missed {int(m)}, errors {int(fp + m)}")
 
 
 if __name__ == "__main__":

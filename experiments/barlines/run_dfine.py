@@ -7,7 +7,7 @@
     uv run experiments/barlines/run_dfine.py <corpus-dir> [--model ustc-community/dfine-small-coco] [--epochs 40]
 
 Starts from COCO-pretrained weights with a new one-class head ("barline"),
-trains on the CPU (the Mac GPU backend fails in its backward pass) with random horizontal flips, keeps the
+trains on the Mac's GPU (with dfine_patch.py) with random horizontal flips, keeps the
 epoch with the lowest validation loss, then runs on the test lines.
 """
 
@@ -28,13 +28,17 @@ def main():
     ap.add_argument("--model", default="ustc-community/dfine-small-coco")
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--batch", type=int, default=8)
-    # On the Mac's GPU (MPS) D-FINE's backward pass fails ("mat2 must be a
-    # matrix", torch 2.x, with or without empty tiles); the CPU works.
-    ap.add_argument("--device", default="cpu")
+    # MPS needs dfine_patch.py (imported below): transformers' D-FINE fails
+    # there in training without it. --device cpu works too, ~2.8x slower.
+    ap.add_argument("--device", default="mps")
+    ap.add_argument("--resume", action="store_true", help="continue from runs/dfine/last (after the job time limit)")
+    ap.add_argument("--save-period", type=int, default=5, help="keep the weights every this many epochs (trainviz.py)")
     args = ap.parse_args()
 
     import torch
     from PIL import Image, ImageOps
+
+    import dfine_patch  # noqa: F401  (D-FINE trains on the Mac's GPU with it)
     from transformers import AutoImageProcessor, DFineForObjectDetection
 
     device = args.device
@@ -77,8 +81,24 @@ def main():
     ], weight_decay=1e-4)
     out = args.corpus / "runs" / "dfine"
     out.mkdir(parents=True, exist_ok=True)
-    best, t0 = float("inf"), time.perf_counter()
-    for epoch in range(args.epochs):
+    best, start, elapsed = float("inf"), 0, 0.0
+    if args.resume and (out / "last" / "state.pt").exists():
+        model = DFineForObjectDetection.from_pretrained(out / "last").to(device)
+        opt = torch.optim.AdamW([
+            {"params": [p for n, p in model.named_parameters() if "backbone" in n], "lr": 1e-5},
+            {"params": [p for n, p in model.named_parameters() if "backbone" not in n], "lr": 1e-4},
+        ], weight_decay=1e-4)
+        st = torch.load(out / "last" / "state.pt", weights_only=False)
+        opt.load_state_dict(st["opt"])
+        best, start, elapsed = st["best"], st["epoch"], st["elapsed"]
+        random.setstate(st["random"])
+        print(f"resuming after epoch {start} ({elapsed / 60:.0f} min)", flush=True)
+    else:  # a fresh run: nothing of an earlier one (its checkpoints would join this run's curve)
+        import shutil
+        for old in list(out.iterdir()):
+            shutil.rmtree(old) if old.is_dir() else old.unlink()
+    t0 = time.perf_counter() - elapsed
+    for epoch in range(start, args.epochs):
         model.train()
         random.shuffle(train)
         tl = 0.0
@@ -96,10 +116,34 @@ def main():
             for i in range(0, len(val), args.batch):
                 px, labels = batch(val[i:i + args.batch], flip=False)
                 vl += model(pixel_values=px, labels=labels).loss.item()
-        print(f"epoch {epoch + 1}: train {tl:.1f} val {vl:.2f} ({time.perf_counter() - t0:.0f} s)", flush=True)
+        el = time.perf_counter() - t0
+        print(f"epoch {epoch + 1}: train {tl:.1f} val {vl:.2f} ({el:.0f} s)", flush=True)
+        # weights first, each into a temporary directory renamed into place,
+        # the resume state with the last ones, then the log row: a kill at
+        # the job limit leaves the log no further on than --resume restores
+        import shutil
+
+        def save(name, state=None):
+            tmp = out / f".{name}.tmp"
+            shutil.rmtree(tmp, ignore_errors=True)
+            model.save_pretrained(tmp)
+            if state is not None:
+                torch.save(state, tmp / "state.pt")
+            shutil.rmtree(out / name, ignore_errors=True)
+            tmp.rename(out / name)
         if vl < best:
             best = vl
-            model.save_pretrained(out / "best")
+            save("best")
+        if args.save_period > 0 and (epoch + 1) % args.save_period == 0:
+            save(f"epoch{epoch + 1}")
+        save("last", {"opt": opt.state_dict(), "best": best, "epoch": epoch + 1, "elapsed": el,
+                      "random": random.getstate()})
+        new = not (out / "log.csv").exists()
+        with open(out / "log.csv", "a") as f:
+            if new:
+                f.write("epoch,time,train/loss,val/loss\n")
+            # averaged per tile
+            f.write(f"{epoch + 1},{el:.1f},{tl / len(train):.4f},{vl / len(val):.4f}\n")
     train_s = time.perf_counter() - t0
 
     model = DFineForObjectDetection.from_pretrained(out / "best").to(device).eval()

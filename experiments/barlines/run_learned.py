@@ -35,8 +35,15 @@ FEATURES = ["cover", "cover_top", "cover_mid", "cover_bot", "lean", "width", "at
             "above", "below", "busy_left", "busy_right", "gap_prev", "gap_next", "from_start", "rel_x"]
 
 
+PAPER = 186.0  # --paper: shift each line so its median is this (detect.PAPER)
+NORMALIZE = "--paper" in sys.argv
+
+
 def candidates(g: np.ndarray, line: dict) -> list[dict]:
     """Candidate strokes with their measurements, x in crop pixels."""
+    if NORMALIZE:
+        # ink = at least 66 levels darker than the line's own paper
+        g = g - (np.median(g) - PAPER)
     st = staff_of(line)
     pad = int(line["space"] * 4)
     g = np.pad(g, ((0, 0), (pad, pad)), constant_values=230)
@@ -216,7 +223,7 @@ def main():
             total += 1
             ceiling += any(abs(cc["x"] - b["x"]) <= tol * line["page_w"] for cc in cands)
     per_line = (time.perf_counter() - t1) / len(test)
-    write(corpus, {"method": "learned-gbm" + ("-widths" if widths else ""), "train_s": train_s, "infer_s": per_line, "threshold": th, "lines": preds,
+    write(corpus, {"method": "learned-gbm" + ("-widths" if widths else "") + ("-paper" if NORMALIZE else ""), "train_s": train_s, "infer_s": per_line, "threshold": th, "lines": preds,
                    "notes": ("two passes, the second with bar widths; " if widths else "") +
                             f"gradient boosting on detect.py's loose candidates (cover > {LOOSE}); candidates reach "
                             f"{ceiling}/{total} test bar lines; threshold {th:.2f} (chosen on val)"})
