@@ -27,7 +27,7 @@ def page(part, systems, status="reviewed", kind="music"):
 
 
 def doc(pages):
-    return {"schema": 1, "source": {"pdf": "sources/x.pdf"}, "pages": pages}
+    return {"schema": labels.SCHEMA, "source": {"pdf": "sources/x.pdf"}, "pages": pages}
 
 
 def test_numbering_runs_across_pages_and_restarts_at_movement():
@@ -166,6 +166,74 @@ def test_migrate_refuses_newer_schema():
         labels.migrate({})
 
 
+def test_migrate_keeps_a_schema_1_file_as_it_was():
+    old = {"schema": 1, "source": {"pdf": "sources/x.pdf"},
+           "pages": {"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])}}
+    new = labels.migrate(json.loads(json.dumps(old)))
+    assert new["schema"] == labels.SCHEMA == 2
+    assert {k: v for k, v in new.items() if k != "schema"} == {k: v for k, v in old.items() if k != "schema"}
+    assert labels.validate(new) == []
+
+
+def clef_mark(id, x, y, clef, w=0.02, h=0.03):
+    return {"id": id, "x": x - w / 2, "y": y - h / 2, "w": w, "h": h, "kind": "clef", "clef": clef,
+            "text": "", "note": ""}
+
+
+def test_validate_wants_a_clef_on_a_clef_mark():
+    d = doc({"1": page("vc", [system("s", 0.1, [bl("a", 0.5)])])})
+    d["pages"]["1"]["marks"] = [clef_mark("m1", 0.3, 0.115, "tenor")]
+    assert labels.validate(d) == []
+    d["pages"]["1"]["marks"][0]["clef"] = "soprano"
+    assert any("needs a clef" in e for e in labels.validate(d))
+
+
+def test_clefs_follow_the_page_clef_and_clef_marks_in_reading_order():
+    # three cello lines; tenor from mid-line 1 (inside its 2nd bar), back to
+    # bass at the start of line 3; a clef on the cue staff changes nothing
+    p = page("vc", [
+        system("l1", 0.1, [bl("a", 0.3), bl("b", 0.6), bl("c", 0.9)]),
+        system("cue", 0.2, [bl("q", 0.5)], role="cue"),
+        system("l2", 0.3, [bl("d", 0.5), bl("e", 0.9)]),
+        system("l3", 0.5, [bl("f", 0.5), bl("g", 0.9)]),
+    ])
+    p["clef"] = "bass"
+    p["marks"] = [clef_mark("m1", 0.45, 0.115, "tenor"),   # inside l1's 2nd bar
+                  clef_mark("m2", 0.07, 0.215, "treble"),  # on the cue staff
+                  clef_mark("m3", 0.07, 0.515, "bass")]    # l3's own clef, before its music start
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [(b["barline"], b["clefs"]) for b in bars] == [
+        ("a", ["bass"]), ("b", ["bass", "tenor"]), ("c", ["tenor"]),
+        ("d", ["tenor"]), ("e", ["tenor"]),
+        ("f", ["bass"]), ("g", ["bass"])]
+
+
+def test_a_clef_at_the_start_of_a_bar_governs_the_whole_bar():
+    # bass returns right after bar line b (0.6): the next bar is all bass,
+    # the one before all tenor; a clef in the middle of a bar still splits it
+    p = page("vc", [system("l1", 0.1, [bl("a", 0.3), bl("b", 0.6), bl("c", 0.9)])])
+    p["clef"] = "tenor"
+    p["marks"] = [clef_mark("m1", 0.62, 0.115, "bass", w=0.03)]  # box from 0.605
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["clefs"] for b in bars] == [["tenor"], ["tenor"], ["bass"]]
+    p["marks"] = [clef_mark("m1", 0.75, 0.115, "bass", w=0.03)]
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["clefs"] for b in bars] == [["tenor"], ["tenor"], ["tenor", "bass"]]
+
+
+def test_on_a_score_page_a_clef_change_holds_only_on_its_staff():
+    p = page("score", [system("vc", 0.1, [bl("a", 0.5)]), system("vn1", 0.3, [bl("b", 0.5)])])
+    p["clef"] = "treble"
+    p["marks"] = [clef_mark("m1", 0.3, 0.115, "tenor")]
+    bars = labels.bars_export(doc({"1": p}))["bars"]
+    assert [b["clefs"] for b in bars] == [["treble", "tenor"], ["treble"]]
+
+
+def test_bar_export_keeps_its_own_schema():
+    # the edition's build refuses any bar export but schema 1; clefs are additive
+    assert labels.bars_export(doc({}))["schema"] == labels.EXPORT_SCHEMA == 1
+
+
 STRUCTURE = r"""
 \tag #'mvtI {
   \time 2/4
@@ -291,10 +359,20 @@ def test_save_is_guarded_by_etag_and_backed_up(edition):
     assert len(backups) == 1 and json.loads(backups[0].read_text()) == saved
 
 
+def test_save_brings_a_schema_1_document_up_to_date(edition):
+    # a tab loaded before the upgrade still sends schema 1: its edits are kept
+    rel = "sources/G1/X_Y.pdf"
+    d = doc({"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])})
+    d["schema"] = 1
+    edition.save(rel, d, "none")
+    lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    assert json.loads(lp.read_text())["schema"] == labels.SCHEMA
+
+
 def test_save_refuses_invalid_and_newer_files(edition):
     rel = "sources/G1/X_Y.pdf"
     with pytest.raises(ValueError):
-        edition.save(rel, {"schema": 1, "source": {}, "pages": {"1": {"status": "??"}}}, "none")
+        edition.save(rel, {"schema": labels.SCHEMA, "source": {}, "pages": {"1": {"status": "??"}}}, "none")
     lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
     lp.write_text(json.dumps({"schema": 99, "pages": {}}))
     raw = lp.read_bytes()

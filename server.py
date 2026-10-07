@@ -171,6 +171,9 @@ class Edition:
 
     def save(self, rel: str, doc: dict, if_match: str) -> dict:
         pdf = self.pdf(rel)
+        # a tab loaded before an upgrade sends the older schema: bring it up
+        # to date (migrations only add) rather than refuse its edits
+        doc = labels.migrate(doc) if isinstance(doc, dict) else doc
         errs = labels.validate(doc)
         if errs:
             raise ValueError("; ".join(errs[:10]))

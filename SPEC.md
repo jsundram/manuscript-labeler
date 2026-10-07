@@ -161,7 +161,7 @@ KHM 602, RISM 1001015844. It is a set of parts, 17 pages:
 The cello part opens with a braced violin I cue staff for bars 1–4. That's a
 second staff on one system: a case to handle.
 
-## Output format (draft, schema 1)
+## Output format (draft, schema 2)
 
 One file per source, in the edition repo next to the PDF, named
 `<pdf name>.labels.json`. Coordinates are fractions of
@@ -169,7 +169,7 @@ the page width and height (0–1), so they don't depend on render resolution.
 
 ```json
 {
-  "schema": 1,
+  "schema": 2,
   "source": { "pdf": "sources/G226/D-B_KHM-602.pdf", "siglum": "D-B",
               "shelfmark": "KHM 602", "rism": "1001015844", "gerard": 226 },
   "pages": {
@@ -224,7 +224,21 @@ The rules:
   bed) and intersecting them, so torn or rounded corners don't pull them
   inward; dragged into place by the editor. Re-detect keeps moved corners;
   "Reset to detected" replaces them.
-- **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`.
+- **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`,
+  `clef`.
+- **Clefs.** The page's `clef` is the clef at the top of the page (a new
+  page takes the one in force at the end of the part's previous page, else
+  the part's usual one). A **clef mark** (kind `clef`, with `clef`:
+  `treble`, `alto`, `tenor` or `bass`) boxes a clef that differs from the
+  one in force, mid-line or at a line's start: it belongs to the staff
+  nearest its centre and holds from its centre (or from the bar line its
+  box starts at: a clef at the start of a bar governs the whole bar),
+  through later staves of the page, until the next. One on a cue staff
+  changes only the cue; on a score page, only its own staff. Every clef
+  that changes the clef is boxed, so the boxes count the changes and can
+  train a clef detector. Schema 2 added them (1 → 2 changes nothing; it
+  only stops an older tool from dropping them, and the server brings a
+  schema 1 save up to date).
   Tempo marks (e.g. "Andante Moderato") are shown per movement next to the
   `\tempo` texts in `Structure.ily`, as a check that movements line up.
 - **`rejected`** (on a system) and **`rejected_staves`** (on a page),
@@ -264,7 +278,8 @@ to know how bar numbers are derived. So the labeler also writes a flat
       "quad": [[0.312, 0.098], [0.398, 0.098], [0.396, 0.156], [0.310, 0.156]],
       "staff": { "top": 0.112, "bottom": 0.142 },
       "reviewed": true,
-      "marks": ["p2m1"]
+      "marks": ["p2m1"],
+      "clefs": ["alto"]
     }
   ]
 }
@@ -297,6 +312,10 @@ The fields:
   only use complete runs, or clearly mark partial ones.
 - **`reviewed`:** a per-bar flag. Unreviewed bars can be shown, greyed or
   flagged.
+- **`clefs`:** the clefs in force across the bar, in order: the one at its
+  start, then any it changes to (`["bass", "tenor"]`). A line's first bar
+  takes the clef written before its music. The export's `schema` stays 1:
+  this field was added without changing the others.
 
 ### What the edition repo does with it (planned)
 

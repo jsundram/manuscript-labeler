@@ -16,7 +16,7 @@ const DEFAULT_CLEF = { vn1: 'treble', vn2: 'treble', va: 'alto', vc: 'bass', sco
 const PAGE_KINDS = ['music', 'title', 'blank', 'other'];
 const BARLINE_KINDS = ['single', 'double', 'repeat_start', 'repeat_end', 'repeat_both', 'final'];
 const BARLINE_TAG = { double: '‖', repeat_start: '‖:', repeat_end: ':‖', repeat_both: ':‖:', final: 'fin' };
-const MARK_KINDS = ['text', 'tempo', 'dynamic', 'stray', 'unclear', 'other'];
+const MARK_KINDS = ['text', 'tempo', 'dynamic', 'stray', 'unclear', 'other', 'clef'];
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 // pitch of the bottom staff line: [letter index in CDEFGAB, octave]
 const CLEF_BOTTOM = { treble: [2, 4], alto: [3, 3], tenor: [1, 3], bass: [4, 2] };
@@ -107,6 +107,53 @@ function bendAt(s, x) {
   const t = clamp((x - s.left) / (s.right - s.left) * (b.length - 1), 0, b.length - 1);
   const i = Math.min(Math.floor(t), b.length - 2);
   return b[i] + (b[i + 1] - b[i]) * (t - i);
+}
+
+// Clef marks (labels.py clef_marks / clefs_between, the authority): a clef
+// mark belongs to the staff nearest its centre (one on a cue staff changes
+// only the cue), and counts from its centre or the bar line it starts at;
+// the page's clef holds from its top until a clef mark
+// changes it, and a change holds through later staves until the next.
+// the staff a clef mark (a box) is on: the nearest to its centre
+function clefStaff(page, m) {
+  const systems = page.systems || [];
+  if (!systems.length) return null;
+  const cx = m.x + m.w / 2, cy = m.y + m.h / 2;
+  const dist = (s) => { const d = bendAt(s, cx); return Math.max(s.top + d - cy, 0, cy - s.bottom - d); };
+  return systems.reduce((a, b) => (dist(b) < dist(a) || (dist(b) === dist(a) && b.top < a.top) ? b : a));
+}
+
+function clefMarks(page, { cue = false } = {}) {
+  const out = [];
+  for (const m of page.marks || []) {
+    if (m.kind !== 'clef' || !CLEFS.includes(m.clef)) continue;
+    const s = clefStaff(page, m);
+    if (!s || ((s.role || 'part') === 'part') === cue) continue;
+    const cx = m.x + m.w / 2;
+    // a clef written at the start of a bar governs the whole bar: its box
+    // starting within its own width after a bar line (half that before)
+    // counts from the bar line
+    const at = (s.barlines || []).map(mid).filter((b) => b - m.w / 2 <= m.x && m.x <= b + m.w);
+    out.push([s, at.length ? at.reduce((a, b) => (Math.abs(m.x - b) < Math.abs(m.x - a) ? b : a)) : cx, m.clef]);
+  }
+  return out.sort((a, b) => a[0].top - b[0].top || a[1] - b[1]);
+}
+
+// the clefs in force on a counted staff from x0 to x1; x0 null: the line's
+// first bar, which a clef before the music start governs from its beginning
+function clefsBetween(page, system, x0, x1) {
+  let marks = clefMarks(page);
+  if (page.part === 'score') marks = marks.filter(([s]) => s === system);  // each staff its own instrument
+  const start = x0 == null ? (system.start ?? system.left) : x0;
+  let now = page.clef;
+  for (const [s, x, clef] of marks) {
+    if ((s.top < system.top && s !== system) || (s === system && x <= start)) now = clef;
+  }
+  const out = now ? [now] : [];
+  for (const [s, x, clef] of marks) {
+    if (s === system && start < x && x < x1 && out[out.length - 1] !== clef) out.push(clef);
+  }
+  return out;
 }
 const topAt = (s, x) => s.top + bendAt(s, x);
 const bottomAt = (s, x) => s.bottom + bendAt(s, x);
@@ -502,9 +549,13 @@ function previousPage(n, pred = () => true) {
   return null;
 }
 
+// a new page's clef at the top: the one in force at the end of the part's
+// previous page (its clef marks included), else the part's usual clef
 function clefFor(n, part) {
   const prev = previousPage(n, (p) => p.part === part && p.clef);
-  return prev ? prev.clef : (DEFAULT_CLEF[part] || null);
+  if (!prev) return DEFAULT_CLEF[part] || null;
+  const last = prev.systems.filter((s) => (s.role || 'part') === 'part').sort((a, b) => a.top - b.top).pop();
+  return (last && part !== 'score' && clefsBetween(prev, last, last.right, Infinity).pop()) || prev.clef;
 }
 
 function newSystem(page, d) {
@@ -757,10 +808,10 @@ function renderOverlay() {
     }
   }
   for (const m of page.marks) {
-    const cls = `mark${isSel('mark', m.id) ? ' sel' : ''}`;
+    const cls = `mark${m.kind === 'clef' ? ' clef' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
     out.push(`<rect class="${cls}" data-t="mark" data-id="${m.id}" x="${m.x * W}" y="${m.y * H}" width="${m.w * W}" height="${m.h * H}"/>`);
-    const label = m.text || m.kind;
-    out.push(`<text class="marklabel" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
+    const label = m.kind === 'clef' ? `${m.clef || '?'} clef` : m.text || m.kind;
+    out.push(`<text class="marklabel${m.kind === 'clef' ? ' clef' : ''}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
   }
 
   // handles for the selection, drawn last so they sit on top
@@ -930,7 +981,10 @@ function renderInspector() {
   } else {
     el.innerHTML = `<h2>Mark</h2>
       <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind)}</select></label>
-      <label>Text <input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>
+      ${item.kind === 'clef'
+        ? `<label>Clef <select data-f="clef"${dis}>${options(CLEFS, item.clef)}</select></label>
+      <p class="muted">Box each clef that differs from the one in force: it holds from here, through later staves, until the next. Keys 1–4: ${CLEFS.join(', ')}.</p>`
+        : `<label>Text <input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>`}
       <label>Note <textarea data-f="note" rows="3"${dis}>${esc(item.note || '')}</textarea></label>`;
   }
 }
@@ -1117,17 +1171,25 @@ function detailView() {
   const item = find(S.sel);
   if (!item) return null;
   const page = pg();
-  const clef = page.clef || 'treble';
+  // pitch names follow the clef in force where the bar or staff begins
+  const clefsOf = (s, x0, x1) => {
+    if (s && (s.role || 'part') === 'part') return clefsBetween(page, s, x0, x1);
+    // a cue staff: its own last clef box before x1, else the page's clef
+    const own = clefMarks(page, { cue: true }).filter(([c, x]) => c === s && x < x1).pop();
+    return [own ? own[2] : page.clef].filter(Boolean);
+  };
   if (S.sel.t === 'bl') {
     // exactly the bar's crop (barQuad, as exported)
     const s = systemOf(item);
     const nb = S.byBarline.get(item.id);
     const sorted = [...s.barlines].sort((p, q) => mid(p) - mid(q));
     const prev = sorted[sorted.indexOf(item) - 1] || null;
+    const cs = clefsOf(s, prev ? mid(prev) : null, mid(item));
+    const clef = cs[0] || 'treble';
     return {
       rows: [[barQuad(s, prev, item)]],
       label: (nb ? `${PART_NAMES[nb.part] || nb.part} ${nb.movement}, bar ${barLabel(nb)} · ` : '') +
-        `${clef} clef · exactly the exported crop`,
+        `${(cs.length ? cs : ['treble']).join(' → ')} clef · exactly the exported crop`,
       staff: { above: cropAbove(s, item), below: cropBelow(s, item), clef },
     };
   }
@@ -1135,6 +1197,7 @@ function detailView() {
     // the whole staff's crop band, straightened piece by piece along its
     // bend, and wrapped onto as many rows as fill the panel best
     const s = item, sp = space(s), a = cropAbove(s), b = cropBelow(s);
+    const clef = clefsOf(s, null, -Infinity)[0] || 'treble';
     const cv = $('#detailcanvas');
     const longW = (s.right - s.left) * S.W, tallH = (4 + a + b) * sp * S.H;
     let k = 1, best = 0;
@@ -1284,14 +1347,29 @@ function addSystem() {
 
 // A mark covers the box dragged out with m held (or after + Mark); a plain
 // click makes a small default box there.
-function addMark(box = null) {
+function addMark(box = null, kind = 'text') {
   const b = box || { x: clamp(S.mouse.x - 0.02, 0, 0.96), y: clamp(S.mouse.y - 0.01, 0, 0.98), w: 0.04, h: 0.02 };
   mutate((page) => {
-    const m = { id: nextId(page, `p${S.page}m`), ...b, kind: 'text', text: '', note: '' };
+    const m = { id: nextId(page, `p${S.page}m`), ...b, kind, text: '', note: '' };
+    if (kind === 'clef') m.clef = likelyClef(page, m);
     page.marks.push(m);
     S.sel = { t: 'mark', id: m.id };
   });
-  if (!S.held) $('#inspector [data-f="text"]')?.focus();  // with m held, key repeats would type into it
+  if (!S.held && kind !== 'clef') $('#inspector [data-f="text"]')?.focus();  // with m held, key repeats would type into it
+}
+const addClef = (box = null) => addMark(box, 'clef');
+
+// A new clef mark's first guess: a clef written where the part's usual
+// clef is in force is likely its other one (cello tenor, viola treble);
+// anywhere else, the return to the usual clef.
+function likelyClef(page, m) {
+  const cx = m.x + m.w / 2;
+  const s = clefStaff(page, m);
+  if (s && (s.role || 'part') === 'cue') return 'treble';  // cues are mostly violin I
+  const usual = DEFAULT_CLEF[page.part] || 'treble';
+  const now = s ? clefsBetween(page, s, cx - 1e-6, cx - 1e-6)[0] : page.clef;
+  if ((now || usual) !== usual) return usual;
+  return { vc: 'tenor', va: 'treble' }[page.part] || (usual === 'treble' ? 'alto' : 'treble');
 }
 
 function deleteSelection() {
@@ -1439,8 +1517,8 @@ function markReviewedAndNext() {
 // a toolbar button, which places one on the next click. The cursor shows
 // what will be placed.
 
-const PLACE = { bl: addBarline, sys: addSystem, mark: addMark };
-const PLACE_KEY = { b: 'bl', s: 'sys', m: 'mark' };
+const PLACE = { bl: addBarline, sys: addSystem, mark: addMark, clef: addClef };
+const PLACE_KEY = { b: 'bl', s: 'sys', m: 'mark', c: 'clef' };
 
 function setPlacing(kind) {
   S.placing = kind;
@@ -1474,8 +1552,8 @@ svg.addEventListener('pointerdown', (e) => {
     S.mouse = { x: fx, y: fy };
     const kind = S.placing || 'bl';
     if (!S.held) setPlacing(null);  // a toolbar button places one; a held key keeps going
-    if (kind === 'mark') {  // drag out the box; the mark is made on release
-      S.drag = { kind: 'draw', start: { x: fx, y: fy } };
+    if (kind === 'mark' || kind === 'clef') {  // drag out the box; the mark is made on release
+      S.drag = { kind: 'draw', start: { x: fx, y: fy }, clef: kind === 'clef' };
       return;
     }
     PLACE[kind]();
@@ -1575,7 +1653,7 @@ svg.addEventListener('pointerup', () => {
     const w = Math.abs(clamp(S.mouse.x, 0, 1) - d.start.x), h = Math.abs(clamp(S.mouse.y, 0, 1) - d.start.y);
     // a drag of a few pixels is a click: default box
     const tiny = w * S.W < 4 * unit() || h * S.H < 4 * unit();
-    addMark(tiny ? null : { x: x0, y: y0, w, h });
+    addMark(tiny ? null : { x: x0, y: y0, w, h }, d.clef ? 'clef' : 'text');
     return;
   }
   if (d.kind === 'handle' && !d.moved) {
@@ -1649,6 +1727,9 @@ document.addEventListener('keydown', (e) => {
   else if (k === 'ArrowLeft' || k === 'ArrowRight') { handled(); nudge((k === 'ArrowLeft' ? -step : step) / S.W, 0, e.altKey); }
   else if (k === 'ArrowUp' || k === 'ArrowDown') { handled(); nudge(0, (k === 'ArrowUp' ? -step : step) / S.H); }
   else if (k === 'Tab') { handled(); cycleSelection(e.shiftKey ? -1 : 1); }
+  else if (k >= '1' && k <= '4' && S.sel?.t === 'mark' && find(S.sel)?.kind === 'clef') {
+    handled(); const m = find(S.sel); if (!S.readonly) mutate(() => { m.clef = CLEFS[+k - 1]; });
+  }
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
   else if (k === 'a') { handled(); const b = find(S.sel); if (b && S.sel.t === 'bl') snapBarline(b, systemOf(b), { undoable: true }); }
   else if (k === 'e') { handled(); setBarline((b) => { b.ends_movement = !b.ends_movement; }); }
@@ -1668,7 +1749,7 @@ document.addEventListener('keyup', (e) => {
   if (S.held && e.key.toLowerCase() === S.held) {
     S.held = null;
     setPlacing(null);
-    if (S.sel?.t === 'mark') $('#inspector [data-f="text"]')?.focus();
+    if (S.sel?.t === 'mark' && find(S.sel)?.kind !== 'clef') $('#inspector [data-f="text"]')?.focus();
   }
 });
 window.addEventListener('blur', () => {
@@ -1741,10 +1822,15 @@ $('#inspector').addEventListener('change', (e) => {
     else if (f === 'ends_movement') item.ends_movement = e.target.checked;
     else if (f === 'role') { if (e.target.value === 'part') delete item.role; else item.role = e.target.value; }
     else item[f] = e.target.value;
+    // a clef mark always has a clef (the save checks it); other marks none
+    if (t === 'mark' && f === 'kind') {
+      if (item.kind === 'clef' && !item.clef) item.clef = likelyClef(pg(), item);
+      if (item.kind !== 'clef') delete item.clef;
+    }
     // a text used before brings its usual kind, unless a kind was chosen
     if (t === 'mark' && f === 'text' && item.kind === 'text') {
       const known = S.markTextIndex?.get(e.target.value.trim());
-      if (known && known.kind !== 'text') item.kind = known.kind;
+      if (known && known.kind !== 'text' && known.kind !== 'clef') item.kind = known.kind;
     }
     if (t !== 'mark') item.auto = false;
   });

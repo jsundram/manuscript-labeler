@@ -11,7 +11,8 @@ import re
 from fractions import Fraction
 from pathlib import Path
 
-SCHEMA = 1
+SCHEMA = 2         # of the labels file
+EXPORT_SCHEMA = 1  # of the bar export (the edition's build checks it): additive changes keep it
 
 PARTS = ["vn1", "vn2", "va", "vc", "score"]
 CLEFS = ["treble", "alto", "tenor", "bass"]
@@ -19,7 +20,7 @@ DEFAULT_CLEF = {"vn1": "treble", "vn2": "treble", "va": "alto", "vc": "bass", "s
 PAGE_KINDS = ["music", "title", "blank", "other"]
 PAGE_STATUSES = ["auto", "edited", "reviewed"]
 BARLINE_KINDS = ["single", "double", "repeat_start", "repeat_end", "repeat_both", "final"]
-MARK_KINDS = ["text", "tempo", "dynamic", "stray", "unclear", "other"]
+MARK_KINDS = ["text", "tempo", "dynamic", "stray", "unclear", "other", "clef"]
 SYSTEM_ROLES = ["part", "cue"]  # a cue staff is drawn but not counted
 
 # Vertical margin of a bar's crop, in staff spaces above and below the staff.
@@ -35,7 +36,11 @@ class NewerSchema(SchemaError):
 
 
 # from_version -> function(doc) -> doc at from_version + 1
-MIGRATIONS: dict = {}
+MIGRATIONS: dict = {
+    # 2 adds clef marks (kind "clef", with a `clef`); nothing to change in
+    # older files, but a tool that knows only 1 must refuse them, not drop them
+    1: lambda doc: doc,
+}
 
 
 def migrate(doc: dict) -> dict:
@@ -141,6 +146,8 @@ def validate(doc) -> list[str]:
                 errs.append(f"{wm}: x, y, w, h must be numbers")
             if m.get("kind") not in MARK_KINDS:
                 errs.append(f"{wm}: bad kind {m.get('kind')!r}")
+            if m.get("kind") == "clef" and m.get("clef") not in CLEFS:
+                errs.append(f"{wm}: a clef mark needs a clef, one of {', '.join(CLEFS)}")
     return errs
 
 
@@ -234,6 +241,53 @@ def bend_at(system: dict, x: float) -> float:
     return bend[i] + (bend[i + 1] - bend[i]) * (t - i)
 
 
+def clef_marks(page: dict) -> list[tuple[dict, float, str]]:
+    """The page's clef marks that change a counted staff's clef, in reading
+    order: (staff, x, clef). A mark belongs to the staff nearest its centre;
+    one on a cue staff changes only the cue. x is the box's centre, or the
+    bar line the box starts at (its left edge within its own width after
+    it, or half that before): a clef written at the start of a bar governs
+    the whole bar."""
+    systems = page.get("systems", [])
+    out = []
+    for m in page.get("marks", []):
+        if m.get("kind") != "clef" or m.get("clef") not in CLEFS or not systems:
+            continue
+        cx, cy = m["x"] + m["w"] / 2, m["y"] + m["h"] / 2
+
+        def dist(s):
+            d = bend_at(s, cx)
+            return max(s["top"] + d - cy, 0.0, cy - s["bottom"] - d)
+        s = min(systems, key=lambda s: (dist(s), s["top"]))
+        if s.get("role", "part") == "part":
+            at = [_mid(b) for b in s.get("barlines", []) if _mid(b) - m["w"] / 2 <= m["x"] <= _mid(b) + m["w"]]
+            out.append((s, min(at, key=lambda b: abs(m["x"] - b)) if at else cx, m["clef"]))
+    return sorted(out, key=lambda e: (e[0]["top"], e[1]))
+
+
+def clefs_between(page: dict, system: dict, x0: float | None, x1: float, marks: list | None = None) -> list[str]:
+    """The clefs in force on a counted staff from x0 to x1: the one at x0,
+    then any it changes to before x1. x0 None means the line's first bar,
+    which a clef written before the music start (the line's own clef)
+    governs from its beginning. The page's `clef` holds from its top until
+    a clef mark changes it, and a change holds through later staves until
+    the next. On a score page, where each staff is its own instrument, a
+    change holds only on its own staff. `marks`: clef_marks(page), if at hand."""
+    marks = clef_marks(page) if marks is None else marks
+    if page.get("part") == "score":
+        marks = [e for e in marks if e[0] is system]
+    start = system.get("start", system["left"]) if x0 is None else x0
+    now = page.get("clef")
+    for s, x, clef in marks:
+        if (s["top"] < system["top"] and s is not system) or (s is system and x <= start):
+            now = clef
+    out = [now] if now else []
+    for s, x, clef in marks:
+        if s is system and start < x < x1 and (not out or out[-1] != clef):
+            out.append(clef)
+    return out
+
+
 def bar_quad(system: dict, left: dict | None, right: dict, margin: float = QUAD_MARGIN) -> list:
     """Corners TL, TR, BR, BL in page fractions.
 
@@ -279,6 +333,7 @@ def bars_export(doc: dict) -> dict:
     # il Minuetto" under the last line, "Segue il Trio") to the last bar of
     # the nearest staff that its text reaches.
     quads = [bar_quad(nb["system"], nb["left"], nb["right"]) for nb in numbered]
+    clef_changes = {n: clef_marks(p) for n, p in pages.items()}
     owner: dict[str, int] = {}
     for n, page in pages.items():
         idx = [i for i, nb in enumerate(numbered) if nb["page"] == n]
@@ -323,6 +378,10 @@ def bars_export(doc: dict) -> dict:
         s, page = nb["system"], pages[nb["page"]]
         quad = quads[i]
         marks = [m["id"] for m in page.get("marks", []) if owner.get(m["id"]) == i]
+        # the clefs in force across the bar (from the staff's left end for its
+        # first bar, so the clef at the start of the line counts)
+        left = _mid(nb["left"]) if nb["left"] else None
+        clefs = clefs_between(page, s, left, _mid(nb["right"]), clef_changes[nb["page"]])
         bars.append({
             "part": nb["part"], "movement": nb["movement"], "bar": nb["bar"],
             "count": nb["count"], "page": nb["page"], "system": s["id"],
@@ -331,6 +390,7 @@ def bars_export(doc: dict) -> dict:
             "staff": {"top": s["top"], "bottom": s["bottom"]},
             "reviewed": page.get("status") == "reviewed",
             "marks": marks,
+            "clefs": clefs,
         })
 
     # A run (part + movement) is complete when every bar is reviewed, it ends
@@ -350,7 +410,7 @@ def bars_export(doc: dict) -> dict:
             complete[part].append(mvt)
 
     return {
-        "schema": SCHEMA,
+        "schema": EXPORT_SCHEMA,
         "source": doc["source"],
         "complete": complete,
         # the paper's corners on each page, for cropping and straightening it
