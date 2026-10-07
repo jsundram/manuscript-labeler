@@ -465,6 +465,11 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   staves cut across the paper's width so the editor's edits to staff
   ends don't invalidate them), for the labeler to vote with its learned
   filter when they're there.
+  Two dead ends, written up there: segmenting whole pages into staff,
+  clef-key-time and crop outlines (YOLO26/YOLO11-seg) didn't learn; and
+  oemer couldn't run. Staff finding itself is sound (every staff found
+  on the test pages); its weak points are each staff's right end and
+  music start.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet

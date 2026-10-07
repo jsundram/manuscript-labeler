@@ -136,6 +136,52 @@ detector, the vote of the learned filter and both YOLOs the best on
 familiar hands. Detected staves cost the detectors several errors
 against the editor's staves (YOLO26n 16 -> 28 on the three-hand test).
 
+### Staves by segmentation: didn't learn (staves_seg.py)
+
+Could a segmentation model find the staves, their music start and crop
+better than detect.py's staff tracing and rules? Three outlines per
+counted staff from the editor's labels (staff, clef-key-time region,
+crop), each following the staff's bend, on whole pages (imgsz 1280),
+split by page: 33 training, 3 validation, 13 test (all of Vma ms 1067
+(1) and 2 pages of each other source).
+
+- YOLO26n-seg: losses went NaN within an epoch or two, with mosaics
+  (pages cut in quarters clip long staff outlines to slivers) and with
+  mixed precision on the Mac's GPU. Without both it trained, but its
+  validation recall stayed near 0.2 (box mAP50 about 0.1); early
+  stopping ended it at epoch 71, and at confidence 0.25 it found no
+  staves on the test pages.
+- YOLO11n-seg (mosaics, one mask per outline): validation recall rose
+  to about 0.5 by epoch 6, then collapsed to 0 by epoch 11; stopped.
+
+Likely causes: staves are extreme shapes for these models (about 30
+times wider than tall), the staff and crop outlines are nearly the same
+box, and 33 pages is little for a page-level model.
+
+Today's detection, on the same 13 test pages against the editor's
+staves, sets the bar: it finds every staff (108 of 108, 5 false); what
+is weak is two points on each:
+
+| | median (staff spaces) | within 1 space | over 3 spaces |
+|---|---|---|---|
+| left end | 0.0 | 82% | 13% |
+| right end | 1.6 | 37% | 32% |
+| music start | 0.5 | 67% | 21% |
+| crop above | 0.2 | 89% | 5% |
+| crop below | 0.2 | 86% | 2% |
+
+So the next attempt targets those points: "music start" and "staff end"
+as classes of the line detector, on the same straightened lines.
+
+### oemer: not usable (oemer_eval.py)
+
+oemer (MIT; an end-to-end OMR system whose U-Nets saw handwritten music)
+as a zero-shot staff finder, on the same test pages: about 5 minutes a
+page on the CPU; it uses numpy aliases removed in 1.24 and its old
+dependency set can't be installed on Python 3.11; with the aliases
+restored, its staff extraction crashed on every page ("invalid index to
+scalar variable"). Not a building block.
+
 ## Round 1: KHM 602/603 (2026-10-05)
 
 43 test lines, 287 bar lines (21 lines from KHM 602, 22 from KHM 603),
