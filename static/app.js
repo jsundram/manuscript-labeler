@@ -45,6 +45,7 @@ const svg = $('#canvas');
 const overlay = $('#overlay');
 
 const S = {
+  carried: new WeakSet(),  // staves Apply Start Below set the right end of (this session)
   sources: [],
   pdf: null,
   info: null,          // /api/source response minus labels
@@ -209,9 +210,10 @@ function setExtent(s, left, right) {
 // the editor fixes one line, and this carries its left end, music start
 // and right end to the lines below it: the left end at the same place on
 // the page, the start too but snapped to the nearest clear paper (where
-// the key signature ends), the right end only ever further out (a line
-// is never shortened, so no music is cut) and not on a line that ends at
-// its last bar line (ended with ], or found so). Lines above are left alone, so at
+// the key signature ends), the right end only ever further out (no music
+// is cut), only on lines detection proposed or this carried to before
+// (one shortened by hand keeps its end), not on a line that ends at its
+// last bar line, and never short of one. Lines above are left alone, so at
 // a key change: fix that line and apply again. Backtested on KHM 602/603
 // against the editor's starts: better than measuring from each line's
 // left edge, whose detection is the weak part. One undo step.
@@ -224,10 +226,11 @@ function trimStaff(s) {
 // a short note that fades: what a key just did, where it isn't obvious
 function flash(msg) {
   const b = $('#banner');
-  if (!b.hidden && b.querySelector('button')) return;  // a warning that needs acting on stays (Not saved… Reload)
+  if (!b.hidden && b.textContent !== S.flashed) return;  // a message already showing (Not saved…, Read-only…) stays
+  S.flashed = msg;
   banner(msg);
   clearTimeout(S.flashTimer);
-  S.flashTimer = setTimeout(() => { if ($('#banner').textContent === msg) banner(null); }, 2500);
+  S.flashTimer = setTimeout(() => { if ($('#banner').textContent === msg) { banner(null); S.flashed = null; } }, 2500);
 }
 
 async function applyStartToPage(src) {
@@ -243,9 +246,14 @@ async function applyStartToPage(src) {
   mutate(() => {
     below.forEach((s, i) => {
       const last = Math.max(-Infinity, ...s.barlines.map((b) => Math.max(b.x0, b.x1)));
-      const atLast = s.barlines.length && s.right - last <= space(s) * S.H / S.W;  // ends at its last bar line
-      const right = atLast ? s.right : Math.max(src.right, s.right);
+      const sp = space(s) * S.H / S.W;  // a staff space, in page widths
+      const atLast = s.barlines.length && s.right - last <= sp;  // ends at its last bar line
+      // only lines detection proposed, or this carried to before; never
+      // short of a line's own last bar line
+      const free = (s.auto || S.carried.has(s)) && !atLast;
+      const right = Math.max(free ? Math.max(src.right, s.right) : s.right, s.barlines.length ? last + sp / 2 : -Infinity);
       if (src.left < right) setExtent(s, src.left, right);
+      S.carried.add(s);
       s.start = clamp(snapped[i], s.left, s.right);
       s.auto = false;
     });
@@ -1284,11 +1292,16 @@ $('#counts').addEventListener('change', (e) => {
 // bar whose crop holds its centre; else, written left of a line's music
 // within its crop's height, that line's first bar; else the first bar of
 // the nearest staff below.
-function markBar(n, m) {
+function markBar(n, m, boxes) {
   const cx = m.x + m.w / 2, cy = m.y + m.h / 2;
   const bars = S.bars.filter((b) => b.page === n);
-  const box = (b) => { const q = barQuad(b.system, b.left, b.right); const xs = q.map((p) => p[0]), ys = q.map((p) => p[1]);
-    return [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]; };
+  const box = (b) => {  // each bar's crop's extent, worked out once per render (`boxes`)
+    if (!boxes.has(b)) {
+      const q = barQuad(b.system, b.left, b.right), xs = q.map((p) => p[0]), ys = q.map((p) => p[1]);
+      boxes.set(b, [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]);
+    }
+    return boxes.get(b);
+  };
   const inside = bars.find((b) => { const [x0, x1, y0, y1] = box(b); return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; });
   if (inside) return inside;
   const firsts = bars.filter((b) => !b.left);
@@ -1311,13 +1324,12 @@ function renderCounts() {
     }
     if (nb.right.ends_movement) r.ended = true;
   }
-  // tempo marks and movement titles: each belongs to the first bar of the nearest staff below it
-  const tempos = {};
+  // tempo marks and movement titles, by the bar each belongs to (markBar)
+  const tempos = {}, boxes = new Map();
   for (const [n, page] of Object.entries(S.doc?.pages || {})) {
     for (const m of page.marks || []) {
       if ((m.kind !== 'tempo' && m.kind !== 'title') || !m.text) continue;
-      const cy = m.y + m.h / 2;
-      const nb = markBar(+n, m);
+      const nb = markBar(+n, m, boxes);
       if (nb) ((tempos[nb.part] ||= {})[nb.movement] ||= []).push(m.text);
     }
   }
