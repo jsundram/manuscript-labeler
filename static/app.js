@@ -205,13 +205,28 @@ function setExtent(s, left, right) {
 
 // Clef and key take the same room on every line until the key changes,
 // but reading where they end from the ink is unreliable across hands. So
-// the editor fixes one line, and this carries its left end and music start
-// to the lines below it: the left end at the same place on the page, the
-// start too but snapped to the nearest clear paper (where the key
-// signature ends). Lines above are left alone, so at
+// the editor fixes one line, and this carries its left end, music start
+// and right end to the lines below it: the left end at the same place on
+// the page, the start too but snapped to the nearest clear paper (where
+// the key signature ends), the right end to lines not yet edited (a line
+// fixed by hand, or ended with ], keeps its own) and never short of a
+// line's own last bar line. Lines above are left alone, so at
 // a key change: fix that line and apply again. Backtested on KHM 602/603
 // against the editor's starts: better than measuring from each line's
 // left edge, whose detection is the weak part. One undo step.
+// End at last bar line (the button, or ] with the staff selected)
+function trimStaff(s) {
+  if (!s || !s.barlines.length) return;
+  mutate(() => { trimToLastBarline(s); s.auto = false; });
+}
+
+// a short note that fades: what a key just did, where it isn't obvious
+function flash(msg) {
+  banner(msg);
+  clearTimeout(S.flashTimer);
+  S.flashTimer = setTimeout(() => { if ($('#banner').textContent === msg) banner(null); }, 2500);
+}
+
 async function applyStartToPage(src) {
   const n = S.page;
   const x = src.start ?? src.left;
@@ -224,7 +239,9 @@ async function applyStartToPage(src) {
   if (n !== S.page) return;
   mutate(() => {
     below.forEach((s, i) => {
-      if (src.left < s.right) setExtent(s, src.left, s.right);
+      const last = Math.max(-Infinity, ...s.barlines.map((b) => Math.max(b.x0, b.x1)));
+      const right = s.auto ? Math.max(src.right, last + 0.002) : s.right;
+      if (src.left < right) setExtent(s, src.left, right);
       s.start = clamp(snapped[i], s.left, s.right);
       s.auto = false;
     });
@@ -1156,7 +1173,7 @@ function renderInspector() {
       <h3 title="What is written at this line's start, where it sets or changes something (each movement's first line: key and time). Leave the rest at —.">Written at its start</h3>
       ${sigMenus(item, dis, sigDefaults(item))}
       <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
-      <button data-act="start-all"${dis} title="Carry this line's left end and music start to the lines below it (the start snapped to clear paper). At a key change, fix that line and click again.">Apply Start Below</button>
+      <button data-act="start-all"${dis} title="Carry this line's left end, music start and right end to the lines below it (the start snapped to clear paper). At a key change, fix that line and click again; a line that ends early: select it and press ].">Apply Start Below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
       <label>Crop below (staff spaces) <input data-f="below" type="number" min="0" step="0.5" value="${cropBelow(item)}"${dis}></label>
       <p class="muted">The dashed band is what each bar's image includes; drag its round handles or set it here.
