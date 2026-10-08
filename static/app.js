@@ -389,6 +389,9 @@ function numberBars(doc) {
 function renumber() {
   S.bars = numberBars(S.doc);
   S.byBarline = new Map(S.bars.map((b) => [b.right.id, b]));
+  // each part's first bar of each movement: "part movement" -> bar
+  S.firsts = new Map();
+  for (const nb of S.bars) if (!S.firsts.has(nb.part + ' ' + nb.movement)) S.firsts.set(nb.part + ' ' + nb.movement, nb);
 }
 
 const barLabel = (nb) => nb.count > 1 ? `${nb.bar}–${nb.bar + nb.count - 1}` : nb.count === 0 ? `(${nb.bar})` : `${nb.bar}`;
@@ -830,12 +833,16 @@ function renderOverlay() {
       out.push(`<text class="lineno" x="${s.left * W - 0.8 * sp * H}" y="${(topAt(s, s.left) + 2 * sp) * H}" font-size="${2.4 * sp * H}">${esc(firstOnLine.bar)}</text>`);
     }
   }
-  // a staff's own clef, key and time, small, under its start region
+  // a staff's own clef, key and time, small, under its start region; the
+  // movement's key and time it will take on review, dimmed
+  const pending = new Map();
+  for (const [s, f, v] of pendingDefaults()) pending.set(s, { ...pending.get(s), [f]: v });
   for (const s of page.systems) {
-    const t = sigText(s);
-    if (!t) continue;
+    const t = sigText(s), d = pending.has(s) ? sigText(pending.get(s)) : '';
+    if (!t && !d) continue;
     const sp = space(s), x = (s.left + (s.start ?? s.left)) / 2;
-    out.push(`<text class="siglabel" x="${x * W}" y="${(bottomAt(s, x) + 1.6 * sp) * H}" font-size="${Math.max(10 * u, 1.3 * sp * H)}">${esc(t)}</text>`);
+    out.push(`<text class="siglabel" x="${x * W}" y="${(bottomAt(s, x) + 1.6 * sp) * H}" font-size="${Math.max(10 * u, 1.3 * sp * H)}">${esc(t)}`
+      + (d ? `<tspan class="dflt">${t ? ' · ' : ''}${esc(d)}</tspan>` : '') + '</text>');
   }
   for (const m of page.marks) {
     const cls = `mark${m.kind === 'signature' ? ' sig' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
@@ -884,13 +891,121 @@ function renderOverlay() {
   overlay.innerHTML = out.join('');
 }
 
-const sigMenus = (o, dis) => `<div class="sigrow">
-      <label>Clef <select data-f="clef"${dis}>${options(CLEFS, o.clef, {}, true)}</select></label>
-      <label>Key <select data-f="key"${dis}>${options(KEYS.map(String), o.key != null ? String(o.key) : null, Object.fromEntries(KEYS.map((k) => [String(k), keyName(k)])), true)}</select></label>
-      <label>Time <select data-f="time"${dis}>${options(TIMES.includes(o.time) || o.time == null ? TIMES : [...TIMES, o.time], o.time, { C: 'C (common)', 'C/': '¢ (cut)' }, true)}</select></label></div>`;
+// the menus; `before` (a staff's): what its blank choice stands for, shown
+// on it: what is in force before the line ("— (treble)"), or a movement's
+// key and time from where they're stated ("— (2♯, as Violin I)")
+const sigMenus = (o, dis, before = {}) => {
+  const blank = (f, show) => {
+    const b = before[f];
+    if (b == null) return true;
+    return b.from ? `— (${show(b.value)}, as ${b.from})` : `— (${show(b)})`;
+  };
+  return `<div class="sigrow">
+      <label>Clef <select data-f="clef"${dis}>${options(CLEFS, o.clef, {}, blank('clef', (v) => v))}</select></label>
+      <label>Key <select data-f="key"${dis}>${options(KEYS.map(String), o.key != null ? String(o.key) : null, Object.fromEntries(KEYS.map((k) => [String(k), keyName(k)])), blank('key', keyName))}</select></label>
+      <label>Time <select data-f="time"${dis}>${options(TIMES.includes(o.time) || o.time == null ? TIMES : [...TIMES, o.time], o.time, { C: 'C (common)', 'C/': '¢ (cut)' }, blank('time', (v) => v))}</select></label></div>`;
+};
+
+// What a staff's blank menus stand for: what is in force before it; on a
+// line that begins a movement, the movement's key and time from where
+// they're stated (movementDefault), or nothing: the line is asked for them.
+function sigDefaults(s) {
+  const out = Object.fromEntries(SIG_FIELDS.map((f) => [f, sigBefore(S.page, s, f)]));
+  const nb = lineStartsMovement(s);
+  if (nb) for (const f of ['key', 'time']) out[f] = movementDefault(nb, f);
+  return out;
+}
+
+// the movement's first bar, if a counted staff begins one at its start
+function lineStartsMovement(s) {
+  for (const nb of S.firsts.values()) if (nb.system === s && !nb.left) return nb;
+  return null;
+}
+
+// The movement defaults on the current page's movement-starting lines that
+// the lines don't state: [staff, field, value]. Shown dimmed on the page;
+// marking the page reviewed writes them (reviewing confirms what's shown).
+function pendingDefaults(n = S.page) {
+  const key = `${S.version} ${n}`;
+  if (S.pendingCache?.key === key) return S.pendingCache.items;
+  const out = [];
+  for (const nb of S.firsts.values()) {
+    if (nb.page !== n || nb.left) continue;
+    for (const f of ['key', 'time']) {
+      const d = nb.system[f] == null ? movementDefault(nb, f) : null;
+      if (d) out.push([nb.system, f, d.value, d.from]);
+    }
+  }
+  S.pendingCache = { key, items: out };
+  return out;
+}
+
+// The clef, key or time in force just before a counted staff's start: the
+// last change on an earlier line of its page (a movement's start counting
+// the key and time another part states for it), else (the clef) the
+// page's clef at the top, else the last on the part's earlier pages.
+function sigBefore(n, s, field) {
+  const page = S.doc.pages[n];
+  if (!page || page.part === 'score' || (s.role || 'part') !== 'part') return null;
+  const firsts = field === 'clef' ? [] : [...S.firsts.values()];
+  // changes on page k above `top` (all of them when top is Infinity), last first
+  const last = (k, top) => {
+    const ch = sigChanges(S.doc.pages[k], field).filter(([t]) => t.top < top).map(([t, x, v]) => [t.top, x, v]);
+    for (const nb of firsts) {
+      if (nb.page !== k || nb.system.top >= top) continue;
+      // a movement's key and time don't carry into the next: unstated, it's a blank
+      ch.push([nb.system.top, nb.left ? mid(nb.left) : -Infinity, movementSig(nb, field) ?? NONE]);
+    }
+    ch.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    return ch.length ? ch[ch.length - 1][2] : null;
+  };
+  const NONE = sigBefore.NONE;
+  const here = last(n, s.top);
+  if (here === NONE) return null;
+  if (here != null) return here;
+  if (field === 'clef') return page.clef || null;  // a music page's clef at its top (clefFor carries it over)
+  for (let k = n - 1; k >= 1; k--) {
+    const p = S.doc.pages[k];
+    if (!p || p.kind !== 'music') continue;
+    if (p.part !== page.part) return null;  // another part's pages: this part starts after them
+    const v = last(k, Infinity);
+    if (v === NONE) return null;
+    if (v != null) return v;
+  }
+  return null;
+}
+sigBefore.NONE = Symbol('nothing stated');
+
+
+// the key or time written where a movement begins in a part: on the staff,
+// or on a signature mark at the movement's first bar (it may begin mid-line)
+function statedAtStart(nb, field) {
+  const page = S.doc.pages[nb.page];
+  const s0 = nb.system.start ?? nb.system.left;
+  // at a line's start: the staff's own, or a box before its music start;
+  // mid-line: a box at the movement's first bar line
+  const here = nb.left ? (x) => Math.abs(x - mid(nb.left)) < 1e-6 : (x) => x <= s0;
+  const ch = sigChanges(page, field).filter(([s, x]) => s === nb.system && here(x));
+  return ch.length ? ch[ch.length - 1][2] : null;
+}
+
+// A movement's key and time, as one part states them, stand for the
+// others (the parts agree; a part that differs states its own). For a
+// part's first bar of a movement that doesn't state one: {value, from}.
+function movementDefault(nb, field) {
+  if (nb.part === 'score') return null;  // a score's movements needn't line up with the parts'
+  for (const other of S.firsts.values()) {
+    if (other.movement !== nb.movement || other.part === nb.part || other.part === 'score') continue;
+    const v = statedAtStart(other, field);
+    if (v != null) return { value: v, from: PART_NAMES[other.part] || other.part };
+  }
+  return null;
+}
+// what a movement's first bar has for key or time: its own, else the default
+const movementSig = (nb, field) => statedAtStart(nb, field) ?? movementDefault(nb, field)?.value ?? null;
 
 function options(list, value, names = {}, blank = false) {
-  return (blank ? `<option value="">—</option>` : '') +
+  return (blank ? `<option value="">${esc(blank === true ? '—' : blank)}</option>` : '') +
     list.map((v) => `<option value="${v}"${v === value ? ' selected' : ''}>${esc(names[v] || v)}</option>`).join('');
 }
 
@@ -1007,7 +1122,7 @@ function renderInspector() {
       <p>${item.barlines.length} bar lines</p>
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
       <h3 title="What is written at this line's start, where it sets or changes something (each movement's first line: key and time). Leave the rest at —.">Written at its start</h3>
-      ${sigMenus(item, dis)}
+      ${sigMenus(item, dis, sigDefaults(item))}
       <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
       <button data-act="start-all"${dis} title="Carry this line's left end and music start to the lines below it (the start snapped to clear paper). At a key change, fix that line and click again.">Apply Start Below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
@@ -1095,11 +1210,12 @@ function renderCounts() {
       // a movement's first line records its key and time as written there
       // (on the staff, or on a signature mark where the movement starts
       // mid-line); asked on the page it's on, so the list doesn't flood
-      const at = r && r.first.page === S.page ? (r.first.left ? mid(r.first.left) : -Infinity) : null;
-      const missing = at === null ? [] : ['key', 'time'].filter((f) => !sigChanges(pg(), f)
-        .some(([s, x]) => s === r.first.system && x <= at + 1e-6));
+      const missing = r && r.first.page === S.page ? ['key', 'time'].filter((f) => statedAtStart(r.first, f) == null) : [];
       if (missing.length) {
-        warnings.push(`${PART_NAMES[part]} ${m}: ${missing.join(' and ')} not set on its first line (page ${r.first.page})`);
+        const d = r.first.left ? [] : missing.map((f) => movementDefault(r.first, f)).filter(Boolean);
+        const will = d.length ? `; ${sigText({ key: movementDefault(r.first, 'key')?.value, time: movementDefault(r.first, 'time')?.value })} (as ${d[0].from}) will be written on review`
+          : r.first.left ? '; box them at its first bar (hold c)' : '';
+        warnings.push(`${PART_NAMES[part]} ${m}: ${missing.join(' and ')} not set on its first line (page ${r.first.page})${will}`);
       }
       if (!e || !r) continue;
       if (r.ended && counted !== e.total) warnings.push(`${PART_NAMES[part]} ${m}: ${counted} bars counted, ${e.total} expected`);
@@ -1555,9 +1671,17 @@ function cycleSelection(dir) {
   renderAll();
 }
 
+// Reviewing a page confirms what it shows: the movement defaults on its
+// lines are written into them, so each part's labels say what its page has.
+function markReviewed(page) {
+  const n = +Object.keys(S.doc.pages).find((k) => S.doc.pages[k] === page);
+  for (const [s, f, v] of pendingDefaults(n)) { s[f] = v; s.auto = false; }
+  page.status = 'reviewed';
+}
+
 function markReviewedAndNext() {
   if (!pg() || S.readonly) return;
-  mutate((page) => { page.status = 'reviewed'; }, { status: false });
+  mutate((page) => markReviewed(page), { status: false });
   if (S.page < S.numPages) openPage(S.page + 1);
 }
 
@@ -1828,7 +1952,7 @@ $('#detailclose').onclick = () => { S.detail = false; savePref('detail', false);
 
 $('#pagestatus').onclick = () => {
   if (!pg() || S.readonly) return;
-  mutate((p) => { p.status = p.status === 'reviewed' ? 'edited' : 'reviewed'; }, { status: false });
+  mutate((p) => { if (p.status === 'reviewed') p.status = 'edited'; else markReviewed(p); }, { status: false });
 };
 $('#f-kind').addEventListener('change', (e) => mutate((p) => {
   p.kind = e.target.value;
@@ -1875,7 +1999,7 @@ $('#inspector').addEventListener('change', (e) => {
       // a signature mark keeps at least one field (the save checks it): its
       // last one can't be cleared (delete the mark instead)
       if (v === '' && t === 'mark' && SIG_FIELDS.every((g) => g === f || !(g in item))) return;
-      if (v === '') delete item[f]; else item[f] = f === 'key' ? +v : v;
+      if (v === '') delete item[f]; else item[f] = f === 'key' ? +v : v;  // saved as picked
     }
     else item[f] = e.target.value;
     // a clef mark always has a clef (the save checks it); other marks none
