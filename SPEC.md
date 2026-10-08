@@ -417,7 +417,8 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     2% of it is strongly coloured (the photographer's colour charts), and
     a title page otherwise. Blank and other pages get no part or clef;
     title pages keep inheriting the part, as the editor sets the next part
-    there. All 15 non-music pages of KHM 602/603 come out as the editor
+    there, but get no clef (a music page's clef is carried from the part's
+    previous music page). All 15 non-music pages of KHM 602/603 come out as the editor
     marked them.
 - **Staff end.** A staff is proposed to end just after its last bar line
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such

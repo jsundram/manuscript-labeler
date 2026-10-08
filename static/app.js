@@ -587,7 +587,7 @@ function previousPage(n, pred = () => true) {
 // a new page's clef at the top: the one in force at the end of the part's
 // previous page (its clef marks included), else the part's usual clef
 function clefFor(n, part) {
-  const prev = previousPage(n, (p) => p.part === part && p.clef);
+  const prev = previousPage(n, (p) => p.part === part && p.kind === 'music' && p.clef);
   if (!prev) return DEFAULT_CLEF[part] || null;
   const last = prev.systems.filter((s) => (s.role || 'part') === 'part').sort((a, b) => a.top - b.top).pop();
   return (last && part !== 'score' && clefsBetween(prev, last, last.right, Infinity).pop()) || prev.clef;
@@ -651,7 +651,8 @@ async function autoLabel(n, token) {
   const part = kind === 'music' || kind === 'title' ? (prev ? prev.part : null) : null;
   const page = {
     status: 'auto', kind, part,
-    clef: part ? clefFor(n, part) : null, notes: '', systems: [], marks: [],
+    clef: part && kind === 'music' ? clefFor(n, part) : null,  // a title page has no clef
+    notes: '', systems: [], marks: [],
   };
   if (corners) page.corners = { points: corners, auto: true };
   S.doc.pages[n] = page;
@@ -2049,10 +2050,13 @@ $('#pagestatus').onclick = () => {
 $('#f-kind').addEventListener('change', (e) => mutate((p) => {
   p.kind = e.target.value;
   if (p.kind === 'blank' || p.kind === 'other') { p.part = null; p.clef = null; }  // nothing to carry
+  if (p.kind === 'title') p.clef = null;  // a title page has no clef
+  if (p.kind === 'music' && p.part && !p.clef) p.clef = clefFor(S.page, p.part);
 }));
 $('#f-part').addEventListener('change', (e) => mutate((p) => {
   p.part = e.target.value || null;
-  p.clef = clefFor(S.page, p.part) || p.clef;
+  if (p.kind === 'music') p.clef = clefFor(S.page, p.part) || p.clef;
+  else if (p.kind === 'title') p.clef = null;
 }));
 $('#f-clef').addEventListener('change', (e) => mutate((p) => { p.clef = e.target.value || null; }));
 $('#f-corners').onclick = () => {
