@@ -10,9 +10,12 @@ By default, the pages in experiments/barlines/test_pages.json (pages no
 model had seen when they were annotated). SOURCE is a PDF's name without
 .pdf, PAGES a list like 3,11 or 3-6; --all, every reviewed page.
 
-A bar line or staff the editor never touched keeps `auto: true`; one moved,
-changed or added has it false; one deleted is recorded on its staff
-(`rejected`). Only reviewed pages count. A page opened before the models
+A bar line or staff the editor never touched keeps `auto: true`; one
+moved, added, or edited in any way (its kind, its bar count, "movement
+ends here"; a staff's ends, crop or signature, which marking a page
+reviewed also writes) has it false; one deleted is recorded on its
+staff (`rejected`). So "changed" counts every edit, not only moves: an
+upper bound on fixing detection. Only reviewed pages count. A page opened before the models
 being measured were installed got its proposals from the earlier ones.
 """
 
@@ -37,7 +40,7 @@ def page_counts(p: dict) -> dict:
     return {"staves": len(staves), "staves changed": sum(1 for s in staves if not s.get("auto")),
             "staves deleted": len(p.get("rejected_staves", [])),
             "bar lines": len(bars), "kept as detected": sum(1 for b in bars if b.get("auto")),
-            "added or moved": sum(1 for b in bars if not b.get("auto")),
+            "changed": sum(1 for b in bars if not b.get("auto")),
             "deleted": sum(len(s.get("rejected", [])) for s in staves)}
 
 
@@ -70,14 +73,14 @@ def main():
                 t[k] += v
             kept = c["kept as detected"] / c["bar lines"] if c["bar lines"] else 0
             print(f"{src} p{n} ({p.get('part')}): {c['bar lines']} bar lines, {kept:.0%} kept as detected, "
-                  f"{c['added or moved']} added or moved, {c['deleted']} deleted; "
+                  f"{c['changed']} changed (moved, added or edited), {c['deleted']} deleted; "
                   f"{c['staves changed']} of {c['staves']} staves changed")
     if not totals:
         print("no reviewed pages to report")
     for src, t in totals.items():
         kept = t["kept as detected"] / t["bar lines"] if t["bar lines"] else 0
         print(f"\n{src}: {t['pages']} pages, {t['bar lines']} bar lines, {kept:.0%} kept as detected, "
-              f"{t['added or moved']} added or moved, {t['deleted']} deleted; "
+              f"{t['changed']} changed (moved, added or edited), {t['deleted']} deleted; "
               f"{t['staves changed']} of {t['staves']} staves changed, {t['staves deleted']} deleted")
 
 
