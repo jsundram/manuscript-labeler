@@ -136,13 +136,17 @@ The server reads these, if present:
   = 48 bars, inside `\repeat volta 2 { }`. Parse each movement's total and
   where its repeats fall. Example (Op48-1): movement I is 48 + 82 bars;
   movement II is Minuet 8 + 28, Trio 16 + 20.
-  With a `\time`, bars are counted by duration, as LilyPond numbers them:
-  the `\partial` pickup is bar 0, and a section's short last bar plus the
-  next section's upbeat are one bar (G227's Minuet, `\partial 4 s4
-  s2.*7 s2 } { s4 s2.*19 s2`, is 8 + 20). In the labels the matching
-  upbeats have `bar_count` 0. Time changes, alternative endings, block
-  comments and `\repeat unfold` are handled; a `\partial` mid-movement
-  isn't.
+  With a `\time`, bars are numbered as LilyPond numbers them, following
+  the position within the bar: a `\partial` at the very start is the
+  pickup, bar 0, and a section's short last bar plus the next section's
+  upbeat are one bar (G227's Minuet, `\partial 4 s4 s2.*7 s2 } { s4
+  s2.*19 s2`, is 8 + 20). A `\partial` later gives the current bar's
+  remaining length: on a bar line it begins a short bar, which counts
+  (G228's Trio ends `s2.*23 \partial 2 s2`, bar 68); within a bar it
+  sets how much of it is left (shorter or longer), adding no bar. A bare
+  `s` repeats the last duration, and text in markings is ignored. In the labels the matching upbeats have `bar_count`
+  0, a short bar 1. Time changes, alternative endings, block comments and
+  `\repeat unfold` are handled.
 
 Example source: `sources/G226/D-B_KHM-602.pdf`, Berlin, Staatsbibliothek,
 KHM 602, RISM 1001015844. It is a set of parts, 17 pages:
@@ -250,7 +254,8 @@ The rules:
 - **`bar_count`** sits on the bar line that *ends* the bar. It is 1 by
   default, and N for an N-bar rest. 0 marks a pickup: it isn't counted and
   shares the number before it (bar 0 at the start of a movement), matching
-  `\partial` in `Structure.ily`.
+  the opening `\partial` in `Structure.ily` and the upbeat that completes
+  a section's short last bar; a short bar a later `\partial` makes is 1.
 - **Bar line `kind`:** `single`, `double`, `repeat_start`, `repeat_end`,
   `repeat_both`, `final`.
 - **Bar numbers aren't stored.** They're derived (part, page order, systems

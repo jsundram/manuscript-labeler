@@ -277,6 +277,22 @@ README = """
 """
 
 
+def test_parse_structure_counts_a_short_last_bar():
+    # Op. 48/3's Trio: its second half ends on a two-beat bar written \partial 2
+    text = r"""\tag #'mvtII {
+      \time 3/4
+      \repeat volta 2 { \partial 4 s4 s2.*7 s2 }
+      \repeat volta 2 { s4 s2.*27 s2 }
+      \repeat volta 2 { s4 s2.*7 s2 }
+      \repeat volta 2 { s4 s2.*23 \partial 2 s2 }
+    }"""
+    got = labels.parse_structure(text)["II"]
+    assert got["pickup"] and got["total"] == 68
+    assert [s["bars"] for s in got["segments"]] == [8, 28, 8, 24]
+    # only a \partial at the very start is a pickup
+    assert not labels.parse_structure(r"\tag #'mvtI { \time 3/4 s2.*23 \partial 2 s2 }")["I"]["pickup"]
+
+
 def test_parse_structure_counts_by_duration_with_upbeats():
     """A minuet whose halves start with an upbeat and end with a short bar:
     LilyPond numbers the short bar and the next upbeat as one bar."""
@@ -305,16 +321,40 @@ def test_parse_structure_counts_by_duration_with_upbeats():
                         "segments": [{"bars": 88, "repeat": False}]}
 
 
-@pytest.mark.parametrize("body, want", [
-    (r"\time 3/4 \repeat volta 2 { s2.*4 } \time 2/4 \repeat volta 2 { s2*6 }", [4, 6]),  # meter change
-    (r"\time 2/4 \repeat volta 2 { s2*11 \alternative { { s2 } { s2 } } } s2*4", [13, 4]),
-    (r"\time 2/4 %{ s2*99 %} s2*8", [8]),                                  # block comment
-    (r'\time 2/4 \mark \markup { "segue s" } s2*8', [8]),                   # s-words in text
-    (r"\time 2/4 \repeat unfold 2 { s2*4 }", [8]),                          # written out twice
+@pytest.mark.parametrize("body, want, pickup", [
+    (r"\time 3/4 \repeat volta 2 { s2.*4 } \time 2/4 \repeat volta 2 { s2*6 }", [4, 6], False),  # meter change
+    (r"\time 2/4 \repeat volta 2 { s2*11 \alternative { { s2 } { s2 } } } s2*4", [13, 4], False),
+    (r"\time 2/4 %{ s2*99 %} s2*8", [8], False),                                  # block comment
+    (r'\time 2/4 \mark \markup { "segue s" } s2*8', [8], False),                   # s-words in text
+    (r"\time 2/4 \repeat unfold 2 { s2*4 }", [8], False),                          # written out twice
+    # \partial after the start: the current bar's remaining length (LilyPond)
+    (r"\time 3/4 \repeat volta 2 { s4 s2.*23 \partial 2 s2 }", [24], False),     # a short last bar counts
+    (r"\time 3/4 s2.*2 \partial 2 s2 \partial 2 s2 \partial 2 s2", [5], False),  # three short bars
+    (r"\time 3/4 \repeat volta 2 { s2.*2 \partial 2 s2 s2.*3 s4 } \repeat volta 2 { s2 s2.*2 }", [7, 2], False),
+    (r"\time 3/4 \repeat volta 2 { s2.*4 } \repeat volta 2 { \partial 4 s4 s2.*3 s2 }", [4, 5], False),  # a later upbeat is a bar
+    (r"\time 2/4 \partial 4 s8 s8 s2*4", [4], True),                             # a pickup in two spacers
+    (r"\time 2/4 \partial 2 s4 s4 s2*8", [8], True),                             # a full-bar pickup
+    (r"\time 3/4 \partial 4 * 3 s2. s2.*4", [4], True),                          # spaces in the duration
+    (r'\time 3/4 \mark \markup { "da capo s" } \partial 4 s4 s2.*4', [4], True),  # text before the pickup
+    (r"\time 3/4 \mark \markup { \italic Segue s } s2.*4", [4], False),           # an unquoted word
+    (r"\time 3/4 \partial 4 s4 \partial 2 s2 s2.*4", [5], True),                 # a short bar right after the pickup
+    (r"\time 3/4 s2. s s s", [4], False),                                          # a bare s repeats the last duration
+    (r"\time 6/8 s2.*2 s4 s8 s8 \time 2/4 s2*2", [5], False),                      # meter change after a filled bar
+    (r"\time 3/4 s2.*2 s2 \partial 2 s2 s2.*2", [5], False),                       # a \partial can lengthen a bar
+    # checked against LilyPond 2.24
+    (r"\time 4/4 s1 \repeat unfold 4 { s s8 }", [6], False),          # a bare s replayed with its own duration
+    (r"\time 3/4 s2.*2 s", [4], False),                                 # a bare s keeps the multiplier
+    (r"\partial 4 \time 3/4 s4 s2.*4", [4], True),                     # \partial before \time
+    ('\\time 3/4 \\mark "50% slower" s2.*4\n\\tempo "Allegro" s2.*4', [8], False),  # % inside a string
+    (r"\time 3/4 \mark \markup \bold { Fine s } s2.*4", [4], False),  # \markup with a command
+    (r"s1*8 \partial 2 s2 s1*4", [13], False),                          # no \time: a later \partial isn't a pickup
+    (r"\time 3/4 s2. * 4", [4], False),                                 # spaces in a spacer's multiplier
+    (r"s1*4 \repeat volta 2 { \time 3/4 s2.*8 }", [4, 8], False),      # music before the first \time
 ])
-def test_parse_structure_edge_cases(body, want):
+def test_parse_structure_edge_cases(body, want, pickup):
     got = labels.parse_structure("\\tag #'mvtI { " + body + " }")["I"]
     assert [s["bars"] for s in got["segments"]] == want
+    assert got["pickup"] == pickup  # only a \partial before any music
 
 
 def test_parse_sources_readme_and_source_info(tmp_path):

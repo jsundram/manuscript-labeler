@@ -6,7 +6,6 @@ server or a browser. The front end has its own copy of the numbering rules
 authority for what gets written to disk.
 """
 
-import math
 import re
 from fractions import Fraction
 from pathlib import Path
@@ -489,21 +488,143 @@ def structure_path(edition: Path, work: str) -> Path | None:
 _TOKEN = re.compile(
     r"(?P<repeat>\\repeat\s+volta\s+\d+\s*\{)"
     r"|(?P<unfold>\\repeat\s+(?:unfold|percent)\s+(?P<times>\d+)\s*\{)"
-    r"|(?P<partial>\\partial\s+[\d.]+(?:\*\d+(?:/\d+)?)?)"
+    r"|(?P<partial>\\partial\s+(?P<pdur>\d+)(?P<pdots>\.*)(?:\s*\*\s*(?P<pn>\d+)(?:\s*/\s*(?P<pm>\d+))?)?)"
     r"|(?P<time>\\time\s+(?P<tn>\d+)\s*/\s*(?P<td>\d+))"
     r"|(?P<open>\{)|(?P<close>\})"
-    r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\*(?P<n>\d+)(?:/(?P<m>\d+))?)?(?![\w]))"
+    r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\s*\*\s*(?P<n>\d+)(?:\s*/\s*(?P<m>\d+))?)?(?![\w]))"
 )
+_WORD = re.compile(r"\S*")
+_COMMAND = re.compile(r"\\[A-Za-z-]+\s*")
 
 
-def _length(t) -> Fraction | None:
-    """A spacer's length in whole notes (s2. = 3/4, s2*7 = 7/2); None if
-    it gives no duration."""
-    if not t.group("dur"):
+def _duration(dur: str | None, dots: str, n: str | None, m: str | None) -> Fraction | None:
+    """A LilyPond duration in whole notes (2. = 3/4, 2*7 = 7/2); None without one."""
+    if not dur:
         return None
-    base = Fraction(1, int(t.group("dur")))
-    length = base * (2 - Fraction(1, 2 ** len(t.group("dots"))))
-    return length * int(t.group("n") or 1) / int(t.group("m") or 1)
+    base = Fraction(1, int(dur))
+    return base * (2 - Fraction(1, 2 ** len(dots or ""))) * int(n or 1) / int(m or 1)
+
+
+def _blank(text: str) -> str:
+    """The skeleton with what isn't music blanked to spaces, every position
+    kept: comments (% and %{ %}), the contents of quoted strings, and
+    \\markup (its commands and its { } block or word), so a word in a
+    marking ("segue s") isn't read as a spacer."""
+    out = list(text)
+    i, n = 0, len(text)
+
+    def blank(a, b):
+        for k in range(a, b):
+            if out[k] != "\n":
+                out[k] = " "
+    while i < n:
+        c = text[i]
+        if text.startswith("%{", i):
+            j = text.find("%}", i + 2)
+            j = n if j < 0 else j + 2
+            blank(i, j)
+            i = j
+        elif c == "%":
+            j = text.find("\n", i)
+            j = n if j < 0 else j
+            blank(i, j)
+            i = j
+        elif c == '"':
+            j = i + 1
+            while j < n and text[j] != '"':
+                j += 2 if text[j] == "\\" else 1
+            blank(i + 1, min(j, n))
+            i = j + 1
+        elif text.startswith("\\markup", i):
+            j = i + len("\\markup")
+            while j < n and text[j].isspace():
+                j += 1
+            while (m := _COMMAND.match(text, j)):  # \bold, \italic, \line ...
+                j = m.end()
+            if j < n and text[j] == "{":
+                depth = 0
+                while j < n:
+                    if text[j] == '"':  # a string inside: skip it whole
+                        j += 1
+                        while j < n and text[j] != '"':
+                            j += 2 if text[j] == "\\" else 1
+                    depth += {"{": 1, "}": -1}.get(text[j], 0) if j < n else 0
+                    j += 1
+                    if depth == 0:
+                        break
+            else:
+                j = _WORD.match(text, j).end()
+            blank(i, j)
+            i = j
+        else:
+            i += 1
+    return "".join(out)
+
+
+class _Bars:
+    """Bars as LilyPond numbers them, from spacer rests, \\partial and \\time.
+
+    `pos` is the position in the current bar (past the meter's length when
+    a \\partial lengthened the bar); `fresh` that a bar line has been
+    reached, so the next music begins a new bar. A \\partial before any
+    music is the pickup: bar 0, its length still to fill in `pickup_left`,
+    not counted. Without a \\time, every spacer counts as its multiplier in
+    bars (and a pickup's spacer as none)."""
+
+    def __init__(self):
+        self.bar = None            # bar length in whole notes, once \time is seen
+        self.started = False       # any music yet
+        self.pos = Fraction(0)
+        self.fresh = True
+        self.begun = 0             # bars begun (bar 0, the pickup, not counted)
+        self.pickup = False
+        self.pickup_left = None    # the pickup's length still to fill (None: unknown, the next spacer)
+
+    def time(self, bar: Fraction):
+        if not self.fresh and self.bar is not None and self.pos >= bar:
+            self.fresh, self.pos = True, Fraction(0)  # the meter changed on what is now a bar line
+        self.bar = bar
+
+    def partial(self, length: Fraction | None):
+        if not self.started:
+            self.pickup, self.pickup_left = True, length
+            return
+        if self.bar is None or length is None:
+            return
+        # the current bar's remaining length: on a bar line, a new (short) bar
+        if self.fresh:
+            self.begun += 1
+            self.fresh = False
+        self.pos = self.bar - length
+
+    def spacer(self, length: Fraction, n: int):
+        self.started = True
+        if self.pickup and self.pickup_left is None:  # a pickup of unknown length: this spacer
+            self.pickup_left = Fraction(0)
+            return
+        if self.bar is None:
+            if self.pickup_left:
+                self.pickup_left = Fraction(0)
+            else:
+                self.begun += n
+            return
+        take = min(length, self.pickup_left or Fraction(0))
+        if take:
+            self.pickup_left -= take
+        left = length - take
+        if left <= 0:
+            return
+        if self.fresh:
+            self.begun += 1
+            self.fresh, self.pos = False, Fraction(0)
+        room = self.bar - self.pos
+        if left < room:
+            self.pos += left
+            return
+        left -= room
+        full, rest = divmod(left, self.bar)
+        self.begun += int(full) + (1 if rest else 0)
+        self.fresh, self.pos = (False, rest) if rest else (True, Fraction(0))
 
 
 def parse_structure(text: str) -> dict[str, dict]:
@@ -512,49 +633,46 @@ def parse_structure(text: str) -> dict[str, dict]:
     Returns {"I": {"total": 130, "pickup": False, "segments": [
     {"bars": 48, "repeat": True}, ...], "tempos": [...]}}.
 
-    With a \\time, bars are counted by duration, as LilyPond numbers them:
-    a spacer after \\partial is the pickup (bar 0, not counted), and a
-    section's short last bar plus the next section's upbeat make one bar
-    (`\\partial 4 s4 s2.*7 s2 } { s4 s2.*19 s2` is 8 + 20 bars). A
-    segment's bars are those that end in it. Without a \\time every
-    spacer counts as its multiplier in bars. `bar_count` 0 in the labels
-    matches: the pickup, and the upbeat that completes a short bar.
+    With a \\time, bars are numbered as LilyPond numbers them (_Bars): a
+    \\partial before any music is the pickup (bar 0, not counted); a
+    \\partial later sets the current bar's remaining length, so on a bar
+    line it begins a short bar that counts (a Trio's last two-beat bar,
+    `s2.*23 \\partial 2 s2`), and within a bar it shortens or lengthens
+    it. A section's short last bar and the next section's upbeat make one
+    bar (`\\partial 4 s4 s2.*7 s2 } { s4 s2.*19 s2` is 8 + 20 bars). A
+    bare `s` repeats the last duration, multiplier and all. A segment's
+    bars are those that begin in it. Without a \\time every spacer counts
+    as its multiplier in bars. `bar_count` 0 in the labels matches: the
+    pickup, and the upbeat that completes a short bar.
     """
-    text = re.sub(r"%\{.*?%\}", "", text, flags=re.S)  # block comments first
-    text = re.sub(r"%[^\n]*", "", text)
+    music = _blank(text)
     out: dict[str, dict] = {}
-    for m in re.finditer(r"\\tag\s+#'mvt(\w+)\s*\{", text):
+    for m in re.finditer(r"\\tag\s+#'mvt(\w+)\s*\{", music):
         name = m.group(1)
+        b = _Bars()
+        last = Fraction(1, 4)   # the duration a bare `s` repeats (LilyPond starts at a quarter)
         depth = 1
         stack: list = []        # per open brace: True (volta repeat), False, or an unfold frame
-        bar = None              # bar length in whole notes, once \time is seen
-        meters: list[tuple] = []  # (position, bar length) at each \time
-        pos = Fraction(0)       # position from the start of bar 1, whole notes
-        count = 0               # bars so far, when there's no \time
-        marks: list[tuple] = [] # (position or count, repeat?) where segments end
-        repeat_open = False
-        pickup_next, pickup = False, False
+        marks: list[tuple] = [] # (bars so far, repeat?) where segments end
+        end = len(music)
 
-        def here():
-            return pos if bar is not None else count
+        def emit(ev: tuple):
+            """One musical event; a written-out repeat records it to play again."""
+            for f in stack:
+                if isinstance(f, dict):
+                    f["events"].append(ev)
+            getattr(b, ev[0])(*ev[1:])
 
-        def close_segment(repeat: bool):
-            marks.append((here(), repeat))
-
-        end = len(text)
-        for t in _TOKEN.finditer(text, m.end()):
+        for t in _TOKEN.finditer(music, m.end()):
             if t.group("time"):
-                bar = Fraction(int(t.group("tn")), int(t.group("td")))
-                meters.append((pos, bar))
+                emit(("time", Fraction(int(t.group("tn")), int(t.group("td")))))
             elif t.group("unfold"):
-                # written out N times: count what's inside N times
                 depth += 1
-                stack.append({"times": int(t.group("times")), "pos": pos, "count": count})
+                stack.append({"times": int(t.group("times")), "events": []})
             elif t.group("repeat"):
                 depth += 1
                 stack.append(True)
-                close_segment(False)  # music before the repeat, if any
-                repeat_open = True
+                marks.append((b.begun, False))  # music before the repeat, if any
             elif t.group("open"):
                 depth += 1
                 stack.append(False)
@@ -564,46 +682,31 @@ def parse_structure(text: str) -> dict[str, dict]:
                     end = t.start()
                     break
                 frame = stack.pop()
-                if isinstance(frame, dict):
-                    pos += (pos - frame["pos"]) * (frame["times"] - 1)
-                    count += (count - frame["count"]) * (frame["times"] - 1)
+                if isinstance(frame, dict):  # written out N times: play what's inside N - 1 more
+                    for _ in range(frame["times"] - 1):
+                        for ev in frame["events"]:
+                            emit(ev)
                 elif frame:
-                    close_segment(True)
+                    marks.append((b.begun, True))
             elif t.group("partial"):
-                pickup_next = True
+                emit(("partial", _duration(t.group("pdur"), t.group("pdots"), t.group("pn"), t.group("pm"))))
             elif t.group("spacer"):
-                length = _length(t)
-                if pickup_next:
-                    pickup_next, pickup = False, True
-                    if bar is not None and length is not None:
-                        pos -= length  # the pickup sits before bar 1
-                    else:
-                        continue
-                if bar is not None and length is not None:
-                    pos += length
-                else:
-                    count += int(t.group("n") or 1)
-        close_segment(False)
-
-        def bars_at(v) -> int:
-            """Bars that have begun by position v, meter by meter."""
-            if bar is None:
-                return int(v)
-            total = Fraction(0)
-            for k, (start, length) in enumerate(meters):
-                start = max(start, Fraction(0))
-                end = meters[k + 1][0] if k + 1 < len(meters) else v
-                if v > start:
-                    total += (min(end, v) - start) / length
-            return math.ceil(total - Fraction(1, 10 ** 6)) if total > 0 else 0
+                n = int(t.group("n") or 1)
+                if t.group("dur"):
+                    length = _duration(t.group("dur"), t.group("dots"), t.group("n"), t.group("m"))
+                    last = length
+                else:  # a bare `s` (or `s*2`): the last duration again
+                    length = last * n / int(t.group("m") or 1)
+                emit(("spacer", length, n))
+        marks.append((b.begun, False))
 
         segments, prev = [], 0
         for v, repeat in marks:
-            n = bars_at(v) - prev
-            if n > 0:
-                segments.append({"bars": n, "repeat": repeat})
-            prev += max(0, n)
+            nb = v - prev
+            if nb > 0:
+                segments.append({"bars": nb, "repeat": repeat})
+            prev += max(0, nb)
         out[name] = {"total": sum(s["bars"] for s in segments),
-                     "pickup": pickup, "segments": segments,
+                     "pickup": b.pickup, "segments": segments,
                      "tempos": re.findall(r'\\tempo\s+"([^"]*)"', text[m.end():end])}
     return out
