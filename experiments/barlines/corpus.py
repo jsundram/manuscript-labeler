@@ -4,16 +4,20 @@
 # ///
 """Build the bar-line corpus: one straightened image per labelled staff line.
 
-    uv run experiments/barlines/corpus.py <edition-repo> <out-dir> [--test 0.2] [--seed 1]
+    uv run experiments/barlines/corpus.py <edition-repo> <out-dir> [--test 0.2] [--test-source STEM] [--paper]
 
 Every counted staff line on the *reviewed* music pages of every source whose
 labels file exists becomes one example: the staff, straightened along the
 editor's bend, cropped from the staff's left to right edge and 3 staff
 spaces above and below, at the labeler's render size (pdftoppm -scale-to
 2800). Its labels are the editor's bar lines, as x in the crop (pixels at
-the staff's middle) plus the lean. Lines are split into train / test at
-random (fixed seed), stratified by source, so both copyists and all parts
-are on both sides.
+the staff's middle) plus the lean. Lines are split into train / test by
+page, so no page is on both sides, and for good: a page's side comes from
+a hash of its source and number (about --test of the pages are test), so
+it never changes as more pages are reviewed and models trained on earlier
+corpora can be compared on later ones. The pages in test_pages.json are
+always test (pages no model saw, annotated for measuring), and so is every
+page of a --test-source (an unseen copy).
 
 Writes <out>/lines/<id>.png and <out>/corpus.json:
   {"lines": [{"id", "source", "pdf", "page", "part", "split", "file",
@@ -23,8 +27,8 @@ x0/x1 are where the bar line crosses the top / bottom staff line (crop px).
 """
 
 import argparse
+import hashlib
 import json
-import random
 import subprocess
 import sys
 import tempfile
@@ -69,6 +73,25 @@ def straight_band(g: np.ndarray, s: dict, x0: int | None = None, x1: int | None 
     return band, geo
 
 
+def held_out_pages() -> dict[str, list[int]]:
+    """test_pages.json: {source (pdf stem): [pages]} held out of every corpus."""
+    return json.loads((Path(__file__).resolve().parent / "test_pages.json").read_text())["pages"]
+
+
+def page_hash(source: str, page: int, salt: str = "") -> float:
+    """A page's fixed place in [0, 1): by source and page number, so the
+    same in every corpus however many pages are reviewed. `salt` gives an
+    independent one (validation, folds)."""
+    return int(hashlib.sha1(f"{salt}{source}:{page}".encode()).hexdigest()[:8], 16) / 16 ** 8
+
+
+def test_page(source: str, page: int, share: float, test_sources: list[str], held: dict) -> bool:
+    """Whether a page is a test page, the same in every corpus: one of
+    test_pages.json's, of a held-out source, or one whose hash falls in the
+    test share."""
+    return page in held.get(source, []) or source in test_sources or page_hash(source, page) < share
+
+
 def paper_band(g: np.ndarray, s: dict, corners: list) -> tuple[np.ndarray, dict]:
     """straight_band across the paper's whole width at the staff's height
     (its corners: find_page_corners or the editor's): what the bar-line
@@ -83,15 +106,20 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("edition", type=Path)
     ap.add_argument("out", type=Path)
-    ap.add_argument("--test", type=float, default=0.2, help="share of lines held out for testing")
-    ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--test", type=float, default=0.2, help="share of pages held out for testing (by a hash of each page)")
     ap.add_argument("--paper", action="store_true",
                     help="cut each staff across the paper's width (paper_band, as the labeler's cache does) "
                          "and record its left end, music start and right end, for landmark classes")
     ap.add_argument("--test-source", action="append", default=[],
                     help="put every line of this source (pdf stem) in the test split: an unseen copy")
     args = ap.parse_args()
+    # a corpus is built once: tiles, runs and results from an earlier split
+    # would mix with this one (thresholds chosen on what is now test, ...)
+    stale = [d for d in ("tiles", "runs", "results", "e2e", "logs") if (args.out / d).exists()]
+    if stale:
+        sys.exit(f"{args.out} already holds {', '.join(stale)} from an earlier corpus: build into a new directory")
     (args.out / "lines").mkdir(parents=True, exist_ok=True)
+    reviewed: set[tuple[str, int]] = set()  # (source, page) of every reviewed music page
 
     lines = []
     with tempfile.TemporaryDirectory() as tmp:
@@ -101,6 +129,7 @@ def main():
             for n, p in sorted(doc["pages"].items(), key=lambda kp: int(kp[0])):
                 if p["status"] != "reviewed" or p["kind"] != "music":
                     continue
+                reviewed.add((pdf.stem, int(n)))
                 g = render(pdf, int(n), Path(tmp))
                 h, w = g.shape
                 if args.paper:  # the editor's corners if they set them, else detected: as the labeler's cache
@@ -135,19 +164,20 @@ def main():
                             lines[-1]["music_start"] = s["start"] * w - geo["x_off"]
                 print(f"{pdf.stem} p{n}: {sum(1 for l in lines if l['page'] == int(n) and l['source'] == pdf.stem)} lines")
 
-    # split by line, stratified by source
-    rng = random.Random(args.seed)
-    for src in sorted({l["source"] for l in lines}):
-        ids = [l for l in lines if l["source"] == src]
-        if src in args.test_source:
-            for l in ids:
-                l["split"] = "test"
-            continue
-        rng.shuffle(ids)
-        k = round(len(ids) * args.test)
-        for i, l in enumerate(ids):
-            l["split"] = "test" if i < k else "train"
-    (args.out / "corpus.json").write_text(json.dumps({"seed": args.seed, "tolerance_frac": 0.006, "lines": lines}, indent=1))
+    held = held_out_pages()
+    for src, pgs in held.items():
+        missing = [n for n in pgs if (src, n) not in reviewed]
+        if missing:
+            print(f"test_pages.json: {src} pages {missing} not reviewed yet: nothing held out from them")
+    for l in lines:
+        l["split"] = "test" if test_page(l["source"], l["page"], args.test, args.test_source, held) else "train"
+    # every reviewed test page (with or without lines here), for what trains on
+    # whole pages (learn.py, via run_labeler and e2e_vote): none of them may
+    test_pages = sorted([src, n] for src, n in reviewed if test_page(src, n, args.test, args.test_source, held))
+    (args.out / "corpus.json").write_text(json.dumps(
+        {"split": {"by": "page", "share": args.test, "test_sources": args.test_source,
+                   "held_pages": sum(len(v) for v in held.values())},
+         "test_pages": test_pages, "tolerance_frac": 0.006, "lines": lines}, indent=1))
     for split in ("train", "test"):
         ls = [l for l in lines if l["split"] == split]
         print(f"{split}: {len(ls)} lines, {sum(len(l['bars']) for l in ls)} bar lines, "

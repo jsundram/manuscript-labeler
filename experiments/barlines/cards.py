@@ -789,6 +789,16 @@ footer { margin-top: 24px; font-size: 11px; }
 
 # -- sections -------------------------------------------------------------
 
+def split_words(sp: dict) -> str:
+    """corpus.py's split, in words."""
+    out = f"Split by page, for good: about {sp['share']:.0%} of pages are test pages, by a fixed hash of each"
+    if sp.get("held_pages"):
+        out += f", with {sp['held_pages']} pages always held out (test_pages.json)"
+    if sp.get("test_sources"):
+        out += f" and every page of {', '.join(sp['test_sources'])}"
+    return out
+
+
 def data_section(c: dict, corpus: Path, commits: dict, detector: bool, trained: bool = True) -> str:
     val = set(json.loads((corpus / "tiles" / "val_ids.json").read_text())) if (corpus / "tiles" / "val_ids.json").exists() else set()
     rows = []
@@ -819,8 +829,9 @@ def data_section(c: dict, corpus: Path, commits: dict, detector: bool, trained: 
             f"bend, with the editor's bar lines as the truth"
             + (", cut across the paper's whole width, with the editor's left end, music start and right end"
                if any("staff_right" in l for l in c["lines"]) else "")
-            + f". Lines are split at random (seed {c.get('seed', 1)}), "
-            f"stratified by source; the test lines are never trained on. Cells: lines / bar lines.</p>"
+            + (". " + esc(split_words(c["split"])) + "; " if isinstance(c.get("split"), dict)
+               else f". Lines are split at random (seed {c.get('seed', 1)}), stratified by source; ")
+            + "the test lines are never trained on. Cells: lines / bar lines.</p>"
             + table(["hand", "source", "part", "pages", "train", "validation", "test"], rows)
             + tiles + (f"<ul class='muted'>{srcs}</ul>" if srcs else "")
             + "<p class='muted'>" + " · ".join(f"<b>{esc(h)}</b>: {esc(HAND_NOTE[h])}" for h in present_hands(c))
@@ -1065,8 +1076,10 @@ def heldout_section(heldout: tuple | None, mdl: dict) -> str:
     if heldout:
         hc, hres = heldout
         bh = by_hand(hc, hres)
-        out += ("<p>Trained the same way without " + esc(", ".join(sorted({l["source"] for l in hc["lines"]}
-                - {l["source"] for l in hc["lines"] if l["split"] == "train"}))) + f" (threshold {hres['threshold']}):</p>"
+        held = (hc["split"]["test_sources"] if isinstance(hc.get("split"), dict)
+                else {l["source"] for l in hc["lines"]} - {l["source"] for l in hc["lines"] if l["split"] == "train"})
+        out += ("<p>Trained the same way without " + esc(", ".join(sorted(held)))
+                + f" (threshold {hres['threshold']}):</p>"
                 + table(["hand", "errors"], [[esc(h), errs(bh[h])] for h in hands_in(hc) + ["all"]]))
     return out + mdl.get("measured", "") + "</section>"
 

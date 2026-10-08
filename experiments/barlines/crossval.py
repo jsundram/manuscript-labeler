@@ -11,7 +11,6 @@ tenth of its training lines).
 """
 
 import json
-import random
 import sys
 from pathlib import Path
 
@@ -22,6 +21,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent.parent))
 import detect  # noqa: E402
+from corpus import page_hash  # noqa: E402
 from harness import match, staff_of  # noqa: E402
 from run_learned import FEATURES, fit, labelled, predict, with_widths  # noqa: E402
 
@@ -41,13 +41,15 @@ def main():
     c = json.loads((corpus / "corpus.json").read_text())
     tol = c["tolerance_frac"]
     ls = list(c["lines"])
-    random.Random(3).shuffle(ls)
-    folds = [ls[k::5] for k in range(5)]
+    # folds of whole pages (no page in a fold's training and test), by the
+    # pages' fixed hash; validation likewise a tenth of the other pages
+    folds = [[l for l in ls if int(page_hash(l["source"], l["page"], "fold") * 5) == k] for k in range(5)]
     totals = {"classical": [], "learned": [], "learned+widths": []}
     by_source = {}
     for k, test in enumerate(folds):
         rest = [l for j, f in enumerate(folds) if j != k for l in f]
-        val, train = rest[: len(rest) // 10], rest[len(rest) // 10:]
+        val = [l for l in rest if page_hash(l["source"], l["page"], "val") < 0.1]
+        train = [l for l in rest if page_hash(l["source"], l["page"], "val") >= 0.1]
         models = {}
         # one fit gives both: the two-pass model's first pass is the plain filter
         model2, stage1, feats2 = fit(corpus, train, tol, True)

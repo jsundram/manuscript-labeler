@@ -1,0 +1,7 @@
+{
+ "about": "Pages held out of every training corpus, for good, by source (the PDF's name without .pdf): lines on them are always test lines (corpus.py). Chosen 2026-10-08 from sources no model had seen, annotated after the models that propose them were installed, so they measure detection on unseen pages.",
+ "pages": {
+  "F-Pn_Vma-ms-1067-2": [3, 11, 17, 23],
+  "F-Po_RES-507-16": [2, 7, 10, 15]
+ }
+}

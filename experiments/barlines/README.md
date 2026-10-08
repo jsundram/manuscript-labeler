@@ -34,11 +34,18 @@ uv run experiments/barlines/ensemble.py $C yolo-yolo11n learned-gbm-widths class
 
 - **Corpus** (`corpus.py`): every counted staff line with bar lines on the
   reviewed music pages, straightened along the editor's bend, cropped 3
-  staff spaces above and below. 213 lines, 1404 bar lines. Split by line
-  (seed 1), stratified by source: 170 train (1117 bar lines), 43 test (287).
-  Splitting by line rather than by quartet gives every model both copyists
-  and all parts; it doesn't measure a new copyist (only reviewed Paris
-  pages could).
+  staff spaces above and below. Split by page, for good (from 2026-10-08):
+  a page's side comes from a fixed hash of its source and number (`--test`
+  of the pages), so no page is on both sides and a page stays where it is
+  as more are reviewed, and models trained on different corpora can be
+  compared on the same test pages; `test_pages.json` lists pages always
+  held out (annotated to measure detection on unseen pages), and
+  `--test-source` holds a whole copy out (a new hand). Validation (tiles.py)
+  and cross-validation folds (crossval.py) are whole pages by the same kind
+  of hash; what trains on whole pages (learn.py, in run_labeler.py and
+  e2e_vote.py) leaves every test page out. A corpus is built into a new
+  directory. (Results before 2026-10-08 used a per-line split, seed 1,
+  stratified by source: lines of one page could be on both sides.)
 - **Scoring** (`harness.py`): a prediction counts if within 0.6% of the page
   width of a bar line (the labeler's tolerance), matched one to one.
 - **Detectors** see 640 px tiles of the lines at full resolution (bar lines

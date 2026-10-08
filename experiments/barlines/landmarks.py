@@ -87,7 +87,9 @@ def main():
 
     c = json.loads((args.corpus / "corpus.json").read_text())
     test = [l for l in c["lines"] if l["split"] == "test" and "staff_left" in l]
-    held = {l["source"] for l in c["lines"]} - {l["source"] for l in c["lines"] if l["split"] == "train"}
+    # sources held out whole (corpus.py --test-source); older corpora: those with no training lines
+    held = (set(c["split"]["test_sources"]) if isinstance(c.get("split"), dict)
+            else {l["source"] for l in c["lines"]} - {l["source"] for l in c["lines"] if l["split"] == "train"})
     import torch
     device = "mps" if torch.backends.mps.is_available() else "cpu"
     tile = yolo_tile(YOLO(str(args.corpus / "runs" / args.run / "weights" / "best.pt")), device)

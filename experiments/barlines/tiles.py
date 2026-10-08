@@ -18,7 +18,6 @@ Writes <corpus>/tiles/{yolo,coco}/... and <corpus>/tiles/data.yaml.
 """
 
 import json
-import random
 import re
 import sys
 from pathlib import Path
@@ -29,6 +28,10 @@ TILE, STEP = 640, 480
 
 
 CLASSES = ["barline", "start", "end"]
+
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from corpus import page_hash  # noqa: E402
 
 
 def boxes(line: dict) -> list[tuple[int, float, float, float, float]]:
@@ -66,10 +69,10 @@ def windows(width: int) -> list[int]:
 def main():
     corpus = Path(sys.argv[1])
     c = json.loads((corpus / "corpus.json").read_text())
-    rng = random.Random(7)
     train = [l for l in c["lines"] if l["split"] == "train"]
-    rng.shuffle(train)
-    val_ids = {l["id"] for l in train[: max(1, len(train) // 10)]}
+    # validation (early stopping, thresholds): a tenth of the training pages,
+    # whole pages, by their fixed hash, so it too stays put as pages are added
+    val_ids = {l["id"] for l in train if page_hash(l["source"], l["page"], "val") < 0.1}
     out = corpus / "tiles"
     named = CLASSES if any("staff_right" in l for l in c["lines"]) else CLASSES[:1]  # corpus.py --paper
     coco = {s: {"images": [], "annotations": [], "categories": [{"id": i + 1, "name": n} for i, n in enumerate(named)]}
