@@ -1779,11 +1779,12 @@ function setBarline(fn) {
 // The open page's items of one kind in Tab order: staves top to bottom,
 // marks in reading order, bar lines in bar order (those on staves that
 // aren't counted, such as cue staves, after them, top to bottom)
-function tabOrder(t) {
-  const page = pg();
+function tabOrder(t, n = S.page) {
+  const page = S.doc.pages[n];
+  if (!page) return [];
   if (t === 'sys') return [...page.systems].sort((a, b) => a.top - b.top).map((s) => s.id);
   if (t === 'mark') return [...page.marks].sort((a, b) => a.y - b.y || a.x - b.x).map((m) => m.id);
-  const numbered = S.bars.filter((nb) => nb.page === S.page).map((nb) => nb.right.id);
+  const numbered = S.bars.filter((nb) => nb.page === n).map((nb) => nb.right.id);
   const seen = new Set(numbered);
   const rest = [...page.systems].sort((a, b) => a.top - b.top)
     .flatMap((s) => [...s.barlines].sort((a, b) => mid(a) - mid(b)).map((b) => b.id))
@@ -1796,6 +1797,25 @@ function tabOrder(t) {
 // starts at the first bar line, or, just after a delete, carries on from
 // where the deleted item was.
 
+// Tab past a page's end: the next page (in `dir`) that has an item of
+// kind t, found in the saved labels without opening the pages between; or
+// an unlabeled page first, the next to label (opening it detects it, as
+// "next page" does). None ahead: false, and Tab goes round this page.
+function tabTarget(t, dir) {
+  for (let n = S.page + dir; n >= 1 && n <= S.numPages; n += dir) {
+    if (!S.doc.pages[n]) return S.readonly ? null : n;
+    if (tabOrder(t, n).length) return n;
+  }
+  return null;
+}
+
+async function tabToPage(n, t, dir) {
+  await openPage(n);
+  if (S.page !== n || S.sel) return;  // another page asked for, or something clicked, meanwhile
+  const there = tabOrder(t);
+  if (there.length) { S.sel = { t, id: dir > 0 ? there[0] : there[there.length - 1] }; renderAll(); }
+}
+
 function cycleSelection(dir) {
   const page = pg();
   if (!page) return;
@@ -1804,14 +1824,27 @@ function cycleSelection(dir) {
   S.tabFrom = null;
   const t = from ? from.t : S.sel?.t === 'sys' || S.sel?.t === 'mark' ? S.sel.t : 'bl';
   const all = tabOrder(t);
-  if (!all.length) return;
+  // past this page's last (first) one, or off a page that has none left
+  // (after deleting it): on to the next (previous) page that has one
+  const crossing = (j) => S.sel?.t === t && (j < 0 || j >= all.length);
+  if (!all.length) {
+    const n = from ? tabTarget(t, dir) : null;
+    if (n) tabToPage(n, t, dir);
+    return;
+  }
   const target = from && (dir > 0 ? from.next : from.prev);
   if (target && all.includes(target)) S.sel = { t, id: target };
   else {
-    // after deleting the last (first) item, or if its neighbour has gone
-    // since: start again from the first (last)
-    const i = from ? (dir > 0 ? -1 : 0) : S.sel && S.sel.t === t ? all.indexOf(S.sel.id) : -1;
-    S.sel = { t, id: all[(i + dir + all.length) % all.length] };
+    // the deleted item was the page's last (first): on to the next page's;
+    // its neighbour gone since: start again from the first (last);
+    // nothing selected: Tab starts at the first, Shift-Tab at the last
+    const n = from && !target ? tabTarget(t, dir) : null;
+    if (n) { tabToPage(n, t, dir); return; }
+    const i = from || !(S.sel && S.sel.t === t) ? (dir > 0 ? -1 : all.length) : all.indexOf(S.sel.id);
+    const j = i + dir;
+    const m = !from && crossing(j) ? tabTarget(t, dir) : null;
+    if (m) { tabToPage(m, t, dir); return; }
+    S.sel = { t, id: all[(j + all.length) % all.length] };
   }
   renderAll();
 }
