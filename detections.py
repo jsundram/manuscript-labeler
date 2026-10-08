@@ -24,11 +24,12 @@ from pathlib import Path
 
 import labels
 
-VERSION = 2       # of the crops and the files: bump when either changes
+VERSION = 3       # of the crops and the files: bump when either changes (3: staves' starts and ends)
 TOLERANCE = 0.006  # page widths: proposals this close are one bar line (as the bake-off scores)
 REACH = 1.0       # staff spaces past a staff's right end a detector's bar line may be
                   # (none before its left end: a bar line doesn't precede the clef)
 MATCH = 0.015     # page heights: a cached staff and a detected one this close are the same
+ENDS_CONF = 0.25  # a detector's start or end box this sure sets a staff's ends
 
 
 def cache_dir() -> Path:
@@ -144,9 +145,8 @@ def make_vote(preds: list[tuple[dict, list]], w: int, h: int):
         voters = {"own": [mid(b) for b in bars]}
         lo, hi = left, min(right + REACH * st["gap"], paper[1])
         for d, staves in preds:
-            near = [c for c in staves if isinstance(c, dict) and "top" in c and isinstance(c.get("bars"), list)]
-            c = min(near, key=lambda c: abs(c["top"] - st["top"] / h), default=None)
-            if c is None or abs(c["top"] - st["top"] / h) > MATCH:
+            c = _matched(staves, st, h)
+            if c is None or not isinstance(c.get("bars"), list):
                 continue
             voters[d["name"]] = [x * w for x, conf in c["bars"] if conf >= d["threshold"] and lo <= x * w <= hi]
         if len(voters) < 3:
@@ -172,3 +172,47 @@ def make_vote(preds: list[tuple[dict, list]], w: int, h: int):
             kept.append(b)
         return [{k: v for k, v in b.items() if k != "new"} for b in kept]
     return step
+
+
+def _num(x) -> bool:
+    return isinstance(x, (int, float)) and not isinstance(x, bool)
+
+
+def _matched(staves: list, st: dict, h: int) -> dict | None:
+    """The cached staff at the height of a detected one, if any."""
+    near = [c for c in staves if isinstance(c, dict) and isinstance(c.get("top"), (int, float))]
+    c = min(near, key=lambda c: abs(c["top"] - st["top"] / h), default=None)
+    return c if c is not None and abs(c["top"] - st["top"] / h) <= MATCH else None
+
+
+def make_ends(preds: list[tuple[dict, list]], w: int, h: int):
+    """detect.detect_page's `ends` step for one page, from its cached
+    predictions: for a staff, {"left", "start", "right"} in pixels, each
+    from the surest detector's box at the staff's height (at least
+    ENDS_CONF): "start" boxes give the left end and music start, "end"
+    boxes the right end. Empty where no detector has a sure one; only
+    detectors that learned the staff's ends (corpus.py --paper) have them.
+    A start with the same detector's sure bar lines before it is mid-line
+    (a new movement's clef and key) and not the staff's: taking it would
+    drop every bar line before it. The rules' start stands there. (A
+    distance from the rules' left end, tried first, also turned away good
+    starts wherever the rules began a staff at a text or brace.)"""
+    def ends(st: dict) -> dict:
+        out, sure = {}, {}
+        for d, staves in preds:
+            c = _matched(staves, st, h)
+            if c is None:
+                continue
+            s, e = c.get("start"), c.get("end")
+            nums = lambda v, n: isinstance(v, list) and len(v) == n and all(_num(x) for x in v)
+            bars = c["bars"] if isinstance(c.get("bars"), list) else []
+            before = nums(s, 3) and any(nums(b, 2) and b[1] >= d.get("threshold", 0)
+                                        and b[0] * w < s[0] * w - st.get("gap", 0) for b in bars)
+            if nums(s, 3) and not before and s[2] >= ENDS_CONF and s[2] > sure.get("start", 0):
+                sure["start"] = s[2]
+                out["left"], out["start"] = s[0] * w, s[1] * w
+            if nums(e, 2) and e[1] >= ENDS_CONF and e[1] > sure.get("end", 0):
+                sure["end"] = e[1]
+                out["right"] = e[0] * w
+        return out
+    return ends

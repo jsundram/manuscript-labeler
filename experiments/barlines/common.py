@@ -46,12 +46,51 @@ def detect_line(img: Image.Image, space: float, detect_tile) -> list[tuple[float
     for x in windows(img.size[0]):
         tile = img.crop((x, 0, x + TILE, img.size[1]))
         found += [(x + xc, conf) for xc, conf in detect_tile(tile)]
+    return merge_bars(found, space)
+
+
+def merge_bars(found: list[tuple[float, float]], space: float) -> list[tuple[float, float]]:
+    """Bar lines [(x, conf)] from overlapping tiles: one seen twice kept once (the surer)."""
     tol = 0.3 * space * 2
     kept = []
     for xc, conf in sorted(found, key=lambda d: -d[1]):
         if all(abs(xc - k) > tol for k, _ in kept):
             kept.append((xc, conf))
     return sorted(kept)
+
+
+def yolo_tile(model, device: str, conf: float = 0.05):
+    """An Ultralytics model as read_line's predict_tile: [(cls, x0, x1, conf)]."""
+    def tile(t):
+        r = model.predict(t, imgsz=640, conf=conf, device=device, verbose=False)[0]
+        return [(int(k), float(b[0]), float(b[2]), float(c)) for b, c, k in
+                zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist())]
+    return tile
+
+
+def read_line(img: Image.Image, space: float, predict_tile) -> tuple[list, tuple | None, tuple | None]:
+    """A line detector's whole reading of one straightened line: its bar
+    lines [(x, conf)] (as detect_line), its surest "start" box (x0, x1,
+    conf: the staff's left end and music start) and surest "end" box (x,
+    conf: the staff's right end), or None for a class it didn't find.
+    predict_tile(PIL image) -> [(cls, x0, x1, conf)] in tile pixels. A
+    start or end box against a tile's edge (not the line's) may be cut off
+    there, so its edges aren't the staff's: a whole one is preferred."""
+    width = img.size[0]
+    bars, best, cut = [], {}, {}
+    for x in windows(width):
+        for k, x0, x1, conf in predict_tile(img.crop((x, 0, x + TILE, img.size[1]))):
+            if not k:
+                bars.append((x + (x0 + x1) / 2, conf))
+                continue
+            whole = (x0 > 2 or x == 0) and (x1 < TILE - 2 or x + TILE >= width)
+            pick = best if whole else cut
+            if k not in pick or conf > pick[k][2]:
+                pick[k] = (x + x0, x + x1, conf)
+    got = {**cut, **best}
+    start = got.get(1)
+    end = ((got[2][0] + got[2][1]) / 2, got[2][2]) if 2 in got else None
+    return merge_bars(bars, space), start, end
 
 
 def run(corpus: Path, ls: list[dict], detect_tile) -> tuple[dict, float]:

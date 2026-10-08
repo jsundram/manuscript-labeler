@@ -20,7 +20,7 @@ from their previous page of the part, as the labeler passes them) and its
 staff at that height. The learned filter learns from every reviewed page,
 these test pages included, which flatters detect.py. Both are scored on the lines where both give an answer (and
 music starts only where the editor set one); each one's missing answers
-are counted. Errors against the
+are counted, and the labeler's bar lines are scored too. Errors against the
 editor's, in staff spaces, for the familiar hands and for any source held
 out whole (corpus.py --test-source).
 """
@@ -35,27 +35,10 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent.parent), str(HERE)]
-from tiles import TILE, windows  # noqa: E402
+from common import read_line, yolo_tile  # noqa: E402
+from harness import match  # noqa: E402
 
 MATCH = 0.015
-
-
-def surest(model, img: Image.Image) -> dict:
-    """{class: (x0, x1, conf)}: the most confident box of each class along the line."""
-    best, cut = {}, {}
-    width = img.size[0]
-    for x in windows(width):
-        r = model.predict(img.crop((x, 0, x + TILE, img.size[1])), imgsz=640, conf=0.05, device="mps", verbose=False)[0]
-        for b, c, k in zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist()):
-            k = int(k)
-            if not k:
-                continue
-            # a box against a tile's edge (not the line's) may be cut off there: its edge isn't the staff's
-            whole = (b[0] > 2 or x == 0) and (b[2] < TILE - 2 or x + TILE >= width)
-            pick = best if whole else cut
-            if k not in pick or c > pick[k][2]:
-                pick[k] = (x + b[0], x + b[2], c)
-    return {**cut, **best}
 
 
 def room_from_previous_page(doc: dict, n: int, aspect: float):
@@ -83,13 +66,18 @@ def main():
     ap.add_argument("corpus", type=Path)
     ap.add_argument("edition", type=Path)
     ap.add_argument("--run", default="yolo26n")
+    ap.add_argument("--no-ends", action="store_true",
+                    help="the labeler's detection without the cached starts and ends (the vote kept)")
     args = ap.parse_args()
+    import detections
     import learn
     import server
     from detections import cache_dir
     from ultralytics import YOLO
 
     ed = server.Edition(args.edition, cache_dir())
+    if args.no_ends:
+        detections.make_ends = lambda preds, w, h: (lambda st: {})
 
     def render(pdf, n):
         img = Image.open(ed.render(ed.rel(pdf), n))
@@ -100,20 +88,24 @@ def main():
     c = json.loads((args.corpus / "corpus.json").read_text())
     test = [l for l in c["lines"] if l["split"] == "test" and "staff_left" in l]
     held = {l["source"] for l in c["lines"]} - {l["source"] for l in c["lines"] if l["split"] == "train"}
-    model = YOLO(str(args.corpus / "runs" / args.run / "weights" / "best.pt"))
+    import torch
+    device = "mps" if torch.backends.mps.is_available() else "cpu"
+    tile = yolo_tile(YOLO(str(args.corpus / "runs" / args.run / "weights" / "best.pt")), device)
     rows = []
     pages = {}
+    bars = {}  # group -> [found, false, missed]: the labeler's bar lines on the line's staff
+    told = {}  # group -> [staves, with a cached start, with a cached end] (detections.make_ends)
     for l in test:
         sp = l["space"]
         truth = {"left end": l["staff_left"], "right end": l["staff_right"]}
         if "music_start" in l:  # only where the editor set one
             truth["music start"] = l["music_start"]
-        got = surest(model, Image.open(args.corpus / l["file"]).convert("RGB"))
+        _, start, end = read_line(Image.open(args.corpus / l["file"]).convert("RGB"), sp, tile)
         pred = {}
-        if 1 in got:
-            pred["left end"], pred["music start"] = got[1][0], got[1][1]
-        if 2 in got:
-            pred["right end"] = (got[2][0] + got[2][1]) / 2
+        if start:
+            pred["left end"], pred["music start"] = start[0], start[1]
+        if end:
+            pred["right end"] = end[0]
         key = (l["pdf"], l["page"])
         if key not in pages:
             doc = json.loads((args.edition / l["pdf"].replace(".pdf", ".labels.json")).read_text())
@@ -121,14 +113,21 @@ def main():
             page_img = Image.open(ed.render(l["pdf"], l["page"]))
             cs = p["corners"]["points"] if p.get("corners") and not p["corners"].get("auto") else None
             room = room_from_previous_page(doc, l["page"], page_img.size[1] / page_img.size[0])
-            pages[key] = (ed.detect(l["pdf"], l["page"], room, cs)["systems"], page_img.size[0])
-        systems, w = pages[key]
+            preds = detections.page_predictions(ed.root, l["pdf"], l["page"], ed.cache)
+            pages[key] = (ed.detect(l["pdf"], l["page"], room, cs)["systems"], page_img.size[0],
+                          detections.make_ends(preds, *page_img.size), page_img.size[1])
+        systems, w, ends, h = pages[key]
         s = min(systems, key=lambda s: abs(s["top"] - l["top_frac"]), default=None)
         rule = {}
         if s is not None and abs(s["top"] - l["top_frac"]) <= MATCH:
             rule = {"left end": s["left"] * w - l["left"], "music start": s["start"] * w - l["left"],
                     "right end": s["right"] * w - l["left"]}
         group = l["source"] if l["source"] in held else "familiar hands"
+        e = ends({"top": s["top"] * h}) if rule else {}
+        told[group] = [a + b for a, b in zip(told.get(group, [0, 0, 0]), [1, "start" in e, "right" in e])]
+        got = [((b["x0"] + b["x1"]) / 2) * w - l["left"] for b in s["barlines"]] if rule else []
+        tally = match(got, [b["x"] for b in l["bars"]], c["tolerance_frac"] * l["page_w"])
+        bars[group] = [a + b for a, b in zip(bars.get(group, [0, 0, 0]), tally)]
         for name, t in truth.items():
             rows.append({"group": group, "what": name,
                          "model": abs(pred[name] - t) / sp if name in pred else None,
@@ -147,6 +146,11 @@ def main():
             miss = {who: sum(r[who] is None for r in rs) for who in ("detect.py", "model")}
             print(f"  {what:12s} ({len(both)} lines) " + "   ".join(cells)
                   + f"   (none: detect.py {miss['detect.py']}, model {miss['model']})")
+        f, fa, mi = bars[group]
+        print(f"  the labeler's bar lines: {fa + mi} errors ({fa} false, {mi} missed) of {f + mi}")
+        n_st, n_s, n_e = told[group]
+        print(f"  cached starts / ends sure enough to use: {n_s} / {n_e} of {n_st} staves"
+              + (" (not used: --no-ends)" if args.no_ends else ""))
 
 
 if __name__ == "__main__":

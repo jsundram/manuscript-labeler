@@ -105,3 +105,30 @@ def test_a_broken_cache_file_is_ignored(tmp_path):
     f.parent.mkdir(parents=True)
     f.write_text('{"pdf_identity": "x", "pages": [1, 2]}')
     assert detections.page_predictions(edition, "sources/x.pdf", 1, cache) == []
+
+
+def test_ends_take_the_surest_sure_box_at_the_staffs_height():
+    st = {"top": 280, "bottom": 322, "gap": 10.5}
+    a = [{"top": 280 / H, "bars": [], "start": [0.10, 0.18, 0.6], "end": [0.90, 0.3]}]
+    b = [{"top": 281 / H, "bars": [], "start": [0.12, 0.20, 0.9], "end": [0.95, 0.1]}]  # end not sure enough
+    got = detections.make_ends([(det("a"), a), (det("b"), b)], W, H)(st)
+    assert {k: round(v) for k, v in got.items()} == {"left": 120, "start": 200, "right": 900}
+    elsewhere = [{"top": 0.5, "bars": [], "start": [0.1, 0.2, 0.9], "end": [0.9, 0.9]}]
+    assert detections.make_ends([(det("a"), elsewhere)], W, H)(st) == {}
+    assert detections.make_ends([(det("a"), [{"top": 280 / H, "bars": []}])], W, H)(st) == {}  # a bar-line-only detector
+
+
+def test_ends_skip_a_malformed_entry():
+    st = {"top": 280, "bottom": 322, "gap": 10.5}
+    bad = [{"top": 280 / H, "bars": [], "start": [0.1, 0.2, "x"], "end": [None, 0.9]}]
+    assert detections.make_ends([(det("a"), bad)], W, H)(st) == {}
+
+
+def test_a_start_after_sure_bar_lines_is_mid_line_and_left_alone():
+    # a new movement's clef and key mid-line: the same detector's sure bar
+    # lines before it say it isn't where the staff starts
+    st = {"top": 280, "bottom": 322, "gap": 10.5}
+    mid = [{"top": 280 / H, "bars": [[0.3, 0.9], [0.45, 0.9]], "start": [0.5, 0.56, 0.9], "end": [0.9, 0.9]}]
+    assert set(detections.make_ends([(det("a"), mid)], W, H)(st)) == {"right"}
+    unsure = [{"top": 280 / H, "bars": [[0.3, 0.1]], "start": [0.12, 0.18, 0.9]}]  # below a's threshold
+    assert set(detections.make_ends([(det("a"), unsure)], W, H)(st)) == {"left", "start"}

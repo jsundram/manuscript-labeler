@@ -19,7 +19,9 @@ editor's page corners if they set them): so the predictions don't depend on
 where a staff's ends are, which detection gets wrong most often and the
 editor edits most. Each detector runs on it in 640 px tiles; every
 detection at confidence >= MIN_CONF is kept, in page fractions, with the
-staff's top, bottom and bend to match it to the labeler's staves by height.
+staff's top, bottom and bend to match it to the labeler's staves by height;
+with a detector that also learned the staff's ends ("start" and "end"
+boxes, corpus.py --paper), its surest of each too.
 
 One cache per detector (its name, weights and threshold in the folder's
 key: a retrain or new threshold gets a new folder; adding a detector
@@ -46,11 +48,27 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 sys.path[:0] = [str(ROOT), str(ROOT / "experiments" / "barlines")]
 import detect  # noqa: E402
-from common import detect_line  # noqa: E402
+from common import read_line, yolo_tile  # noqa: E402
 from corpus import paper_band  # noqa: E402
 from detections import cache_dir, cache_file, detectors, pdf_identity  # noqa: E402
 
 MIN_CONF = 0.05
+
+
+def cached(s: dict, reading: tuple, x_off: float, w: int) -> dict:
+    """One staff's predictions in page fractions: its bar lines [x, conf],
+    and if the detector has the classes, its surest start box [left end,
+    music start, conf] and end [right end, conf]; with the staff's height
+    and bend, to match it to the labeler's staves."""
+    bars, start, end = reading
+    f = lambda x: round((x + x_off) / w, 5)
+    out = {**{k: s[k] for k in ("top", "bottom", "left", "right", "bend")},
+           "bars": [[f(x), round(c, 3)] for x, c in bars]}
+    if start:
+        out["start"] = [f(start[0]), f(start[1]), round(start[2], 3)]
+    if end:
+        out["end"] = [f(end[0]), round(end[1], 3)]
+    return out
 
 
 def install(name: str, weights: Path, threshold: float, notes: str):
@@ -85,13 +103,7 @@ def main():
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
     models = []
     for d in dets:
-        m = YOLO(str(d["weights"]))
-
-        def tile(t, m=m):
-            r = m.predict(t, imgsz=640, conf=MIN_CONF, device=device, verbose=False)[0]
-            return [(float((b[0] + b[2]) / 2), float(c)) for b, c, k in
-                    zip(r.boxes.xyxy.tolist(), r.boxes.conf.tolist(), r.boxes.cls.tolist()) if int(k) == 0]  # bar lines only
-        models.append((d, tile))
+        models.append((d, yolo_tile(YOLO(str(d["weights"])), device, MIN_CONF)))
     ed = server.Edition(args.edition, cache_dir())
     print(f"detectors {', '.join(d['key'] for d in dets)} on {device}")
     for pdf in sorted(args.edition.glob("sources/**/*.pdf")):
@@ -128,9 +140,7 @@ def main():
                 bands = [paper_band(g, s, cs) for s in staves]
                 for d, tile in todo:
                     docs[d["key"]][1]["pages"][str(page)] = {"staves": [
-                        {**{x: s[x] for x in ("top", "bottom", "left", "right", "bend")},
-                         "bars": [[round((x + geo["x_off"]) / w, 5), round(c, 3)]
-                                  for x, c in detect_line(Image.fromarray(band).convert("RGB"), geo["space"], tile)]}
+                        cached(s, read_line(Image.fromarray(band).convert("RGB"), geo["space"], tile), geo["x_off"], w)
                         for s, (band, geo) in zip(staves, bands)]}
             except Exception as e:  # record it and carry on: one bad page mustn't stop the rest
                 for d, _ in todo:

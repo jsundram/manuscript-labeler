@@ -125,3 +125,21 @@ def test_music_start_from_the_previous_pages_room(tmp_path):
     without, with_room = misses(detect.detect_page(img)), misses(detect.detect_page(img, room))
     assert sum(with_room) <= sum(without) * 2 / 3, f"with room {with_room}, without {without}"
     assert statistics.median(with_room) <= 2, f"with room {with_room}"
+
+
+@needs(PDF)
+def test_detector_ends_set_the_staffs_ends_within_the_paper(tmp_path):
+    img = render(PDF, 2, tmp_path)
+    w = img.size[0]
+    plain = detect.detect_page(img)
+    told = detect.detect_page(img, ends=lambda st: {"left": 0.13 * w, "start": 0.2 * w, "right": 0.5 * w})
+    assert len(told) == len(plain)
+    for s in told:
+        assert abs(s["left"] - 0.13) < 0.002 and abs(s["start"] - 0.2) < 0.002
+        last = max((max(b["x0"], b["x1"]) for b in s["barlines"]), default=0)
+        assert s["right"] >= max(last, s["start"])  # never before the last bar line or the music start
+    # the paper's edge (narrowed here by its corners) bounds a detector's end
+    corners = [[0.0, 0.0], [0.8, 0.0], [0.8, 1.0], [0.0, 1.0]]
+    off = detect.detect_page(img, corners=corners, ends=lambda st: {"right": 0.99 * w})
+    assert off and all(s["right"] <= 0.8 + 1e-3 for s in off)
+

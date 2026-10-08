@@ -498,8 +498,15 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   the paper-wide lines. Within a staff space of the editor's right end
   on 97–99% of test lines, where the labeler's detection (with the
   learned filter and the vote) manages 56–79%; music starts and left
-  ends better too (experiments/barlines/results.md). Not yet
-  used by the labeler. Pretraining on MUSCIMA++ didn't help. Zeus (full
+  ends better too (experiments/barlines/results.md). The cached
+  predictions carry each staff's surest start and end, and detection
+  takes a staff's ends and music start from them where one is sure
+  (detections.make_ends, detect_page's `ends`), the rules elsewhere; a
+  start with the detector's own sure bar lines before it is mid-line and
+  ignored. On the test lines, the labeler's right end within a staff
+  space went from 56% to 95% (familiar hands) and 79% to 96% (an unseen
+  copy), music starts 44% to 81% and 81% to 86%; the swap of the model
+  into the vote cut bar line errors too, 18 to 6 and 29 to 26. Pretraining on MUSCIMA++ didn't help. Zeus (full
   OMR, zero-shot) counts our bars well but can't read our clefs.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars

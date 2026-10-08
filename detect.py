@@ -847,7 +847,7 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
 
 
 def detect_page(img: Image.Image, room: float | None = None, model: dict | None = None,
-                collect: list | None = None, corners: list | None = None, vote=None) -> list[dict]:
+                collect: list | None = None, corners: list | None = None, vote=None, ends=None) -> list[dict]:
     """Proposed systems for one page, normalized coordinates.
 
     `room`: the clef-and-key room (left edge to music start, in staff
@@ -868,6 +868,15 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     `vote`: if given, each staff's bar lines are put to it before the staff's
     end is decided, vote(staff, band, local, bars, left, right, paper) ->
     bars (detections.make_vote: with the detectors' cached predictions).
+    `ends`: if given, ends(staff) -> {"left", "start", "right"} in pixels,
+    any of them, from a detector that learned where staves start and end
+    (detections.make_ends). They replace the rules' left end and music
+    start and right end, within the paper, before the bar-line search;
+    the right end is never before the music start or the last bar line.
+    The learned filter weighs each candidate's distance from the music
+    start, which it learned from the rules' starts: measured with the
+    detector's (experiments/barlines/landmarks.py), bar lines came out
+    no worse.
     """
     g = _gray(img)
     h, w = g.shape
@@ -905,6 +914,16 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
             x = left + room * st["gap"]
             snapped = snap_start(band, local["top"], local["bottom"], x)
             start = int(min(right, max(left, snapped if snapped is not None else x)))
+        gap = st["gap"]
+        told = ends(st) if ends is not None else {}
+        # a detector's "start" sets the left end and music start; its "end"
+        # the right end, before the bar-line search and the vote, so they
+        # cover all of it
+        if "left" in told and "start" in told:
+            left = int(min(right, max(paper[0], told["left"])))
+            start = int(min(right, max(left, told["start"])))
+        if "right" in told:
+            right = int(min(paper[1], max(start, told["right"])))
         # search a little past the ruled end: a final bar line often sits on it
         reach = min(band.shape[1], right + int(st["gap"]))
         seen = band
@@ -919,13 +938,14 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
             find_barlines(band, local, ruled, reach, skip_to=start)
         if vote is not None:
             bars = vote(st, band, local, bars, left, right, paper)
+        last = int(max(max(b["x0"], b["x1"]) for b in bars)) if bars else None
         if bars:
-            right = min(paper[1], max(right, int(max(max(b["x0"], b["x1"]) for b in bars)) + 2))
+            right = min(paper[1], max(right, last + 2))
         # End the staff just after its last bar line when the ruled lines
         # beyond it are blank. Music there (a missed bar line, a bar that
-        # runs on to the next line) keeps the full length.
-        if bars:
-            last = int(max(max(b["x0"], b["x1"]) for b in bars))
+        # runs on to the next line) keeps the full length. A detector's end,
+        # where there is one, stands instead.
+        if bars and "right" not in told:
             tail = last + int(st["gap"] * 0.5)
             if right - tail > st["gap"] * 1.5 and note_ink(seen, local, tail, right) < 0.01:
                 right = tail
@@ -933,7 +953,6 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
                 # Ink between the staff lines that stops for good well before
                 # the ruled end (a movement ending mid-line, text such as "da
                 # capo" above or below it, a flourish): end the staff there.
-                gap = st["gap"]
                 mids = [(a + b) // 2 for a, b in zip(local["lines"], local["lines"][1:])]
                 inner = (seen[mids, tail:right] < 120).any(axis=0)
                 on = np.flatnonzero(inner)

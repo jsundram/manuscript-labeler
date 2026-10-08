@@ -290,8 +290,9 @@ class Edition:
     def detect(self, rel: str, page: int, room: float | None = None, corners: list | None = None) -> dict:
         """Detection on one page; `corners`, the editor's, else detected. Its
         bar lines are voted with the detectors' cached predictions for the
-        page when there are any (detections.py); if reading them fails,
-        detection goes ahead without."""
+        page when there are any, and its staves' ends and music starts come
+        from them where a detector learned those (detections.py); if reading
+        them fails, detection goes ahead without."""
         from PIL import Image
 
         import detect
@@ -302,16 +303,25 @@ class Edition:
         try:  # a bad cache mustn't stop detection
             preds = detections.page_predictions(self.root, rel, page, self.cache)
             vote = detections.make_vote(preds, img.size[0], img.size[1]) if preds else None
+            ends = detections.make_ends(preds, img.size[0], img.size[1]) if preds else None
         except Exception as e:
             print(f"bar-line predictions unreadable for {rel} p{page}: {type(e).__name__}: {e}", flush=True)
-            vote = None
-        try:
-            systems = detect.detect_page(img, room, model=self.model, corners=corners, vote=vote)
-        except Exception as e:
-            if vote is None:
-                raise
-            print(f"bar-line vote failed on {rel} p{page}: {type(e).__name__}: {e}", flush=True)
-            systems = detect.detect_page(img, room, model=self.model, corners=corners)
+            vote = ends = None
+        # with the cached predictions; if they fail, with the vote alone, then without
+        tries = [(vote, ends)]
+        if vote is not None and ends is not None:
+            tries.append((vote, None))
+        if vote is not None or ends is not None:
+            tries.append((None, None))
+        for v, en in tries:
+            try:
+                systems = detect.detect_page(img, room, model=self.model, corners=corners, vote=v, ends=en)
+                break
+            except Exception as e:
+                if v is None and en is None:
+                    raise
+                print(f"cached predictions failed on {rel} p{page} ({'ends' if en else 'vote'}): "
+                      f"{type(e).__name__}: {e}", flush=True)
         return {"systems": systems, "corners": corners, "look": detect.page_look(img, corners)}
 
     def barline_state(self) -> str:

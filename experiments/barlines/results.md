@@ -58,6 +58,40 @@ Mosaics (on in training) can clip a start or end box at a seam, which
 tiles.py otherwise avoids; turning them off for these classes is a
 next try.
 
+**In the labeler** (landmarks.py, with a copy of the cache in which this
+model replaces the cached YOLO26n, next to the cached YOLO11n): its
+starts and ends are cached with its bar lines (tools/predict_barlines.py),
+and detection takes a staff's left end and music start from a "start"
+box, its right end from an "end" box, where one is at least 0.25 sure
+(detections.make_ends; on the test staves, a start on 60 of 63 familiar
+and 64 of 72 Vma, an end on 62 and 59), the rules elsewhere. A start
+with the same detector's sure bar lines before it is taken for a
+mid-line movement start and left alone (a guard on distance from the
+rules' left end, tried first, turned away good starts where the rules
+began a staff at a text or brace: 90% → 81% left ends on the familiar
+hands). The labeler's answers on the lines where the model answers too
+(all but 2 Vma lines), within 1 staff space / over 3, and its bar line
+errors, with the new model in the vote alone and with its ends:
+
+| familiar hands | today | new vote | new vote + ends |
+|---|---|---|---|
+| left end | 71% / 21% | 71% / 21% | 90% / 3% |
+| music start | 44% / 37% | 44% / 37% | 81% / 6% |
+| right end | 56% / 22% | 56% / 22% | 95% / 2% |
+| bar line errors (431) | 18 | 10 | 6 |
+
+| Vma ms 1067 (1) | today | new vote | new vote + ends |
+|---|---|---|---|
+| left end | 81% / 13% | 81% / 13% | 89% / 4% |
+| music start | 81% / 17% | 81% / 17% | 86% / 6% |
+| right end | 79% / 3% | 77% / 3% | 96% / 0% |
+| bar line errors (376) | 29 | 27 | 26 |
+
+The new model in the vote improves its bar lines; its ends move the
+staff's ends and, with the search now covering the whole staff, a few
+more bar lines. ("Today" ran before the cache format changed, on MPS;
+the others on predictions made on the CPU.)
+
 ### MUSCIMA++ pretraining: no gain (muscima_corpus.py)
 
 MUSCIMA++ v2.0 (CC BY-NC-SA 4.0): 140 pages of the CVC-MUSCIMA set, 20
