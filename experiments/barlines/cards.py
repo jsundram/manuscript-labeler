@@ -6,7 +6,7 @@
 into it, how it trains, how its training converged, how it does by hand,
 and where it could go next.
 
-    uv run experiments/barlines/cards.py <corpus-dir> [--edition <edition-repo>]
+    uv run experiments/barlines/cards.py <corpus-dir> [--edition <edition-repo>] [--with NAME=DIR ...]
 
 Reads the corpus (corpus.json, tiles/), each method's scored test result
 (results/*.json), the detectors' training logs (runs/: Ultralytics'
@@ -35,10 +35,11 @@ from common import cumulative_times  # noqa: E402
 from harness import match  # noqa: E402
 
 OUT = HERE.parent.parent / "static" / "models"
-HANDS = ["KHM", "Paris A", "Paris B"]
+HANDS = ["KHM", "Paris A", "Paris B", "Vma"]
 HAND_NOTE = {"KHM": "D-B KHM 602 and 603 (Op. 48 Nos. 1, 2), one copyist",
              "Paris A": "F-Po RES 507 (14) (No. 3), Violin I and Cello: one paper and hand",
-             "Paris B": "F-Po RES 507 (14), Violin II and Viola: another paper and hand"}
+             "Paris B": "F-Po RES 507 (14), Violin II and Viola: another paper and hand",
+             "Vma": "F-Pn Vma ms 1067 (1) (No. 3), a later copy, photographed"}
 PARTS = {"vn1": "Violin I", "vn2": "Violin II", "va": "Viola", "vc": "Cello"}
 COLORS = ["#2c5fb8", "#d9822b", "#2e7d32", "#7b3fb5", "#c62828", "#77726a"]
 
@@ -46,7 +47,21 @@ COLORS = ["#2c5fb8", "#d9822b", "#2e7d32", "#7b3fb5", "#c62828", "#77726a"]
 def hand(l: dict) -> str:
     if l["source"].startswith("D-B"):
         return "KHM"
+    if l["source"].startswith("F-Pn"):
+        return "Vma"
     return "Paris A" if l["part"] in ("vn1", "vc") else "Paris B"
+
+
+def present_hands(c: dict) -> list[str]:
+    """The hands with any lines in this corpus, in HANDS order."""
+    present = {hand(l) for l in c["lines"]}
+    return [h for h in HANDS if h in present]
+
+
+def hands_in(c: dict) -> list[str]:
+    """The hands with test lines in this corpus, in HANDS order."""
+    present = {hand(l) for l in c["lines"] if l["split"] == "test"}
+    return [h for h in HANDS if h in present]
 
 
 # -- what each model is: the parts no log records -------------------------
@@ -58,7 +73,58 @@ DETECTOR_DATA = ("Tiles 640 px wide (stepping 480) of the straightened lines, at
 
 MODELS = [
     {
-        "key": "yolo26n", "result": "yolo-yolo26n", "run": "yolo26n", "kind": "ultralytics",
+        "key": "yolo26n-ends", "status": "labeler", "result": "yolo-yolo26n", "run": "yolo26n", "kind": "ultralytics",
+        "corpus": "prod", "heldout": "bl4",
+        "title": "YOLO26n with staff ends",
+        "links": [("Ultralytics YOLO26 docs", "https://docs.ultralytics.com/models/yolo26/"),
+                  ("Ultralytics licensing", "https://www.ultralytics.com/license"),
+                  ("our training script", "https://github.com/jsundram/manuscript-labeler/blob/main/experiments/barlines/run_yolo.py"),
+                  ("how the labeler uses it", "https://github.com/jsundram/manuscript-labeler/blob/main/detections.py")],
+        "summary": "YOLO26n trained on the reviewed lines (a tenth held back for testing), cut across the paper's width, to box bar lines and also "
+                   "where each staff starts (its clef, key and time) and ends. The labeler's cached detector for both.",
+        "card": {
+            "Architecture": "YOLO26 nano: single-stage detector, end to end (no NMS step)",
+            "Parameters": "about 2.4 million (published)",
+            "Starting weights": "yolo26n.pt, COCO-pretrained (Ultralytics)",
+            "Licence": "AGPL-3.0 (Ultralytics); fine for the editor's own use, not bundled with the MIT labeler",
+            "Input": "a 640 px tile of a staff straightened across the paper's whole width, 3 staff spaces above and below",
+            "Output": "boxes of three classes: \"barline\" (its centre is the bar line), \"start\" (from the staff's left end to "
+                      "where the music starts) and \"end\" (centred on the staff's right end)",
+            "Where it runs": "in the labeler from 2026-10-08: its predictions for every page are cached "
+                             "(tools/predict_barlines.py); it votes on each staff's bar lines, and its surest start and end "
+                             "boxes (at least 0.25 sure) set the staff's ends and music start (detections.make_ends)",
+        },
+        "how": [
+            "As YOLO26n's bar-line model, with two more classes. corpus.py --paper cuts each reviewed staff across the paper's width "
+            "(as the labeler's cache does) and records the editor's left end, music start and right end; tiles.py boxes the "
+            "region from the left end to the music start as \"start\" and a staff space around the right end as \"end\", "
+            "only where a tile holds all of the box. Mirroring is off: it would turn an end into a start.",
+            "This is the model for use, trained on every reviewed source with a tenth of the lines held back (its test lines). "
+            "How it does on a copy it never saw comes from the same recipe trained without F-Pn Vma ms 1067 (1) (below).",
+        ],
+        "measured": (
+            "<h2 style='margin-top:12px'>Staff ends and music starts, in the labeler</h2>"
+            "<p>The held-out model's starts and ends, cached and used by the labeler's detection, against the editor's, "
+            "on the held-out corpus's test lines (experiments/barlines/landmarks.py; results.md, 2026-10-07). "
+            "Share within 1 staff space / over 3; then the labeler's bar line errors, the model in the vote.</p>"
+            "<table><tr><th></th><th>familiar: before</th><th>familiar: with it</th><th>Vma: before</th><th>Vma: with it</th></tr>"
+            "<tr><td>left end</td><td>71% / 21%</td><td>90% / 3%</td><td>81% / 13%</td><td>89% / 4%</td></tr>"
+            "<tr><td>music start</td><td>44% / 37%</td><td>81% / 6%</td><td>81% / 17%</td><td>86% / 6%</td></tr>"
+            "<tr><td>right end</td><td>56% / 22%</td><td>95% / 2%</td><td>79% / 3%</td><td>96% / 0%</td></tr>"
+            "<tr><td>bar line errors</td><td>18 of 431</td><td>6</td><td>29 of 376</td><td>26</td></tr></table>"
+            "<p class='muted'>Before: the earlier YOLO26n in the vote and the rules for the ends. Shares are over the lines "
+            "where the model answers too (all but 2 Vma lines). Measured 2026-10-07 and written here by hand, not recomputed "
+            "by this script: rerun landmarks.py after a retrain. The 'before' column ran on the GPU with the earlier cache "
+            "format, the others on predictions made on the CPU.</p>"),
+        "future": [
+            "Mosaics off for the start and end classes: a mosaic seam can clip a box tiles.py kept whole.",
+            "Kinds of bar line (double, repeat, final) as classes, and the clef as a class of the start box, from the editor's clef marks.",
+            "Retrain as more copies are reviewed; each new hand so far has helped the next.",
+            "D-FINE small (Apache-2.0) on the same lines, held out the same way: the best of the earlier models on an unseen copy.",
+        ],
+    },
+    {
+        "key": "yolo26n", "status": "retired", "result": "yolo-yolo26n", "run": "yolo26n", "kind": "ultralytics",
         "title": "YOLO26n",
         "links": [("Ultralytics YOLO26 docs", "https://docs.ultralytics.com/models/yolo26/"),
                   ("Ultralytics licensing", "https://www.ultralytics.com/license"),
@@ -71,7 +137,7 @@ MODELS = [
             "Licence": "AGPL-3.0 (Ultralytics); fine for the editor's own use, not bundled with the MIT labeler",
             "Input": "a 640 px tile of a straightened staff line, 3 staff spaces above and below",
             "Output": "boxes with confidences; a bar line is the centre of a box above the threshold",
-            "Where it runs": "experiments only (experiments/barlines/run_yolo.py --model yolo26n.pt)",
+            "Where it runs": "in the labeler's bar-line vote from 2026-10-07 (cached by tools/predict_barlines.py); retired 2026-10-08 for YOLO26n with staff ends",
         },
         "how": [
             "Training starts from weights already trained on COCO's everyday photographs and adjusts all of them to one class, "
@@ -93,7 +159,7 @@ MODELS = [
         ],
     },
     {
-        "key": "yolo11n", "result": "yolo-yolo11n", "run": "yolo11n", "kind": "ultralytics",
+        "key": "yolo11n", "status": "labeler", "result": "yolo-yolo11n", "run": "yolo11n", "kind": "ultralytics",
         "title": "YOLO11n",
         "links": [("Ultralytics YOLO11 docs", "https://docs.ultralytics.com/models/yolo11/"),
                   ("our training script", "https://github.com/jsundram/manuscript-labeler/blob/main/experiments/barlines/run_yolo.py")],
@@ -105,7 +171,7 @@ MODELS = [
             "Licence": "AGPL-3.0 (Ultralytics); fine for the editor's own use, not bundled with the MIT labeler",
             "Input": "a 640 px tile of a straightened staff line, 3 staff spaces above and below",
             "Output": "boxes with confidences; a bar line is the centre of a box above the threshold",
-            "Where it runs": "experiments only (experiments/barlines/run_yolo.py)",
+            "Where it runs": "in the labeler: one of the two cached detectors in the bar-line vote (tools/predict_barlines.py)",
         },
         "how": [
             "Training starts from weights already trained on COCO's everyday photographs and adjusts all of them to one class, "
@@ -119,7 +185,7 @@ MODELS = [
         ],
     },
     {
-        "key": "yolo26n-mlx", "result": "yolo-mlx-yolo26n", "run": "yolo26n-mlx", "kind": "mlx",
+        "key": "yolo26n-mlx", "status": "experiment", "result": "yolo-mlx-yolo26n", "run": "yolo26n-mlx", "kind": "mlx",
         "title": "YOLO26n on MLX",
         "summary": "The same YOLO26 nano, trained and run natively on Apple silicon with MLX instead of PyTorch.",
         "links": [("yolo-mlx", "https://github.com/thewebAI/yolo-mlx"), ("MLX", "https://github.com/ml-explore/mlx"),
@@ -152,7 +218,7 @@ MODELS = [
         ],
     },
     {
-        "key": "dfine", "result": "dfine-dfine-small-coco", "run": "dfine", "kind": "dfine",
+        "key": "dfine", "status": "experiment", "result": "dfine-dfine-small-coco", "run": "dfine", "kind": "dfine",
         "title": "D-FINE small",
         "summary": "A transformer detector (DETR family, 2024), fine-tuned to box bar lines on the same tiles; Apache-licensed.",
         "links": [("D-FINE paper (2024)", "https://arxiv.org/abs/2410.13842"), ("D-FINE code", "https://github.com/Peterande/D-FINE"),
@@ -187,7 +253,7 @@ MODELS = [
         ],
     },
     {
-        "key": "detectron2", "result": "detectron2-faster-rcnn-r50", "run": "detectron2", "kind": "detectron2",
+        "key": "detectron2", "status": "experiment", "result": "detectron2-faster-rcnn-r50", "run": "detectron2", "kind": "detectron2",
         "title": "Detectron2 Faster R-CNN",
         "links": [("Detectron2", "https://github.com/facebookresearch/detectron2"),
                   ("model zoo", "https://github.com/facebookresearch/detectron2/blob/main/MODEL_ZOO.md"),
@@ -219,7 +285,7 @@ MODELS = [
         ],
     },
     {
-        "key": "learned", "result": "learned-labeler", "run": None, "kind": "learned",
+        "key": "learned", "status": "labeler", "result": "learned-labeler", "run": None, "kind": "learned",
         "also": [("on the straightened lines (run_learned.py --widths --paper: the editor's staves, not detected ones)",
                   "learned-gbm-widths-paper")],
         "title": "Learned filter (labeler)",
@@ -254,7 +320,7 @@ MODELS = [
         ],
     },
     {
-        "key": "rules", "result": "classical", "run": None, "kind": "rules",
+        "key": "rules", "status": "labeler", "result": "classical", "run": None, "kind": "rules",
         "title": "Hand-tuned rules",
         "links": [("detect.py (find_barlines)", "https://github.com/jsundram/manuscript-labeler/blob/main/detect.py"),
                   ("the tuning tool", "https://github.com/jsundram/manuscript-labeler/blob/main/tools/tune_barlines.py")],
@@ -372,9 +438,16 @@ LOSSES = {
 }
 
 
-def glossary() -> str:
+ENDS_TERM = ("Start, end boxes", "On the staff-ends model only, two classes beside the bar line's box: a start box the "
+             "staff's height from its left end to where the music starts, and an end box a staff space wide centred on its "
+             "right end. Its class loss, confidences and Ultralytics' metrics cover all three; found, false and missed count "
+             "bar lines only.")
+
+
+def glossary(ends: bool = False) -> str:
     return ("<section class='card'><h2>Terms</h2><dl class='gloss'>"
-            + "".join(f"<dt>{esc(k)}</dt><dd>{esc(v)}</dd>" for k, v in GLOSSARY) + "</dl></section>")
+            + "".join(f"<dt>{esc(k)}</dt><dd>{esc(v)}</dd>" for k, v in GLOSSARY + ([ENDS_TERM] if ends else []))
+            + "</dl></section>")
 
 
 def losses(kind: str) -> str:
@@ -736,23 +809,29 @@ def data_section(c: dict, corpus: Path, commits: dict, detector: bool, trained: 
     tiles = ""
     if detector and (corpus / "tiles" / "yolo" / "images").exists():
         n = {s: len(list((corpus / "tiles" / "yolo" / "images" / s).glob("*.png"))) for s in ("train", "val")}
-        tiles = f"<p>{esc(DETECTOR_DATA)} Tiles: {n['train']} training, {n['val']} validation.</p>"
+        ends = (" Each staff also has a start box (left end to music start) and an end box (around its right end), where "
+                "a tile holds all of it." if any("staff_right" in l for l in c["lines"]) else "")
+        tiles = f"<p>{esc(DETECTOR_DATA + ends)} Tiles: {n['train']} training, {n['val']} validation.</p>"
     srcs = "".join(f"<li>{esc(s)}: labels at {esc(v)}</li>" for s, v in commits.items())
     head = "Data that went into it" if trained else "Data it was scored on (it isn't trained)"
     return (f"<section class='card'><h2>{head}</h2>"
             f"<p>Every counted staff line on the editor's <i>reviewed</i> music pages, straightened along the editor's "
-            f"bend, with the editor's bar lines as the truth. Lines are split at random (seed {c.get('seed', 1)}), "
+            f"bend, with the editor's bar lines as the truth"
+            + (", cut across the paper's whole width, with the editor's left end, music start and right end"
+               if any("staff_right" in l for l in c["lines"]) else "")
+            + f". Lines are split at random (seed {c.get('seed', 1)}), "
             f"stratified by source; the test lines are never trained on. Cells: lines / bar lines.</p>"
             + table(["hand", "source", "part", "pages", "train", "validation", "test"], rows)
             + tiles + (f"<ul class='muted'>{srcs}</ul>" if srcs else "")
-            + "<p class='muted'>" + " · ".join(f"<b>{esc(h)}</b>: {esc(n)}" for h, n in HAND_NOTE.items()) + "</p></section>")
+            + "<p class='muted'>" + " · ".join(f"<b>{esc(h)}</b>: {esc(HAND_NOTE[h])}" for h in present_hands(c))
+            + "</p></section>")
 
 
 def results_section(c: dict, res: dict | None, extra: str = "", also: list | None = None) -> str:
     if not res:
         return "<section class='card'><h2>Results</h2><p class='muted'>Not scored on this corpus yet.</p></section>"
     bh = by_hand(c, res)
-    rows = [[esc(h), errs(bh[h])] for h in HANDS + ["all"]]
+    rows = [[esc(h), errs(bh[h])] for h in hands_in(c) + ["all"]]
     if also:
         extra = "<p>For comparison:</p>" + table(["run", "all"], [[esc(label), errs(by_hand(c, r)["all"])] for label, r in also]) + extra
     return (f"<section class='card'><h2>Results on the test lines</h2>"
@@ -929,11 +1008,12 @@ def rules_section(mdl: dict) -> tuple[str, str]:
     return steps, hp
 
 
-def model_page(mdl: dict, c: dict, corpus: Path, results: dict, commits: dict, logs: dict) -> str:
+def model_page(mdl: dict, c: dict, corpus: Path, results: dict, commits: dict, logs: dict,
+               heldout: tuple | None = None) -> str:
     res = results.get(mdl["result"])
     train_s = res.get("train_s") if res else None
-    pill = ("<span class='pill ok'>in the labeler</span>" if "labeler" in mdl["card"]["Where it runs"]
-            else "<span class='pill auto'>experiment</span>")
+    pill = {"labeler": "<span class='pill ok'>in the labeler</span>",
+            "retired": "<span class='pill auto'>retired</span>"}.get(mdl.get("status"), "<span class='pill auto'>experiment</span>")
     card = dict(mdl["card"])
     if res:
         card["Training time"] = f"{train_s / 60:.0f} minutes" if train_s and train_s > 90 else (f"{train_s:.0f} s" if train_s else "none")
@@ -969,31 +1049,54 @@ def model_page(mdl: dict, c: dict, corpus: Path, results: dict, commits: dict, l
             + (f"<h2 style='margin-top:12px'>{'The rules, in order' if mdl['kind'] == 'rules' else 'Settings'}</h2>{hp}" if hp else "") + "</section>"
             + (f"<section class='card'><h2>Training</h2>{conv}</section>" if conv else "")
             + results_section(c, res, also=[(label, results[k]) for label, k in mdl.get("also", []) if k in results])
-            + (glossary() if mdl["kind"] in ("ultralytics", "detectron2", "mlx", "dfine") else "")
+            + heldout_section(heldout, mdl)
+            + (glossary(any("staff_right" in l for l in c["lines"])) if mdl["kind"] in ("ultralytics", "detectron2", "mlx", "dfine") else "")
             + "<section class='card'><h2>Future directions</h2><ul class='future'>"
             + "".join(f"<li>{esc(f)}</li>" for f in mdl["future"]) + "</ul></section>")
     return page(f"{mdl['title']} · model card", body)
 
 
-def index_page(c: dict, results: dict) -> str:
-    rows = []
+def heldout_section(heldout: tuple | None, mdl: dict) -> str:
+    """The same recipe trained without one source, scored on it: how the model
+    does on a copy it never saw."""
+    if not heldout and not mdl.get("measured"):
+        return ""
+    out = "<section class='card'><h2>On a copy it never saw</h2>"
+    if heldout:
+        hc, hres = heldout
+        bh = by_hand(hc, hres)
+        out += ("<p>Trained the same way without " + esc(", ".join(sorted({l["source"] for l in hc["lines"]}
+                - {l["source"] for l in hc["lines"] if l["split"] == "train"}))) + f" (threshold {hres['threshold']}):</p>"
+                + table(["hand", "errors"], [[esc(h), errs(bh[h])] for h in hands_in(hc) + ["all"]]))
+    return out + mdl.get("measured", "") + "</section>"
+
+
+def index_page(c: dict, results: dict, written: set) -> str:
+    rows, other = [], []
+    hs = hands_in(c)
     for mdl in MODELS:
+        link = f"<a href='{mdl['key']}.html'>{esc(mdl['title'])}</a>"
+        if mdl.get("corpus"):  # trained and scored on a corpus of its own
+            if mdl["key"] in written:
+                other.append(f"<li>{link}: {esc(mdl['summary'])}</li>")
+            continue
         res = results.get(mdl["result"])
         if not res:
-            rows.append([f"<a href='{mdl['key']}.html'>{esc(mdl['title'])}</a>", "—", "—", "—", "—", "—", esc(mdl["card"]["Licence"].split(" ")[0])])
+            rows.append([link] + ["—"] * (len(hs) + 2) + [esc(mdl["card"]["Licence"].split(" ")[0])])
             continue
         bh = by_hand(c, res)
-        t = res.get("train_s") or 0
-        rows.append([f"<a href='{mdl['key']}.html'>{esc(mdl['title'])}</a>"] + [f"<b>{bh[h][1] + bh[h][2]}</b>" for h in HANDS + ["all"]]
+        rows.append([link] + [f"<b>{bh[h][1] + bh[h][2]}</b>" for h in hs + ["all"]]
                     + [f"{res['infer_s'] * 1000:.0f} ms", esc(mdl["card"]["Licence"].split(" ")[0])])
     test = [l for l in c["lines"] if l["split"] == "test"]
-    n = {h: sum(len(l["bars"]) for l in test if hand(l) == h) for h in HANDS}
+    n = {h: sum(len(l["bars"]) for l in test if hand(l) == h) for h in hs}
     body = ("<h1>Bar-line models</h1><p class='lede'>Every model that finds bar lines in the manuscripts: what it is, "
             "what it was trained on, how its training went, and where it could go next.</p>"
-            "<section class='card'><h2>Errors on the test lines (false + missed)</h2>"
-            + table(["model"] + [f"{h} ({n[h]})" for h in HANDS] + [f"all ({sum(n.values())})", "per line", "licence"], rows)
-            + "<p class='muted'>One random split of the reviewed lines; the Paris columns are small. Each model's card has its "
-              "cross-validation or training curves.</p></section>" + glossary())
+            + (f"<section class='card'><h2>Trained on later corpora</h2><ul>{''.join(other)}</ul>"
+               "<p class='muted'>Each card has its own data, training and results.</p></section>" if other else "")
+            + "<section class='card'><h2>Errors on the test lines (false + missed)</h2>"
+            + table(["model"] + [f"{h} ({n[h]})" for h in hs] + [f"all ({sum(n.values())})", "per line", "licence"], rows)
+            + "<p class='muted'>One random split of this corpus's reviewed lines; the Paris columns are small. "
+              "Each model's card has its cross-validation or training curves.</p></section>" + glossary())
     return page("Bar-line models", body)
 
 
@@ -1001,19 +1104,50 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("corpus", type=Path)
     ap.add_argument("--edition", type=Path)
+    ap.add_argument("--with", dest="more", action="append", default=[], metavar="NAME=DIR",
+                    help="a further corpus, for the cards that name it (e.g. prod=..., bl4=...)")
     args = ap.parse_args()
-    c = json.loads((args.corpus / "corpus.json").read_text())
-    results = {json.loads(p.read_text())["method"]: json.loads(p.read_text()) for p in (args.corpus / "results").glob("*.json")}
+    if any("=" not in x for x in args.more):
+        ap.error("--with takes NAME=DIR")
+    named = dict(x.split("=", 1) for x in args.more)
+
+    def load(d: Path):
+        c = json.loads((d / "corpus.json").read_text())
+        rs = {}
+        for p in (d / "results").glob("*.json"):
+            r = json.loads(p.read_text())
+            rs[r["method"]] = r
+        return c, rs
+    c, results = load(args.corpus)
     logs = {"crossval": parse_crossval(args.corpus / "logs" / "crossval.log"),
             "crossval-paper": parse_crossval(args.corpus / "logs" / "crossval-paper.log"),
             "crosshand": parse_crosshand(args.corpus / "logs" / "crosshand.log")}
     commits = label_commits(args.edition, sorted({l["pdf"] for l in c["lines"]}))
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "models.css").write_text(CSS)
-    (OUT / "index.html").write_text(index_page(c, results))
+    written = set()
     for mdl in MODELS:
-        (OUT / f"{mdl['key']}.html").write_text(model_page(mdl, c, args.corpus, results, commits, logs))
-    print(f"wrote {OUT}/index.html and {len(MODELS)} model cards")
+        if mdl.get("corpus"):
+            if mdl["corpus"] not in named:
+                print(f"{mdl['key']}: skipped, needs --with {mdl['corpus']}=DIR")
+                continue
+            d = Path(named[mdl["corpus"]])
+            mc, mres = load(d)
+            held = None
+            if mdl.get("heldout") in named:
+                hc, hres = load(Path(named[mdl["heldout"]]))
+                held = (hc, hres[mdl["result"]]) if mdl["result"] in hres else None
+            if mdl.get("heldout") and held is None:
+                print(f"{mdl['key']}: no held-out result (--with {mdl['heldout']}=DIR with {mdl['result']}); "
+                      "its card says how it does on an unseen copy without that table")
+            page_html = model_page(mdl, mc, d, mres, label_commits(args.edition, sorted({l["pdf"] for l in mc["lines"]})),
+                                   logs, held)
+        else:
+            page_html = model_page(mdl, c, args.corpus, results, commits, logs)
+        (OUT / f"{mdl['key']}.html").write_text(page_html)
+        written.add(mdl["key"])
+    (OUT / "index.html").write_text(index_page(c, results, written))
+    print(f"wrote {OUT}/index.html and {len(written)} model cards")
 
 
 if __name__ == "__main__":

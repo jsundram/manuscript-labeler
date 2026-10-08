@@ -5,7 +5,7 @@
 """A detector's checkpoints, judged the way we judge it: did it find the bar
 lines? For the model cards (cards.py).
 
-    uv run experiments/barlines/trainviz.py <corpus-dir> yolo <run-name>
+    uv run experiments/barlines/trainviz.py <corpus-dir> yolo <run-name> [<card-key>]
     <venv-with-detectron2>/bin/python experiments/barlines/trainviz.py <corpus-dir> detectron2 detectron2
     uv run --with "transformers>=4.52" --with torch --with timm --with scipy --with numpy --with pillow \
         python experiments/barlines/trainviz.py <corpus-dir> dfine dfine
@@ -34,16 +34,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+from cards import HANDS, hand  # noqa: E402
 from common import cumulative_times, lines, run as run_lines  # noqa: E402
 
 IMG = HERE.parent.parent / "static" / "models" / "img"
 THRESHOLDS = [i / 20 for i in range(1, 20)]
-
-
-def hand(l: dict) -> str:
-    if l["source"].startswith("D-B"):
-        return "KHM"
-    return "Paris A" if l["part"] in ("vn1", "vc") else "Paris B"
 
 
 def pair(preds: list, truth: list, tol: float) -> tuple[list, list, list]:
@@ -195,13 +190,16 @@ def detectron2_checkpoints(run: Path):
 
 def main():
     corpus, kind, name = Path(sys.argv[1]), sys.argv[2], sys.argv[3]
+    # the drawings' names: the card's key if given, else the corpus and run (runs in
+    # different corpora share names: yolo26n)
+    prefix = sys.argv[4] if len(sys.argv) > 4 else f"{corpus.name}-{name}"
     run = corpus / "runs" / name
     c = json.loads((corpus / "corpus.json").read_text())
     val = lines(corpus, "val")
     cks, detector = {"yolo": yolo_checkpoints, "mlx": mlx_checkpoints, "dfine": dfine_checkpoints,
                      "detectron2": detectron2_checkpoints}[kind](run)
     shown = {0, len(cks) // 2, len(cks) - 1}
-    examples = {h: next(l for l in val if hand(l) == h) for h in ("KHM", "Paris A", "Paris B") if any(hand(l) == h for l in val)}
+    examples = {h: next(l for l in val if hand(l) == h) for h in HANDS if any(hand(l) == h for l in val)}
     out = {"checkpoints": [], "examples": [], "validation": {"lines": len(val), "bar_lines": sum(len(l["bars"]) for l in val)}}
     for k, (label, minutes, path) in enumerate(cks):
         preds, per = run_lines(corpus, val, detector(path))
@@ -212,7 +210,7 @@ def main():
             for h, l in examples.items():
                 out["examples"].append({"hand": h, "checkpoint": label, "minutes": minutes, **draw(
                     corpus, l, preds[l["id"]], j["threshold"], c["tolerance_frac"] * l["page_w"],
-                    IMG / f"{name}-{h.replace(' ', '').lower()}-{k}.jpg", f"{h}, {label}: {l['id']}")})
+                    IMG / f"{prefix}-{h.replace(' ', '').lower()}-{k}.jpg", f"{h}, {label}: {l['id']}")})
         if k == len(cks) - 1:
             hits, falses, missed = [], [], 0
             for l in val:

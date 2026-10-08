@@ -30,6 +30,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import run_learned  # noqa: E402
 from crossval import classical  # noqa: E402
+from cards import hand  # noqa: E402
 from harness import match  # noqa: E402
 
 CACHE: dict = {}
@@ -49,12 +50,6 @@ def cached_labelled(corpus: Path, ls: list[dict], tol_frac: float):
 
 ORIGINAL = run_learned.labelled
 run_learned.labelled = cached_labelled
-
-
-def hand(l: dict) -> str:
-    if l["source"].startswith("D-B"):
-        return "KHM"
-    return "Paris A" if l["part"] in ("vn1", "vc") else "Paris B"
 
 
 def evaluate(corpus: Path, train: list[dict], test: list[dict], tol: float, widths: bool, seed: int = 0):
