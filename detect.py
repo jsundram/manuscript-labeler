@@ -868,7 +868,8 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         strip = col[min(x0, at):max(x0, at) + 1]
         # a page's own shade toward the spine darkens steadily; the next
         # page meets this one in a step much sharper than the strip's slope
-        slope = abs(float(strip[-1] if sign > 0 else strip[0]) - float(col[x0])) / max(1, len(strip) - 1) * 4
+        x_in = x0 + sign * 3  # a few columns in: x0 itself may be half background
+        slope = abs(float(col[at - sign]) - float(col[x_in])) / max(1, abs(at - x_in) - 1) * 4
         if best < GUTTER_SHARP * max(slope, 1.0):
             continue
         inside = col[at + sign:at + sign * 13:sign] if sign > 0 else col[max(0, at - 12):at]
@@ -962,13 +963,17 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
         told = ends(st) if ends is not None else {}
         # a detector's "start" sets the left end and music start; its "end"
         # the right end, before the bar-line search and the vote, so they
-        # cover all of it
-        # (a start box at the far end of the line, past its music, isn't the staff's)
-        if "left" in told and "start" in told and told["start"] < max(right, told.get("right", right)) - START_ROOM * gap:
+        # cover all of it. A start must leave room for music before the end
+        # (one at the far end of the line, past its music, isn't the
+        # staff's), an end room for music after the start.
+        start_ok = ("left" in told and "start" in told
+                    and told["start"] < max(right, told.get("right", right)) - START_ROOM * gap)
+        took_right = "right" in told and told["right"] > (told["start"] if start_ok else start) + START_ROOM * gap
+        if took_right:
+            right = int(min(paper[1], told["right"]))
+        if start_ok and told["start"] < right - START_ROOM * gap:
             left = int(min(right, max(paper[0], told["left"])))
             start = int(min(right, max(left, told["start"])))
-        if "right" in told and told["right"] > start + START_ROOM * gap:  # an end with room for music after the start
-            right = int(min(paper[1], told["right"]))
         # search a little past the ruled end: a final bar line often sits on it
         reach = min(band.shape[1], right + int(st["gap"]))
         seen = band
@@ -990,7 +995,7 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
         # beyond it are blank. Music there (a missed bar line, a bar that
         # runs on to the next line) keeps the full length. A detector's end,
         # where there is one, stands instead.
-        if bars and "right" not in told:
+        if bars and not took_right:
             tail = last + int(st["gap"] * 0.5)
             if right - tail > st["gap"] * 1.5 and note_ink(seen, local, tail, right) < 0.01:
                 right = tail
