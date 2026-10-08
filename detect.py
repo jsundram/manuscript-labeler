@@ -404,6 +404,9 @@ ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
 TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
 EMPTY_INK = 0.01      # less ink than this between its lines: an empty staff, dropped
 START_ROOM = 4.0      # spaces a detector's music start must leave before the staff's right end
+GUTTER_REACH = 0.12   # page widths inward from the paper's outer edge to look for the binding
+GUTTER_STEP = 10.0    # grey levels: a binding is a step up at least this sharp, its page this much brighter
+GUTTER_MIN = 0.01     # page widths: a darker strip narrower than this is the paper's own edge
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy stroke may be
 REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
@@ -836,6 +839,38 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         if len(t) < 20:
             return whole
         lines[name] = fit(t, p)
+
+    # A book photographed open shows a strip of the next page beyond the
+    # binding: paper too, but in the fold's shade, darker than this page
+    # where they meet. Lit unevenly, a page's own brightness varies, so the
+    # binding is found locally: the sharpest step up (inward) in a column's
+    # median brightness within GUTTER_REACH of the outer edge, if it's a real
+    # step (GUTTER_STEP grey levels over 4 columns) with this page brighter
+    # than the whole strip outside it; the page starts at the darkest column
+    # beside it (the fold, if any).
+    rows = slice(int(h * 0.1), int(h * 0.9))
+    col = np.median(lum[rows], axis=0)  # a column's paper: handwriting barely moves a median
+    for name, sign in (("left", 1), ("right", -1)):
+        a, b = lines[name]
+        x0 = int(round(a * (h / 2) + b))
+        best, at = 0.0, None
+        for x in range(x0 + sign * max(4, int(w * GUTTER_MIN)), x0 + sign * int(w * GUTTER_REACH), sign):
+            inner = [x + sign * k for k in range(1, 5)]
+            outer = [x - sign * k for k in range(0, 4)]
+            if not all(0 <= v < w for v in inner + outer):
+                break
+            jump = float(np.mean(col[inner]) - np.mean(col[outer]))
+            if jump > best:
+                best, at = jump, x
+        if at is None or best < GUTTER_STEP:
+            continue
+        strip = col[min(x0, at):max(x0, at) + 1]
+        inside = col[at + sign:at + sign * 13:sign] if sign > 0 else col[max(0, at - 12):at]
+        if len(inside) < 6 or np.median(inside) < np.median(strip) + GUTTER_STEP:
+            continue  # not a darker strip outside: this page's own margin
+        near = [x for x in range(at - 3, at + 4) if 0 <= x < w]
+        fold = min(near, key=lambda x: col[x])
+        lines[name] = (a, b + (fold - x0))
 
     def meet(vert: tuple, horiz: tuple) -> list[float]:
         # vertical edge: x = a*y + b; horizontal edge: y = c*x + d
