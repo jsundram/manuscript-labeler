@@ -195,3 +195,5 @@ button.link { background: none; border: none; padding: 0; color: var(--accent, #
 .structure { margin-top: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 6px; }
 .structure pre { font-size: 11px; white-space: pre-wrap; background: var(--bg, #f6f4f0); padding: 6px; border-radius: 4px; max-height: 260px; overflow: auto; }
 .structure ul.bad { color: var(--bad, #c62828); padding-left: 16px; margin: 4px 0; }
+
+#canvas.peek #overlay { display: none; }  /* hold h: the page alone */

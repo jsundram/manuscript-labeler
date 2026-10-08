@@ -1812,6 +1812,7 @@ function setPlacing(kind) {
 // ------------------------------------------------------------------ pointer
 
 svg.addEventListener('pointerdown', (e) => {
+  if (svg.classList.contains('peek')) return;  // holding h: looking, not editing
   if (e.button !== 0 || !pg()) return;
   const p = toImage(e);
   const fx = p.x / S.W, fy = p.y / S.H;
@@ -2015,9 +2016,23 @@ document.addEventListener('keydown', (e) => {
   }
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
   else if (k === 'a') { handled(); const b = find(S.sel); if (b && S.sel.t === 'bl') snapBarline(b, systemOf(b), { undoable: true }); }
-  else if (k === 'e') { handled(); setBarline((b) => { b.ends_movement = !b.ends_movement; }); }
+
   else if (k === 'z') { handled(); S.detail = !S.detail; savePref('detail', S.detail); renderDetail(); renderOverlay(); }
   else if (k === 'Enter') { handled(); markReviewedAndNext(); }
+  else if (k === '0' && S.sel?.t === 'bl' && !S.readonly) {
+    handled();
+    const b = find(S.sel);
+    if (b && (b.bar_count ?? 1) > 1) flash('A multi-bar rest: set its count in the panel.');
+    else if (b) { setBarline((x) => { x.bar_count = x.bar_count === 0 ? 1 : 0; }); flash(b.bar_count === 0 ? 'Upbeat (bar count 0). ⌘Z undoes.' : 'Not an upbeat. ⌘Z undoes.'); }
+  }
+  else if ((k === 'e' || k === '.') && S.sel?.t === 'bl' && !S.readonly) {
+    handled();
+    const b = find(S.sel);
+    setBarline((x) => { x.ends_movement = !x.ends_movement; });
+    if (b) flash(b.ends_movement ? 'The movement ends here. ⌘Z undoes.' : "The movement doesn't end here. ⌘Z undoes.");
+  }
+  else if (k === ']' && S.sel?.t === 'sys') { handled(); trimStaff(find(S.sel)); }
+  else if (k === 'h') { handled(); if (!e.repeat) { svg.classList.add('peek'); } }
   else if (k === '.' || k === 'PageDown') { handled(); openPage(S.page + 1); }
   else if (k === ',' || k === 'PageUp') { handled(); openPage(S.page - 1); }
   else if (k === 'f') { handled(); fitPage(); }
@@ -2028,6 +2043,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
+  if (e.code === 'KeyH' || e.key.toLowerCase() === 'h') svg.classList.remove('peek');
   if (S.heldCrop && (e.key === 't' || e.key === 'g')) { S.heldCrop = null; renderOverlay(); }
   if (S.held && e.key.toLowerCase() === S.held) {
     S.held = null;
@@ -2036,6 +2052,7 @@ document.addEventListener('keyup', (e) => {
   }
 });
 window.addEventListener('blur', () => {
+  svg.classList.remove('peek');
   if (S.held) { S.held = null; setPlacing(null); }
   if (S.heldCrop) { S.heldCrop = null; renderOverlay(); }
 });
@@ -2087,7 +2104,7 @@ $('#f-notes').addEventListener('change', (e) => mutate((p) => { p.notes = e.targ
 $('#inspector').addEventListener('click', (e) => {
   const act = e.target.dataset?.act;
   const item = find(S.sel);
-  if (act === 'trim' && item && S.sel.t === 'sys') mutate(() => { trimToLastBarline(item); item.auto = false; });
+  if (act === 'trim' && item && S.sel.t === 'sys') trimStaff(item);
   if (act === 'reset-corners') resetCorners();
   if (act === 'start-all' && item && S.sel.t === 'sys') applyStartToPage(item);
   if (act === 'snap' && item && S.sel.t === 'bl') snapBarline(item, systemOf(item), { undoable: true });
