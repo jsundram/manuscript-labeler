@@ -92,6 +92,36 @@ def test_page(source: str, page: int, share: float, test_sources: list[str], hel
     return page in held.get(source, []) or source in test_sources or page_hash(source, page) < share
 
 
+def training_pages(edition: Path, c: dict, test: list[dict]) -> list[tuple]:
+    """The reviewed pages a whole-page learner (learn.py) may train on, for
+    this corpus: every page that is a test page now is left out whole,
+    worked out afresh (test_page, test_pages.json), so a page reviewed after
+    the corpus was built can't leak in. Older corpora (split by line):
+    the test lines' staves are hidden instead. [(pdf, page, labels)]."""
+    import copy
+
+    import learn
+    sp = c.get("split")
+    held = held_out_pages()
+    hide = {(l["pdf"], l["page"], round(l["top_frac"], 4)) for l in test}
+    pages, hidden = [], 0
+    for pdf, n, p in learn.reviewed_pages(edition):
+        rel = str(pdf.relative_to(edition))
+        if isinstance(sp, dict):
+            if test_page(pdf.stem, n, sp["share"], sp["test_sources"], held):
+                hidden += sum(1 for l in test if l["pdf"] == rel and l["page"] == n)
+                continue
+        else:
+            p = copy.deepcopy(p)
+            kept = [s for s in p["systems"] if (rel, n, round(s["top"], 4)) not in hide]
+            hidden += len(p["systems"]) - len(kept)
+            p["systems"] = kept
+        pages.append((pdf, n, p))
+    # a test line not accounted for (a staff moved since corpus.py ran) would leak into training
+    assert hidden == len(test), f"hid {hidden} of {len(test)} test lines: rebuild the corpus"
+    return pages
+
+
 def paper_band(g: np.ndarray, s: dict, corners: list) -> tuple[np.ndarray, dict]:
     """straight_band across the paper's whole width at the staff's height
     (its corners: find_page_corners or the editor's): what the bar-line

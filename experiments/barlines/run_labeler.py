@@ -15,7 +15,6 @@ scored: each is matched to the staff detection found at its height, and
 its bar lines are moved into the line's crop coordinates.
 """
 
-import copy
 import json
 import sys
 import tempfile
@@ -28,6 +27,7 @@ sys.path.insert(0, str(HERE.parent.parent))
 sys.path.insert(0, str(HERE.parent.parent / "tools"))
 import detect  # noqa: E402
 import learn  # noqa: E402
+from corpus import training_pages  # noqa: E402
 from harness import write  # noqa: E402
 from score_barlines import render  # noqa: E402
 
@@ -37,26 +37,7 @@ def main():
     rules_only = "--rules" in sys.argv  # the hand-tuned rules, end to end, for comparison
     c = json.loads((corpus / "corpus.json").read_text())
     test = [l for l in c["lines"] if l["split"] == "test"]
-    # test pages are left out of training whole (corpus.py records them all,
-    # staves without bar lines too), so no page is on both sides
-    drop = {(src, n) for src, n in c["test_pages"]} if "test_pages" in c else None
-    hide = {(l["pdf"], l["page"], round(l["top_frac"], 4)) for l in test}  # older corpora: by staff
-
-    pages, hidden = [], 0
-    for pdf, n, p in learn.reviewed_pages(edition):
-        rel = str(pdf.relative_to(edition))
-        p = copy.deepcopy(p)
-        if drop is not None:
-            if (pdf.stem, n) in drop:
-                hidden += sum(1 for l in test if l["pdf"] == rel and l["page"] == n)
-                continue
-        else:
-            kept = [s for s in p["systems"] if (rel, n, round(s["top"], 4)) not in hide]
-            hidden += len(p["systems"]) - len(kept)
-            p["systems"] = kept
-        pages.append((pdf, n, p))
-    # a staff moved since corpus.py ran would leak its test labels into training
-    assert hidden == len(test), f"hid {hidden} of {len(test)} test lines: rebuild the corpus"
+    pages = training_pages(edition, c, test)  # test pages left out whole, worked out afresh
 
     with tempfile.TemporaryDirectory() as tmp:
         # keep only the test pages, which are rendered again for scoring

@@ -32,7 +32,6 @@ All results are in the test lines' coordinates, for harness.py and
 ensemble.py. Each stage runs in the environment its models need.
 """
 
-import copy
 import json
 import sys
 import tempfile
@@ -53,29 +52,12 @@ def stage(corpus: Path, edition: Path):
 
     import detect
     import learn
-    from corpus import paper_band, render
+    from corpus import training_pages, paper_band, render
     from harness import write
 
     c = json.loads((corpus / "corpus.json").read_text())
     test = [l for l in c["lines"] if l["split"] == "test"]
-    # test pages are left out of training whole (corpus.py records them all,
-    # staves without bar lines too), so no page is on both sides
-    drop = {(src, n) for src, n in c["test_pages"]} if "test_pages" in c else None
-    hide = {(l["pdf"], l["page"], round(l["top_frac"], 4)) for l in test}  # older corpora: by staff
-    pages, hidden = [], 0
-    for pdf, n, p in learn.reviewed_pages(edition):
-        rel = str(pdf.relative_to(edition))
-        p = copy.deepcopy(p)
-        if drop is not None:
-            if (pdf.stem, n) in drop:
-                hidden += sum(1 for l in test if l["pdf"] == rel and l["page"] == n)
-                continue
-        else:
-            kept = [s for s in p["systems"] if (rel, n, round(s["top"], 4)) not in hide]
-            hidden += len(p["systems"]) - len(kept)
-            p["systems"] = kept
-        pages.append((pdf, n, p))
-    assert hidden == len(test), f"hid {hidden} of {len(test)} test lines: rebuild the corpus"
+    pages = training_pages(edition, c, test)  # test pages left out whole, worked out afresh
 
     out = corpus / "e2e" / "crops"
     out.mkdir(parents=True, exist_ok=True)
