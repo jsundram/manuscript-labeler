@@ -392,6 +392,9 @@ function renumber() {
   // each part's first bar of each movement: "part movement" -> bar
   S.firsts = new Map();
   for (const nb of S.bars) if (!S.firsts.has(nb.part + ' ' + nb.movement)) S.firsts.set(nb.part + ' ' + nb.movement, nb);
+  // each page's lines, by their first bar: page -> [bar]
+  S.lineFirsts = new Map();
+  for (const nb of S.bars) if (!nb.left) (S.lineFirsts.get(nb.page) || S.lineFirsts.set(nb.page, []).get(nb.page)).push(nb);
 }
 
 const barLabel = (nb) => nb.count > 1 ? `${nb.bar}–${nb.bar + nb.count - 1}` : nb.count === 0 ? `(${nb.bar})` : `${nb.bar}`;
@@ -898,7 +901,7 @@ const sigMenus = (o, dis, before = {}) => {
   const blank = (f, show) => {
     const b = before[f];
     if (b == null) return true;
-    return b.from ? `— (${show(b.value)}, as ${b.from})` : `— (${show(b)})`;
+    return b.from ? `— (${show(b.value)}, ${fromText(b.from)})` : `— (${show(b)})`;
   };
   return `<div class="sigrow">
       <label>Clef <select data-f="clef"${dis}>${options(CLEFS, o.clef, {}, blank('clef', (v) => v))}</select></label>
@@ -913,6 +916,8 @@ function sigDefaults(s) {
   const out = Object.fromEntries(SIG_FIELDS.map((f) => [f, sigBefore(S.page, s, f)]));
   const nb = lineStartsMovement(s);
   if (nb) for (const f of ['key', 'time']) out[f] = movementDefault(nb, f);
+  const first = !nb && S.bars.find((b) => b.system === s && !b.left);
+  if (first) for (const f of ['key', 'time']) out[f] = structureChange(first, f) || out[f];
   return out;
 }
 
@@ -922,17 +927,19 @@ function lineStartsMovement(s) {
   return null;
 }
 
-// The movement defaults on the current page's movement-starting lines that
-// the lines don't state: [staff, field, value]. Shown dimmed on the page;
+// The defaults the page's lines would take and don't state: a movement's
+// key and time where it begins, and Structure.ily's changes where a line
+// begins: [staff, field, value, from]. Shown dimmed on the page;
 // marking the page reviewed writes them (reviewing confirms what's shown).
 function pendingDefaults(n = S.page) {
-  const key = `${S.version} ${n}`;
+  const key = `${S.pdf} ${S.version} ${n}`;
   if (S.pendingCache?.key === key) return S.pendingCache.items;
   const out = [];
-  for (const nb of S.firsts.values()) {
-    if (nb.page !== n || nb.left) continue;
+  for (const nb of S.lineFirsts.get(n) || []) {  // each line's first bar on the page
+    const starts = S.firsts.get(nb.part + ' ' + nb.movement) === nb;
     for (const f of ['key', 'time']) {
-      const d = nb.system[f] == null ? movementDefault(nb, f) : null;
+      // stated on the staff, or in a box before its music start: nothing to write
+      const d = statedAtStart(nb, f) != null ? null : starts ? movementDefault(nb, f) : structureChange(nb, f);
       if (d) out.push([nb.system, f, d.value, d.from]);
     }
   }
@@ -955,6 +962,11 @@ function sigBefore(n, s, field) {
       if (nb.page !== k || nb.system.top >= top) continue;
       // a movement's key and time don't carry into the next: unstated, it's a blank
       ch.push([nb.system.top, nb.left ? mid(nb.left) : -Infinity, movementSig(nb, field) ?? NONE]);
+    }
+    for (const nb of field === 'clef' ? [] : S.lineFirsts.get(k) || []) {
+      if (nb.system.top >= top) continue;
+      const c = structureChange(nb, field);  // a change Structure.ily puts where this line begins
+      if (c) ch.push([nb.system.top, -Infinity, c.value]);
     }
     ch.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
     return ch.length ? ch[ch.length - 1][2] : null;
@@ -989,9 +1001,10 @@ function statedAtStart(nb, field) {
   return ch.length ? ch[ch.length - 1][2] : null;
 }
 
-// A movement's key and time, as one part states them, stand for the
-// others (the parts agree; a part that differs states its own). For a
-// part's first bar of a movement that doesn't state one: {value, from}.
+// A movement's key and time for a part's first bar that doesn't state
+// them: {value, from}. As another part of this source states them (the
+// same manuscript; a part that differs states its own); else from
+// Structure.ily, the work's, so every source of it.
 function movementDefault(nb, field) {
   if (nb.part === 'score') return null;  // a score's movements needn't line up with the parts'
   for (const other of S.firsts.values()) {
@@ -999,8 +1012,20 @@ function movementDefault(nb, field) {
     const v = statedAtStart(other, field);
     if (v != null) return { value: v, from: PART_NAMES[other.part] || other.part };
   }
-  return null;
+  const e = S.info?.expected?.[nb.movement];
+  return e && e[field] != null ? { value: e[field], from: 'Structure.ily' } : null;
 }
+const fromText = (from) => (from === 'Structure.ily' ? 'from Structure.ily' : `as ${from}`);
+
+// a change of key or time Structure.ily puts where a line begins (a Trio's
+// new key on its first line): {value, from} if the line doesn't state it
+function structureChange(nb, field) {
+  if (nb.part === 'score' || nb.left) return null;
+  const c = (S.info?.expected?.[nb.movement]?.changes || [])
+    .filter((c) => field in c && c.bar === nb.bar && (c.on_bar_line ? nb.count !== 0 : nb.count === 0)).pop();
+  return c && statedAtStart(nb, field) == null ? { value: c[field], from: 'Structure.ily' } : null;
+}
+
 // what a movement's first bar has for key or time: its own, else the default
 const movementSig = (nb, field) => statedAtStart(nb, field) ?? movementDefault(nb, field)?.value ?? null;
 
@@ -1212,8 +1237,8 @@ function renderCounts() {
       // mid-line); asked on the page it's on, so the list doesn't flood
       const missing = r && r.first.page === S.page ? ['key', 'time'].filter((f) => statedAtStart(r.first, f) == null) : [];
       if (missing.length) {
-        const d = r.first.left ? [] : missing.map((f) => movementDefault(r.first, f)).filter(Boolean);
-        const will = d.length ? `; ${sigText({ key: movementDefault(r.first, 'key')?.value, time: movementDefault(r.first, 'time')?.value })} (as ${d[0].from}) will be written on review`
+        const d = r.first.left ? [] : missing.map((f) => [f, movementDefault(r.first, f)]).filter(([, v]) => v);
+        const will = d.length ? '; review will write ' + d.map(([f, v]) => `${f === 'key' ? keyName(v.value) : v.value} (${fromText(v.from)})`).join(' and ')
           : r.first.left ? '; box them at its first bar (hold c)' : '';
         warnings.push(`${PART_NAMES[part]} ${m}: ${missing.join(' and ')} not set on its first line (page ${r.first.page})${will}`);
       }

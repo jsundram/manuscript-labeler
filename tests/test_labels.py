@@ -286,8 +286,9 @@ def test_parse_structure():
     assert got["I"]["total"] == 130
     assert [s["bars"] for s in got["I"]["segments"]] == [48, 82]
     assert got["II"]["total"] == 72
-    assert got["III"] == {"total": 24, "pickup": True, "tempos": [],
-                          "segments": [{"bars": 14, "repeat": True}, {"bars": 10, "repeat": False}]}
+    assert {k: got["III"][k] for k in ("total", "pickup", "tempos", "segments", "changes")} == {
+        "total": 24, "pickup": True, "tempos": [], "changes": [],
+        "segments": [{"bars": 14, "repeat": True}, {"bars": 10, "repeat": False}]}
     assert got["II"]["tempos"] == ["Minuetto con moto", "Trio"]
 
 
@@ -298,6 +299,30 @@ README = """
 | Op. 48/3, G 228 | `G228/F-Pn_Vma-ms-1067-1.pdf` | Paris. | [840022755](https://rism.online/sources/840022755) | not online |
 | | `G228/F-Po_RES-507-14.pdf` | Paris, [Gallica](x) record. | [840013721](https://rism.online/sources/840013721) | [Gallica](https://gallica/x) |
 """
+
+
+def test_parse_structure_reads_key_and_time_as_written():
+    text = r"""\tag #'mvtII {
+      \time 3/4 \key b \minor
+      \repeat volta 2 { \partial 4 s4 s2.*7 s2 }
+      \key b \major
+      \repeat volta 2 { s4 s2.*7 s2 }
+    }
+    \tag #'mvtI { \time 4/4 \key es \major s1*4 \time 2/2 s1*2 }"""
+    got = labels.parse_structure(text)
+    assert (got["II"]["key"], got["II"]["time"]) == (2, "3/4")
+    assert got["II"]["changes"] == [{"bar": 8, "on_bar_line": False, "key": 5}]  # the Trio, from its upbeat completing bar 8
+    assert (got["I"]["key"], got["I"]["time"]) == (-3, "C")        # 4/4 is printed as C
+    assert got["I"]["changes"] == [{"bar": 5, "on_bar_line": True, "time": "C/"}]
+    assert labels.key_fifths("fis", "minor") == 3 and labels.key_fifths("aes", "major") == -4
+    assert labels.key_fifths("eses", "major") == 4 - 14  # E double flat
+    assert labels.key_fifths("asas", "major") == 3 - 14 and labels.key_fifths("fisis", "major") == 6 + 7
+    # \numericTimeSignature applies from where it is written
+    two = labels.parse_structure(r"""\tag #'mvtI { \time 4/4 s1 } \tag #'mvtII { \numericTimeSignature \time 4/4 s1 }""")
+    assert (two["I"]["time"], two["II"]["time"]) == ("C", "4/4")
+    # changes inside a written-out repeat, every time round
+    un = labels.parse_structure(r"""\tag #'mvtI { \time 2/4 \repeat unfold 2 { s2*2 \time 3/4 s2. \time 2/4 } }""")["I"]
+    assert [(c["bar"], c["time"]) for c in un["changes"]] == [(3, "3/4"), (4, "2/4"), (6, "3/4"), (7, "2/4")]
 
 
 def test_parse_structure_counts_a_short_last_bar():
@@ -340,7 +365,7 @@ def test_parse_structure_counts_by_duration_with_upbeats():
     assert [s["bars"] for s in got["II"]["segments"]] == [8, 20, 8, 24]
     assert got["II"]["total"] == 60 and got["II"]["pickup"]
     assert got["II"]["tempos"] == ["Tempo di Minuetto", "Trio"]
-    assert got["I"] == {"total": 88, "pickup": False, "tempos": [],
+    assert got["I"] == {"total": 88, "pickup": False, "tempos": [], "time": "2/4", "changes": [],
                         "segments": [{"bars": 88, "repeat": False}]}
 
 

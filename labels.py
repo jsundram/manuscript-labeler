@@ -536,11 +536,32 @@ _TOKEN = re.compile(
     r"|(?P<unfold>\\repeat\s+(?:unfold|percent)\s+(?P<times>\d+)\s*\{)"
     r"|(?P<partial>\\partial\s+(?P<pdur>\d+)(?P<pdots>\.*)(?:\s*\*\s*(?P<pn>\d+)(?:\s*/\s*(?P<pm>\d+))?)?)"
     r"|(?P<time>\\time\s+(?P<tn>\d+)\s*/\s*(?P<td>\d+))"
+    r"|(?P<key>\\key\s+(?P<tonic>[a-g][a-z]*)\s*\\(?P<mode>major|minor))"
+    r"|(?P<numeric>\\(?P<which>numeric|default)TimeSignature\b)"
     r"|(?P<open>\{)|(?P<close>\})"
     r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\s*\*\s*(?P<n>\d+)(?:\s*/\s*(?P<m>\d+))?)?(?![\w]))"
 )
 _WORD = re.compile(r"\S*")
 _COMMAND = re.compile(r"\\[A-Za-z-]+\s*")
+
+
+_FIFTHS = {"c": 0, "d": 2, "e": 4, "f": -1, "g": 1, "a": 3, "b": 5}
+
+
+def key_fifths(tonic: str, mode: str) -> int:
+    """A LilyPond key (Dutch note names: fis, bes, es, as) as its signature:
+    sharps > 0, flats < 0, as the labels record it (d major and b minor: 2)."""
+    rest = tonic[1:]  # is, isis (sharps); es, eses, and s, ses, sas after a vowel (as, es, asas, eses)
+    flats = rest.count("es") + rest.count("as") + rest.startswith("s")
+    n = _FIFTHS[tonic[0]] + 7 * (rest.count("is") - flats)
+    return n - 3 if mode == "minor" else n
+
+
+def written_time(num: int, den: int, numeric: bool = False) -> str:
+    """A \\time as the page writes it: 4/4 and 2/2 print as C and ¢ unless numeric."""
+    if not numeric and (num, den) in ((4, 4), (2, 2)):
+        return "C" if den == 4 else "C/"
+    return f"{num}/{den}"
 
 
 def _duration(dur: str | None, dots: str, n: str | None, m: str | None) -> Fraction | None:
@@ -700,18 +721,38 @@ def parse_structure(text: str) -> dict[str, dict]:
         depth = 1
         stack: list = []        # per open brace: True (volta repeat), False, or an unfold frame
         marks: list[tuple] = [] # (bars so far, repeat?) where segments end
+        sig: dict = {}          # the movement's opening key and time
+        changes: list = []      # later ones: {"bar": n, "key" or "time": value}
+        numeric = False         # \numericTimeSignature in force (4/4 printed as 4/4, not C)
         end = len(music)
+
+        def signature(field, value):
+            if not b.started:
+                sig[field] = value
+            elif b.fresh:  # on a bar line: from the next bar
+                changes.append({"bar": b.begun + 1, "on_bar_line": True, field: value})
+            else:          # mid-bar: from the rest of this one (a Trio's upbeat, completing the short bar)
+                changes.append({"bar": b.begun, "on_bar_line": False, field: value})
 
         def emit(ev: tuple):
             """One musical event; a written-out repeat records it to play again."""
             for f in stack:
                 if isinstance(f, dict):
                     f["events"].append(ev)
-            getattr(b, ev[0])(*ev[1:])
+            if ev[0] == "signature":
+                signature(*ev[1:])
+            else:
+                getattr(b, ev[0])(*ev[1:])
 
         for t in _TOKEN.finditer(music, m.end()):
             if t.group("time"):
                 emit(("time", Fraction(int(t.group("tn")), int(t.group("td")))))
+                emit(("signature", "time", written_time(int(t.group("tn")), int(t.group("td")), numeric)))
+            elif t.group("numeric"):
+                numeric = t.group("which") == "numeric"
+            elif t.group("key"):
+                if t.group("tonic")[0] in _FIFTHS:
+                    emit(("signature", "key", key_fifths(t.group("tonic"), t.group("mode"))))
             elif t.group("unfold"):
                 depth += 1
                 stack.append({"times": int(t.group("times")), "events": []})
@@ -753,6 +794,6 @@ def parse_structure(text: str) -> dict[str, dict]:
                 segments.append({"bars": nb, "repeat": repeat})
             prev += max(0, nb)
         out[name] = {"total": sum(s["bars"] for s in segments),
-                     "pickup": b.pickup, "segments": segments,
+                     "pickup": b.pickup, "segments": segments, **sig, "changes": changes,
                      "tempos": re.findall(r'\\tempo\s+"([^"]*)"', text[m.end():end])}
     return out
