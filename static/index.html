@@ -36,8 +36,7 @@
     <span class="sep"></span>
     <button data-place="bl" title="Add bar lines: hold b and click, or double-click a staff">+ Bar line</button>
     <button data-place="sys" title="Add a staff: hold s and click">+ Staff</button>
-    <button data-place="mark" title="Add a mark: hold m and drag a box around it">+ Mark</button>
-    <button data-place="clef" title="Mark a clef that differs from the one in force: hold c and drag a box around it">+ Clef</button>
+    <button data-place="mark" title="Add a mark: hold m and drag a box around it (hold c for a clef, key or time change mid-line)">+ Mark</button>
     <span class="sep"></span>
     <button id="redetect" title="Re-run detection on this page, keeping your edits">Re-detect</button>
     <button id="review" title="Mark reviewed and go to next page (Enter)">Reviewed ⏎</button>
@@ -63,7 +62,7 @@
     <h2>Page <span id="pagenum"></span> <span id="pagestatus" class="pill" title="Click to mark reviewed / not reviewed"></span></h2>
     <label>Kind <select id="f-kind"></select></label>
     <label>Part <select id="f-part"></select></label>
-    <label title="The clef at the top of the page; box any clef that changes it (+ Clef)">Clef at top <select id="f-clef"></select></label>
+    <label title="The clef at the top of the page; a staff records any clef written at its start, a signature mark (hold c) one mid-line">Clef at top <select id="f-clef"></select></label>
     <label>Notes <textarea id="f-notes" rows="2"></textarea></label>
     <button id="f-corners" title="Show and adjust the paper's corners (or click outside the page)">Page corners</button>
   </section>
@@ -75,7 +74,7 @@
       <dt>hold b + click</dt><dd>add a bar line (also: double-click a staff, or ⇧-click)</dd>
       <dt>hold s + click</dt><dd>add a staff</dd>
       <dt>hold m + drag</dt><dd>add a mark around what you drag over</dd>
-      <dt>hold c + drag</dt><dd>box a clef that differs from the one in force; it holds through later staves until the next</dd>
+      <dt>hold c + drag</dt><dd>box a clef, key or time change written mid-line; it holds through later staves until the next (at a line's start, set them on the staff)</dd>
       <dt>a</dt><dd>snap the selected bar line to the ink (placing or dragging one snaps it)</dd>
       <dt>t / g + ↑ ↓</dt><dd>hold t (top) or g (the key below it: bottom) and press up/down to move the selected staff's crop edge, or a selected bar's own crop; ¼ space a press, ⇧ 1</dd>
       <dt>d / Del</dt><dd>delete selection</dd>
@@ -84,7 +83,7 @@
       <dt>click a handle</dt><dd>highlight it: arrows then move just that point (⇧ ×10; crop by ¼ space, ⇧ 1); click again or Esc to let go</dd>
       <dt>Tab</dt><dd>next item of the kind selected: bar line, staff or mark (⇧ previous)</dd>
       <dt>1–6</dt><dd>bar line kind: single, double, repeat start, repeat end, both, final</dd>
-      <dt>1–4</dt><dd>with a clef mark selected: treble, alto, tenor, bass</dd>
+      <dt>1–4</dt><dd>with a signature mark selected: its clef, treble, alto, tenor, bass</dd>
       <dt>e</dt><dd>toggle “movement ends here”</dd>
       <dt>z</dt><dd>detail view: exactly what the selected bar, staff, mark or page covers</dd>
       <dt>Enter</dt><dd>mark reviewed, next page</dd>

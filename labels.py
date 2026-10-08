@@ -6,11 +6,12 @@ server or a browser. The front end has its own copy of the numbering rules
 authority for what gets written to disk.
 """
 
+import math
 import re
 from fractions import Fraction
 from pathlib import Path
 
-SCHEMA = 2         # of the labels file
+SCHEMA = 3         # of the labels file
 EXPORT_SCHEMA = 1  # of the bar export (the edition's build checks it): additive changes keep it
 
 PARTS = ["vn1", "vn2", "va", "vc", "score"]
@@ -19,7 +20,11 @@ DEFAULT_CLEF = {"vn1": "treble", "vn2": "treble", "va": "alto", "vc": "bass", "s
 PAGE_KINDS = ["music", "title", "blank", "other"]
 PAGE_STATUSES = ["auto", "edited", "reviewed"]
 BARLINE_KINDS = ["single", "double", "repeat_start", "repeat_end", "repeat_both", "final"]
-MARK_KINDS = ["text", "tempo", "dynamic", "stray", "unclear", "other", "clef"]
+MARK_KINDS = ["text", "tempo", "dynamic", "stray", "unclear", "other", "signature"]
+# what a staff's start, or a signature mark, records as written: a clef, a key
+# signature (sharps > 0, flats < 0; its mode isn't written) and a time signature
+SIG_FIELDS = ("clef", "key", "time")
+TIME_SIGNATURE = re.compile(r"\d+/\d+|C|C/")  # 2/4 ... and the common- and cut-time signs
 SYSTEM_ROLES = ["part", "cue"]  # a cue staff is drawn but not counted
 
 # Vertical margin of a bar's crop, in staff spaces above and below the staff.
@@ -35,10 +40,22 @@ class NewerSchema(SchemaError):
 
 
 # from_version -> function(doc) -> doc at from_version + 1
+def _to_3(doc: dict) -> dict:
+    """3: clef marks become signature marks, which may also hold a key and
+    time; nothing else changes (each box, at a line's start or mid-line,
+    keeps its place and id)."""
+    for p in doc.get("pages", {}).values():
+        for m in p.get("marks", []) if isinstance(p, dict) else []:
+            if isinstance(m, dict) and m.get("kind") == "clef":
+                m["kind"] = "signature"
+    return doc
+
+
 MIGRATIONS: dict = {
     # 2 adds clef marks (kind "clef", with a `clef`); nothing to change in
     # older files, but a tool that knows only 1 must refuse them, not drop them
     1: lambda doc: doc,
+    2: _to_3,
 }
 
 
@@ -125,6 +142,7 @@ def validate(doc) -> list[str]:
                     errs.append(f"{ws}: {f} must be a number")
             if s.get("role", "part") not in SYSTEM_ROLES:
                 errs.append(f"{ws}: bad role")
+            errs += [f"{ws}: bad {f} {s[f]!r}" for f in SIG_FIELDS if f in s and not sig_valid(f, s[f])]
             for b in s.get("barlines", []):
                 wb = f"{ws} barline {b.get('id')}"
                 unique(b.get("id"), wb)
@@ -145,8 +163,10 @@ def validate(doc) -> list[str]:
                 errs.append(f"{wm}: x, y, w, h must be numbers")
             if m.get("kind") not in MARK_KINDS:
                 errs.append(f"{wm}: bad kind {m.get('kind')!r}")
-            if m.get("kind") == "clef" and m.get("clef") not in CLEFS:
-                errs.append(f"{wm}: a clef mark needs a clef, one of {', '.join(CLEFS)}")
+            if m.get("kind") == "signature":
+                if not any(f in m for f in SIG_FIELDS):
+                    errs.append(f"{wm}: a signature mark needs a clef, key or time")
+                errs += [f"{wm}: bad {f} {m[f]!r}" for f in SIG_FIELDS if f in m and not sig_valid(f, m[f])]
     return errs
 
 
@@ -240,28 +260,53 @@ def bend_at(system: dict, x: float) -> float:
     return bend[i] + (bend[i + 1] - bend[i]) * (t - i)
 
 
-def clef_marks(page: dict) -> list[tuple[dict, float, str]]:
-    """The page's clef marks that change a counted staff's clef, in reading
-    order: (staff, x, clef). A mark belongs to the staff nearest its centre;
-    one on a cue staff changes only the cue. x is the box's centre, or the
-    bar line the box starts at (its left edge within its own width after
-    it, or half that before): a clef written at the start of a bar governs
-    the whole bar."""
-    systems = page.get("systems", [])
-    out = []
-    for m in page.get("marks", []):
-        if m.get("kind") != "clef" or m.get("clef") not in CLEFS or not systems:
-            continue
-        cx, cy = m["x"] + m["w"] / 2, m["y"] + m["h"] / 2
+def sig_valid(field: str, v) -> bool:
+    if field == "clef":
+        return v in CLEFS
+    if field == "key":
+        return isinstance(v, int) and not isinstance(v, bool) and -7 <= v <= 7
+    return isinstance(v, str) and bool(TIME_SIGNATURE.fullmatch(v))
 
-        def dist(s):
-            d = bend_at(s, cx)
-            return max(s["top"] + d - cy, 0.0, cy - s["bottom"] - d)
-        s = min(systems, key=lambda s: (dist(s), s["top"]))
-        if s.get("role", "part") == "part":
-            at = [_mid(b) for b in s.get("barlines", []) if _mid(b) - m["w"] / 2 <= m["x"] <= _mid(b) + m["w"]]
-            out.append((s, min(at, key=lambda b: abs(m["x"] - b)) if at else cx, m["clef"]))
+
+def mark_staff(page: dict, m: dict) -> dict | None:
+    """The staff a mark's box is on: the nearest to its centre, bend and all."""
+    systems = page.get("systems", [])
+    if not systems:
+        return None
+    cx, cy = m["x"] + m["w"] / 2, m["y"] + m["h"] / 2
+
+    def dist(s):
+        d = bend_at(s, cx)
+        return max(s["top"] + d - cy, 0.0, cy - s["bottom"] - d)
+    return min(systems, key=lambda s: (dist(s), s["top"]))
+
+
+def sig_changes(page: dict, field: str) -> list[tuple[dict, float, object]]:
+    """Where a counted staff's clef, key or time (`field`) is written on the
+    page, in reading order: (staff, x, value). A staff's own `field` is
+    written at its start (x -inf); a signature mark's on the staff nearest
+    its centre (one on a cue staff changes only the cue), at its centre,
+    or at the bar line its box starts at (its left edge within its own
+    width after it, or half that before): a change written at the start of
+    a bar governs the whole bar."""
+    out = []
+    for s in page.get("systems", []):
+        if s.get("role", "part") == "part" and sig_valid(field, s.get(field)):
+            out.append((s, -math.inf, s[field]))
+    for m in page.get("marks", []):
+        if m.get("kind") != "signature" or not sig_valid(field, m.get(field)):
+            continue
+        s = mark_staff(page, m)
+        if s is None or s.get("role", "part") != "part":
+            continue
+        at = [_mid(b) for b in s.get("barlines", []) if _mid(b) - m["w"] / 2 <= m["x"] <= _mid(b) + m["w"]]
+        out.append((s, min(at, key=lambda b: abs(m["x"] - b)) if at else m["x"] + m["w"] / 2, m[field]))
     return sorted(out, key=lambda e: (e[0]["top"], e[1]))
+
+
+def clef_marks(page: dict) -> list[tuple[dict, float, str]]:
+    """Where a counted staff's clef changes on the page (sig_changes)."""
+    return sig_changes(page, "clef")
 
 
 def clefs_between(page: dict, system: dict, x0: float | None, x1: float, marks: list | None = None) -> list[str]:
@@ -270,8 +315,9 @@ def clefs_between(page: dict, system: dict, x0: float | None, x1: float, marks: 
     which a clef written before the music start (the line's own clef)
     governs from its beginning. The page's `clef` holds from its top until
     a clef mark changes it, and a change holds through later staves until
-    the next. On a score page, where each staff is its own instrument, a
-    change holds only on its own staff. `marks`: clef_marks(page), if at hand."""
+    the next; a staff's own `clef` is written at its start. On a score
+    page, where each staff is its own instrument, a change holds only on
+    its own staff. `marks`: clef_marks(page), if at hand."""
     marks = clef_marks(page) if marks is None else marks
     if page.get("part") == "score":
         marks = [e for e in marks if e[0] is system]

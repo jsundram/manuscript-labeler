@@ -229,22 +229,24 @@ The rules:
   inward; dragged into place by the editor. Re-detect keeps moved corners;
   "Reset to detected" replaces them.
 - **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`,
-  `clef`.
-- **Clefs.** The page's `clef` is the clef at the top of the page (a new
-  page takes the one in force at the end of the part's previous page, else
-  the part's usual one). A **clef mark** (kind `clef`, with `clef`:
-  `treble`, `alto`, `tenor` or `bass`) boxes a clef that differs from the
-  one in force, mid-line or at a line's start: it belongs to the staff
-  nearest its centre and holds from its centre (or from the bar line its
-  box starts at: a clef at the start of a bar governs the whole bar),
-  through later staves of the page, until the next. One on a cue staff
-  changes only the cue; on a score page, only its own staff. Every clef
-  that changes the clef is boxed, so the boxes count the changes and can
-  train a clef detector. Schema 2 added them (1 → 2 changes nothing; it
-  only stops an older tool from dropping them, and the server brings a
-  schema 1 save up to date).
-  Tempo marks (e.g. "Andante Moderato") are shown per movement next to the
-  `\tempo` texts in `Structure.ily`, as a check that movements line up.
+  `signature`.
+- **Signatures: clef, key, time.** What is written at a line's start
+  belongs to its staff: `clef`, `key` (the key signature as written:
+  sharps > 0, flats < 0, 0 none; its mode isn't written) and `time`
+  (`"2/4"`, `"3/4"`, … or `"C"`, `"C/"`), each only where the line sets or
+  changes it; a movement's first line sets key and time (the labeler
+  asks, on that page, while one is missing). A change written mid-line is
+  a **signature mark** (kind `signature`, with any of the three), a box
+  around it. A change holds from where it is written (a box's centre, or
+  the bar line it starts at: a change at the start of a bar governs the
+  whole bar), through later staves of the page, until the next; on a cue
+  staff only the cue, on a score page only its own staff. The page's
+  `clef` is the clef at the top of the page (a new page takes the one in
+  force at the end of the part's previous page, else the part's usual
+  one). Everything recorded is visible on the page, and the boxes and
+  staff starts can train a detector. Schema 2 added clef marks; schema 3
+  renamed them signature marks (nothing else changes: every box keeps its
+  place and id).
 - **`rejected`** (on a system) and **`rejected_staves`** (on a page),
   optional: x of bar lines / y of staves the editor deleted, so re-running
   detection doesn't bring them back.

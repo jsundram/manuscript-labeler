@@ -54,6 +54,7 @@ def test_js_and_python_find_the_same_clefs():
         system("l2", 0.3, [bl("d", 0.5)]),
     ])
     pg["clef"] = "bass"
+    pg["systems"][2]["clef"] = "bass"  # l2's own clef, written at its start
     pg["marks"] = [clef_mark("m1", 0.45, 0.115, "tenor"), clef_mark("m2", 0.07, 0.215, "treble"),
                    clef_mark("m3", 0.07, 0.315, "bass"), clef_mark("m4", 0.4, 0.315, "alto"),
                    clef_mark("m5", 0.615, 0.115, "alto")]  # at the start of l1's bar after b
@@ -65,8 +66,10 @@ def test_js_and_python_find_the_same_clefs():
         pick(r"const clamp = .*?;"),
         pick(r"const mid = .*?;"),
         pick(r"function bendAt\(s, x\) \{.*?\n\}"),
-        pick(r"function clefStaff\(page, m\) \{.*?\n\}"),
-        pick(r"function clefMarks\(page.*?\n\}"),
+        pick(r"const sigValid = .*?;\n"),
+        pick(r"function markStaff\(page, m\) \{.*?\n\}"),
+        pick(r"function sigChanges\(page.*?\n\}"),
+        pick(r"const clefMarks = .*?;"),
         pick(r"function clefsBetween\(page, system, x0, x1\) \{.*?\n\}"),
         f"const page = {json.dumps(pg)}; const by = (id) => page.systems.find((s) => s.id === id);",
         f"console.log(JSON.stringify({json.dumps(spans)}.map(([s, a, b]) => clefsBetween(page, by(s), a, b))));",

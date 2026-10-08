@@ -170,22 +170,45 @@ def test_migrate_keeps_a_schema_1_file_as_it_was():
     old = {"schema": 1, "source": {"pdf": "sources/x.pdf"},
            "pages": {"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])}}
     new = labels.migrate(json.loads(json.dumps(old)))
-    assert new["schema"] == labels.SCHEMA == 2
+    assert new["schema"] == labels.SCHEMA == 3
     assert {k: v for k, v in new.items() if k != "schema"} == {k: v for k, v in old.items() if k != "schema"}
     assert labels.validate(new) == []
 
 
-def clef_mark(id, x, y, clef, w=0.02, h=0.03):
-    return {"id": id, "x": x - w / 2, "y": y - h / 2, "w": w, "h": h, "kind": "clef", "clef": clef,
+def clef_mark(id, x, y, clef, w=0.02, h=0.03, kind="signature"):
+    return {"id": id, "x": x - w / 2, "y": y - h / 2, "w": w, "h": h, "kind": kind, "clef": clef,
             "text": "", "note": ""}
 
 
-def test_validate_wants_a_clef_on_a_clef_mark():
-    d = doc({"1": page("vc", [system("s", 0.1, [bl("a", 0.5)])])})
-    d["pages"]["1"]["marks"] = [clef_mark("m1", 0.3, 0.115, "tenor")]
+def test_validate_signatures_on_marks_and_staves():
+    d = doc({"1": page("vc", [system("s", 0.1, [bl("a", 0.5)], clef="bass", key=-1, time="3/4")])})
+    d["pages"]["1"]["marks"] = [clef_mark("m1", 0.3, 0.115, "tenor"),
+                                {**clef_mark("m2", 0.6, 0.115, "bass"), "key": 2, "time": "C"}]
     assert labels.validate(d) == []
     d["pages"]["1"]["marks"][0]["clef"] = "soprano"
-    assert any("needs a clef" in e for e in labels.validate(d))
+    d["pages"]["1"]["marks"][1]["key"] = 9
+    del d["pages"]["1"]["marks"][1]["clef"]
+    d["pages"]["1"]["systems"][0]["time"] = "3:4"
+    errs = labels.validate(d)
+    assert any("bad clef 'soprano'" in e for e in errs) and any("bad key 9" in e for e in errs)
+    assert any("bad time '3:4'" in e for e in errs)
+    d["pages"]["1"]["marks"][1] = {k: v for k, v in d["pages"]["1"]["marks"][1].items() if k not in ("key", "time")}
+    assert any("needs a clef, key or time" in e for e in labels.validate(d))
+
+
+def test_migrate_2_renames_clef_marks_and_keeps_every_box():
+    p = page("vc", [system("l1", 0.1, [bl("a", 0.5)]), system("l2", 0.3, [bl("b", 0.5)])])
+    p["marks"] = [clef_mark("m1", 0.07, 0.115, "tenor", kind="clef"),   # at l1's start
+                  clef_mark("m2", 0.4, 0.315, "bass", kind="clef")]     # mid-line on l2
+    old = {"schema": 2, "source": {"pdf": "sources/x.pdf"}, "pages": {"1": p}}
+    before = labels.bars_export(json.loads(json.dumps(old)))  # the old kind, read as schema 2 was
+    new = labels.migrate(json.loads(json.dumps(old)))
+    q = new["pages"]["1"]
+    assert [(m["id"], m["kind"], m["x"]) for m in q["marks"]] == [(m["id"], "signature", m["x"]) for m in p["marks"]]
+    assert all("clef" not in s for s in q["systems"])
+    assert labels.validate(new) == []
+    assert [b["clefs"] for b in labels.bars_export(new)["bars"]] == [["tenor"], ["tenor", "bass"]]
+    assert [b["marks"] for b in labels.bars_export(new)["bars"]] == [b["marks"] for b in before["bars"]]
 
 
 def test_clefs_follow_the_page_clef_and_clef_marks_in_reading_order():

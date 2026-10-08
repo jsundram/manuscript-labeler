@@ -16,7 +16,16 @@ const DEFAULT_CLEF = { vn1: 'treble', vn2: 'treble', va: 'alto', vc: 'bass', sco
 const PAGE_KINDS = ['music', 'title', 'blank', 'other'];
 const BARLINE_KINDS = ['single', 'double', 'repeat_start', 'repeat_end', 'repeat_both', 'final'];
 const BARLINE_TAG = { double: '‖', repeat_start: '‖:', repeat_end: ':‖', repeat_both: ':‖:', final: 'fin' };
-const MARK_KINDS = ['text', 'tempo', 'dynamic', 'stray', 'unclear', 'other', 'clef'];
+const MARK_KINDS = ['text', 'tempo', 'dynamic', 'stray', 'unclear', 'other', 'signature'];
+// what a staff's start, or a signature mark, records as written (labels.py SIG_FIELDS)
+const SIG_FIELDS = ['clef', 'key', 'time'];
+const KEYS = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7];  // flats < 0 < sharps
+const keyName = (k) => (k === 0 ? 'no ♯/♭' : k > 0 ? `${k}♯` : `${-k}♭`);
+const TIMES = ['2/4', '3/4', '4/4', '3/8', '6/8', '9/8', '12/8', '2/2', '3/2', 'C', 'C/'];
+const sigValid = (f, v) => (f === 'clef' ? CLEFS.includes(v) : f === 'key' ? Number.isInteger(v) && v >= -7 && v <= 7
+  : typeof v === 'string' && /^(\d+\/\d+|C|C\/)$/.test(v));
+// "tenor · 2♯ · 2/4": what a staff's start or a signature mark records
+const sigText = (o) => [o.clef, o.key != null ? keyName(o.key) : null, o.time].filter((v) => v != null && v !== '').join(' · ');
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 // pitch of the bottom staff line: [letter index in CDEFGAB, octave]
 const CLEF_BOTTOM = { treble: [2, 4], alto: [3, 3], tenor: [1, 3], bass: [4, 2] };
@@ -109,13 +118,14 @@ function bendAt(s, x) {
   return b[i] + (b[i + 1] - b[i]) * (t - i);
 }
 
-// Clef marks (labels.py clef_marks / clefs_between, the authority): a clef
-// mark belongs to the staff nearest its centre (one on a cue staff changes
-// only the cue), and counts from its centre or the bar line it starts at;
-// the page's clef holds from its top until a clef mark
-// changes it, and a change holds through later staves until the next.
-// the staff a clef mark (a box) is on: the nearest to its centre
-function clefStaff(page, m) {
+// Signatures (labels.py sig_changes / clefs_between, the authority): a
+// staff's own clef, key or time is written at its start; a signature mark
+// belongs to the staff nearest its centre (one on a cue staff changes only
+// the cue), and counts from its centre or the bar line it starts at. The
+// page's clef holds from its top until a change, and a change holds
+// through later staves until the next.
+// the staff a mark (a box) is on: the nearest to its centre
+function markStaff(page, m) {
   const systems = page.systems || [];
   if (!systems.length) return null;
   const cx = m.x + m.w / 2, cy = m.y + m.h / 2;
@@ -123,21 +133,26 @@ function clefStaff(page, m) {
   return systems.reduce((a, b) => (dist(b) < dist(a) || (dist(b) === dist(a) && b.top < a.top) ? b : a));
 }
 
-function clefMarks(page, { cue = false } = {}) {
+function sigChanges(page, field, { cue = false } = {}) {
   const out = [];
+  const onCue = (s) => (s.role || 'part') !== 'part';
+  for (const s of page.systems || []) {
+    if (onCue(s) === cue && sigValid(field, s[field])) out.push([s, -Infinity, s[field]]);
+  }
   for (const m of page.marks || []) {
-    if (m.kind !== 'clef' || !CLEFS.includes(m.clef)) continue;
-    const s = clefStaff(page, m);
-    if (!s || ((s.role || 'part') === 'part') === cue) continue;
+    if (m.kind !== 'signature' || !sigValid(field, m[field])) continue;
+    const s = markStaff(page, m);
+    if (!s || onCue(s) !== cue) continue;
     const cx = m.x + m.w / 2;
-    // a clef written at the start of a bar governs the whole bar: its box
+    // a change written at the start of a bar governs the whole bar: its box
     // starting within its own width after a bar line (half that before)
     // counts from the bar line
     const at = (s.barlines || []).map(mid).filter((b) => b - m.w / 2 <= m.x && m.x <= b + m.w);
-    out.push([s, at.length ? at.reduce((a, b) => (Math.abs(m.x - b) < Math.abs(m.x - a) ? b : a)) : cx, m.clef]);
+    out.push([s, at.length ? at.reduce((a, b) => (Math.abs(m.x - b) < Math.abs(m.x - a) ? b : a)) : cx, m[field]]);
   }
   return out.sort((a, b) => a[0].top - b[0].top || a[1] - b[1]);
 }
+const clefMarks = (page, opts) => sigChanges(page, 'clef', opts);
 
 // the clefs in force on a counted staff from x0 to x1; x0 null: the line's
 // first bar, which a clef before the music start governs from its beginning
@@ -815,11 +830,18 @@ function renderOverlay() {
       out.push(`<text class="lineno" x="${s.left * W - 0.8 * sp * H}" y="${(topAt(s, s.left) + 2 * sp) * H}" font-size="${2.4 * sp * H}">${esc(firstOnLine.bar)}</text>`);
     }
   }
+  // a staff's own clef, key and time, small, under its start region
+  for (const s of page.systems) {
+    const t = sigText(s);
+    if (!t) continue;
+    const sp = space(s), x = (s.left + (s.start ?? s.left)) / 2;
+    out.push(`<text class="siglabel" x="${x * W}" y="${(bottomAt(s, x) + 1.6 * sp) * H}" font-size="${Math.max(10 * u, 1.3 * sp * H)}">${esc(t)}</text>`);
+  }
   for (const m of page.marks) {
-    const cls = `mark${m.kind === 'clef' ? ' clef' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
+    const cls = `mark${m.kind === 'signature' ? ' sig' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
     out.push(`<rect class="${cls}" data-t="mark" data-id="${m.id}" x="${m.x * W}" y="${m.y * H}" width="${m.w * W}" height="${m.h * H}"/>`);
-    const label = m.kind === 'clef' ? `${m.clef || '?'} clef` : m.text || m.kind;
-    out.push(`<text class="marklabel${m.kind === 'clef' ? ' clef' : ''}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
+    const label = m.kind === 'signature' ? sigText(m) || '?' : m.text || m.kind;
+    out.push(`<text class="marklabel${m.kind === 'signature' ? ' sig' : ''}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
   }
 
   // handles for the selection, drawn last so they sit on top
@@ -861,6 +883,11 @@ function renderOverlay() {
   }
   overlay.innerHTML = out.join('');
 }
+
+const sigMenus = (o, dis) => `<div class="sigrow">
+      <label>Clef <select data-f="clef"${dis}>${options(CLEFS, o.clef, {}, true)}</select></label>
+      <label>Key <select data-f="key"${dis}>${options(KEYS.map(String), o.key != null ? String(o.key) : null, Object.fromEntries(KEYS.map((k) => [String(k), keyName(k)])), true)}</select></label>
+      <label>Time <select data-f="time"${dis}>${options(TIMES.includes(o.time) || o.time == null ? TIMES : [...TIMES, o.time], o.time, { C: 'C (common)', 'C/': '¢ (cut)' }, true)}</select></label></div>`;
 
 function options(list, value, names = {}, blank = false) {
   return (blank ? `<option value="">—</option>` : '') +
@@ -979,6 +1006,8 @@ function renderInspector() {
     el.innerHTML = `<h2>Staff ${item.auto ? '<span class="pill auto">auto</span>' : ''}</h2>
       <p>${item.barlines.length} bar lines</p>
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
+      <h3 title="What is written at this line's start, where it sets or changes something (each movement's first line: key and time). Leave the rest at —.">Written at its start</h3>
+      ${sigMenus(item, dis)}
       <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
       <button data-act="start-all"${dis} title="Carry this line's left end and music start to the lines below it (the start snapped to clear paper). At a key change, fix that line and click again.">Apply Start Below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
@@ -989,9 +1018,9 @@ function renderInspector() {
   } else {
     el.innerHTML = `<h2>Mark</h2>
       <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind)}</select></label>
-      ${item.kind === 'clef'
-        ? `<label>Clef <select data-f="clef"${dis}>${options(CLEFS, item.clef)}</select></label>
-      <p class="muted">Box each clef that differs from the one in force: it holds from here, through later staves, until the next. Keys 1–4: ${CLEFS.join(', ')}.</p>`
+      ${item.kind === 'signature'
+        ? `${sigMenus(item, dis)}
+      <p class="muted">A change written mid-line: it holds from here, through later staves, until the next. At a line's start, set it on the staff instead. Keys 1–4: ${CLEFS.join(', ')}.</p>`
         : `<label>Text <input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>`}
       <label>Note <textarea data-f="note" rows="3"${dis}>${esc(item.note || '')}</textarea></label>`;
   }
@@ -1028,7 +1057,7 @@ function renderCounts() {
   const exp = S.info?.expected || {};
   const runs = {};
   for (const nb of S.bars) {
-    const r = (runs[nb.part] ||= {})[nb.movement] ||= { bars: 0, repeats: [], onPickup: [], pickup: false, ended: false };
+    const r = (runs[nb.part] ||= {})[nb.movement] ||= { bars: 0, repeats: [], onPickup: [], pickup: false, ended: false, first: nb };
     r.bars += nb.count;
     if (nb.count === 0 && nb.bar === 0) r.pickup = true;
     if (['repeat_end', 'repeat_both'].includes(nb.right.kind)) {
@@ -1062,6 +1091,15 @@ function renderCounts() {
         const txt = (marked.length ? `<i>${esc(marked.join(' · '))}</i>` : '') +
           (e?.tempos?.length ? ` <span class="muted">(expected ${esc(e.tempos.join(' · '))})</span>` : '');
         rows.push(`<tr><td></td><td colspan="2" class="tempo">${txt}</td></tr>`);
+      }
+      // a movement's first line records its key and time as written there
+      // (on the staff, or on a signature mark where the movement starts
+      // mid-line); asked on the page it's on, so the list doesn't flood
+      const at = r && r.first.page === S.page ? (r.first.left ? mid(r.first.left) : -Infinity) : null;
+      const missing = at === null ? [] : ['key', 'time'].filter((f) => !sigChanges(pg(), f)
+        .some(([s, x]) => s === r.first.system && x <= at + 1e-6));
+      if (missing.length) {
+        warnings.push(`${PART_NAMES[part]} ${m}: ${missing.join(' and ')} not set on its first line (page ${r.first.page})`);
       }
       if (!e || !r) continue;
       if (r.ended && counted !== e.total) warnings.push(`${PART_NAMES[part]} ${m}: ${counted} bars counted, ${e.total} expected`);
@@ -1362,20 +1400,20 @@ function addMark(box = null, kind = 'text') {
   const b = box || { x: clamp(S.mouse.x - 0.02, 0, 0.96), y: clamp(S.mouse.y - 0.01, 0, 0.98), w: 0.04, h: 0.02 };
   mutate((page) => {
     const m = { id: nextId(page, `p${S.page}m`), ...b, kind, text: '', note: '' };
-    if (kind === 'clef') m.clef = likelyClef(page, m);
+    if (kind === 'signature') m.clef = likelyClef(page, m);
     page.marks.push(m);
     S.sel = { t: 'mark', id: m.id };
   });
-  if (!S.held && kind !== 'clef') $('#inspector [data-f="text"]')?.focus();  // with m held, key repeats would type into it
+  if (!S.held && kind !== 'signature') $('#inspector [data-f="text"]')?.focus();  // with m held, key repeats would type into it
 }
-const addClef = (box = null) => addMark(box, 'clef');
+const addSignature = (box = null) => addMark(box, 'signature');
 
-// A new clef mark's first guess: a clef written where the part's usual
+// A new signature mark's first guess, mid-line most often a clef: a clef written where the part's usual
 // clef is in force is likely its other one (cello tenor, viola treble);
 // anywhere else, the return to the usual clef.
 function likelyClef(page, m) {
   const cx = m.x + m.w / 2;
-  const s = clefStaff(page, m);
+  const s = markStaff(page, m);
   if (s && (s.role || 'part') === 'cue') return 'treble';  // cues are mostly violin I
   const usual = DEFAULT_CLEF[page.part] || 'treble';
   const now = s ? clefsBetween(page, s, cx - 1e-6, cx - 1e-6)[0] : page.clef;
@@ -1528,8 +1566,8 @@ function markReviewedAndNext() {
 // a toolbar button, which places one on the next click. The cursor shows
 // what will be placed.
 
-const PLACE = { bl: addBarline, sys: addSystem, mark: addMark, clef: addClef };
-const PLACE_KEY = { b: 'bl', s: 'sys', m: 'mark', c: 'clef' };
+const PLACE = { bl: addBarline, sys: addSystem, mark: addMark, sig: addSignature };
+const PLACE_KEY = { b: 'bl', s: 'sys', m: 'mark', c: 'sig' };
 
 function setPlacing(kind) {
   S.placing = kind;
@@ -1563,8 +1601,8 @@ svg.addEventListener('pointerdown', (e) => {
     S.mouse = { x: fx, y: fy };
     const kind = S.placing || 'bl';
     if (!S.held) setPlacing(null);  // a toolbar button places one; a held key keeps going
-    if (kind === 'mark' || kind === 'clef') {  // drag out the box; the mark is made on release
-      S.drag = { kind: 'draw', start: { x: fx, y: fy }, clef: kind === 'clef' };
+    if (kind === 'mark' || kind === 'sig') {  // drag out the box; the mark is made on release
+      S.drag = { kind: 'draw', start: { x: fx, y: fy }, sig: kind === 'sig' };
       return;
     }
     PLACE[kind]();
@@ -1664,7 +1702,7 @@ svg.addEventListener('pointerup', () => {
     const w = Math.abs(clamp(S.mouse.x, 0, 1) - d.start.x), h = Math.abs(clamp(S.mouse.y, 0, 1) - d.start.y);
     // a drag of a few pixels is a click: default box
     const tiny = w * S.W < 4 * unit() || h * S.H < 4 * unit();
-    addMark(tiny ? null : { x: x0, y: y0, w, h }, d.clef ? 'clef' : 'text');
+    addMark(tiny ? null : { x: x0, y: y0, w, h }, d.sig ? 'signature' : 'text');
     return;
   }
   if (d.kind === 'handle' && !d.moved) {
@@ -1738,7 +1776,7 @@ document.addEventListener('keydown', (e) => {
   else if (k === 'ArrowLeft' || k === 'ArrowRight') { handled(); nudge((k === 'ArrowLeft' ? -step : step) / S.W, 0, e.altKey); }
   else if (k === 'ArrowUp' || k === 'ArrowDown') { handled(); nudge(0, (k === 'ArrowUp' ? -step : step) / S.H); }
   else if (k === 'Tab') { handled(); cycleSelection(e.shiftKey ? -1 : 1); }
-  else if (k >= '1' && k <= '4' && S.sel?.t === 'mark' && find(S.sel)?.kind === 'clef') {
+  else if (k >= '1' && k <= '4' && S.sel?.t === 'mark' && find(S.sel)?.kind === 'signature') {
     handled(); const m = find(S.sel); if (!S.readonly) mutate(() => { m.clef = CLEFS[+k - 1]; });
   }
   else if (k >= '1' && k <= '6') { handled(); setBarline((b) => { b.kind = BARLINE_KINDS[+k - 1]; }); }
@@ -1760,7 +1798,7 @@ document.addEventListener('keyup', (e) => {
   if (S.held && e.key.toLowerCase() === S.held) {
     S.held = null;
     setPlacing(null);
-    if (S.sel?.t === 'mark' && find(S.sel)?.kind !== 'clef') $('#inspector [data-f="text"]')?.focus();
+    if (S.sel?.t === 'mark' && find(S.sel)?.kind !== 'signature') $('#inspector [data-f="text"]')?.focus();
   }
 });
 window.addEventListener('blur', () => {
@@ -1832,16 +1870,23 @@ $('#inspector').addEventListener('change', (e) => {
     }
     else if (f === 'ends_movement') item.ends_movement = e.target.checked;
     else if (f === 'role') { if (e.target.value === 'part') delete item.role; else item.role = e.target.value; }
+    else if (SIG_FIELDS.includes(f)) {
+      const v = e.target.value;
+      // a signature mark keeps at least one field (the save checks it): its
+      // last one can't be cleared (delete the mark instead)
+      if (v === '' && t === 'mark' && SIG_FIELDS.every((g) => g === f || !(g in item))) return;
+      if (v === '') delete item[f]; else item[f] = f === 'key' ? +v : v;
+    }
     else item[f] = e.target.value;
     // a clef mark always has a clef (the save checks it); other marks none
     if (t === 'mark' && f === 'kind') {
-      if (item.kind === 'clef' && !item.clef) item.clef = likelyClef(pg(), item);
-      if (item.kind !== 'clef') delete item.clef;
+      if (item.kind === 'signature' && !SIG_FIELDS.some((g) => g in item)) item.clef = likelyClef(pg(), item);  // as when placed
+      if (item.kind !== 'signature') for (const g of SIG_FIELDS) delete item[g];
     }
     // a text used before brings its usual kind, unless a kind was chosen
     if (t === 'mark' && f === 'text' && item.kind === 'text') {
       const known = S.markTextIndex?.get(e.target.value.trim());
-      if (known && known.kind !== 'text' && known.kind !== 'clef') item.kind = known.kind;
+      if (known && known.kind !== 'text' && known.kind !== 'signature') item.kind = known.kind;
     }
     if (t !== 'mark') item.auto = false;
   });
