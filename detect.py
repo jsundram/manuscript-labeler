@@ -271,6 +271,8 @@ def crop_margins(g: np.ndarray, staves: list[dict]) -> list[tuple[float, float]]
     for i, st in enumerate(staves):
         gap = st["gap"]
         xs = slice(int(st["x_left"]), int(st["x_right"]))
+        if xs.stop - xs.start < 1:  # a staff with no width (it shouldn't be): its ink across the page
+            xs = slice(0, ink.shape[1])
         prof = ink[:, xs].mean(axis=1)
         k = max(1, int(gap * 0.3))
         prof = np.convolve(prof, np.ones(k) / k, mode="same")
@@ -401,6 +403,7 @@ ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head 
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
 TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
 EMPTY_INK = 0.01      # less ink than this between its lines: an empty staff, dropped
+START_ROOM = 4.0      # spaces a detector's music start must leave before the staff's right end
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy stroke may be
 REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
@@ -919,7 +922,8 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
         # a detector's "start" sets the left end and music start; its "end"
         # the right end, before the bar-line search and the vote, so they
         # cover all of it
-        if "left" in told and "start" in told:
+        # (a start box at the far end of the line, past its music, isn't the staff's)
+        if "left" in told and "start" in told and told["start"] < right - START_ROOM * gap:
             left = int(min(right, max(paper[0], told["left"])))
             start = int(min(right, max(left, told["start"])))
         if "right" in told:

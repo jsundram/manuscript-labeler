@@ -143,3 +143,14 @@ def test_detector_ends_set_the_staffs_ends_within_the_paper(tmp_path):
     off = detect.detect_page(img, corners=corners, ends=lambda st: {"right": 0.99 * w})
     assert off and all(s["right"] <= 0.8 + 1e-3 for s in off)
 
+
+
+@needs(PDF)
+def test_a_start_box_past_the_music_is_ignored(tmp_path):
+    # a sure "start" box at the far right of the line (the paper's edge) must
+    # neither become the staff's start nor squeeze the staff to nothing
+    img = render(PDF, 2, tmp_path)
+    w = img.size[0]
+    plain = detect.detect_page(img)
+    told = detect.detect_page(img, ends=lambda st: {"left": 0.974 * w, "start": 0.998 * w})
+    assert [(s["left"], s["start"]) for s in told] == [(s["left"], s["start"]) for s in plain]
