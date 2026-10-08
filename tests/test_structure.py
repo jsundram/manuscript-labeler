@@ -126,3 +126,26 @@ def test_writing_replaces_the_template_block_only():
 def test_durations():
     assert [structure.duration(Fraction(*f)) for f in ((1, 2), (3, 4), (1, 1), (3, 8), (5, 8))] == ["2", "2.", "1", "4.", "8*5"]
     assert structure.spacer(Fraction(3, 4), 7) == "s2.*7" and structure.spacer(Fraction(5, 8), 2) == "s8*10"
+
+
+def mark(id, kind, text, y):
+    return {"id": id, "x": 0.12, "y": y, "w": 0.06, "h": 0.015, "kind": kind, "text": text, "note": ""}
+
+
+def test_a_movement_title_alone_is_a_tempo_with_a_tempo_a_section_label():
+    d = quartet()
+    d["pages"]["1"]["marks"] = [mark("t1", "title", "Trio", 0.26)]  # above line 2, which begins with its upbeat
+    r = structure.propose(d, "I", None, {"upbeat": "4"})
+    assert r["ok"] and '  \\tempo "Trio"\n  \\repeat volta 2 { s4 ' in r["text"]
+    d["pages"]["1"]["marks"].append(mark("t2", "tempo", 'All. "con brio"', 0.24))
+    r = structure.propose(d, "I", None, {"upbeat": "4"})
+    assert r["ok"] and '  \\sectionLabel "Trio"\n  \\tempo "All. \\"con brio\\""\n' in r["text"]
+    got = labels.parse_structure(r["text"])["I"]
+    assert got["titles"] == ["Trio"] and got["tempos"] == ['All. "con brio"']  # escaped quotes read back
+    assert got["headings"] == ["Trio", 'All. "con brio"']
+    # one heading marked as both (older labels marked titles as tempos): written once
+    d["pages"]["1"]["marks"][1] = mark("t2", "tempo", "Trio", 0.24)
+    r = structure.propose(d, "I", None, {"upbeat": "4"})
+    assert r["ok"] and r["text"].count("Trio") == 1 and "sectionLabel" not in r["text"]
+    # a commented-out heading isn't one
+    assert labels.parse_structure('\\tag #\'mvtI { \\time 2/4 % \\tempo "No"\n s2*4 }')["I"]["tempos"] == []

@@ -11,7 +11,7 @@ import re
 from fractions import Fraction
 from pathlib import Path
 
-SCHEMA = 3         # of the labels file
+SCHEMA = 4         # of the labels file
 EXPORT_SCHEMA = 1  # of the bar export (the edition's build checks it): additive changes keep it
 
 PARTS = ["vn1", "vn2", "va", "vc", "score"]
@@ -20,7 +20,7 @@ DEFAULT_CLEF = {"vn1": "treble", "vn2": "treble", "va": "alto", "vc": "bass", "s
 PAGE_KINDS = ["music", "title", "blank", "other"]
 PAGE_STATUSES = ["auto", "edited", "reviewed"]
 BARLINE_KINDS = ["single", "double", "repeat_start", "repeat_end", "repeat_both", "final"]
-MARK_KINDS = ["text", "tempo", "dynamic", "stray", "unclear", "other", "signature"]
+MARK_KINDS = ["text", "tempo", "title", "dynamic", "stray", "unclear", "other", "signature"]  # title: a movement's ("Trio")
 # what a staff's start, or a signature mark, records as written: a clef, a key
 # signature (sharps > 0, flats < 0; its mode isn't written) and a time signature
 SIG_FIELDS = ("clef", "key", "time")
@@ -56,6 +56,9 @@ MIGRATIONS: dict = {
     # older files, but a tool that knows only 1 must refuse them, not drop them
     1: lambda doc: doc,
     2: _to_3,
+    # 4 adds movement-title marks (kind "title"); nothing to change in older
+    # files, but a tool that knows only 3 must refuse them, not reject them
+    3: lambda doc: doc,
 }
 
 
@@ -403,9 +406,9 @@ def bars_export(doc: dict) -> dict:
                     owner[m["id"]] = min(beside, key=to_staff)
                     continue
                 below = [i for i in idx if numbered[i]["system"]["top"] > cy]
-                if m.get("kind") == "tempo" and below:
+                if m.get("kind") in ("tempo", "title") and below:
                     owner[m["id"]] = min(below, key=lambda i: (numbered[i]["system"]["top"], i))
-                elif m.get("kind") != "tempo":
+                elif m.get("kind") not in ("tempo", "title"):
                     # the staff it's written under (or over), then the last
                     # bar its text reaches: "Da capo" and "Segue" refer to
                     # the end of the music they're written under, wherever
@@ -694,6 +697,25 @@ class _Bars:
         self.fresh, self.pos = (False, rest) if rest else (True, Fraction(0))
 
 
+_HEADING = re.compile(r'\\(tempo|sectionLabel)\s+"')
+_STRING = re.compile(r'"((?:[^"\\]|\\.)*)"')
+
+
+def _headings(text: str, music: str, a: int, b: int) -> dict:
+    """A block's \\tempo and \\sectionLabel texts, found in `music` (comments
+    blanked, positions kept) and read from `text` (escaped quotes undone):
+    {"tempos", "titles", "headings": both, in the order written}."""
+    out = {"tempos": [], "titles": [], "headings": []}
+    for h in _HEADING.finditer(music, a, b):
+        s = _STRING.match(text, h.end() - 1)
+        if not s:
+            continue
+        t = re.sub(r"\\(.)", r"\1", s.group(1))
+        out["tempos" if h.group(1) == "tempo" else "titles"].append(t)
+        out["headings"].append(t)
+    return out
+
+
 def parse_structure(text: str) -> dict[str, dict]:
     """Expected bars per movement from a `Structure.ily` skeleton.
 
@@ -796,5 +818,5 @@ def parse_structure(text: str) -> dict[str, dict]:
             prev += max(0, nb)
         out[name] = {"total": sum(s["bars"] for s in segments),
                      "pickup": b.pickup, "segments": segments, **sig, "changes": changes,
-                     "tempos": re.findall(r'\\tempo\s+"([^"]*)"', text[m.end():end])}
+                     **_headings(text, music, m.end(), end)}
     return out

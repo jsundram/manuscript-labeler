@@ -228,8 +228,14 @@ The rules:
   bed) and intersecting them, so torn or rounded corners don't pull them
   inward; dragged into place by the editor. Re-detect keeps moved corners;
   "Reset to detected" replaces them.
-- **Mark `kind`:** `text`, `tempo`, `dynamic`, `stray`, `unclear`, `other`,
-  `signature`.
+- **Mark `kind`:** `text`, `tempo`, `title`, `dynamic`, `stray`, `unclear`,
+  `other`, `signature`. A `title` is a movement's or section's heading
+  ("Menuetto", "Trio"), apart from its tempo, which may be written
+  elsewhere or not at all; like a tempo written above the music, it
+  belongs to the first bar of the staff below it. Structure.ily gets a
+  title alone as its `\tempo` (the edition's way), a title with a tempo as
+  a `\sectionLabel` before the `\tempo`. Schema 4 added it (3 → 4 changes
+  nothing).
 - **Signatures: clef, key, time.** What is written at a line's start
   belongs to its staff: `clef`, `key` (the key signature as written:
   sharps > 0, flats < 0, 0 none; its mode isn't written) and `time`

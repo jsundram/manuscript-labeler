@@ -91,12 +91,13 @@ def where(b: dict) -> tuple[int, bool]:
     return (b["bar"], b["count"] == 0)
 
 
-def tempos(doc: dict, movement: str) -> dict[tuple, list[str]]:
-    """Tempo marks by the bar they belong to (where), across the parts."""
+def tempos(doc: dict, movement: str, kind: str = "tempo", exp: list | None = None) -> dict[tuple, list[str]]:
+    """Tempo marks (or movement titles: kind "title") by the bar they belong
+    to (where), across the parts. `exp`: the bar export's bars, if at hand."""
     out: dict[tuple, list[str]] = {}
-    exp = labels.bars_export(doc)["bars"]
+    exp = labels.bars_export(doc)["bars"] if exp is None else exp
     texts = {m["id"]: m.get("text", "") for p in doc["pages"].values() for m in p.get("marks", [])
-             if m.get("kind") == "tempo" and m.get("text")}
+             if m.get("kind") == kind and m.get("text")}
     for b in exp:
         if b["part"] in PARTS and b["movement"] == movement:
             for mid in b["marks"]:
@@ -137,9 +138,9 @@ def lily_string(t: str) -> str:
     return '"' + t.replace("\\", "\\\\").replace('"', '\\"') + '"'
 
 
-def slots(parts: dict[str, list[dict]], changes: dict, tempo: dict) -> list[dict]:
+def slots(parts: dict[str, list[dict]], changes: dict, tempo: dict, title: dict) -> list[dict]:
     """The movement bar by bar, the same in every part (they agree on
-    shape): {"where", "upbeat", "end", "start", "changes", "tempo"} per bar,
+    shape): {"where", "upbeat", "end", "start", "changes", "tempo", "title"} per bar,
     a multi-bar rest standing for each of its bars, so no one part's
     writing of them decides the block."""
     ref = next(iter(parts.values()))
@@ -147,7 +148,8 @@ def slots(parts: dict[str, list[dict]], changes: dict, tempo: dict) -> list[dict
     for number, upbeat, end, start in shape(ref):
         w = (number, upbeat)
         out.append({"where": w, "upbeat": upbeat, "end": end, "start": start,
-                    "changes": changes.get(w, {}), "tempo": (tempo.get(w) or [None])[0]})
+                    "changes": changes.get(w, {}), "tempo": (tempo.get(w) or [None])[0],
+                    "title": (title.get(w) or [None])[0]})
     return out
 
 
@@ -187,8 +189,15 @@ def render(sl: list[dict], movement: str, modes: list[str], upbeat: Fraction | N
             mode = events[i]
             items.append(f"\\key {TONIC[mode][c['key']]} \\{mode}")
         lines = [" ".join(items)] if items else []
-        if sl[i]["tempo"]:
-            lines.append(f"\\tempo {lily_string(sl[i]['tempo'])}")
+        # a movement's title ("Trio"): as a \\tempo, as the edition writes it,
+        # unless a tempo is marked too: then a \\sectionLabel before it
+        title, tempo = sl[i]["title"], sl[i]["tempo"]
+        if title and tempo and title.strip().lower() == tempo.strip().lower():
+            tempo = None  # one heading marked both ways (older labels marked titles as tempos)
+        if title and tempo:
+            lines.append(f"\\sectionLabel {lily_string(title)}")
+        if title or tempo:
+            lines.append(f"\\tempo {lily_string(tempo or title)}")
         return lines
 
     # sections: closed by a repeat sign (repeated) or opened by a start-repeat
@@ -271,7 +280,7 @@ def check(text: str, movement: str, want: dict) -> list[str]:
     return [f"{k}: the block gives {have[k]}, the labels {want[k]}" for k in want if have[k] != want[k]]
 
 
-ALLOWED = re.compile(r"""\\time\s+\d+\s*/\s*\d+|\\key\s+[a-z]+\s*\\(?:major|minor)|\\tempo\s+"[^"]*"|\\repeat\s+volta\s+\d+"""
+ALLOWED = re.compile(r"""\\time\s+\d+\s*/\s*\d+|\\key\s+[a-z]+\s*\\(?:major|minor)|\\(?:tempo|sectionLabel)\s+"[^"]*"|\\repeat\s+volta\s+\d+"""
                      r"""|\\bar\s+"[^"]*"|\\(?:numeric|default)TimeSignature|s\d+\.*\s*\*\s*1(?![\d/])|[{}\s]""")
 
 
@@ -318,7 +327,8 @@ def propose(doc: dict, movement: str, existing: dict | None, answers: dict | Non
     """{"ok", "problems", "questions", "text", "want"} for one movement of one source."""
     answers = answers or {}
     parts = part_bars(doc, movement)
-    complete = labels.bars_export(doc)["complete"]
+    export = labels.bars_export(doc)
+    complete = export["complete"]
     problems = []
     missing = [p for p in PARTS if movement not in complete.get(p, [])]
     if missing:
@@ -335,8 +345,9 @@ def propose(doc: dict, movement: str, existing: dict | None, answers: dict | Non
             problems.append(f"{p} differs from {ref_part} at {at} (its bars, upbeats or repeats)")
     changes, conflicts = merged_changes(doc, parts)
     problems += conflicts
-    tempo = tempos(doc, movement)
-    sl = slots(parts, changes, tempo)
+    tempo = tempos(doc, movement, "tempo", export["bars"])
+    title = tempos(doc, movement, "title", export["bars"])
+    sl = slots(parts, changes, tempo, title)
     for f in ("key", "time"):
         if f not in sl[0]["changes"]:
             problems.append(f"no part has its {f} set at the movement's start")
@@ -364,8 +375,8 @@ def propose(doc: dict, movement: str, existing: dict | None, answers: dict | Non
             problems.append("an upbeat must be shorter than a bar")
     if problems:
         return {"ok": False, "problems": problems, "questions": questions, "text": ""}
-    texts = {w: v for w, v in tempo.items() if len(v) > 1}
-    notes = [f"bar {w[0]}: the parts' tempo marks differ ({' / '.join(v)}); the first is used" for w, v in texts.items()]
+    notes = [f"bar {w[0]}: the parts' {what} differ ({' / '.join(v)}); the first is used"
+             for what, marks in (("tempo marks", tempo), ("movement titles", title)) for w, v in marks.items() if len(v) > 1]
     source = (doc["source"].get("siglum", "") + " " + doc["source"].get("shelfmark", "")).strip()
     text = render(sl, movement, modes, upbeat, source)
     want = expected_from_labels(sl)

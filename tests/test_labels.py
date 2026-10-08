@@ -170,7 +170,7 @@ def test_migrate_keeps_a_schema_1_file_as_it_was():
     old = {"schema": 1, "source": {"pdf": "sources/x.pdf"},
            "pages": {"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])}}
     new = labels.migrate(json.loads(json.dumps(old)))
-    assert new["schema"] == labels.SCHEMA == 3
+    assert new["schema"] == labels.SCHEMA == 4
     assert {k: v for k, v in new.items() if k != "schema"} == {k: v for k, v in old.items() if k != "schema"}
     assert labels.validate(new) == []
 
@@ -365,7 +365,7 @@ def test_parse_structure_counts_by_duration_with_upbeats():
     assert [s["bars"] for s in got["II"]["segments"]] == [8, 20, 8, 24]
     assert got["II"]["total"] == 60 and got["II"]["pickup"]
     assert got["II"]["tempos"] == ["Tempo di Minuetto", "Trio"]
-    assert got["I"] == {"total": 88, "pickup": False, "tempos": [], "time": "2/4", "changes": [],
+    assert got["I"] == {"total": 88, "pickup": False, "tempos": [], "titles": [], "headings": [], "time": "2/4", "changes": [],
                         "segments": [{"bars": 88, "repeat": False}]}
 
 

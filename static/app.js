@@ -16,7 +16,8 @@ const DEFAULT_CLEF = { vn1: 'treble', vn2: 'treble', va: 'alto', vc: 'bass', sco
 const PAGE_KINDS = ['music', 'title', 'blank', 'other'];
 const BARLINE_KINDS = ['single', 'double', 'repeat_start', 'repeat_end', 'repeat_both', 'final'];
 const BARLINE_TAG = { double: '‖', repeat_start: '‖:', repeat_end: ':‖', repeat_both: ':‖:', final: 'fin' };
-const MARK_KINDS = ['text', 'tempo', 'dynamic', 'stray', 'unclear', 'other', 'signature'];
+const MARK_KINDS = ['text', 'tempo', 'title', 'dynamic', 'stray', 'unclear', 'other', 'signature'];  // title: a movement's ("Trio")
+const MARK_NAMES = { title: 'movement title' };
 // what a staff's start, or a signature mark, records as written (labels.py SIG_FIELDS)
 const SIG_FIELDS = ['clef', 'key', 'time'];
 const KEYS = [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7];  // flats < 0 < sharps
@@ -874,7 +875,7 @@ function renderOverlay() {
   for (const m of page.marks) {
     const cls = `mark${m.kind === 'signature' ? ' sig' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
     out.push(`<rect class="${cls}" data-t="mark" data-id="${m.id}" x="${m.x * W}" y="${m.y * H}" width="${m.w * W}" height="${m.h * H}"/>`);
-    const label = m.kind === 'signature' ? sigText(m) || '?' : m.text || m.kind;
+    const label = m.kind === 'signature' ? sigText(m) || '?' : m.text || MARK_NAMES[m.kind] || m.kind;
     out.push(`<text class="marklabel${m.kind === 'signature' ? ' sig' : ''}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
   }
 
@@ -1181,7 +1182,7 @@ function renderInspector() {
       The diamonds on the top line bend the staff to follow the page.</p>`;
   } else {
     el.innerHTML = `<h2>Mark</h2>
-      <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind)}</select></label>
+      <label>Kind <select data-f="kind"${dis}>${options(MARK_KINDS, item.kind, MARK_NAMES)}</select></label>
       ${item.kind === 'signature'
         ? `${sigMenus(item, dis)}
       <p class="muted">A change written mid-line: it holds from here, through later staves, until the next. At a line's start, set it on the staff instead. Keys 1–4: ${CLEFS.join(', ')}.</p>`
@@ -1289,13 +1290,19 @@ function renderCounts() {
     }
     if (nb.right.ends_movement) r.ended = true;
   }
-  // tempo marks: each belongs to the first bar of the nearest staff below it
+  // tempo marks and movement titles: each belongs to the first bar of the nearest staff below it
   const tempos = {};
   for (const [n, page] of Object.entries(S.doc?.pages || {})) {
     for (const m of page.marks || []) {
-      if (m.kind !== 'tempo' || !m.text) continue;
+      if ((m.kind !== 'tempo' && m.kind !== 'title') || !m.text) continue;
       const cy = m.y + m.h / 2;
-      const nb = S.bars.filter((b) => b.page === +n && b.system.top > cy).sort((a, b) => a.system.top - b.system.top)[0];
+      // as labels.bars_export: written left of a line's music, within its
+      // height, its first bar; else the first bar of the nearest staff below
+      const firsts = S.bars.filter((b) => b.page === +n && !b.left);
+      const beside = firsts.filter((b) => b.system.top - space(b.system) * 2.5 <= cy && cy <= b.system.bottom + space(b.system) * 2.5
+        && m.x + m.w <= (b.system.start ?? b.system.left));
+      const nb = beside.sort((a, b) => Math.abs((a.system.top + a.system.bottom) / 2 - cy) - Math.abs((b.system.top + b.system.bottom) / 2 - cy))[0]
+        || firsts.filter((b) => b.system.top > cy).sort((a, b) => a.system.top - b.system.top)[0];
       if (nb) ((tempos[nb.part] ||= {})[nb.movement] ||= []).push(m.text);
     }
   }
@@ -1311,9 +1318,10 @@ function renderCounts() {
       const cls = !e ? '' : counted === e.total ? 'ok' : (r && r.ended) ? 'bad' : '';
       rows.push(`<tr><td>${m}</td><td class="${cls}">${counted}</td><td class="muted">${e ? '/ ' + e.total : ''}</td></tr>`);
       const marked = tempos[part]?.[m] || [];
-      if (marked.length || e?.tempos?.length) {
+      const heads = e?.headings || [...(e?.titles || []), ...(e?.tempos || [])];  // Structure.ily's, in the order written
+      if (marked.length || heads.length) {
         const txt = (marked.length ? `<i>${esc(marked.join(' · '))}</i>` : '') +
-          (e?.tempos?.length ? ` <span class="muted">(expected ${esc(e.tempos.join(' · '))})</span>` : '');
+          (heads.length ? ` <span class="muted">(expected ${esc(heads.join(' · '))})</span>` : '');
         rows.push(`<tr><td></td><td colspan="2" class="tempo">${txt}</td></tr>`);
       }
       // a movement's first line records its key and time as written there
@@ -1495,7 +1503,7 @@ function detailView() {
     const m = item;
     return {
       rows: [[[[m.x, m.y], [m.x + m.w, m.y], [m.x + m.w, m.y + m.h], [m.x, m.y + m.h]]]],
-      label: `Mark (${m.kind})${m.text ? ': ' + m.text : ''} · exactly its box`,
+      label: `Mark (${MARK_NAMES[m.kind] || m.kind})${m.text ? ': ' + m.text : ''} · exactly its box`,
     };
   }
   if (S.sel.t === 'page') {
@@ -2140,7 +2148,10 @@ $('#inspector').addEventListener('change', (e) => {
     // a text used before brings its usual kind, unless a kind was chosen
     if (t === 'mark' && f === 'text' && item.kind === 'text') {
       const known = S.markTextIndex?.get(e.target.value.trim());
-      if (known && known.kind !== 'text' && known.kind !== 'signature') item.kind = known.kind;
+      // a movement's heading suggests a title, though older labels marked them as tempos
+      const heading = /^(men?uet|minuet|trio\b)/i.test(e.target.value.trim());
+      if (heading) item.kind = 'title';
+      else if (known && known.kind !== 'text' && known.kind !== 'signature') item.kind = known.kind;
     }
     if (t !== 'mark') item.auto = false;
   });
