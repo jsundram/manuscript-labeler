@@ -37,6 +37,7 @@ from urllib.parse import parse_qs, urlparse
 
 sys.path.insert(0, str(Path(__file__).parent))
 import labels  # noqa: E402
+import structure  # noqa: E402
 
 HERE = Path(__file__).parent
 STATIC = HERE / "static"
@@ -152,7 +153,8 @@ class Edition:
             etag = "none"
             doc = labels.new_doc(info["source"])
         sp = labels.structure_path(self.root, info["display"].get("work", ""))
-        expected = labels.parse_structure(sp.read_text()) if sp else {}
+        stext = sp.read_text() if sp else None
+        expected = labels.parse_structure(stext) if sp else {}
         return {
             "pdf": rel,
             "labels": doc,
@@ -163,6 +165,8 @@ class Edition:
             "display": info["display"],
             "expected": expected,
             "structure": self.rel(sp) if sp else None,
+            # movements this source could write to Structure.ily now
+            "structure_offers": structure.offers(doc, stext) if not readonly else [],
             "labels_file": self.rel(lp),
             "barline_model": self.barline_state(),
         }
@@ -198,7 +202,62 @@ class Edition:
             # what the model learns from changed: retrain (in the background)
             if reviewed_truth(current) != reviewed_truth(data):
                 self.train_model()
-            return {"etag": hashlib.sha1(data).hexdigest()}
+            # the movements it could now write to Structure.ily (a review may complete one)
+            info = labels.source_info(rel, self.readme_rows())
+            sp = labels.structure_path(self.root, info["display"].get("work", ""))
+            return {"etag": hashlib.sha1(data).hexdigest(),
+                    "structure_offers": structure.offers(doc, sp.read_text() if sp else None)}
+
+    # -- Structure.ily, from a source's labels --------------------------------
+
+    def structure(self, rel: str, movement: str, answers: dict, text: str | None = None) -> dict:
+        """A movement's proposed Structure.ily block from this source's labels
+        (structure.propose), and whether it may be written: only where the
+        file has no real block for it yet (structure.is_template), from a
+        labels file this version reads. `text`: Structure.ily as read once."""
+        info = self.load(rel)
+        sp = self.root / info["structure"] if info["structure"] else None
+        if text is None:
+            text = sp.read_text() if sp else ""
+        existing = labels.parse_structure(text).get(movement)
+        r = structure.propose(info["labels"], movement, existing, answers)
+        template = structure.is_template(text, movement)
+        r["file"] = info["structure"]
+        r["etag"] = hashlib.sha1(text.encode()).hexdigest()
+        r["writable"] = bool(sp) and template and r["ok"] and not info["readonly"]
+        r["why"] = (None if r["writable"] else "no Structure.ily for this work (copy the template)" if not sp
+                    else "this labels file is from a newer version of the labeler" if info["readonly"]
+                    else "Structure.ily already has this movement: a difference here is between sources"
+                    if not template else "; ".join(r["problems"]))
+        return r
+
+    def write_structure(self, rel: str, movement: str, answers: dict, if_match: str, shown: str) -> dict:
+        """Write the proposed block into Structure.ily (backed up first): if
+        still writable, the file is as it was when proposed (`if_match`) and
+        the block is the one shown (`shown`, its hash). The file is read
+        once, and everything decided from that reading."""
+        with self.write_lock:
+            info = self.load(rel)
+            if not info["structure"]:
+                raise ValueError("no Structure.ily for this work")
+            sp = self.root / info["structure"]
+            old = sp.read_text()
+            r = self.structure(rel, movement, answers, old)
+            if not r["writable"]:
+                raise ValueError(r["why"])
+            if r["etag"] != if_match:
+                raise FileExistsError("Structure.ily changed since it was shown")
+            if hashlib.sha1(r["text"].split("\n", 1)[1].encode()).hexdigest() != shown:
+                raise FileExistsError("the labels changed since the block was shown: look again")
+            new = structure.write_block(old, movement, r["text"])
+            if structure.check(new, movement, r["want"]):  # the whole file, read back as the labeler will
+                raise ValueError("the written file wouldn't read back as the labels say; not written")
+            d = self.cache / "backups" / self.root.name / r["file"].replace("/", "__")
+            d.mkdir(parents=True, exist_ok=True)
+            (d / time.strftime("%Y%m%d-%H%M%S.ily")).write_text(old)
+            atomic_write(sp, new.encode())
+            return {"etag": hashlib.sha1(new.encode()).hexdigest(), "expected": labels.parse_structure(new),
+                    "offers": structure.offers(info["labels"], new)}
 
     def backup(self, lp: Path, data: bytes):
         d = self.cache / "backups" / self.root.name / self.rel(lp).replace("/", "__").removesuffix(".json")
@@ -474,6 +533,9 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/snapstart":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x")}
                 return self.send_json(ed.snap_start(q["pdf"], int(q["page"]), **f))
+            if path == "/api/structure":
+                answers = {k: v for k, v in q.items() if k not in ("pdf", "movement")}
+                return self.send_json(ed.structure(q["pdf"], q["movement"], answers))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
@@ -481,6 +543,21 @@ class Handler(BaseHTTPRequestHandler):
             return self.error(HTTPStatus.BAD_REQUEST, str(e))
         except subprocess.CalledProcessError as e:
             return self.error(HTTPStatus.INTERNAL_SERVER_ERROR, f"{e.cmd[0]} failed: {e.stderr}")
+
+    def do_POST(self):
+        path, q = self.route()
+        if path != "/api/structure":
+            return self.error(HTTPStatus.NOT_FOUND, "not found")
+        try:
+            n = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(n))
+            return self.send_json(self.edition.write_structure(
+                body["pdf"], body["movement"], body.get("answers", {}), self.headers.get("If-Match", ""),
+                body.get("shown", "")))
+        except FileExistsError as e:
+            return self.error(HTTPStatus.CONFLICT, str(e))
+        except (LookupError, KeyError, ValueError) as e:
+            return self.error(HTTPStatus.BAD_REQUEST, str(e))
 
     def do_PUT(self):
         path, q = self.route()

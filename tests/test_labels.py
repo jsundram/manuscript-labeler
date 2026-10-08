@@ -310,8 +310,8 @@ def test_parse_structure_reads_key_and_time_as_written():
     }
     \tag #'mvtI { \time 4/4 \key es \major s1*4 \time 2/2 s1*2 }"""
     got = labels.parse_structure(text)
-    assert (got["II"]["key"], got["II"]["time"]) == (2, "3/4")
-    assert got["II"]["changes"] == [{"bar": 8, "on_bar_line": False, "key": 5}]  # the Trio, from its upbeat completing bar 8
+    assert (got["II"]["key"], got["II"]["mode"], got["II"]["time"]) == (2, "minor", "3/4")
+    assert got["II"]["changes"] == [{"bar": 8, "on_bar_line": False, "key": 5, "mode": "major"}]  # the Trio, from its upbeat completing bar 8
     assert (got["I"]["key"], got["I"]["time"]) == (-3, "C")        # 4/4 is printed as C
     assert got["I"]["changes"] == [{"bar": 5, "on_bar_line": True, "time": "C/"}]
     assert labels.key_fifths("fis", "minor") == 3 and labels.key_fifths("aes", "major") == -4

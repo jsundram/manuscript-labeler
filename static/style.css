@@ -190,3 +190,8 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .handle.active { fill: #ffd400; stroke: #d81b60; stroke-width: 3; }
 /* a bar much wider or narrower than its line's typical bar (missed / extra bar line?) */
 .oddbar { fill: rgba(217, 130, 43, .08); stroke: var(--auto); stroke-width: 2; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; pointer-events: none; }
+
+button.link { background: none; border: none; padding: 0; color: var(--accent, #2c5fb8); text-decoration: underline; cursor: pointer; font: inherit; }
+.structure { margin-top: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 6px; }
+.structure pre { font-size: 11px; white-space: pre-wrap; background: var(--bg, #f6f4f0); padding: 6px; border-radius: 4px; max-height: 260px; overflow: auto; }
+.structure ul.bad { color: var(--bad, #c62828); padding-left: 16px; margin: 4px 0; }

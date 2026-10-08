@@ -482,6 +482,11 @@ async function saveNow() {
     if (!r.ok) throw new Error(j.error || r.statusText);
     S.etag = j.etag;
     S.savedVersion = version;
+    if (S.info && j.structure_offers) {  // a review may complete a movement
+      const changed = JSON.stringify(S.info.structure_offers) !== JSON.stringify(j.structure_offers);
+      S.info.structure_offers = j.structure_offers;
+      if (changed) renderAll();
+    }
     setSaveStatus(S.version === version ? 'saved' : 'unsaved');
   } catch (e) {
     setSaveStatus('save failed', true);
@@ -528,6 +533,7 @@ async function loadSource(pdf, page) {
   S.readonly = j.readonly;
   S.numPages = j.pages;
   S.info = j;
+  S.structureOpen = null;
   S.version = S.savedVersion = 0;
   S.conflict = false;
   S.undo = []; S.redo = [];
@@ -1192,6 +1198,66 @@ function renderPages() {
   $('#pages li.current')?.scrollIntoView({ block: 'nearest' });
 }
 
+// Structure.ily from these labels: the server offers a movement complete
+// in every part (all pages reviewed through its end) that Structure.ily has
+// no real block for yet; it shows the block, asks what the page doesn't
+// show, and writes only what was shown.
+function structureOffer() {
+  const want = S.info?.structure_offers || [];
+  const open = S.structureOpen;
+  let html = want.length && !open ? `<p class="muted">${esc(S.info.structure)}: ${want.map((m) =>
+    `<button class="link" data-structure="${esc(m)}">write movement ${esc(m)}</button>`).join(' ')}</p>` : '';
+  if (open) {
+    const r = open.r;
+    html += `<div class="structure"><h3>Movement ${esc(open.movement)} for ${esc(S.info.structure)}</h3>`
+      + (r.problems?.length ? `<ul class="bad">${r.problems.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : '')
+      + (r.notes?.length ? `<ul class="muted">${r.notes.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : '')
+      + (r.questions || []).map((q) => `<label>${esc(q.ask)} <select data-q="${esc(q.id)}">${options(q.choices, q.value)}</select></label>`).join('')
+      + (r.text ? `<pre>${esc(r.text)}</pre>` : '')
+      + (r.writable ? '' : `<p class="muted">${esc(r.why || '')}</p>`)
+      + `<button data-structure-write${r.writable ? '' : ' disabled'}>Write it</button> <button data-structure-cancel>Cancel</button></div>`;
+  }
+  return html;
+}
+
+async function proposeStructure(movement, answers = {}) {
+  if (S.version !== S.savedVersion) await saveNow();  // the server reads the saved labels
+  if (S.version !== S.savedVersion) { banner('Save the labels first (not saved yet), then look again.'); return; }
+  const qs = Object.entries(answers).map(([k, v]) => `&${encodeURIComponent(k)}=${encodeURIComponent(v)}`).join('');
+  const r = await getJSON(`/api/structure?${q(S.pdf)}&movement=${encodeURIComponent(movement)}${qs}`);
+  S.structureOpen = { movement, r, answers };
+  renderAll();
+}
+
+async function writeStructure() {
+  const { movement, r, answers } = S.structureOpen;
+  // the block as shown (without its dated first line): the server writes only that
+  const digest = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(r.text.split('\n').slice(1).join('\n')));
+  const shown = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
+  const res = await fetch('/api/structure', { method: 'POST', headers: { 'Content-Type': 'application/json', 'If-Match': r.etag },
+    body: JSON.stringify({ pdf: S.pdf, movement, answers, shown }) });
+  if (!res.ok) { banner(`Not written: ${await res.text()}`); return; }
+  const out = await res.json();
+  S.info.expected = out.expected;
+  S.info.structure_offers = out.offers;
+  S.structureOpen = null;
+  banner(`Wrote movement ${movement} to ${S.info.structure}.`);
+  renderAll();
+}
+
+$('#counts').addEventListener('click', (e) => {
+  const t = e.target;
+  if (t.dataset.structure) proposeStructure(t.dataset.structure).catch((err) => banner(`Could not propose: ${err.message}`));
+  else if ('structureWrite' in t.dataset) writeStructure().catch((err) => banner(`Not written: ${err.message}`));
+  else if ('structureCancel' in t.dataset) { S.structureOpen = null; renderAll(); }
+});
+$('#counts').addEventListener('change', (e) => {
+  const id = e.target.dataset.q;
+  if (!id || !S.structureOpen) return;
+  const { movement, answers } = S.structureOpen;
+  proposeStructure(movement, { ...answers, [id]: e.target.value }).catch((err) => banner(`Could not propose: ${err.message}`));
+});
+
 // Counted vs expected bars per part and movement, plus repeat positions.
 function renderCounts() {
   const exp = S.info?.expected || {};
@@ -1253,7 +1319,8 @@ function renderCounts() {
       }
     }
   }
-  $('#counts').innerHTML = rows.length ? `<table>${rows.join('')}</table>` : '<p class="muted">No bars yet.</p>';
+  $('#counts').innerHTML = (rows.length ? `<table>${rows.join('')}</table>` : '<p class="muted">No bars yet.</p>')
+    + structureOffer();
   // odd bar widths on this page, by bar number (with the movement if the
   // page has more than one), or by line and position if not yet numbered
   const odd = pageOddBars();

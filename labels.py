@@ -726,13 +726,14 @@ def parse_structure(text: str) -> dict[str, dict]:
         numeric = False         # \numericTimeSignature in force (4/4 printed as 4/4, not C)
         end = len(music)
 
-        def signature(field, value):
+        def signature(field, value, mode=None):
+            extra = {"mode": mode} if mode else {}  # a key's mode, which its signature doesn't show
             if not b.started:
-                sig[field] = value
+                sig.update({field: value, **extra})
             elif b.fresh:  # on a bar line: from the next bar
-                changes.append({"bar": b.begun + 1, "on_bar_line": True, field: value})
+                changes.append({"bar": b.begun + 1, "on_bar_line": True, field: value, **extra})
             else:          # mid-bar: from the rest of this one (a Trio's upbeat, completing the short bar)
-                changes.append({"bar": b.begun, "on_bar_line": False, field: value})
+                changes.append({"bar": b.begun, "on_bar_line": False, field: value, **extra})
 
         def emit(ev: tuple):
             """One musical event; a written-out repeat records it to play again."""
@@ -752,7 +753,7 @@ def parse_structure(text: str) -> dict[str, dict]:
                 numeric = t.group("which") == "numeric"
             elif t.group("key"):
                 if t.group("tonic")[0] in _FIFTHS:
-                    emit(("signature", "key", key_fifths(t.group("tonic"), t.group("mode"))))
+                    emit(("signature", "key", key_fifths(t.group("tonic"), t.group("mode")), t.group("mode")))
             elif t.group("unfold"):
                 depth += 1
                 stack.append({"times": int(t.group("times")), "events": []})

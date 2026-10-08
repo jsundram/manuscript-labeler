@@ -264,6 +264,30 @@ The rules:
   top to bottom, `ends_movement`), so they can't go stale.
 - **Formatting:** keys sorted and pretty-printed, so git diffs stay readable.
 
+## Structure.ily and the labels
+
+`Op48-N/Structure.ily` is the work's skeleton: each movement's time, key,
+tempo, bar counts and repeats, shared by every source of the work.
+
+1. A work starts either from a written Structure.ily or from a source
+   labelled first.
+2. When a movement is complete in a source (every part's pages reviewed
+   through its end) and Structure.ily has no real block for it (missing,
+   or the template's `s2*1`), the Bar counts panel offers to write it
+   (structure.py): the parts must agree on bars, upbeats and repeats (a
+   multi-bar rest stands for its bars) and not write different keys or
+   times; the block is shown first, with what the page doesn't show
+   asked (each key's mode, an upbeat's length), and must read back
+   (parse_structure) as the labels say before it is written (atomically,
+   the old file backed up). A movement already written is never
+   overwritten: where a source differs from it, that is a difference
+   between sources, shown as warnings, for the editor.
+3. Structure.ily then serves every source of the work: their bar counts,
+   repeats and tempos are checked against it, and its key and time are
+   the defaults for a movement's first line (after what another part of
+   the same source states), written into the labels when a page is
+   marked reviewed.
+
 ## Interface to the synoptic build (the contract)
 
 The labels file above is the labeler's own working format. The synoptic
