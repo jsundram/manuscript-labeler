@@ -209,9 +209,9 @@ function setExtent(s, left, right) {
 // the editor fixes one line, and this carries its left end, music start
 // and right end to the lines below it: the left end at the same place on
 // the page, the start too but snapped to the nearest clear paper (where
-// the key signature ends), the right end to lines not yet edited (a line
-// fixed by hand, or ended with ], keeps its own) and never short of a
-// line's own last bar line. Lines above are left alone, so at
+// the key signature ends), the right end only ever further out (a line
+// is never shortened, so no music is cut) and not on a line that ends at
+// its last bar line (ended with ], or found so). Lines above are left alone, so at
 // a key change: fix that line and apply again. Backtested on KHM 602/603
 // against the editor's starts: better than measuring from each line's
 // left edge, whose detection is the weak part. One undo step.
@@ -223,6 +223,8 @@ function trimStaff(s) {
 
 // a short note that fades: what a key just did, where it isn't obvious
 function flash(msg) {
+  const b = $('#banner');
+  if (!b.hidden && b.querySelector('button')) return;  // a warning that needs acting on stays (Not saved… Reload)
   banner(msg);
   clearTimeout(S.flashTimer);
   S.flashTimer = setTimeout(() => { if ($('#banner').textContent === msg) banner(null); }, 2500);
@@ -241,7 +243,8 @@ async function applyStartToPage(src) {
   mutate(() => {
     below.forEach((s, i) => {
       const last = Math.max(-Infinity, ...s.barlines.map((b) => Math.max(b.x0, b.x1)));
-      const right = s.auto ? Math.max(src.right, last + 0.002) : s.right;
+      const atLast = s.barlines.length && s.right - last <= space(s) * S.H / S.W;  // ends at its last bar line
+      const right = atLast ? s.right : Math.max(src.right, s.right);
       if (src.left < right) setExtent(s, src.left, right);
       s.start = clamp(snapped[i], s.left, s.right);
       s.auto = false;
@@ -1277,6 +1280,24 @@ $('#counts').addEventListener('change', (e) => {
   proposeStructure(movement, { ...answers, [id]: e.target.value }).catch((err) => banner(`Could not propose: ${err.message}`));
 });
 
+// The bar a tempo or title belongs to, as labels.bars_export decides: the
+// bar whose crop holds its centre; else, written left of a line's music
+// within its crop's height, that line's first bar; else the first bar of
+// the nearest staff below.
+function markBar(n, m) {
+  const cx = m.x + m.w / 2, cy = m.y + m.h / 2;
+  const bars = S.bars.filter((b) => b.page === n);
+  const box = (b) => { const q = barQuad(b.system, b.left, b.right); const xs = q.map((p) => p[0]), ys = q.map((p) => p[1]);
+    return [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)]; };
+  const inside = bars.find((b) => { const [x0, x1, y0, y1] = box(b); return x0 <= cx && cx <= x1 && y0 <= cy && cy <= y1; });
+  if (inside) return inside;
+  const firsts = bars.filter((b) => !b.left);
+  const centre = (b) => (b.system.top + b.system.bottom) / 2;
+  const beside = firsts.filter((b) => { const [x0, , y0, y1] = box(b); return y0 <= cy && cy <= y1 && m.x + m.w <= x0; })
+    .sort((a, b) => Math.abs(centre(a) - cy) - Math.abs(centre(b) - cy))[0];
+  return beside || firsts.filter((b) => b.system.top > cy).sort((a, b) => a.system.top - b.system.top)[0];
+}
+
 // Counted vs expected bars per part and movement, plus repeat positions.
 function renderCounts() {
   const exp = S.info?.expected || {};
@@ -1296,13 +1317,7 @@ function renderCounts() {
     for (const m of page.marks || []) {
       if ((m.kind !== 'tempo' && m.kind !== 'title') || !m.text) continue;
       const cy = m.y + m.h / 2;
-      // as labels.bars_export: written left of a line's music, within its
-      // height, its first bar; else the first bar of the nearest staff below
-      const firsts = S.bars.filter((b) => b.page === +n && !b.left);
-      const beside = firsts.filter((b) => b.system.top - space(b.system) * 2.5 <= cy && cy <= b.system.bottom + space(b.system) * 2.5
-        && m.x + m.w <= (b.system.start ?? b.system.left));
-      const nb = beside.sort((a, b) => Math.abs((a.system.top + a.system.bottom) / 2 - cy) - Math.abs((b.system.top + b.system.bottom) / 2 - cy))[0]
-        || firsts.filter((b) => b.system.top > cy).sort((a, b) => a.system.top - b.system.top)[0];
+      const nb = markBar(+n, m);
       if (nb) ((tempos[nb.part] ||= {})[nb.movement] ||= []).push(m.text);
     }
   }
