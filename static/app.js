@@ -305,6 +305,8 @@ function pageOddBars() {
 }
 
 // bar numbers after which Structure.ily puts a repeat sign, per movement
+// (a repeat in mid-bar ends the bar's first part; the part after it is a
+// pickup, count 0, sharing the number: see repeatHere)
 function repeatEnds(movement) {
   const e = S.info?.expected?.[movement];
   if (!e) return [];
@@ -314,6 +316,12 @@ function repeatEnds(movement) {
   return out;
 }
 const lastBarOf = (nb) => nb.bar + Math.max(nb.count, 1) - 1;
+// the numbered bar a bar line ends: none for a pickup (count 0), which
+// shares the number before it (the rest of a bar split by a repeat in its
+// middle, or a movement's upbeat)
+const endsBar = (nb) => (nb.count === 0 ? null : nb.bar + nb.count - 1);
+// does Structure.ily put a repeat sign at the end of this bar?
+const repeatHere = (nb) => endsBar(nb) !== null && repeatEnds(nb.movement).includes(endsBar(nb));
 
 function nextId(page, prefix) {
   let max = 0;
@@ -624,7 +632,7 @@ async function autoLabel(n, token) {
   // a double bar where Structure.ily expects a repeat is almost surely one
   renumber();
   for (const nb of S.bars) {
-    if (nb.page === n && nb.right.kind === 'double' && repeatEnds(nb.movement).includes(lastBarOf(nb))) nb.right.kind = 'repeat_end';
+    if (nb.page === n && nb.right.kind === 'double' && repeatHere(nb)) nb.right.kind = 'repeat_end';
   }
   changed();
 }
@@ -797,7 +805,7 @@ function renderOverlay() {
         const label = (first ? nb.movement + ': ' : '') + barLabel(nb);
         out.push(`<text class="barno${first ? ' mvt' : ''}" x="${xm * W}" y="${(topAt(s, xm) - 0.8 * sp) * H}" font-size="${1.9 * sp * H}">${esc(label)}</text>`);
         // Structure.ily expects a repeat sign here and there isn't one
-        if (repeatEnds(nb.movement).includes(lastBarOf(nb)) && !['repeat_end', 'repeat_both'].includes(b.kind)) {
+        if (!['repeat_end', 'repeat_both'].includes(b.kind) && repeatHere(nb)) {
           out.push(`<text class="hint" x="${b.x1 * W}" y="${(bottomAt(s, mid(b)) + 3.8 * sp) * H}" font-size="${1.5 * sp * H}">repeat expected?</text>`);
         }
       }
@@ -1003,8 +1011,8 @@ function renderPages() {
         const runs = [];
         for (const b of bs) {
           const last = runs[runs.length - 1];
-          if (last && last.mvt === b.movement) last.to = b.bar + Math.max(b.count, 1) - 1;
-          else runs.push({ mvt: b.movement, from: b.bar, to: b.bar + Math.max(b.count, 1) - 1 });
+          if (last && last.mvt === b.movement) last.to = lastBarOf(b);
+          else runs.push({ mvt: b.movement, from: b.bar, to: lastBarOf(b) });
         }
         what += ' · ' + runs.map((r) => `${r.mvt} ${r.from}–${r.to}`).join(', ');
       }
@@ -1020,10 +1028,12 @@ function renderCounts() {
   const exp = S.info?.expected || {};
   const runs = {};
   for (const nb of S.bars) {
-    const r = (runs[nb.part] ||= {})[nb.movement] ||= { bars: 0, repeats: [], pickup: false, ended: false };
+    const r = (runs[nb.part] ||= {})[nb.movement] ||= { bars: 0, repeats: [], onPickup: [], pickup: false, ended: false };
     r.bars += nb.count;
     if (nb.count === 0 && nb.bar === 0) r.pickup = true;
-    if (['repeat_end', 'repeat_both'].includes(nb.right.kind)) r.repeats.push(nb.bar + Math.max(nb.count, 1) - 1);
+    if (['repeat_end', 'repeat_both'].includes(nb.right.kind)) {
+      if (endsBar(nb) === null) r.onPickup.push(nb.bar); else r.repeats.push(endsBar(nb));
+    }
     if (nb.right.ends_movement) r.ended = true;
   }
   // tempo marks: each belongs to the first bar of the nearest staff below it
@@ -1055,9 +1065,10 @@ function renderCounts() {
       }
       if (!e || !r) continue;
       if (r.ended && counted !== e.total) warnings.push(`${PART_NAMES[part]} ${m}: ${counted} bars counted, ${e.total} expected`);
-      let cum = 0;
-      const want = [];
-      for (const seg of e.segments) { cum += seg.bars; if (seg.repeat) want.push(cum); }
+      const want = repeatEnds(m);
+      for (const at of r.onPickup) {
+        warnings.push(`${PART_NAMES[part]} ${m}: repeat sign after the pickup sharing bar ${at}'s number; a repeat in mid-bar ends the bar's first part`);
+      }
       for (const at of r.repeats) {
         if (want.length && !want.includes(at)) warnings.push(`${PART_NAMES[part]} ${m}: repeat sign after bar ${at}, expected after ${want.join(' or ')}`);
       }
