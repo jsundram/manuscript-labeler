@@ -8,6 +8,7 @@ anything into the labeler.
     uv run experiments/llm/pages.py <edition-repo>                # kind and part, one page at a time
     uv run experiments/llm/marks.py <edition-repo> --mode blind   # each mark's text, transcribed
     uv run experiments/llm/marks.py <edition-repo> --mode known   # ... offered the other sources' texts
+    uv run experiments/llm/boxes.py <edition-repo>                # a title page's lines of text: boxes and text
 
 Claude Opus 5.5 at low effort, structured output, the API key from the
 labeler's `.env` (`ML_API_KEY`). Answers are cached in `answers/`
@@ -40,8 +41,8 @@ margin). Ignoring case, accents, spacing and punctuation (symbols such
 as "°" kept): blind 124 of 167 ($0.51), offered the texts typed in the
 other sources 134 of 167 ($0.86); exactly as typed, 49 and 71. Most of
 the differences are conventions, applied unevenly in the labels: the
-copyist's spelling or the modern one ("Giugnio", "Menuetto", "Dalcapo"
-against "Giugno", "Minuetto", "Da Capo"), ordinals ("Violino 1.mo" typed
+copyist's spelling or the modern one ("Menuetto", "Dalcapo" against
+"Minuetto", "Da Capo"), ordinals ("Violino 1.mo" typed
 "Violino I", "Violino 2°" typed "Violino 2"), the fermata sign written
 out. A few are misreadings ("Allegro" for "Allegretto moderato", "con
 moto di Molto" for "con poco di Mosso"), and a few look like label slips
@@ -51,15 +52,39 @@ moto di Molto" for "con poco di Mosso"), and a few look like label slips
 
 **The convention** (the editor's decision, 2026-10-09): follow the
 copyist. A mark's text keeps the manuscript's spelling, capitals and
-ordinals ("Giugnio", "Menuetto", "Dalcapo", "Violino 1.mo"), with
+ordinals ("Menuetto", "Dalcapo", "Violino 1.mo"), with
 abbreviations expanded ("All.tto" is "Allegretto"). This is what the
 prompt (now reader.py's) already asks for; the labels that use the modern
 spelling are what is out of step.
 
 After ten labels were set to the copyist's ordinals ("Violino 1.mo",
-"Violino 2°"), blind reading matches 133 of 167 (exact 53). The
-"known" answers no longer apply (the texts offered changed); asking them
-again would cost about $0.86.
+"Violino 2°") and five "Mese di Giugnio" to what the pages say, "Giugno"
+(Claude's reading; the editor's slip), blind reading matches 138 of 167
+(exact 56). The "known" answers no longer apply (the texts offered
+changed); asking them again would cost about $0.86.
+
+## Title pages: finding the text (boxes.py, 2026-10-09; $0.30)
+
+    uv run experiments/llm/boxes.py <edition-repo> [--overlays DIR]
+
+The 20 reviewed title pages, each sent whole (1568 px), asking for every
+line of writing: its box in pixels of that image and its text. Each of
+the editor's 65 marks matched to the Claude box overlapping it most:
+found 55 at an overlap (IoU) of 0.5 or more, 61 at 0.3. Claude's boxes
+sit tight on the ink; the editor's leave a margin, about 0.1 of the
+line's height at the sides and 0.2 above and below (medians), which is
+most of the edges' difference (median 0.008 of the page's height). The
+four missed: the Vma covers' label, where the editor boxed "Boccherini /
+6 quatuors inédits" as one and Claude as two lines; RES 507 (14)'s
+"Boccherini", where Claude's box takes in the big flourish around it
+(twice); and KHM 602 p. 1, whose marks are the slips in TODO.md. Of
+Claude's 13 boxes matching none: the other half of the Vma label (5),
+"N° 1" on four Vma title pages (not marked, as it's the catalogue's wrong
+number, but it is on the page: fine to propose), the flourishes and the
+slips. Text of a found box: 49 of 58 as the editor typed it.
+
+So the labeler can propose these boxes on a page Claude calls a title
+page, widened by the editor's margin.
 
 The labeler now asks these same prompts (reader.py; these scripts import
 them). The texts it offers differ: every checked text in the edition, this

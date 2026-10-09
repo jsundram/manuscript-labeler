@@ -234,7 +234,7 @@ The rules:
   inward; dragged into place by the editor. Re-detect keeps moved corners;
   "Reset to detected" replaces them.
 - **Mark `text`** follows the copyist: the manuscript's spelling, capitals
-  and ordinals ("Giugnio", "Menuetto", "Violino 1.mo", "Violino 2°"), with
+  and ordinals ("Menuetto", "Dalcapo", "Violino 1.mo", "Violino 2°"), with
   abbreviations expanded ("All.tto" is "Allegretto"). `text_auto: true`
   (optional) marks a text Claude read that the editor hasn't edited
   (reader.py); typing in the field drops it.

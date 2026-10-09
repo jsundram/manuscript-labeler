@@ -1,0 +1,1280 @@
+{
+ "D-B_KHM-602:1": {
+  "lines": [
+   {
+    "text": "Mese di Febraro. 1794.",
+    "x0": 524,
+    "x1": 1072,
+    "y0": 80,
+    "y1": 142
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 618,
+    "x1": 928,
+    "y0": 268,
+    "y1": 312
+   },
+   {
+    "text": "Per due Violini, Viola, e Violoncello.",
+    "x0": 203,
+    "x1": 1118,
+    "y0": 358,
+    "y1": 402
+   },
+   {
+    "text": "di Luigi Boccherini",
+    "x0": 584,
+    "x1": 1122,
+    "y0": 448,
+    "y1": 496
+   },
+   {
+    "text": "Compositor di Camera di S. M. il Re di Prussia",
+    "x0": 213,
+    "x1": 1342,
+    "y0": 533,
+    "y1": 604
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1173
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 227,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 227,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13": {
+  "lines": [
+   {
+    "text": "Mese di Febraro. 1794.",
+    "x0": 610,
+    "x1": 1158,
+    "y0": 78,
+    "y1": 126
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 606,
+    "x1": 884,
+    "y0": 262,
+    "y1": 298
+   },
+   {
+    "text": "Violoncello.",
+    "x0": 588,
+    "x1": 878,
+    "y0": 432,
+    "y1": 482
+   },
+   {
+    "text": "di Boccherini",
+    "x0": 906,
+    "x1": 1352,
+    "y0": 612,
+    "y1": 666
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1171
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 159,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 159,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5": {
+  "lines": [
+   {
+    "text": "Mese di Febraro 1794.",
+    "x0": 598,
+    "x1": 1110,
+    "y0": 92,
+    "y1": 134
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 712,
+    "x1": 1050,
+    "y0": 266,
+    "y1": 310
+   },
+   {
+    "text": "Violino 1mo",
+    "x0": 704,
+    "x1": 980,
+    "y0": 436,
+    "y1": 490
+   },
+   {
+    "text": "di Boccherini",
+    "x0": 944,
+    "x1": 1358,
+    "y0": 620,
+    "y1": 660
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1163
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 160,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 160,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:9": {
+  "lines": [
+   {
+    "text": "Mese di Febraro. 1794.",
+    "x0": 578,
+    "x1": 1018,
+    "y0": 96,
+    "y1": 148
+   },
+   {
+    "text": "Quartettino",
+    "x0": 568,
+    "x1": 826,
+    "y0": 272,
+    "y1": 312
+   },
+   {
+    "text": "Violino 2do",
+    "x0": 596,
+    "x1": 862,
+    "y0": 440,
+    "y1": 488
+   },
+   {
+    "text": "di Boccherini",
+    "x0": 818,
+    "x1": 1212,
+    "y0": 620,
+    "y1": 660
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1151
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 158,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 158,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1": {
+  "lines": [
+   {
+    "text": "Mese di Aprile. 1794.",
+    "x0": 630,
+    "x1": 1118,
+    "y0": 86,
+    "y1": 130
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 658,
+    "x1": 956,
+    "y0": 266,
+    "y1": 310
+   },
+   {
+    "text": "Per due Violini, viola, e Violoncello.",
+    "x0": 222,
+    "x1": 1132,
+    "y0": 360,
+    "y1": 410
+   },
+   {
+    "text": "Di Luigi Boccherini",
+    "x0": 596,
+    "x1": 1158,
+    "y0": 448,
+    "y1": 492
+   },
+   {
+    "text": "Compositore di Camera di S. M. il R\u00e8 di Prussia.",
+    "x0": 200,
+    "x1": 1322,
+    "y0": 542,
+    "y1": 592
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1174
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 229,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 229,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13": {
+  "lines": [
+   {
+    "text": "Mese di Aprile. 1794.",
+    "x0": 617,
+    "x1": 1043,
+    "y0": 98,
+    "y1": 140
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 655,
+    "x1": 877,
+    "y0": 267,
+    "y1": 307
+   },
+   {
+    "text": "Violino 2do",
+    "x0": 672,
+    "x1": 962,
+    "y0": 436,
+    "y1": 491
+   },
+   {
+    "text": "di Boccherini.",
+    "x0": 968,
+    "x1": 1293,
+    "y0": 624,
+    "y1": 663
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1168
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 160,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 160,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19": {
+  "lines": [
+   {
+    "text": "Mese di Aprile. 1794.",
+    "x0": 597,
+    "x1": 1060,
+    "y0": 86,
+    "y1": 128
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 656,
+    "x1": 947,
+    "y0": 256,
+    "y1": 298
+   },
+   {
+    "text": "Violoncello.",
+    "x0": 658,
+    "x1": 937,
+    "y0": 437,
+    "y1": 486
+   },
+   {
+    "text": "di Boccherini",
+    "x0": 957,
+    "x1": 1312,
+    "y0": 614,
+    "y1": 656
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1169
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 159,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 159,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7": {
+  "lines": [
+   {
+    "text": "Mese di Aprile. 1794.",
+    "x0": 655,
+    "x1": 1072,
+    "y0": 84,
+    "y1": 126
+   },
+   {
+    "text": "Quartettino",
+    "x0": 655,
+    "x1": 886,
+    "y0": 253,
+    "y1": 296
+   },
+   {
+    "text": "Violino 1mo",
+    "x0": 655,
+    "x1": 906,
+    "y0": 443,
+    "y1": 481
+   },
+   {
+    "text": "di Boccherini",
+    "x0": 928,
+    "x1": 1265,
+    "y0": 618,
+    "y1": 659
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1161
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 159,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 159,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:1": {
+  "lines": [
+   {
+    "text": "Boccherini.",
+    "x0": 443,
+    "x1": 680,
+    "y0": 446,
+    "y1": 494
+   },
+   {
+    "text": "6. Quatuors in\u00e9dits.",
+    "x0": 430,
+    "x1": 760,
+    "y0": 518,
+    "y1": 570
+   },
+   {
+    "text": "Violino 1\u00b0.",
+    "x0": 485,
+    "x1": 672,
+    "y0": 597,
+    "y1": 643
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1147,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2899,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2899,
+     "model": null,
+     "output_tokens": 121,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 121,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:13": {
+  "lines": [
+   {
+    "text": "Boccherini.",
+    "x0": 474,
+    "x1": 682,
+    "y0": 474,
+    "y1": 524
+   },
+   {
+    "text": "6. Quatuors in\u00e9dits.",
+    "x0": 444,
+    "x1": 748,
+    "y0": 535,
+    "y1": 594
+   },
+   {
+    "text": "Viola.",
+    "x0": 503,
+    "x1": 636,
+    "y0": 616,
+    "y1": 666
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1166,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 118,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 118,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:14": {
+  "lines": [
+   {
+    "text": "Alto",
+    "x0": 480,
+    "x1": 600,
+    "y0": 128,
+    "y1": 178
+   },
+   {
+    "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+    "x0": 143,
+    "x1": 1018,
+    "y0": 318,
+    "y1": 387
+   },
+   {
+    "text": "No. 1",
+    "x0": 493,
+    "x1": 618,
+    "y0": 436,
+    "y1": 522
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1172,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 125,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 125,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:19": {
+  "lines": [
+   {
+    "text": "Boccherini.",
+    "x0": 470,
+    "x1": 706,
+    "y0": 455,
+    "y1": 503
+   },
+   {
+    "text": "6. Quatuors in\u00e9dits.",
+    "x0": 434,
+    "x1": 740,
+    "y0": 522,
+    "y1": 573
+   },
+   {
+    "text": "Violoncello.",
+    "x0": 470,
+    "x1": 659,
+    "y0": 594,
+    "y1": 645
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1154,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 120,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 120,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:2": {
+  "lines": [
+   {
+    "text": "Violino 1.",
+    "x0": 620,
+    "x1": 878,
+    "y0": 143,
+    "y1": 222
+   },
+   {
+    "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+    "x0": 322,
+    "x1": 1145,
+    "y0": 265,
+    "y1": 357
+   },
+   {
+    "text": "N.o 1",
+    "x0": 672,
+    "x1": 819,
+    "y0": 383,
+    "y1": 462
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1294,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3235,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3235,
+     "model": null,
+     "output_tokens": 129,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 129,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:20": {
+  "lines": [
+   {
+    "text": "Violoncelle",
+    "x0": 393,
+    "x1": 722,
+    "y0": 176,
+    "y1": 281
+   },
+   {
+    "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+    "x0": 96,
+    "x1": 1020,
+    "y0": 424,
+    "y1": 545
+   },
+   {
+    "text": "No 1",
+    "x0": 459,
+    "x1": 650,
+    "y0": 588,
+    "y1": 692
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1123,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2899,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2899,
+     "model": null,
+     "output_tokens": 127,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 127,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:7": {
+  "lines": [
+   {
+    "text": "Boccherini.",
+    "x0": 482,
+    "x1": 712,
+    "y0": 470,
+    "y1": 522
+   },
+   {
+    "text": "6. Quatuors in\u00e9dits.",
+    "x0": 495,
+    "x1": 742,
+    "y0": 548,
+    "y1": 595
+   },
+   {
+    "text": "Violino 2\u00b0.",
+    "x0": 500,
+    "x1": 692,
+    "y0": 610,
+    "y1": 656
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1152,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2955,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2955,
+     "model": null,
+     "output_tokens": 121,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 121,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:8": {
+  "lines": [
+   {
+    "text": "Violino 2\u00b0",
+    "x0": 455,
+    "x1": 702,
+    "y0": 112,
+    "y1": 208
+   },
+   {
+    "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+    "x0": 137,
+    "x1": 1008,
+    "y0": 377,
+    "y1": 465
+   },
+   {
+    "text": "N\u00b0 1",
+    "x0": 536,
+    "x1": 668,
+    "y0": 535,
+    "y1": 612
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1177,
+   1568
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3011,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3011,
+     "model": null,
+     "output_tokens": 128,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 128,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1": {
+  "lines": [
+   {
+    "text": "Mese di Giugno 1794",
+    "x0": 538,
+    "x1": 1097,
+    "y0": 72,
+    "y1": 136
+   },
+   {
+    "text": "Quartettino",
+    "x0": 545,
+    "x1": 962,
+    "y0": 270,
+    "y1": 335
+   },
+   {
+    "text": "Violino Primo",
+    "x0": 470,
+    "x1": 975,
+    "y0": 600,
+    "y1": 668
+   },
+   {
+    "text": "L. Boccherini",
+    "x0": 450,
+    "x1": 1225,
+    "y0": 723,
+    "y1": 960
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1103
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2843,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2843,
+     "model": null,
+     "output_tokens": 157,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 157,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13": {
+  "lines": [
+   {
+    "text": "Mese di Giugno. 1794.",
+    "x0": 520,
+    "x1": 932,
+    "y0": 66,
+    "y1": 170
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 558,
+    "x1": 852,
+    "y0": 316,
+    "y1": 405
+   },
+   {
+    "text": "Violino Secondo.",
+    "x0": 565,
+    "x1": 890,
+    "y0": 630,
+    "y1": 672
+   },
+   {
+    "text": "Boccherini.",
+    "x0": 578,
+    "x1": 930,
+    "y0": 885,
+    "y1": 955
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1103
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2843,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2843,
+     "model": null,
+     "output_tokens": 159,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 159,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17": {
+  "lines": [
+   {
+    "text": "Mese di Giugno 1794.",
+    "x0": 503,
+    "x1": 928,
+    "y0": 50,
+    "y1": 160
+   },
+   {
+    "text": "Quartettino.",
+    "x0": 566,
+    "x1": 846,
+    "y0": 312,
+    "y1": 381
+   },
+   {
+    "text": "Viola.",
+    "x0": 652,
+    "x1": 784,
+    "y0": 616,
+    "y1": 658
+   },
+   {
+    "text": "Boccherini.",
+    "x0": 432,
+    "x1": 1048,
+    "y0": 856,
+    "y1": 1004
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1103
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2843,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2843,
+     "model": null,
+     "output_tokens": 156,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 156,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7": {
+  "lines": [
+   {
+    "text": "Mese di Giugno 1794",
+    "x0": 455,
+    "x1": 985,
+    "y0": 76,
+    "y1": 142
+   },
+   {
+    "text": "Quartettino",
+    "x0": 465,
+    "x1": 975,
+    "y0": 255,
+    "y1": 385
+   },
+   {
+    "text": "Violoncello",
+    "x0": 458,
+    "x1": 945,
+    "y0": 512,
+    "y1": 567
+   },
+   {
+    "text": "Boccherini",
+    "x0": 388,
+    "x1": 1005,
+    "y0": 808,
+    "y1": 1000
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "size": [
+   1568,
+   1103
+  ],
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2843,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2843,
+     "model": null,
+     "output_tokens": 154,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 154,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ }
+}
