@@ -689,8 +689,18 @@ without a part name (violin I and II look alike on a page alone). So a
 new page takes Claude's kind, a title page Claude's part, and a music
 page the part carried from the page before (69 of 85 alone; every miss a
 title page starting a new part), with Claude's reading shown where it
-disagrees. Mark text: 133 of 167 read blind (ignoring case and
+disagrees. Mark text: 138 of 167 read blind (ignoring case and
 punctuation), once the labels followed the copyist.
+
+A page Claude calls a title page is also asked for its lines of writing
+(a second call, about 1.5¢): each line's box and text become the page's
+text marks, proposals (`text_auto`) on a page nobody has touched. On the
+20 reviewed title pages (experiments/llm/boxes.py) Claude's boxes sit on
+the ink and the editor's leave a margin, so they're widened by the
+editor's median margin (0.1 of the line's height at the sides, 0.2 above
+and below); then 58 of the editor's 65 boxes are found at an overlap of
+0.5, 62 at 0.3. The misses: a two-line label the editor boxed as one,
+and a flourish taken into a box. Text: 49 of 59 as typed.
 
 ### About reading this copyist's hand
 

@@ -414,8 +414,10 @@ class Edition:
         return {"on": True, **self.reader.spent(rel)}
 
     def read_page(self, rel: str, page: int, ask: bool = True) -> dict:
-        """Claude's kind and part for a page: cached, else asked (unless
-        `ask` is false: then none when it hasn't been)."""
+        """Claude's kind and part for a page and, on a title page, its lines
+        of writing as marks' boxes with their text: cached, else asked
+        (unless `ask` is false: then none when they haven't been). A failure
+        to read the lines doesn't lose the page's reading (lines_error)."""
         from PIL import Image
 
         if self.reader is None:
@@ -431,7 +433,20 @@ class Edition:
             except Exception as e:
                 raise reader.ReadFailed(f"{type(e).__name__}: {e}") from e
         a = a or {}
-        return {**{k: a[k] for k in ("kind", "part", "evidence", "error") if k in a}, "reader": self.reader_state(rel)}
+        out = {k: a[k] for k in ("kind", "part", "evidence", "error") if k in a}
+        if a.get("kind") == "title":
+            ln = self.reader.cached_lines(rel, page)
+            if ln is None and ask:
+                img = self.render(rel, page)
+                try:
+                    ln = self.reader.lines(rel, page, lambda: Image.open(img))
+                except Exception as e:  # noqa: BLE001 (the page's reading still stands)
+                    out["lines_error"] = f"{type(e).__name__}: {e}"
+            if ln and "error" in ln:
+                out["lines_error"] = ln["error"]
+            elif ln:
+                out["lines"] = reader.line_boxes(ln)
+        return {**out, "reader": self.reader_state(rel)}
 
     def read_mark(self, rel: str, page: int, box: dict) -> dict:
         """Claude's reading of the text in a mark's box, offered the texts

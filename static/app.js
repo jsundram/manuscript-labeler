@@ -724,9 +724,11 @@ async function readPage(n, { ask = true } = {}) {
     if (pdf !== S.pdf) return null;
     noteReader(r.reader);
     if (r.error && ask && n === S.page) banner(`Claude didn't read page ${n}: ${r.error}`);
+    if (r.lines_error && ask && n === S.page) banner(`Claude didn't find the text on page ${n}: ${r.lines_error}`);
     if (!r.kind) return null;
-    S.reads[n] = { kind: r.kind, part: r.part, evidence: r.evidence };
-    if (n === S.page) renderPageForm();
+    S.reads[n] = { kind: r.kind, part: r.part, evidence: r.evidence, lines: r.lines || [] };
+    if (proposeLines(n)) changed();  // came after the page was labelled (READ_WAIT)
+    else if (n === S.page) renderPageForm();
     return S.reads[n];
   } catch (e) {
     if (ask && pdf === S.pdf) banner(`Claude couldn't read page ${n}: ${e.message}`);
@@ -893,7 +895,21 @@ async function autoLabel(n, token) {
   if (corners) page.corners = { points: corners, auto: true };
   S.doc.pages[n] = page;
   if (kind === 'music') for (const d of systems) newSystem(page, d);
+  proposeLines(n);
   changed();  // numbering proposes Structure.ily's repeats, upbeats and movement end
+}
+
+// A title page's lines of writing, as Claude found them, become its text
+// marks: proposals (text_auto) on a page nobody has touched yet, which
+// Claude calls a title page and the editor hasn't marked. True if added.
+function proposeLines(n) {
+  const page = S.doc?.pages[n], lines = S.reads[n]?.lines;
+  if (S.readonly || !page || !lines?.length || page.status !== 'auto' || page.kind !== 'title'
+      || page.marks.length) return false;
+  for (const { x, y, w, h, text } of lines) {
+    page.marks.push({ id: nextId(page, `p${n}m`), x, y, w, h, kind: 'text', text, ...(text ? { text_auto: true } : {}), note: '' });
+  }
+  return true;
 }
 
 // A new page's kind and part. What the page is: Claude's reading (right on
@@ -1346,7 +1362,7 @@ function renderMeta() {
 function readerText(r) {
   if (!r) return '';
   if (!r.on) return r.why;
-  return `reads new pages and marks · ${r.pages} pages, ${r.marks} marks read for this source ($${r.dollars.toFixed(2)})`;
+  return `reads new pages and marks · ${r.pages} pages, ${r.titles} title pages' text, ${r.marks} marks read for this source ($${r.dollars.toFixed(2)})`;
 }
 
 // The toolbar button shows whether this page is done: red until reviewed,

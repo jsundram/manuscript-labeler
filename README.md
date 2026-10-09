@@ -24,7 +24,9 @@ http://127.0.0.1:8048/. Pick a source and work through it page by page:
   from the previous page.
 - With an API key, Claude reads each new page as it first opens (and the
   next one ahead of time): what it is, and on a title page whose part
-  ("Violino 2.do"). Where its reading disagrees with the page (a cello
+  ("Violino 2.do"). A title page also gets its lines of writing as text
+  marks, boxed and read (in orange until you edit them; about 1.5¢ more).
+  Where its reading disagrees with the page (a cello
   page carried on as viola, say), the page panel says so. A text mark you
   drag out gets Claude's reading of it, following the copyist (shown in
   orange until you edit it); "Read with Claude" on a mark asks again. The
@@ -65,8 +67,8 @@ re-runs detection on the page and keeps your edits.
 - `crops.py`: crop edges (how far each staff's bar images reach above and
   below it) learned from your reviewed crops, trained the same way;
   `experiments/crops/evaluate.py` scores it against the rules.
-- `reader.py`: Claude's readings of a page's kind and part and of a
-  mark's text, cached under `~/.cache/manuscript-labeler/claude`;
+- `reader.py`: Claude's readings of a page's kind and part, a title
+  page's lines of text, and a mark's text, cached under `~/.cache/manuscript-labeler/claude`;
   `experiments/llm/` measured them on the reviewed pages.
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
 - `tools/score_barlines.py`: scores bar-line detection against your

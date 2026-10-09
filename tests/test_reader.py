@@ -58,8 +58,8 @@ def test_a_page_is_asked_once_and_cached(tmp_path):
     assert len(r.ask.calls) == 1
     # a fresh reader (the server restarted) still has it
     assert reader.Reader(tmp_path / "claude", "k").cached_page("sources/G1/X.pdf", 3)["kind"] == "title"
-    assert r.spent("sources/G1/X.pdf") == {"pages": 1, "marks": 0, "dollars": 6.0}
-    assert r.spent("sources/G1/Other.pdf") == {"pages": 0, "marks": 0, "dollars": 0}
+    assert r.spent("sources/G1/X.pdf") == {"pages": 1, "titles": 0, "marks": 0, "dollars": 6.0}
+    assert r.spent("sources/G1/Other.pdf") == {"pages": 0, "titles": 0, "marks": 0, "dollars": 0}
 
 
 def test_a_page_asked_twice_at_once_is_paid_for_once(tmp_path):
@@ -89,7 +89,7 @@ def test_a_mark_is_read_with_the_known_texts_and_logged(tmp_path):
     crop = Image.open(__import__("io").BytesIO(image))
     # the box (80 x 30 px) and a margin of 0.3 of its height on every side
     assert crop.size == (80 + 2 * 9, 30 + 2 * 9)
-    assert r.spent("s.pdf") == {"pages": 0, "marks": 1, "dollars": 6.0}
+    assert r.spent("s.pdf") == {"pages": 0, "titles": 0, "marks": 1, "dollars": 6.0}
     with pytest.raises(ValueError):
         reader.mark_jpeg(page_image(), {"x": 1.0, "y": 0.5, "w": 0.0, "h": 0.0})
 
@@ -115,10 +115,15 @@ def edition(tmp_path, monkeypatch):
 def test_the_server_reads_a_page_and_a_mark(edition, tmp_path):
     rel = "sources/G1/X_Y.pdf"
     edition.reader = fake_reader(tmp_path, {"kind": "title", "part": "va", "evidence": "Viola", "text": "Viola",
-                                            "legible": True, "usage": USAGE})
-    assert edition.read_page(rel, 2, ask=False) == {"reader": {"on": True, "pages": 0, "marks": 0, "dollars": 0}}
+                                            "legible": True, "usage": USAGE,
+                                            "lines": [{"text": "Viola", "x0": 100, "y0": 100, "x1": 200, "y1": 150}]})
+    assert edition.read_page(rel, 2, ask=False) == {"reader": {"on": True, "pages": 0, "titles": 0, "marks": 0,
+                                                               "dollars": 0}}
     got = edition.read_page(rel, 2)
-    assert (got["kind"], got["part"], got["reader"]["pages"]) == ("title", "va", 1)
+    assert (got["kind"], got["part"], got["reader"]["pages"], got["reader"]["titles"]) == ("title", "va", 1, 1)
+    # a title page's lines, as marks' boxes in page fractions (the page is sent at 400 x 600)
+    assert [ln["text"] for ln in got["lines"]] == ["Viola"] and got["lines"][0]["x"] == pytest.approx(95 / 400)
+    assert edition.read_page(rel, 2, ask=False)["lines"] == got["lines"]  # cached
     assert edition.read_mark(rel, 2, {"x": 0.1, "y": 0.1, "w": 0.2, "h": 0.05})["text"] == "Viola"
     with pytest.raises(LookupError):
         edition.read_page(rel, 9)
@@ -126,6 +131,37 @@ def test_the_server_reads_a_page_and_a_mark(edition, tmp_path):
         edition.read_mark(rel, 2, {"x": 0.1})
     with pytest.raises(ValueError):  # a 400, not "Claude couldn't read it"
         edition.read_mark(rel, 2, {"x": 0.1, "y": 0.1, "w": 0, "h": 0.05})
+
+
+def test_a_title_pages_lines_are_asked_once_and_widened(tmp_path):
+    r = fake_reader(tmp_path, {"lines": [{"text": " Quartettino ", "x0": 100, "y0": 200, "x1": 300, "y1": 250},
+                                         {"text": "", "x0": 5, "y0": 5, "x1": 5, "y1": 9}], "usage": USAGE})
+    a = r.lines("s.pdf", 1, page_image)
+    r.lines("s.pdf", 1, page_image)
+    assert len(r.ask.calls) == 1 and a["size"] == [400, 600]
+    assert "400 x 600 pixels" in r.ask.calls[0][0]
+    assert r.spent("s.pdf") == {"pages": 0, "titles": 1, "marks": 0, "dollars": 6.0}
+    # the editor's margin: 0.1 of the line's height (50 px) at the sides, 0.2 above and below; an empty box dropped
+    (b,) = reader.line_boxes(a)
+    assert b["text"] == "Quartettino"
+    assert (b["x"] * 400, b["y"] * 600, b["w"] * 400, b["h"] * 600) == pytest.approx((95, 190, 210, 70), abs=0.01)
+
+
+def test_lines_are_asked_only_on_a_title_page_and_a_failure_keeps_the_page(edition, tmp_path):
+    rel = "sources/G1/X_Y.pdf"
+    edition.reader = fake_reader(tmp_path, {"kind": "music", "part": "none", "evidence": "", "usage": USAGE})
+    assert "lines" not in edition.read_page(rel, 1) and len(edition.reader.ask.calls) == 1
+    calls = []
+
+    def ask(client, prompt, schema, image, max_tokens):
+        calls.append(prompt)
+        if schema is reader.LINES_SCHEMA:
+            raise ConnectionError("no network")
+        return {"kind": "title", "part": "vc", "evidence": "Basso", "usage": USAGE}
+    edition.reader.ask = ask
+    got = edition.read_page(rel, 3)
+    assert (got["kind"], got["part"]) == ("title", "vc") and "no network" in got["lines_error"]
+    assert len(calls) == 2
 
 
 def test_claudes_unchecked_readings_are_not_offered_as_the_editors(edition, tmp_path):
@@ -176,7 +212,7 @@ def test_text_auto_must_be_a_flag():
 
 # ------------------------------------------------------------------ the front end's use (node)
 
-def js(expr):
+def js(expr, extra=()):
     import re
     import shutil
     import subprocess
@@ -187,6 +223,7 @@ def js(expr):
     pick = lambda pat: re.search(pat, src, re.S).group(0)
     code = "\n".join([pick(r"const PART_NAMES = .*?;"), pick(r"const esc = .*?;\n"),
                       pick(r"function firstGuess\(.*?\n\}"), pick(r"function readingNote\(.*?\n\}"),
+                      *[pick(p) for p in extra],
                       f"console.log(JSON.stringify({expr}));"])
     return json.loads(subprocess.run(["node", "-e", code], capture_output=True, text=True, check=True).stdout)
 
@@ -217,3 +254,23 @@ def test_claudes_reading_shows_only_where_it_disagrees():
     assert "Viola" in note or "viola" in note.lower()
     assert "alto clef" in note
     assert "a title page" in js(f"readingNote({json.dumps(page)}, {{kind: 'title', part: 'none', evidence: ''}})")
+
+
+def test_a_new_title_page_gets_claudes_lines_as_proposed_marks():
+    lines = [{"x": 0.3, "y": 0.1, "w": 0.4, "h": 0.05, "text": "Quartettino"}, {"x": 0.3, "y": 0.3, "w": 0.2,
+                                                                                  "h": 0.05, "text": ""}]
+
+    def run(page):
+        setup = (f"globalThis.S = {{readonly: false, doc: {{pages: {{3: {json.dumps(page)}}}}}, "
+                 f"reads: {{3: {{lines: {json.dumps(lines)}}}}}}};")
+        return js(f"(() => {{ {setup} const added = proposeLines(3); return [added, S.doc.pages[3].marks]; }})()",
+                  extra=[r"function nextId\(.*?\n\}", r"function proposeLines\(.*?\n\}"])
+
+    new = {"status": "auto", "kind": "title", "systems": [], "marks": []}
+    added, marks = run(new)
+    assert added and [(m["id"], m["kind"], m["text"], m.get("text_auto")) for m in marks] == [
+        ("p3m1", "text", "Quartettino", True), ("p3m2", "text", "", None)]
+    assert marks[0]["x"] == 0.3
+    # not on a page the editor has touched, one already marked, or one that isn't a title page
+    for page in ({**new, "status": "edited"}, {**new, "marks": [{"id": "p3m1"}]}, {**new, "kind": "music"}):
+        assert run(page)[0] is False

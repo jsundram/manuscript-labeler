@@ -9,8 +9,10 @@
 Every reviewed title page, sent as the labeler sends a page (MAX_SIDE),
 asking for each line of writing: its box, in pixels of the image sent,
 and its text (the editor's convention: the copyist's spelling,
-abbreviations expanded). Each of the editor's marks is matched to the
-Claude box that overlaps it most (intersection over union, each box used
+abbreviations expanded); the labeler's prompt (reader.py). Claude's
+boxes are scored as the labeler proposes them, widened by the editor's
+usual margin (reader.LINE_PAD). Each of the editor's marks is matched to
+the Claude box that overlaps it most (intersection over union, each box used
 once); scored: how many are found (IoU at least 0.5, and at least 0.3),
 how far the matched boxes' edges are off, how many of Claude's boxes
 match none of the editor's, and whether a matched box's text is the
@@ -35,25 +37,9 @@ from pages import EFFORT, MAX_SIDE, MODEL, OUT, ask_all, cost, load, page_jpeg, 
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 import labels  # noqa: E402
-
-PROMPT = """This is a title page or cover from a scanned late-18th-century manuscript of a string quartet. The image is {w} x {h} pixels.
-
-Find each line of writing on it (a title, a date, a part's name, the composer's name, a dedication) and give its box in pixels of this image, drawn close around the ink: x0, y0 the top-left corner, x1, y1 the bottom-right. Skip library stamps, shelfmarks, and page or folio numbers.
-
-For each, transcribe the text as an editor would type it: the words in full, with the copyist's abbreviations expanded ("All.tto" is "Allegretto") and superscript letters joined, keeping the copyist's spelling, capitals and punctuation otherwise.
-"""
-SCHEMA = {
-    "type": "object",
-    "properties": {"lines": {"type": "array", "items": {
-        "type": "object",
-        "properties": {"text": {"type": "string"}, **{k: {"type": "integer"} for k in ("x0", "y0", "x1", "y1")}},
-        "required": ["text", "x0", "y0", "x1", "y1"],
-        "additionalProperties": False,
-    }}},
-    "required": ["lines"],
-    "additionalProperties": False,
-}
-
+from reader import LINES_PROMPT as PROMPT  # noqa: E402
+from reader import LINES_SCHEMA as SCHEMA  # noqa: E402
+from reader import line_boxes  # noqa: E402
 
 def iou(a, b) -> float:
     """Boxes as (x0, y0, x1, y1), page fractions."""
@@ -65,11 +51,10 @@ def iou(a, b) -> float:
     return inter / ((a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter)
 
 
-def claude_boxes(d: dict, size) -> list[tuple]:
-    """Claude's lines as ((x0, y0, x1, y1) page fractions, text)."""
-    w, h = size
-    return [((min(l["x0"], l["x1"]) / w, min(l["y0"], l["y1"]) / h, max(l["x0"], l["x1"]) / w,
-              max(l["y0"], l["y1"]) / h), l["text"]) for l in d["lines"]]
+def claude_boxes(d: dict) -> list[tuple]:
+    """Claude's lines as the labeler proposes them (widened by the editor's
+    margin): ((x0, y0, x1, y1) page fractions, text)."""
+    return [((b["x"], b["y"], b["x"] + b["w"], b["y"] + b["h"]), b["text"]) for b in line_boxes(d)]
 
 
 def match(editor: list[tuple], claude: list[tuple]) -> list[tuple]:
@@ -124,7 +109,7 @@ def main():
         rows.append(d)
         ed = [((m["x"], m["y"], m["x"] + m["w"], m["y"] + m["h"]), (m.get("text") or "").strip(), m["id"])
               for m in p.get("marks", [])]
-        cl = claude_boxes(d, d["size"])
+        cl = claude_boxes(d)
         pairs = match(ed, cl)
         total += len(ed)
         found5 += sum(v >= 0.5 for _, _, v in pairs)

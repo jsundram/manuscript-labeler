@@ -2,7 +2,9 @@
 proposals for the editor.
 
 A page: its kind (music, title, blank, other) and whose part it is, from a
-part name or the clefs. A mark: its text, following the copyist's
+part name or the clefs. A title page: each line of writing, its box and
+its text (61 of the editor's 65 boxes on the reviewed title pages found;
+experiments/llm/boxes.py). A mark: its text, following the copyist's
 spelling with abbreviations expanded, and preferring a text the editor
 has already typed when it says the same. The test on the reviewed pages
 (experiments/llm/README.md): kind right on 93 of 95 pages; a part, when
@@ -14,7 +16,7 @@ checked text in the edition, and the experiment only other sources').
 
 The API key is ML_API_KEY, from the environment or the labeler's .env
 (never ANTHROPIC_API_KEY, never printed); without one, reading is off.
-Each page's answer is cached by source, so a page is paid for once; each
+Each page's answers are cached by source, so a page is paid for once; each
 mark's reading is logged. Both carry their token counts, which give what
 was spent on each source.
 """
@@ -72,6 +74,27 @@ MARK_SCHEMA = {
     "additionalProperties": False,
 }
 
+LINES_PROMPT = """This is a title page or cover from a scanned late-18th-century manuscript of a string quartet. The image is {w} x {h} pixels.
+
+Find each line of writing on it (a title, a date, a part's name, the composer's name, a dedication) and give its box in pixels of this image, drawn close around the ink: x0, y0 the top-left corner, x1, y1 the bottom-right. Skip library stamps, shelfmarks, and page or folio numbers.
+
+For each, transcribe the text as an editor would type it: the words in full, with the copyist's abbreviations expanded ("All.tto" is "Allegretto") and superscript letters joined, keeping the copyist's spelling, capitals and punctuation otherwise.
+"""
+LINES_SCHEMA = {
+    "type": "object",
+    "properties": {"lines": {"type": "array", "items": {
+        "type": "object",
+        "properties": {"text": {"type": "string"}, **{k: {"type": "integer"} for k in ("x0", "y0", "x1", "y1")}},
+        "required": ["text", "x0", "y0", "x1", "y1"],
+        "additionalProperties": False,
+    }}},
+    "required": ["lines"],
+    "additionalProperties": False,
+}
+# Claude's boxes sit on the ink; the editor's leave about this much of the
+# line's height at the sides and above and below (medians, experiments/llm/boxes.py)
+LINE_PAD = (0.1, 0.2)
+
 
 def tag(*parts) -> str:
     """A short key for what was asked: answers to another prompt aren't reused."""
@@ -79,6 +102,7 @@ def tag(*parts) -> str:
 
 
 PAGE_TAG = tag(MODEL, EFFORT, MAX_SIDE, PAGE_PROMPT, json.dumps(PAGE_SCHEMA))  # = experiments/llm/pages.py's
+LINES_TAG = tag(MODEL, EFFORT, MAX_SIDE, LINES_PROMPT, json.dumps(LINES_SCHEMA))  # = boxes.py's
 
 
 def api_key(env_file: Path = ROOT / ".env") -> str | None:
@@ -127,6 +151,25 @@ def offered(known: list[str]) -> str:
 
 def mark_prompt(known: list[str]) -> str:
     return MARK_PROMPT + (KNOWN.format(texts="\n".join(known)) if known else "")
+
+
+def line_boxes(a: dict) -> list[dict]:
+    """A title page's lines (an answer to LINES_PROMPT, with the size of the
+    image sent) as marks' boxes, page fractions widened by LINE_PAD, and
+    their text."""
+    w, h = a["size"]
+    out = []
+    for ln in a["lines"]:
+        x0, x1 = sorted((ln["x0"], ln["x1"]))
+        y0, y1 = sorted((ln["y0"], ln["y1"]))
+        if x1 <= x0 or y1 <= y0:
+            continue
+        px, py = LINE_PAD[0] * (y1 - y0), LINE_PAD[1] * (y1 - y0)
+        x0, y0 = max(0, x0 - px) / w, max(0, y0 - py) / h
+        x1, y1 = min(w, x1 + px) / w, min(h, y1 + py) / h
+        out.append({"x": round(x0, 5), "y": round(y0, 5), "w": round(x1 - x0, 5), "h": round(y1 - y0, 5),
+                    "text": ln["text"].strip()})
+    return out
 
 
 def ask(client, prompt: str, schema: dict, image: bytes, max_tokens: int) -> dict:
@@ -205,26 +248,53 @@ class Reader:
     def _pages_file(self, source: str) -> Path:
         return self.folder(source) / f"pages-{PAGE_TAG}.json"
 
+    def _lines_file(self, source: str) -> Path:
+        return self.folder(source) / f"lines-{LINES_TAG}.json"
+
     def _marks_file(self, source: str) -> Path:
         return self.folder(source) / "marks.jsonl"
 
-    def cached_page(self, source: str, page: int) -> dict | None:
+    @staticmethod
+    def _cached(f: Path, page: int) -> dict | None:
         try:
-            return json.loads(self._pages_file(source).read_text()).get(str(page))
+            return json.loads(f.read_text()).get(str(page))
         except (OSError, ValueError):
             return None
 
+    def cached_page(self, source: str, page: int) -> dict | None:
+        return self._cached(self._pages_file(source), page)
+
+    def cached_lines(self, source: str, page: int) -> dict | None:
+        return self._cached(self._lines_file(source), page)
+
     def page(self, source: str, page: int, image) -> dict:
         """The page's kind and part: cached, else asked (image() makes the
-        page image). A page asked twice at once is paid for once. A refusal
-        or an unusable answer is cached too ({"error": ...}), so a page
-        isn't paid for again each time it's opened."""
-        hit = self.cached_page(source, page)
+        page image)."""
+        return self._asked(self._pages_file(source), page,
+                           lambda: (PAGE_PROMPT, PAGE_SCHEMA, page_jpeg(image()), 4000, {}))
+
+    def lines(self, source: str, page: int, image) -> dict:
+        """A title page's lines of writing, their boxes and text: cached,
+        else asked. The answer keeps the size of the image sent, which its
+        boxes are in pixels of (line_boxes makes them marks' boxes)."""
+        def request():
+            jpeg = page_jpeg(image())
+            w, h = Image.open(io.BytesIO(jpeg)).size
+            return LINES_PROMPT.format(w=w, h=h), LINES_SCHEMA, jpeg, 8000, {"size": [w, h]}
+        return self._asked(self._lines_file(source), page, request)
+
+    def _asked(self, f: Path, page: int, request) -> dict:
+        """The answer for `page` in cache file `f`, else asked: request()
+        gives (prompt, schema, image, max_tokens, what to keep with the
+        answer). A page asked twice at once is paid for once. A refusal or
+        an unusable answer is cached too ({"error": ...}), so a page isn't
+        paid for again each time it's opened."""
+        hit = self._cached(f, page)
         if hit:
             return hit
-        k = (source, page)
+        k = (f, page)
         with self.lock:
-            hit = self.cached_page(source, page)  # answered since the look above
+            hit = self._cached(f, page)  # answered since the look above
             if hit:
                 return hit
             fut = self.inflight.get(k)
@@ -234,9 +304,9 @@ class Reader:
         if not mine:
             return fut.result()
         try:
-            a = self.ask(self._client(), PAGE_PROMPT, PAGE_SCHEMA, page_jpeg(image()), 4000)
+            prompt, schema, jpeg, max_tokens, keep = request()
+            a = {**self.ask(self._client(), prompt, schema, jpeg, max_tokens), **keep}
             with self.lock:  # one writer at a time per cache file
-                f = self._pages_file(source)
                 try:
                     done = json.loads(f.read_text())
                 except (OSError, ValueError):
@@ -270,6 +340,10 @@ class Reader:
             pages = list(json.loads(self._pages_file(source).read_text()).values())
         except (OSError, ValueError):
             pages = []
+        try:
+            titles = list(json.loads(self._lines_file(source).read_text()).values())
+        except (OSError, ValueError):
+            titles = []
         marks = []
         try:
             for line in self._marks_file(source).read_text().splitlines():
@@ -279,4 +353,5 @@ class Reader:
                     pass  # a line cut off by a crash
         except OSError:
             pass
-        return {"pages": len(pages), "marks": len(marks), "dollars": round(dollars(pages + marks), 2)}
+        return {"pages": len(pages), "titles": len(titles), "marks": len(marks),
+                "dollars": round(dollars(pages + titles + marks), 2)}

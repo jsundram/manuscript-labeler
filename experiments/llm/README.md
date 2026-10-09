@@ -83,8 +83,10 @@ Claude's 13 boxes matching none: the other half of the Vma label (5),
 number, but it is on the page: fine to propose), the flourishes and the
 slips. Text of a found box: 49 of 58 as the editor typed it.
 
-So the labeler can propose these boxes on a page Claude calls a title
-page, widened by the editor's margin.
+So the labeler proposes these boxes on a page Claude calls a title page,
+widened by the editor's margin (reader.py; boxes.py now asks its prompt
+and scores the widened boxes): found 58 of 65 at 0.5, 62 at 0.3, edges
+off by a median 0.004 of the page's height.
 
 The labeler now asks these same prompts (reader.py; these scripts import
 them). The texts it offers differ: every checked text in the edition, this
