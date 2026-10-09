@@ -1,11 +1,55 @@
 # Bar-line bake-off: results
 
-Three rounds, newest first. 2026-10-07 teaches the line detector where
-staves start and end, and tries MUSCIMA++ pretraining and Zeus; 2026-10-06
+Four rounds, newest first. 2026-10-08 measures on pages no model saw and
+asks whether Detectron2 should join the vote; 2026-10-07 teaches the line
+detector where staves start and end, and tries MUSCIMA++ pretraining and
+Zeus; 2026-10-06
 adds a second source in two hands; 2026-10-05 is KHM 602/603 alone. Per-model detail,
 training curves and checkpoints: the model cards (static/models/, served
 by the labeler at /static/models/; written by cards.py). See README.md
 for the design.
+
+## Unseen pages, and a third detector in the vote (2026-10-08)
+
+Eight pages held out of every training corpus for good
+(test_pages.json): four of F-Pn Vma ms 1067 (2) (Op. 48/4; the copyist of
+Vma ms 1067 (1), which is trained on) and four of F-Po RES 507 (16) (the
+autograph, a hand no model saw), one per part; 61 staves, 372 bar lines.
+The editor labelled them after the production YOLO26n and YOLO11n
+(trained 2026-10-08 on all four reviewed sources, paper-wide lines, 25
+epochs) were installed, so detection proposed them as it does any page.
+
+**The editor's edits** (tools/edit_report.py): 92% (Vma (2)) and 90%
+(RES (16)) of bar lines kept as detected, 34 changed (moved, added, or
+kind and count edited), 3 deleted. Detection's staff ends against the
+editor's (within a staff space): left end 97% / 81%, music start 83% /
+45%, right end 100% / 87%; all 61 staves found, 4 extra. On the new hand
+the music start is where the editor's time goes.
+
+**Should Detectron2 vote?** Caching predictions ahead of time removes
+its cost at labelling time (1.2 s a line). Retrained on paper-wide
+lines with the eight pages held out (prod3; bar lines only, from the
+start/end tiles' bar-line boxes; 3000 iterations, 85 min on the GPU; 26
+errors on its 721 held-back bar lines), its predictions cached
+(--kind detectron2), and the labeler's detection run end to end on the
+eight pages with each set of voters (vote_eval.py; the learned filter
+trained afresh without the test pages):
+
+| voters | Vma ms 1067 (2) (141) | RES 507 (16) (231) |
+|---|---|---|
+| own + YOLO26n + YOLO11n, 2 of 3 (today) | 1 | 4 |
+| + Detectron2, 3 of 4 | 1 | 8 |
+| + Detectron2, 2 of 4 | 1 | 2 |
+| own + YOLO26n + Detectron2 | 1 | 5 |
+| own + YOLO11n + Detectron2 | 1 | 7 |
+
+Every error is a missed bar line. Today's vote already finds 99% of
+them; the best change saves 2 of 372, within noise, for 6.5 s a page of
+caching and a separately built environment. The vote stays as it is;
+D-FINE wasn't trained (the same ceiling). Worth trying again on harder
+pages (more of a new hand), where misses are more frequent. These pages
+were labelled from today's proposals, so one slightly off but within the
+tolerance counts as right: a little in today's favour.
 
 ## Staff ends and music starts, as detector classes (2026-10-07)
 
