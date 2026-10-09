@@ -50,6 +50,9 @@ re-runs detection on the page and keeps your edits.
   the server trains it in the background and uses it once ready.
 - `experiments/barlines/`: the bake-off that chose it (YOLO, D-FINE,
   Detectron2, MeasureDetector, rules, learned filter).
+- `crops.py`: crop edges (how far each staff's bar images reach above and
+  below it) learned from your reviewed crops, trained the same way;
+  `experiments/crops/evaluate.py` scores it against the rules.
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
 - `tools/score_barlines.py`: scores bar-line detection against your
   reviewed pages; run it before and after changing `detect.py`.
@@ -57,7 +60,7 @@ re-runs detection on the page and keeps your edits.
   reviewed page in an edition (`uv run tools/tune_barlines.py <edition>`).
 - `prototypes/`: scratch reading aids from the first hand transcription.
 
-Tests: `uv run --with pytest --with numpy --with pillow pytest tests`
+Tests: `uv run --with pytest --with numpy --with pillow --with scikit-learn pytest tests`
 
 ## License
 

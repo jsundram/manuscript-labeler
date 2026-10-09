@@ -36,6 +36,7 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 sys.path.insert(0, str(Path(__file__).parent))
+import crops  # noqa: E402
 import labels  # noqa: E402
 import structure  # noqa: E402
 
@@ -63,6 +64,11 @@ class Edition:
         self.model_state = "not trained"
         self.model_lock = threading.Lock()
         self.model_again = False
+        # the learned crop edges (crops.py): the same, from the reviewed crops
+        self.crop_model = None
+        self.crop_state = "not trained"
+        self.crop_lock = threading.Lock()
+        self.crop_again = False
 
     # -- paths ---------------------------------------------------------------
 
@@ -169,6 +175,7 @@ class Edition:
             "structure_offers": structure.offers(doc, stext) if not readonly else [],
             "labels_file": self.rel(lp),
             "barline_model": self.barline_state(),
+            "crop_model": self.crop_state,
         }
 
     # -- saving --------------------------------------------------------------
@@ -202,6 +209,8 @@ class Edition:
             # what the model learns from changed: retrain (in the background)
             if reviewed_truth(current) != reviewed_truth(data):
                 self.train_model()
+            if reviewed_crops(current) != reviewed_crops(data):
+                self.train_crops()
             # the movements it could now write to Structure.ily (a review may complete one)
             info = labels.source_info(rel, self.readme_rows())
             sp = labels.structure_path(self.root, info["display"].get("work", ""))
@@ -381,6 +390,11 @@ class Edition:
                     raise
                 print(f"cached predictions failed on {rel} p{page} ({'ends' if en else 'vote'}): "
                       f"{type(e).__name__}: {e}", flush=True)
+        if self.crop_model is not None:  # else crop_margins' rule
+            try:
+                crops.propose(detect._gray(img), systems, self.crop_model)
+            except Exception as e:
+                print(f"learned crops failed on {rel} p{page}: {type(e).__name__}: {e}", flush=True)
         return {"systems": systems, "corners": corners, "look": detect.page_look(img, corners)}
 
     def barline_state(self) -> str:
@@ -427,6 +441,52 @@ class Edition:
             finally:
                 self.model_lock.release()
         threading.Thread(target=go, daemon=True).start()
+
+    def train_crops(self):
+        """(Re)train the learned crop edges in the background, as train_model.
+        Until a model exists, detection's crops are crop_margins' rule."""
+        if not self.crop_lock.acquire(blocking=False):
+            self.crop_again = True
+            return
+
+        def go():
+            from PIL import Image
+
+            import detect
+
+            try:
+                while True:
+                    self.crop_again = False
+                    self.crop_state = "training"
+                    try:
+                        def gray(pdf, n):
+                            return detect._gray(Image.open(self.render(self.rel(pdf), n)))
+                        m = crops.load_or_train(self.root, self.cache, gray)
+                        self.crop_model = m
+                        self.crop_state = (f"learned from {m['pages']} reviewed pages ({m['sides']} crop edges)"
+                                           if m else "no reviewed crops yet: rules")
+                    except Exception as e:  # keep the last model, if any, else the rules
+                        self.crop_state = (f"retraining failed ({e}): the last model" if self.crop_model
+                                           else f"not trained ({e}): rules")
+                    print(f"crops: {self.crop_state}", flush=True)
+                    if not self.crop_again:
+                        break
+            finally:
+                self.crop_lock.release()
+        threading.Thread(target=go, daemon=True).start()
+
+
+def reviewed_crops(data: bytes | None):
+    """The parts of a labels file the crop model learns from (crops.truth):
+    each reviewed music page's staves and crops."""
+    if not data:
+        return None
+    try:
+        doc = json.loads(data)
+    except ValueError:
+        return None
+    return {n: crops.truth(p) for n, p in doc.get("pages", {}).items()
+            if p.get("status") == "reviewed" and p.get("kind") == "music"}
 
 
 def reviewed_truth(data: bytes | None):
@@ -590,6 +650,7 @@ def main():
     cache = Path(os.environ.get("MANUSCRIPT_LABELER_CACHE", Path.home() / ".cache" / "manuscript-labeler"))
     Handler.edition = Edition(args.edition, cache)
     Handler.edition.train_model()
+    Handler.edition.train_crops()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     url = f"http://127.0.0.1:{args.port}/"
     print(f"Labeling {Handler.edition.root} at {url}  (Ctrl-C to stop)")

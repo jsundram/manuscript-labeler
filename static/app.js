@@ -1205,6 +1205,7 @@ function renderMeta() {
     ['Online', d.online ? `<a href="${esc(d.online)}" target="_blank">${esc(d.online_label || 'link')}</a>` : esc(d.online_label || '')],
     ['Bars from', esc(S.info.structure || 'no Structure.ily found')],
     ['Bar lines', `${esc(S.info.barline_model || '')} · <a href="/static/models/index.html" target="_blank">model cards</a>`],
+    ['Crops', S.info.crop_model],
   ];
   $('#meta').innerHTML = '<dl>' + rows.filter((r) => r[1]).map(([k, v]) =>
     `<dt>${k}</dt><dd>${k === 'RISM' || k === 'Online' || k === 'Bars from' || k === 'Bar lines' ? v : esc(v)}</dd>`).join('') + '</dl>' +

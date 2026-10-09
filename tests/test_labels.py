@@ -1,4 +1,4 @@
-"""Run with: uv run --with pytest --with numpy --with pillow pytest tests"""
+"""Run with: uv run --with pytest --with numpy --with pillow --with scikit-learn pytest tests"""
 
 import json
 import sys

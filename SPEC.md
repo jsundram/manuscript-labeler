@@ -147,6 +147,11 @@ The server reads these, if present:
   `s` repeats the last duration, and text in markings is ignored. In the labels the matching upbeats have `bar_count`
   0, a short bar 1. Time changes, alternative endings, block comments and
   `\repeat unfold` are handled.
+- **Labeler settings:** `sources/labeler.json`. For now one:
+  `{"older_crops": ["D-B_KHM-602", ...]}`, sources (PDF names without
+  `.pdf`) labelled before the editor's crop standard settled: the crop
+  model learns only the crops the editor changed there, not those
+  accepted as proposed (crops.py).
 
 Example source: `sources/G226/D-B_KHM-602.pdf`, Berlin, Staatsbibliothek,
 KHM 602, RISM 1001015844. It is a set of parts, 17 pages:
@@ -461,7 +466,9 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
     clef's ink left (up to 4 spaces past the ruled lines) plus half a
     space: within a space of the editor's on 80% of staves (was 56%).
   - The editor set crops of 3-7 spaces above (usually 3.5-4.5) and 2-6
-    below, against a fixed default of 2.5. Now each staff's crop reaches
+    below, against a fixed default of 2.5. (Since 2026-10-09 a learned
+    model chooses the edges once trained; this rule is its fallback and
+    one of its features: see "Learned crop edges".) Now each staff's crop reaches
     its own outermost ink (ledger notes, slurs, dynamics, text) plus one
     space, stopping at a clear staff space or where the space shared with
     the next staff is emptiest. Off by about half a space on average
@@ -570,6 +577,33 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   signs (labelled a double bar on KHM 602 cello II bar 8, single on Vma
   ms 1067 (1) cello I 118 and II 44) and one movement end (KHM 603
   violin II, II 60, the part's last bar).
+- **Learned crop edges** (2026-10-09; crops.py, experiments/crops). What
+  a crop should hold (the editor): first, everything needed to read the
+  music on its staff and nothing that could confuse (a stray dynamic,
+  another staff's markings); then, as little as possible, for the
+  synoptic score. On 507 reviewed staves, crop_margins' edge was within
+  half a space of the editor's 70% (above) / 68% (below) of the time,
+  too wide 21% / 15%. A third of the editor's crops equal it exactly:
+  accepted as proposed. And the standard tightened over time: the newest
+  pages leave out a movement's title, an empty ruled staff, and a
+  floating dynamic above the staff (the copyists write dynamics under
+  the staff they belong to, so one above belongs to the staff above),
+  where older crops kept them. So a model chooses among candidate edges
+  every quarter space, by the ink each keeps and cuts and whose it is
+  (blobs reaching into this staff, into the neighbour, or floating,
+  given to the nearer), with crop_margins' edge as a feature; it learns
+  from the newest crops (weighed 3x) and the older ones the editor
+  changed. Leaving each source out: all staves 72% / 77% within half a
+  space (too wide 12% / 7%); the newest pages (the 8 test pages) above
+  64% -> 66%, below 72% -> 84%. Tried and dropped: a rule (own ink's
+  reach plus a margin: 43% on the newest), weighing the newest crops
+  like the rest (newest above 57%), learning only from changed crops
+  (59%), and flagging
+  close calls (the model's least sure picks were no likelier wrong). It
+  retrains as pages are reviewed, so the newest standard gains weight;
+  what it misses is mostly above the staff (titles, the staff above's
+  dynamics). Erasing ruled lines must spare strokes crossing them, or a
+  stem's outer half looks like a floating mark.
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet
