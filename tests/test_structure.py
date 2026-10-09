@@ -99,6 +99,13 @@ def test_only_the_template_is_replaced():
     # the labeler proposes nothing from a template's one-bar blocks
     assert structure.expected(TEMPLATE)["I"]["template"]
     assert not structure.expected(r"\tag #'mvtI { \time 2/4 s2*40 }")["I"]["template"]
+    # the template's Minuet and Trio, with its "da capo" mark (Op48-4, as new-quartet.sh copies it)
+    minuet = r"""\tag #'mvtII { \time 3/4 \tempo "Minuetto" \repeat volta 2 { s2.*1 } \key c \minor \tempo "Trio"
+      \repeat volta 2 { s2.*1 }
+      \once \override Score.RehearsalMark.break-visibility = #end-of-line-visible
+      \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+      \mark \markup { \italic "Minuetto da capo" } }"""
+    assert structure.is_template(minuet, "II")
 
 
 def test_parts_that_differ_are_named_and_nothing_is_offered():
