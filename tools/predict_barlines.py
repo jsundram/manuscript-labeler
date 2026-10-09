@@ -5,12 +5,18 @@
 """Bar-line detectors' predictions for every page of an edition, cached for
 the labeler (which votes them with its learned filter when present).
 
-    uv run tools/predict_barlines.py <edition-repo> [--install NAME WEIGHTS THRESHOLD] [--notes TEXT] [--retry]
+    uv run tools/predict_barlines.py <edition-repo> [--install NAME WEIGHTS THRESHOLD] [--notes TEXT] [--retry] [--only SOURCE]
+    uv run --with "transformers>=4.52" --with timm --with scipy tools/predict_barlines.py <edition-repo> --kind dfine ...
+    <detectron2 venv>/bin/python tools/predict_barlines.py <edition-repo> --kind detectron2 ...
 
-Detectors live in the cache (~/.cache/manuscript-labeler/models/detectors/
-<name>/: best.pt and manifest.json, written by --install, which copies the
-weights in and records where they came from and the confidence threshold
-they chose on their validation lines).
+Each run predicts with the installed detectors of one kind (--kind: yolo,
+the default; dfine; detectron2, which has no Mac wheels and runs in a venv
+built for it, see experiments/barlines/run_detectron2.py). Detectors live
+in the cache (~/.cache/manuscript-labeler/models/detectors/<name>/: its
+weights, best.pt, model.pth or D-FINE's model/ folder, and manifest.json,
+written by --install, which copies the weights in and records their kind,
+where they came from and the confidence threshold they chose on their
+validation lines).
 
 For each page: the staves as the labeler detects them (detect.detect_page,
 on the server's renders), each cut out straightened across the paper's
@@ -48,7 +54,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 sys.path[:0] = [str(ROOT), str(ROOT / "experiments" / "barlines")]
 import detect  # noqa: E402
-from common import read_line, yolo_tile  # noqa: E402
+from common import detectron2_tile, dfine_tile, read_line, yolo_tile  # noqa: E402
 from corpus import paper_band  # noqa: E402
 from detections import cache_dir, cache_file, detectors, pdf_identity  # noqa: E402
 
@@ -71,15 +77,52 @@ def cached(s: dict, reading: tuple, x_off: float, w: int) -> dict:
     return out
 
 
-def install(name: str, weights: Path, threshold: float, notes: str):
+KINDS = {"yolo": "best.pt", "detectron2": "model.pth", "dfine": "model"}  # kind: its weights in the cache
+
+
+def install(name: str, weights: Path, threshold: float, notes: str, kind: str = "yolo"):
+    """Copy a detector's weights (a file, or D-FINE's folder) into the cache,
+    with a manifest naming its kind, threshold and where it came from."""
     d = cache_dir() / "models" / "detectors" / name
     d.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(weights, d / "best.pt")
-    sha = hashlib.sha1((d / "best.pt").read_bytes()).hexdigest()[:16]
+    dest = d / KINDS[kind]
+    h = hashlib.sha1()
+    if weights.is_dir():
+        if dest.exists():
+            shutil.rmtree(dest)
+        shutil.copytree(weights, dest)
+        for f in sorted(dest.rglob("*")):
+            if f.is_file():
+                h.update(f.name.encode() + f.read_bytes())
+    else:
+        shutil.copy2(weights, dest)
+        h.update(dest.read_bytes())
+    sha = h.hexdigest()[:16]
     (d / "manifest.json").write_text(json.dumps({
-        "name": name, "kind": "yolo", "threshold": threshold, "sha": sha, "source": str(weights),
-        "installed": date.today().isoformat(), "notes": notes}, indent=1))
-    print(f"installed {name} ({sha}), threshold {threshold}")
+        "name": name, "kind": kind, "weights_file": KINDS[kind], "threshold": threshold, "sha": sha,
+        "source": str(weights), "installed": date.today().isoformat(), "notes": notes}, indent=1))
+    print(f"installed {name} ({kind}, {sha}), threshold {threshold}")
+
+
+def tile_function(d: dict, device: str):
+    """A detector as read_line's predict_tile: [(cls, x0, x1, conf)] per tile
+    (the loaders shared with the experiments, common.py). Detectron2 and
+    D-FINE detect bar lines only (class 0)."""
+    kind = d.get("kind", "yolo")
+    if kind == "yolo":
+        from ultralytics import YOLO
+        return yolo_tile(YOLO(str(d["weights"])), device, MIN_CONF)
+    if kind == "detectron2":
+        return detectron2_tile(d["weights"], device, MIN_CONF)
+    if kind == "dfine":
+        return dfine_tile(d["weights"], device, MIN_CONF)
+    raise ValueError(f"{d['name']}: unknown kind {kind!r}")
+
+
+def weights_kind(weights: Path) -> str:
+    """What a detector's weights are, from their form: D-FINE's a folder,
+    Detectron2's a .pth, YOLO's a .pt."""
+    return "dfine" if weights.is_dir() else "detectron2" if weights.suffix == ".pth" else "yolo"
 
 
 def main():
@@ -89,24 +132,30 @@ def main():
                     help="copy a trained detector into the cache first")
     ap.add_argument("--notes", default="", help="with --install: where the weights came from")
     ap.add_argument("--retry", action="store_true", help="predict pages that failed before again")
+    ap.add_argument("--kind", choices=sorted(KINDS), default="yolo",
+                    help="the kind of detector to install and run (each in its own environment: yolo with uv, "
+                         "detectron2 in its source-built venv, dfine with transformers)")
+    ap.add_argument("--only", action="append", default=[], metavar="SOURCE",
+                    help="predict only this source (the PDF's name without .pdf); repeatable")
     args = ap.parse_args()
     for name, weights, th in args.install or []:
-        install(name, Path(weights), float(th), args.notes)
+        if weights_kind(Path(weights)) != args.kind:  # a mismatch would break every later run of this kind
+            sys.exit(f"{weights} looks like {weights_kind(Path(weights))} weights, not {args.kind}: give --kind")
+        install(name, Path(weights), float(th), args.notes, args.kind)
 
     import server
     import torch
-    from ultralytics import YOLO
 
-    dets = detectors()
+    dets = [d for d in detectors() if d.get("kind", "yolo") == args.kind]
     if not dets:
-        sys.exit("no detectors installed (--install NAME WEIGHTS THRESHOLD)")
+        sys.exit(f"no {args.kind} detectors installed (--install NAME WEIGHTS THRESHOLD --kind {args.kind})")
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-    models = []
-    for d in dets:
-        models.append((d, yolo_tile(YOLO(str(d["weights"])), device, MIN_CONF)))
+    models = [(d, tile_function(d, device)) for d in dets]
     ed = server.Edition(args.edition, cache_dir())
     print(f"detectors {', '.join(d['key'] for d in dets)} on {device}")
     for pdf in sorted(args.edition.glob("sources/**/*.pdf")):
+        if args.only and pdf.stem not in args.only:
+            continue
         rel = str(pdf.relative_to(args.edition))
         ident = pdf_identity(pdf)
         lp = pdf.with_name(pdf.name.replace(".pdf", ".labels.json"))

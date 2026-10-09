@@ -1,6 +1,7 @@
 """Bar-line detectors' cached predictions, and the vote that uses them.
 
-tools/predict_barlines.py runs the installed detectors (YOLO) on every page
+tools/predict_barlines.py runs the installed detectors (YOLO; Detectron2 and
+D-FINE can be installed too) on every page
 ahead of time and writes their predictions to the cache; detection in the
 labeler (detect.detect_page, `vote`) then votes them with its own bar lines
 (the learned filter's, or the hand-tuned rules' before any page is
@@ -12,7 +13,8 @@ for a page, detection is unchanged. Measured end to end in experiments/barlines
 familiar hands and cuts them by about three-quarters on a new copy.
 
 Cache layout (under ~/.cache/manuscript-labeler or $MANUSCRIPT_LABELER_CACHE):
-  models/detectors/<name>/best.pt, manifest.json   {name, sha, threshold, ...}
+  models/detectors/<name>/<weights>, manifest.json {name, kind, weights_file, sha, threshold, ...}
+    (weights: best.pt for YOLO, model.pth for Detectron2, model/ for D-FINE)
   detections/<key>/<edition>/<pdf path>.json       one detector, one PDF
 where <key> names the detector, its weights and threshold, and VERSION.
 """
@@ -29,6 +31,8 @@ TOLERANCE = 0.006  # page widths: proposals this close are one bar line (as the 
 REACH = 1.0       # staff spaces past a staff's right end a detector's bar line may be
                   # (none before its left end: a bar line doesn't precede the clef)
 MATCH = 0.015     # page heights: a cached staff and a detected one this close are the same
+VOTE_NEED = None  # voters that must propose a bar line; None: a majority of a staff's voters
+                  # (experiments/barlines/vote_eval.py sets others to compare)
 ENDS_CONF = 0.25  # a detector's start or end box this sure sets a staff's ends
 
 
@@ -44,7 +48,7 @@ def detectors(cache: Path | None = None) -> list[dict]:
             d = json.loads(m.read_text())
         except (ValueError, OSError):
             continue
-        d["weights"] = m.parent / "best.pt"
+        d["weights"] = m.parent / d.get("weights_file", "best.pt")  # a file, or D-FINE's folder
         d["key"] = f"{d['name']}-{d['sha'][:8]}-t{d['threshold']}-v{VERSION}"
         out.append(d)
     return out
@@ -133,7 +137,9 @@ def make_vote(preds: list[tuple[dict, list]], w: int, h: int):
     (position, lean and kind) if one is within the tolerance, each used
     once; otherwise it's fitted to the stroke (detect.snap_barline), or
     upright where there's none, and dropped if it lands on one already
-    kept."""
+    kept. A bar line needs VOTE_NEED voters, or a majority of the staff's
+    (worked out per staff: a staff a detector has no staff at counts one
+    voter fewer)."""
     import detect
 
     tol = TOLERANCE * w
@@ -152,7 +158,7 @@ def make_vote(preds: list[tuple[dict, list]], w: int, h: int):
         if len(voters) < 3:
             return bars
         out, used = [], set()
-        for x in vote(voters, tol, len(voters) // 2 + 1):
+        for x in vote(voters, tol, min(VOTE_NEED, len(voters)) if VOTE_NEED else len(voters) // 2 + 1):
             mine = [(abs(mid(b) - x), i) for i, b in enumerate(bars) if i not in used and abs(mid(b) - x) <= tol]
             if mine:
                 i = min(mine)[1]

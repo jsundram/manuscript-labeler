@@ -68,6 +68,48 @@ def yolo_tile(model, device: str, conf: float = 0.05):
     return tile
 
 
+def detectron2_tile(weights, device: str, conf: float = 0.05):
+    """A Detectron2 Faster R-CNN, as run_detectron2.py trains it (bar lines
+    only), as read_line's predict_tile: [(0, x0, x1, conf)]."""
+    import numpy as np
+    from detectron2 import model_zoo
+    from detectron2.config import get_cfg
+    from detectron2.engine import DefaultPredictor
+    cfg = get_cfg()
+    cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
+    cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
+    cfg.MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[2.0, 4.0, 8.0]]  # tall, thin bar lines (as trained)
+    cfg.INPUT.MIN_SIZE_TEST, cfg.INPUT.MAX_SIZE_TEST = 192, 640
+    cfg.MODEL.DEVICE = device
+    cfg.MODEL.WEIGHTS = str(weights)
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = conf
+    pred = DefaultPredictor(cfg)
+
+    def tile(t):
+        inst = pred(np.asarray(t)[:, :, ::-1])["instances"].to("cpu")
+        return [(0, float(b[0]), float(b[2]), float(c)) for b, c in zip(inst.pred_boxes.tensor.numpy(), inst.scores.numpy())]
+    return tile
+
+
+def dfine_tile(weights, device: str, conf: float = 0.05):
+    """A D-FINE model, as run_dfine.py trains it (bar lines only), as
+    read_line's predict_tile: [(0, x0, x1, conf)]."""
+    import torch
+    from transformers import AutoImageProcessor, DFineForObjectDetection
+
+    import dfine_patch  # noqa: F401  (the Mac GPU workaround)
+    proc = AutoImageProcessor.from_pretrained("ustc-community/dfine-small-coco")
+    m = DFineForObjectDetection.from_pretrained(weights).to(device).eval()
+
+    def tile(t):
+        with torch.no_grad():
+            enc = proc(images=t, return_tensors="pt", size={"height": 192, "width": 640})
+            o = m(pixel_values=enc["pixel_values"].to(device))
+        r = proc.post_process_object_detection(o, threshold=conf, target_sizes=[(t.height, t.width)])[0]
+        return [(0, float(b[0]), float(b[2]), float(c)) for b, c in zip(r["boxes"].tolist(), r["scores"].tolist())]
+    return tile
+
+
 def read_line(img: Image.Image, space: float, predict_tile) -> tuple[list, tuple | None, tuple | None]:
     """A line detector's whole reading of one straightened line: its bar
     lines [(x, conf)] (as detect_line), its surest "start" box (x0, x1,

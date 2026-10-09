@@ -9,6 +9,7 @@ Starts from COCO-pretrained weights from the model zoo.
 """
 
 import argparse
+import json
 import sys
 import time
 from pathlib import Path
@@ -32,16 +33,28 @@ def main():
     from detectron2.engine import DefaultPredictor, DefaultTrainer
 
     tiles = args.corpus / "tiles"
-    if len(tile_classes(args.corpus)) > 1:
-        raise SystemExit("these tiles also hold start and end boxes (corpus.py --paper): "
-                         "run_detectron2 is set up for bar lines only; build the tiles without --paper")
+    runs = args.corpus / "runs"
+    runs.mkdir(parents=True, exist_ok=True)
+    landmarks = len(tile_classes(args.corpus)) > 1
     for split in ("train", "val"):
-        register_coco_instances(f"bl_{split}", {}, str(tiles / "coco" / f"{split}.json"), str(tiles / "yolo" / "images" / split))
+        ann = tiles / "coco" / f"{split}.json"
+        if landmarks:
+            # tiles with the staff's start and end too (corpus.py --paper): this
+            # detector learns bar lines only, from a copy of the annotations
+            # holding just those (category 1), the same images
+            c = json.loads(ann.read_text())
+            c["annotations"] = [a for a in c["annotations"] if a["category_id"] == 1]
+            c["categories"] = [k for k in c["categories"] if k["id"] == 1]
+            ann = runs / f"detectron2-barlines-{split}.json"
+            ann.write_text(json.dumps(c))
+        register_coco_instances(f"bl_{split}", {}, str(ann), str(tiles / "yolo" / "images" / split))
 
     cfg = get_cfg()
     cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
     cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
     cfg.DATASETS.TRAIN, cfg.DATASETS.TEST = ("bl_train",), ()
+    # tiles with no bar line (a clef, a margin) teach where there is none: keep them
+    cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS = False
     cfg.DATALOADER.NUM_WORKERS = 2
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
     cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 128
@@ -56,7 +69,7 @@ def main():
     cfg.SOLVER.STEPS = (int(args.iters * 0.7), int(args.iters * 0.9))
     cfg.SOLVER.CHECKPOINT_PERIOD = 500  # survive an interrupted run
     cfg.MODEL.DEVICE = args.device
-    cfg.OUTPUT_DIR = str(args.corpus / "runs" / "detectron2")
+    cfg.OUTPUT_DIR = str(runs / "detectron2")
     Path(cfg.OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
 
     t0 = time.perf_counter()

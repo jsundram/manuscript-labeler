@@ -35,7 +35,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from cards import HANDS, hand  # noqa: E402
-from common import cumulative_times, lines, run as run_lines  # noqa: E402
+from common import cumulative_times, detectron2_tile, dfine_tile, lines, run as run_lines  # noqa: E402
 
 IMG = HERE.parent.parent / "static" / "models" / "img"
 THRESHOLDS = [i / 20 for i in range(1, 20)]
@@ -133,34 +133,18 @@ def mlx_checkpoints(run: Path):
 
 
 def dfine_checkpoints(run: Path):
-    import torch
-    from transformers import AutoImageProcessor, DFineForObjectDetection
-
-    import dfine_patch  # noqa: F401
     rows = list(csv.DictReader(open(run / "log.csv")))
     minutes = {int(float(r["epoch"])): float(r["time"]) / 60 for r in rows}
     cks = sorted((p for p in run.glob("epoch*") if p.is_dir()), key=lambda p: int(re.findall(r"\d+", p.name)[0]))
     out = [(f"epoch {int(re.findall(r'\d+', p.name)[0])}", minutes.get(int(re.findall(r"\d+", p.name)[0]), 0.0), p) for p in cks]
-    proc = AutoImageProcessor.from_pretrained("ustc-community/dfine-small-coco")
-    size = {"height": 192, "width": 640}
 
     def detector(p):
-        m = DFineForObjectDetection.from_pretrained(p).to("mps").eval()
-
-        def tile(t):
-            with torch.no_grad():
-                enc = proc(images=t, return_tensors="pt", size=size)
-                o = m(pixel_values=enc["pixel_values"].to("mps"))
-            r = proc.post_process_object_detection(o, threshold=0.05, target_sizes=[(t.height, t.width)])[0]
-            return [(float((b[0] + b[2]) / 2), float(sc)) for b, sc in zip(r["boxes"].tolist(), r["scores"].tolist())]
-        return tile
+        tile = dfine_tile(p, "mps")
+        return lambda t: [((x0 + x1) / 2, c) for _, x0, x1, c in tile(t)]
     return out, detector
 
 
 def detectron2_checkpoints(run: Path):
-    from detectron2 import model_zoo
-    from detectron2.config import get_cfg
-    from detectron2.engine import DefaultPredictor
     recs = [json.loads(x) for x in (run / "metrics.json").read_text().splitlines() if x.strip()]
     sec = {r["iteration"]: r["iteration"] * r.get("time", 0) for r in recs if "time" in r}
     cks = sorted(run.glob("model_0*.pth"))
@@ -171,20 +155,8 @@ def detectron2_checkpoints(run: Path):
         out.append((f"iteration {it + 1}", sec[near] / 60, p))
 
     def detector(p):
-        cfg = get_cfg()
-        cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
-        cfg.MODEL.ROI_HEADS.NUM_CLASSES = 1
-        cfg.MODEL.ANCHOR_GENERATOR.ASPECT_RATIOS = [[2.0, 4.0, 8.0]]
-        cfg.INPUT.MIN_SIZE_TEST, cfg.INPUT.MAX_SIZE_TEST = 192, 640
-        cfg.MODEL.DEVICE = "mps"
-        cfg.MODEL.WEIGHTS = str(p)
-        cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.05
-        pred = DefaultPredictor(cfg)
-
-        def tile(t):
-            inst = pred(np.asarray(t)[:, :, ::-1])["instances"].to("cpu")
-            return [(float((b[0] + b[2]) / 2), float(s)) for b, s in zip(inst.pred_boxes.tensor.numpy(), inst.scores.numpy())]
-        return tile
+        tile = detectron2_tile(p, "mps")
+        return lambda t: [((x0 + x1) / 2, c) for _, x0, x1, c in tile(t)]
     return out, detector
 
 
