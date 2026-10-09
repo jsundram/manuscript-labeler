@@ -8,7 +8,7 @@ modestly; the labeler uses it (`crops.py`, which documents the method).
 
 trains `crops.py`'s model leaving out one source at a time and scores
 each side's edge against the editor's: within half a staff space, too
-tight, too wide. `--older` (else the edition's `sources/labeler.json`)
+tight, too wide. `--older` (else `crops.OLDER_CROPS`)
 names the sources whose crops predate the editor's current standard.
 
 ## Results (2026-10-09)

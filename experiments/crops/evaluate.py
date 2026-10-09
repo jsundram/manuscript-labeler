@@ -9,7 +9,7 @@ scored on the editor's reviewed crops, leaving out one source at a time.
 
 Every staff on a reviewed page whose crop the editor set, each side:
 the labeler's model trained on every other source (as crops.train would,
-older sources as in the edition's sources/labeler.json unless --older
+older sources as crops.OLDER_CROPS lists them unless --older
 names them) picks an edge, scored against the editor's: within half a
 staff space, too tight (more than half a space inside it) or too wide.
 By source, over all, and on the held-out test pages
@@ -64,7 +64,7 @@ def main():
     ap.add_argument("edition", type=Path)
     ap.add_argument("--older", help="comma-separated sources whose accepted crops aren't learned from")
     a = ap.parse_args()
-    older = set(a.older.split(",")) if a.older else crops.older_sources(a.edition)
+    older = set(a.older.split(",")) if a.older else crops.OLDER_CROPS
     test = json.loads((ROOT / "experiments" / "barlines" / "test_pages.json").read_text())["pages"]
     ex = []
     with tempfile.TemporaryDirectory() as tmp:

@@ -86,15 +86,6 @@ def test_it_learns_an_edge_and_proposes_it():
         assert abs(s["above"] - 2.25) <= 0.25 and abs(s["below"] - 2.25) <= 0.25
 
 
-def test_older_sources_come_from_the_editions_settings(tmp_path):
-    assert crops.older_sources(tmp_path) == set()
-    (tmp_path / "sources").mkdir()
-    (tmp_path / crops.SETTINGS).write_text(json.dumps({"older_crops": ["D-B_KHM-602"]}))
-    assert crops.older_sources(tmp_path) == {"D-B_KHM-602"}
-    (tmp_path / crops.SETTINGS).write_text("not json")
-    assert crops.older_sources(tmp_path) == set()
-
-
 def test_a_page_without_staves_or_bar_lines_doesnt_stop_a_save():
     import server
     data = json.dumps({"pages": {"1": {"status": "reviewed", "kind": "music"},

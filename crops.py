@@ -24,9 +24,9 @@ from the editor's edge, and a side's crop is its nearest.
 
 Which crops to learn from: the editor's standard tightened over time, and
 crops accepted as proposed in early sources often reach into an empty
-staff or over a movement title. The edition can list those sources in
-sources/labeler.json, {"older_crops": ["D-B_KHM-602", ...]} (PDF names
-without .pdf): there only the crops the editor changed are learned from.
+staff or over a movement title. OLDER_CROPS lists those sources (PDF
+names without .pdf): there only the crops the editor changed are learned
+from.
 Every other source's crops count NEW_WEIGHT times.
 
 Measured (experiments/crops, leaving each source out in turn; 507
@@ -58,7 +58,8 @@ STEP = 0.25         # between candidates: the editor's grid
 LINE = 0.2          # staff spaces either side of a ruled line taken out
 RULED = 0.4         # a row this inked across is a ruled line (or the scan's edge)
 NEW_WEIGHT = 3.0    # a crop from a source not listed as older, against an older one the editor changed
-SETTINGS = "sources/labeler.json"
+# Sources labelled before the editor's crop standard settled (the editor's list)
+OLDER_CROPS = frozenset({"D-B_KHM-602", "D-B_KHM-603", "F-Po_RES-507-14", "F-Pn_Vma-ms-1067-1"})
 
 R = ROWS_PER_SPACE
 Q0 = (BAND + 4) * R  # the outer line's row in an oriented band
@@ -261,15 +262,6 @@ def propose(g: np.ndarray, systems: list[dict], model: dict) -> None:
 
 # -- training --------------------------------------------------------------------
 
-def older_sources(edition: Path) -> set[str]:
-    """Sources whose crops predate the editor's standard (SETTINGS)."""
-    p = edition / SETTINGS
-    try:
-        return set(json.loads(p.read_text()).get("older_crops", [])) if p.exists() else set()
-    except (ValueError, OSError, AttributeError):
-        return set()
-
-
 def reviewed_pages(edition: Path) -> list[tuple[Path, int, dict]]:
     """(pdf, page number, labels page) for every reviewed music page with a
     staff whose crop the editor set."""
@@ -303,7 +295,7 @@ def key(pages: list, older: set) -> str:
 def examples(g: np.ndarray, page: dict, old: bool) -> list[dict]:
     """Each side of each staff on a reviewed page whose crop the editor set:
     its candidates, features, the editor's edge, today's, and whether and
-    how much the model learns from it. On an older source (older_sources)
+    how much the model learns from it. On an older source (OLDER_CROPS)
     only the sides the editor changed from today's rule are learned from;
     elsewhere every one, weighing NEW_WEIGHT. "Accepted as proposed" is
     today's rule recomputed on the editor's staves, which detection ran on
@@ -355,7 +347,7 @@ def load_or_train(edition: Path, cache: Path, gray) -> dict | None:
     pages = reviewed_pages(edition)
     if not pages:
         return None
-    older = older_sources(edition)
+    older = OLDER_CROPS
     path = cache / "models" / f"crops-{key(pages, older)}.pkl"
     if path.exists():
         try:

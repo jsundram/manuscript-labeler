@@ -147,11 +147,10 @@ The server reads these, if present:
   `s` repeats the last duration, and text in markings is ignored. In the labels the matching upbeats have `bar_count`
   0, a short bar 1. Time changes, alternative endings, block comments and
   `\repeat unfold` are handled.
-- **Labeler settings:** `sources/labeler.json`. For now one:
-  `{"older_crops": ["D-B_KHM-602", ...]}`, sources (PDF names without
-  `.pdf`) labelled before the editor's crop standard settled: the crop
-  model learns only the crops the editor changed there, not those
-  accepted as proposed (crops.py).
+- **Older crops:** `crops.OLDER_CROPS` lists the sources (PDF names
+  without `.pdf`) labelled before the editor's crop standard settled: the
+  crop model learns only the crops the editor changed there, not those
+  accepted as proposed.
 
 Example source: `sources/G226/D-B_KHM-602.pdf`, Berlin, Staatsbibliothek,
 KHM 602, RISM 1001015844. It is a set of parts, 17 pages:
