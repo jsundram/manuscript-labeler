@@ -154,7 +154,7 @@ class Edition:
             doc = labels.new_doc(info["source"])
         sp = labels.structure_path(self.root, info["display"].get("work", ""))
         stext = sp.read_text() if sp else None
-        expected = labels.parse_structure(stext) if sp else {}
+        expected = structure.expected(stext) if sp else {}
         return {
             "pdf": rel,
             "labels": doc,
@@ -256,7 +256,7 @@ class Edition:
             d.mkdir(parents=True, exist_ok=True)
             (d / time.strftime("%Y%m%d-%H%M%S.ily")).write_text(old)
             atomic_write(sp, new.encode())
-            return {"etag": hashlib.sha1(new.encode()).hexdigest(), "expected": labels.parse_structure(new),
+            return {"etag": hashlib.sha1(new.encode()).hexdigest(), "expected": structure.expected(new),
                     "offers": structure.offers(info["labels"], new)}
 
     def backup(self, lp: Path, data: bytes):

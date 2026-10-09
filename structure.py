@@ -310,6 +310,15 @@ def is_template(text: str, movement: str) -> bool:
     return not rest.strip() and bool(re.search(r"s\d+\.*\s*\*\s*1(?![\d/])", body))
 
 
+def expected(text: str) -> dict[str, dict]:
+    """Each movement as labels.parse_structure reads it, flagged `template`
+    while it has no real block: the labeler proposes nothing from those."""
+    out = labels.parse_structure(text)
+    for m, e in out.items():
+        e["template"] = is_template(text, m)
+    return out
+
+
 def offers(doc: dict, text: str | None) -> list[str]:
     """Movements this source could write: complete in every part, and
     still the template (or missing) in Structure.ily."""

@@ -293,6 +293,19 @@ tempo, bar counts and repeats, shared by every source of the work.
    the defaults for a movement's first line (after what another part of
    the same source states), written into the labels when a page is
    marked reviewed.
+4. It also proposes what it knows about bar lines, as bars are numbered:
+   on bar lines detection placed and the editor hasn't touched, on pages
+   not yet reviewed, the movement's pickup and the upbeat after a section
+   that ends mid-bar (`bar_count` 0), the repeat signs where sections end
+   (`repeat_both` between two repeated sections, `repeat_end` before a
+   heading such as "Trio", whose opening sign stands at a line's start),
+   and `ends_movement` at the movement's last bar. Numbered as they go,
+   they follow the editor's fixes: adding a missed bar line moves the
+   repeat after it along. Detection proposes only single and double bar
+   lines, so a repeat on an untouched bar line is the proposal's, taken
+   back (to single) where the numbering no longer puts it. Bar line
+   positions are never steered by it. Movements still the template's
+   propose nothing (the server flags them `template`).
 
 ## Interface to the synoptic build (the contract)
 
@@ -546,6 +559,17 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   copy), music starts 44% to 81% and 81% to 86%; the swap of the model
   into the vote cut bar line errors too, 18 to 6 and 29 to 26. Pretraining on MUSCIMA++ didn't help. Zeus (full
   OMR, zero-shot) counts our bars well but can't read our clefs.
+- **Bar-line labels from Structure.ily** (2026-10-09). On the unseen
+  test pages, most of the editor's bar-line edits were labels, not
+  positions: repeat kinds, upbeats, movement ends. Structure.ily knows
+  them, so it proposes them (see "Structure.ily and the labels").
+  Measured (tools/score_structure.py) on the four reviewed sources whose
+  work has one, bar lines where the editor put them but untouched and
+  cleared: all 164 of the editor's labels proposed (85 repeat signs, 48
+  upbeats, 31 movement ends), and 4 the editor didn't make: three repeat
+  signs (labelled a double bar on KHM 602 cello II bar 8, single on Vma
+  ms 1067 (1) cello I 118 and II 44) and one movement end (KHM 603
+  violin II, II 60, the part's last bar).
 - **Odd bar widths as a check.** Counting beats would need reading the
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet
@@ -602,7 +626,9 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   - **Not** a prior from `Structure.ily`: the goal is for bar counts from
     this tool to *feed* `Structure.ily`, so using it to steer detection
     would be circular. Independent checks are the editor's review and
-    agreement between sources of the same work.
+    agreement between sources of the same work. (It does label the bar
+    lines detection finds, once a first source has written it: see
+    "Structure.ily and the labels".)
 - **Snapping hand-placed bar lines.** The editor places bar lines within
   millimetres but upright, while many are slanted. Placing or dragging one
   now fits it to the stroke under it: within about a staff space either

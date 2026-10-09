@@ -35,7 +35,7 @@ def test_js_and_python_number_bars_the_same():
         pick(r"const ROMAN = .*?;"),
         pick(r"const mid = .*?;"),
         pick(r"const roman = .*?;"),
-        pick(r"function numberBars\(doc\) \{.*?\n\}"),
+        pick(r"function numberBars\(doc[^)]*\) \{.*?\n\}"),
         f"const out = numberBars({json.dumps(DOC)});",
         "console.log(JSON.stringify(out.map(b => [b.right.id, b.part, b.movement, b.bar, b.count, b.page])));",
     ])

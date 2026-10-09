@@ -288,7 +288,8 @@ def test_parse_structure():
     assert got["II"]["total"] == 72
     assert {k: got["III"][k] for k in ("total", "pickup", "tempos", "segments", "changes")} == {
         "total": 24, "pickup": True, "tempos": [], "changes": [],
-        "segments": [{"bars": 14, "repeat": True}, {"bars": 10, "repeat": False}]}
+        "segments": [{"bars": 14, "repeat": True, "split": False, "heading": False},
+                     {"bars": 10, "repeat": False, "split": False, "heading": False}]}
     assert got["II"]["tempos"] == ["Minuetto con moto", "Trio"]
 
 
@@ -365,8 +366,12 @@ def test_parse_structure_counts_by_duration_with_upbeats():
     assert [s["bars"] for s in got["II"]["segments"]] == [8, 20, 8, 24]
     assert got["II"]["total"] == 60 and got["II"]["pickup"]
     assert got["II"]["tempos"] == ["Tempo di Minuetto", "Trio"]
+    # each half ends on a short bar, completed by the next half's upbeat;
+    # the Trio's \tempo begins a section (its first repeat sign stands alone)
+    assert [(s["split"], s["heading"]) for s in got["II"]["segments"]] == [
+        (True, False), (True, False), (True, True), (True, False)]
     assert got["I"] == {"total": 88, "pickup": False, "tempos": [], "titles": [], "headings": [], "time": "2/4", "changes": [],
-                        "segments": [{"bars": 88, "repeat": False}]}
+                        "segments": [{"bars": 88, "repeat": False, "split": False, "heading": False}]}
 
 
 @pytest.mark.parametrize("body, want, pickup", [

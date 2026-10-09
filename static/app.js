@@ -359,6 +359,94 @@ function repeatEnds(movement) {
   for (const seg of e.segments) { cum += seg.bars; if (seg.repeat) out.push(cum); }
   return out;
 }
+// What Structure.ily puts at the end of a movement's sections, by the bar
+// they end: bar -> {kind, upbeat}. kind: a repeat sign closing a repeated
+// section, opening one, or both; none where a heading begins the next
+// section (a Trio starts its line, its opening sign before any bar line).
+// upbeat: the section ends mid-bar, so the next one opens with the upbeat
+// that completes it (count 0).
+function sectionEnds(e) {
+  const out = new Map();
+  let cum = 0;
+  e.segments.forEach((seg, i) => {
+    cum += seg.bars;
+    const next = e.segments[i + 1];
+    const end = seg.repeat, start = !!next?.repeat && !next.heading;
+    const kind = end && start ? 'repeat_both' : end ? 'repeat_end' : start ? 'repeat_start' : null;
+    out.set(cum, { kind, upbeat: !!next && seg.split });
+  });
+  return out;
+}
+
+// Structure.ily's bar lines, proposed while bars are numbered (numberBars'
+// hook): on bar lines detection placed and the editor hasn't touched, on
+// pages not yet reviewed, each part's movement pickup and the upbeat after
+// a section that ends mid-bar (count 0), the repeat signs at the ends of
+// sections, and the movement's end. Being numbered as they go, they move
+// with the editor's fixes: add a missed bar line and the repeat after it
+// moves along. Detection proposes only single and double bar lines, so a
+// repeat on an untouched one is this proposal's, and is taken back where
+// the numbering no longer puts it. In movements still the template's, or
+// not in Structure.ily, and on a score, untouched bar lines are plain (a
+// proposal the numbering moved there is taken back). A page un-reviewed
+// is proposed for again. A movement's end isn't proposed where the editor has
+// marked it further on (an extra bar line reached the count early). Its
+// `changed` says whether it changed any bar line.
+const REPEAT_KINDS = ['repeat_start', 'repeat_end', 'repeat_both'];
+function structureProposer(expected, doc) {
+  const ends = new Map();  // movement -> sectionEnds
+  const upbeat = {};       // part -> its next bar line ends an upbeat
+  let changed = false;
+  // each part's bar lines in numbering order, and which are the editor's
+  const order = {}, index = new Map();
+  for (const nb of numberBars(doc)) {
+    const list = order[nb.part] || (order[nb.part] = []);
+    index.set(nb.right, list.length);
+    list.push({ b: nb.right, closed: !nb.right.auto || doc.pages[nb.page].status === 'reviewed' });
+  }
+  // Is the next movement end the editor marked after b this movement's?
+  // Yes if fewer bars lead to it than half the next movement's, or nothing
+  // says how long that one is.
+  const markedLater = (b, part, mvt) => {
+    const list = order[part];
+    let bars = 0;
+    for (let k = index.get(b) + 1; k < list.length; k++) {
+      const x = list[k];
+      bars += x.closed ? (x.b.bar_count ?? 1) : 1;
+      if (x.closed && x.b.ends_movement) {
+        const next = expected?.[roman(mvt + 1)];
+        return !next || next.template || bars < next.total / 2;
+      }
+    }
+    return false;
+  };
+  const of = (mvt) => {
+    const e = expected?.[mvt];
+    if (!e || e.template) return null;
+    if (!ends.has(mvt)) ends.set(mvt, sectionEnds(e));
+    return { e, ends: ends.get(mvt) };
+  };
+  const propose = (b, page, part, st) => {
+    const s = part === 'score' ? null : of(roman(st.mvt));
+    if (!(part in upbeat)) upbeat[part] = !!s?.e.pickup;  // a movement begins
+    const up = upbeat[part];
+    upbeat[part] = false;
+    if (b.auto && page.status !== 'reviewed') {
+      const was = [b.kind, b.bar_count, b.ends_movement];
+      b.bar_count = up ? 0 : 1;  // detection never proposes a multi-bar rest
+      const at = s && !up ? s.ends.get(st.bar) : null;
+      if (at?.kind) b.kind = at.kind;
+      else if (REPEAT_KINDS.includes(b.kind)) b.kind = 'single';
+      b.ends_movement = !!s && !up && st.bar === s.e.total && !markedLater(b, part, st.mvt);
+      if (was[0] !== b.kind || was[1] !== b.bar_count || was[2] !== b.ends_movement) changed = true;
+    }
+    const count = b.bar_count ?? 1;
+    if (s && count && s.ends.get(st.bar + count - 1)?.upbeat) upbeat[part] = true;
+    if (b.ends_movement) delete upbeat[part];
+  };
+  return Object.defineProperty(propose, 'changed', { get: () => changed });
+}
+
 const lastBarOf = (nb) => nb.bar + Math.max(nb.count, 1) - 1;
 // the numbered bar a bar line ends: none for a pickup (count 0), which
 // shares the number before it (the rest of a bar split by a repeat in its
@@ -389,9 +477,11 @@ function find(sel, page = pg()) {
 const systemOf = (bl, page = pg()) => page.systems.find((s) => s.barlines.includes(bl));
 
 // ------------------------------------------------------------------ numbering
-// Mirrors labels.number_bars in Python. Keep the two in step.
+// Mirrors labels.number_bars in Python. Keep the two in step. `propose`
+// (structureProposer's), if given, may set each bar line's kind, count and
+// movement end just before it is counted.
 
-function numberBars(doc) {
+function numberBars(doc, propose = null) {
   const state = {};
   const out = [];
   const pages = Object.keys(doc.pages).map(Number).sort((a, b) => a - b);
@@ -404,6 +494,7 @@ function numberBars(doc) {
     for (const s of systems) {
       let prev = null;
       for (const b of [...s.barlines].sort((a, c) => mid(a) - mid(c))) {
+        if (propose) propose(b, page, part, st);
         const count = b.bar_count ?? 1;
         out.push({ part, movement: roman(st.mvt), bar: count ? st.bar : st.bar - 1, count, page: n, system: s, left: prev, right: b });
         st.bar += count;
@@ -416,7 +507,11 @@ function numberBars(doc) {
 }
 
 function renumber() {
-  S.bars = numberBars(S.doc);
+  const propose = S.readonly ? null : structureProposer(S.info?.expected, S.doc);
+  S.bars = numberBars(S.doc, propose);
+  // proposals made without an edit (a source opened, Structure.ily written)
+  // are saved too, so the file says what the page shows
+  if (propose?.changed) { S.version++; scheduleSave(); }
   S.byBarline = new Map(S.bars.map((b) => [b.right.id, b]));
   // each part's first bar of each movement: "part movement" -> bar
   S.firsts = new Map();
@@ -567,10 +662,10 @@ async function loadSource(pdf, page) {
   S.conflict = false;
   S.undo = []; S.redo = [];
   if (S.readonly) banner(`Read-only: ${S.readonly}`);
-  renumber();
+  setSaveStatus(j.etag === 'none' ? 'no labels file yet' : 'saved');
+  renumber();  // may propose, and save, Structure.ily's bar lines
   renderMeta();
   loadMarkTexts();
-  setSaveStatus(j.etag === 'none' ? 'no labels file yet' : 'saved');
   await openPage(clamp(page || firstUnreviewed(), 1, S.numPages));
 }
 
@@ -686,12 +781,7 @@ async function autoLabel(n, token) {
   if (corners) page.corners = { points: corners, auto: true };
   S.doc.pages[n] = page;
   if (music) for (const d of systems) newSystem(page, d);
-  // a double bar where Structure.ily expects a repeat is almost surely one
-  renumber();
-  for (const nb of S.bars) {
-    if (nb.page === n && nb.right.kind === 'double' && repeatHere(nb)) nb.right.kind = 'repeat_end';
-  }
-  changed();
+  changed();  // numbering proposes Structure.ily's repeats, upbeats and movement end
 }
 
 // Re-run detection without disturbing anything the editor touched:
@@ -1272,6 +1362,7 @@ async function writeStructure() {
   S.info.structure_offers = out.offers;
   S.structureOpen = null;
   banner(`Wrote movement ${movement} to ${S.info.structure}.`);
+  renumber();  // its repeats, upbeats and end, proposed on unreviewed pages
   renderAll();
 }
 

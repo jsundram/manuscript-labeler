@@ -541,6 +541,7 @@ _TOKEN = re.compile(
     r"|(?P<time>\\time\s+(?P<tn>\d+)\s*/\s*(?P<td>\d+))"
     r"|(?P<key>\\key\s+(?P<tonic>[a-g][a-z]*)\s*\\(?P<mode>major|minor))"
     r"|(?P<numeric>\\(?P<which>numeric|default)TimeSignature\b)"
+    r"|(?P<heading>\\(?:tempo|sectionLabel)\b)"
     r"|(?P<open>\{)|(?P<close>\})"
     r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\s*\*\s*(?P<n>\d+)(?:\s*/\s*(?P<m>\d+))?)?(?![\w]))"
 )
@@ -720,7 +721,11 @@ def parse_structure(text: str) -> dict[str, dict]:
     """Expected bars per movement from a `Structure.ily` skeleton.
 
     Returns {"I": {"total": 130, "pickup": False, "segments": [
-    {"bars": 48, "repeat": True}, ...], "tempos": [...]}}.
+    {"bars": 48, "repeat": True, "split": False, "heading": False}, ...],
+    "tempos": [...]}}. A segment is `split` when it ends mid-bar (its last
+    bar is short: the next section's upbeat completes it), and has a
+    `heading` when a \\tempo or \\sectionLabel begins it after the music has
+    begun (a Trio's).
 
     With a \\time, bars are numbered as LilyPond numbers them (_Bars): a
     \\partial before any music is the pickup (bar 0, not counted); a
@@ -742,7 +747,8 @@ def parse_structure(text: str) -> dict[str, dict]:
         last = Fraction(1, 4)   # the duration a bare `s` repeats (LilyPond starts at a quarter)
         depth = 1
         stack: list = []        # per open brace: True (volta repeat), False, or an unfold frame
-        marks: list[tuple] = [] # (bars so far, repeat?) where segments end
+        marks: list[tuple] = [] # (bars so far, repeat?, on a bar line?) where segments end
+        headed: set = set()     # bars so far where a heading begins a section (a Trio's \tempo)
         sig: dict = {}          # the movement's opening key and time
         changes: list = []      # later ones: {"bar": n, "key" or "time": value}
         numeric = False         # \numericTimeSignature in force (4/4 printed as 4/4, not C)
@@ -773,6 +779,9 @@ def parse_structure(text: str) -> dict[str, dict]:
                 emit(("signature", "time", written_time(int(t.group("tn")), int(t.group("td")), numeric)))
             elif t.group("numeric"):
                 numeric = t.group("which") == "numeric"
+            elif t.group("heading"):
+                if b.started:
+                    headed.add(b.begun)
             elif t.group("key"):
                 if t.group("tonic")[0] in _FIFTHS:
                     emit(("signature", "key", key_fifths(t.group("tonic"), t.group("mode")), t.group("mode")))
@@ -782,7 +791,7 @@ def parse_structure(text: str) -> dict[str, dict]:
             elif t.group("repeat"):
                 depth += 1
                 stack.append(True)
-                marks.append((b.begun, False))  # music before the repeat, if any
+                marks.append((b.begun, False, b.fresh))  # music before the repeat, if any
             elif t.group("open"):
                 depth += 1
                 stack.append(False)
@@ -797,7 +806,7 @@ def parse_structure(text: str) -> dict[str, dict]:
                         for ev in frame["events"]:
                             emit(ev)
                 elif frame:
-                    marks.append((b.begun, True))
+                    marks.append((b.begun, True, b.fresh))
             elif t.group("partial"):
                 emit(("partial", _duration(t.group("pdur"), t.group("pdots"), t.group("pn"), t.group("pm"))))
             elif t.group("spacer"):
@@ -808,13 +817,13 @@ def parse_structure(text: str) -> dict[str, dict]:
                 else:  # a bare `s` (or `s*2`): the last duration again
                     length = last * n / int(t.group("m") or 1)
                 emit(("spacer", length, n))
-        marks.append((b.begun, False))
+        marks.append((b.begun, False, b.fresh))
 
         segments, prev = [], 0
-        for v, repeat in marks:
+        for v, repeat, fresh in marks:
             nb = v - prev
             if nb > 0:
-                segments.append({"bars": nb, "repeat": repeat})
+                segments.append({"bars": nb, "repeat": repeat, "split": not fresh, "heading": prev in headed})
             prev += max(0, nb)
         out[name] = {"total": sum(s["bars"] for s in segments),
                      "pickup": b.pickup, "segments": segments, **sig, "changes": changes,

@@ -96,6 +96,9 @@ def test_only_the_template_is_replaced():
     for body in (r"\time 2/4 \mvtIMusic", r"\time 2/4 R2*40", r"\time 2/4 \skip 2*40", r"\time 2/4 s2*40",
                  r"\time 2/4 \repeat volta 2 { s2*1 } c'2"):
         assert not structure.is_template("\\tag #'mvtI { " + body + " }", "I"), body
+    # the labeler proposes nothing from a template's one-bar blocks
+    assert structure.expected(TEMPLATE)["I"]["template"]
+    assert not structure.expected(r"\tag #'mvtI { \time 2/4 s2*40 }")["I"]["template"]
 
 
 def test_parts_that_differ_are_named_and_nothing_is_offered():
