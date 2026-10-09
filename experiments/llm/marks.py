@@ -32,27 +32,15 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pages import EFFORT, MODEL, OUT, ask_all, cost, load, render  # noqa: E402
+from reader import KNOWN, MARGIN  # noqa: E402
+from reader import MARK_KINDS as KINDS  # noqa: E402
+from reader import MARK_PROMPT as PROMPT  # noqa: E402
+from reader import MARK_SCHEMA as SCHEMA  # noqa: E402
+from reader import mark_jpeg as crop  # noqa: E402
+from reader import mark_prompt, offered  # noqa: E402
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 import labels  # noqa: E402
-
-KINDS = {"text", "tempo", "title", "other"}
-MARGIN = 0.3  # of the box's height, added on every side
-
-PROMPT = """This is a cut-out from a late-18th-century Italian music manuscript (parts of a string quartet): a word or phrase written on the page, such as a tempo, a section title, a direction ("Segue il Trio", "Da Capo"), a dynamic, or a title-page line.
-
-Transcribe it as an editor would type it: the words in full, with the copyist's abbreviations expanded ("All.tto mod.to" is "Allegretto moderato") and superscript letters joined, keeping the copyist's spelling, capitals and punctuation otherwise. Ignore music notation and ink from beyond the phrase.
-"""
-KNOWN = """
-The editor has already typed these texts in other manuscripts of the same works. If this one says the same, answer with that text exactly; otherwise transcribe it:
-{texts}
-"""
-SCHEMA = {
-    "type": "object",
-    "properties": {"text": {"type": "string"}, "legible": {"type": "boolean"}},
-    "required": ["text", "legible"],
-    "additionalProperties": False,
-}
 
 
 def norm(t: str) -> str:
@@ -64,23 +52,8 @@ def norm(t: str) -> str:
                    and unicodedata.category(c) not in ("Cc", "Cf"))
 
 
-def crop(img: Image.Image, m: dict) -> bytes:
-    w, h = img.size
-    pad = MARGIN * m["h"] * h
-    box = (max(0, m["x"] * w - pad), max(0, m["y"] * h - pad),
-           min(w, (m["x"] + m["w"]) * w + pad), min(h, (m["y"] + m["h"]) * h + pad))
-    c = img.crop(tuple(int(v) for v in box))
-    buf = io.BytesIO()
-    c.save(buf, "JPEG", quality=90)
-    return buf.getvalue()
-
-
 def box(m: dict) -> list[float]:
     return [round(m[k], 5) for k in ("x", "y", "w", "h")]
-
-
-def offered(texts: list[str]) -> str:
-    return hashlib.sha1("\n".join(texts).encode()).hexdigest()[:10]
 
 
 def main():
@@ -96,7 +69,8 @@ def main():
         for n, p in labels.sorted_pages(doc):
             if p.get("status") == "reviewed":
                 marks += [(pdf, n, m) for m in p.get("marks", [])
-                          if m.get("kind") in KINDS and (m.get("text") or "").strip()]
+                          if m.get("kind") in KINDS and (m.get("text") or "").strip()
+                          and not m.get("text_auto")]  # Claude's own reading isn't the editor's
     texts = {}  # source -> the texts entered in the other sources, most used first
     for pdf in {pdf for pdf, _, _ in marks}:
         count = {}
@@ -122,7 +96,7 @@ def main():
             if page is None or page[0] != (pdf, n):
                 page = ((pdf, n), functools.cache(
                     lambda pdf=pdf, n=n: Image.open(io.BytesIO(render(pdf, n))).convert("RGB")))
-            text = PROMPT + (KNOWN.format(texts="\n".join(texts[pdf])) if a.mode == "known" else "")
+            text = mark_prompt(texts[pdf] if a.mode == "known" else [])
             yield key(pdf, n, m), text, SCHEMA, lambda img=page[1], m=m: crop(img(), m), 2000
 
     failed = ask_all(requests(), done, out, extra=asked.get)

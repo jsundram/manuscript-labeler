@@ -53,5 +53,14 @@ moto di Molto" for "con poco di Mosso"), and a few look like label slips
 copyist. A mark's text keeps the manuscript's spelling, capitals and
 ordinals ("Giugnio", "Menuetto", "Dalcapo", "Violino 1.mo"), with
 abbreviations expanded ("All.tto" is "Allegretto"). This is what the
-prompt in marks.py already asks for; the labels that use the modern
+prompt (now reader.py's) already asks for; the labels that use the modern
 spelling are what is out of step.
+
+After ten labels were set to the copyist's ordinals ("Violino 1.mo",
+"Violino 2°"), blind reading matches 133 of 167 (exact 53). The
+"known" answers no longer apply (the texts offered changed); asking them
+again would cost about $0.86.
+
+The labeler now asks these same prompts (reader.py; these scripts import
+them). The texts it offers differ: every checked text in the edition, this
+source's included, where "known" here offers other sources' only.

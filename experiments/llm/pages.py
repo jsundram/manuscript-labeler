@@ -16,12 +16,12 @@ so a rerun asks again. The cost is from the kept answers' token counts at
 Opus 5.5's price (the models that answered are listed: the server may
 fall back to another; "?" for the mark answers saved before ask()
 recorded it). The API key is ML_API_KEY in the labeler's .env
-(never printed, never ANTHROPIC_API_KEY). marks.py shares this file's
-key, render, asking and saving.
+(never printed, never ANTHROPIC_API_KEY). The prompt, model and asking
+are the labeler's own (reader.py), so this measures what the labeler
+asks; marks.py shares this file's render, asking and saving.
 """
 
 import argparse
-import base64
 import hashlib
 import io
 import json
@@ -39,42 +39,19 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT))
 import labels  # noqa: E402
+import reader  # noqa: E402
+from reader import EFFORT, MAX_SIDE, MODEL, PRICE, ask  # noqa: E402
+from reader import PAGE_PROMPT as PROMPT  # noqa: E402
+from reader import PAGE_SCHEMA as SCHEMA  # noqa: E402
 
-MODEL = "claude-opus-5-5"
-EFFORT = "low"
-PRICE = {"input": 4.0, "output": 20.0}  # $ per million tokens (claude-opus-5-5)
-MAX_SIDE = 1568
 WORKERS = 4  # calls at once
 RENDER_PX, JPEG_QUALITY = 2800, 90  # server.py's
 CACHE = Path(os.environ.get("MANUSCRIPT_LABELER_CACHE", Path.home() / ".cache" / "manuscript-labeler")) / "renders"
 OUT = Path(__file__).resolve().parent / "answers"
 
-PROMPT = """This is one page of a scanned late-18th-century manuscript of a string quartet: a set of parts (violin I, violin II, viola, cello), sometimes a score.
-
-Say what the page is:
-- kind: "music" (staves with music on them), "title" (a title page or cover, mostly text), "blank" (nothing written, or only empty ruled staves or bleed-through), or "other" (anything else, such as a binding, a library slip or a colour chart).
-- part: whose part the page belongs to, from what is written on it (a part's name such as "Violino Primo", "Viola", "Basso" or "Violoncello"; the clefs), or "none" if the page doesn't say. "score" if it holds all the instruments at once.
-- evidence: in a few words, what on the page tells you the part (quote any part name as written), or "nothing".
-"""
-
-SCHEMA = {
-    "type": "object",
-    "properties": {
-        "kind": {"type": "string", "enum": ["music", "title", "blank", "other"]},
-        "part": {"type": "string", "enum": ["vn1", "vn2", "va", "vc", "score", "none"]},
-        "evidence": {"type": "string"},
-    },
-    "required": ["kind", "part", "evidence"],
-    "additionalProperties": False,
-}
-
 
 def api_key() -> str:
-    for line in (ROOT / ".env").read_text().splitlines():
-        k, _, v = line.partition("=")
-        if k.strip() == "ML_API_KEY":
-            return v.strip().strip('"').strip("'")
-    sys.exit("no ML_API_KEY in .env")
+    return reader.api_key() or sys.exit("no ML_API_KEY in the environment or the labeler's .env")
 
 
 def render(pdf: Path, page: int) -> bytes:
@@ -93,32 +70,7 @@ def render(pdf: Path, page: int) -> bytes:
 
 
 def page_jpeg(pdf: Path, page: int) -> bytes:
-    img = Image.open(io.BytesIO(render(pdf, page))).convert("RGB")
-    img.thumbnail((MAX_SIDE, MAX_SIDE))
-    buf = io.BytesIO()
-    img.save(buf, "JPEG", quality=85)
-    return buf.getvalue()
-
-
-def ask(client, prompt: str, schema: dict, jpeg: bytes, max_tokens: int) -> dict:
-    """One image and a prompt; the structured answer, with the model that
-    gave it and the tokens used, or {"error": ...} on a refusal."""
-    r = client.beta.messages.create(
-        model=MODEL,
-        max_tokens=max_tokens,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",
-        output_config={"effort": EFFORT, "format": {"type": "json_schema", "schema": schema}},
-        messages=[{"role": "user", "content": [
-            {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg",
-                                         "data": base64.standard_b64encode(jpeg).decode()}},
-            {"type": "text", "text": prompt},
-        ]}],
-    )
-    if r.stop_reason == "refusal":
-        return {"error": f"refused ({r.stop_details.category if r.stop_details else '?'})"}
-    text = next((b.text for b in r.content if b.type == "text"), "")
-    return {**json.loads(text), "model": r.model, "usage": r.usage.to_dict()}
+    return reader.page_jpeg(Image.open(io.BytesIO(render(pdf, page))))
 
 
 def load(out: Path) -> dict:

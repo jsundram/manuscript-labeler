@@ -70,6 +70,8 @@ const S = {
   placing: null,       // 'bl' | 'sys' | 'mark': the next click on the page adds one
   held: null,          // the key being held down to place ('b', 's', 'm')
   loadToken: 0,
+  reads: {},           // page -> Claude's reading of it ({kind, part, evidence}), this source
+  readingMarks: new Set(),  // marks Claude is reading now
 };
 // Selecting anything forgets where a delete left Tab (S.tabFrom)
 {
@@ -661,6 +663,7 @@ async function loadSource(pdf, page) {
   S.numPages = j.pages;
   S.info = j;
   S.structureOpen = null;
+  S.reads = {};
   S.version = S.savedVersion = 0;
   S.conflict = false;
   S.undo = []; S.redo = [];
@@ -702,6 +705,115 @@ async function openPage(n) {
   if (token !== S.loadToken) return;
   $('#loading').hidden = true;
   renderAll();
+  // what Claude read here, if it has (shown when it disagrees), and the next
+  // new page read ahead, so it opens with its kind and part
+  if (S.info.reader?.on && !(n in S.reads)) readPage(n, { ask: false });
+  if (!S.readonly && n < S.numPages && !S.doc.pages[n + 1]) readPage(n + 1);
+}
+
+// ------------------------------------------------------------------ Claude's readings
+
+// Claude's reading of page n ({kind, part, evidence}), or null: reading
+// off, failed or refused, or (ask false) not read yet. Asking costs about
+// a cent the first time; the server caches it.
+async function readPage(n, { ask = true } = {}) {
+  if (!S.info?.reader?.on) return null;
+  const pdf = S.pdf;
+  try {
+    const r = await getJSON(`/api/read?${q(pdf, n)}${ask ? '' : '&ask=0'}`);
+    if (pdf !== S.pdf) return null;
+    noteReader(r.reader);
+    if (r.error && ask && n === S.page) banner(`Claude didn't read page ${n}: ${r.error}`);
+    if (!r.kind) return null;
+    S.reads[n] = { kind: r.kind, part: r.part, evidence: r.evidence };
+    if (n === S.page) renderPageForm();
+    return S.reads[n];
+  } catch (e) {
+    if (ask && pdf === S.pdf) banner(`Claude couldn't read page ${n}: ${e.message}`);
+    return null;
+  }
+}
+
+// the Source panel's tally of what reading this source has cost
+function noteReader(state) {
+  if (!state || !S.info) return;
+  S.info.reader = state;
+  renderMeta();
+}
+
+const READ_KINDS = ['text', 'tempo', 'title', 'other'];  // marks with words to read
+const READ_WAIT = 15000;  // ms a new page waits for Claude's reading before going without
+
+// Claude's reading of a mark's text, proposed (text_auto) where the editor
+// hasn't typed one, or (asked from the mark's panel) in place of any. Not
+// asked on its own on a reviewed page. The answer is dropped if the mark
+// changed meanwhile (moved, resized, made a kind without words) or the
+// editor typed in its field; one Claude can't make out is only shown, as
+// the field's placeholder. It never changes the mark's kind.
+async function readMark(n, id, { replace = false } = {}) {
+  const pdf = S.pdf;
+  const m0 = S.doc.pages[n]?.marks.find((m) => m.id === id);
+  if (!m0 || !S.info.reader?.on || S.readingMarks.has(id)) return;
+  if (!replace && S.doc.pages[n].status === 'reviewed') return;
+  const box = { x: m0.x, y: m0.y, w: m0.w, h: m0.h };
+  const field = () => (S.sel?.id === id && n === S.page ? $('#inspector [data-f="text"]') : null);
+  const button = () => (S.sel?.id === id && n === S.page ? $('#inspector [data-act="read-mark"]') : null);
+  const textAt = (m0.text || '').trim();  // the mark's text when asked
+  const fieldAt = field() ? field().value.trim() : null;  // and its field, if open
+  S.readingMarks.add(id);
+  // not a redraw: the field keeps the cursor
+  field()?.setAttribute('placeholder', 'Claude is reading it…');
+  if (button()) button().disabled = true;
+  let r = null;
+  try {
+    const res = await fetch('/api/readmark', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pdf, page: n, box }),
+    });
+    r = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(r.error || res.statusText);
+    if (r.error) throw new Error(r.error);
+  } catch (e) {
+    if (pdf === S.pdf) banner(`Claude couldn't read the mark: ${e.message}`);
+    if (r && !r.reader) r = null;
+  } finally {
+    S.readingMarks.delete(id);
+    field()?.setAttribute('placeholder', 'e.g. dolcis.');
+    if (button()) button().disabled = false;
+  }
+  if (pdf !== S.pdf) return;
+  if (r) noteReader(r.reader);
+  const page = S.doc.pages[n];
+  const m = page?.marks.find((x) => x.id === id);
+  const text = (r?.error ? '' : r?.text || '').trim();
+  if (!m || !text || S.readonly) return;
+  if (['x', 'y', 'w', 'h'].some((k) => m[k] !== box[k]) || !READ_KINDS.includes(m.kind)) return;
+  const f = field();
+  if ((m.text || '').trim() !== textAt) return;  // the editor's text, set meanwhile
+  if (f && f.value.trim() !== (fieldAt ?? textAt)) return;  // typing, not yet set
+  if (!replace && (m.text || '').trim()) return;
+  if (r.legible === false) { f?.setAttribute('placeholder', `Claude can't make it out (perhaps "${text}")`); return; }
+  const edit = (pg) => {
+    const mk = pg.marks.find((x) => x.id === id);
+    mk.text = text;
+    mk.text_auto = true;
+  };
+  if (n === S.page) mutate(edit);
+  else { edit(page); touchPage(page); changed(); }  // moved on before it came: no undo step (undo snapshots this page)
+  // the reading arrives selected in its field, typing replaces it; but not
+  // while a key is held to place marks, or the keyboard is in another field
+  const g = field();
+  if (g && !S.held && (!inField() || document.activeElement === g)) { g.focus(); g.select(); }
+}
+
+// a text used before brings its usual kind, unless a kind was chosen
+function kindFromText(m) {
+  if (m.kind !== 'text') return;
+  const t = (m.text || '').trim();
+  const known = S.markTextIndex?.get(t);
+  // a movement's heading suggests a title, though older labels marked them as tempos
+  if (/^(men?uet|minuet|trio\b)/i.test(t)) m.kind = 'title';
+  else if (known && known.kind !== 'text' && known.kind !== 'signature') m.kind = known.kind;
 }
 
 // ------------------------------------------------------------------ detection
@@ -763,19 +875,16 @@ function roomFromPreviousPage(n) {
 async function autoLabel(n, token) {
   let systems = [], corners = null, look = null;
   const room = roomFromPreviousPage(n);
+  // alongside detection (usually read ahead already); a slow one doesn't
+  // hold the page up: it's cached when it comes, and shown where it disagrees
+  const reading = Promise.race([readPage(n), new Promise((r) => setTimeout(() => r(null), READ_WAIT))]);
   try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
   catch (e) { banner(`Detection failed on page ${n}: ${e.message}`); }
+  const read = await reading;
   if (token !== S.loadToken || S.doc.pages[n]) return;
-  // Music: staves with bar lines. Otherwise a blank page has no dark ink,
-  // a photographer's colour chart has strong colour (both: no part, no
-  // clef), and anything else is a title page, which keeps the part so the
-  // editor can set the next part there and have later pages inherit it.
   const music = systems.reduce((k, d) => k + d.barlines.length, 0) >= 2;
-  const kind = music ? 'music'
-    : look && look.colour > 0.02 ? 'other'
-    : look && look.dark < 0.001 ? 'blank' : 'title';
   const prev = previousPage(n, (p) => p.kind === 'music' || p.kind === 'title');
-  const part = kind === 'music' || kind === 'title' ? (prev ? prev.part : null) : null;
+  const { kind, part } = firstGuess(read, music, look, prev ? prev.part : null);
   const page = {
     status: 'auto', kind, part,
     clef: part && kind === 'music' ? clefFor(n, part) : null,  // a title page has no clef
@@ -783,8 +892,27 @@ async function autoLabel(n, token) {
   };
   if (corners) page.corners = { points: corners, auto: true };
   S.doc.pages[n] = page;
-  if (music) for (const d of systems) newSystem(page, d);
+  if (kind === 'music') for (const d of systems) newSystem(page, d);
   changed();  // numbering proposes Structure.ily's repeats, upbeats and movement end
+}
+
+// A new page's kind and part. What the page is: Claude's reading (right on
+// 93 of 95 reviewed pages), else from detection: music has staves with bar
+// lines (`music`); otherwise a blank page has no dark ink, a
+// photographer's colour chart has strong colour (both: no part, no clef),
+// and anything else is a title page. Whose part: a title page's is the one
+// Claude reads on it ("Violino Primo"); a music page carries the part on
+// from the page before (`carried`: Claude can't tell violin I from II on a
+// page alone), or, with nothing to carry, takes Claude's. A title page
+// keeps the part when Claude names none, so the editor can set the next
+// part there and later pages inherit it.
+function firstGuess(read, music, look, carried) {
+  const kind = read?.kind || (music ? 'music'
+    : look && look.colour > 0.02 ? 'other'
+    : look && look.dark < 0.001 ? 'blank' : 'title');
+  const named = read && read.part !== 'none' ? read.part : null;
+  const part = kind === 'title' ? named || carried : kind === 'music' ? carried || named : null;
+  return { kind, part };
 }
 
 // Re-run detection without disturbing anything the editor touched:
@@ -980,7 +1108,8 @@ function renderOverlay() {
     const cls = `mark${m.kind === 'signature' ? ' sig' : ''}${isSel('mark', m.id) ? ' sel' : ''}`;
     out.push(`<rect class="${cls}" data-t="mark" data-id="${m.id}" x="${m.x * W}" y="${m.y * H}" width="${m.w * W}" height="${m.h * H}"/>`);
     const label = m.kind === 'signature' ? sigText(m) || '?' : m.text || MARK_NAMES[m.kind] || m.kind;
-    out.push(`<text class="marklabel${m.kind === 'signature' ? ' sig' : ''}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
+    const proposed = m.text_auto && page.status !== 'reviewed' ? ' proposed' : '';
+    out.push(`<text class="marklabel${m.kind === 'signature' ? ' sig' : ''}${proposed}" x="${m.x * W}" y="${m.y * H - 4 * u}" font-size="${13 * u}">${esc(label)}</text>`);
   }
 
   // handles for the selection, drawn last so they sit on top
@@ -1177,6 +1306,7 @@ function renderMarkTexts() {
   for (const p of Object.values(S.doc?.pages || {})) {
     for (const m of p.marks || []) {
       const t = (m.text || '').trim();
+      if (m.text_auto && p.status !== 'reviewed') continue;  // Claude's reading, not yet checked
       if (t && !counts.has(t)) counts.set(t, { text: t, n: 1, kind: m.kind, kinds: [m.kind] });
     }
   }
@@ -1206,10 +1336,17 @@ function renderMeta() {
     ['Bars from', esc(S.info.structure || 'no Structure.ily found')],
     ['Bar lines', `${esc(S.info.barline_model || '')} · <a href="/static/models/index.html" target="_blank">model cards</a>`],
     ['Crops', S.info.crop_model],
+    ['Claude', readerText(S.info.reader)],
   ];
   $('#meta').innerHTML = '<dl>' + rows.filter((r) => r[1]).map(([k, v]) =>
     `<dt>${k}</dt><dd>${k === 'RISM' || k === 'Online' || k === 'Bars from' || k === 'Bar lines' ? v : esc(v)}</dd>`).join('') + '</dl>' +
     (d.description ? `<p class="desc">${esc(d.description)}</p>` : '');
+}
+
+function readerText(r) {
+  if (!r) return '';
+  if (!r.on) return r.why;
+  return `reads new pages and marks · ${r.pages} pages, ${r.marks} marks read for this source ($${r.dollars.toFixed(2)})`;
 }
 
 // The toolbar button shows whether this page is done: red until reviewed,
@@ -1239,6 +1376,17 @@ function renderPageForm() {
   $('#f-part').innerHTML = options(PARTS, page.part, PART_NAMES, true);
   $('#f-clef').innerHTML = options(CLEFS, page.clef, {}, true);
   if (document.activeElement !== $('#f-notes')) $('#f-notes').value = page.notes || '';
+  $('#f-read').innerHTML = readingNote(page, S.reads[S.page]);
+}
+
+// Claude's reading, shown where it disagrees with the page's kind, or names
+// another part (on a music page, mostly from the clef: viola, cello)
+function readingNote(page, read) {
+  if (!read) return '';
+  const part = read.part !== 'none' && read.part !== page.part && (page.kind === 'music' || page.kind === 'title');
+  if (read.kind === page.kind && !part) return '';
+  const what = [read.kind !== page.kind ? `a ${read.kind} page` : '', part ? PART_NAMES[read.part] || read.part : ''].filter(Boolean).join(', ');
+  return `<p class="readnote" title="What Claude read on this page">Claude reads ${esc(what)}${read.evidence && read.evidence !== 'nothing' ? `: ${esc(read.evidence)}` : ''}</p>`;
 }
 
 function renderInspector() {
@@ -1291,7 +1439,8 @@ function renderInspector() {
       ${item.kind === 'signature'
         ? `${sigMenus(item, dis)}
       <p class="muted">A change written mid-line: it holds from here, through later staves, until the next. At a line's start, set it on the staff instead. Keys 1–4: ${CLEFS.join(', ')}.</p>`
-        : `<label>Text <input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="e.g. dolcis."${dis}></label>`}
+        : `<label>Text ${item.text_auto ? '<span class="pill auto" title="Claude\'s reading: edit it to make it yours">Claude</span>' : ''}<input data-f="text" list="${markTextList(item.kind)}" autocomplete="off" value="${esc(item.text || '')}" placeholder="${S.readingMarks.has(item.id) ? 'Claude is reading it…' : 'e.g. dolcis.'}"${dis}></label>
+      ${S.info.reader?.on && READ_KINDS.includes(item.kind) ? `<button data-act="read-mark"${dis}${S.readingMarks.has(item.id) ? ' disabled' : ''} title="Ask Claude what the box says (about half a cent), in place of the text">Read with Claude</button>` : ''}`}
       <label>Note <textarea data-f="note" rows="3"${dis}>${esc(item.note || '')}</textarea></label>`;
   }
 }
@@ -2101,6 +2250,7 @@ svg.addEventListener('pointerup', () => {
     // a drag of a few pixels is a click: default box
     const tiny = w * S.W < 4 * unit() || h * S.H < 4 * unit();
     addMark(tiny ? null : { x: x0, y: y0, w, h }, d.sig ? 'signature' : 'text');
+    if (!tiny && !d.sig && S.sel?.t === 'mark') readMark(S.page, S.sel.id);  // a box drawn round words: read them
     return;
   }
   if (d.kind === 'handle' && !d.moved) {
@@ -2271,6 +2421,7 @@ $('#inspector').addEventListener('click', (e) => {
   if (act === 'reset-corners') resetCorners();
   if (act === 'start-all' && item && S.sel.t === 'sys') applyStartToPage(item);
   if (act === 'snap' && item && S.sel.t === 'bl') snapBarline(item, systemOf(item), { undoable: true });
+  if (act === 'read-mark' && item && S.sel.t === 'mark') readMark(S.page, item.id, { replace: true });
 });
 
 $('#inspector').addEventListener('change', (e) => {
@@ -2300,13 +2451,9 @@ $('#inspector').addEventListener('change', (e) => {
       if (item.kind === 'signature' && !SIG_FIELDS.some((g) => g in item)) item.clef = likelyClef(pg(), item);  // as when placed
       if (item.kind !== 'signature') for (const g of SIG_FIELDS) delete item[g];
     }
-    // a text used before brings its usual kind, unless a kind was chosen
-    if (t === 'mark' && f === 'text' && item.kind === 'text') {
-      const known = S.markTextIndex?.get(e.target.value.trim());
-      // a movement's heading suggests a title, though older labels marked them as tempos
-      const heading = /^(men?uet|minuet|trio\b)/i.test(e.target.value.trim());
-      if (heading) item.kind = 'title';
-      else if (known && known.kind !== 'text' && known.kind !== 'signature') item.kind = known.kind;
+    if (t === 'mark' && f === 'text') {
+      delete item.text_auto;  // the editor's now
+      kindFromText(item);
     }
     if (t !== 'mark') item.auto = false;
   });

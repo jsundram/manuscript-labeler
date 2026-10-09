@@ -233,6 +233,11 @@ The rules:
   bed) and intersecting them, so torn or rounded corners don't pull them
   inward; dragged into place by the editor. Re-detect keeps moved corners;
   "Reset to detected" replaces them.
+- **Mark `text`** follows the copyist: the manuscript's spelling, capitals
+  and ordinals ("Giugnio", "Menuetto", "Violino 1.mo", "Violino 2°"), with
+  abbreviations expanded ("All.tto" is "Allegretto"). `text_auto: true`
+  (optional) marks a text Claude read that the editor hasn't edited
+  (reader.py); typing in the field drops it.
 - **Mark `kind`:** `text`, `tempo`, `title`, `dynamic`, `stray`, `unclear`,
   `other`, `signature`. A `title` is a movement's or section's heading
   ("Menuetto", "Trio"), apart from its tempo, which may be written
@@ -674,6 +679,18 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   0.03 spaces (median) of where they belong.
 - **Bar counting by eye** worked best from whole-line strips, counting bar
   lines and cross-checking against the expected total.
+
+### About Claude's readings (`reader.py`)
+
+Measured on the reviewed pages (experiments/llm/README.md, 2026-10-09):
+a page's kind right on 93 of 95 (detection's rule: 86); a part, when
+Claude names one, right 56 times in 57, but it declines on violin pages
+without a part name (violin I and II look alike on a page alone). So a
+new page takes Claude's kind, a title page Claude's part, and a music
+page the part carried from the page before (69 of 85 alone; every miss a
+title page starting a new part), with Claude's reading shown where it
+disagrees. Mark text: 133 of 167 read blind (ignoring case and
+punctuation), once the labels followed the copyist.
 
 ### About reading this copyist's hand
 

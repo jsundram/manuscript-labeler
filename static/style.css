@@ -152,6 +152,7 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .sigrow label { flex: 1 1 30%; min-width: 0; }
 #inspector h3 { font-size: 11px; font-weight: 600; color: var(--muted); margin: 10px 0 4px; }
 .marklabel { fill: var(--mark); font-style: italic; }
+.marklabel.proposed { fill: var(--auto); }  /* Claude's reading, not yet the editor's */
 .crop { fill: none; stroke: var(--staff-line); stroke-width: 1; stroke-dasharray: 2 4; opacity: .55; vector-effect: non-scaling-stroke; pointer-events: none; }
 .outside { fill: rgba(60, 50, 40, .22); pointer-events: none; }
 .rdot { fill: var(--accent); pointer-events: none; }
@@ -197,3 +198,4 @@ button.link { background: none; border: none; padding: 0; color: var(--accent, #
 .structure ul.bad { color: var(--bad, #c62828); padding-left: 16px; margin: 4px 0; }
 
 #canvas.peek #overlay { display: none; }  /* hold h: the page alone */
+.readnote { margin: 4px 0; padding: 4px 6px; border-left: 3px solid var(--auto); font-size: 12px; }

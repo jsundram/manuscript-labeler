@@ -166,6 +166,8 @@ def validate(doc) -> list[str]:
                 errs.append(f"{wm}: x, y, w, h must be numbers")
             if m.get("kind") not in MARK_KINDS:
                 errs.append(f"{wm}: bad kind {m.get('kind')!r}")
+            if not isinstance(m.get("text_auto", False), bool):
+                errs.append(f"{wm}: text_auto must be true or false")
             if m.get("kind") == "signature":
                 if not any(f in m for f in SIG_FIELDS):
                     errs.append(f"{wm}: a signature mark needs a clef, key or time")

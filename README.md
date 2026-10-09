@@ -22,9 +22,21 @@ http://127.0.0.1:8048/. Pick a source and work through it page by page:
   yet touched). Fix them by dragging, or with the keys below.
 - Set the page's kind, part and clef on the right. Part and clef carry over
   from the previous page.
+- With an API key, Claude reads each new page as it first opens (and the
+  next one ahead of time): what it is, and on a title page whose part
+  ("Violino 2.do"). Where its reading disagrees with the page (a cello
+  page carried on as viola, say), the page panel says so. A text mark you
+  drag out gets Claude's reading of it, following the copyist (shown in
+  orange until you edit it); "Read with Claude" on a mark asks again. The
+  Source panel tallies what each source has cost: about a cent a page,
+  half a cent a mark, each page paid for once.
 - Bar numbers update as you go, and the left panel compares counted bars
   with `Op48-N/Structure.ily` when it exists.
 - **Enter** marks the page reviewed and opens the next.
+
+For Claude, put `ML_API_KEY=...` (an Anthropic API key) in the labeler's
+`.env` (gitignored), or set it in the environment; without it, nothing is
+sent and pages are labelled as before.
 
 Labels save automatically next to the PDF: `<pdf>.labels.json` (the working
 file) and `<pdf>.bars.json` (the flat export for the synoptic build). Every
@@ -53,6 +65,9 @@ re-runs detection on the page and keeps your edits.
 - `crops.py`: crop edges (how far each staff's bar images reach above and
   below it) learned from your reviewed crops, trained the same way;
   `experiments/crops/evaluate.py` scores it against the rules.
+- `reader.py`: Claude's readings of a page's kind and part and of a
+  mark's text, cached under `~/.cache/manuscript-labeler/claude`;
+  `experiments/llm/` measured them on the reviewed pages.
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
 - `tools/score_barlines.py`: scores bar-line detection against your
   reviewed pages; run it before and after changing `detect.py`.

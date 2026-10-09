@@ -1,13 +1,15 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["numpy", "pillow", "scikit-learn"]
+# dependencies = ["anthropic", "numpy", "pillow", "scikit-learn"]
 # ///
 """Local labeling server.
 
     uv run server.py <edition-repo> [--port 8048] [--no-open]
 
 Serves the editor (`static/`), renders PDF pages with `pdftoppm`, proposes
-staves and bar lines (`detect.py`), and saves labels next to each source PDF:
+staves and bar lines (`detect.py`), asks Claude what each new page is and
+what a mark's box says (`reader.py`, with ML_API_KEY in the labeler's .env),
+and saves labels next to each source PDF:
 
     <pdf>.labels.json   the editor's working file (schema-versioned)
     <pdf>.bars.json     flat bar export for the synoptic build, rewritten on save
@@ -38,6 +40,7 @@ from urllib.parse import parse_qs, urlparse
 sys.path.insert(0, str(Path(__file__).parent))
 import crops  # noqa: E402
 import labels  # noqa: E402
+import reader  # noqa: E402
 import structure  # noqa: E402
 
 HERE = Path(__file__).parent
@@ -69,6 +72,9 @@ class Edition:
         self.crop_state = "not trained"
         self.crop_lock = threading.Lock()
         self.crop_again = False
+        # Claude's readings of pages and marks (reader.py): on with an API key
+        key = reader.api_key()
+        self.reader = reader.Reader(cache / "claude", key) if key else None
 
     # -- paths ---------------------------------------------------------------
 
@@ -123,7 +129,9 @@ class Edition:
 
     def mark_texts(self) -> list[dict]:
         """Every mark text used in this edition's labels, most used first,
-        with the kind it's usually given: suggestions for the editor."""
+        with the kind it's usually given: suggestions for the editor, and
+        the texts Claude is offered. Claude's readings count once their
+        page is reviewed."""
         seen: dict[str, dict] = {}
         for lp in self.root.glob("sources/**/*.labels.json"):
             try:
@@ -133,8 +141,8 @@ class Edition:
             for page in doc.get("pages", {}).values():
                 for m in page.get("marks", []):
                     text = (m.get("text") or "").strip()
-                    if not text:
-                        continue
+                    if not text or (m.get("text_auto") and page.get("status") != "reviewed"):
+                        continue  # Claude's reading, not yet checked: not the editor's text
                     e = seen.setdefault(text, {"text": text, "n": 0, "kinds": {}})
                     e["n"] += 1
                     e["kinds"][m.get("kind", "text")] = e["kinds"].get(m.get("kind", "text"), 0) + 1
@@ -176,6 +184,7 @@ class Edition:
             "labels_file": self.rel(lp),
             "barline_model": self.barline_state(),
             "crop_model": self.crop_state,
+            "reader": self.reader_state(rel),
         }
 
     # -- saving --------------------------------------------------------------
@@ -397,6 +406,56 @@ class Edition:
                 print(f"learned crops failed on {rel} p{page}: {type(e).__name__}: {e}", flush=True)
         return {"systems": systems, "corners": corners, "look": detect.page_look(img, corners)}
 
+    # -- Claude's readings ---------------------------------------------------
+
+    def reader_state(self, rel: str) -> dict:
+        if self.reader is None:
+            return {"on": False, "why": "off: no ML_API_KEY in the labeler's .env"}
+        return {"on": True, **self.reader.spent(rel)}
+
+    def read_page(self, rel: str, page: int, ask: bool = True) -> dict:
+        """Claude's kind and part for a page: cached, else asked (unless
+        `ask` is false: then none when it hasn't been)."""
+        from PIL import Image
+
+        if self.reader is None:
+            raise LookupError("reading is off: no ML_API_KEY in the labeler's .env")
+        pdf = self.pdf(rel)
+        if not 1 <= page <= self.num_pages(pdf):
+            raise LookupError(f"no page {page}")
+        a = self.reader.cached_page(rel, page)
+        if a is None and ask:
+            img = self.render(rel, page)  # a render failure is pdftoppm's, not Claude's
+            try:
+                a = self.reader.page(rel, page, lambda: Image.open(img))
+            except Exception as e:
+                raise reader.ReadFailed(f"{type(e).__name__}: {e}") from e
+        a = a or {}
+        return {**{k: a[k] for k in ("kind", "part", "evidence", "error") if k in a}, "reader": self.reader_state(rel)}
+
+    def read_mark(self, rel: str, page: int, box: dict) -> dict:
+        """Claude's reading of the text in a mark's box, offered the texts
+        already typed for marks with words (most used first)."""
+        from PIL import Image
+
+        if self.reader is None:
+            raise LookupError("reading is off: no ML_API_KEY in the labeler's .env")
+        try:
+            box = {k: float(box[k]) for k in ("x", "y", "w", "h")}
+        except (KeyError, TypeError) as e:
+            raise ValueError(f"box: {e}") from e
+        img = Image.open(self.render(rel, page))
+        known = [e["text"] for e in self.mark_texts() if set(e["kinds"]) & set(reader.MARK_KINDS)]  # the editor's
+        if box["w"] <= 0 or box["h"] <= 0:
+            raise ValueError("the mark's box is empty")
+        try:
+            a = self.reader.mark(rel, page, box, img, known)
+        except ValueError:
+            raise  # the box (mark_jpeg): the request's fault, not Claude's
+        except Exception as e:
+            raise reader.ReadFailed(f"{type(e).__name__}: {e}") from e
+        return {**{k: a[k] for k in ("text", "legible", "error") if k in a}, "reader": self.reader_state(rel)}
+
     def barline_state(self) -> str:
         """How bar lines are found, for the source panel."""
         import detections
@@ -596,6 +655,8 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/structure":
                 answers = {k: v for k, v in q.items() if k not in ("pdf", "movement")}
                 return self.send_json(ed.structure(q["pdf"], q["movement"], answers))
+            if path == "/api/read":
+                return self.send_json(ed.read_page(q["pdf"], int(q["page"]), ask=q.get("ask") != "0"))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
@@ -603,14 +664,18 @@ class Handler(BaseHTTPRequestHandler):
             return self.error(HTTPStatus.BAD_REQUEST, str(e))
         except subprocess.CalledProcessError as e:
             return self.error(HTTPStatus.INTERNAL_SERVER_ERROR, f"{e.cmd[0]} failed: {e.stderr}")
+        except reader.ReadFailed as e:
+            return self.error(HTTPStatus.BAD_GATEWAY, f"Claude couldn't read it: {e}")
 
     def do_POST(self):
         path, q = self.route()
-        if path != "/api/structure":
+        if path not in ("/api/structure", "/api/readmark"):
             return self.error(HTTPStatus.NOT_FOUND, "not found")
         try:
             n = int(self.headers.get("Content-Length", 0))
             body = json.loads(self.rfile.read(n))
+            if path == "/api/readmark":
+                return self.send_json(self.edition.read_mark(body["pdf"], int(body["page"]), body["box"]))
             return self.send_json(self.edition.write_structure(
                 body["pdf"], body["movement"], body.get("answers", {}), self.headers.get("If-Match", ""),
                 body.get("shown", "")))
@@ -618,6 +683,10 @@ class Handler(BaseHTTPRequestHandler):
             return self.error(HTTPStatus.CONFLICT, str(e))
         except (LookupError, KeyError, ValueError) as e:
             return self.error(HTTPStatus.BAD_REQUEST, str(e))
+        except reader.ReadFailed as e:
+            return self.error(HTTPStatus.BAD_GATEWAY, f"Claude couldn't read it: {e}")
+        except subprocess.CalledProcessError as e:
+            return self.error(HTTPStatus.INTERNAL_SERVER_ERROR, f"{e.cmd[0]} failed: {e.stderr}")
 
     def do_PUT(self):
         path, q = self.route()
