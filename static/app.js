@@ -588,7 +588,7 @@ async function saveNow() {
   if (S.readonly || S.conflict || S.version === S.savedVersion) return;
   if (S.saving) { S.saveTimer = setTimeout(saveNow, 200); return; }
   S.saving = true;
-  const version = S.version;
+  const version = S.version, pdf = S.pdf;
   setSaveStatus('saving…');
   try {
     const r = await fetch(`/api/labels?${q(S.pdf)}`, {
@@ -597,6 +597,7 @@ async function saveNow() {
       body: JSON.stringify(S.doc),
     });
     const j = await r.json().catch(() => ({}));
+    if (S.pdf !== pdf) return;  // another source opened meanwhile: this etag isn't its
     if (r.status === 409) {
       S.conflict = true;
       setSaveStatus('not saved', true);
@@ -613,6 +614,7 @@ async function saveNow() {
     }
     setSaveStatus(S.version === version ? 'saved' : 'unsaved');
   } catch (e) {
+    if (S.pdf !== pdf) return;  // another source opened meanwhile
     setSaveStatus('save failed', true);
     banner(`Save failed: ${e.message}. Your changes are still in this tab; it will retry.`);
     S.saveTimer = setTimeout(() => { banner(null); saveNow(); }, 3000);
@@ -649,6 +651,7 @@ function parseHash() {
 }
 
 async function loadSource(pdf, page) {
+  while (S.saving) await new Promise((r) => setTimeout(r, 50));  // its etag is this source's
   if (S.pdf && S.version !== S.savedVersion) await saveNow();
   const j = await getJSON(`/api/source?${q(pdf)}`);
   S.pdf = pdf;
