@@ -325,6 +325,13 @@ to know how bar numbers are derived. So the labeler also writes a flat
 **bar export**, regenerated on every save:
 `<pdf name>.bars.json`.
 
+One exception: the edition's `scripts/proof.py` and `scripts/zoom.py` also
+read the labels file beside the export, for the staves its bars name
+(`system`), found under `pages` → each page's `systems`: each system's
+`id`, `top`, `bottom`, `left`, `right`, `start` and `bend` (optional).
+They don't check its `schema` (the edition's files are at several), so a
+migration must keep that layout and these fields as they are.
+
 ```json
 {
   "schema": 1,
