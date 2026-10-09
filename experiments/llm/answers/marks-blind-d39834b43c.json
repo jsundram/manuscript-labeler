@@ -1,0 +1,6515 @@
+{
+ "D-B_KHM-602:11:p11m1": {
+  "box": [
+   0.5198,
+   0.681,
+   0.2877,
+   0.0638
+  ],
+  "legible": true,
+  "text": "Segue il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 675,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 675,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:12:p12m1": {
+  "box": [
+   0.2335,
+   0.4366,
+   0.1457,
+   0.0385
+  ],
+  "legible": true,
+  "text": "Sotto voce assai",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 504,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 504,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:12:p12m2": {
+  "box": [
+   0.1725,
+   0.0386,
+   0.2603,
+   0.0389
+  ],
+  "legible": true,
+  "text": "Minuetto, Con Moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 559,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 559,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:12:p12m3": {
+  "box": [
+   0.138,
+   0.4177,
+   0.0841,
+   0.0535
+  ],
+  "legible": true,
+  "text": "Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 496,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 496,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:12:p12m4": {
+  "box": [
+   0.4386,
+   0.8261,
+   0.2427,
+   0.0381
+  ],
+  "legible": true,
+  "text": "Dalcapo il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 549,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 549,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13:p13m1": {
+  "box": [
+   0.3852,
+   0.055,
+   0.3436,
+   0.0632
+  ],
+  "legible": true,
+  "text": "Mese di Febraro. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 723,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 723,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13:p13m2": {
+  "box": [
+   0.3868,
+   0.2187,
+   0.1704,
+   0.0371
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 514,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 514,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13:p13m3": {
+  "box": [
+   0.3718,
+   0.3603,
+   0.1903,
+   0.0586
+  ],
+  "legible": true,
+  "text": "Violoncello.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 573,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 573,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13:p13m4": {
+  "box": [
+   0.5769,
+   0.516,
+   0.3013,
+   0.0582
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 650,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 650,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:14:p14m1": {
+  "box": [
+   0.2774,
+   0.0257,
+   0.2154,
+   0.0415
+  ],
+  "legible": true,
+  "text": "Andante Moderato.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 539,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 539,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:15:p15m1": {
+  "box": [
+   0.4517,
+   0.667,
+   0.4,
+   0.0709
+  ],
+  "legible": true,
+  "text": "Segue il Minuetto Con Moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 815,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 815,
+     "model": null,
+     "output_tokens": 28,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 28,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:16:p16m1": {
+  "box": [
+   0.1456,
+   0.0271,
+   0.2492,
+   0.039
+  ],
+  "legible": true,
+  "text": "Minuetto, con moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 554,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 554,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:16:p16m3": {
+  "box": [
+   0.796,
+   0.7912,
+   0.1072,
+   0.0898
+  ],
+  "legible": true,
+  "text": "fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 584,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 584,
+     "model": null,
+     "output_tokens": 15,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 15,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:1:p1m1": {
+  "box": [
+   0.3327,
+   0.0601,
+   0.3667,
+   0.0697
+  ],
+  "legible": true,
+  "text": "Mese di Febraro. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 779,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 779,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:1:p1m2": {
+  "box": [
+   0.3674,
+   0.3723,
+   0.3613,
+   0.0649
+  ],
+  "legible": true,
+  "text": "di Luigi Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 739,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 739,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:1:p1m4": {
+  "box": [
+   0.1242,
+   0.2097,
+   0.5994,
+   0.1276
+  ],
+  "legible": true,
+  "text": "Quartettino. Per due Violini, Viola, e Violoncello.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1475,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1475,
+     "model": null,
+     "output_tokens": 37,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 37,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:2:p2m1": {
+  "box": [
+   0.2801,
+   0.037,
+   0.2399,
+   0.0356
+  ],
+  "legible": true,
+  "text": "Andante Moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 549,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 549,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:3:p3m1": {
+  "box": [
+   0.5534,
+   0.6714,
+   0.3068,
+   0.0659
+  ],
+  "legible": true,
+  "text": "Segue il Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 691,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 691,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:4:p4m1": {
+  "box": [
+   0.1638,
+   0.0338,
+   0.2538,
+   0.0451
+  ],
+  "legible": true,
+  "text": "Minuetto con moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 587,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 587,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:4:p4m2": {
+  "box": [
+   0.691,
+   0.7754,
+   0.1076,
+   0.0907
+  ],
+  "legible": true,
+  "text": "fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 584,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 584,
+     "model": null,
+     "output_tokens": 15,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 15,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:4:p4m3": {
+  "box": [
+   0.4487,
+   0.7579,
+   0.2387,
+   0.0472
+  ],
+  "legible": true,
+  "text": "Minuetto Dalapo",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 575,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 575,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:4:p4m4": {
+  "box": [
+   0.096,
+   0.4311,
+   0.1212,
+   0.0565
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 524,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 524,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5:p5m1": {
+  "box": [
+   0.3775,
+   0.0703,
+   0.3323,
+   0.0549
+  ],
+  "legible": true,
+  "text": "Mese di Febraro 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 671,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 671,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5:p5m2": {
+  "box": [
+   0.5974,
+   0.5212,
+   0.2738,
+   0.0544
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 629,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 629,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5:p5m3": {
+  "box": [
+   0.4433,
+   0.3646,
+   0.2036,
+   0.0637
+  ],
+  "legible": true,
+  "text": "Violino Primo",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 611,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 611,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5:p5m4": {
+  "box": [
+   0.4474,
+   0.2194,
+   0.225,
+   0.0488
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:6:p6m1": {
+  "box": [
+   0.2903,
+   0.0281,
+   0.2326,
+   0.0512
+  ],
+  "legible": true,
+  "text": "Andante Moderato.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 601,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 601,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:7:p7m1": {
+  "box": [
+   0.6554,
+   0.823,
+   0.2028,
+   0.0651
+  ],
+  "legible": true,
+  "text": "Segue il Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 611,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 611,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:8:p8m2": {
+  "box": [
+   0.2228,
+   0.4454,
+   0.1891,
+   0.0359
+  ],
+  "legible": true,
+  "text": "Sotto voce assai.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 524,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 524,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:8:p8m3": {
+  "box": [
+   0.8287,
+   0.8671,
+   0.0735,
+   0.0713
+  ],
+  "legible": true,
+  "text": "fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 518,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 518,
+     "model": null,
+     "output_tokens": 15,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 15,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:8:p8m4": {
+  "box": [
+   0.7981,
+   0.826,
+   0.1842,
+   0.0429
+  ],
+  "legible": true,
+  "text": "Minuetto Da Capo",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 545,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 545,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:9:p9m3": {
+  "box": [
+   0.3769,
+   0.373,
+   0.1783,
+   0.0527
+  ],
+  "legible": true,
+  "text": "Violino 2.do",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 566,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 566,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:9:p9m4": {
+  "box": [
+   0.5173,
+   0.5245,
+   0.2656,
+   0.0538
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 622,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 622,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:10:p10m1": {
+  "box": [
+   0.1616,
+   0.1372,
+   0.2401,
+   0.051
+  ],
+  "legible": true,
+  "text": "Tempo di Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 608,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 608,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:10:p10m2": {
+  "box": [
+   0.6747,
+   0.6547,
+   0.1889,
+   0.0692
+  ],
+  "legible": true,
+  "text": "Segue il Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 617,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 617,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:11:p11m1": {
+  "box": [
+   0.0627,
+   0.1325,
+   0.0918,
+   0.0547
+  ],
+  "legible": true,
+  "text": "Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 503,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 503,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:11:p11m2": {
+  "box": [
+   0.3843,
+   0.6714,
+   0.2498,
+   0.0508
+  ],
+  "legible": true,
+  "text": "Dalcapo il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 615,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 615,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:11:p11m3": {
+  "box": [
+   0.6471,
+   0.7439,
+   0.0775,
+   0.0713
+  ],
+  "legible": true,
+  "text": "Fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 518,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 518,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13:p13m1": {
+  "box": [
+   0.3875,
+   0.0669,
+   0.2864,
+   0.0636
+  ],
+  "legible": true,
+  "text": "Mese di Aprile. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 675,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 675,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13:p13m2": {
+  "box": [
+   0.415,
+   0.2172,
+   0.1646,
+   0.0535
+  ],
+  "legible": true,
+  "text": "Quartettino",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 552,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 552,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13:p13m3": {
+  "box": [
+   0.6095,
+   0.5267,
+   0.2204,
+   0.0489
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13:p13m4": {
+  "box": [
+   0.4217,
+   0.3681,
+   0.1763,
+   0.0531
+  ],
+  "legible": true,
+  "text": "Violino 2do",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 559,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 559,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:14:p14m1": {
+  "box": [
+   0.2712,
+   0.0388,
+   0.158,
+   0.0422
+  ],
+  "legible": true,
+  "text": "Andante Lento.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 527,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 527,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:15:p15m1": {
+  "box": [
+   0.491,
+   0.745,
+   0.3552,
+   0.0712
+  ],
+  "legible": true,
+  "text": "Segue Tempo di Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 770,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 770,
+     "model": null,
+     "output_tokens": 27,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 27,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:16:p16m2": {
+  "box": [
+   0.6215,
+   0.6742,
+   0.172,
+   0.0631
+  ],
+  "legible": true,
+  "text": "Segue il Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 587,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 587,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:17:p17m2": {
+  "box": [
+   0.4667,
+   0.6833,
+   0.2689,
+   0.0442
+  ],
+  "legible": true,
+  "text": "Dalcapo il Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 593,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 593,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:17:p17m3": {
+  "box": [
+   0.6877,
+   0.7522,
+   0.0711,
+   0.079
+  ],
+  "legible": true,
+  "text": "Fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 529,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 529,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19:p19m1": {
+  "box": [
+   0.376,
+   0.0668,
+   0.3006,
+   0.0527
+  ],
+  "legible": true,
+  "text": "Mese di Aprile. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 650,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 650,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19:p19m2": {
+  "box": [
+   0.4189,
+   0.2081,
+   0.184,
+   0.0593
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 595,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 595,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19:p19m3": {
+  "box": [
+   0.6077,
+   0.5188,
+   0.2317,
+   0.0436
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 575,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 575,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19:p19m4": {
+  "box": [
+   0.4156,
+   0.3607,
+   0.1852,
+   0.0578
+  ],
+  "legible": true,
+  "text": "Violoncello.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 573,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 573,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1:p1m1": {
+  "box": [
+   0.3979,
+   0.0531,
+   0.3187,
+   0.0645
+  ],
+  "legible": true,
+  "text": "Mese di Aprile. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 699,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 699,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1:p1m2": {
+  "box": [
+   0.4164,
+   0.2153,
+   0.1796,
+   0.0527
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 566,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 566,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1:p1m3": {
+  "box": [
+   0.122,
+   0.2969,
+   0.5979,
+   0.0496
+  ],
+  "legible": true,
+  "text": "Per due Violini, Viola, e Violoncello.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 791,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 791,
+     "model": null,
+     "output_tokens": 31,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 31,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1:p1m4": {
+  "box": [
+   0.3724,
+   0.3728,
+   0.3782,
+   0.0607
+  ],
+  "legible": true,
+  "text": "Di Luigi Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 747,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 747,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1:p1m5": {
+  "box": [
+   0.1235,
+   0.4488,
+   0.7169,
+   0.0712
+  ],
+  "legible": true,
+  "text": "Compositore di Camera di S. M. il R\u00e8 di Prussia.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1094,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1094,
+     "model": null,
+     "output_tokens": 36,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 36,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:21:p21m1": {
+  "box": [
+   0.4902,
+   0.5925,
+   0.325,
+   0.0695
+  ],
+  "legible": true,
+  "text": "Segue Tempo di Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 743,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 743,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:22:p22m1": {
+  "box": [
+   0.1708,
+   0.1397,
+   0.2425,
+   0.0585
+  ],
+  "legible": true,
+  "text": "Tempo di Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 608,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 608,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:22:p22m2": {
+  "box": [
+   0.6221,
+   0.6666,
+   0.1895,
+   0.06
+  ],
+  "legible": true,
+  "text": "Segue il Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 595,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 595,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:23:p23m1": {
+  "box": [
+   0.4301,
+   0.6789,
+   0.264,
+   0.0487
+  ],
+  "legible": true,
+  "text": "Dalcapo il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 593,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 593,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:23:p23m2": {
+  "box": [
+   0.0578,
+   0.1371,
+   0.0928,
+   0.054
+  ],
+  "legible": true,
+  "text": "Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 503,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 503,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:23:p23m3": {
+  "box": [
+   0.6671,
+   0.7448,
+   0.081,
+   0.0681
+  ],
+  "legible": true,
+  "text": "fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 527,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 527,
+     "model": null,
+     "output_tokens": 15,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 15,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:2:p2m1": {
+  "box": [
+   0.3074,
+   0.0266,
+   0.1773,
+   0.0424
+  ],
+  "legible": true,
+  "text": "Andante Lento.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 539,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 539,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:4:p4m1": {
+  "box": [
+   0.175,
+   0.1334,
+   0.2405,
+   0.063
+  ],
+  "legible": true,
+  "text": "Tempo di minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 635,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 635,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:4:p4m2": {
+  "box": [
+   0.5898,
+   0.6636,
+   0.2074,
+   0.0668
+  ],
+  "legible": true,
+  "text": "Segue il Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 611,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 611,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:5:p5m1": {
+  "box": [
+   0.0422,
+   0.1748,
+   0.0807,
+   0.0562
+  ],
+  "legible": true,
+  "text": "Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 507,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 507,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:5:p5m2": {
+  "box": [
+   0.6572,
+   0.6246,
+   0.2348,
+   0.0366
+  ],
+  "legible": true,
+  "text": "Da Capo il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 549,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 549,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:5:p5m3": {
+  "box": [
+   0.7078,
+   0.7144,
+   0.0928,
+   0.0843
+  ],
+  "legible": true,
+  "text": "Fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 573,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 573,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7:p7m1": {
+  "box": [
+   0.4165,
+   0.0683,
+   0.2679,
+   0.0523
+  ],
+  "legible": true,
+  "text": "Mese di Aprile. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 629,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 629,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7:p7m2": {
+  "box": [
+   0.4164,
+   0.2101,
+   0.1573,
+   0.0578
+  ],
+  "legible": true,
+  "text": "Quartettino",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 552,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 552,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7:p7m3": {
+  "box": [
+   0.4147,
+   0.3682,
+   0.1647,
+   0.0524
+  ],
+  "legible": true,
+  "text": "Violino 1.mo",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 552,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 552,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7:p7m4": {
+  "box": [
+   0.5896,
+   0.5213,
+   0.2204,
+   0.0497
+  ],
+  "legible": true,
+  "text": "di Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:8:p8m1": {
+  "box": [
+   0.2965,
+   0.0299,
+   0.168,
+   0.0484
+  ],
+  "legible": true,
+  "text": "Andante Lento.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 533,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 533,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:9:p9m1": {
+  "box": [
+   0.5819,
+   0.6755,
+   0.2897,
+   0.0587
+  ],
+  "legible": true,
+  "text": "Segue Tempo di Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 643,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 643,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:11:p11m1": {
+  "box": [
+   0.3774,
+   0.1317,
+   0.4167,
+   0.0448
+  ],
+  "legible": true,
+  "text": "Menuetto Con Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 691,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 691,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:12:p12m1": {
+  "box": [
+   0.432,
+   0.0712,
+   0.1582,
+   0.0641
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 595,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 595,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:13:p13m1": {
+  "box": [
+   0.3671,
+   0.292,
+   0.2779,
+   0.096
+  ],
+  "legible": true,
+  "text": "Boccherini. 6. Quatuors in\u00e9dits.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 851,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 851,
+     "model": null,
+     "output_tokens": 31,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 31,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:13:p13m2": {
+  "box": [
+   0.4237,
+   0.396,
+   0.1209,
+   0.0332
+  ],
+  "legible": true,
+  "text": "Viola.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 485,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 485,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:14:p14m1": {
+  "box": [
+   0.1138,
+   0.1907,
+   0.7662,
+   0.0673
+  ],
+  "legible": true,
+  "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1101,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1101,
+     "model": null,
+     "output_tokens": 33,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 33,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:14:p14m2": {
+  "box": [
+   0.4132,
+   0.0634,
+   0.1217,
+   0.0669
+  ],
+  "legible": true,
+  "text": "Alto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 573,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 573,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:15:p15m1": {
+  "box": [
+   0.0831,
+   0.0712,
+   0.3029,
+   0.0314
+  ],
+  "legible": true,
+  "text": "allegretto moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:16:p16m1": {
+  "box": [
+   0.598,
+   0.7347,
+   0.3535,
+   0.0664
+  ],
+  "legible": true,
+  "text": "Segue Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 760,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 760,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:17:p17m1": {
+  "box": [
+   0.3343,
+   0.0713,
+   0.476,
+   0.0567
+  ],
+  "legible": true,
+  "text": "Menuetto Con Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 819,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 819,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:18:p18m1": {
+  "box": [
+   0.3582,
+   0.0521,
+   0.1652,
+   0.064
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 606,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 606,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:18:p18m2": {
+  "box": [
+   0.5739,
+   0.6693,
+   0.4261,
+   0.0956
+  ],
+  "legible": true,
+  "text": "Menuetto daccapo il fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 995,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 995,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:19:p19m1": {
+  "box": [
+   0.3769,
+   0.2806,
+   0.2778,
+   0.0917
+  ],
+  "legible": true,
+  "text": "Boccherini. 6. Quatuors in\u00e9dits. Violoncello",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 809,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 809,
+     "model": null,
+     "output_tokens": 36,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 36,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:19:p19m2": {
+  "box": [
+   0.404,
+   0.3723,
+   0.1688,
+   0.0433
+  ],
+  "legible": true,
+  "text": "Violoncello.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 524,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 524,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:1:p1m1": {
+  "box": [
+   0.3368,
+   0.2703,
+   0.3439,
+   0.1016
+  ],
+  "legible": true,
+  "text": "Boccherini. 6. Quatuors in\u00e9dits. Violino 1o.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 963,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 963,
+     "model": null,
+     "output_tokens": 38,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 38,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:1:p1m2": {
+  "box": [
+   0.4126,
+   0.3763,
+   0.1651,
+   0.0394
+  ],
+  "legible": true,
+  "text": "Violino 1\u00b0.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 524,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 524,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:20:p20m1": {
+  "box": [
+   0.0752,
+   0.2706,
+   0.861,
+   0.0851
+  ],
+  "legible": true,
+  "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1357,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1357,
+     "model": null,
+     "output_tokens": 33,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 33,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:20:p20m2": {
+  "box": [
+   0.3388,
+   0.1049,
+   0.3229,
+   0.0855
+  ],
+  "legible": true,
+  "text": "Violoncello",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 825,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 825,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:21:p21m1": {
+  "box": [
+   0.0399,
+   0.2089,
+   0.3086,
+   0.0393
+  ],
+  "legible": true,
+  "text": "Allegretto Moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 601,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 601,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:21:p21m2": {
+  "box": [
+   0.3313,
+   0.1055,
+   0.5951,
+   0.0753
+  ],
+  "legible": true,
+  "text": "Mese di Giugno 1794",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1056,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1056,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:23:p23m1": {
+  "box": [
+   0.3702,
+   0.1239,
+   0.4905,
+   0.0572
+  ],
+  "legible": true,
+  "text": "Menuetto Con Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 829,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 829,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:23:p23m2": {
+  "box": [
+   0.6477,
+   0.5918,
+   0.1967,
+   0.1137
+  ],
+  "legible": true,
+  "text": "Segue Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 837,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 837,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:24:p24m1": {
+  "box": [
+   0.4441,
+   0.127,
+   0.1837,
+   0.0789
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 666,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 666,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:24:p24m2": {
+  "box": [
+   0.5459,
+   0.5867,
+   0.4511,
+   0.1042
+  ],
+  "legible": true,
+  "text": "Da capo il Menuetto Fine",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1065,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1065,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:2:p2m1": {
+  "box": [
+   0.2495,
+   0.1653,
+   0.6516,
+   0.0654
+  ],
+  "legible": true,
+  "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1057,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1057,
+     "model": null,
+     "output_tokens": 33,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 33,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:2:p2m2": {
+  "box": [
+   0.481,
+   0.0815,
+   0.189,
+   0.0637
+  ],
+  "legible": true,
+  "text": "Violino 1o",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 639,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 639,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:3:p3m1": {
+  "box": [
+   0.0318,
+   0.0087,
+   0.2314,
+   0.0405
+  ],
+  "legible": true,
+  "text": "Quartettino",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 559,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 559,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:3:p3m2": {
+  "box": [
+   0.0521,
+   0.0432,
+   0.1732,
+   0.0302
+  ],
+  "legible": true,
+  "text": "allegretto moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 494,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 494,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:4:p4m1": {
+  "box": [
+   0.6463,
+   0.8617,
+   0.3146,
+   0.0644
+  ],
+  "legible": true,
+  "text": "Segue e Menuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 727,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 727,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:5:p5m1": {
+  "box": [
+   0.3195,
+   0.0901,
+   0.5434,
+   0.0577
+  ],
+  "legible": true,
+  "text": "Menuetto Con Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 869,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 869,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:5:p5m2": {
+  "box": [
+   0.7077,
+   0.6208,
+   0.2882,
+   0.0723
+  ],
+  "legible": true,
+  "text": "Segue il trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 719,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 719,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:7:p7m1": {
+  "box": [
+   0.3869,
+   0.2919,
+   0.2537,
+   0.0853
+  ],
+  "legible": true,
+  "text": "Boccherini. 6. Quatuors in\u00e9dits.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 755,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 755,
+     "model": null,
+     "output_tokens": 31,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 31,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:7:p7m2": {
+  "box": [
+   0.4321,
+   0.3815,
+   0.1803,
+   0.0433
+  ],
+  "legible": true,
+  "text": "Violino 2\u00b0.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 531,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 531,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:8:p8m1": {
+  "box": [
+   0.1073,
+   0.2366,
+   0.7751,
+   0.064
+  ],
+  "legible": true,
+  "text": "Quatuors In\u00e9dits de Boccherini Op. 48",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 1112,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 1112,
+     "model": null,
+     "output_tokens": 33,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 33,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:8:p8m2": {
+  "box": [
+   0.3587,
+   0.0606,
+   0.2469,
+   0.0835
+  ],
+  "legible": true,
+  "text": "Violino 2\u00b0",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 755,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 755,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:9:p9m1": {
+  "box": [
+   0.0605,
+   0.0151,
+   0.1481,
+   0.0628
+  ],
+  "legible": true,
+  "text": "Allegro",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:11:p11m1": {
+  "box": [
+   0.4152,
+   0.0797,
+   0.2962,
+   0.0552
+  ],
+  "legible": true,
+  "text": "Menuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 653,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 653,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:11:p11m2": {
+  "box": [
+   0.0264,
+   0.151,
+   0.3626,
+   0.0494
+  ],
+  "legible": true,
+  "text": "Con un poco di Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 667,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 667,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:11:p11m3": {
+  "box": [
+   0.6082,
+   0.532,
+   0.3459,
+   0.0767
+  ],
+  "legible": true,
+  "text": "Segue Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 822,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 822,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:17:p17m1": {
+  "box": [
+   0.4013,
+   0.0454,
+   0.2267,
+   0.055
+  ],
+  "legible": true,
+  "text": "Menuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 608,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 608,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:17:p17m2": {
+  "box": [
+   0.0622,
+   0.1089,
+   0.368,
+   0.0504
+  ],
+  "legible": true,
+  "text": "Con poco di Moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 698,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 698,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:17:p17m3": {
+  "box": [
+   0.6095,
+   0.495,
+   0.3683,
+   0.08
+  ],
+  "legible": true,
+  "text": "Segue il Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 835,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 835,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:23:p23m1": {
+  "box": [
+   0.3263,
+   0.1208,
+   0.6168,
+   0.0627
+  ],
+  "legible": true,
+  "text": "Menuetto Con moto di Molto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 969,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 969,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:23:p23m2": {
+  "box": [
+   0.4141,
+   0.5794,
+   0.3274,
+   0.0969
+  ],
+  "legible": true,
+  "text": "Segue Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 915,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 915,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:3:p3m1": {
+  "box": [
+   0.0729,
+   0.0235,
+   0.2775,
+   0.034
+  ],
+  "legible": true,
+  "text": "Andantino Lento",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 563,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 563,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:3:p3m2": {
+  "box": [
+   0.3658,
+   0.0129,
+   0.2511,
+   0.0329
+  ],
+  "legible": true,
+  "text": "Violino 1.o",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 545,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 545,
+     "model": null,
+     "output_tokens": 20,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 20,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:11:p11m1": {
+  "box": [
+   0.1023,
+   0.0664,
+   0.0522,
+   0.0779
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 500,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 500,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:11:p11m2": {
+  "box": [
+   0.4116,
+   0.3912,
+   0.243,
+   0.0543
+  ],
+  "legible": true,
+  "text": "Da Capo il Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 608,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 608,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13:p13m1": {
+  "box": [
+   0.3247,
+   0.0524,
+   0.2735,
+   0.1127
+  ],
+  "legible": true,
+  "text": "Mese di Giugno. 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 848,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 848,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13:p13m2": {
+  "box": [
+   0.3438,
+   0.2753,
+   0.1986,
+   0.1038
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 719,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 719,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13:p13m3": {
+  "box": [
+   0.3551,
+   0.5584,
+   0.2187,
+   0.0577
+  ],
+  "legible": true,
+  "text": "Violino Secondo.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 594,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 594,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13:p13m4": {
+  "box": [
+   0.3671,
+   0.7825,
+   0.2318,
+   0.0972
+  ],
+  "legible": true,
+  "text": "Boccherini.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 727,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 727,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:14:p14m1": {
+  "box": [
+   0.2205,
+   0.0605,
+   0.2459,
+   0.1
+  ],
+  "legible": true,
+  "text": "Allegretto Moderato.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 767,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 767,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:14:p14m2": {
+  "box": [
+   0.5707,
+   0.1274,
+   0.0914,
+   0.0307
+  ],
+  "legible": true,
+  "text": "Sotto Voce.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 463,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 463,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:15:p15m1": {
+  "box": [
+   0.7433,
+   0.8227,
+   0.1065,
+   0.1029
+  ],
+  "legible": true,
+  "text": "Segue.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 599,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 599,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:16:p16m1": {
+  "box": [
+   0.748,
+   0.7349,
+   0.1533,
+   0.0985
+  ],
+  "legible": true,
+  "text": "Da Capo il Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 659,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 659,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:16:p16m2": {
+  "box": [
+   0.0737,
+   0.0421,
+   0.2542,
+   0.1079
+  ],
+  "legible": true,
+  "text": "Minuetto. Con Moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 809,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 809,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:16:p16m3": {
+  "box": [
+   0.4579,
+   0.8233,
+   0.1109,
+   0.0877
+  ],
+  "legible": true,
+  "text": "Fine.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 569,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 569,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17:p17m1": {
+  "box": [
+   0.3205,
+   0.0382,
+   0.2681,
+   0.1168
+  ],
+  "legible": true,
+  "text": "Mese di Giugno 1794.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 867,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 867,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17:p17m2": {
+  "box": [
+   0.3482,
+   0.273,
+   0.2017,
+   0.0796
+  ],
+  "legible": true,
+  "text": "Quartettino.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 635,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 635,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17:p17m3": {
+  "box": [
+   0.4117,
+   0.5486,
+   0.1048,
+   0.0541
+  ],
+  "legible": true,
+  "text": "Viola.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 510,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 510,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17:p17m4": {
+  "box": [
+   0.3655,
+   0.7655,
+   0.2253,
+   0.1082
+  ],
+  "legible": true,
+  "text": "Boccherini.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 783,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 783,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:18:p18m1": {
+  "box": [
+   0.2438,
+   0.0776,
+   0.2576,
+   0.0957
+  ],
+  "legible": true,
+  "text": "Allegretto Moderato.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 749,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 749,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:18:p18m2": {
+  "box": [
+   0.6223,
+   0.1298,
+   0.0933,
+   0.0264
+  ],
+  "legible": true,
+  "text": "Sotto Voce.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 452,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 452,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:19:p19m1": {
+  "box": [
+   0.6873,
+   0.7883,
+   0.1031,
+   0.0935
+  ],
+  "legible": true,
+  "text": "Segue.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 584,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 584,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1:p1m1": {
+  "box": [
+   0.374,
+   0.0486,
+   0.2952,
+   0.0801
+  ],
+  "legible": true,
+  "text": "Mese di Giugno 1794",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 716,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 716,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1:p1m2": {
+  "box": [
+   0.3997,
+   0.2215,
+   0.1824,
+   0.0963
+  ],
+  "legible": true,
+  "text": "Quartettino",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 672,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 672,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1:p1m3": {
+  "box": [
+   0.3501,
+   0.5287,
+   0.2305,
+   0.0727
+  ],
+  "legible": true,
+  "text": "Violino Primo",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 662,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 662,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1:p1m4": {
+  "box": [
+   0.3777,
+   0.7054,
+   0.1811,
+   0.0872
+  ],
+  "legible": true,
+  "text": "Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 639,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 639,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:20:p20m1": {
+  "box": [
+   0.09,
+   0.0319,
+   0.2497,
+   0.1067
+  ],
+  "legible": true,
+  "text": "Minuetto. Con moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 779,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 779,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:20:p20m2": {
+  "box": [
+   0.1206,
+   0.4044,
+   0.061,
+   0.064
+  ],
+  "legible": true,
+  "text": "Trio.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 491,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 491,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:20:p20m3": {
+  "box": [
+   0.723,
+   0.6578,
+   0.1937,
+   0.0752
+  ],
+  "legible": true,
+  "text": "D. C. il Min.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 626,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 626,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:20:p20m4": {
+  "box": [
+   0.4637,
+   0.789,
+   0.1107,
+   0.0774
+  ],
+  "legible": true,
+  "text": "Fine.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 554,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 554,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:2:p2m1": {
+  "box": [
+   0.082,
+   0.0572,
+   0.208,
+   0.0777
+  ],
+  "legible": true,
+  "text": "Quartettino 2o",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 644,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 644,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:2:p2m2": {
+  "box": [
+   0.3108,
+   0.0336,
+   0.0555,
+   0.0336
+  ],
+  "legible": true,
+  "text": "Allegretto moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 447,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 447,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:3:p3m1": {
+  "box": [
+   0.8107,
+   0.7584,
+   0.0736,
+   0.0808
+  ],
+  "legible": true,
+  "text": "Segue",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 529,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 529,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:4:p4m1": {
+  "box": [
+   0.3548,
+   0.0643,
+   0.1652,
+   0.0741
+  ],
+  "legible": true,
+  "text": "Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 599,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 599,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:4:p4m2": {
+  "box": [
+   0.071,
+   0.1428,
+   0.071,
+   0.0349
+  ],
+  "legible": true,
+  "text": "con moto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 455,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 455,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:5:p5m1": {
+  "box": [
+   0.0763,
+   0.0754,
+   0.0541,
+   0.0624
+  ],
+  "legible": true,
+  "text": "Trio",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 491,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 491,
+     "model": null,
+     "output_tokens": 16,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 16,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7:p7m1": {
+  "box": [
+   0.3342,
+   0.0556,
+   0.2775,
+   0.0921
+  ],
+  "legible": true,
+  "text": "Mese di Giugno 1794",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 771,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 771,
+     "model": null,
+     "output_tokens": 24,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 24,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7:p7m2": {
+  "box": [
+   0.3344,
+   0.2224,
+   0.2255,
+   0.1334
+  ],
+  "legible": true,
+  "text": "Quartettino",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 854,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 854,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7:p7m3": {
+  "box": [
+   0.3226,
+   0.4463,
+   0.2276,
+   0.0753
+  ],
+  "legible": true,
+  "text": "Violoncello",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 653,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 653,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7:p7m4": {
+  "box": [
+   0.3605,
+   0.7235,
+   0.1835,
+   0.0864
+  ],
+  "legible": true,
+  "text": "Boccherini",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 639,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 639,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:8:p8m1": {
+  "box": [
+   0.3066,
+   0.0486,
+   0.0858,
+   0.0399
+  ],
+  "legible": true,
+  "text": "Allegretto moderato",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 474,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 474,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:8:p8m2": {
+  "box": [
+   0.0761,
+   0.0815,
+   0.2075,
+   0.0595
+  ],
+  "legible": true,
+  "text": "Quartettino 2.\u00b0",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 587,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 587,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:10:p10m1": {
+  "box": [
+   0.0983,
+   0.0588,
+   0.1847,
+   0.0756
+  ],
+  "legible": true,
+  "text": "Andantino Lento.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 617,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 617,
+     "model": null,
+     "output_tokens": 21,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 21,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:10:p10m2": {
+  "box": [
+   0.5335,
+   0.8368,
+   0.2053,
+   0.0637
+  ],
+  "legible": true,
+  "text": "D. C. sino al \ud834\udd10",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 587,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 587,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:15:p15m1": {
+  "box": [
+   0.4692,
+   0.7999,
+   0.0844,
+   0.0793
+  ],
+  "legible": true,
+  "text": "Fine.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 527,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 527,
+     "model": null,
+     "output_tokens": 17,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 17,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:15:p15m2": {
+  "box": [
+   0.5666,
+   0.661,
+   0.1995,
+   0.0831
+  ],
+  "legible": true,
+  "text": "D. C. il Minuetto",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 659,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 659,
+     "model": null,
+     "output_tokens": 23,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 23,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:15:p15m3": {
+  "box": [
+   0.1253,
+   0.0602,
+   0.134,
+   0.0709
+  ],
+  "legible": true,
+  "text": "Minuetto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 555,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 555,
+     "model": null,
+     "output_tokens": 19,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 19,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:15:p15m4": {
+  "box": [
+   0.2645,
+   0.027,
+   0.2148,
+   0.0307
+  ],
+  "legible": true,
+  "text": "Con un poco di moto.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 511,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 511,
+     "model": null,
+     "output_tokens": 22,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 22,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:2:p2m2": {
+  "box": [
+   0.6745,
+   0.8257,
+   0.2264,
+   0.0605
+  ],
+  "legible": true,
+  "text": "D. C. sino al \ud834\udd10",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 601,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 601,
+     "model": null,
+     "output_tokens": 25,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 25,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:7:p7m1": {
+  "box": [
+   0.3715,
+   0.4963,
+   0.2307,
+   0.0838
+  ],
+  "legible": true,
+  "text": "Da Capo sino al \ud834\udd10",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 689,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 689,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:7:p7m2": {
+  "box": [
+   0.6314,
+   0.7799,
+   0.1113,
+   0.1194
+  ],
+  "legible": true,
+  "text": "Segue.",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 627,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 627,
+     "model": null,
+     "output_tokens": 18,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 18,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ }
+}

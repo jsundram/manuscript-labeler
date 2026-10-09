@@ -1,0 +1,3327 @@
+{
+ "D-B_KHM-602:1": {
+  "evidence": "General title 'Quartettino Per due Violini, Viola, e Violoncello di Luigi Boccherini', no specific part named",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 64,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 64,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:10": {
+  "evidence": "Header reads \"Violino 2do\"; treble clef staves with music (Quartetto. Andante moderato)",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 61,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 61,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:11": {
+  "evidence": "Treble clefs with two flats on every staff, no part name written; 'Segue il Minuetto' at end. Treble clef fits violin I or II, but the page does not say which.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 77,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 77,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:12": {
+  "evidence": "Treble clef throughout, 'Minuetto, Con Moto' and 'Trio'; no part name written, so violin I or II cannot be determined",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:13": {
+  "evidence": "Title text 'Mese di Febraro 1794. Quartettino. Violoncello. di Boccherini' on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 64,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 64,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:14": {
+  "evidence": "Header 'Violoncello'; bass clef staves throughout (opening cue of 'Violino 1mo' bracketed with 'Violoncello')",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 72,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 72,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:15": {
+  "evidence": "Bass clefs with one flat on every staff; no part name; 'Segue il Minuetto Con Moto'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 59,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 59,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:16": {
+  "evidence": "Cello part with 'Violoncello' label and bass clefs throughout; brief 'Violino 1mo' cue staff only at the start of the Minuetto and Trio",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 78,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 78,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:17": {
+  "evidence": "Title page: 'Mese di Febraro 1794. Quartettino Per due Violini, Viola, e Violoncello'; it names all four instruments, not a single part. A colour chart partly covers it.",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3390,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3390,
+     "model": null,
+     "output_tokens": 87,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 87,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:2": {
+  "evidence": "Header \"Viola\" and alto clefs on every staff; \"Quartetto - Andante Moderato\"",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 58,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 58,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:3": {
+  "evidence": "Single-line staves with alto (C) clefs throughout; no part name written, ends 'Segue il Minuetto'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 60,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 60,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:4": {
+  "evidence": "No part name; every staff uses the alto (C) clef, as in a viola part. Minuetto con moto and Trio, single line per staff.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 65,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 65,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:5": {
+  "evidence": "Title page reading 'Mese di Febraro 1794. Quartettino Violino 1mo di Boccherini' on otherwise empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 71,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 71,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:6": {
+  "evidence": "Header reads \"Quartetto. Andante moderato. Violino 1mo\"; treble clefs throughout",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 61,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 61,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:7": {
+  "evidence": "Treble clef single-line staves with one flat; no part name written (ends 'Segue il Minuetto'), so violin I or II cannot be determined",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 69,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 69,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:8": {
+  "evidence": "Treble clef Minuetto and Trio, no part name; could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 48,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 48,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-602:9": {
+  "evidence": "Title page with empty staves: \"Mese di Febraro 1794 / Quartettino / Violino 2.do / di Boccherini\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 69,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 69,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:1": {
+  "evidence": "Title page: 'Quartettino. Per due Violini, viola, e Violoncello. Di Luigi Boccherini' dated 'Mese di Aprile 1794'; no individual part named",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 85,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 85,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:10": {
+  "evidence": "Treble clef single-line part, 'Tempo di Minuetto', 'Segue il Trio'; no part name, could be either violin",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 65,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 65,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:11": {
+  "evidence": "Treble clef single-line part, 'Trio', 'Dalcapo il Minuetto'; no part name, treble clef only (violin I or II undetermined)",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 74,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 74,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:12": {
+  "evidence": "nothing; only empty ruled staves with bleed-through from reverse, folio number 12",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 51,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 51,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:13": {
+  "evidence": "Title page reading \"Violino 2do\", \"Quartettino\", \"di Boccherini\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 57,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 57,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:14": {
+  "evidence": "Heading 'Violino 2.do' with treble clefs; 'Quartettino. Andante Lento'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 59,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 59,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:15": {
+  "evidence": "Treble clef with three sharps on every staff, no part name; 'Segue Tempo di Minuetto' at end \u2014 violin part but doesn't say which",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:16": {
+  "evidence": "Treble clef single-line part, 'Tempo di Minuetto', 'Segue il Trio'; no part name, could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:17": {
+  "evidence": "Treble clef single-line part, Trio with 'Dalcapo il Minuetto' and 'Fine'; no part name, so violin I or II undeterminable",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 74,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 74,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:18": {
+  "evidence": "nothing; only empty ruled staves with bleed-through from reverse, folio number 18",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 51,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 51,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:19": {
+  "evidence": "Title page reading 'Mese di Aprile 1794. Quartettino. Violoncello. di Boccherini' on empty ruled staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 69,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 69,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:2": {
+  "evidence": "Header reads \"Viola\"; alto clefs on every staff",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 43,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 43,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:20": {
+  "evidence": "Header 'Violoncello.'; bass clef throughout; opening cue staff labelled 'Violino 1mo' above 'Violoncello'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 71,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 71,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:21": {
+  "evidence": "Bass clefs throughout, with a short tenor/treble-clef 'Solo' passage; no part name written; ends with 'Segue Tempo di Minuetto'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 78,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 78,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:22": {
+  "evidence": "Cello part with 'Violino 1mo' cue staff at start; labeled 'Violoncello', bass clefs throughout, 'Tempo di Minuetto', 'Segue il Trio'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 88,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 88,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:23": {
+  "evidence": "Trio with cue 'Violino 1.mo' above 'Violoncello.' bass clef staff; rest of page bass clef only, 'Da Capo il Minuetto'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 81,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 81,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:24": {
+  "evidence": "nothing; only empty ruled staves with faint bleed-through and folio number '24'",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 50,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 50,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:25": {
+  "evidence": "Title text 'Mese di Aprile 1794. Quartettino. Per due Violini, viola, e Violoncello' on ruled staves, partly covered by colour chart; no single part named",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3726,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3726,
+     "model": null,
+     "output_tokens": 83,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 83,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:3": {
+  "evidence": "Every staff uses the alto (C) clef with an A-major key signature; there is no part name on the page. Ends with 'Segue Tempo di Minuetto'.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 74,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 74,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:4": {
+  "evidence": "Single-line part in alto (C) clef throughout, 'Tempo di Minuetto', 'Segue il Trio'; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:5": {
+  "evidence": "Alto (C) clef on every staff; Trio with pizzicato, 'Da Capo il Minuetto', 'Fine'; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3110,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3110,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:6": {
+  "evidence": "nothing; only empty ruled staves with bleed-through from the reverse side",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3110,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3110,
+     "model": null,
+     "output_tokens": 47,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 47,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:7": {
+  "evidence": "Title page text: 'Mese di Aprile 1794. Quartettino Violino 1.mo di Boccherini' on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 68,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 68,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:8": {
+  "evidence": "Header reads \"Quartettino. Andante Lento. Violino 1mo\"; single treble-clef staves throughout",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 64,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 64,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "D-B_KHM-603:9": {
+  "evidence": "Treble clef, three sharps, high florid line; no part name written, only 'Segue Tempo di Minuetto'. Could be violin I or II.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 69,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 69,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:1": {
+  "evidence": "Cover label: \"Boccherini. 6. Quatuors in\u00e9dits. Violino 1\u00b0.\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2886,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2886,
+     "model": null,
+     "output_tokens": 57,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 57,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:10": {
+  "evidence": "Treble clef single-line part with double stops, no part name; could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 47,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 47,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:11": {
+  "evidence": "Treble clef, two sharps, 3/4, 'Menuetto Con Moto', 'Segue il Trio'; no part name, double stops suggest a violin but which one is not stated",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 82,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 82,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:12": {
+  "evidence": "'Trio' heading, treble clefs, 4 sharps, 3/4; no part name. 'Da capo il Menuetto fine'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:13": {
+  "evidence": "Cover label: \"Boccherini. 6. Quatuors in\u00e9dits. Viola.\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 52,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 52,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:14": {
+  "evidence": "Title page headed \"Alto\" \u2014 \"Quatuors In\u00e9dits de Boccherini Op. 48 No. 1\"; staves otherwise empty",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 73,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 73,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:15": {
+  "evidence": "Heading \"Viola\" at top (with \"Boccherini\"); alto clefs on every staff, \"Allegretto moderato N\u00b01\"",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:16": {
+  "evidence": "Single-line part in alto (C) clef throughout, two sharps; no part name; ends 'Segue Menuetto'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 61,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 61,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:17": {
+  "evidence": "Single-line part 'Menuetto Con Moto' written in alto (C) clef throughout, with double stops; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 62,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 62,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:18": {
+  "evidence": "Trio in alto clef (C clef on middle line) with six sharps; single-line part, no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 54,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 54,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:19": {
+  "evidence": "Cover label: \"Boccherini. 6. Quatuors in\u00e9dits. Violoncello.\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 55,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 55,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:2": {
+  "evidence": "Title page reading \"Violino 1\u00b0\" and \"Quatuors In\u00e9dits de Boccherini Op. 48 N\u00b0 1\" over empty ruled staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 3222,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 3222,
+     "model": null,
+     "output_tokens": 77,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 77,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:20": {
+  "evidence": "Title page headed \"Violoncelle\", \"Quatuors In\u00e9dits de Boccherini Op. 48 No 1\" written on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2886,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2886,
+     "model": null,
+     "output_tokens": 72,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 72,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:21": {
+  "evidence": "Heading 'Violoncello' with 'Boccherini'; bass clefs with tenor clef passages",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 57,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 57,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:22": {
+  "evidence": "Bass clefs throughout, with tenor/treble clef passage on first staff; no part name written, 'Segue' at end",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 62,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 62,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:23": {
+  "evidence": "Bass clef throughout on single-line staves; 'Menuetto Con Moto', no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 55,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 55,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:24": {
+  "evidence": "Single-line part in bass clef throughout (with tenor clef passage), headed \"Trio\", ending \"Da capo il Menuetto\" / \"Fine\"; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 84,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 84,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:3": {
+  "evidence": "Heading \"violino 1\u00ba\" with treble clef staves; \"Quartettino\" at top",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 55,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 55,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:4": {
+  "evidence": "Treble clef single-line staves with D major key signature, no part name; ends 'Segue Menuetto'. Could be violin I or II, cannot tell which.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 72,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 72,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:5": {
+  "evidence": "Treble clef single-line part, 'Menuetto Con Moto', 'Segue il trio'; no part name written, could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:6": {
+  "evidence": "Heading 'Trio' only; treble clef in E major/C# minor (4 sharps), no part name; could be either violin",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 61,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 61,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:7": {
+  "evidence": "Cover label: \"Boccherini. 6. Quatuors in\u00e9dits. Violino 2\u00b0.\"",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 57,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 57,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:8": {
+  "evidence": "Title page headed \"Violino 2\u00b0\" with \"Quatuors In\u00e9dits de Boccherini Op. 48 N\u00b0 1\" on otherwise empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 78,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 78,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-1:9": {
+  "evidence": "Header reads \"Violino 2do\"; treble clefs throughout, single-part staves",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 53,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 53,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:11": {
+  "evidence": "Treble clef single-line part, 'Menuetto', 'Segue Trio'; no part name written, so violin I or II cannot be determined",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:17": {
+  "evidence": "Single-line part 'Menuetto / Con poco di Moto' in alto (C3) clef with three flats; 'Segue il Trio'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 68,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 68,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:23": {
+  "evidence": "Single staff in bass clef throughout, three flats; 'Menuetto Con moto di Molto', 'Segue Trio'; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2942,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2942,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Pn_Vma-ms-1067-2:3": {
+  "evidence": "Heading 'Andantino Lento Violino 1o.', treble clef single staves",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2998,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2998,
+     "model": null,
+     "output_tokens": 51,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 51,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:1": {
+  "evidence": "Title page: 'Mese di Giugno 1794', 'Quartettino', 'Violino Primo', 'L. Boccherini' on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 74,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 74,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:10": {
+  "evidence": "Bass clef throughout on single-line staves, 'Minuetto' heading; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 53,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 53,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:11": {
+  "evidence": "Single-line part in bass clef with occasional treble-clef passages; 'Trio' and 'D.C. il Minuetto', no part name on page",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 70,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 70,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:12": {
+  "evidence": "nothing; only nine empty ruled staves",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 37,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 37,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:13": {
+  "evidence": "Title page reading 'Mese di Giugno 1794 / Quartettino / Violino Secondo / Boccherini' on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vn2",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 69,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 69,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:14": {
+  "evidence": "Treble clef single-line staves, 'Allegretto Moderato' heading, no part name written; could be either violin",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 58,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 58,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:15": {
+  "evidence": "No part name visible; clefs not legible at line starts; single-line part ending with 'Segue'",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 52,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 52,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:16": {
+  "evidence": "Minuetto/Trio single-line part in treble clef, no part name written; could be either violin",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 51,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 51,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:17": {
+  "evidence": "Title page reading 'Mese di Giugno 1774. Quartettino. Viola. Boccherini' on empty staves",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 62,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 62,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:18": {
+  "evidence": "Treble (G) clef single-line part, 'Allegretto Moderato' 2/4, no part name written; high melodic writing with double stops suggests first violin",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 75,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 75,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:19": {
+  "evidence": "No part name visible; single-line staves without clear clefs (continuation page ending with 'Segue'), clef not legible enough to determine instrument",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:2": {
+  "evidence": "Heading 'Quartettino 2do' with treble clefs throughout but no part name; could be violin I or II, page doesn't say",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 64,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 64,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:20": {
+  "evidence": "Single-line part in alto (C) clef throughout, Minuetto and Trio; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "va",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 53,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 53,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:3": {
+  "evidence": "Header 'V. I' at top; treble clef staves with two sharps",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vn1",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 46,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 46,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:4": {
+  "evidence": "Treble clef, D major 'Minuetto' with no part name written; could be violin I or II, cannot tell which",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 58,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 58,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:5": {
+  "evidence": "Treble clef 'Trio' section in E major, single line; no part name written, could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 53,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 53,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:6": {
+  "evidence": "nothing; only empty ruled staves with a page number '5' in corner",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 45,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 45,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:7": {
+  "evidence": "Title page reading 'Mese di Giugno 1794 / Quartettino / Violoncello / Boccherini'",
+  "kind": "title",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 61,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 61,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:8": {
+  "evidence": "Single-line part headed 'Quartettino 2do' in bass clef throughout (with brief treble-clef passages), indicating the cello/basso part; no part name written",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 76,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 76,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-14:9": {
+  "evidence": "Single-line staves in bass clef throughout (with brief treble-clef passages), no part name written; bass clef indicates cello/basso part",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2830,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2830,
+     "model": null,
+     "output_tokens": 67,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 67,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:10": {
+  "evidence": "treble clef single-line part, 'Andantino Lento', no part name; could be violin I or II",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2774,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2774,
+     "model": null,
+     "output_tokens": 52,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 52,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:15": {
+  "evidence": "Minuetto and Trio, single-line part, clef with three flats unclear (no part name written); clef appears to be bass/tenor-like but uncertain",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2774,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2774,
+     "model": null,
+     "output_tokens": 71,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 71,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:16": {
+  "evidence": "nothing",
+  "kind": "blank",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2774,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2774,
+     "model": null,
+     "output_tokens": 26,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 26,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:2": {
+  "evidence": "No part name; opening 'Andantino Lento' staff uses bass clef (3 flats, 2/4) with tenor-clef passages, typical of cello/basso part",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "vc",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2774,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2774,
+     "model": null,
+     "output_tokens": 77,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 77,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ },
+ "F-Po_RES-507-16:7": {
+  "evidence": "Single-line part with no part name visible; clefs not clearly distinguishable (treble-range part, likely violin, but no label). 'Da Capo sino al', 'Segue'.",
+  "kind": "music",
+  "model": "claude-opus-5-5",
+  "part": "none",
+  "usage": {
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "inference_geo": "global",
+   "input_tokens": 2774,
+   "iterations": [
+    {
+     "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+     },
+     "cache_creation_input_tokens": 0,
+     "cache_read_input_tokens": 0,
+     "input_tokens": 2774,
+     "model": null,
+     "output_tokens": 79,
+     "type": "message"
+    }
+   ],
+   "output_tokens": 79,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard"
+  }
+ }
+}
