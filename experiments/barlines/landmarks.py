@@ -35,6 +35,7 @@ from PIL import Image
 
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent.parent), str(HERE)]
+import labels  # noqa: E402
 from common import read_line, yolo_tile  # noqa: E402
 from harness import match  # noqa: E402
 
@@ -110,7 +111,7 @@ def main():
             pred["right end"] = end[0]
         key = (l["pdf"], l["page"])
         if key not in pages:
-            doc = json.loads((args.edition / l["pdf"].replace(".pdf", ".labels.json")).read_text())
+            doc = json.loads(labels.labels_path(args.edition / l["pdf"]).read_text())
             p = doc["pages"][str(l["page"])]
             page_img = Image.open(ed.render(l["pdf"], l["page"]))
             cs = p["corners"]["points"] if p.get("corners") and not p["corners"].get("auto") else None

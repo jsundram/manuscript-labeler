@@ -54,6 +54,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 sys.path[:0] = [str(ROOT), str(ROOT / "experiments" / "barlines")]
 import detect  # noqa: E402
+import labels  # noqa: E402
 from common import detectron2_tile, dfine_tile, read_line, yolo_tile  # noqa: E402
 from corpus import paper_band  # noqa: E402
 from detections import cache_dir, cache_file, detectors, pdf_identity  # noqa: E402
@@ -158,7 +159,7 @@ def main():
             continue
         rel = str(pdf.relative_to(args.edition))
         ident = pdf_identity(pdf)
-        lp = pdf.with_name(pdf.name.replace(".pdf", ".labels.json"))
+        lp = labels.labels_path(pdf)
         corners = {}
         if lp.exists():
             for n, p in json.loads(lp.read_text()).get("pages", {}).items():

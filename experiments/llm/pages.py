@@ -164,8 +164,7 @@ def main():
     out = OUT / f"pages-{tag}.json"
     done = load(out)
     todo = []
-    for lp in sorted(a.edition.glob("sources/*/*.labels.json")):
-        pdf = lp.with_name(lp.name.replace(".labels.json", ".pdf"))
+    for lp, pdf in labels.labels_files(a.edition):
         if a.sources and pdf.stem not in a.sources.split(","):
             continue
         doc = labels.migrate(json.loads(lp.read_text()))

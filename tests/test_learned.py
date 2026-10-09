@@ -15,6 +15,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
 import detect  # noqa: E402
+import labels  # noqa: E402
 import learn  # noqa: E402
 from score_barlines import render, score_page, truth_systems  # noqa: E402
 
@@ -22,7 +23,7 @@ EDITION = Path.home() / "Dropbox/Code/boccherini-opus-48"
 PDF603 = EDITION / "sources/G227/D-B_KHM-603.pdf"
 
 pytestmark = pytest.mark.skipif(
-    not (EDITION / "sources/G226/D-B_KHM-602.labels.json").exists() or not PDF603.exists()
+    not PDF603.exists() or not labels.labels_path(EDITION / "sources/G226/D-B_KHM-602.pdf").exists()
     or not shutil.which("pdftoppm"), reason="edition repo not available")
 
 

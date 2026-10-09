@@ -122,11 +122,12 @@ def test_export_gives_every_mark_page_bar_line_kind_and_signature():
     music = page("va", [s])
     music["marks"] = [{"id": "p2m1", "x": 0.6, "y": 0.1, "w": 0.02, "h": 0.03, "kind": "signature",
                        "key": 1, "note": "faint"}]
-    blank = page("va", [], kind="blank")  # was music once: its part is left behind
+    blank = page("va", [system("p3s1", 0.1, [])], kind="blank")  # was music once: its part and staff are left behind
     out = labels.bars_export(doc({"1": title, "2": music, "3": blank}))
     assert out["pages"] == {"1": {"kind": "title", "part": "va", "reviewed": False, "notes": "faded"},
                             "2": {"kind": "music", "part": "va", "reviewed": True},
                             "3": {"kind": "blank", "part": None, "reviewed": True}}
+    assert sorted(out["systems"]) == ["p2s1"]
     assert out["marks"] == {
         "p1m1": {"page": 1, "x": 0.2, "y": 0.1, "w": 0.3, "h": 0.05, "kind": "text", "text": "Viola"},
         "p2m1": {"page": 2, "x": 0.6, "y": 0.1, "w": 0.02, "h": 0.03, "kind": "signature",
@@ -471,17 +472,45 @@ def edition(tmp_path):
     root = tmp_path / "ed"
     (root / "sources" / "G1").mkdir(parents=True)
     (root / "sources" / "G1" / "X_Y.pdf").write_bytes(b"%PDF-1.4 not really")
-    return server.Edition(root, tmp_path / "cache")
+    return server.Edition(root, tmp_path / "cache", tmp_path / "data")
+
+
+def test_labels_files_live_in_the_labelers_data_by_edition(tmp_path):
+    ed = tmp_path / "my-edition"
+    pdf = ed / "sources" / "G1" / "X_Y.pdf"
+    lp = labels.labels_path(pdf, tmp_path / "data")
+    assert lp == tmp_path / "data" / "my-edition" / "sources" / "G1" / "X_Y.labels.json"
+    lp.parent.mkdir(parents=True)
+    lp.write_text("{}")
+    assert labels.labels_files(ed, tmp_path / "data") == [(lp, pdf)]
+
+
+def test_labels_beside_the_pdf_are_copied_in_on_first_load(edition, monkeypatch):
+    monkeypatch.setattr(edition, "num_pages", lambda pdf: 1)
+    old = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    d = doc({"1": page("va", [system("s1", 0.1, [bl("a", 0.5)])])})
+    old.write_text(json.dumps(d))
+    got = edition.load("sources/G1/X_Y.pdf")
+    assert got["labels"]["pages"] == d["pages"] and got["labels_file"] == "data/ed/sources/G1/X_Y.labels.json"
+    assert edition.labels_path(edition.root / "sources" / "G1" / "X_Y.pdf").read_bytes() == old.read_bytes()
+    assert old.exists()  # copied, not moved
+
+
+def test_a_pdf_outside_sources_has_no_labels_path(tmp_path):
+    with pytest.raises(LookupError):
+        labels.labels_path(tmp_path / "scans" / "a.pdf")
 
 
 def test_save_is_guarded_by_etag_and_backed_up(edition):
     rel = "sources/G1/X_Y.pdf"
     d = doc({"1": page("va", [system("s1", 0.1, [bl("a", 0.123456789)])])})
     e1 = edition.save(rel, d, "none")["etag"]
-    lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    lp = edition.labels_path(edition.root / "sources" / "G1" / "X_Y.pdf")
     saved = json.loads(lp.read_text())
     assert saved["pages"]["1"]["systems"][0]["barlines"][0]["x0"] == 0.1235
     assert (edition.root / "sources" / "G1" / "X_Y.bars.json").exists()
+    assert lp == edition.data / "ed" / "sources" / "G1" / "X_Y.labels.json"  # in the labeler, not the edition
+    assert not (edition.root / "sources" / "G1" / "X_Y.labels.json").exists()
 
     with pytest.raises(FileExistsError):
         edition.save(rel, d, "none")  # stale: the file exists now
@@ -496,7 +525,7 @@ def test_save_brings_a_schema_1_document_up_to_date(edition):
     d = doc({"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])})
     d["schema"] = 1
     edition.save(rel, d, "none")
-    lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    lp = edition.labels_path(edition.root / "sources" / "G1" / "X_Y.pdf")
     assert json.loads(lp.read_text())["schema"] == labels.SCHEMA
 
 
@@ -504,7 +533,8 @@ def test_save_refuses_invalid_and_newer_files(edition):
     rel = "sources/G1/X_Y.pdf"
     with pytest.raises(ValueError):
         edition.save(rel, {"schema": labels.SCHEMA, "source": {}, "pages": {"1": {"status": "??"}}}, "none")
-    lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    lp = edition.labels_path(edition.root / "sources" / "G1" / "X_Y.pdf")
+    lp.parent.mkdir(parents=True)
     lp.write_text(json.dumps({"schema": 99, "pages": {}}))
     raw = lp.read_bytes()
     import hashlib

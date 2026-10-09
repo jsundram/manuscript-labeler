@@ -6,7 +6,7 @@
 
     uv run tools/tune_barlines.py <edition-repo or pdf>... [--false-weight 2]
 
-Finds each source's <pdf>.labels.json, renders its reviewed music pages,
+Finds each source's labels file (labels.labels_path), renders its reviewed music pages,
 and treats their bar lines as the truth. Only reviewed pages: on a page
 still being edited, untouched proposals would count as confirmed and pull
 the tuning toward whatever detect.py does now. Then it adjusts one threshold at a time, keeping any change that
@@ -29,6 +29,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import detect  # noqa: E402
+from labels import labels_path  # noqa: E402
 from score_barlines import render, score_page, truth_systems  # noqa: E402
 
 # the thresholds tried, each with the values to try (current value added)
@@ -48,7 +49,7 @@ def find_sources(paths: list[str]) -> list[Path]:
     pdfs = []
     for p in map(Path, paths):
         pdfs += sorted(p.glob("sources/**/*.pdf")) if p.is_dir() else [p]
-    return [p for p in pdfs if p.with_name(p.stem + ".labels.json").exists()]
+    return [p for p in pdfs if labels_path(p).exists()]
 
 
 def main():
@@ -60,7 +61,7 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         pages = []  # (source name, image, truth)
         for pdf in find_sources(args.paths):
-            labels = json.loads(pdf.with_name(pdf.stem + ".labels.json").read_text())
+            labels = json.loads(labels_path(pdf).read_text())
             for n, p in sorted(labels["pages"].items(), key=lambda kp: int(kp[0])):
                 if p["status"] == "reviewed" and p["kind"] == "music":
                     pages.append((pdf.stem, render(pdf, int(n), Path(tmp)), truth_systems(p)))

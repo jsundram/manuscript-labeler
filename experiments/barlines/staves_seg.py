@@ -144,7 +144,7 @@ def evaluate(out: Path, edition: Path, model: str):
     stats = {"seg": [], "rules": []}
     counts = {"seg": [0, 0, 0], "rules": [0, 0, 0]}  # found, missed, false
     for m in meta:
-        doc = docs.setdefault(m["pdf"], json.loads((edition / m["pdf"].replace(".pdf", ".labels.json")).read_text()))
+        doc = docs.setdefault(m["pdf"], json.loads(labels.labels_path(edition / m["pdf"]).read_text()))
         truth = labels.counted_systems(doc["pages"][str(m["page"])])
         img = Image.open(out / "images" / "test" / f"{m['name']}.jpg")
         w, h = img.size

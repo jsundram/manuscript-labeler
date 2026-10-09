@@ -102,8 +102,8 @@ def main():
     rows = labels.parse_sources_readme(readme.read_text()) if readme.exists() else {}
     js = proposer_js()
     total = {}
-    for lp in sorted(edition.glob("sources/*/*.labels.json")):
-        info = labels.source_info(str(lp.relative_to(edition)).replace(".labels.json", ".pdf"), rows)
+    for lp, pdf in labels.labels_files(edition):
+        info = labels.source_info(str(pdf.relative_to(edition)), rows)
         sp = labels.structure_path(edition, info["display"].get("work", ""))
         if not sp:
             continue

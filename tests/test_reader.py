@@ -104,7 +104,7 @@ def edition(tmp_path, monkeypatch):
     root = tmp_path / "ed"
     (root / "sources" / "G1").mkdir(parents=True)
     (root / "sources" / "G1" / "X_Y.pdf").write_bytes(b"%PDF-1.4 not really")
-    ed = server.Edition(root, tmp_path / "cache")
+    ed = server.Edition(root, tmp_path / "cache", tmp_path / "data")
     img = tmp_path / "p.jpg"
     page_image().save(img)
     monkeypatch.setattr(ed, "num_pages", lambda pdf: 5)
@@ -165,7 +165,8 @@ def test_lines_are_asked_only_on_a_title_page_and_a_failure_keeps_the_page(editi
 
 
 def test_claudes_unchecked_readings_are_not_offered_as_the_editors(edition, tmp_path):
-    lp = edition.root / "sources" / "G1" / "X_Y.labels.json"
+    lp = edition.labels_path(edition.root / "sources" / "G1" / "X_Y.pdf")
+    lp.parent.mkdir(parents=True)
     mark = lambda i, text, auto: {"id": i, "x": 0, "y": 0, "w": 0.1, "h": 0.1, "kind": "tempo", "text": text,
                                   **({"text_auto": True} if auto else {})}
     lp.write_text(json.dumps({"pages": {

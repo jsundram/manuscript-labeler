@@ -171,8 +171,10 @@ second staff on one system: a case to handle.
 
 ## Output format (draft, schema 2)
 
-One file per source, in the edition repo next to the PDF, named
-`<pdf name>.labels.json`. Coordinates are fractions of
+One file per source, in this repo under `data/<edition folder>/`, at the
+PDF's path within the edition, named `<pdf name>.labels.json`
+(`data/boccherini-opus-48/sources/G226/D-B_KHM-602.labels.json`;
+`labels.labels_path`). Coordinates are fractions of
 the page width and height (0–1), so they don't depend on render resolution.
 
 ```json
@@ -330,12 +332,11 @@ page not yet `reviewed`, everything is provisional, Claude's texts and
 detected corners included.
 
 One exception, until they switch to the export's `systems`: the
-edition's `scripts/proof.py` and `scripts/zoom.py` still read the labels
-file beside the export, for the staves its bars name (`system`), found
-under `pages` → each page's `systems`: each system's `id`, `top`,
-`bottom`, `left`, `right`, `start` and `bend` (optional). They don't check
-its `schema` (the edition's files are at several), so until then a
-migration must keep that layout and these fields as they are.
+edition's `scripts/proof.py` and `scripts/zoom.py` still read a labels
+file beside the export for staff geometry. Since 2026-10-09 those are the
+copies left in the edition when the labels moved here, and they no longer
+change: a staff the editor moves now reaches the proof only through the
+export. The edition's task for the switch is tracked there.
 
 ```json
 {
@@ -410,7 +411,7 @@ The fields:
   only use complete runs, or clearly mark partial ones.
 - **`reviewed`:** a per-bar flag. Unreviewed bars can be shown, greyed or
   flagged.
-- **`systems`:** every staff on every page, by id (a bar's `system`
+- **`systems`:** every staff on every music page, by id (a bar's `system`
   names its own): its `page`, `top`, `bottom`, `left` and `right` (page
   fractions, the staff without its bend), `start` (where its music
   starts, after the clef and key; its `left` if not set), `role` (`part`,
@@ -787,12 +788,14 @@ renders next to them.
 
 ## Open questions
 
-1. ~~Where should the labels JSON live?~~ **Decided (2026-10-01):** in the
-   edition repo, next to the source PDFs
-   (`sources/G226/D-B_KHM-602.labels.json` and `.bars.json`). The edition is
-   their only consumer. Each edition commits them once a run is reviewed.
-   This tool therefore writes into the edition repo it's pointed at, and
-   keeps nothing edition-specific itself (backups go to a local cache).
+1. ~~Where should the labels JSON live?~~ **Decided (2026-10-01),
+   changed (2026-10-09):** the labels file is this tool's working data, so
+   it lives here, under `data/<edition folder>/`, and is committed here;
+   the edition gets the bar export next to each PDF, which carries
+   everything the editor records, and reads nothing else. (At first both
+   lived in the edition; the edition's proof came to read the labels file
+   directly, so its layout couldn't change. The labels' history before the
+   move is in the edition's git log.) Backups still go to a local cache.
 2. **Systems with more than one staff:** full scores, and cue staves like
    the cello part's opening.
 3. **Several editors:** one at a time is assumed. Would file locking or

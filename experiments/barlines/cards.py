@@ -594,9 +594,11 @@ def label_commits(edition: Path | None, sources: list[str]) -> dict:
     out = {}
     if not edition:
         return out
+    sys.path.insert(0, str(HERE.parent.parent))
+    import labels
     for pdf in sources:
-        lp = pdf.replace(".pdf", ".labels.json")
-        r = subprocess.run(["git", "-C", str(edition), "log", "-1", "--format=%h %ad", "--date=short", "--", lp],
+        lp = labels.labels_path(edition / pdf)  # in the labeler's data/ (before 2026-10-09, in the edition)
+        r = subprocess.run(["git", "-C", str(lp.parent), "log", "-1", "--format=%h %ad", "--date=short", "--", lp.name],
                            capture_output=True, text=True)
         out[pdf] = r.stdout.strip() or "uncommitted"
     return out

@@ -52,7 +52,7 @@ def main():
     meta = [m for m in json.loads((seg / "pages.json").read_text()) if m["split"] == "test"]
     counts, rows, secs = [0, 0, 0], [], []
     for m in meta:
-        doc = json.loads((edition / m["pdf"].replace(".pdf", ".labels.json")).read_text())
+        doc = json.loads(labels.labels_path(edition / m["pdf"]).read_text())
         truth = labels.counted_systems(doc["pages"][str(m["page"])])
         path = seg / "images" / "test" / f"{m['name']}.jpg"
         t0 = time.perf_counter()

@@ -6,7 +6,7 @@
 
     uv run tools/score_barlines.py <pdf> [pages...]
 
-Reads <pdf>.labels.json beside the PDF and treats the bar lines on its
+Reads the PDF's labels file (labels.labels_path) and treats the bar lines on its
 reviewed pages (or the pages given) as the truth. For each page: how many
 real bar lines detection finds, how many it proposes that aren't real, and
 how many it misses. Use it before and after changing detect.py.
@@ -22,6 +22,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import detect  # noqa: E402
+from labels import labels_path  # noqa: E402
 from server import JPEG_QUALITY, RENDER_PX  # noqa: E402
 
 TOLERANCE = 0.006  # page widths: a proposal this close to a real bar line counts
@@ -75,7 +76,7 @@ def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
     pdf = Path(sys.argv[1])
-    labels = json.loads(pdf.with_name(pdf.stem + ".labels.json").read_text())
+    labels = json.loads(labels_path(pdf).read_text())
     pages = [int(p) for p in sys.argv[2:]] or sorted(
         int(n) for n, p in labels["pages"].items() if p["status"] == "reviewed" and p["kind"] == "music")
     totals = [0, 0, 0]

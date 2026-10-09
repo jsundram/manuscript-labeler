@@ -9,10 +9,12 @@
 Serves the editor (`static/`), renders PDF pages with `pdftoppm`, proposes
 staves and bar lines (`detect.py`), asks Claude what each new page is and
 what a mark's box says (`reader.py`, with ML_API_KEY in the labeler's .env),
-and saves labels next to each source PDF:
+and saves:
 
-    <pdf>.labels.json   the editor's working file (schema-versioned)
-    <pdf>.bars.json     flat bar export for the synoptic build, rewritten on save
+    data/<edition>/<pdf path>.labels.json   the editor's working file (schema-
+                                            versioned), in this repo (labels.DATA)
+    <pdf>.bars.json     flat bar export for the synoptic build, next to the PDF
+                        in the edition, rewritten on save
 
 Saving is atomic (temp file + rename), refuses to overwrite a file that
 changed since the editor loaded it, and keeps rolling backups in the cache
@@ -52,9 +54,10 @@ BACKUPS_KEPT = 100
 
 
 class Edition:
-    def __init__(self, root: Path, cache: Path):
+    def __init__(self, root: Path, cache: Path, data: Path = labels.DATA):
         self.root = root.resolve()
         self.cache = cache
+        self.data = data  # where the labels files live (labels.labels_path)
         self.write_lock = threading.Lock()
         self.render_locks: dict[str, threading.Lock] = {}
         self.render_locks_lock = threading.Lock()
@@ -88,9 +91,8 @@ class Edition:
     def rel(self, p: Path) -> str:
         return p.relative_to(self.root).as_posix()
 
-    @staticmethod
-    def labels_path(pdf: Path) -> Path:
-        return pdf.with_name(pdf.stem + ".labels.json")
+    def labels_path(self, pdf: Path) -> Path:
+        return labels.labels_path(pdf, self.data, self.root)
 
     @staticmethod
     def bars_path(pdf: Path) -> Path:
@@ -133,7 +135,7 @@ class Edition:
         the texts Claude is offered. Claude's readings count once their
         page is reviewed."""
         seen: dict[str, dict] = {}
-        for lp in self.root.glob("sources/**/*.labels.json"):
+        for lp, _ in labels.labels_files(self.root, self.data):
             try:
                 doc = json.loads(lp.read_text())
             except (ValueError, OSError):
@@ -156,6 +158,15 @@ class Edition:
         info = labels.source_info(rel, rows)
         lp = self.labels_path(pdf)
         readonly = None
+        old = labels.legacy_labels_path(pdf)
+        if not lp.exists() and old.exists():
+            # labelled before the labels moved here: copy them over (the
+            # edition's file stays), or the source would open unlabelled and
+            # its first save would overwrite its bar export
+            with self.write_lock:
+                if not lp.exists():
+                    lp.parent.mkdir(parents=True, exist_ok=True)
+                    atomic_write(lp, old.read_bytes())
         if lp.exists():
             raw = lp.read_bytes()
             etag = hashlib.sha1(raw).hexdigest()
@@ -181,7 +192,7 @@ class Edition:
             "structure": self.rel(sp) if sp else None,
             # movements this source could write to Structure.ily now
             "structure_offers": structure.offers(doc, stext) if not readonly else [],
-            "labels_file": self.rel(lp),
+            "labels_file": lp.relative_to(self.data.parent).as_posix(),
             "barline_model": self.barline_state(),
             "crop_model": self.crop_state,
             "reader": self.reader_state(rel),
@@ -213,6 +224,7 @@ class Edition:
                 self.backup(lp, current)
             doc = labels.round_floats(doc)
             data = dump(doc)
+            lp.parent.mkdir(parents=True, exist_ok=True)
             atomic_write(lp, data)
             atomic_write(self.bars_path(pdf), dump(labels.round_floats(labels.bars_export(doc))))
             # what the model learns from changed: retrain (in the background)
@@ -278,7 +290,8 @@ class Edition:
                     "offers": structure.offers(info["labels"], new)}
 
     def backup(self, lp: Path, data: bytes):
-        d = self.cache / "backups" / self.root.name / self.rel(lp).replace("/", "__").removesuffix(".json")
+        rel = lp.relative_to(self.data / self.root.name).as_posix()  # as when it sat beside the PDF
+        d = self.cache / "backups" / self.root.name / rel.replace("/", "__").removesuffix(".json")
         d.mkdir(parents=True, exist_ok=True)
         existing = sorted(d.glob("*.json"))
         if existing and time.time() - existing[-1].stat().st_mtime < BACKUP_EVERY:
@@ -503,7 +516,7 @@ class Edition:
                             img = Image.open(self.render(self.rel(pdf), n))
                             img.load()
                             return img
-                        m = learn.load_or_train(self.root, self.cache, render)
+                        m = learn.load_or_train(self.root, self.cache, render, self.data)
                         self.model = m
                         self.model_state = (f"learned from {m['pages']} reviewed pages ({m['bar_lines']} bar lines)"
                                             if m else "no reviewed pages yet: hand-tuned rules")
@@ -535,7 +548,7 @@ class Edition:
                     try:
                         def gray(pdf, n):
                             return detect._gray(Image.open(self.render(self.rel(pdf), n)))
-                        m = crops.load_or_train(self.root, self.cache, gray)
+                        m = crops.load_or_train(self.root, self.cache, gray, self.data)
                         self.crop_model = m
                         self.crop_state = (f"learned from {m['pages']} reviewed pages ({m['sides']} crop edges)"
                                            if m else "no reviewed crops yet: rules")

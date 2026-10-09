@@ -24,17 +24,17 @@ from pathlib import Path
 import numpy as np
 
 import detect
+import labels
 
 TOLERANCE = 0.006  # page widths, as tools/score_barlines.py
 VERSION = 3        # bump when detect.FEATURES or the labelling changes
 FOLDS = 5          # the second pass learns from first passes that didn't see its pages
 
 
-def reviewed_pages(edition: Path) -> list[tuple[Path, int, dict]]:
+def reviewed_pages(edition: Path, data: Path = labels.DATA) -> list[tuple[Path, int, dict]]:
     """(pdf, page number, labels page) for every reviewed music page."""
     out = []
-    for lp in sorted(edition.glob("sources/**/*.labels.json")):
-        pdf = lp.with_name(lp.name.replace(".labels.json", ".pdf"))
+    for lp, pdf in labels.labels_files(edition, data):
         try:
             doc = json.loads(lp.read_text())
         except (ValueError, OSError):
@@ -145,10 +145,10 @@ def train(pages: list, render) -> dict:
             "pages": len(pages), "candidates": int(len(y)), "bar_lines": int(y.sum())}
 
 
-def load_or_train(edition: Path, cache: Path, render) -> dict | None:
+def load_or_train(edition: Path, cache: Path, render, data: Path = labels.DATA) -> dict | None:
     """The model for this edition's reviewed pages, from the cache if they
     haven't changed, else trained now. None if there's nothing to learn from."""
-    pages = reviewed_pages(edition)
+    pages = reviewed_pages(edition, data)
     if not pages:
         return None
     path = cache / "models" / f"barlines-{key(pages)}.pkl"

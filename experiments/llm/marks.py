@@ -63,8 +63,7 @@ def main():
     ap.add_argument("--mode", choices=["blind", "known"], default="blind")
     a = ap.parse_args()
     marks = []  # (source, page, mark)
-    for lp in sorted(a.edition.glob("sources/*/*.labels.json")):
-        pdf = lp.with_name(lp.name.replace(".labels.json", ".pdf"))
+    for lp, pdf in labels.labels_files(a.edition):
         doc = labels.migrate(json.loads(lp.read_text()))
         for n, p in labels.sorted_pages(doc):
             if p.get("status") == "reviewed":

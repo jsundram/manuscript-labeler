@@ -40,9 +40,12 @@ For Claude, put `ML_API_KEY=...` (an Anthropic API key) in the labeler's
 `.env` (gitignored), or set it in the environment; without it, nothing is
 sent and pages are labelled as before.
 
-Labels save automatically next to the PDF: `<pdf>.labels.json` (the working
-file) and `<pdf>.bars.json` (the flat export for the synoptic build). Every
-save is atomic. A save is refused if the file changed since it was loaded
+Labels save automatically. The working file stays in this repo, under
+`data/<edition>/` at the PDF's path
+(`data/boccherini-opus-48/sources/G226/D-B_KHM-602.labels.json`): it's the
+labeler's own, and nothing else should read it. The flat export for the
+synoptic build, `<pdf>.bars.json`, goes next to the PDF in the edition: it
+carries everything the editor records. Every save is atomic. A save is refused if the file changed since it was loaded
 (e.g. in another tab). Backups go to `~/.cache/manuscript-labeler/backups`.
 
 Main keys (press **?** in the app for all of them): hold **b** and click to

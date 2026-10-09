@@ -11,6 +11,12 @@ import re
 from fractions import Fraction
 from pathlib import Path
 
+# The labels files: this repo's working data, not the edition's. Under
+# data/<edition folder>/, at the PDF's path within the edition:
+# data/boccherini-opus-48/sources/G226/D-B_KHM-602.labels.json. The edition
+# gets the bar export, written next to the PDF.
+DATA = Path(__file__).resolve().parent / "data"
+
 SCHEMA = 4         # of the labels file
 EXPORT_SCHEMA = 1  # of the bar export (the edition's build checks it): additive changes keep it
 
@@ -73,6 +79,31 @@ def migrate(doc: dict) -> dict:
         v += 1
         doc["schema"] = v
     return doc
+
+
+def labels_path(pdf: Path, data: Path = DATA, edition: Path | None = None) -> Path:
+    """Where a source's labels file lives (DATA). `edition`: the edition's
+    folder, if known (the server's); else the folder holding the PDF's
+    `sources`, as a tool given only a PDF finds it."""
+    pdf = Path(pdf).resolve()
+    if edition is None:
+        edition = next((p.parent for p in pdf.parents if p.name == "sources"), None)
+        if edition is None:
+            raise LookupError(f"{pdf} is not in an edition's sources folder")
+    edition = Path(edition).resolve()
+    return data / edition.name / pdf.relative_to(edition).with_suffix(".labels.json")
+
+
+def legacy_labels_path(pdf: Path) -> Path:
+    """Where a labels file sat before 2026-10-09: beside its PDF, in the edition."""
+    return Path(pdf).with_name(Path(pdf).stem + ".labels.json")
+
+
+def labels_files(edition: Path, data: Path = DATA) -> list[tuple[Path, Path]]:
+    """(labels file, its PDF in the edition) for every labelled source."""
+    root = data / Path(edition).resolve().name
+    return [(lp, Path(edition) / lp.relative_to(root).with_name(lp.name.replace(".labels.json", ".pdf")))
+            for lp in sorted(root.glob("sources/**/*.labels.json"))]
 
 
 def new_doc(source: dict) -> dict:
@@ -484,8 +515,9 @@ def bars_export(doc: dict) -> dict:
         "source": doc["source"],
         "complete": complete,
         "pages": {str(n): export_page(p) for n, p in pages.items()},
-        # every staff on every page, for straightening it (the bars name theirs)
-        "systems": {s["id"]: export_staff(n, s) for n, p in pages.items() for s in p.get("systems", [])},
+        # every staff on every music page, for straightening it (the bars name theirs)
+        "systems": {s["id"]: export_staff(n, s) for n, p in pages.items() if p.get("kind") == "music"
+                    for s in p.get("systems", [])},
         # every mark on every page, title pages' too (the bars name theirs)
         "marks": {m["id"]: export_mark(n, m) for n, p in pages.items() for m in p.get("marks", [])},
         "bars": bars,

@@ -31,6 +31,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE.parent.parent), str(HERE)]
+import labels  # noqa: E402
 
 
 def main():
@@ -86,7 +87,7 @@ def main():
             for l in scored:
                 key = (l["pdf"], l["page"])
                 if key not in pages:
-                    doc = json.loads((edition / l["pdf"].replace(".pdf", ".labels.json")).read_text())
+                    doc = json.loads(labels.labels_path(edition / l["pdf"]).read_text())
                     p = doc["pages"][str(l["page"])]
                     cs = p["corners"]["points"] if p.get("corners") and not p["corners"].get("auto") else None
                     w = Image.open(ed.render(l["pdf"], l["page"])).size[0]

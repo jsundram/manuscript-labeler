@@ -24,6 +24,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+import labels  # noqa: E402
 
 
 def pages_arg(spec: str) -> list[int]:
@@ -56,8 +58,8 @@ def main():
     if not want and not every:
         want = json.loads((ROOT / "experiments" / "barlines" / "test_pages.json").read_text())["pages"]
     totals: dict[str, dict] = {}
-    for lp in sorted(edition.glob("sources/**/*.labels.json")):
-        src = lp.name.removesuffix(".labels.json")
+    for lp, pdf in labels.labels_files(edition):
+        src = pdf.stem
         if not every and src not in want:
             continue
         doc = json.loads(lp.read_text())

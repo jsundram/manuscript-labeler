@@ -41,6 +41,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent.parent))
 
+import labels  # noqa: E402
 from detections import MATCH, REACH  # noqa: E402  (the labeler's own: its reach past a staff's end, staff matching)
 
 
@@ -76,7 +77,7 @@ def stage(corpus: Path, edition: Path):
         for (rel, n), ls in by_page.items():
             img, g = img_of(edition / rel, n)
             h, w = g.shape
-            page = json.loads((edition / rel.replace(".pdf", ".labels.json")).read_text())["pages"][str(n)]
+            page = json.loads(labels.labels_path(edition / rel).read_text())["pages"][str(n)]
             corners = page["corners"]["points"] if page.get("corners") and not page["corners"].get("auto") \
                 else detect.find_page_corners(img)
             systems = detect.detect_page(img, model=model, corners=corners)

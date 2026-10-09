@@ -153,8 +153,7 @@ def main():
 
     lines = []
     with tempfile.TemporaryDirectory() as tmp:
-        for lp in sorted(args.edition.glob("sources/**/*.labels.json")):
-            pdf = lp.with_name(lp.name.replace(".labels.json", ".pdf"))
+        for lp, pdf in labels.labels_files(args.edition):
             doc = json.loads(lp.read_text())
             for n, p in sorted(doc["pages"].items(), key=lambda kp: int(kp[0])):
                 if p["status"] != "reviewed" or p["kind"] != "music":
