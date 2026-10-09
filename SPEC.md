@@ -322,13 +322,19 @@ The labels file above is the labeler's own working format. The synoptic
 build, which lives in the edition repo on the LilyPond side, should not have
 to know how bar numbers are derived. So the labeler also writes a flat
 **bar export**, regenerated on every save:
-`<pdf name>.bars.json`.
+`<pdf name>.bars.json`. It carries everything the editor records (pages,
+staves, bars, bar line kinds, signatures, marks), so no other tool needs
+the labels file; what it leaves out is the labeler's working state (`auto`
+and `text_auto` flags, `rejected` lists, the auto/edited status): on a
+page not yet `reviewed`, everything is provisional, Claude's texts and
+detected corners included.
 
-One exception: the edition's `scripts/proof.py` and `scripts/zoom.py` also
-read the labels file beside the export, for the staves its bars name
-(`system`), found under `pages` → each page's `systems`: each system's
-`id`, `top`, `bottom`, `left`, `right`, `start` and `bend` (optional).
-They don't check its `schema` (the edition's files are at several), so a
+One exception, until they switch to the export's `systems`: the
+edition's `scripts/proof.py` and `scripts/zoom.py` still read the labels
+file beside the export, for the staves its bars name (`system`), found
+under `pages` → each page's `systems`: each system's `id`, `top`,
+`bottom`, `left`, `right`, `start` and `bend` (optional). They don't check
+its `schema` (the edition's files are at several), so until then a
 migration must keep that layout and these fields as they are.
 
 ```json
@@ -337,15 +343,30 @@ migration must keep that layout and these fields as they are.
   "source": { "pdf": "sources/G226/D-B_KHM-602.pdf", "siglum": "D-B",
               "shelfmark": "KHM 602", "rism": "1001015844", "gerard": 226 },
   "complete": { "va": ["I"], "vn1": [] },
+  "pages": {
+    "1": { "kind": "title", "part": "va", "reviewed": true },
+    "2": { "kind": "music", "part": "va", "reviewed": true,
+           "corners": [[0.01, 0.02], [0.98, 0.01], [0.99, 0.97], [0.02, 0.98]] }
+  },
+  "systems": {
+    "p2s1": { "page": 2, "top": 0.112, "bottom": 0.142, "left": 0.146,
+              "right": 0.962, "start": 0.171, "role": "part",
+              "bend": [0.0, 0.0, -0.001, -0.002, -0.004] }
+  },
+  "marks": {
+    "p2m1": { "page": 2, "x": 0.31, "y": 0.29, "w": 0.04, "h": 0.02,
+              "kind": "text", "text": "dolcis.", "note": "long s = dolcissimo" }
+  },
   "bars": [
     {
       "part": "va", "movement": "I", "bar": 5, "count": 1,
-      "page": 2, "system": "p2s1", "barline": "p2s1b5",
+      "page": 2, "system": "p2s1", "barline": "p2s1b5", "barline_kind": "single",
       "quad": [[0.312, 0.098], [0.398, 0.098], [0.396, 0.156], [0.310, 0.156]],
       "staff": { "top": 0.112, "bottom": 0.142 },
       "reviewed": true,
       "marks": ["p2m1"],
-      "clefs": ["alto"]
+      "clefs": ["alto"],
+      "signature": {}
     }
   ]
 }
@@ -370,18 +391,46 @@ The fields:
   the last bar of the nearest staff that its text reaches: "Segue il
   Trio" and "Da capo il Minuetto" refer to the end of the music they're
   written under, wherever along it the text begins.
-- **`pages`:** `{"2": {"corners": [TL, TR, BR, BL]}}` for pages whose
-  paper corners are set, for cropping or straightening whole pages.
+- **`barline_kind`:** the kind of the bar line that ends the bar
+  (`single`, `double`, `repeat_start`, `repeat_end`, `repeat_both`,
+  `final`).
+- **`pages`:** every labelled page: its `kind` (`music`, `title`, `blank`,
+  `other`), `part` (a title page's is the part it opens; `null` on blank
+  and other pages), `reviewed`, and, if set, `corners` (`[TL, TR, BR, BL]`,
+  the paper's corners, for cropping or straightening the whole page) and
+  `notes` (the editor's note on the page).
+- **`marks`:** every mark on every page by id, title pages' included (a
+  bar's `marks` names its own): its `page`, box (`x`, `y`, `w`, `h`, page
+  fractions), `kind`, and, if set, `text` (the copyist's, see the labels
+  file's rule), `note`, and on a signature mark the `clef`, `key` or `time`
+  it writes.
 - **`complete`:** which part and movement runs are fully labeled and
   reviewed: every bar's page is reviewed, the run ends with a bar line
   marked `ends_movement`, and no earlier page is unlabeled. The build should
   only use complete runs, or clearly mark partial ones.
 - **`reviewed`:** a per-bar flag. Unreviewed bars can be shown, greyed or
   flagged.
+- **`systems`:** every staff on every page, by id (a bar's `system`
+  names its own): its `page`, `top`, `bottom`, `left` and `right` (page
+  fractions, the staff without its bend), `start` (where its music
+  starts, after the clef and key; its `left` if not set), `role` (`part`,
+  or `cue` for a staff that is drawn but not counted), and, if set, `bend`
+  (the labels file's rule above; absent means flat), `above` / `below`
+  (its crop margins, in staff spaces) and the `clef`, `key` and `time`
+  written at its start (a cue staff's are only here: it has no bars). For
+  straightening a staff, and for sizing one against the page's others.
 - **`clefs`:** the clefs in force across the bar, in order: the one at its
   start, then any it changes to (`["bass", "tenor"]`). A line's first bar
   takes the clef written before its music. The export's `schema` stays 1:
   this field was added without changing the others.
+- **`signature`:** the key and time written in the bar, each only if
+  written there: at its line's start, for a line's first bar, or by a
+  signature mark in it (`{"key": -2, "time": "3/4"}`; key as sharps > 0,
+  flats < 0). What holds where nothing is written is the last one written,
+  as Structure.ily has it.
+- `pages`, `marks`, `barline_kind` and `signature` were added (2026-10-09)
+  with `systems`, without changing the export's `schema`: the edition's
+  readers ignore what they don't use.
 
 ### What the edition repo does with it (planned)
 

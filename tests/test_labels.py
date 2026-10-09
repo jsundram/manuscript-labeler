@@ -99,6 +99,43 @@ def test_export_complete_needs_review_end_and_no_unlabeled_pages():
     assert labels.bars_export(d)["complete"] == {"va": []}
 
 
+def test_export_gives_every_staff_on_the_page():
+    s1 = system("p1s1", 0.1, [bl("a", 0.5)], bend=[0, 0, 0.01, 0, 0])
+    cue = system("p1s2", 0.3, [bl("b", 0.5)], role="cue", clef="treble", key=0, above=3)
+    del cue["start"]
+    out = labels.bars_export(doc({"1": page("vc", [s1, cue])}))
+    assert out["systems"] == {
+        "p1s1": {"page": 1, "top": 0.1, "bottom": pytest.approx(0.13), "left": 0.05, "right": 0.95,
+                 "start": 0.1, "role": "part", "bend": [0, 0, 0.01, 0, 0]},
+        "p1s2": {"page": 1, "top": 0.3, "bottom": pytest.approx(0.33), "left": 0.05, "right": 0.95,
+                 "start": 0.05, "role": "cue", "clef": "treble", "key": 0, "above": 3},
+    }
+    assert {b["system"] for b in out["bars"]} <= set(out["systems"])
+
+
+def test_export_gives_every_mark_page_bar_line_kind_and_signature():
+    title = page("va", [], kind="title", status="edited")
+    title["notes"] = "faded"
+    title["marks"] = [{"id": "p1m1", "x": 0.2, "y": 0.1, "w": 0.3, "h": 0.05, "kind": "text",
+                       "text": "Viola", "text_auto": True, "note": ""}]
+    s = system("p2s1", 0.1, [bl("a", 0.5, kind="repeat_end"), bl("b", 0.8)], key=-2, time="3/4")
+    music = page("va", [s])
+    music["marks"] = [{"id": "p2m1", "x": 0.6, "y": 0.1, "w": 0.02, "h": 0.03, "kind": "signature",
+                       "key": 1, "note": "faint"}]
+    blank = page("va", [], kind="blank")  # was music once: its part is left behind
+    out = labels.bars_export(doc({"1": title, "2": music, "3": blank}))
+    assert out["pages"] == {"1": {"kind": "title", "part": "va", "reviewed": False, "notes": "faded"},
+                            "2": {"kind": "music", "part": "va", "reviewed": True},
+                            "3": {"kind": "blank", "part": None, "reviewed": True}}
+    assert out["marks"] == {
+        "p1m1": {"page": 1, "x": 0.2, "y": 0.1, "w": 0.3, "h": 0.05, "kind": "text", "text": "Viola"},
+        "p2m1": {"page": 2, "x": 0.6, "y": 0.1, "w": 0.02, "h": 0.03, "kind": "signature",
+                 "note": "faint", "key": 1},
+    }
+    assert [b["barline_kind"] for b in out["bars"]] == ["repeat_end", "single"]
+    assert [b["signature"] for b in out["bars"]] == [{"key": -2, "time": "3/4"}, {"key": 1}]
+
+
 def test_export_attaches_marks_inside_the_bar():
     p = page("va", [system("p1s1", 0.1, [bl("a", 0.5), bl("b", 0.8)])])
     p["marks"] = [{"id": "p1m1", "x": 0.6, "y": 0.11, "w": 0.02, "h": 0.01, "kind": "text"}]
@@ -119,7 +156,8 @@ def test_tempo_mark_above_the_music_goes_to_first_bar_below():
     p["corners"] = {"points": [[0, 0], [1, 0], [1, 1], [0, 1]], "auto": True}
     out = labels.bars_export(doc({"1": p}))
     assert [b["marks"] for b in out["bars"]] == [["t"], []]
-    assert out["pages"] == {"1": {"corners": [[0, 0], [1, 0], [1, 1], [0, 1]]}}
+    assert out["pages"] == {"1": {"kind": "music", "part": "va", "reviewed": True,
+                                  "corners": [[0, 0], [1, 0], [1, 1], [0, 1]]}}
 
 
 def test_mark_left_of_a_lines_music_goes_to_its_first_bar():

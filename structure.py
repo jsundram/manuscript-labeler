@@ -53,35 +53,12 @@ def spacer(length: Fraction, n: int = 1) -> str:
     return f"s{d}*{n}" if "*" not in d else f"s{d.split('*')[0]}*{int(d.split('*')[1]) * n}"
 
 
-def _mid(b: dict) -> float:
-    return (b["x0"] + b["x1"]) / 2
-
-
 def part_bars(doc: dict, movement: str) -> dict[str, list[dict]]:
     """{part: its bars of the movement, in order}, parts only (no score)."""
     out: dict[str, list] = {}
     for nb in labels.number_bars(doc):
         if nb["movement"] == movement and nb["part"] in PARTS:
             out.setdefault(nb["part"], []).append(nb)
-    return out
-
-
-def bar_changes(doc: dict, nb: dict) -> dict:
-    """The key and time written in this bar (on its line's start, for a
-    line's first bar; or a signature mark inside it, or at its first bar
-    line): {"key": 2, "time": "3/4"}, each only if written there."""
-    page = doc["pages"][str(nb["page"])]
-    s = nb["system"]
-    x1 = _mid(nb["right"])
-    out = {}
-    for field in ("key", "time"):
-        for t, x, v in labels.sig_changes(page, field):
-            if t is not s:
-                continue
-            if (nb["left"] is None and x <= s.get("start", s["left"])) or \
-                    (nb["left"] is not None and _mid(nb["left"]) - 1e-9 <= x < x1) or \
-                    (nb["left"] is None and s.get("start", s["left"]) < x < x1):
-                out[field] = v
     return out
 
 
@@ -126,7 +103,7 @@ def merged_changes(doc: dict, parts: dict[str, list[dict]]) -> tuple[dict, list[
     problems = []
     for p, bars in parts.items():
         for b in bars:
-            for f, v in bar_changes(doc, b).items():
+            for f, v in labels.bar_changes(doc, b).items():
                 have = out.setdefault(where(b), {})
                 if f in have and have[f][0] != v:
                     problems.append(f"bar {b['bar']}: {have[f][1]} writes {f} {have[f][0]}, {p} {v}")

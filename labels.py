@@ -338,6 +338,23 @@ def clefs_between(page: dict, system: dict, x0: float | None, x1: float, marks: 
     return out
 
 
+def bar_changes(doc: dict, nb: dict, changes: dict | None = None) -> dict:
+    """The key and time written in this bar (on its line's start, for a
+    line's first bar; or a signature mark inside it, or at its first bar
+    line): {"key": 2, "time": "3/4"}, each only if written there.
+    `changes`: {field: sig_changes(page, field)} for its page, if at hand."""
+    page = doc["pages"][str(nb["page"])]
+    s = nb["system"]
+    x0 = _mid(nb["left"]) - 1e-9 if nb["left"] else -math.inf
+    x1 = _mid(nb["right"])
+    out = {}
+    for field in ("key", "time"):
+        for t, x, v in changes[field] if changes else sig_changes(page, field):
+            if t is s and x0 <= x < x1:
+                out[field] = v
+    return out
+
+
 def bar_quad(system: dict, left: dict | None, right: dict, margin: float = QUAD_MARGIN) -> list:
     """Corners TL, TR, BR, BL in page fractions.
 
@@ -384,6 +401,7 @@ def bars_export(doc: dict) -> dict:
     # the nearest staff that its text reaches.
     quads = [bar_quad(nb["system"], nb["left"], nb["right"]) for nb in numbered]
     clef_changes = {n: clef_marks(p) for n, p in pages.items()}
+    sig = {n: {f: sig_changes(p, f) for f in ("key", "time")} for n, p in pages.items()}
     owner: dict[str, int] = {}
     for n, page in pages.items():
         idx = [i for i, nb in enumerate(numbered) if nb["page"] == n]
@@ -436,11 +454,13 @@ def bars_export(doc: dict) -> dict:
             "part": nb["part"], "movement": nb["movement"], "bar": nb["bar"],
             "count": nb["count"], "page": nb["page"], "system": s["id"],
             "barline": nb["right"]["id"],
+            "barline_kind": nb["right"]["kind"],
             "quad": quad,
             "staff": {"top": s["top"], "bottom": s["bottom"]},
             "reviewed": page.get("status") == "reviewed",
             "marks": marks,
             "clefs": clefs,
+            "signature": bar_changes(doc, nb, sig[nb["page"]]),
         })
 
     # A run (part + movement) is complete when every bar is reviewed, it ends
@@ -463,11 +483,47 @@ def bars_export(doc: dict) -> dict:
         "schema": EXPORT_SCHEMA,
         "source": doc["source"],
         "complete": complete,
-        # the paper's corners on each page, for cropping and straightening it
-        "pages": {str(n): {"corners": p["corners"]["points"]}
-                  for n, p in pages.items() if p.get("corners")},
+        "pages": {str(n): export_page(p) for n, p in pages.items()},
+        # every staff on every page, for straightening it (the bars name theirs)
+        "systems": {s["id"]: export_staff(n, s) for n, p in pages.items() for s in p.get("systems", [])},
+        # every mark on every page, title pages' too (the bars name theirs)
+        "marks": {m["id"]: export_mark(n, m) for n, p in pages.items() for m in p.get("marks", [])},
         "bars": bars,
     }
+
+
+def export_page(p: dict) -> dict:
+    """A page as the export gives it: what it is, whose part, whether it's
+    reviewed, and, if set, the paper's corners and the editor's note."""
+    out = {"kind": p.get("kind"), "part": p.get("part") if p.get("kind") in ("music", "title") else None,
+           "reviewed": p.get("status") == "reviewed"}
+    if p.get("corners"):
+        out["corners"] = p["corners"]["points"]
+    if p.get("notes"):
+        out["notes"] = p["notes"]
+    return out
+
+
+def export_mark(page: int, m: dict) -> dict:
+    """A mark as the export gives it: its box, kind and, if set, its text,
+    note and (a signature mark) the clef, key or time it writes."""
+    out = {"page": page, "x": m["x"], "y": m["y"], "w": m["w"], "h": m["h"], "kind": m.get("kind")}
+    for f in ("text", "note", *SIG_FIELDS):
+        if m.get(f) not in (None, ""):
+            out[f] = m[f]
+    return out
+
+
+def export_staff(page: int, s: dict) -> dict:
+    """A staff as the export gives it: its place on the page, where its
+    music starts (its left end if not set) and, if set, its bend, its crop
+    margins and the clef, key and time written at its start."""
+    out = {"page": page, "top": s["top"], "bottom": s["bottom"], "left": s["left"], "right": s["right"],
+           "start": s.get("start", s["left"]), "role": s.get("role", "part")}
+    for f in ("bend", "above", "below", *SIG_FIELDS):
+        if s.get(f) not in (None, []):
+            out[f] = s[f]
+    return out
 
 
 # ---------------------------------------------------------------- edition metadata
