@@ -1,0 +1,3378 @@
+{
+ "tally": {
+  "all": {
+   "bars": 261,
+   "bars exact": 126,
+   "bars right in rhythm": 153,
+   "bars right in pitch": 175,
+   "events": 941,
+   "event: chord size": 20,
+   "event: pitch": 58,
+   "event: right": 785,
+   "notes right": 702,
+   "accidental shown as encoded": 683,
+   "event: extra": 61,
+   "event: duration": 53,
+   "event: rest for note": 19,
+   "event: note for rest": 6,
+   "event: missed": 8,
+   "bars not compared": 23,
+   "event: octave": 1,
+   "event: grace": 1
+  },
+  "va": {
+   "bars": 69,
+   "bars exact": 17,
+   "bars right in rhythm": 25,
+   "bars right in pitch": 40,
+   "events": 200,
+   "event: chord size": 7,
+   "event: pitch": 27,
+   "event: right": 143,
+   "notes right": 123,
+   "accidental shown as encoded": 120,
+   "event: extra": 28,
+   "event: duration": 24,
+   "event: rest for note": 3,
+   "event: note for rest": 1,
+   "event: missed": 1
+  },
+  "II": {
+   "bars": 261,
+   "bars exact": 126,
+   "bars right in rhythm": 153,
+   "bars right in pitch": 175,
+   "events": 941,
+   "event: chord size": 20,
+   "event: pitch": 58,
+   "event: right": 785,
+   "notes right": 702,
+   "accidental shown as encoded": 683,
+   "event: extra": 61,
+   "event: duration": 53,
+   "event: rest for note": 19,
+   "event: note for rest": 6,
+   "event: missed": 8,
+   "bars not compared": 23,
+   "event: octave": 1,
+   "event: grace": 1
+  },
+  "vc": {
+   "bars not compared": 23,
+   "bars": 49,
+   "bars exact": 34,
+   "bars right in rhythm": 38,
+   "bars right in pitch": 39,
+   "events": 142,
+   "notes right": 109,
+   "accidental shown as encoded": 109,
+   "event: right": 127,
+   "event: octave": 1,
+   "event: pitch": 4,
+   "event: duration": 2,
+   "event: extra": 5,
+   "event: note for rest": 4,
+   "event: missed": 2,
+   "event: rest for note": 2
+  },
+  "vn1": {
+   "bars": 71,
+   "bars exact": 41,
+   "bars right in rhythm": 51,
+   "bars right in pitch": 48,
+   "events": 347,
+   "event: extra": 8,
+   "event: chord size": 3,
+   "event: duration": 14,
+   "notes right": 290,
+   "accidental shown as encoded": 284,
+   "event: right": 307,
+   "event: missed": 2,
+   "event: rest for note": 6,
+   "event: pitch": 17,
+   "event: note for rest": 1
+  },
+  "vn2": {
+   "bars": 72,
+   "bars exact": 34,
+   "bars right in rhythm": 39,
+   "bars right in pitch": 48,
+   "events": 252,
+   "notes right": 180,
+   "accidental shown as encoded": 170,
+   "event: right": 208,
+   "event: extra": 20,
+   "event: chord size": 10,
+   "event: duration": 13,
+   "event: missed": 3,
+   "event: rest for note": 8,
+   "event: pitch": 10,
+   "event: grace": 1
+  }
+ },
+ "unpaired staves": [
+  [
+   "p16s2",
+   "vc",
+   9,
+   174
+  ],
+  [
+   "p16s4",
+   "vc",
+   9,
+   170
+  ],
+  [
+   "p16s5",
+   "vc",
+   5,
+   7
+  ]
+ ],
+ "clefs (labelled, Zeus's first)": {
+  "alto -> C3": 2,
+  "alto -> G2": 3,
+  "alto -> C4": 1,
+  "alto -> C1": 2,
+  "treble -> G2": 13,
+  "treble -> F4": 5,
+  "bass -> G2": 3,
+  "bass -> F4": 5
+ },
+ "bars": [
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 1,
+   "encoded": "<A3 F3>:8th <A3 F3>:quarter <A3 F3>:quarter <A3 F3>:8th",
+   "zeus": "A3:8th <E4 E4>:quarter <E4 E4>:quarter <E4 E4>:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "chord size",
+    "pitch",
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 2,
+   "encoded": "<A3 F3>:half rquarter",
+   "zeus": "E4:half rquarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "chord size"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 3,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 4,
+   "encoded": "A3:quarter A4:quarter G4:quarter",
+   "zeus": "A3:quarter A4:quarter G4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 5,
+   "encoded": "<D4 F4>:8th <D4 F4>:quarter <D4 F4>:quarter <D4 F4>:8th",
+   "zeus": "<F4 G3>:8th F4:quarter D4:quarter F4:quarter D4:quarter F4:8th F4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "extra",
+    "extra",
+    "chord size",
+    "duration",
+    "chord size",
+    "chord size",
+    "duration",
+    "chord size"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 6,
+   "encoded": "F4:8th E4:8th D4:quarter rquarter",
+   "zeus": "F4:8th E4:8th D4:quarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 7,
+   "encoded": "C4:half B3:quarter",
+   "zeus": "C4:half B3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 8,
+   "encoded": "C4:half rquarter",
+   "zeus": "C4:quarter rquarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration",
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 9,
+   "encoded": "rquarter F4:half",
+   "zeus": "rquarter rhalf F4:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 10,
+   "encoded": "rquarter E4:half",
+   "zeus": "rhalf E4:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 11,
+   "encoded": "F4:quarter A3:half",
+   "zeus": "rquarter F4:quarter A3:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 12,
+   "encoded": "rquarter A3:quarter A3:quarter",
+   "zeus": "rquarter A3:quarter A3:quarter A3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 13,
+   "encoded": "A3:quarter B3:quarter D4:quarter",
+   "zeus": "A3:quarter B3:quarter D4:quarter D4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 14,
+   "encoded": "C4:half C4:quarter",
+   "zeus": "C4:half C4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 15,
+   "encoded": "B3:half B3:quarter",
+   "zeus": "B3:half B3:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 16,
+   "encoded": "A3:half rquarter",
+   "zeus": "A3:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 17,
+   "encoded": "A3:8th A3:quarter A3:quarter A3:8th",
+   "zeus": "A3:8th A3:quarter A3:quarter A3:quarter A3:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 18,
+   "encoded": "A3:quarter C4:quarter B3:quarter",
+   "zeus": "A3:half C4:quarter B3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 19,
+   "encoded": "A3:8th C4:8th C4:8th C4:8th C4:8th C4:8th",
+   "zeus": "A3:8th C4:8th C4:8th C4:8th C4:8th C4:8th C4:8th C4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 20,
+   "encoded": "C4:half rquarter",
+   "zeus": "C4:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 21,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 22,
+   "encoded": "rquarter rquarter D4:quarter",
+   "zeus": "rhalf rquarter D4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 23,
+   "encoded": "D4:quarter rquarter C4:quarter",
+   "zeus": "D4:quarter rquarter C4:quarter C4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 24,
+   "encoded": "C4:quarter C4:quarter rquarter",
+   "zeus": "C4:quarter C4:quarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 25,
+   "encoded": "F3:half.",
+   "zeus": "F3:half. rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 26,
+   "encoded": "F3:quarter F3:quarter F3:quarter",
+   "zeus": "F3:quarter F3:quarter F3:quarter F3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 27,
+   "encoded": "F3:half.",
+   "zeus": "F3:half. F3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 28,
+   "encoded": "F3:quarter F3:quarter F4:quarter",
+   "zeus": "F3:quarter F3:quarter F4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 29,
+   "encoded": "<E4 G3>:quarter <A3 F4>:quarter rquarter",
+   "zeus": "E4:quarter G3:half F4:quarter <A3 C4>:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "extra",
+    "chord size",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 30,
+   "encoded": "C4:half.",
+   "zeus": "C4:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 31,
+   "encoded": "D4:quarter C4:quarter C4:quarter",
+   "zeus": "D4:quarter C4:quarter C4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 32,
+   "encoded": "A3:quarter rquarter B3:quarter",
+   "zeus": "A3:quarter rquarter B3:quarter B3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 33,
+   "encoded": "A3:quarter rquarter B3:quarter",
+   "zeus": "A3:quarter rquarter B3:quarter B3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 34,
+   "encoded": "A3:quarter C4:quarter C4:quarter",
+   "zeus": "A3:quarter C4:quarter C4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 35,
+   "encoded": "C4:quarter C4:quarter C4:quarter",
+   "zeus": "C4:quarter C4:quarter C4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 36,
+   "encoded": "C4:quarter <A3 F3>:quarter rquarter",
+   "zeus": "C4:quarter A3:quarter rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 37,
+   "encoded": "R",
+   "zeus": "rbreve",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 41,
+   "encoded": "D4:half.",
+   "zeus": "D4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 42,
+   "encoded": "C4:quarter rquarter rquarter",
+   "zeus": "C4:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 43,
+   "encoded": "D4:half.",
+   "zeus": "D4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 44,
+   "encoded": "C4:half rquarter",
+   "zeus": "C4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 45,
+   "encoded": "A3:8th B3:8th C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th",
+   "zeus": "A3:8th B3:8th C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 46,
+   "encoded": "C5:8th B4:8th A4:8th G4:8th F4:8th E4:8th D4:8th C4:8th B3:8th",
+   "zeus": "A4:8th G4:8th E4:8th C4:8th D4:8th E4:8th D4:8th C4:8th C4:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch",
+    "pitch",
+    "pitch",
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 47,
+   "encoded": "A3:8th B3:8th C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th",
+   "zeus": "C4:8th B3:8th C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th A4:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 48,
+   "encoded": "C5:quarter rquarter rquarter",
+   "zeus": "F4:quarter C4:quarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "note for rest",
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 49,
+   "encoded": "rquarter F4:quarter F4:quarter",
+   "zeus": "rhalf F4:quarter F4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 50,
+   "encoded": "rquarter E4:quarter E4:quarter",
+   "zeus": "rhalf E4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 51,
+   "encoded": "rquarter D4:quarter D4:quarter",
+   "zeus": "rhalf D4:quarter D4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 52,
+   "encoded": "C4:half rquarter",
+   "zeus": "C4:half rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 53,
+   "encoded": "D4:quarter C4:quarter B3:quarter",
+   "zeus": "rquarter D4:quarter C4:quarter B3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 54,
+   "encoded": "B3:half rquarter",
+   "zeus": "B3:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 55,
+   "encoded": "C4:quarter B3:quarter A3:quarter",
+   "zeus": "C4:quarter B3:quarter A3:quarter G3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 56,
+   "encoded": "A3:half rquarter",
+   "zeus": "A3:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 57,
+   "encoded": "D3:quarter G3:quarter B3:quarter",
+   "zeus": "G3:quarter. G3:quarter F3:quarter G3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "duration",
+    "extra",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 58,
+   "encoded": "B3:quarter D4:half",
+   "zeus": "B3:quarter D4:half",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 59,
+   "encoded": "D3:quarter G3:quarter B3:quarter",
+   "zeus": "A3:half. G3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "duration",
+    "missed"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 60,
+   "encoded": "B3:quarter D4:quarter B3:quarter",
+   "zeus": "G3:quarter B3:quarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 61,
+   "encoded": "B3:half B4:quarter",
+   "zeus": "C4:half A4:quarter B4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "pitch",
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 62,
+   "encoded": "A4:quarter G4:quarter F4:quarter",
+   "zeus": "A4:quarter G4:quarter F4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 63,
+   "encoded": "E4:8th E4:quarter E4:quarter E4:8th",
+   "zeus": "E4:half E4:quarter E4:quarter E4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 64,
+   "encoded": "C4:quarter rquarter rquarter",
+   "zeus": "E4:quarter rquarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 65,
+   "encoded": "G3:quarter B3:quarter B3:quarter",
+   "zeus": "G3:quarter B3:quarter C4:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 66,
+   "encoded": "G3:quarter B3:quarter B3:quarter",
+   "zeus": "B3:quarter B3:quarter C4:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch",
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 67,
+   "encoded": "G3:quarter B3:quarter B3:quarter",
+   "zeus": "G3:quarter B3:quarter C4:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 68,
+   "encoded": "G3:quarter B3:quarter B3:quarter",
+   "zeus": "G3:quarter B3:quarter C4:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 69,
+   "encoded": "rquarter B3:quarter B3:quarter",
+   "zeus": "rquarter G3:quarter A3:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 70,
+   "encoded": "rquarter B3:quarter B3:quarter",
+   "zeus": "rhalf B3:quarter B3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 71,
+   "encoded": "B3:quarter B3:quarter B3:quarter",
+   "zeus": "B3:quarter B3:quarter B3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 72,
+   "encoded": "B3:half rquarter",
+   "zeus": "B3:half rquarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 10,
+   "encoded": "G3:quarter G2:quarter G3:quarter",
+   "zeus": "G3:quarter G2:quarter G3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 11,
+   "encoded": "F3:quarter F2:quarter F3:quarter",
+   "zeus": "F3:quarter F3:quarter G3:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "octave",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 12,
+   "encoded": "E3:quarter E2:quarter E3:quarter",
+   "zeus": "E3:quarter E2:quarter E3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 13,
+   "encoded": "D3:quarter B2:quarter G2:quarter",
+   "zeus": "D3:quarter B2:quarter G2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 14,
+   "encoded": "C3:quarter A2:quarter F2:quarter",
+   "zeus": "C3:quarter A2:quarter F2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 15,
+   "encoded": "B2:quarter G2:quarter E2:quarter",
+   "zeus": "B2:quarter G2:quarter A2:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 16,
+   "encoded": "A2:quarter A2:8th B2:8th A2:8th G2:quarter",
+   "zeus": "A2:quarter A2:8th B2:8th A2:8th G2:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 17,
+   "encoded": "F2:half.",
+   "zeus": "F2:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 18,
+   "encoded": "F2:quarter F2:quarter F2:quarter",
+   "zeus": "F2:quarter F2:quarter F2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 19,
+   "encoded": "F2:half.",
+   "zeus": "F2:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 20,
+   "encoded": "F2:quarter C4:quarter B3:quarter",
+   "zeus": "F2:quarter C4:quarter B3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 21,
+   "encoded": "A3:quarter A3:quarter G3:quarter",
+   "zeus": "A3:quarter A3:quarter G3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 22,
+   "encoded": "F3:half F3:quarter",
+   "zeus": "F3:half F3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 37,
+   "encoded": "F3:quarter E3:quarter D3:quarter",
+   "zeus": "rquarter F3:quarter E3:quarter D3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 38,
+   "encoded": "C3:quarter B2:quarter A2:quarter",
+   "zeus": "C3:quarter B2:quarter A2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 39,
+   "encoded": "G2:quarter G3:quarter G3:quarter",
+   "zeus": "G2:quarter G3:quarter G3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 40,
+   "encoded": "G2:quarter G3:quarter rquarter",
+   "zeus": "G2:quarter G3:quarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 41,
+   "encoded": "G2:quarter G3:quarter G2:quarter",
+   "zeus": "G2:quarter G3:quarter G2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 42,
+   "encoded": "A2:half rquarter",
+   "zeus": "G2:half rquarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 43,
+   "encoded": "G2:quarter G3:quarter G2:quarter",
+   "zeus": "G2:quarter G3:quarter G2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 44,
+   "encoded": "A2:half rquarter",
+   "zeus": "A2:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 45,
+   "encoded": "A2:quarter rquarter rquarter",
+   "zeus": "A2:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 46,
+   "encoded": "A2:quarter rquarter rquarter",
+   "zeus": "A2:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 47,
+   "encoded": "A2:quarter rquarter rquarter",
+   "zeus": "A2:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 48,
+   "encoded": "A2:8th B2:8th C3:8th D3:8th E3:8th F3:8th G3:8th A3:8th B3:8th",
+   "zeus": "A2:8th B2:8th C3:8th D3:8th E3:8th F3:8th G3:8th A3:8th B3:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 49,
+   "encoded": "C4:quarter F3:quarter B2:quarter",
+   "zeus": "C4:quarter F3:quarter B2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 50,
+   "encoded": "rquarter E3:quarter A2:quarter",
+   "zeus": "D3:quarter E3:quarter A2:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "note for rest"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 51,
+   "encoded": "D3:quarter D3:quarter D3:quarter",
+   "zeus": "D3:quarter D3:quarter D3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 52,
+   "encoded": "C3:half rquarter",
+   "zeus": "C3:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 53,
+   "encoded": "F3:quarter E3:quarter D3:quarter",
+   "zeus": "rquarter F3:quarter E3:quarter D3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 54,
+   "encoded": "B2:half rquarter",
+   "zeus": "B2:half rquarter E3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 55,
+   "encoded": "E3:quarter D3:quarter C3:quarter",
+   "zeus": "E3:quarter D3:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 56,
+   "encoded": "A2:half rquarter",
+   "zeus": "A2:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 57,
+   "encoded": "B2:quarter B2:quarter B2:quarter",
+   "zeus": "B2:quarter B2:quarter B2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 58,
+   "encoded": "B2:quarter B3:quarter B2:quarter",
+   "zeus": "B2:quarter B3:quarter B2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 59,
+   "encoded": "B2:quarter B3:quarter B2:quarter",
+   "zeus": "B2:quarter B3:quarter B2:quarter B2:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 60,
+   "encoded": "B2:quarter rquarter rquarter",
+   "zeus": "B2:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 61,
+   "encoded": "C3:quarter C4:quarter C3:quarter",
+   "zeus": "C3:quarter C4:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 62,
+   "encoded": "F3:quarter G3:quarter A3:quarter",
+   "zeus": "F3:quarter G3:quarter A3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 63,
+   "encoded": "rquarter C4:quarter C3:quarter",
+   "zeus": "rquarter C4:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 64,
+   "encoded": "F3:quarter G3:quarter A3:quarter",
+   "zeus": "F3:quarter G3:quarter A3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 65,
+   "encoded": "rquarter C3:quarter C3:quarter",
+   "zeus": "rquarter C3:quarter G3:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 66,
+   "encoded": "rquarter C3:quarter C3:quarter",
+   "zeus": "rquarter C3:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 67,
+   "encoded": "rquarter C3:quarter C3:quarter",
+   "zeus": "rquarter C3:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 68,
+   "encoded": "rquarter C3:quarter C3:quarter",
+   "zeus": "rquarter C3:quarter C3:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 69,
+   "encoded": "C2:half rquarter",
+   "zeus": "C2:whole",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "missed",
+    "note for rest"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 70,
+   "encoded": "C2:half rquarter",
+   "zeus": "C1:whole",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "note for rest"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 71,
+   "encoded": "C2:quarter C2:quarter C2:quarter",
+   "zeus": "rhalf rquarter C2:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 72,
+   "encoded": "C3:half rquarter",
+   "zeus": "C3:half rhalf D3:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "note for rest"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 1,
+   "encoded": "<A4 F5>:quarter C5:8th. F5:16th F5:quarter",
+   "zeus": "F5:quarter A4:half C5:8th F5:8th F5:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "chord size",
+    "duration",
+    "duration",
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 2,
+   "encoded": "A5:half G5:quarter",
+   "zeus": "A5:half G5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 3,
+   "encoded": "G5:8th. F5:16th F5:quarter E5:quarter",
+   "zeus": "G5:8th. F5:16th F5:quarter E5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 4,
+   "encoded": "E5:8th. D5:16th D5:quarter C5:quarter",
+   "zeus": "E5:8th. D5:16th D5:quarter C5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 5,
+   "encoded": "<D4 D5>:quarter A4:8th. D5:16th D5:quarter",
+   "zeus": "<D4 D5>:quarter A4:8th. D5:16th D5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 6,
+   "encoded": "F5:quarter A5:half",
+   "zeus": "F5:quarter A5:half",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 7,
+   "encoded": "G5:quarter E5:quarter D5:quarter",
+   "zeus": "G5:quarter E5:quarter D5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 8,
+   "encoded": "C5:half rquarter",
+   "zeus": "C5:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 9,
+   "encoded": "C5:half.",
+   "zeus": "C5:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 10,
+   "encoded": "B5:half B4:8th C5:8th B4:8th",
+   "zeus": "B5:half B4:8th C5:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 11,
+   "encoded": "A4:half.",
+   "zeus": "A4:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 12,
+   "encoded": "G5:half G4:8th A4:8th G4:8th",
+   "zeus": "G5:half G4:8th A4:8th G4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 13,
+   "encoded": "F4:8th F4:8th G4:8th A4:8th B4:8th G4:8th",
+   "zeus": "F4:8th F4:8th G4:8th A4:8th B4:8th G4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 14,
+   "encoded": "E4:quarter F4:8th G4:8th A4:8th F4:8th",
+   "zeus": "E4:quarter F4:8th G4:8th A4:8th F4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 15,
+   "encoded": "D4:quarter E4:8th F4:8th G4:8th E4:8th",
+   "zeus": "D4:quarter E4:8th F4:8th G4:8th E4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 16,
+   "encoded": "C4:quarter A3:quarter rquarter",
+   "zeus": "C4:quarter A3:quarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 17,
+   "encoded": "<A4 F5>:quarter C5:8th. F5:16th F5:quarter",
+   "zeus": "<A4 F5>:quarter C5:8th. F5:16th F5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 18,
+   "encoded": "A5:half G5:quarter",
+   "zeus": "A5:half G5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 19,
+   "encoded": "F5:quarter C5:8th. F5:16th F5:quarter",
+   "zeus": "F5:8th. C5:16th F5:quarter F5:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration",
+    "duration",
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 20,
+   "encoded": "A5:half G5:quarter",
+   "zeus": "A5:half G5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 21,
+   "encoded": "G5:8th. F5:16th F5:quarter E5:quarter",
+   "zeus": "G5:8th. F5:16th F5:quarter E5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 22,
+   "encoded": "E5:8th. D5:16th D5:quarter C5:quarter",
+   "zeus": "E5:8th. D5:16th D5:quarter C5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 23,
+   "encoded": "C5:8th. B4:16th B4:quarter G5:quarter",
+   "zeus": "C5:8th. B4:16th B4:quarter G5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 24,
+   "encoded": "B4:8th. A4:16th A4:quarter rquarter",
+   "zeus": "B4:8th. A4:16th A4:quarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 25,
+   "encoded": "D5:8th C5:8th D5:8th C5:8th D5:8th C5:8th",
+   "zeus": "D5:8th C5:8th D5:8th C5:8th D5:8th C5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 26,
+   "encoded": "gC5:8th F5:quarter. E5:16th D5:16th C5:8th r8th",
+   "zeus": "r8th F5:quarter. E5:16th D5:16th C5:8th r8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 27,
+   "encoded": "D5:8th C5:8th D5:8th C5:8th D5:8th C5:8th",
+   "zeus": "D5:8th C5:8th D5:8th C5:8th D5:8th C5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 28,
+   "encoded": "gC5:8th F5:quarter. E5:16th D5:16th C5:8th r8th",
+   "zeus": "G5:quarter. E5:16th D5:16th C5:8th r8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 29,
+   "encoded": "<B5 C5>:quarter <A5 C5>:quarter rquarter",
+   "zeus": "C5:quarter C5:quarter B4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "chord size",
+    "chord size",
+    "note for rest"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 30,
+   "encoded": "G5:quarter. E5:8th F5:quarter",
+   "zeus": "G5:quarter. E5:8th F5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 31,
+   "encoded": "gE5:8th D5:8th E5:16th F5:16th A4:quarter G4:quarter",
+   "zeus": "gE5:8th D5:8th E5:16th F5:16th A4:quarter G4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 32,
+   "encoded": "F4:8th E4:16th F4:16th G4:16th F4:16th E4:16th F4:16th G4:16th E4:16th C4:16th E4:16th",
+   "zeus": "F4:8th E4:16th F4:16th G4:16th F4:16th D4:16th G4:16th G4:16th E4:16th C4:16th E4:16th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 33,
+   "encoded": "F4:16th F4:16th E4:16th F4:16th G4:16th F4:16th E4:16th F4:16th G4:16th E4:16th C4:16th E4:16th",
+   "zeus": "F4:16th F4:16th E4:16th F4:16th G4:16th F4:16th E4:16th F4:16th G4:16th E4:16th C4:16th E4:16th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 34,
+   "encoded": "F4:8th E5:16th F5:16th G5:16th F5:16th E5:16th F5:16th G5:16th B5:16th E5:16th G5:16th",
+   "zeus": "F4:8th E5:16th F5:16th G5:16th F5:16th E5:16th F5:16th G5:16th A5:16th E5:16th G5:16th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 35,
+   "encoded": "F5:16th F5:16th E5:16th F5:16th G5:16th F5:16th E5:16th F5:16th G5:16th B5:16th E5:16th G5:16th",
+   "zeus": "F5:16th F5:16th E5:16th F5:16th G5:16th F5:16th E5:16th F5:16th G5:16th B5:16th G5:16th G5:16th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 36,
+   "encoded": "F5:quarter <A3 F4>:quarter rquarter",
+   "zeus": "F5:quarter rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 37,
+   "encoded": "F4:half.",
+   "zeus": "F4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 38,
+   "encoded": "F4:half.",
+   "zeus": "F4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 39,
+   "encoded": "F4:8th E4:16th E4:16th E4:8th E4:8th E4:8th E4:8th",
+   "zeus": "F4:8th E4:16th F4:16th E4:8th E4:8th E4:8th E4:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 40,
+   "encoded": "E4:half rquarter",
+   "zeus": "E4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 41,
+   "encoded": "E4:8th B4:quarter B4:8th E4:8th B4:8th",
+   "zeus": "E4:8th B4:8th B4:8th E4:8th F4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "duration",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 42,
+   "encoded": "B4:8th A4:8th G4:8th F4:8th E4:8th E4:8th",
+   "zeus": "B4:8th A4:8th G4:8th F4:8th E4:8th E4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 43,
+   "encoded": "E4:8th B4:quarter B4:8th E4:8th B4:8th",
+   "zeus": "E4:8th B4:8th B4:8th E4:8th G4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "duration",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 44,
+   "encoded": "B4:8th A4:8th G4:8th F4:8th E4:8th E4:8th",
+   "zeus": "B4:8th A4:8th G4:8th F4:8th E4:8th r8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 45,
+   "encoded": "E4:quarter rquarter rquarter",
+   "zeus": "E4:quarter rquarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 46,
+   "encoded": "R",
+   "zeus": "rbreve",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 48,
+   "encoded": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th C5:8th D5:8th",
+   "zeus": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th B4:8th C5:8th D5:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 49,
+   "encoded": "E5:8th E5:16th C5:16th E5:16th C5:16th E5:16th C5:16th D5:8th r8th",
+   "zeus": "E5:8th E5:16th C5:16th E5:16th E5:16th C5:16th C5:16th D5:8th r8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 50,
+   "encoded": "D5:8th D5:16th B4:16th D5:16th B4:16th D5:16th B4:16th C5:8th C5:8th",
+   "zeus": "D5:8th D5:16th B4:16th C5:16th B4:16th D5:16th B4:16th C5:8th C5:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 51,
+   "encoded": "C5:8th B4:quarter A5:quarter B4:8th",
+   "zeus": "C5:8th B4:quarter B4:quarter B4:8th B4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "pitch",
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 52,
+   "encoded": "C5:quarter C5:8th D5:8th C5:8th B4:8th A4:8th G4:8th",
+   "zeus": "C5:quarter C5:8th D5:8th C5:8th B4:8th A4:8th G4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 53,
+   "encoded": "F4:quarter A4:quarter B4:quarter",
+   "zeus": "F4:8th A4:8th A4:quarter B4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "pitch",
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 54,
+   "encoded": "D5:quarter. C5:8th B4:8th r8th",
+   "zeus": "D5:quarter. C5:8th B4:8th r8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 55,
+   "encoded": "E4:quarter G4:quarter A4:quarter",
+   "zeus": "E4:quarter G4:quarter A4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 56,
+   "encoded": "C5:quarter. B4:8th A4:8th r8th",
+   "zeus": "C5:quarter. B4:8th A4:8th r8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 57,
+   "encoded": "G4:8th B4:8th A4:8th G4:8th G4:8th G4:8th G4:8th G4:8th G4:8th",
+   "zeus": "G4:8th F4:8th A4:8th G4:8th G4:8th G4:8th G4:8th G4:8th G4:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 58,
+   "encoded": "G4:quarter rquarter G4:8th D5:8th B4:8th",
+   "zeus": "G4:quarter rquarter G4:8th D5:8th B4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 59,
+   "encoded": "G4:quarter rquarter G4:8th D5:8th B4:8th",
+   "zeus": "G4:quarter r8th G4:8th D5:8th B4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 60,
+   "encoded": "G4:quarter rquarter rquarter",
+   "zeus": "G4:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 61,
+   "encoded": "G4:half.",
+   "zeus": "G4:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 62,
+   "encoded": "r8th A4:8th B4:8th B4:8th C5:8th D5:8th",
+   "zeus": "r8th A4:8th B4:8th B4:8th C5:8th D5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 63,
+   "encoded": "C5:8th. G4:16th G4:half",
+   "zeus": "C5:8th. B4:16th G4:half",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 64,
+   "encoded": "r8th A4:8th B4:8th B4:8th C5:8th D5:8th",
+   "zeus": "r8th A4:8th B4:8th B4:8th C5:8th D5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 65,
+   "encoded": "C5:8th. G4:16th G4:half",
+   "zeus": "C5:8th. A4:16th G4:half",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 66,
+   "encoded": "D5:8th. G4:16th G4:half",
+   "zeus": "D5:8th. C5:16th G4:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "duration",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 67,
+   "encoded": "C5:16th B4:16th C5:16th B4:16th G4:half",
+   "zeus": "C5:16th B4:16th C5:16th B4:16th G4:half",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 68,
+   "encoded": "D5:16th B4:16th D5:16th B4:16th G4:half",
+   "zeus": "D5:16th B4:16th D5:16th B4:16th G4:half",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 69,
+   "encoded": "C5:8th B4:8th G4:8th D5:8th B4:8th G4:8th C5:8th B4:8th G4:8th",
+   "zeus": "C5:8th B4:8th G4:8th D5:8th B4:8th G4:8th C5:8th B4:8th G4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 70,
+   "encoded": "C5:8th B4:8th G4:8th D5:8th B4:8th G4:8th C5:16th B4:16th G4:16th B4:16th",
+   "zeus": "C5:8th B4:8th G4:8th D5:8th B4:8th G4:8th C5:16th B4:16th G4:16th B4:16th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 71,
+   "encoded": "C5:16th B4:16th G4:16th B4:16th D5:16th B4:16th G4:16th B4:16th C5:16th B4:16th G4:16th B4:16th",
+   "zeus": "C5:16th B4:16th E4:16th B4:16th D5:16th B4:16th G4:16th B4:16th C5:16th B4:16th G4:16th B4:16th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn1",
+   "movement": "II",
+   "bar": 72,
+   "encoded": "C5:16th B4:16th G4:16th B4:16th G4:quarter rquarter",
+   "zeus": "C5:16th B4:16th G4:16th B4:16th G4:quarter rquarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 1,
+   "encoded": "C4:8th C4:quarter C4:quarter C4:8th",
+   "zeus": "C4:8th C4:quarter C4:quarter C4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 2,
+   "encoded": "C4:half.",
+   "zeus": "C4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 3,
+   "encoded": "C5:half B4:quarter",
+   "zeus": "C5:half B4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 4,
+   "encoded": "A4:quarter A4:quarter A4:quarter",
+   "zeus": "A4:quarter A4:quarter A4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 5,
+   "encoded": "<A4 D4>:8th <A4 D4>:quarter <A4 D4>:quarter <A4 D4>:8th",
+   "zeus": "A4:8th D4:half. A4:quarter A4:quarter A4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "chord size",
+    "duration",
+    "chord size",
+    "chord size",
+    "chord size"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 6,
+   "encoded": "A4:8th G4:8th F4:quarter F5:quarter",
+   "zeus": "A4:8th G4:8th F4:quarter F5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 7,
+   "encoded": "E5:quarter E4:quarter F4:quarter",
+   "zeus": "E5:quarter E4:quarter F4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 8,
+   "encoded": "E4:half rquarter",
+   "zeus": "E4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 9,
+   "encoded": "r8th C4:8th C4:8th C4:8th C4:8th C4:8th",
+   "zeus": "rquarter C4:8th C4:8th C4:8th C4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 10,
+   "encoded": "C4:8th C5:8th C5:8th C5:8th C5:8th C5:8th",
+   "zeus": "C4:8th C5:8th C5:8th C5:8th C5:8th C5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 11,
+   "encoded": "C5:8th C5:quarter C5:quarter C5:8th",
+   "zeus": "C5:8th C5:quarter C5:quarter C5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 12,
+   "encoded": "C5:8th C5:8th C5:8th C5:8th C5:8th C5:8th",
+   "zeus": "C5:8th C5:8th C5:8th C5:8th C5:8th C5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 13,
+   "encoded": "D5:quarter D4:quarter G4:quarter",
+   "zeus": "D5:quarter D4:quarter G4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 14,
+   "encoded": "G4:quarter C4:quarter F4:quarter",
+   "zeus": "G4:quarter C4:quarter F4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 15,
+   "encoded": "F4:quarter B3:quarter E4:quarter",
+   "zeus": "F4:quarter B3:quarter E4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 16,
+   "encoded": "E4:half rquarter",
+   "zeus": "E4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 17,
+   "encoded": "C4:8th C4:quarter C4:quarter C4:8th",
+   "zeus": "C4:8th. C4:16th C4:quarter C4:quarter r8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra",
+    "duration",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 18,
+   "encoded": "C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th E4:16th E4:16th E4:16th E4:16th",
+   "zeus": "C4:8th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C4:16th E4:16th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "duration",
+    "missed",
+    "pitch",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 19,
+   "encoded": "F4:8th <A4 A4>:quarter <A4 A4>:quarter <A4 A4>:8th",
+   "zeus": "F4:8th A4:quarter A4:quarter A4:quarter A4:quarter A4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "extra",
+    "chord size",
+    "chord size",
+    "chord size"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 20,
+   "encoded": "<A4 F4>:half rquarter",
+   "zeus": "G4:half rquarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "chord size"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 21,
+   "encoded": "C4:half B3:quarter",
+   "zeus": "C4:half C4:quarter C4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 22,
+   "encoded": "A3:quarter A3:quarter A4:quarter",
+   "zeus": "A3:quarter A3:quarter A4:quarter A4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 23,
+   "encoded": "A4:quarter gA4:8th G4:8th. F4:16th G4:quarter",
+   "zeus": "A4:quarter A4:8th G4:8th. F4:16th G4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "grace"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 24,
+   "encoded": "G4:quarter F4:quarter rquarter",
+   "zeus": "G4:quarter F4:quarter rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 25,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 26,
+   "encoded": "C4:half.",
+   "zeus": "C4:half. rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 27,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 28,
+   "encoded": "C4:half.",
+   "zeus": "C4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 29,
+   "encoded": "<C5 G5>:quarter <C5 F5>:quarter rquarter",
+   "zeus": "<C5 G5>:quarter <F5 F5>:quarter rquarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 30,
+   "encoded": "rquarter rquarter F4:quarter",
+   "zeus": "rquarter rquarter F4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 31,
+   "encoded": "F4:quarter F4:quarter E4:quarter",
+   "zeus": "F4:quarter F4:quarter E4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 32,
+   "encoded": "F4:quarter rquarter C4:quarter",
+   "zeus": "F4:quarter rquarter C4:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 33,
+   "encoded": "C4:quarter rquarter C4:quarter",
+   "zeus": "C4:quarter rquarter C4:quarter C4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 34,
+   "encoded": "C4:quarter C5:quarter B4:quarter",
+   "zeus": "C4:quarter C5:quarter B4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 35,
+   "encoded": "<A4 C4>:quarter C5:quarter B4:quarter",
+   "zeus": "<A4 C4>:quarter C5:quarter B4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 36,
+   "encoded": "<A4 A4>:quarter C4:quarter rquarter",
+   "zeus": "A4:quarter C4:quarter rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "chord size",
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 37,
+   "encoded": "rquarter rquarter F4:quarter",
+   "zeus": "rquarter r8th F4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "duration",
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 38,
+   "encoded": "E4:quarter D4:quarter C4:quarter",
+   "zeus": "E4:quarter D4:quarter C4:quarter C4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 39,
+   "encoded": "B3:quarter B4:quarter B4:quarter",
+   "zeus": "B3:half B4:quarter B4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 40,
+   "encoded": "B4:half rquarter",
+   "zeus": "B4:half rhalf",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 41,
+   "encoded": "B4:8th G4:8th E4:quarter E4:quarter",
+   "zeus": "B4:8th G4:8th E4:quarter E4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 42,
+   "encoded": "E4:half C5:quarter",
+   "zeus": "E4:half C5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 43,
+   "encoded": "B4:8th G4:8th E4:quarter E4:quarter",
+   "zeus": "B4:8th G4:8th E4:quarter E4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 44,
+   "encoded": "E4:half C5:quarter",
+   "zeus": "E4:half C5:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 45,
+   "encoded": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th C5:8th D5:8th",
+   "zeus": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th C5:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 46,
+   "encoded": "E5:8th D5:8th C5:8th B4:8th A4:8th G4:8th F4:8th E4:8th D4:8th",
+   "zeus": "E5:8th D5:8th C5:8th B4:8th A4:8th G4:8th F4:8th E4:8th D4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 47,
+   "encoded": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th C5:8th D5:8th",
+   "zeus": "C4:8th D4:8th E4:8th F4:8th G4:8th A4:8th B4:8th C5:8th D5:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 48,
+   "encoded": "E5:quarter rquarter rquarter",
+   "zeus": "E5:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 49,
+   "encoded": "rquarter A4:quarter B4:quarter",
+   "zeus": "rquarter A4:quarter B4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 50,
+   "encoded": "B4:quarter G4:quarter A4:quarter",
+   "zeus": "B4:quarter G4:quarter A4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 51,
+   "encoded": "F4:half.",
+   "zeus": "F4:half.",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 52,
+   "encoded": "E4:half rquarter",
+   "zeus": "F4:quarter rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 53,
+   "encoded": "rquarter C4:quarter D4:quarter",
+   "zeus": "rquarter rquarter C4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note",
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 54,
+   "encoded": "F4:half rquarter",
+   "zeus": "F4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 55,
+   "encoded": "rquarter B3:quarter C4:quarter",
+   "zeus": "rquarter C4:quarter C4:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 56,
+   "encoded": "E4:half rquarter",
+   "zeus": "E4:half rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 57,
+   "encoded": "D4:quarter D4:quarter D4:quarter",
+   "zeus": "C4:quarter D4:quarter C4:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "pitch",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 58,
+   "encoded": "D4:8th E4:8th F4:8th G4:quarter rquarter",
+   "zeus": "D4:8th E4:8th F4:8th G4:quarter rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 59,
+   "encoded": "D4:8th E4:8th F4:8th G4:quarter rquarter",
+   "zeus": "D4:8th E4:8th F4:8th G4:quarter G4:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 60,
+   "encoded": "D4:8th E4:8th F4:8th G4:8th G4:8th B4:8th D5:8th B4:8th G4:8th",
+   "zeus": "C4:8th E4:8th F4:8th G4:8th G4:8th B4:8th D5:8th B4:8th G4:8th",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 61,
+   "encoded": "E4:8th E4:quarter E4:quarter E4:8th",
+   "zeus": "E4:8th E4:quarter E4:quarter E4:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 62,
+   "encoded": "C4:quarter rquarter rquarter",
+   "zeus": "C4:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 63,
+   "encoded": "B3:half B4:quarter",
+   "zeus": "B3:half. B4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 64,
+   "encoded": "A4:quarter G4:quarter F4:quarter",
+   "zeus": "A4:quarter G4:quarter F4:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 65,
+   "encoded": "E4:8th E4:quarter E4:quarter E4:8th",
+   "zeus": "E4:8th E4:8th E4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration",
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 66,
+   "encoded": "E4:8th E5:quarter E4:quarter E4:8th",
+   "zeus": "E4:8th E5:quarter E4:quarter E4:8th",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 67,
+   "encoded": "r8th E4:quarter E4:quarter E4:8th",
+   "zeus": "r8th E4:quarter E4:quarter E4:quarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 68,
+   "encoded": "E4:8th E5:quarter E4:quarter E4:8th",
+   "zeus": "E4:quarter E5:quarter E4:quarter E4:8th",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 69,
+   "encoded": "rquarter <E4 G3>:quarter <E4 G3>:quarter",
+   "zeus": "rquarter <E3 E4>:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 70,
+   "encoded": "rquarter <E4 G3>:quarter <E4 G3>:quarter",
+   "zeus": "rquarter <B4 E4>:quarter E4:quarter",
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch",
+    "chord size"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 71,
+   "encoded": "<E4 G3>:quarter <E4 G3>:quarter <E4 G3>:quarter",
+   "zeus": "<E4 G3>:quarter <E4 G3>:quarter <E4 G3>:half",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ]
+  },
+  {
+   "part": "vn2",
+   "movement": "II",
+   "bar": 72,
+   "encoded": "<E4 G3>:half rquarter",
+   "zeus": "<E4 E4>:half rquarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "rest for note"
+   ]
+  }
+ ]
+}
