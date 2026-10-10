@@ -91,3 +91,29 @@ off by a median 0.004 of the page's height.
 The labeler now asks these same prompts (reader.py; these scripts import
 them). The texts it offers differ: every checked text in the edition, this
 source's included, where "known" here offers other sources' only.
+
+## Reading a bar's notes (bars.py, 2026-10-09)
+
+    uv run experiments/llm/bars.py <edition-repo> [--limit N] [--effort low] [--same-as ANSWERS]
+
+Zeus's task (experiments/zeus/), given to Claude Opus 5.5 and scored the
+same way:
+- 40 example bars with their encoding in a cached prefix;
+- each test bar at 40 px a staff space, with its clef, key and time.
+
+On a pilot of 10 held-out bars (viola II 1–10, about 3¢ a bar):
+
+| | bars exact | rhythm | pitch | errors |
+|---|---|---|---|---|
+| Claude, low effort | 1 | 5 | 2 | 19 |
+| Claude, high effort | 1 | 4 | 3 | 12 |
+| Zeus zero-shot | 4 | 6 | 7 | 18 |
+| Zeus fine-tuned | 6 | 6 | 7 | 16 |
+
+A single read by a large model is not better than Zeus on this hand. The
+edition's `/encode` gets its accuracy from what follows its reading:
+- enforced resolution with a pitch grid;
+- bar checks, headcheck and crosscheck;
+- two blind readers per kind of mark, and adjudication of their
+  differences;
+- rules learned from corrections.

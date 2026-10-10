@@ -1,0 +1,148 @@
+{
+ "tally": {
+  "bars": 10,
+  "bars exact": 1,
+  "bars right in rhythm": 4,
+  "bars right in pitch": 3,
+  "events": 26,
+  "event: right": 15,
+  "event: pitch": 3,
+  "event: note for rest": 1,
+  "event: duration": 4,
+  "event: extra": 1,
+  "event: rest for note": 3
+ },
+ "bars": [
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 1,
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": [],
+   "encoded": "<A3 F3>:8th <A3 F3>:quarter <A3 F3>:quarter <A3 F3>:8th",
+   "claude": "<A3 F3>:8th <A3 F3>:quarter <A3 F3>:quarter <A3 F3>:8th"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 2,
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ],
+   "encoded": "<A3 F3>:half rquarter",
+   "claude": "<B3 F3>:half rquarter"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 3,
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "note for rest"
+   ],
+   "encoded": "R",
+   "claude": "D4:half."
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 4,
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ],
+   "encoded": "A3:quarter A4:quarter G4:quarter",
+   "claude": "G3:quarter A4:quarter G4:quarter"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 5,
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration",
+    "duration"
+   ],
+   "encoded": "<D4 F4>:8th <D4 F4>:quarter <D4 F4>:quarter <D4 F4>:8th",
+   "claude": "<D4 F4>:8th <D4 F4>:8th <D4 F4>:8th <D4 F4>:8th"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 6,
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "duration"
+   ],
+   "encoded": "F4:8th E4:8th D4:quarter rquarter",
+   "claude": "F4:8th E4:8th D4:quarter r8th"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 7,
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra",
+    "rest for note",
+    "duration"
+   ],
+   "encoded": "C4:half B3:quarter",
+   "claude": "B3:half r8th B3:8th"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 8,
+   "exact": false,
+   "rhythm": true,
+   "pitch": false,
+   "errors": [
+    "pitch"
+   ],
+   "encoded": "C4:half rquarter",
+   "claude": "G3:half rquarter"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 9,
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note"
+   ],
+   "encoded": "rquarter F4:half",
+   "claude": "rquarter rquarter"
+  },
+  {
+   "part": "va",
+   "movement": "II",
+   "bar": 10,
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "rest for note"
+   ],
+   "encoded": "rquarter E4:half",
+   "claude": "rquarter rquarter"
+  }
+ ]
+}
