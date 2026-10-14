@@ -157,6 +157,8 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
     cost = [[INF] * (m + 1) for _ in range(n + 1)]
     back: list[list] = [[None] * (m + 1) for _ in range(n + 1)]
     cost[0][0] = 0.0
+    # each row's band must reach the next's: at least the bars per measure (all of them if Zeus read none)
+    band = max(band, -(-m // max(n, 1)))
     lo = lambda i: max(0, int(i * m / max(n, 1)) - band)
     hi = lambda i: min(m, int(i * m / max(n, 1)) + band)
     zlen, elen = [length(z) for z in Z], [length(e) for e in E]
