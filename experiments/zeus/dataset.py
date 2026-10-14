@@ -214,8 +214,12 @@ def box_events(box: dict, events: dict, split: dict) -> list[dict] | None:
 
 
 def staff_part(boxes: list[dict], events: dict, mk: dict, exp: dict, first_of_mvt: set,
-               split: dict) -> ET.Element:
-    """The staff's bars as one MusicXML part."""
+               split: dict, bar_events: list[list[dict]] | None = None,
+               clef_changes: dict | None = None) -> ET.Element:
+    """The staff's bars as one MusicXML part. `bar_events`, if given, holds
+    each box's events in place of the encoding's (box_events);
+    `clef_changes` the clefs a bar changes to inside it, {box index: {index
+    of the event the clef comes before: clef}} (tools/zeus_score.py)."""
     part = ET.Element("part", id="P1")
     clef = None
     for k, box in enumerate(boxes):
@@ -241,7 +245,14 @@ def staff_part(boxes: list[dict], events: dict, mk: dict, exp: dict, first_of_mv
             sub(c, "line", CLEF[clef][1])
         if len(attrs):
             m.append(attrs)
-        for e in box_events(box, events, split):
+        evs = bar_events[k] if bar_events is not None else box_events(box, events, split)
+        changes = (clef_changes or {}).get(k, {})
+        for i, e in enumerate(evs):
+            if i in changes:
+                clef = changes[i]
+                c = sub(sub(m, "attributes"), "clef")
+                sub(c, "sign", CLEF[clef][0])
+                sub(c, "line", CLEF[clef][1])
             note_elements(m, box["bar"], e, mk, measure_len)
     return part
 
