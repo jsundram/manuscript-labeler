@@ -6,6 +6,7 @@
 the labeler (which votes them with its learned filter when present).
 
     uv run tools/predict_barlines.py <edition-repo> [--install NAME WEIGHTS THRESHOLD] [--notes TEXT] [--retry] [--only SOURCE]
+    uv run tools/predict_barlines.py <edition-repo> --pdf <file.pdf> ...   (a PDF nobody has labelled)
     uv run --with "transformers>=4.52" --with timm --with scipy tools/predict_barlines.py <edition-repo> --kind dfine ...
     <detectron2 venv>/bin/python tools/predict_barlines.py <edition-repo> --kind detectron2 ...
 
@@ -138,6 +139,9 @@ def main():
                          "detectron2 in its source-built venv, dfine with transformers)")
     ap.add_argument("--only", action="append", default=[], metavar="SOURCE",
                     help="predict only this source (the PDF's name without .pdf); repeatable")
+    ap.add_argument("--pdf", action="append", default=[], type=Path, metavar="PDF",
+                    help="instead of the edition's sources: a PDF nobody has labelled, in an edition "
+                         "rooted at its folder (as experiments/zeus/autodetect.py --pdf reads it); repeatable")
     args = ap.parse_args()
     for name, weights, th in args.install or []:
         if weights_kind(Path(weights)) != args.kind:  # a mismatch would break every later run of this kind
@@ -152,14 +156,18 @@ def main():
         sys.exit(f"no {args.kind} detectors installed (--install NAME WEIGHTS THRESHOLD --kind {args.kind})")
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
     models = [(d, tile_function(d, device)) for d in dets]
-    ed = server.Edition(args.edition, cache_dir())
     print(f"detectors {', '.join(d['key'] for d in dets)} on {device}")
-    for pdf in sorted(args.edition.glob("sources/**/*.pdf")):
-        if args.only and pdf.stem not in args.only:
-            continue
-        rel = str(pdf.relative_to(args.edition))
+    if args.pdf:
+        jobs = [(p.resolve().parent, p.resolve()) for p in args.pdf]
+    else:
+        jobs = [(args.edition, p) for p in sorted(args.edition.glob("sources/**/*.pdf"))
+                if not args.only or p.stem in args.only]
+    eds = {}
+    for root, pdf in jobs:
+        ed = eds.setdefault(root, server.Edition(root, cache_dir()))
+        rel = str(pdf.relative_to(root))
         ident = pdf_identity(pdf)
-        lp = labels.labels_path(pdf)
+        lp = labels.labels_path(pdf, edition=root)
         corners = {}
         if lp.exists():
             for n, p in json.loads(lp.read_text()).get("pages", {}).items():
@@ -167,7 +175,7 @@ def main():
                     corners[int(n)] = p["corners"]["points"]
         docs = {}
         for d, _ in models:
-            f = cache_file(d, args.edition, rel)
+            f = cache_file(d, root, rel)
             doc = json.loads(f.read_text()) if f.exists() else None
             if not doc or doc.get("pdf_identity") != ident:  # new, or the PDF has changed
                 doc = {"detector": {x: d[x] for x in ("name", "sha", "threshold", "key")}, "pdf": rel,
