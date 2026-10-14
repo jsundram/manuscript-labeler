@@ -25,9 +25,12 @@ what changed.
 Zeus's clefs are wrong on our hands (experiments/barlines/results.md), so
 its clefs are only used to place each note on the staff; the pitch is read
 from that place in the clef the labels give the bar. Its measures are
-paired with the staff's bar boxes in order, where it found as many; a
-staff where it didn't is counted, not compared. A bar whose boxes are on
-two staves (a short bar and the next section's upbeat) is compared whole.
+paired with the staff's bar boxes in order. Where it read a different
+number, they are made to pair by their lengths against the labels' time
+signature (reconcile: a bar line added or missed, a runaway's tail
+dropped; --as-read to skip that). A staff that still doesn't pair isn't
+read: its bars count as wrong. A bar whose boxes are on two staves (a
+short bar and the next section's upbeat) is compared whole.
 
 The encoding (the edition's scripts/events.py, as LilyPond reads it) is
 taken as right. Each bar's events, in order (a chord as one, a rest, a
@@ -244,6 +247,94 @@ def merge(events: list[dict]) -> list[dict]:
     return [o for o in out if not (o["kind"] == "rest" and any(on == o["onset"] and v != o["voice"] for on, v in notes))]
 
 
+def wanted(boxes: list[dict], times: dict, per_bar: Counter) -> list[dict]:
+    """Each bar box's length from the labels' time signature. A pickup, or
+    part of a bar split across boxes, is shorter than a bar (not exact),
+    and says whether the bar goes on in the next box; an N-bar rest is N
+    bars."""
+    out = []
+    for k, b in enumerate(boxes):
+        key = (b["part"], b["movement"], b["bar"])
+        n, d = map(int, times[key].split("/"))
+        bar = Fraction(n, d)
+        part = b["count"] == 0 or per_bar[key] > 1
+        nxt = boxes[k + 1] if k + 1 < len(boxes) else None
+        out.append({"len": bar * max(b["count"], 1), "bar": bar, "exact": not part, "count": max(b["count"], 1),
+                    "joins_next": part and nxt is not None and (nxt["movement"], nxt["bar"]) == key[1:]})
+    return out
+
+
+def bar_rest(ms: list[dict]) -> bool:
+    """A measure that is one whole-bar rest: as long as whatever bar it's in."""
+    return len(ms) == 1 and ms[0]["kind"] == "rest" and (ms[0]["bar_rest"] or ms[0]["dur_raw"] == "whole")
+
+
+def reconcile(measures: list[list[dict]], ends: list[Fraction], want: list[dict]):
+    """Zeus's measures made one per bar box, where it read a different
+    number, by their lengths against the time signature: a bar line it
+    added (two measures, one box); one it missed (one measure, two boxes,
+    cut where the first bar ends); a bar split by a repeat sign read whole
+    (one measure for both its boxes); an N-bar rest written as N bar rests;
+    a stray measure dropped; whatever it read past the staff's last box (a
+    runaway) dropped. None if no way gives every box a measure. Uses
+    nothing but the labels."""
+    M, N = len(measures), len(want)
+    rest = [bar_rest(ms) for ms in measures]
+
+    def fits(i, d, w):
+        if rest[i] and w["count"] == 1:
+            return True
+        return d == w["len"] if w["exact"] else 0 < d < w["bar"]
+
+    INF = float("inf")
+    cost = [[INF] * (N + 1) for _ in range(M + 1)]
+    back = {}
+    cost[0][0] = 0.0
+    for i in range(M + 1):
+        for j in range(N + 1):
+            c = cost[i][j]
+            if c == INF:
+                continue
+            steps = [("skip", 1, 0, 1)] if i < M else []
+            if i < M and j < N:
+                steps.append(("one", 1, 1, 0 if fits(i, ends[i], want[j]) else 1))
+                if want[j]["joins_next"] and j + 1 < N:
+                    steps.append(("whole", 1, 2, 0 if rest[i] or ends[i] == want[j]["bar"] else 2))
+                if want[j]["count"] > 1 and all(rest[i:i + want[j]["count"]]) and i + want[j]["count"] <= M:
+                    steps.append(("rests", want[j]["count"], 1, 0))
+            if i + 1 < M and j < N:
+                steps.append(("merge", 2, 1, 0.5 if fits(i, ends[i] + ends[i + 1], want[j]) else 2))
+            if i < M and j + 1 < N and want[j]["exact"]:
+                first, nxt = want[j]["len"], want[j + 1]
+                # the second box a whole bar, or the start of one going on in the next box
+                ok = (ends[i] == first + nxt["len"] if nxt["exact"]
+                      else first < ends[i] < first + nxt["bar"])
+                steps.append(("split", 1, 2, 0.5 if ok else 2))
+            for kind, di, dj, k in steps:
+                if c + k < cost[i + di][j + dj]:
+                    cost[i + di][j + dj] = c + k
+                    back[(i + di, j + dj)] = (kind, i, j)
+    ends_at = [(cost[i][N] + 0.05 * (M - i), i) for i in range(M + 1) if cost[i][N] < INF]
+    if not ends_at:
+        return None
+    i, j = min(ends_at)[1], N
+    out = []
+    while (i, j) != (0, 0):
+        kind, pi, pj = back[(i, j)]
+        if kind in ("one", "rests"):
+            out.append(measures[pi])
+        elif kind == "merge":
+            out.append(measures[pi] + measures[pi + 1])
+        elif kind == "whole":  # the bar is compared whole: all of it in its first box
+            out += [[], measures[pi]]
+        elif kind == "split":
+            cut = want[pj]["len"]
+            out.append([e for e in measures[pi] if e["onset"] >= cut])
+            out.append([e for e in measures[pi] if e["onset"] < cut])
+        i, j = pi, pj
+    return out[::-1]
+
+
 def zeus_event(e: dict, clef: str) -> dict:
     """A Zeus event in the bar's clef (the labels'), as the encoding's are compared."""
     if e["kind"] == "rest":
@@ -349,6 +440,8 @@ def main():
     ap.add_argument("--source", default="D-B_KHM-602")
     ap.add_argument("--model", type=Path, default=MODEL)
     ap.add_argument("--movements", nargs="+", help="only these movements (default: all)")
+    ap.add_argument("--as-read", action="store_true",
+                    help="don't pair a staff's measures with its boxes when Zeus read a different number")
     a = ap.parse_args()
     pdf = next(a.edition.glob(f"sources/*/{a.source}.pdf"))
     export = json.loads(pdf.with_name(pdf.stem + ".bars.json").read_text())
@@ -381,24 +474,36 @@ def main():
     cache_file.parent.mkdir(exist_ok=True)
     cache_file.write_text(json.dumps(cache, indent=1, sort_keys=True))
 
+    # the time signature in force at each bar, from the labels
+    times, now = {}, {}
+    for b in export["bars"]:
+        pm = (b["part"], b["movement"])
+        now[pm] = b["signature"].get("time", now.get(pm, "4/4"))
+        times[(b["part"], b["movement"], b["bar"])] = now[pm]
+    all_boxes = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
+
     # Zeus's events by bar (part, movement, number), where its measures pair with the boxes
     zeus_bars: dict[tuple, list] = defaultdict(list)
     boxes_seen: Counter = Counter()
-    unpaired, clef_read = [], Counter()
+    unpaired, reconciled, clef_read = [], [], Counter()
     for sid, boxes in staves.items():
-        measures, clefs = parse(cache[keys[sid]])
+        ends: list = []
+        measures, clefs = parse(cache[keys[sid]], ends)
         written = boxes[0]["clefs"][0] if boxes[0]["clefs"] else "?"
         clef_read[(written, clefs[0] if clefs else "none")] += 1
         if len(measures) != len(boxes):
-            unpaired.append((sid, boxes[0]["part"], len(boxes), len(measures)))
-            continue
+            made = None if a.as_read else reconcile(measures, ends, wanted(boxes, times, all_boxes))
+            if made is None:
+                unpaired.append((sid, boxes[0]["part"], len(boxes), len(measures)))
+                continue
+            reconciled.append((sid, boxes[0]["part"], len(boxes), len(measures)))
+            measures = made
         for b, ms in zip(boxes, measures):
             key = (b["part"], b["movement"], b["bar"])
             if len(b["clefs"]) != 1:  # a clef change inside the bar: where it falls isn't known
                 continue
             boxes_seen[key] += 1
             zeus_bars[key] += [zeus_event(e, b["clefs"][0]) for e in ms]
-    all_boxes = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
 
     # the encoding
     enc_bars: dict[tuple, list] = {}
@@ -408,13 +513,22 @@ def main():
         for bar, evs in json.loads(r.stdout).items():
             enc_bars[(part, mvt, int(bar))] = encoded(evs)
 
+    # bars no reading could be compared on: a clef change inside the bar (where it falls isn't known)
+    clef_changes = {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs if len(b["clefs"]) != 1}
     tally: dict[str, Counter] = defaultdict(Counter)
     rows = []
     for key, n in sorted(all_boxes.items(), key=lambda kv: (kv[0][1], kv[0][0], kv[0][2])):
         part = key[0]
-        if boxes_seen[key] != n or key not in enc_bars:
+        if key in clef_changes or key not in enc_bars:
             for g in ("all", part, key[1]):
                 tally[g]["bars not compared"] += 1
+            continue
+        if boxes_seen[key] != n:  # Zeus's measures didn't pair with the boxes: a bar it didn't read
+            for g in ("all", part, key[1]):
+                tally[g]["bars"] += 1
+                tally[g]["bars unread"] += 1
+                tally[g]["events"] += len(enc_bars[key])
+                tally[g]["event: unread"] += len(enc_bars[key])
             continue
         enc, zs = enc_bars[key], zeus_bars[key]
         pairs = align(enc, zs)
@@ -449,20 +563,21 @@ def main():
                     tally[g]["event: " + k] += 1
         rows.append(row)
 
-    out = HERE / "results" / f"{a.source}{'-' + '-'.join(a.movements) if a.movements else ''}-{a.model.name}.json"
+    out = HERE / "results" / (f"{a.source}{'-' + '-'.join(a.movements) if a.movements else ''}-{a.model.name}"
+                              f"{'-as-read' if a.as_read else ''}.json")
     out.parent.mkdir(exist_ok=True)
-    out.write_text(json.dumps({"tally": tally, "unpaired staves": unpaired,
+    out.write_text(json.dumps({"tally": tally, "unpaired staves": unpaired, "reconciled staves": reconciled,
                                "clefs (labelled, Zeus's first)": {f"{k[0]} -> {k[1]}": v for k, v in clef_read.items()},
                                "bars": rows}, indent=1))
-    print(f"{a.source} against {quartet}: {len(staves)} staves, {len(unpaired)} where Zeus's measures "
-          f"don't pair with the bar boxes")
+    print(f"{a.source} against {quartet}: {len(staves)} staves; {len(reconciled)} where Zeus read a different "
+          f"number of measures than bar boxes, made to pair; {len(unpaired)} that couldn't be (their bars count as wrong)")
     print("clefs (labelled -> Zeus's first):", dict(clef_read.most_common()))
     for g in ["all", "vn1", "vn2", "va", "vc", "I", "II", "III"]:
         t = tally[g]
         if not t["bars"]:
             continue
         pct = lambda k, of: f"{t[k]}/{t[of]} ({100 * t[k] / max(t[of], 1):.0f}%)"
-        print(f"\n{g}: {t['bars']} bars compared, {t['bars not compared']} not")
+        print(f"\n{g}: {t['bars']} bars ({t['bars unread']} unread, counted wrong), {t['bars not compared']} not compared")
         print(f"  bars exact {pct('bars exact', 'bars')}, right in rhythm {pct('bars right in rhythm', 'bars')}, "
               f"right in pitch {pct('bars right in pitch', 'bars')}")
         print(f"  events right {pct('event: right', 'events')}; "

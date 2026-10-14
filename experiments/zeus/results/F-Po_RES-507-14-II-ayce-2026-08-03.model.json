@@ -1,22 +1,21 @@
 {
  "tally": {
   "all": {
-   "bars": 252,
-   "bars exact": 207,
-   "bars right in rhythm": 227,
-   "bars right in pitch": 220,
-   "events": 863,
-   "event: right": 817,
-   "notes right": 745,
-   "accidental shown as encoded": 743,
-   "event: missed": 10,
-   "event: extra": 17,
+   "bars": 268,
+   "bars exact": 213,
+   "bars right in rhythm": 233,
+   "bars right in pitch": 227,
+   "events": 908,
+   "event: right": 835,
+   "notes right": 756,
+   "accidental shown as encoded": 754,
+   "event: missed": 27,
+   "event: extra": 18,
    "event: chord size": 10,
-   "event: duration": 5,
+   "event: duration": 12,
    "event: note for rest": 3,
    "event: pitch": 15,
-   "event: rest for note": 1,
-   "bars not compared": 16,
+   "event: rest for note": 4,
    "event: octave": 3
   },
   "va": {
@@ -34,41 +33,39 @@
    "event: duration": 1
   },
   "II": {
-   "bars": 252,
-   "bars exact": 207,
-   "bars right in rhythm": 227,
-   "bars right in pitch": 220,
-   "events": 863,
-   "event: right": 817,
-   "notes right": 745,
-   "accidental shown as encoded": 743,
-   "event: missed": 10,
-   "event: extra": 17,
+   "bars": 268,
+   "bars exact": 213,
+   "bars right in rhythm": 233,
+   "bars right in pitch": 227,
+   "events": 908,
+   "event: right": 835,
+   "notes right": 756,
+   "accidental shown as encoded": 754,
+   "event: missed": 27,
+   "event: extra": 18,
    "event: chord size": 10,
-   "event: duration": 5,
+   "event: duration": 12,
    "event: note for rest": 3,
    "event: pitch": 15,
-   "event: rest for note": 1,
-   "bars not compared": 16,
+   "event: rest for note": 4,
    "event: octave": 3
   },
   "vc": {
-   "bars": 45,
-   "bars exact": 36,
-   "bars right in rhythm": 40,
-   "bars right in pitch": 38,
-   "events": 117,
-   "event: right": 108,
+   "bars": 61,
+   "bars exact": 42,
+   "bars right in rhythm": 46,
+   "bars right in pitch": 45,
+   "events": 162,
+   "event: right": 126,
    "event: chord size": 1,
-   "event: missed": 1,
+   "event: missed": 18,
    "event: note for rest": 1,
-   "notes right": 92,
-   "accidental shown as encoded": 92,
-   "event: extra": 4,
+   "notes right": 103,
+   "accidental shown as encoded": 103,
+   "event: extra": 5,
    "event: pitch": 3,
-   "event: duration": 2,
-   "event: rest for note": 1,
-   "bars not compared": 16,
+   "event: duration": 9,
+   "event: rest for note": 4,
    "event: octave": 1
   },
   "vn1": {
@@ -104,7 +101,8 @@
    "event: duration": 1
   }
  },
- "unpaired staves": [
+ "unpaired staves": [],
+ "reconciled staves": [
   [
    "p11s1",
    "vc",
@@ -1308,6 +1306,220 @@
    "rhythm": true,
    "pitch": true,
    "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 36,
+   "encoded": "B2:half rquarter",
+   "zeus": "B2:half C3:quarter rquarter",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "extra"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 37,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 44,
+   "encoded": "rquarter rquarter rquarter",
+   "zeus": "R R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": true,
+   "errors": [
+    "missed",
+    "duration",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 45,
+   "encoded": "F2:quarter rquarter rquarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 46,
+   "encoded": "F2:quarter rquarter rquarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 47,
+   "encoded": "F2:quarter F2:quarter F2:quarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 48,
+   "encoded": "F2:quarter rquarter rquarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 49,
+   "encoded": "F2:quarter rquarter rquarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 50,
+   "encoded": "F2:quarter rquarter rquarter",
+   "zeus": "F2:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 51,
+   "encoded": "F2:quarter F2:quarter F2:quarter",
+   "zeus": "F2:quarter F2:quarter F2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 52,
+   "encoded": "F3:8th E3:8th D3:8th C3:8th B2:quarter",
+   "zeus": "F3:8th E3:8th D3:8th C3:8th B2:quarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 53,
+   "encoded": "B3:quarter rquarter rquarter",
+   "zeus": "B3:quarter rquarter rquarter",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 54,
+   "encoded": "R",
+   "zeus": "R",
+   "exact": true,
+   "rhythm": true,
+   "pitch": true,
+   "errors": []
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 57,
+   "encoded": "rquarter F5:quarter E5:quarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "rest for note"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 58,
+   "encoded": "F5:quarter F5:quarter rquarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "duration"
+   ]
+  },
+  {
+   "part": "vc",
+   "movement": "II",
+   "bar": 59,
+   "encoded": "rquarter F5:quarter E5:quarter",
+   "zeus": "R",
+   "exact": false,
+   "rhythm": false,
+   "pitch": false,
+   "errors": [
+    "missed",
+    "missed",
+    "rest for note"
+   ]
   },
   {
    "part": "vc",
