@@ -13,6 +13,8 @@ source, cut as compare.py cuts it for Zeus, with the encoding's notes for
 its bars written as Zeus's LMX.
 
     uv run experiments/zeus/dataset.py <edition-repo> --source D-B_KHM-602 --movements I II --out DIR
+    uv run experiments/zeus/dataset.py <edition-repo> --pairs F-Pn_RES-507-2 --philhar <lilypond-dir> \\
+        --quartets Op33-1,...,Op33-6 --out DIR
 
 Writes DIR/<source>/<staff>.jpg and .lmx, and DIR/samples.<name>.txt
 (Zeus's dataset index; `--name`, default the source and movements).
@@ -37,6 +39,11 @@ change inside a bar, or two voices.
 
 Every staff kept is checked: its LMX, read back as compare.py reads
 Zeus's, must equal the encoding bar for bar.
+
+--pairs takes the staves autopair.py kept on a source nobody labelled
+(results/autopair-<name>.json), with Philhar's encoding (philhar.py):
+only its plain staves (every measure one bar), in the clef autopair.py
+chose, the key and time Philhar's Trame.ily gives.
 """
 
 import argparse
@@ -271,16 +278,117 @@ def encode(part: ET.Element) -> str:
     return " ".join(enc.output_tokens)
 
 
+def build(boxes: list[dict], evs: dict, mk: dict, exp: dict, first_of_mvt: set, split: dict,
+          bad: list, sid: str) -> tuple[str | None, str]:
+    """A staff's LMX, checked, or None and why it's left out."""
+    if any(box_events(b, evs, split) is None for b in boxes):
+        return None, "a split bar that can't be cut"
+    if any(len(b["clefs"]) > 1 for b in boxes):
+        return None, "a clef change inside a bar"
+    if any(len({e["voice"] for e in evs.get(str(b["bar"]), []) if e["grace"] == "0"}) > 1 for b in boxes):
+        return None, "two voices"
+    xml = staff_part(boxes, evs, mk, exp, first_of_mvt, split)
+    if not fills(xml, boxes, exp, split, max(int(k) for k in evs)):
+        return None, "a bar its durations don't fill"
+    lmx = encode(xml)
+    # the check: read back as compare.py reads Zeus, it is the encoding
+    measures, _ = compare.parse(lmx)
+    ok = len(measures) == len(boxes)
+    for b, ms in zip(boxes, measures):
+        zs = [compare.zeus_event(e, b["clefs"][0]) for e in ms]
+        enc = compare.encoded(box_events(b, evs, split))
+        if not (len(zs) == len(enc) and all(map(compare.same, enc, zs))):
+            ok = False
+            bad.append((sid, b["bar"], " ".join(map(compare.text, enc)), " ".join(map(compare.text, zs))))
+    return (lmx, "") if ok else (None, "failed the check")
+
+
+def save(out: Path, sid: str, page, s: dict, lmx: str):
+    from PIL import Image
+    import io
+    img = Image.open(io.BytesIO(compare.staff_crop(page, s))).convert("L")
+    img.save(out / f"{sid}.jpg", quality=95)
+    (out / f"{sid}.lmx").write_text(lmx + "\n")
+
+
+def philhar_structure(key_time: dict) -> dict:
+    """Philhar's key and time changes (philhar.py) as Structure.ily's are
+    read (compare.in_force): the first in force from the start."""
+    ch = sorted((int(b), kt) for b, kt in key_time.items())
+    return {"key": ch[0][1][0], "time": ch[0][1][1],
+            "changes": [{"bar": b, "on_bar_line": True, "key": k, "time": t} for b, (k, t) in ch[1:]]}
+
+
+def pairs(a):
+    """--pairs: the staves autopair.py kept on an unlabelled source, every
+    measure one bar (its "plain" staves), with Philhar's encoding."""
+    import os
+    res = json.loads((a.results or HERE / "results" / f"autopair-{a.pairs}{'-any-count' if a.any_count else ''}.json").read_text())
+    pdf = Path(json.loads((HERE / "auto" / f"{a.pairs}.json").read_text())["pdf"])
+    allowed = set(a.quartets.split(","))
+    env = {k: v for k, v in os.environ.items() if k != "UV_PYTHON_INSTALL_DIR"}
+    loaded = {}
+
+    def load(q, mvt, part):
+        if (q, mvt, part) not in loaded:
+            r = subprocess.run(["uv", "run", str(HERE / "philhar.py"), str(a.edition), str(a.philhar), q, part, mvt,
+                                "--json"], capture_output=True, text=True, check=True, env=env)
+            d = json.loads(r.stdout)
+            loaded[(q, mvt, part)] = (d["bars"], marks(d["bars"]), philhar_structure(d["key_time"]),
+                                      min(int(k) for k in d["bars"]))
+        return loaded[(q, mvt, part)]
+
+    out = a.out / a.pairs
+    out.mkdir(parents=True, exist_ok=True)
+    left_out, kept, bad = Counter(), [], []
+    page = None
+    for k in res["kept"]:
+        where = {tuple(b[:2]) for b in k["bars"]}
+        if not k["plain"]:
+            left_out["not plain"] += 1
+            continue
+        if len(where) > 1:
+            left_out["two movements"] += 1
+            continue
+        (q, mvt), part = where.pop(), k["part"]
+        if q not in allowed:
+            left_out["another quartet"] += 1
+            continue
+        evs, mk, exp, first = load(q, mvt, part)
+        mv = f"{q}-{mvt}"
+        boxes = [{"part": part, "movement": mv, "bar": b, "count": 1, "clefs": [k["clef"]]} for _, _, b in k["bars"]]
+        lmx, why = build(boxes, evs, mk, exp, {(part, mv, first, 1)}, {}, bad, k["staff"])
+        if lmx is None:
+            left_out[why] += 1
+            continue
+        if page is None or page[0] != k["page"]:
+            page = (k["page"], compare.page_image(pdf, k["page"]))
+        save(out, k["staff"], page[1], k["system"], lmx)
+        kept.append(f"{a.pairs}/{k['staff']}")
+    name = a.name or a.pairs
+    (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
+    print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
+    for row in bad[:8]:
+        print("  check failed:", row)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
-    ap.add_argument("--source", required=True)
-    ap.add_argument("--movements", nargs="+", required=True)
+    ap.add_argument("--source")
+    ap.add_argument("--movements", nargs="+")
+    ap.add_argument("--pairs", help="autopair.py's results for an unlabelled source")
+    ap.add_argument("--philhar", type=Path, help="with --pairs: Philhar's lilypond/ folder")
+    ap.add_argument("--quartets", help="with --pairs: the quartets to take staves from (Op33-1,...)")
+    ap.add_argument("--any-count", action="store_true", help="with --pairs: autopair.py --any-count's results")
+    ap.add_argument("--results", type=Path, help="with --pairs: this results file instead (e.g. several merged)")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--name")
     a = ap.parse_args()
-    from PIL import Image
-    import io
+    if a.pairs:
+        return pairs(a)
+    if not (a.source and a.movements):
+        ap.error("give --source and --movements, or --pairs")
 
     pdf = next(a.edition.glob(f"sources/*/{a.source}.pdf"))
     export = json.loads(pdf.with_name(pdf.stem + ".bars.json").read_text())
@@ -319,46 +427,20 @@ def main():
         if {b["movement"] for b in boxes} != {mvt}:
             left_out["two movements"] += 1
             continue
-        evs = events[(part, mvt)]
-        split = splits[(part, mvt)]
-        if any(box_events(b, evs, split) is None for b in boxes):
-            left_out["a split bar that can't be cut"] += 1
-            continue
-        if any(len(b["clefs"]) > 1 for b in boxes):
-            left_out["a clef change inside a bar"] += 1
-            continue
-        if any(len({e["voice"] for e in evs.get(str(b["bar"]), []) if e["grace"] == "0"}) > 1 for b in boxes):
-            left_out["two voices"] += 1
-            continue
-        xml = staff_part(boxes, evs, mks[(part, mvt)], expected[mvt], first_of_mvt, split)
-        if not fills(xml, boxes, expected[mvt], split, max(int(k) for k in evs)):
-            left_out["a bar its durations don't fill"] += 1
-            continue
-        lmx = encode(xml)
-        # the check: read back as compare.py reads Zeus, it is the encoding
-        measures, _ = compare.parse(lmx)
-        ok = len(measures) == len(boxes)
-        for b, ms in zip(boxes, measures):
-            zs = [compare.zeus_event(e, b["clefs"][0]) for e in ms]
-            enc = compare.encoded(box_events(b, evs, split))
-            if not (len(zs) == len(enc) and all(map(compare.same, enc, zs))):
-                ok = False
-                bad.append((sid, b["bar"], " ".join(map(compare.text, enc)), " ".join(map(compare.text, zs))))
-        if not ok:
-            left_out["failed the check"] += 1
+        lmx, why = build(boxes, events[(part, mvt)], mks[(part, mvt)], expected[mvt], first_of_mvt,
+                         splits[(part, mvt)], bad, sid)
+        if lmx is None:
+            left_out[why] += 1
             continue
         s = export["systems"][sid]
         if page is None or page[0] != s["page"]:
             page = (s["page"], compare.page_image(pdf, s["page"]))
-        img = Image.open(io.BytesIO(compare.staff_crop(page[1], s))).convert("L")
-        img.save(out / f"{sid}.jpg", quality=95)
-        (out / f"{sid}.lmx").write_text(lmx + "\n")
+        save(out, sid, page[1], s, lmx)
         kept.append(f"{a.source}/{sid}")
     (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
     print(f"{a.source} {' '.join(a.movements)}: {len(kept)} staves kept of {len(staves)}; left out: {dict(left_out)}")
     for row in bad[:8]:
         print("  check failed:", row)
-
 
 if __name__ == "__main__":
     main()

@@ -139,3 +139,37 @@ It can't see a wrong pitch, which is what remains: zero-shot Zeus plus a
 bar check leaves 38 wrong bars unflagged on KHM 602 II, and the
 fine-tuned model 53, mostly pitch. Those are for a measurement of heads
 (headcheck.py, the aligner), not another reading.
+
+## Training pairs without labelling (autodetect.py, autopair.py, 2026-10-10)
+
+Could encodings made elsewhere (Philhar's Op. 24/3–6 and Op. 33, from
+Boccherini's autographs) become training data without labelling their
+manuscripts? A staff needs only its part and which bars it holds.
+
+- `autodetect.py`: the labeler's automatic detection on every music page,
+  as if unopened (the server's detection, cached detectors' vote and
+  staff ends; the learned bar-line filter trained without the source).
+- `autopair.py`: Zeus (zero-shot) reads every detected staff. Part by
+  part, its measures are aligned with the encoding's bars by dynamic
+  programming (rhythm and steps between notes, no clef needed; split bars
+  at staff breaks and at Structure.ily's mid-bar repeats; multi-bar
+  rests either way). A staff is kept if its measures all pair cleanly,
+  none is nothing like its bar, and detection's bar boxes on it are as
+  many as Zeus's measures. Its clef is the one under which Zeus's notes
+  name the encoding's pitches most often.
+
+Assumed known: which pages are music, and whose part (from the labels).
+The cached YOLO detectors were trained on these sources (in-sample); the
+learned filter wasn't. The rules were fixed on KHM 602's and RES 507
+(14)'s mistakes (multi-bar rests, splits); Vma ms 1067 (1) was the check
+(115 kept, none wrong, before the last fix too).
+
+| source | labelled staves | kept | kept, wrong | bars on kept staves | clef chosen right |
+|---|---|---|---|---|---|
+| KHM 602 | 105 | 73 | 0 | 564 | 72 / 72 |
+| RES 507 (14) | 100 | 91 | 0 | 665 | 89 / 89 |
+| Vma ms 1067 (1) | 143 | 114 | 0 | 590 | 112 / 112 |
+
+(Clefs scored on staves with one clef in the labels.) The kept staves
+aren't the easy ones: Zeus reads 40% of kept bars exactly on KHM 602 and
+41% of the rest (RES 507 (14) II: 82% and 79%).

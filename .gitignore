@@ -6,3 +6,6 @@ __pycache__/
 
 # base weights Ultralytics downloads into the working directory
 /*.pt
+
+# autodetect.py's bar-line filters, trained per held-out source
+/experiments/zeus/auto/cache/
