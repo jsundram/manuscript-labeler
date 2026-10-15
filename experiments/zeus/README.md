@@ -204,3 +204,30 @@ changes inside the bar.
 
 Readings are in `answers/D-B_KHM-603-*.model.json`; scores are in
 `results/D-B_KHM-603-I-*.model.json`.
+
+## Zeus limited to the labelled clef (clefread.py, 2026-10-15)
+
+On the clean test, some passages come out 4–6 steps off in clefs the
+labels have right. On some staves Zeus also opens with the wrong clef:
+treble read as alto or tenor, alto as treble or tenor. Would it read
+better if it could only write the labels' clef? `clefread.py` reads
+each staff one at a time, freely and with every other clef token ruled
+out. compare.py scores both readings.
+
+| model | free | labelled clef only | vn2 | va |
+|---|---|---|---|---|
+| run I | 64% | 65% | +7 bars | −4 bars |
+| run G | 62% | 61% | +5 bars | −7 bars |
+
+No better.
+- **Violin 2 gains:** two treble staves that Zeus read as alto or tenor
+  now come out right.
+- **The viola loses:** where Zeus wrote tenor or treble on a viola staff,
+  it had still placed the notes right. compare.py names them in the
+  labels' clef, so the wrong clef token did no harm. Forcing alto sends
+  the rest of the reading down a worse path.
+
+Limiting only the violins would be a rule fitted to this movement. It
+would have to be chosen on the dev movements first. Reading one staff at a
+time instead of in batches of 8 barely matters (run I: 222 bars
+against 222; run G: 215 against 216).
