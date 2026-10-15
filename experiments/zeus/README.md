@@ -173,3 +173,34 @@ learned filter wasn't. The rules were fixed on KHM 602's and RES 507
 (Clefs scored on staves with one clef in the labels.) The kept staves
 aren't the easy ones: Zeus reads 40% of kept bars exactly on KHM 602 and
 41% of the rest (RES 507 (14) II: 82% and 79%).
+
+## The clean test: KHM 603 movement I (2026-10-15)
+
+Op. 48/2 movement I, from KHM 603 (the KHM 602 copyist), was encoded after
+every training run and choice of recipe. It is held out of training, and of
+every decision, from now on. Each new model is scored on it:
+
+    uv run experiments/zeus/compare.py <edition-repo> --source D-B_KHM-603 --movements I --model M
+
+347 bars compared. Bar 46 of the cello isn't compared, because its clef
+changes inside the bar.
+
+| model | bars exact | rhythm | pitch | vn1 | vn2 | va | vc |
+|---|---|---|---|---|---|---|---|
+| zero-shot (ayce-2026-08-03) | 42% | 50% | 53% | 40% | 30% | 43% | 56% |
+| run G (2,340 staves; learning rate 1e-5, cosine decay, 8 epochs) | 62% | 71% | 69% | 49% | 50% | 64% | 86% |
+| run I (G plus Op. 48/3 I's 117 staves), epoch 7 | 64% | 74% | 71% | 56% | 46% | 66% | 87% |
+
+- **Fine-tuning holds on a movement nobody watched:** about 20 points over
+  zero-shot. But the movement that guided the recipe (KHM 602 II, 81–84%)
+  overstated it by about 20 points.
+- **One movement can't tell runs apart within about 4 points.** I minus G
+  is +1.7 points, with a 95% interval of −1.8 to +5.5 (paired, resampled
+  in 4-bar blocks per part). Only 34 bars differ between the two models.
+- **Pitch errors here are seldom one step.** Only 2–6 bars are wrong by
+  one-step pitches alone, so measuring heads would gain little on this
+  movement. Larger shifts in particular passages cost more: viola bars
+  25–29 and 62–67, and violin 2's bars 7–13.
+
+Readings are in `answers/D-B_KHM-603-*.model.json`; scores are in
+`results/D-B_KHM-603-I-*.model.json`.
