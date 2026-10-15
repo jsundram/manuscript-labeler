@@ -204,7 +204,7 @@
           ],
           "bottom": 0.2859,
           "id": "p10s2",
-          "key": 2,
+          "key": 3,
           "left": 0.1425,
           "right": 0.9064,
           "start": 0.2469,
@@ -295,7 +295,7 @@
           "top": 0.334
         },
         {
-          "above": 2.75,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -577,7 +577,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 5,
+          "above": 4.75,
           "auto": false,
           "barlines": [
             {
@@ -644,7 +644,7 @@
               "x1": 0.8682
             }
           ],
-          "below": 2.5,
+          "below": 1.75,
           "bend": [
             -0.0076,
             -0.0035,
@@ -654,14 +654,14 @@
           ],
           "bottom": 0.2908,
           "id": "p11s2",
-          "key": 1,
+          "key": 2,
           "left": 0.0504,
           "right": 0.8746,
           "start": 0.1648,
           "top": 0.2592
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -809,7 +809,7 @@
           "top": 0.4136
         },
         {
-          "above": 3.5,
+          "above": 3,
           "auto": false,
           "barlines": [
             {
@@ -867,7 +867,7 @@
               "x1": 0.8225
             }
           ],
-          "below": 2,
+          "below": 1.75,
           "bend": [
             -0.0104,
             -0.0056,
@@ -883,7 +883,7 @@
           "top": 0.4943
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -966,7 +966,7 @@
           "top": 0.5619
         },
         {
-          "above": 3.5,
+          "above": 3.25,
           "auto": false,
           "barlines": [
             {
@@ -988,7 +988,7 @@
               "x1": 0.3496
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             -0.008,
             -0.0064,
@@ -1147,7 +1147,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 2.5,
+          "above": 2,
           "auto": false,
           "barlines": [
             {
@@ -1215,7 +1215,7 @@
           ],
           "bottom": 0.1385,
           "id": "p14s1",
-          "key": 2,
+          "key": 3,
           "left": 0.3259,
           "right": 0.9507,
           "start": 0.4155,
@@ -1223,7 +1223,7 @@
           "top": 0.1069
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -1290,7 +1290,7 @@
               "x1": 0.507
             }
           ],
-          "below": 3.5,
+          "below": 3.25,
           "bend": [
             0.0029,
             0.0013,
@@ -1306,7 +1306,7 @@
           "top": 0.1859
         },
         {
-          "above": 2.75,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -1373,23 +1373,23 @@
               "x1": 0.951
             }
           ],
-          "below": 2.5,
+          "below": 2.25,
           "bend": [
             -0.0024,
             -0.0028,
-            -0.0011,
+            -0.0012,
             -0.0041,
             -0.0043
           ],
           "bottom": 0.2923,
           "id": "p14s3",
           "left": 0.1446,
-          "right": 0.9457,
+          "right": 0.9555,
           "start": 0.2035,
           "top": 0.2607
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -1476,7 +1476,7 @@
               "x1": 0.9375
             }
           ],
-          "below": 4,
+          "below": 3.75,
           "bend": [
             0.0019,
             0.0041,
@@ -1495,7 +1495,7 @@
           "top": 0.4063
         },
         {
-          "above": 2.5,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -1600,7 +1600,7 @@
               "x1": 0.8442
             }
           ],
-          "below": 3,
+          "below": 4,
           "bend": [
             0.001,
             0.0002,
@@ -1865,7 +1865,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 3.5,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -1914,7 +1914,7 @@
               "x1": 0.8508
             }
           ],
-          "below": 2.5,
+          "below": 2.75,
           "bend": [
             0.0029,
             0.0005,
@@ -1930,7 +1930,7 @@
           "top": 0.1107
         },
         {
-          "above": 3.5,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -2024,7 +2024,7 @@
           "top": 0.2597
         },
         {
-          "above": 2.5,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -2064,7 +2064,7 @@
               "x1": 0.8375
             }
           ],
-          "below": 3.75,
+          "below": 3.25,
           "bend": [
             0.0048,
             0.0019,
@@ -2080,7 +2080,7 @@
           "top": 0.3392
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -2138,7 +2138,7 @@
               "x1": 0.3144
             }
           ],
-          "below": 3.75,
+          "below": 4.25,
           "bend": [
             0.0019,
             0.0019,
@@ -2154,7 +2154,7 @@
           "top": 0.4149
         },
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -2219,7 +2219,7 @@
           "top": 0.4954
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -2268,7 +2268,7 @@
               "x1": 0.2318
             }
           ],
-          "below": 4,
+          "below": 3.75,
           "bend": [
             0.0005,
             0.0014,
@@ -2284,7 +2284,7 @@
           "top": 0.5635
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -2297,7 +2297,7 @@
               "x1": 0.2096
             }
           ],
-          "below": 3,
+          "below": 2.5,
           "bend": [
             0.0019,
             0.0019,
@@ -2449,7 +2449,7 @@
           ],
           "bottom": 0.2956,
           "id": "p16s2",
-          "key": 2,
+          "key": 3,
           "left": 0.1486,
           "right": 0.9536,
           "start": 0.248,
@@ -2527,7 +2527,7 @@
           "bottom": 0.3752,
           "id": "p16s3",
           "left": 0.1536,
-          "right": 0.9221,
+          "right": 0.92,
           "start": 0.2146,
           "top": 0.346
         },
@@ -2882,7 +2882,7 @@
           ],
           "bottom": 0.2963,
           "id": "p17s2",
-          "key": 1,
+          "key": 2,
           "left": 0.0475,
           "right": 0.8563,
           "start": 0.1239,
@@ -3222,7 +3222,7 @@
             {
               "auto": false,
               "bar_count": 1,
-              "ends_movement": false,
+              "ends_movement": true,
               "id": "p17s7b3",
               "kind": "repeat_end",
               "x0": 0.4322,
@@ -3381,6 +3381,16 @@
           "w": 0.1773,
           "x": 0.3074,
           "y": 0.0266
+        },
+        {
+          "h": 0.0353,
+          "id": "p2m2",
+          "kind": "text",
+          "note": "",
+          "text": "sotto voce sempre",
+          "w": 0.1835,
+          "x": 0.1479,
+          "y": 0.0752
         }
       ],
       "notes": "",
@@ -3456,7 +3466,7 @@
           ],
           "bottom": 0.1356,
           "id": "p2s1",
-          "key": 2,
+          "key": 3,
           "left": 0.36,
           "right": 0.9541,
           "start": 0.4493,
@@ -3540,7 +3550,7 @@
               "x1": 0.9485
             }
           ],
-          "below": 2.5,
+          "below": 1.75,
           "bend": [
             0.0019,
             -0.0006,
@@ -3639,7 +3649,7 @@
           "top": 0.256
         },
         {
-          "above": 3.5,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -3688,18 +3698,18 @@
               "x1": 0.9517
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             -0.0024,
             0.0004,
             -0.002,
-            -0.0033,
+            -0.0034,
             -0.0043
           ],
           "bottom": 0.3682,
           "id": "p2s4",
           "left": 0.1514,
-          "right": 0.9404,
+          "right": 0.9555,
           "start": 0.2127,
           "top": 0.3367
         },
@@ -3751,7 +3761,7 @@
           "top": 0.4069
         },
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -3816,7 +3826,7 @@
           "top": 0.4819
         },
         {
-          "above": 3,
+          "above": 3.5,
           "auto": false,
           "barlines": [
             {
@@ -3881,7 +3891,7 @@
           "top": 0.5535
         },
         {
-          "above": 3,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -3946,7 +3956,7 @@
           "top": 0.6323
         },
         {
-          "above": 2,
+          "above": 1.75,
           "auto": false,
           "barlines": [
             {
@@ -4020,7 +4030,7 @@
           "top": 0.7049
         },
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -4172,15 +4182,6 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p20s2b1",
-              "kind": "single",
-              "x0": 0.305,
-              "x1": 0.3071
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
               "id": "p20s2b2",
               "kind": "single",
               "x0": 0.4939,
@@ -4233,8 +4234,11 @@
           ],
           "bottom": 0.2147,
           "id": "p20s2",
-          "key": 2,
+          "key": 3,
           "left": 0.3053,
+          "rejected": [
+            0.306
+          ],
           "right": 0.9368,
           "start": 0.4054,
           "text": "Andante Lento",
@@ -4312,15 +4316,15 @@
           "below": 2.25,
           "bend": [
             -0.0057,
-            -0.0027,
-            0,
-            0.0028,
+            -0.0026,
+            0.0003,
+            0.0029,
             0.0034
           ],
           "bottom": 0.2913,
           "id": "p20s3",
           "left": 0.1446,
-          "right": 0.9118,
+          "right": 0.9518,
           "start": 0.2288,
           "top": 0.2607
         },
@@ -4372,6 +4376,15 @@
               "kind": "single",
               "x0": 0.9278,
               "x1": 0.9269
+            },
+            {
+              "auto": false,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p20s4b6",
+              "kind": "single",
+              "x0": 0.6488,
+              "x1": 0.6462
             }
           ],
           "below": 3.25,
@@ -4454,12 +4467,12 @@
             -0.003,
             0.0001,
             0.0007,
-            0
+            0.0
           ],
           "bottom": 0.4399,
           "id": "p20s5",
           "left": 0.1477,
-          "right": 0.9521,
+          "right": 0.9468,
           "start": 0.2311,
           "top": 0.4092
         },
@@ -4596,7 +4609,7 @@
               "x1": 0.9354
             }
           ],
-          "below": 3.75,
+          "below": 4,
           "bend": [
             -0.0033,
             -0.0003,
@@ -4879,7 +4892,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 2,
+          "above": 1.5,
           "auto": false,
           "barlines": [
             {
@@ -4953,7 +4966,7 @@
           "top": 0.1064
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -5094,7 +5107,7 @@
               "x1": 0.5393
             }
           ],
-          "below": 4,
+          "below": 3.75,
           "bend": [
             -0.0053,
             -0.0019,
@@ -5110,7 +5123,7 @@
           "top": 0.254
         },
         {
-          "above": 3.25,
+          "above": 3,
           "auto": false,
           "barlines": [
             {
@@ -5168,7 +5181,7 @@
               "x1": 0.3161
             }
           ],
-          "below": 4,
+          "below": 4.25,
           "bend": [
             -0.0043,
             -0.0029,
@@ -5184,7 +5197,7 @@
           "top": 0.3321
         },
         {
-          "above": 2.25,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -5421,7 +5434,7 @@
           "top": 0.2645
         },
         {
-          "above": 3,
+          "above": 2,
           "auto": false,
           "barlines": [
             {
@@ -5498,7 +5511,7 @@
           ],
           "bottom": 0.3718,
           "id": "p22s3",
-          "key": 2,
+          "key": 3,
           "left": 0.2451,
           "rejected": [
             0.2489
@@ -5601,7 +5614,7 @@
           "top": 0.4097
         },
         {
-          "above": 2,
+          "above": 1,
           "auto": false,
           "barlines": [
             {
@@ -5684,7 +5697,7 @@
           "top": 0.4887
         },
         {
-          "above": 1.25,
+          "above": 1,
           "auto": false,
           "barlines": [
             {
@@ -5767,7 +5780,7 @@
           "top": 0.5592
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -5780,7 +5793,7 @@
               "x1": 0.313
             }
           ],
-          "below": 2,
+          "below": 1.75,
           "bend": [
             0.0024,
             0.0021,
@@ -6007,7 +6020,7 @@
           ],
           "bottom": 0.3677,
           "id": "p23s2",
-          "key": 1,
+          "key": 2,
           "left": 0.1575,
           "right": 0.8532,
           "start": 0.2472,
@@ -6391,7 +6404,7 @@
           ]
         ]
       },
-      "kind": "blank",
+      "kind": "other",
       "marks": [],
       "notes": "scanner calibration page",
       "part": null,
@@ -6431,7 +6444,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 3.5,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -6480,7 +6493,7 @@
               "x1": 0.8613
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             0.0014,
             0.0002,
@@ -6496,7 +6509,7 @@
           "top": 0.1037
         },
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -6543,7 +6556,7 @@
           "top": 0.1843
         },
         {
-          "above": 2.5,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -6608,7 +6621,7 @@
           "top": 0.2516
         },
         {
-          "above": 4,
+          "above": 3.75,
           "auto": false,
           "barlines": [
             {
@@ -6691,7 +6704,7 @@
           "top": 0.3317
         },
         {
-          "above": 2.5,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -6774,7 +6787,7 @@
           "top": 0.4076
         },
         {
-          "above": 3,
+          "above": 3.25,
           "auto": false,
           "barlines": [
             {
@@ -6814,7 +6827,7 @@
               "x1": 0.5301
             }
           ],
-          "below": 4.5,
+          "below": 3.75,
           "bend": [
             -0.0019,
             -0.0015,
@@ -6886,7 +6899,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -6963,7 +6976,7 @@
           ],
           "bottom": 0.2865,
           "id": "p4s2",
-          "key": 2,
+          "key": 3,
           "left": 0.1714,
           "right": 0.9582,
           "start": 0.2858,
@@ -7047,7 +7060,7 @@
               "x1": 0.4176
             }
           ],
-          "below": 3.5,
+          "below": 3.25,
           "bend": [
             -0.0046,
             0,
@@ -7063,7 +7076,7 @@
           "top": 0.3348
         },
         {
-          "above": 1.5,
+          "above": 1.25,
           "auto": false,
           "barlines": [
             {
@@ -7121,7 +7134,7 @@
               "x1": 0.9464
             }
           ],
-          "below": 5,
+          "below": 4,
           "bend": [
             -0.002,
             -0.0011,
@@ -7137,7 +7150,7 @@
           "top": 0.4026
         },
         {
-          "above": 2.75,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -7195,7 +7208,7 @@
               "x1": 0.9511
             }
           ],
-          "below": 3,
+          "below": 3.25,
           "bend": [
             -0.0029,
             -0.0005,
@@ -7211,7 +7224,7 @@
           "top": 0.4833
         },
         {
-          "above": 1.75,
+          "above": 1.5,
           "auto": false,
           "barlines": [
             {
@@ -7242,7 +7255,7 @@
               "x1": 0.5623
             }
           ],
-          "below": 4.5,
+          "below": 3.5,
           "bend": [
             -0.0017,
             0.0004,
@@ -7401,7 +7414,7 @@
           ],
           "bottom": 0.3222,
           "id": "p5s2",
-          "key": 1,
+          "key": 2,
           "left": 0.0446,
           "right": 0.8518,
           "start": 0.1456,
@@ -7492,7 +7505,7 @@
         },
         {
           "above": 2,
-          "auto": true,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
@@ -7558,7 +7571,7 @@
               "x1": 0.8536
             }
           ],
-          "below": 3,
+          "below": 2.25,
           "bend": [
             -0.0018,
             -0.0018,
@@ -7577,7 +7590,7 @@
           "top": 0.4383
         },
         {
-          "above": 2,
+          "above": 1.5,
           "auto": false,
           "barlines": [
             {
@@ -7660,7 +7673,7 @@
           "top": 0.514
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -7718,7 +7731,7 @@
               "x1": 0.7131
             }
           ],
-          "below": 3.75,
+          "below": 3.5,
           "bend": [
             0.0014,
             0.0001,
@@ -7877,7 +7890,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -7933,9 +7946,18 @@
               "kind": "single",
               "x0": 0.5724,
               "x1": 0.5691
+            },
+            {
+              "auto": false,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p8s1b7",
+              "kind": "single",
+              "x0": 0.393,
+              "x1": 0.3913
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             -0.0005,
             -0.0008,
@@ -7945,7 +7967,7 @@
           ],
           "bottom": 0.1365,
           "id": "p8s1",
-          "key": 2,
+          "key": 3,
           "left": 0.1555,
           "right": 0.9439,
           "start": 0.244,
@@ -7953,7 +7975,7 @@
           "top": 0.1048
         },
         {
-          "above": 3,
+          "above": 2.75,
           "auto": false,
           "barlines": [
             {
@@ -8020,7 +8042,7 @@
               "x1": 0.6172
             }
           ],
-          "below": 2.5,
+          "below": 1.75,
           "bend": [
             -0.0032,
             -0.0011,
@@ -8085,7 +8107,7 @@
               "x1": 0.9175
             }
           ],
-          "below": 3,
+          "below": 2.25,
           "bend": [
             -0.0067,
             -0.0009,
@@ -8101,7 +8123,7 @@
           "top": 0.259
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -8197,7 +8219,7 @@
               "x1": 0.9422
             }
           ],
-          "below": 2,
+          "below": 1.75,
           "bend": [
             -0.0038,
             -0.0033,
@@ -8213,7 +8235,7 @@
           "top": 0.4085
         },
         {
-          "above": 4,
+          "above": 4.25,
           "auto": false,
           "barlines": [
             {
@@ -8251,34 +8273,28 @@
               "kind": "single",
               "x0": 0.9193,
               "x1": 0.9164
-            },
-            {
-              "auto": false,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p8s6b5",
-              "kind": "single",
-              "x0": 0.9502,
-              "x1": 0.9502
             }
           ],
           "below": 2.75,
           "bend": [
             -0.0029,
-            0.0004,
-            0.0021,
+            0.0003,
+            0.002,
             0.0018,
-            0.0033
+            0.0031
           ],
           "bottom": 0.518,
           "id": "p8s6",
-          "left": 0.1525,
-          "right": 0.9531,
-          "start": 0.2111,
+          "left": 0.1529,
+          "rejected": [
+            0.9502
+          ],
+          "right": 0.9222,
+          "start": 0.2115,
           "top": 0.4863
         },
         {
-          "above": 3.5,
+          "above": 3.25,
           "auto": false,
           "barlines": [
             {
@@ -8345,7 +8361,7 @@
               "x1": 0.3945
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             -0.0024,
             0,
@@ -8361,7 +8377,7 @@
           "top": 0.5555
         },
         {
-          "above": 3,
+          "above": 2.25,
           "auto": false,
           "barlines": [
             {
@@ -8610,7 +8626,7 @@
       "status": "reviewed",
       "systems": [
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -8650,7 +8666,7 @@
               "x1": 0.8432
             }
           ],
-          "below": 3,
+          "below": 2.75,
           "bend": [
             -0.0043,
             -0.0036,
@@ -8666,7 +8682,7 @@
           "top": 0.1128
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -8706,7 +8722,7 @@
               "x1": 0.6858
             }
           ],
-          "below": 2,
+          "below": 2.25,
           "bend": [
             -0.0048,
             -0.0031,
@@ -8852,7 +8868,7 @@
           "top": 0.3404
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -8926,7 +8942,7 @@
           "top": 0.4166
         },
         {
-          "above": 3,
+          "above": 2.5,
           "auto": false,
           "barlines": [
             {
@@ -8991,7 +9007,7 @@
           "top": 0.4971
         },
         {
-          "above": 3.5,
+          "above": 4.25,
           "auto": false,
           "barlines": [
             {
