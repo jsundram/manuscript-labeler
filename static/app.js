@@ -45,6 +45,7 @@ const svg = $('#canvas');
 const overlay = $('#overlay');
 
 const S = {
+  step: null,        // the open page's staves as the undo step under way began (followLastBarlines)
   carried: new WeakSet(),  // staves Apply Start Below set the right end of (this session)
   sources: [],
   pdf: null,
@@ -194,34 +195,41 @@ function barQuad(s, left, right) {
 }
 
 // Change a staff's left/right, keeping its bend where it was on the page
-// (the bend points are spread over left..right, so they must be resampled).
+// (the bend points are spread over left..right, so they must be resampled;
+// past the old ends the bend carries on along its end segment, for a
+// segment's length at most).
 function setExtent(s, left, right) {
-  if (s.bend?.length > 1) {
-    const n = s.bend.length - 1;
-    const pts = Array.from({ length: n + 1 }, (_, i) => left + (right - left) * i / n);
-    s.bend = pts.map((x) => bendAt(s, x));
+  const b = s.bend;
+  if (b?.length > 1 && s.right > s.left) {
+    const n = b.length - 1, step = (s.right - s.left) / n;
+    // at most one segment's worth: further out the bend holds level, as before
+    const at = (x) => x > s.right ? b[n] + (b[n] - b[n - 1]) * Math.min(1, (x - s.right) / step)
+      : x < s.left ? b[0] - (b[1] - b[0]) * Math.min(1, (s.left - x) / step) : bendAt(s, x);
+    s.bend = Array.from({ length: n + 1 }, (_, i) => at(left + (right - left) * i / n));
   }
   // the music start moves with the left end (the clef and key move with it)
-  if (s.start != null && left !== s.left) s.start = clamp(s.start + left - s.left, left, right);
+  if (s.start != null) s.start = clamp(s.start + left - s.left, left, right);
   s.left = left;
   s.right = right;
 }
 
 // Clef and key take the same room on every line until the key changes,
 // but reading where they end from the ink is unreliable across hands. So
-// the editor fixes one line, and this carries its left end, music start
-// and right end to the lines below it: the left end at the same place on
-// the page, the start too but snapped to the nearest clear paper (where
-// the key signature ends), the right end only ever further out (no music
-// is cut), only on lines detection proposed or this carried to before
-// (one shortened by hand keeps its end), not on a line that ends at its
-// last bar line, and never short of one. Lines above are left alone, so at
+// the editor fixes one line, and this carries its left end and music start
+// to the lines below it: the left end at the same place on the page, the
+// start too but snapped to the nearest clear paper (where the key
+// signature ends). Right ends: a line marked runs on takes this one's, as
+// does one with no bar lines if detection proposed it or this carried to
+// it before (one shortened by hand keeps its end), only ever further out
+// (no music is cut); any other line keeps its own. None is left short of
+// its last bar line. Lines above are left alone, so at
 // a key change: fix that line and apply again. Backtested on KHM 602/603
 // against the editor's starts: better than measuring from each line's
 // left edge, whose detection is the weak part. One undo step.
 // End at last bar line (the button, or ] with the staff selected)
 function trimStaff(s) {
   if (!s || !s.barlines.length) return;
+  if (s.runs_on) { flash('This staff runs on past its last bar line: untick Runs on to end it there.'); return; }
   mutate(() => { trimToLastBarline(s); s.auto = false; });
 }
 
@@ -247,13 +255,11 @@ async function applyStartToPage(src) {
   if (n !== S.page) return;
   mutate(() => {
     below.forEach((s, i) => {
-      const last = Math.max(-Infinity, ...s.barlines.map((b) => Math.max(b.x0, b.x1)));
-      const sp = space(s) * S.H / S.W;  // a staff space, in page widths
-      const atLast = s.barlines.length && s.right - last <= sp;  // ends at its last bar line
-      // only lines detection proposed, or this carried to before; never
-      // short of a line's own last bar line
-      const free = (s.auto || S.carried.has(s)) && !atLast;
-      const right = Math.max(free ? Math.max(src.right, s.right) : s.right, s.barlines.length ? last + sp / 2 : -Infinity);
+      // a line marked runs on takes this one's end; one with no bar lines
+      // only if detection proposed it or this carried to it before; never
+      // in (no music is cut), nor short of a line's own last bar line
+      const carry = s.runs_on || (!s.barlines.length && (s.auto || S.carried.has(s)));
+      const right = Math.max(carry ? Math.max(src.right, s.right) : s.right, s.barlines.length ? endAtLast(s) : -Infinity);
       if (src.left < right) setExtent(s, src.left, right);
       S.carried.add(s);
       s.start = clamp(snapped[i], s.left, s.right);
@@ -265,11 +271,74 @@ async function applyStartToPage(src) {
 
 // end a staff just after its last bar line: shortened if it runs on,
 // lengthened if it stops short of it
+const lastBarlineX = (s) => s.barlines.length ? Math.max(...s.barlines.map((b) => Math.max(b.x0, b.x1))) : null;
+const endAtLast = (s) => Math.min(1, lastBarlineX(s) + 0.5 * space(s) * S.H / S.W);
 function trimToLastBarline(s) {
-  if (!s.barlines.length) return;
-  const last = Math.max(...s.barlines.map((b) => Math.max(b.x0, b.x1)));
-  const right = Math.min(1, last + 0.5 * space(s) * S.H / S.W);
-  if (right > s.left) setExtent(s, s.left, right);
+  if (!s.barlines.length) return false;
+  const right = endAtLast(s);
+  if (!(right > s.left) || right === s.right) return false;
+  setExtent(s, s.left, right);
+  return true;
+}
+
+// A staff ends at its last bar line: whatever lies past it is in no bar.
+// Its end is right if it lies from a quarter staff space short of the last
+// bar line (its middle) to a staff space past End at last bar line's place
+// (half a space past its far end). The editor's changes to a staff's bar
+// lines move an end outside that band back to that place (followLastBarlines).
+// Detection's own end (from the ink: music after the last bar line keeps
+// the full length) and an end the editor drags out of the band stay, and
+// are flagged until the editor fixes them or marks the staff `runs_on` (a
+// bar running on to the next line, on purpose). Music past the last bar
+// line is a missed final bar line or a bar running on. A runs-on staff is
+// still flagged if its end stops short of its last bar line; cue staves
+// are neither moved nor flagged (a cue may stop mid-line).
+const END_SLACK = 1, END_SHORT = 0.25;  // staff spaces
+// how far a staff's end lies outside the band, in staff spaces: past (+,
+// from the last bar line) or short (-, from the last bar line's middle, as
+// a leaning stroke is drawn); 0 inside it or without bar lines
+function endOutside(s) {
+  if (!s.barlines.length) return 0;
+  const sp = space(s) * S.H / S.W;
+  if (s.right - endAtLast(s) > END_SLACK * sp) return (s.right - lastBarlineX(s)) / sp;
+  const short = (s.right - Math.max(...s.barlines.map(mid))) / sp;
+  return short < -END_SHORT ? short : 0;
+}
+// the same, for the staves the rule applies to: counted ones; a runs-on
+// staff only when short
+const endOff = (s) => (s.role || 'part') !== 'part' ? 0 : s.runs_on ? Math.min(0, endOutside(s)) : endOutside(s);
+
+// Each change of the open page (changed) follows the bar lines: a staff
+// whose last bar line moved since the undo step began, and whose end is
+// now out of the band, ends at it again. An end that was already out of
+// the band (detection's, or one dragged there) only follows a bar line
+// added or deleted, or moved more than a staff space: a nudge or a snap
+// doesn't cut it. If the last bar line is back where the step began (a bar
+// line placed onto one already there), so is the end. The step's starting
+// state is taken in pushUndo, and again after re-detection's own changes;
+// undo and redo clear it, so they keep the ends they restore.
+function stepStart() {
+  const page = pg();
+  S.step = page ? { page: S.page, followed: new Set(), ends: new Map(page.systems.map((s) =>
+    [s.id, { last: lastBarlineX(s), count: s.barlines.length, out: !!endOff(s), left: s.left, right: s.right,
+             start: s.start, bend: s.bend && [...s.bend], auto: s.auto }])) } : null;
+}
+function followLastBarlines() {
+  const st = S.step, page = pg();
+  if (!st || st.page !== S.page || !page || S.readonly) return;
+  for (const s of page.systems) {
+    const e = st.ends.get(s.id);
+    if (!e) continue;  // new in this step: detection's proposal, or the editor's own staff
+    const x = lastBarlineX(s);
+    if (x === e.last) {
+      if (st.followed.delete(s.id)) Object.assign(s, { left: e.left, right: e.right, start: e.start, bend: e.bend && [...e.bend], auto: e.auto });
+      continue;
+    }
+    if (s.runs_on || !endOff(s)) continue;
+    const big = e.last == null || s.barlines.length !== e.count || Math.abs(x - e.last) > END_SLACK * space(s) * S.H / S.W;
+    if (e.out && !big) continue;
+    if (trimToLastBarline(s)) { s.auto = false; st.followed.add(s.id); }
+  }
 }
 
 // x of a bar line at height y (page fractions), following its lean:
@@ -310,12 +379,13 @@ function outline(s, x0, x1, above = 0, below = 0) {
 // from the reviewed pages of KHM 602/603 (correct bars): 2.2% flagged
 // anyway; a removed bar line flagged 57% of the time. A line's first bar
 // is left out (its width depends on the music start), as are bars that
-// stand for several bars or none. Music after the last bar line more than
-// half a typical bar long (detection trims a blank end) suggests a missed
-// final bar line. Two bar lines closer than ODD_STACKED staff spaces are
-// one stroke labelled twice (an editor's bar line snapped onto a detected
-// one): always an error, flagged even on reviewed pages.
-const ODD_WIDE = 1.8, ODD_NARROW = 0.4, ODD_TAIL = 0.5, ODD_STACKED = 0.5;
+// stand for several bars or none. A staff that ends away from its last
+// bar line (endOff) is flagged on every page: past it, a missed final bar
+// line or a bar running on; short of it, a bar line cut off. Two bar lines
+// closer than ODD_STACKED staff spaces are one stroke labelled twice (an
+// editor's bar line snapped onto a detected one): always an error, flagged
+// even on reviewed pages.
+const ODD_WIDE = 1.8, ODD_NARROW = 0.4, ODD_STACKED = 0.5;
 // bar lines closer than this (page widths) are one stroke
 const stackedGap = (s) => ODD_STACKED * space(s) * S.H / S.W;
 function oddBars(s) {
@@ -323,28 +393,29 @@ function oddBars(s) {
   const bls = [...s.barlines].sort((a, c) => mid(a) - mid(c));
   const close = stackedGap(s);
   const bars = bls.slice(1).map((b, k) => ({ b, prev: bls[k], w: mid(b) - mid(bls[k]), one: (b.bar_count ?? 1) === 1, pos: k + 2 }));
-  const stacked = bars.filter((x) => x.w < close)
-    .map((x) => ({ barline: x.b, prev: x.prev, kind: 'stacked', ratio: 0, pos: x.pos }));
+  // flagged on every page, reviewed too: stacked bar lines, a staff ending away from its last bar line
+  const always = bars.filter((x) => x.w < close)
+    .map((x) => ({ barline: x.b, prev: x.prev, kind: 'stacked', ratio: 0, pos: x.pos, always: true }));
+  const off = endOff(s), last = bls.reduce((a, c) => Math.max(c.x0, c.x1) > Math.max(a.x0, a.x1) ? c : a);
+  if (off) always.push({ barline: null, prev: last, kind: off > 0 ? 'past' : 'short', ratio: Math.abs(off), pos: bls.length + 1, always: true });
   const ws = bars.filter((x) => x.one && x.w >= close).map((x) => x.w).sort((a, c) => a - c);
-  if (ws.length < 3) return stacked;
+  if (ws.length < 3) return always;
   const n = ws.length;
   const med = n % 2 ? ws[(n - 1) / 2] : (ws[n / 2 - 1] + ws[n / 2]) / 2;
-  const out = stacked.concat(bars.filter((x) => x.one && x.w >= close && (x.w > ODD_WIDE * med || x.w < ODD_NARROW * med))
+  const out = always.concat(bars.filter((x) => x.one && x.w >= close && (x.w > ODD_WIDE * med || x.w < ODD_NARROW * med))
     .map((x) => ({ barline: x.b, prev: x.prev, kind: x.w > med ? 'wide' : 'narrow', ratio: x.w / med, pos: x.pos })));
-  const last = bls[bls.length - 1];
-  const tail = s.right - Math.max(last.x0, last.x1);
-  if (tail > ODD_TAIL * med) out.push({ barline: null, prev: last, kind: 'tail', ratio: tail / med, pos: bls.length + 1 });
   return out;
 }
 
 // The odd bars of the open page, once per redraw; on a reviewed page only
-// stacked bar lines (the other flagged bars are just dense with notes).
+// stacked bar lines and staff ends (the other flagged bars are just dense
+// with notes).
 function pageOddBars() {
   const page = pg();
   const key = `${S.pdf}:${S.page}:${S.version}:${S.W}x${S.H}`;
   if (S.oddCache?.key !== key) {
     const lines = page ? [...page.systems].sort((a, b) => a.top - b.top) : [];
-    const keep = (o) => page.status !== 'reviewed' || o.kind === 'stacked';
+    const keep = (o) => page.status !== 'reviewed' || o.always;
     S.oddCache = { key, items: lines.flatMap((s, i) => oddBars(s).filter(keep).map((o) => ({ ...o, staff: s, line: i + 1 }))) };
   }
   return S.oddCache.items;
@@ -539,6 +610,7 @@ function snapshot() {
 }
 
 function pushUndo() {
+  stepStart();
   S.undo.push(snapshot());
   if (S.undo.length > 200) S.undo.shift();
   S.redo = [];
@@ -553,6 +625,7 @@ function restore(from, to) {
   const p = JSON.parse(snap.json);
   if (p) S.doc.pages[S.page] = p; else delete S.doc.pages[S.page];
   if (!find(S.sel)) S.sel = null;
+  S.step = null;  // what's restored keeps its ends
   changed();
 }
 
@@ -566,6 +639,7 @@ function mutate(fn, { status = true } = {}) {
 }
 
 function changed() {
+  followLastBarlines();
   if (S.markTextIndex) renderMarkTexts();
   S.version++;
   renumber();
@@ -658,6 +732,7 @@ async function loadSource(pdf, page) {
   const j = await getJSON(`/api/source?${q(pdf)}`);
   S.pdf = pdf;
   S.doc = j.labels;
+  S.step = null;
   S.etag = j.etag;
   S.readonly = j.readonly;
   S.numPages = j.pages;
@@ -685,6 +760,7 @@ async function openPage(n) {
   const token = ++S.loadToken;
   S.page = n;
   S.sel = null;
+  S.step = null;  // an undo step belongs to the page it began on
   history.replaceState(null, '', `#${q(S.pdf, n)}`);
   $('#loading').hidden = false;
   renderAll();
@@ -962,6 +1038,7 @@ async function redetect() {
       for (const b of d.barlines) if (!taken.some((x) => Math.abs(x - mid(b)) < 0.008)) newBarline(page, ex, b);
     }
     page.systems = page.systems.filter((s) => used.has(s) || !s.auto || s.barlines.some((b) => !b.auto));
+    stepStart();  // detection's changes aren't the editor's: nothing follows them
   }, { status: false });
 }
 
@@ -1053,8 +1130,12 @@ function renderOverlay() {
     // dim what lies in no bar: clef and key before the music start, and
     // anything after the last bar line
     if (st > s.left) out.push(`<polygon class="outside" points="${strip(s, s.left, st, 0, 0, 2)}"/>`);
-    const end = bls.length ? Math.max(bls[bls.length - 1].x0, bls[bls.length - 1].x1) : st;
+    const end = lastBarlineX(s) ?? st;
     if (end < s.right) out.push(`<polygon class="outside" points="${strip(s, end, s.right, 0, 0, 4)}"/>`);
+    if (s.runs_on && !cue) {  // ends past its last bar line on purpose: a chevron after its end
+      const y = (topAt(s, s.right) + bottomAt(s, s.right)) / 2, x = s.right * W;
+      out.push(`<path class="runson" d="M${x + 0.4 * sp * H},${(y - sp) * H} L${x + 1.4 * sp * H},${y * H} L${x + 0.4 * sp * H},${(y + sp) * H}"/>`);
+    }
     out.push(`<line class="start" x1="${st * W}" x2="${st * W}" y1="${(topAt(s, st) - sp) * H}" y2="${(bottomAt(s, st) + sp) * H}"/>`);
 
     for (const o of odd.filter((o) => o.staff === s)) {
@@ -1063,8 +1144,8 @@ function renderOverlay() {
         out.push(`<ellipse class="oddbar" cx="${m * W}" cy="${y * H}" rx="${1.5 * sp * H}" ry="${3.5 * sp * H}"/>`);
         continue;
       }
-      const right = o.barline || { x0: s.right, x1: s.right };  // 'tail': to the staff's end
-      const q = barQuad(s, o.prev, right).map(([x, y]) => `${x * W},${y * H}`);
+      const end = { x0: s.right, x1: s.right };  // 'past': from the last bar line to the staff's end; 'short': back
+      const q = (o.kind === 'short' ? barQuad(s, end, o.prev) : barQuad(s, o.prev, o.barline || end)).map(([x, y]) => `${x * W},${y * H}`);
       out.push(`<polygon class="oddbar" points="${q.join(' ')}"/>`);
     }
 
@@ -1442,8 +1523,9 @@ function renderInspector() {
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
       <h3 title="What is written at this line's start, where it sets or changes something (each movement's first line: key and time). Leave the rest at —.">Written at its start</h3>
       ${sigMenus(item, dis, sigDefaults(item))}
-      <button data-act="trim"${dis}${item.barlines.length ? '' : ' disabled'}>End at last bar line</button>
-      <button data-act="start-all"${dis} title="Carry this line's left end, music start and right end to the lines below it (the start snapped to clear paper). At a key change, fix that line and click again; a line that ends early: select it and press ].">Apply Start Below</button>
+      <button data-act="trim"${dis}${item.barlines.length && !item.runs_on ? '' : ' disabled'}>End at last bar line</button>
+      ${(item.role || 'part') === 'cue' ? '' : `<label class="check" title="A bar running on to the next line: the staff ends past its last bar line on purpose. Unticked, the staff ends at its last bar line and follows it when bar lines change."><input data-f="runs_on" type="checkbox"${item.runs_on ? ' checked' : ''}${dis}> Runs on past its last bar line</label>`}
+      <button data-act="start-all"${dis} title="Carry this line's left end and music start to the lines below it (the start snapped to clear paper). Each keeps its own right end, moved out if it stops short of its last bar line; a line marked Runs on takes this one's instead. At a key change, fix that line and click again.">Apply Start Below</button>
       <label>Crop above (staff spaces) <input data-f="above" type="number" min="0" step="0.5" value="${cropAbove(item)}"${dis}></label>
       <label>Crop below (staff spaces) <input data-f="below" type="number" min="0" step="0.5" value="${cropBelow(item)}"${dis}></label>
       <p class="muted">The dashed band is what each bar's image includes; drag its round handles or set it here.
@@ -1639,17 +1721,19 @@ function renderCounts() {
   const odd = pageOddBars();
   const mvts = new Set(S.bars.filter((b) => b.page === S.page).map((b) => b.movement));
   const name = (o) => {
+    if (o.kind === 'past' || o.kind === 'short') return `line ${o.line} (${o.ratio.toFixed(1)} staff spaces)`;
     const nb = o.barline ? S.byBarline.get(o.barline.id) : S.byBarline.get(o.prev.id);
     const ratio = o.kind === 'stacked' ? '' : ` (${o.ratio.toFixed(1)}×)`;
     if (!nb) return `line ${o.line}, bar ${o.pos} on the line${ratio}`;
     const mv = mvts.size > 1 ? `${nb.movement}:` : '';
-    return (o.kind === 'tail' ? `after bar ${mv}${lastBarOf(nb)}` : `bar ${mv}${barLabel(nb)}`) + ratio;
+    return `bar ${mv}${barLabel(nb)}` + ratio;
   };
   const say = { wide: 'much wider than the line\'s typical bar: missed bar line?',
                 narrow: 'much narrower than the line\'s typical bar: extra bar line?',
-                tail: 'music after the last bar line: missed final bar line?',
+                past: 'music after its last bar line: a missed final bar line, or a bar running on to the next line? (End at last bar line, or tick Runs on)',
+                short: 'the staff ends short of its last bar line (End at last bar line)',
                 stacked: 'two bar lines on top of each other: delete one' };
-  for (const kind of ['stacked', 'wide', 'tail', 'narrow']) {
+  for (const kind of ['stacked', 'past', 'short', 'wide', 'narrow']) {
     const these = odd.filter((o) => o.kind === kind);
     if (these.length) warnings.push(`This page, ${these.map(name).join('; ')}: ${say[kind]}`);
   }
@@ -1877,7 +1961,7 @@ function addBarline() {
 // edit; `undoable` makes it its own undo step (the a key, the button).
 async function snapBarline(b, s, { undoable = false, fresh = false } = {}) {
   if (S.readonly) return;
-  const n = S.page, m = mid(b);
+  const n = S.page, m = mid(b), step = S.step;
   const params = `top=${topAt(s, m)}&bottom=${bottomAt(s, m)}&x0=${b.x0}&x1=${b.x1}`;
   let r;
   try { r = await getJSON(`/api/snap?${q(S.pdf, n)}&${params}`); }
@@ -1897,7 +1981,14 @@ async function snapBarline(b, s, { undoable = false, fresh = false } = {}) {
     }
     : () => { b.x0 = r.x0; b.x1 = r.x1; b.auto = false; };
   if (undoable) mutate(apply);
-  else { apply(); changed(); }
+  else {
+    const was = lastBarlineX(s);
+    apply();
+    // a newer edit began while this was asked: the snap isn't its change
+    const e = S.step !== step && S.step?.ends.get(s.id);
+    if (e && e.last === was) e.last = lastBarlineX(s);
+    changed();
+  }
 }
 
 function addSystem() {
@@ -2172,7 +2263,7 @@ svg.addEventListener('pointerdown', (e) => {
     return;
   }
   if (t.h && S.sel) {
-    S.drag = { kind: 'handle', h: t.h, start: { x: fx, y: fy }, moved: false };
+    S.drag = { kind: 'handle', h: t.h, start: { x: fx, y: fy }, moved: false, startAt: find(S.sel)?.start };
     // a click on a handle (no drag) makes it the one the arrow keys move;
     // clicking it again lets go
     S.drag.clickToggle = true;
@@ -2246,7 +2337,10 @@ svg.addEventListener('pointermove', (e) => {
     else if (h === 'above') item.above = Math.max(0, Math.round((topAt(item, at(3 / 8)) - my) / space(item) * 2) / 2);
     else if (h === 'below') item.below = Math.max(0, Math.round((my - bottomAt(item, at(3 / 8))) / space(item) * 2) / 2);
     else if (h === 'left') setExtent(item, Math.min(mx, item.right - 0.01), item.right);
-    else if (h === 'right') setExtent(item, item.left, Math.max(mx, item.left + 0.01));
+    else if (h === 'right') {
+      setExtent(item, item.left, Math.max(mx, item.left + 0.01));
+      if (d.startAt != null) item.start = clamp(d.startAt, item.left, item.right);  // passing over it and back loses nothing
+    }
     else if (h === 'start') item.start = clamp(mx, item.left, item.right);
     else if (h === 'br') { item.w = Math.max(0.005, mx - item.x); item.h = Math.max(0.005, my - item.y); }
   }
@@ -2453,7 +2547,14 @@ $('#inspector').addEventListener('change', (e) => {
       if (e.target.value === '') delete item[k]; else item[k] = Math.max(0, +e.target.value);
     }
     else if (f === 'ends_movement') item.ends_movement = e.target.checked;
-    else if (f === 'role') { if (e.target.value === 'part') delete item.role; else item.role = e.target.value; }
+    else if (f === 'runs_on') {
+      if (e.target.checked) item.runs_on = true;
+      else { delete item.runs_on; if (endOff(item)) trimToLastBarline(item); }  // back to its last bar line (a cue stays)
+    }
+    else if (f === 'role') {
+      if (e.target.value === 'part') delete item.role; else item.role = e.target.value;
+      if (item.role === 'cue') delete item.runs_on;  // a cue is never moved or flagged anyway
+    }
     else if (SIG_FIELDS.includes(f)) {
       const v = e.target.value;
       // a signature mark keeps at least one field (the save checks it): its

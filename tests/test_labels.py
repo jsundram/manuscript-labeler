@@ -209,7 +209,7 @@ def test_migrate_keeps_a_schema_1_file_as_it_was():
     old = {"schema": 1, "source": {"pdf": "sources/x.pdf"},
            "pages": {"1": page("va", [system("s", 0.1, [bl("a", 0.5)])])}}
     new = labels.migrate(json.loads(json.dumps(old)))
-    assert new["schema"] == labels.SCHEMA == 4
+    assert new["schema"] == labels.SCHEMA == 5
     assert {k: v for k, v in new.items() if k != "schema"} == {k: v for k, v in old.items() if k != "schema"}
     assert labels.validate(new) == []
 
@@ -572,3 +572,23 @@ def test_snap_fits_a_slanted_bar_line_and_ignores_far_ones():
     assert r is not None
     assert abs(r["x0"] - 206) <= 2 and abs(r["x1"] - 194) <= 2  # within the 4 px stroke
     assert detect.snap_barline(g, top, bottom, 300, 300) is None  # nothing within a space
+
+
+def test_runs_on_is_a_staffs_flag():
+    s = {"id": "p1s1", "top": 0.1, "bottom": 0.12, "left": 0.1, "right": 0.9, "barlines": []}
+    assert not labels.validate(doc({"1": {"status": "edited", "kind": "music", "part": "vn1", "clef": "treble",
+                                          "systems": [dict(s, runs_on=True)]}}))
+    errs = labels.validate(doc({"1": {"status": "edited", "kind": "music", "part": "vn1", "clef": "treble",
+                                      "systems": [dict(s, runs_on="yes")]}}))
+    assert any("runs_on" in e for e in errs)
+
+
+def test_the_export_says_which_staves_run_on():
+    s = {"id": "p1s1", "top": 0.1, "bottom": 0.12, "left": 0.1, "right": 0.9, "barlines": []}
+    assert labels.export_staff(1, dict(s, runs_on=True))["runs_on"] is True
+    assert "runs_on" not in labels.export_staff(1, s)
+
+
+def test_a_cue_staff_never_exports_runs_on():
+    s = {"id": "p1s1", "top": 0.1, "bottom": 0.12, "left": 0.1, "right": 0.9, "barlines": [], "role": "cue", "runs_on": True}
+    assert "runs_on" not in labels.export_staff(1, s)

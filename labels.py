@@ -17,7 +17,7 @@ from pathlib import Path
 # gets the bar export, written next to the PDF.
 DATA = Path(__file__).resolve().parent / "data"
 
-SCHEMA = 4         # of the labels file
+SCHEMA = 5         # of the labels file
 EXPORT_SCHEMA = 1  # of the bar export (the edition's build checks it): additive changes keep it
 
 PARTS = ["vn1", "vn2", "va", "vc", "score"]
@@ -65,6 +65,9 @@ MIGRATIONS: dict = {
     # 4 adds movement-title marks (kind "title"); nothing to change in older
     # files, but a tool that knows only 3 must refuse them, not reject them
     3: lambda doc: doc,
+    # 5 adds a staff's `runs_on` (it ends past its last bar line on purpose);
+    # older staves have none, and the editor sees those that end elsewhere
+    4: lambda doc: doc,
 }
 
 
@@ -174,6 +177,8 @@ def validate(doc) -> list[str]:
             for f in ("above", "below", "start"):
                 if f in s and not _num(s[f]):
                     errs.append(f"{ws}: {f} must be a number")
+            if "runs_on" in s and not isinstance(s["runs_on"], bool):
+                errs.append(f"{ws}: runs_on must be true or false")
             if s.get("role", "part") not in SYSTEM_ROLES:
                 errs.append(f"{ws}: bad role")
             errs += [f"{ws}: bad {f} {s[f]!r}" for f in SIG_FIELDS if f in s and not sig_valid(f, s[f])]
@@ -549,9 +554,12 @@ def export_mark(page: int, m: dict) -> dict:
 def export_staff(page: int, s: dict) -> dict:
     """A staff as the export gives it: its place on the page, where its
     music starts (its left end if not set) and, if set, its bend, its crop
-    margins and the clef, key and time written at its start."""
+    margins, the clef, key and time written at its start, and whether it
+    runs on past its last bar line on purpose (`runs_on`)."""
     out = {"page": page, "top": s["top"], "bottom": s["bottom"], "left": s["left"], "right": s["right"],
            "start": s.get("start", s["left"]), "role": s.get("role", "part")}
+    if s.get("runs_on") and out["role"] == "part":
+        out["runs_on"] = True
     for f in ("bend", "above", "below", *SIG_FIELDS):
         if s.get(f) not in (None, []):
             out[f] = s[f]

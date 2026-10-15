@@ -509,6 +509,27 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   when the ruled lines beyond it are blank (under 1% ink). Ink there, such
   as a custos, a missed bar line or a bar running on to the next line,
   keeps the full length. The editor's "End at last bar line" trims by hand.
+  Since 2026-10-15 a staff ends at its last bar line by default: whatever
+  lies past it is in no bar. An end is right anywhere from a quarter staff
+  space short of the last bar line (its middle, as a leaning stroke is
+  drawn) to a staff space past End at last bar line's place (half a space
+  past it). When the editor adds, moves or deletes a staff's last bar line
+  and its end falls outside that band, the end moves to that place (one
+  undo step with the edit); an end already outside it (detection's, or one
+  dragged there) moves only for a bar line added or deleted, or moved more
+  than a staff space, not for a nudge or a snap. Detection's own end (the
+  rules above: ink after the last bar line keeps the full length), re-
+  detection included, stays, as does an end the editor drags out of the
+  band; either is outlined and listed in Warnings ("music after its last
+  bar line: a missed final bar line, or a bar running on to the next
+  line?") on every page until they end it there or tick "Runs on past its
+  last bar line" (`runs_on`, schema 5, and in the bar export): a bar
+  running on to the next line, on purpose, drawn with a chevron after the
+  staff's end, never moved and flagged only if it stops short of its last
+  bar line. Apply Start Below leaves other lines' right ends alone (only
+  never short of their last bar line); a line marked runs on takes the
+  applied line's end, only ever further out. Cue staves are neither moved
+  nor flagged (a cue may stop mid-line).
   Where a line ends mid-staff (a movement's end, a cue that stops, "da
   capo" text), the ink after the last bar line isn't blank, so a second
   rule: end the staff where the ink *between its lines* stops, if 8 or
@@ -669,9 +690,10 @@ Pages are rendered with `pdftoppm -scale-to 2800` (long side 2800 px, about
   rhythm (full OMR). A cheaper proxy: a missed bar line merges two bars
   into one about twice as wide as its neighbours. On pages not yet
   reviewed, bars over 1.8x or under 0.4x their line's typical width are
-  outlined and listed in Warnings (with the ratio), and so is music after
-  a line's last bar line longer than half a typical bar (detection trims
-  a blank end, so it suggests a missed final bar line). A line's first bar
+  outlined and listed in Warnings (with the ratio). (Music after a line's
+  last bar line was flagged here too, past half a typical bar; since
+  2026-10-15 a staff's end away from its last bar line is flagged on every
+  page instead: see Staff end.) A line's first bar
   is left out: its width depends on the music start. On the reviewed pages
   of KHM 602/603 (all bars correct) 2.2% of bars are flagged anyway
   (notes-dense bars, so it's hidden once a page is reviewed); a removed
