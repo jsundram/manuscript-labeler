@@ -632,6 +632,7 @@ def structure_path(edition: Path, work: str) -> Path | None:
     return p if p.exists() else None
 
 
+_SPACER = r"(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\s*\*\s*(?P<n>\d+)(?:\s*/\s*(?P<m>\d+))?)?(?![\w])"
 _TOKEN = re.compile(
     r"(?P<repeat>\\repeat\s+volta\s+\d+\s*\{)"
     r"|(?P<unfold>\\repeat\s+(?:unfold|percent)\s+(?P<times>\d+)\s*\{)"
@@ -640,9 +641,14 @@ _TOKEN = re.compile(
     r"|(?P<key>\\key\s+(?P<tonic>[a-g][a-z]*)\s*\\(?P<mode>major|minor))"
     r"|(?P<numeric>\\(?P<which>numeric|default)TimeSignature\b)"
     r"|(?P<heading>\\(?:tempo|sectionLabel)\b)"
+    r"|(?P<grace>\\(?:grace|acciaccatura|appoggiatura|slashedGrace)\b)"
+    r"|(?P<after>\\afterGrace\b(?:\s*\d+\s*/\s*\d+)?)"
     r"|(?P<open>\{)|(?P<close>\})"
-    r"|(?P<spacer>(?<![\\\w])s(?P<dur>\d+)?(?P<dots>\.*)(?:\s*\*\s*(?P<n>\d+)(?:\s*/\s*(?P<m>\d+))?)?(?![\w]))"
+    r"|(?P<spacer>" + _SPACER + ")"
 )
+_SPACER_RE = re.compile(_SPACER)
+# a grace's music: a group (a brace or a \repeat) comes next, or one word (s8, r8, c'8)
+_GRACE_ARG = re.compile(r"\s*(?:(?P<group>(?=\{|\\repeat\b))|(?P<word>[^\s{}\\]+))")
 _WORD = re.compile(r"\S*")
 _COMMAND = re.compile(r"\\[A-Za-z-]+\s*")
 
@@ -832,10 +838,13 @@ def parse_structure(text: str) -> dict[str, dict]:
     `s2.*23 \\partial 2 s2`), and within a bar it shortens or lengthens
     it. A section's short last bar and the next section's upbeat make one
     bar (`\\partial 4 s4 s2.*7 s2 } { s4 s2.*19 s2` is 8 + 20 bars). A
-    bare `s` repeats the last duration, multiplier and all. A segment's
-    bars are those that begin in it. Without a \\time every spacer counts
-    as its multiplier in bars. `bar_count` 0 in the labels matches: the
-    pickup, and the upbeat that completes a short bar.
+    bare `s` repeats the last duration, multiplier and all. Grace music
+    takes no time (`\\grace s8`, before a part's opening grace note, or
+    the grace after an \\afterGrace's note), though its duration is the
+    one a bare `s` repeats. A segment's bars are those that begin in it.
+    Without a \\time every spacer counts as its multiplier in bars.
+    `bar_count` 0 in the labels matches: the pickup, and the upbeat that
+    completes a short bar.
     """
     music = _blank(text)
     out: dict[str, dict] = {}
@@ -845,6 +854,10 @@ def parse_structure(text: str) -> dict[str, dict]:
         last = Fraction(1, 4)   # the duration a bare `s` repeats (LilyPond starts at a quarter)
         depth = 1
         stack: list = []        # per open brace: True (volta repeat), False, or an unfold frame
+        group_next = False      # the next brace or \repeat opens grace music
+        timeless = None         # inside grace music: the stack's depth at its group
+        after = None            # an \afterGrace's note is next, at this stack depth: its grace follows
+        skip_to = 0             # a grace's one word ends here
         marks: list[tuple] = [] # (bars so far, repeat?, on a bar line?) where segments end
         headed: set = set()     # bars so far where a heading begins a section (a Trio's \tempo)
         sig: dict = {}          # the movement's opening key and time
@@ -871,8 +884,42 @@ def parse_structure(text: str) -> dict[str, dict]:
             else:
                 getattr(b, ev[0])(*ev[1:])
 
+        def spacer(g) -> tuple:
+            """A spacer's length and multiplier. A written duration is the one a bare `s` repeats."""
+            nonlocal last
+            n = int(g("n") or 1)
+            if g("dur"):
+                last = _duration(g("dur"), g("dots"), g("n"), g("m"))
+                return last, n
+            return last * n / int(g("m") or 1), n
+
+        def grace(pos: int):
+            """The grace music at `pos`: a group, timeless as a whole, or one word, skipped."""
+            nonlocal group_next, skip_to
+            a = _GRACE_ARG.match(music, pos)
+            if a and a.group("word"):
+                skip_to = a.end()
+                s = _SPACER_RE.fullmatch(music, a.start("word"), a.end())
+                if s:
+                    spacer(s.group)
+            elif a:
+                group_next = True
+
+        def opened():
+            """A brace or \\repeat has just opened: grace music, if a grace's group was next."""
+            nonlocal timeless
+            if nxt and timeless is None:
+                timeless = len(stack)
+
         for t in _TOKEN.finditer(music, m.end()):
-            if t.group("time"):
+            if t.start() < skip_to:
+                continue
+            nxt, group_next = group_next, False
+            if t.group("grace"):
+                grace(t.end())
+            elif t.group("after"):
+                after = len(stack)
+            elif t.group("time"):
                 emit(("time", Fraction(int(t.group("tn")), int(t.group("td")))))
                 emit(("signature", "time", written_time(int(t.group("tn")), int(t.group("td")), numeric)))
             elif t.group("numeric"):
@@ -886,35 +933,42 @@ def parse_structure(text: str) -> dict[str, dict]:
             elif t.group("unfold"):
                 depth += 1
                 stack.append({"times": int(t.group("times")), "events": []})
+                opened()
             elif t.group("repeat"):
                 depth += 1
                 stack.append(True)
+                opened()
                 marks.append((b.begun, False, b.fresh))  # music before the repeat, if any
             elif t.group("open"):
                 depth += 1
                 stack.append(False)
+                opened()
             elif t.group("close"):
                 depth -= 1
                 if depth == 0:
                     end = t.start()
                     break
                 frame = stack.pop()
+                if timeless is not None and len(stack) < timeless:
+                    timeless = None
+                if after == len(stack):  # an \afterGrace's note was this group
+                    after = None
+                    grace(t.end())
                 if isinstance(frame, dict):  # written out N times: play what's inside N - 1 more
                     for _ in range(frame["times"] - 1):
                         for ev in frame["events"]:
                             emit(ev)
-                elif frame:
+                elif frame:  # a volta repeat ends
                     marks.append((b.begun, True, b.fresh))
             elif t.group("partial"):
                 emit(("partial", _duration(t.group("pdur"), t.group("pdots"), t.group("pn"), t.group("pm"))))
             elif t.group("spacer"):
-                n = int(t.group("n") or 1)
-                if t.group("dur"):
-                    length = _duration(t.group("dur"), t.group("dots"), t.group("n"), t.group("m"))
-                    last = length
-                else:  # a bare `s` (or `s*2`): the last duration again
-                    length = last * n / int(t.group("m") or 1)
-                emit(("spacer", length, n))
+                length, n = spacer(t.group)
+                if timeless is None:
+                    emit(("spacer", length, n))
+                if after == len(stack):  # an \afterGrace's note
+                    after = None
+                    grace(t.end())
         marks.append((b.begun, False, b.fresh))
 
         segments, prev = [], 0

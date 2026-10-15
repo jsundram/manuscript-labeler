@@ -442,6 +442,16 @@ def test_parse_structure_counts_by_duration_with_upbeats():
     (r"s1*8 \partial 2 s2 s1*4", [13], False),                          # no \time: a later \partial isn't a pickup
     (r"\time 3/4 s2. * 4", [4], False),                                 # spaces in a spacer's multiplier
     (r"s1*4 \repeat volta 2 { \time 3/4 s2.*8 }", [4, 8], False),      # music before the first \time
+    # a grace takes no time (Op48-3 I: a grace skip before Violin I's opening grace note)
+    (r"\time 2/4 \repeat volta 2 { \grace s8 s2*48 } \repeat volta 2 { s2*70 }", [48, 70], False),
+    (r"\time 2/4 \grace { s16 s16 } s2*4", [4], False),                       # a grace group
+    (r"\time 2/4 \acciaccatura s8 s2*4 \repeat volta 2 { s2*2 }", [4, 2], False),
+    (r"\time 2/4 \grace s8 s s2*3", [4], False),                               # a bare s after it keeps the grace's 8th
+    (r"\time 2/4 \grace r8 s2*4", [4], False),                                # a grace that isn't a spacer
+    (r"\time 2/4 \grace \skip 8 s2*4", [4], False),
+    (r"\time 2/4 \grace \repeat unfold 2 { s16 } s2*4", [4], False),
+    (r"\time 2/4 \afterGrace s2 { s8 } s2*3", [4], False),                     # the grace after the note
+    (r"\time 2/4 \afterGrace 15/16 { s2 } r8 s2*3", [4], False),
 ])
 def test_parse_structure_edge_cases(body, want, pickup):
     got = labels.parse_structure("\\tag #'mvtI { " + body + " }")["I"]
