@@ -4148,6 +4148,30 @@
           "w": 0.1672,
           "x": 0.2913,
           "y": 0.0351
+        },
+        {
+          "clef": "treble",
+          "h": 0.0411,
+          "id": "p20m2",
+          "key": 3,
+          "kind": "signature",
+          "note": "probably french treble, sounding an octave below",
+          "text": "",
+          "w": 0.0475,
+          "x": 0.7226,
+          "y": 0.6377
+        },
+        {
+          "clef": "bass",
+          "h": 0.0403,
+          "id": "p20m3",
+          "key": 3,
+          "kind": "signature",
+          "note": "",
+          "text": "",
+          "w": 0.051,
+          "x": 0.6534,
+          "y": 0.7036
         }
       ],
       "notes": "",
@@ -4467,7 +4491,7 @@
             -0.003,
             0.0001,
             0.0007,
-            0.0
+            0
           ],
           "bottom": 0.4399,
           "id": "p20s5",
@@ -4882,6 +4906,30 @@
           "w": 0.325,
           "x": 0.4902,
           "y": 0.5925
+        },
+        {
+          "clef": "treble",
+          "h": 0.048,
+          "id": "p21m2",
+          "key": 3,
+          "kind": "signature",
+          "note": "",
+          "text": "",
+          "w": 0.0442,
+          "x": 0.5236,
+          "y": 0.3302
+        },
+        {
+          "clef": "bass",
+          "h": 0.0446,
+          "id": "p21m3",
+          "key": 3,
+          "kind": "signature",
+          "note": "",
+          "text": "",
+          "w": 0.0531,
+          "x": 0.385,
+          "y": 0.4048
         }
       ],
       "notes": "",
@@ -5298,8 +5346,8 @@
               "ends_movement": true,
               "id": "p21s6b2",
               "kind": "double",
-              "x0": 0.3463,
-              "x1": 0.3422
+              "x0": 0.3517,
+              "x1": 0.3483
             }
           ],
           "below": 4.25,
@@ -9074,7 +9122,7 @@
       ]
     }
   },
-  "schema": 4,
+  "schema": 5,
   "source": {
     "gerard": 227,
     "pdf": "sources/G227/D-B_KHM-603.pdf",
