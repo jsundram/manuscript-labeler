@@ -3456,8 +3456,8 @@
               "x1": 0.3142
             },
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 2,
               "ends_movement": false,
               "id": "p16s6b7",
               "kind": "single",
@@ -3616,15 +3616,6 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p16s8b1",
-              "kind": "single",
-              "x0": 0.1772,
-              "x1": 0.1778
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
               "id": "p16s8b2",
               "kind": "single",
               "x0": 0.2799,
@@ -3696,6 +3687,9 @@
           "bottom": 0.7119,
           "id": "p16s8",
           "left": 0.1232,
+          "rejected": [
+            0.1775
+          ],
           "right": 0.8914,
           "start": 0.1325,
           "top": 0.6745
