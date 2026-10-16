@@ -278,7 +278,11 @@ The rules:
 - **Bar line `kind`:** `single`, `double`, `repeat_start`, `repeat_end`,
   `repeat_both`, `final`.
 - **Bar numbers aren't stored.** They're derived (part, page order, systems
-  top to bottom, `ends_movement`), so they can't go stale.
+  top to bottom, `ends_movement`), so they can't go stale. A movement also
+  ends where its part stops, marked or not (`part_ends`): at the last bar
+  line of a music page whose next page is a title page, a blank page or
+  another part's music (`other` pages, colour charts, passed over; a next
+  page not yet labelled says nothing). The editor kept missing that tick.
 - **Formatting:** keys sorted and pretty-printed, so git diffs stay readable.
 
 ## Structure.ily and the labels

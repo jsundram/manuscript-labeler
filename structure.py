@@ -317,7 +317,8 @@ def expected(text: str) -> dict[str, dict]:
 
 def ready(doc: dict) -> dict[str, list[str]]:
     """{part: movements whose bar lines are labelled through their end}:
-    the run ends at a bar line marked ends_movement and no page before it
+    the run ends where the movement does (marked, or the part stops:
+    labels.part_ends) and no page before it
     is unlabelled (it might belong to the part and shift its numbers).
     Unlike the bar export's `complete`, pages needn't be reviewed (their
     crops may still be in hand): the parts agreeing is the check."""
@@ -328,7 +329,7 @@ def ready(doc: dict) -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
     for (part, mvt), rs in runs.items():
         out.setdefault(part, [])
-        if rs[-1]["right"].get("ends_movement") and all(i in pages for i in range(1, rs[-1]["page"] + 1)):
+        if rs[-1]["ends"] and all(i in pages for i in range(1, rs[-1]["page"] + 1)):
             out[part].append(mvt)
     return out
 

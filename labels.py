@@ -244,15 +244,43 @@ def counted_systems(page: dict) -> list[dict]:
                   key=lambda s: s["top"])
 
 
+def part_ends(doc: dict) -> set[str]:
+    """The bar lines where a part's music stops: the last on a music page
+    whose next page is a title page, a blank page or another part's music
+    (colour charts and other "other" pages passed over; a next page not yet
+    labelled says nothing). A movement ends there, marked or not."""
+    pages = dict(sorted_pages(doc))
+    out = set()
+    for n, page in pages.items():
+        if page.get("kind") != "music" or not page.get("part"):
+            continue
+        k = n + 1
+        while pages.get(k, {}).get("kind") == "other":
+            k += 1
+        nxt = pages.get(k)
+        if nxt is None or not (nxt.get("kind") in ("title", "blank")
+                               or (nxt.get("kind") == "music" and nxt.get("part") not in (None, page["part"]))):
+            continue
+        last = None
+        for s in counted_systems(page):
+            for b in sorted(s.get("barlines", []), key=_mid):
+                last = b
+        if last:
+            out.add(last["id"])
+    return out
+
+
 def number_bars(doc: dict) -> list[dict]:
     """Every bar in reading order, with its derived part, movement and number.
 
     A bar runs from the previous bar line (or the system's music start) to a
     bar line. Numbers run on through a part's pages and restart after a bar
-    line marked `ends_movement`. `bar_count` 0 is a pickup: it shares the
-    number before it (0 at the start of a movement) and doesn't advance.
+    line marked `ends_movement`, or where the part stops (part_ends): `ends`.
+    `bar_count` 0 is a pickup: it shares the number before it (0 at the
+    start of a movement) and doesn't advance.
     """
     state: dict[str, dict] = {}
+    stops = part_ends(doc)
     out = []
     for n, page in sorted_pages(doc):
         part = page.get("part")
@@ -263,6 +291,7 @@ def number_bars(doc: dict) -> list[dict]:
             prev = None
             for b in sorted(s.get("barlines", []), key=_mid):
                 count = b.get("bar_count", 1)
+                ends = bool(b.get("ends_movement")) or b["id"] in stops
                 out.append({
                     "part": part,
                     "movement": roman(st["mvt"]),
@@ -272,9 +301,10 @@ def number_bars(doc: dict) -> list[dict]:
                     "system": s,
                     "left": prev,
                     "right": b,
+                    "ends": ends,
                 })
                 st["bar"] += count
-                if b.get("ends_movement"):
+                if ends:
                     st["mvt"] += 1
                     st["bar"] = 1
                 prev = b
@@ -500,7 +530,7 @@ def bars_export(doc: dict) -> dict:
         })
 
     # A run (part + movement) is complete when every bar is reviewed, it ends
-    # with an ends_movement bar line, and no earlier page is unlabeled (an
+    # where the movement does (marked, or the part stops), and no earlier page is unlabeled (an
     # unlabeled page might belong to this part and shift its numbers).
     complete: dict[str, list[str]] = {}
     runs: dict[tuple, list] = {}
@@ -509,7 +539,7 @@ def bars_export(doc: dict) -> dict:
     for (part, mvt), rs in runs.items():
         complete.setdefault(part, [])
         end = rs[-1]["page"]
-        ok = (rs[-1]["right"].get("ends_movement")
+        ok = (rs[-1]["ends"]
               and all(pages[r["page"]].get("status") == "reviewed" for r in rs)
               and all(i in pages for i in range(1, end + 1)))
         if ok:

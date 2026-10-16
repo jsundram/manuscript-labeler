@@ -23,7 +23,11 @@ DOC = doc({
     ]),
     "3": page("vc", [system("p3s1", 0.1, [bl("x", 0.5)], role="cue"),
                      system("p3s2", 0.3, [bl("y", 0.5, bar_count=3)])]),
+    "4": page(None, [], kind="title"),  # the cello stops on page 3: its movement ends there
     "10": page("va", [system("p10s1", 0.1, [bl("e", 0.4, bar_count=2), bl("f", 0.8)])]),
+    "11": page("va", [system("p11s1", 0.1, [bl("g", 0.5)])]),
+    "12": page(None, [], kind="other"),
+    "13": page("vn1", [system("p13s1", 0.1, [bl("h", 0.5)])]),
 })
 
 
@@ -35,14 +39,16 @@ def test_js_and_python_number_bars_the_same():
         pick(r"const ROMAN = .*?;"),
         pick(r"const mid = .*?;"),
         pick(r"const roman = .*?;"),
+        pick(r"function partEnds\(doc\) \{.*?\n\}"),
         pick(r"function numberBars\(doc[^)]*\) \{.*?\n\}"),
         f"const out = numberBars({json.dumps(DOC)});",
-        "console.log(JSON.stringify(out.map(b => [b.right.id, b.part, b.movement, b.bar, b.count, b.page])));",
+        "console.log(JSON.stringify(out.map(b => [b.right.id, b.part, b.movement, b.bar, b.count, b.page, b.ends])));",
     ])
     got = json.loads(subprocess.run(["node", "-e", js], capture_output=True, text=True, check=True).stdout)
-    want = [[b["right"]["id"], b["part"], b["movement"], b["bar"], b["count"], b["page"]]
+    want = [[b["right"]["id"], b["part"], b["movement"], b["bar"], b["count"], b["page"], b["ends"]]
             for b in labels.number_bars(DOC)]
     assert got == want
+    assert {b[0] for b in got if b[6]} == {"d", "y", "g"}  # marked; the cello before a title; the viola past a chart
 
 
 @pytest.mark.skipif(not shutil.which("node"), reason="node not installed")

@@ -475,6 +475,7 @@ function structureProposer(expected, doc) {
   let changed = false;
   // each part's bar lines in numbering order, and which are the editor's
   const order = {}, index = new Map();
+  const stops = partEnds(doc);  // where a part stops, its movement ends whatever is marked
   for (const nb of numberBars(doc)) {
     const list = order[nb.part] || (order[nb.part] = []);
     index.set(nb.right, list.length);
@@ -489,7 +490,7 @@ function structureProposer(expected, doc) {
     for (let k = index.get(b) + 1; k < list.length; k++) {
       const x = list[k];
       bars += x.closed ? (x.b.bar_count ?? 1) : 1;
-      if (x.closed && x.b.ends_movement) {
+      if ((x.closed && x.b.ends_movement) || stops.has(x.b.id)) {
         const next = expected?.[roman(mvt + 1)];
         return !next || next.template || bars < next.total / 2;
       }
@@ -518,7 +519,7 @@ function structureProposer(expected, doc) {
     }
     const count = b.bar_count ?? 1;
     if (s && count && s.ends.get(st.bar + count - 1)?.upbeat) upbeat[part] = true;
-    if (b.ends_movement) delete upbeat[part];
+    if (b.ends_movement || stops.has(b.id)) delete upbeat[part];
   };
   return Object.defineProperty(propose, 'changed', { get: () => changed });
 }
@@ -557,9 +558,31 @@ const systemOf = (bl, page = pg()) => page.systems.find((s) => s.barlines.includ
 // (structureProposer's), if given, may set each bar line's kind, count and
 // movement end just before it is counted.
 
+// The bar lines where a part's music stops: the last on a music page whose
+// next page is a title page, a blank page or another part's music (pages
+// of kind other, colour charts, passed over; a next page not yet labelled
+// says nothing). A movement ends there, marked or not.
+function partEnds(doc) {
+  const out = new Set();
+  for (const [k, page] of Object.entries(doc.pages)) {
+    if (page.kind !== 'music' || !page.part) continue;
+    let n = +k + 1;
+    while (doc.pages[n]?.kind === 'other') n += 1;
+    const next = doc.pages[n];
+    if (!next || !(['title', 'blank'].includes(next.kind) || (next.kind === 'music' && next.part && next.part !== page.part))) continue;
+    let last = null;
+    for (const s of page.systems.filter((s) => (s.role || 'part') === 'part').sort((a, b) => a.top - b.top)) {
+      for (const b of [...s.barlines].sort((a, c) => mid(a) - mid(c))) last = b;
+    }
+    if (last) out.add(last.id);
+  }
+  return out;
+}
+
 function numberBars(doc, propose = null) {
   const state = {};
   const out = [];
+  const stops = partEnds(doc);
   const pages = Object.keys(doc.pages).map(Number).sort((a, b) => a - b);
   for (const n of pages) {
     const page = doc.pages[n];
@@ -572,9 +595,10 @@ function numberBars(doc, propose = null) {
       for (const b of [...s.barlines].sort((a, c) => mid(a) - mid(c))) {
         if (propose) propose(b, page, part, st);
         const count = b.bar_count ?? 1;
-        out.push({ part, movement: roman(st.mvt), bar: count ? st.bar : st.bar - 1, count, page: n, system: s, left: prev, right: b });
+        const ends = !!b.ends_movement || stops.has(b.id);
+        out.push({ part, movement: roman(st.mvt), bar: count ? st.bar : st.bar - 1, count, page: n, system: s, left: prev, right: b, ends });
         st.bar += count;
-        if (b.ends_movement) { st.mvt += 1; st.bar = 1; }
+        if (ends) { st.mvt += 1; st.bar = 1; }
         prev = b;
       }
     }
@@ -1174,7 +1198,8 @@ function renderOverlay() {
       const nb = S.byBarline.get(b.id);
       if (nb && !firstOnLine) firstOnLine = nb;
       const ya = topAt(s, mid(b)) - 1.2 * sp, yb = bottomAt(s, mid(b)) + 1.2 * sp;
-      const cls = ['bl', b.auto ? 'auto' : '', isSel('bl', b.id) ? 'sel' : '', b.ends_movement || b.kind === 'final' ? 'end' : ''].join(' ');
+      const ends = b.ends_movement || !!nb?.ends;  // marked, or where the part stops
+      const cls = ['bl', b.auto ? 'auto' : '', isSel('bl', b.id) ? 'sel' : '', ends || b.kind === 'final' ? 'end' : ''].join(' ');
       const pts = `x1="${xAt(b, s, ya) * W}" y1="${ya * H}" x2="${xAt(b, s, yb) * W}" y2="${yb * H}"`;
       out.push(`<line class="${cls}" ${pts}/>`);
       out.push(`<line class="hit" data-t="bl" data-id="${b.id}" ${pts}/>`);
@@ -1191,7 +1216,7 @@ function renderOverlay() {
           out.push(`<circle class="rdot" cx="${(xAt(b, s, y) + side * 0.8 * sp * H / W) * W}" cy="${y * H}" r="${0.32 * sp * H}"/>`);
         }
       }
-      const tag = [BARLINE_TAG[b.kind], b.ends_movement ? '■' : ''].filter(Boolean).join(' ');
+      const tag = [BARLINE_TAG[b.kind], ends ? '■' : ''].filter(Boolean).join(' ');
       if (tag) out.push(`<text class="kindtag" x="${b.x1 * W}" y="${(bottomAt(s, mid(b)) + 2.4 * sp) * H}" font-size="${1.6 * sp * H}">${esc(tag)}</text>`);
       if (nb && !cue) {
         const xl = nb.left ? mid(nb.left) : st;
@@ -1533,7 +1558,9 @@ function renderInspector() {
       <label>Kind <select data-f="kind"${dis}>${options(BARLINE_KINDS, item.kind)}</select></label>
       <label>Bars it ends <input data-f="bar_count" type="number" min="0" step="1" value="${item.bar_count ?? 1}"${dis}></label>
       <p class="muted">2+ for a multi-bar rest; 0 for a pickup.</p>
-      <label class="check"><input data-f="ends_movement" type="checkbox"${item.ends_movement ? ' checked' : ''}${dis}> Movement ends here</label>
+      ${nb?.ends && !item.ends_movement
+        ? '<p>The movement ends here: the part stops on this page (the next is a title page, a blank page or another part).</p>'
+        : `<label class="check"><input data-f="ends_movement" type="checkbox"${item.ends_movement ? ' checked' : ''}${dis}> Movement ends here</label>`}
       <p class="muted">This bar's crop, in staff spaces (blank: the staff's ${cropAbove(systemOf(item))} / ${cropBelow(systemOf(item))}):</p>
       <label>Above <input data-f="bar_above" type="number" min="0" step="0.5" value="${item.above ?? ''}"${dis}></label>
       <label>Below <input data-f="bar_below" type="number" min="0" step="0.5" value="${item.below ?? ''}"${dis}></label>`;
@@ -1685,7 +1712,7 @@ function renderCounts() {
     if (['repeat_end', 'repeat_both'].includes(nb.right.kind)) {
       if (endsBar(nb) === null) r.onPickup.push(nb.bar); else r.repeats.push(endsBar(nb));
     }
-    if (nb.right.ends_movement) r.ended = true;
+    if (nb.ends) r.ended = true;
   }
   // tempo marks and movement titles, by the bar each belongs to (markBar)
   const tempos = {}, boxes = new Map();

@@ -30,6 +30,19 @@ def doc(pages):
     return {"schema": labels.SCHEMA, "source": {"pdf": "sources/x.pdf"}, "pages": pages}
 
 
+def test_a_movement_ends_where_its_part_stops():
+    def part(name, ids):
+        return page(name, [system(f"{name}{ids[0]}", 0.1, [bl(i, 0.2 + 0.2 * k) for k, i in enumerate(ids)])])
+    d = doc({"1": part("vn1", "ab"), "2": part("vn2", "cd"), "3": page(None, [], kind="blank"),
+             "4": part("va", "ef"), "5": page(None, [], kind="other"), "6": page(None, [], kind="title"),
+             "7": part("vc", "gh"), "9": page(None, [], kind="blank")})
+    # vn1 stops before vn2's page, vn2 before a blank, va before a title (past a colour chart);
+    # the cello's next page isn't labelled yet: nothing is assumed
+    assert labels.part_ends(d) == {"b", "d", "f"}
+    ends = {n["right"]["id"]: n["ends"] for n in labels.number_bars(d)}
+    assert [k for k, v in ends.items() if v] == ["b", "d", "f"]
+
+
 def test_numbering_runs_across_pages_and_restarts_at_movement():
     d = doc({
         "1": page(None, [], kind="title"),
@@ -47,12 +60,12 @@ def test_numbering_runs_across_pages_and_restarts_at_movement():
 def test_parts_number_independently_and_cue_staves_dont_count():
     d = doc({
         "1": page("va", [system("p1s1", 0.1, [bl("a", 0.5)])]),
-        "2": page("vc", [system("p2s1", 0.1, [bl("x", 0.5)], role="cue"),
-                         system("p2s2", 0.3, [bl("b", 0.5)])]),
-        "3": page("va", [system("p3s1", 0.1, [bl("c", 0.5)])]),
+        "2": page("va", [system("p2s1", 0.1, [bl("c", 0.5)])]),
+        "3": page("vc", [system("p3s1", 0.1, [bl("x", 0.5)], role="cue"),
+                         system("p3s2", 0.3, [bl("b", 0.5)])]),
     })
     got = [(n["part"], n["bar"]) for n in labels.number_bars(d)]
-    assert got == [("va", 1), ("vc", 1), ("va", 2)]
+    assert got == [("va", 1), ("va", 2), ("vc", 1)]
 
 
 def test_pickup_is_bar_zero_and_does_not_advance():

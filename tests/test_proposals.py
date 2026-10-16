@@ -54,6 +54,7 @@ def propose(d, text=MINUET, with_doc=False):
         pick(r"function sectionEnds\(e\) \{.*?\n\}"),
         pick(r"const REPEAT_KINDS = .*?;"),
         pick(r"function structureProposer\(expected, doc\) \{.*?\n\}"),
+        pick(r"function partEnds\(doc\) \{.*?\n\}"),
         pick(r"function numberBars\(doc[^)]*\) \{.*?\n\}"),
         f"const doc = {json.dumps(d)};",
         f"const out = numberBars(doc, structureProposer({json.dumps(structure.expected(text))}, doc));",
