@@ -105,7 +105,13 @@ One editor at a time, on their own machine.
 - **Note-head pitch overlay** for the bar detail view (`prototypes/heads.py`).
   It's a reading aid, not data.
 - **Mismatch warnings.** E.g. "movement I: 118 bars counted, 130 expected",
-  or "repeat sign at bar 47, expected after bar 48".
+  or "repeat sign at bar 47, expected after bar 48". And keys (2026-10-16,
+  keyDisagreements): a run of bars where one part's key, as written
+  (line starts, signature marks) and carried on, differs from the other
+  parts', which agree among themselves (two or more): a copyist's slip
+  (RES 507 (17)'s cello writes one sharp on a line of the G minor Trio)
+  or a change labelled in one part only. Label what's written; the slip
+  flags itself.
 
 ### Later
 

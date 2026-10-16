@@ -1701,6 +1701,48 @@ function markBar(n, m, boxes) {
   return beside || firsts.filter((b) => b.system.top > cy).sort((a, b) => a.system.top - b.system.top)[0];
 }
 
+// The key in force at each numbered bar of each part: what is written (a
+// line's start, a signature mark), carried on from bar to bar. [{nb, key}]
+function keysInForce(bars, doc) {
+  const out = [], now = {}, written = new Map();  // page -> its key changes
+  for (const nb of bars) {
+    if (nb.part === 'score') continue;
+    if (!written.has(nb.page)) written.set(nb.page, sigChanges(doc.pages[nb.page], 'key'));
+    const x0 = nb.left ? mid(nb.left) - 1e-9 : -Infinity, x1 = mid(nb.right);
+    for (const [s, x, v] of written.get(nb.page)) if (s === nb.system && x0 <= x && x < x1) now[nb.part] = v;
+    out.push({ nb, key: now[nb.part] ?? null });
+  }
+  return out;
+}
+
+// Runs of bars where one part's key differs from the other parts', which
+// agree among themselves (two or more): a copyist's slip (the cello's one
+// sharp in RES 507 (17)'s G minor Trio), or a key change labelled in one
+// part only. [{part, movement, key, others, first, last}] (numbered bars)
+function keyDisagreements(rows) {
+  const slot = (nb) => `${nb.movement}:${nb.bar}:${nb.count === 0}`;
+  const at = new Map();  // slot -> {part: key}
+  for (const { nb, key } of rows) {
+    if (key == null) continue;
+    if (!at.has(slot(nb))) at.set(slot(nb), {});
+    at.get(slot(nb))[nb.part] = key;
+  }
+  const out = [];
+  let run = null;
+  for (const { nb, key } of rows) {
+    const others = key == null ? [] : Object.entries(at.get(slot(nb))).filter(([p]) => p !== nb.part).map(([, v]) => v);
+    const odd = others.length >= 2 && others.every((v) => v === others[0]) && others[0] !== key ? others[0] : null;
+    if (odd !== null && run && run.part === nb.part && run.movement === nb.movement && run.key === key && run.others === odd) {
+      run.last = nb;
+      continue;
+    }
+    if (run) out.push(run);
+    run = odd === null ? null : { part: nb.part, movement: nb.movement, key, others: odd, first: nb, last: nb };
+  }
+  if (run) out.push(run);
+  return out;
+}
+
 // Counted vs expected bars per part and movement, plus repeat positions.
 function renderCounts() {
   const exp = S.info?.expected || {};
@@ -1762,6 +1804,12 @@ function renderCounts() {
         if (want.length && !want.includes(at)) warnings.push(`${PART_NAMES[part]} ${m}: repeat sign after bar ${at}, expected after ${want.join(' or ')}`);
       }
     }
+  }
+  for (const d of keyDisagreements(keysInForce(S.bars, S.doc))) {
+    const bars = d.first === d.last ? `bar ${barLabel(d.first)}` : `bars ${barLabel(d.first)}–${barLabel(d.last)}`;
+    const pages = d.first.page === d.last.page ? `p. ${d.first.page}` : `pp. ${d.first.page}–${d.last.page}`;
+    warnings.push(`${PART_NAMES[d.part] || d.part} ${d.movement}: ${keyName(d.key)} in ${bars} (${pages}), where the other parts have `
+      + `${keyName(d.others)}: a copyist's slip, or a key change labelled in one part only?`);
   }
   $('#counts').innerHTML = (rows.length ? `<table>${rows.join('')}</table>` : '<p class="muted">No bars yet.</p>')
     + structureOffer();
