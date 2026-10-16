@@ -408,6 +408,9 @@ GUTTER_REACH = 0.12   # page widths inward from the paper's outer edge to look f
 GUTTER_STEP = 10.0    # grey levels: a binding is a step up at least this sharp, its page this much brighter
 GUTTER_MIN = 0.01     # page widths: a darker strip narrower than this is the paper's own edge
 GUTTER_SHARP = 3.0    # a binding's step is this many times sharper than the strip's own slope
+DARK_BACKING = 5.0    # grey levels: an image border less than this darker than its middle is no dark backing
+EDGE_REACH = 0.08     # image widths (heights) in from the border to look for the paper's edge on a light backing
+EDGE_STEP = 4.0       # grey levels over 3 px: the paper's edge on a light backing
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy stroke may be
 REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
@@ -795,6 +798,8 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
     to each of its four edges and the corners are where they meet, so a
     torn or rounded corner doesn't pull the result inward (taking the
     outermost paper pixel did). A page photographed at an angle still works.
+    On a backing no darker than the page, each edge is instead the first
+    clear step in brightness in from the image's border.
     """
     small = img.convert("L").copy()
     small.thumbnail((500, 500))
@@ -811,10 +816,7 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         v = w0 * w1 * (m0 - m1) ** 2
         if v > best:
             best, thr = v, float(edges[i])
-    paper = lum > thr
     whole = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]]
-    if paper.mean() < 0.3:  # no clear paper: the whole image
-        return whole
 
     def edge(mask: np.ndarray, from_end: bool) -> tuple[np.ndarray, np.ndarray]:
         """Per row of `mask`: the first paper pixel from the start (or end).
@@ -826,6 +828,26 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         pos = (m - 1 - np.argmax(sub[:, ::-1], axis=1)) if from_end else np.argmax(sub, axis=1)
         return rows[has].astype(float), pos[has].astype(float)
 
+    def step(g: np.ndarray, from_end: bool) -> tuple[np.ndarray, np.ndarray]:
+        """Per row of `g` (5 rows averaged): the first clear step in
+        brightness (EDGE_STEP grey levels over 3 px) within EDGE_REACH of
+        the start (or end), at its steepest. Middle 80% of rows."""
+        n, m = g.shape
+        if from_end:
+            g = g[:, ::-1]
+        reach = int(m * EDGE_REACH)
+        ts, ps = [], []
+        for t in range(int(n * 0.1), int(n * 0.9)):
+            prof = np.convolve(g[max(0, t - 2):t + 3, :reach + 4].mean(axis=0), np.ones(3) / 3, mode="same")
+            d = np.abs(prof[3:] - prof[:-3])  # the step centred at x + 1.5
+            d[:2] = 0  # the convolution's edge
+            hit = np.nonzero(d[:reach] >= EDGE_STEP)[0]
+            if len(hit):
+                x = hit[0] + int(np.argmax(d[hit[0]:hit[0] + 4])) + 1.5
+                ts.append(t)
+                ps.append(m - 1 - x if from_end else x)
+        return np.array(ts, dtype=float), np.array(ps, dtype=float)
+
     def fit(t: np.ndarray, p: np.ndarray) -> tuple[float, float]:
         """p = a*t + b, refitted once without the worst outliers (tears, tabs)."""
         a, b = np.polyfit(t, p, 1)
@@ -833,10 +855,19 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
         keep = r <= np.percentile(r, 80)
         return tuple(np.polyfit(t[keep], p[keep], 1)) if keep.sum() > 10 else (a, b)
 
+    # Shot on a backing no darker than the page (RES 507 (17): a few grey
+    # levels lighter at top and bottom), the paper isn't the bright region:
+    # each edge is then the first clear step in from the image's border.
+    rim = np.median(np.concatenate([lum[:3].ravel(), lum[-3:].ravel(), lum[:, :3].ravel(), lum[:, -3:].ravel()]))
+    middle = np.median(lum[h // 3:2 * h // 3, w // 3:2 * w // 3])
+    light = rim > middle - DARK_BACKING
+    paper = lum > thr
+    if not light and paper.mean() < 0.3:  # no clear paper: the whole image
+        return whole
+
     lines = {}
-    for name, mask, end in (("left", paper, False), ("right", paper, True),
-                            ("top", paper.T, False), ("bottom", paper.T, True)):
-        t, p = edge(mask, end)
+    for name, g, end in (("left", lum, False), ("right", lum, True), ("top", lum.T, False), ("bottom", lum.T, True)):
+        t, p = step(g, end) if light else edge(paper if g is lum else paper.T, end)
         if len(t) < 20:
             return whole
         lines[name] = fit(t, p)
