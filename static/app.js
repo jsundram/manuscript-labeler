@@ -1589,8 +1589,8 @@ function renderPages() {
   $('#pages li.current')?.scrollIntoView({ block: 'nearest' });
 }
 
-// Structure.ily from these labels: the server offers a movement complete
-// in every part (all pages reviewed through its end) that Structure.ily has
+// Structure.ily from these labels: the server offers a movement labelled
+// in every part through its end (reviewed or not) that Structure.ily has
 // no real block for yet; it shows the block, asks what the page doesn't
 // show, and writes only what was shown.
 function structureOffer() {
@@ -1632,7 +1632,8 @@ async function writeStructure() {
   S.info.expected = out.expected;
   S.info.structure_offers = out.offers;
   S.structureOpen = null;
-  banner(`Wrote movement ${movement} to ${S.info.structure}.`);
+  banner(null);  // a "Not written" from an earlier try
+  flash(`Wrote movement ${movement} to ${S.info.structure}.`);
   renumber();  // its repeats, upbeats and end, proposed on unreviewed pages
   renderAll();
 }

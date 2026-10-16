@@ -122,7 +122,7 @@ def test_parts_that_differ_are_named_and_nothing_is_offered():
 def test_writing_replaces_the_template_block_only():
     r = structure.propose(quartet(), "I", labels.parse_structure(TEMPLATE)["I"], {"upbeat": "4"})
     new = structure.write_block(TEMPLATE, "I", r["text"])
-    assert new.startswith("% header\n% From the reviewed labels") and new.endswith("%%% USEFUL SKELETON IDIOMS\n")
+    assert new.startswith("% header\n% From the labels") and new.endswith("%%% USEFUL SKELETON IDIOMS\n")
     assert "s2*1" not in new and not structure.check(new, "I", r["want"])
     assert not structure.is_template(new, "I")
     # written again: the labeler's own comment line goes with its block
@@ -159,3 +159,31 @@ def test_a_movement_title_alone_is_a_tempo_with_a_tempo_a_section_label():
     assert r["ok"] and r["text"].count("Trio") == 1 and "sectionLabel" not in r["text"]
     # a commented-out heading isn't one
     assert labels.parse_structure('\\tag #\'mvtI { \\time 2/4 % \\tempo "No"\n s2*4 }')["I"]["tempos"] == []
+
+
+def test_a_movement_is_offered_before_its_pages_are_reviewed():
+    d = quartet()
+    for p in d["pages"].values():
+        p["status"] = "edited"  # bar lines done, crops not yet
+    assert structure.offers(d, TEMPLATE) == ["I"]
+    assert structure.propose(d, "I", None, {"upbeat": "4"})["ok"]
+    del d["pages"]["4"]["systems"][1]["barlines"][-1]["ends_movement"]  # the cello's end not marked yet
+    assert structure.offers(d, TEMPLATE) == []
+    assert any("not labelled through the movement's end" in p and "vc" in p
+               for p in structure.propose(d, "I", None, {"upbeat": "4"})["problems"])
+
+
+def test_a_repeat_split_across_a_line_break_is_one_two_sided_repeat():
+    # Violin I: a two-sided sign mid-line, then the upbeat. The others: an
+    # end-repeat closes the line, a start-repeat opens the next (the space
+    # before it counted 0), then the upbeat.
+    d = quartet()
+    for n, part in enumerate(structure.PARTS, start=1):
+        first, second = d["pages"][str(n)]["systems"]
+        if part == "vn1":
+            first["barlines"][-1]["kind"] = "repeat_both"
+        else:
+            second["barlines"].insert(0, bl(f"{part}s", 0.12, kind="repeat_start", bar_count=0))
+    r = structure.propose(d, "I", None, {"upbeat": "4"})
+    assert r["ok"], r["problems"]
+    assert r["text"] == structure.propose(quartet(), "I", None, {"upbeat": "4"})["text"]

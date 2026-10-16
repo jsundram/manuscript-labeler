@@ -288,11 +288,15 @@ tempo, bar counts and repeats, shared by every source of the work.
 
 1. A work starts either from a written Structure.ily or from a source
    labelled first.
-2. When a movement is complete in a source (every part's pages reviewed
-   through its end) and Structure.ily has no real block for it (missing,
-   or the template's `s2*1`), the Bar counts panel offers to write it
-   (structure.py): the parts must agree on bars, upbeats and repeats (a
-   multi-bar rest stands for its bars) and not write different keys or
+2. When a movement's bar lines are labelled in every part of a source
+   through its end (its last bar line marked `ends_movement`, no page
+   before it unopened; reviewed or not, so crops can wait) and
+   Structure.ily has no real block for it (missing, or the template's
+   `s2*1`), the Bar counts panel offers to write it (structure.py): the
+   parts must agree on bars, upbeats and repeats (a multi-bar rest stands
+   for its bars; a two-sided repeat sign and one split across a line
+   break, an end-repeat closing a line and a start-repeat opening the
+   next with the space before it counted 0, agree) and not write different keys or
    times; the block is shown first, with what the page doesn't show
    asked (each key's mode, an upbeat's length), and must read back
    (parse_structure) as the labels say before it is written (atomically,

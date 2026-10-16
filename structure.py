@@ -1,7 +1,8 @@
-"""A movement's Structure.ily block from a source's reviewed labels.
+"""A movement's Structure.ily block from a source's labels.
 
-The labeler offers it once a movement is complete in all of a source's
-parts (labels.bars_export's `complete`) and Structure.ily has no real
+The labeler offers it once a movement's bar lines are labelled through its
+end in all of a source's parts (`ready`: reviewed or not, so crops can
+wait; the parts agreeing is the check) and Structure.ily has no real
 block for it yet (missing, or still the template's `s2*1`). It never
 overwrites a written block: a source that differs from one is a
 difference between sources, for the editor.
@@ -30,6 +31,7 @@ TONIC = {
 }
 REPEAT_END = ("repeat_end", "repeat_both")
 REPEAT_START = ("repeat_start", "repeat_both")
+COMMENT = "% From the labels of"  # the line the labeler writes above its block
 
 
 def meter(time: str) -> tuple[int, int]:
@@ -83,16 +85,32 @@ def tempos(doc: dict, movement: str, kind: str = "tempo", exp: list | None = Non
     return {k: v for k, v in out.items() if v}
 
 
+def line_opening(b: dict) -> bool:
+    """The space before a start-repeat sign that opens a line (counted 0):
+    clef and key only, no bar. The sign itself belongs to the bar line that
+    ended the line before (often an end-repeat: the two make one repeat
+    split across the line break)."""
+    return b["count"] == 0 and b["left"] is None and b["right"]["kind"] in REPEAT_START
+
+
 def shape(bars: list[dict]) -> list[tuple]:
     """What the parts must agree on exactly, bar number by bar number (a
-    multi-bar rest standing for each of its bars): upbeats and repeats."""
+    multi-bar rest standing for each of its bars): upbeats and repeats. A
+    start-repeat right after an end-repeat changes nothing (sections are
+    closed by their end signs), so a two-sided sign and one split across a
+    line break (line_opening) agree."""
     out = []
     for b in bars:
+        if line_opening(b):
+            if out:
+                n, up, end, _ = out[-1]
+                out[-1] = (n, up, end, not end)
+            continue
         n = max(b["count"], 1)
         for k in range(n):
             last = k == n - 1
-            out.append((b["bar"] + k, b["count"] == 0, last and b["right"]["kind"] in REPEAT_END,
-                        last and b["right"]["kind"] in REPEAT_START))
+            end = last and b["right"]["kind"] in REPEAT_END
+            out.append((b["bar"] + k, b["count"] == 0, end, last and not end and b["right"]["kind"] in REPEAT_START))
     return out
 
 
@@ -145,7 +163,7 @@ def render(sl: list[dict], movement: str, modes: list[str], upbeat: Fraction | N
     """The \\tag block from the slots; `modes`: one per key event."""
     events = dict(zip((i for i, _ in key_events(sl)), modes))
     pickup_start = sl[0]["upbeat"]
-    out = [f"% From the reviewed labels of {source}, all parts agreeing; written by the labeler, "
+    out = [f"{COMMENT} {source}, all parts agreeing; written by the labeler, "
            f"{date.today().isoformat()}.", f"\\tag #'mvt{movement} {{"]
     st = {"time": None, "bar": None, "numeric": False}
 
@@ -297,12 +315,30 @@ def expected(text: str) -> dict[str, dict]:
     return out
 
 
+def ready(doc: dict) -> dict[str, list[str]]:
+    """{part: movements whose bar lines are labelled through their end}:
+    the run ends at a bar line marked ends_movement and no page before it
+    is unlabelled (it might belong to the part and shift its numbers).
+    Unlike the bar export's `complete`, pages needn't be reviewed (their
+    crops may still be in hand): the parts agreeing is the check."""
+    pages = {int(n): p for n, p in doc["pages"].items()}
+    runs: dict[tuple, list] = {}
+    for nb in labels.number_bars(doc):
+        runs.setdefault((nb["part"], nb["movement"]), []).append(nb)
+    out: dict[str, list[str]] = {}
+    for (part, mvt), rs in runs.items():
+        out.setdefault(part, [])
+        if rs[-1]["right"].get("ends_movement") and all(i in pages for i in range(1, rs[-1]["page"] + 1)):
+            out[part].append(mvt)
+    return out
+
+
 def offers(doc: dict, text: str | None) -> list[str]:
-    """Movements this source could write: complete in every part, and
-    still the template (or missing) in Structure.ily."""
+    """Movements this source could write: labelled through their end in
+    every part (ready), and still the template (or missing) in Structure.ily."""
     if text is None:
         return []
-    complete = labels.bars_export(doc)["complete"]
+    complete = ready(doc)
     mvts = set.intersection(*(set(complete.get(p, [])) for p in PARTS)) if all(p in complete for p in PARTS) else set()
     return sorted((m for m in mvts if is_template(text, m)), key=lambda m: labels.ROMAN.index(m) if m in labels.ROMAN else 99)
 
@@ -315,11 +351,12 @@ def propose(doc: dict, movement: str, existing: dict | None, answers: dict | Non
     answers = answers or {}
     parts = part_bars(doc, movement)
     export = labels.bars_export(doc)
-    complete = export["complete"]
+    complete = ready(doc)
     problems = []
     missing = [p for p in PARTS if movement not in complete.get(p, [])]
     if missing:
-        problems.append("not complete (every page reviewed, the movement's end marked) in: " + ", ".join(missing))
+        problems.append("not labelled through the movement's end (its last bar line marked, no page before it "
+                        "unopened) in: " + ", ".join(missing))
     if not parts:
         return {"ok": False, "problems": problems or ["no bars"], "questions": [], "text": ""}
     ref_part = next(p for p in PARTS if p in parts)
@@ -396,7 +433,7 @@ def write_block(text: str, movement: str, block: str) -> str:
         start = m.start()
         before = text[:start]
         prev = before.rstrip("\n").rsplit("\n", 1)
-        if len(prev) == 2 and prev[1].startswith("% From the reviewed labels of"):
+        if len(prev) == 2 and prev[1].startswith((COMMENT, "% From the reviewed labels of")):  # (and as it was)
             start = len(prev[0]) + 1
         return text[:start] + block + text[j:]
     ends = [mm.start() for mm in re.finditer(r"\\tag\s+#'mvt", music)]
