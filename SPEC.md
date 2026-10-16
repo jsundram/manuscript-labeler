@@ -291,6 +291,41 @@ The rules:
   page not yet labelled says nothing). The editor kept missing that tick.
 - **Formatting:** keys sorted and pretty-printed, so git diffs stay readable.
 
+## Activity
+
+The project's aim is better labels in less of the editor's time, so the
+labeler records what the editor does and when. The log is ours, kept with
+the labels: `data/<edition>/activity/<YYYY-MM>.jsonl`, one JSON object a
+line, in the shape of the Op. 48 edition's `build/activity.jsonl`
+(`{t, src, kind, file, where, what, ...}`, `t` in seconds), so one set of
+rules reads both. Label files never carry it.
+
+- **The page** (`src: "labeler"`, `static/app.js` logActivity) logs:
+  - `edit`: every change through `mutate`, described by comparing the page
+    before and after (describeEdit), for example "bar line added" or "staff
+    crop". A change to something detection put there (`auto: true`) is
+    marked "(detected)": a correction of detection, so its cost can be
+    counted.
+  - `open`: a page opened, with its status then.
+  - `command`: a button or control used. `key`: a key pressed outside a text
+    field.
+  - `focus` and `blur`; and `active`, a heartbeat while the editor points,
+    scrolls or types, at most every 20 s.
+  Repeats of one event (a drag, a held arrow) are one entry with `n` and
+  `t_end`; `active` entries run on while the heartbeats continue. The page
+  sends the log in batches to `POST /api/activity`, and the rest when the
+  tab goes away.
+- **The server** (`src: "labeler-server"`) logs how long each detection and
+  each Claude read took (`seconds`): time the editor waits.
+- **`activity.py`** reports active time by the edition's rule: a gap of
+  more than ten minutes ends a stretch, and time after a `blur` isn't
+  counted. Time is given to the page it was spent on. It reports the total,
+  each day, each source (with minutes per 100 bars), each page (`--pages`),
+  the edits and the corrections of detection by kind, the waits, and the
+  commands and keys used most.
+- **Before 2026-10-16** nothing was logged. The backups (at most one a
+  minute, the newest 100 kept) give only lower bounds.
+
 ## Structure.ily and the labels
 
 `Op48-N/Structure.ily` is the work's skeleton: each movement's time, key,

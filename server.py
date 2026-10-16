@@ -59,6 +59,7 @@ class Edition:
         self.cache = cache
         self.data = data  # where the labels files live (labels.labels_path)
         self.write_lock = threading.Lock()
+        self.activity_lock = threading.Lock()
         self.render_locks: dict[str, threading.Lock] = {}
         self.render_locks_lock = threading.Lock()
         self.page_counts: dict[str, int] = {}
@@ -300,6 +301,42 @@ class Edition:
         for old in sorted(d.glob("*.json"))[:-BACKUPS_KEPT]:
             old.unlink()
 
+    # -- activity --------------------------------------------------------------
+
+    def log_activity(self, events) -> int:
+        """Append events to data/<edition>/activity/<YYYY-MM>.jsonl (SPEC.md,
+        Activity): one JSON object a line, {t, src, kind, file, where, what,
+        ...}, as the Op. 48 edition's build/activity.jsonl. The page sends what
+        the person does; the server adds how long detection and reads take."""
+        if not isinstance(events, list):
+            raise ValueError("activity: a list of events")
+        months: dict[str, list[str]] = {}
+        for e in events:
+            if not (isinstance(e, dict) and isinstance(e.get("t"), (int, float)) and isinstance(e.get("kind"), str)
+                    and 1.5e9 < e["t"] < 1e10):  # NaN and nonsense fail too
+                raise ValueError("activity: each event needs a time t (seconds) and a kind")
+            month = time.strftime("%Y-%m", time.localtime(e["t"]))
+            months.setdefault(month, []).append(json.dumps(e, sort_keys=True, ensure_ascii=False))
+        d = self.data / self.root.name / "activity"
+        d.mkdir(parents=True, exist_ok=True)
+        with self.activity_lock:
+            for month, lines in months.items():
+                with open(d / f"{month}.jsonl", "a", encoding="utf-8") as f:
+                    f.write("\n".join(lines) + "\n")
+        return sum(map(len, months.values()))
+
+    def timed(self, kind: str, pdf: str, page: int, fn, **extra):
+        """fn(), with how long it took logged as a server event."""
+        t0 = time.time()
+        try:
+            return fn()
+        finally:
+            try:
+                self.log_activity([{"t": round(t0, 3), "src": "labeler-server", "kind": kind, "file": pdf,
+                                    "where": f"p{page}", "seconds": round(time.time() - t0, 2), **extra}])
+            except OSError:
+                pass
+
     # -- rendering and detection ---------------------------------------------
 
     def render(self, rel: str, page: int) -> Path:
@@ -426,11 +463,13 @@ class Edition:
             return {"on": False, "why": "off: no ML_API_KEY in the labeler's .env"}
         return {"on": True, **self.reader.spent(rel)}
 
-    def read_page(self, rel: str, page: int, ask: bool = True) -> dict:
+    def read_page(self, rel: str, page: int, ask: bool = True, ahead: bool = False) -> dict:
         """Claude's kind and part for a page and, on a title page, its lines
         of writing as marks' boxes with their text: cached, else asked
         (unless `ask` is false: then none when they haven't been). A failure
-        to read the lines doesn't lose the page's reading (lines_error)."""
+        to read the lines doesn't lose the page's reading (lines_error).
+        Asking Claude is logged ("read", or "read-ahead" for the page after
+        the editor's, which they don't wait on); a cached answer isn't."""
         from PIL import Image
 
         if self.reader is None:
@@ -439,10 +478,11 @@ class Edition:
         if not 1 <= page <= self.num_pages(pdf):
             raise LookupError(f"no page {page}")
         a = self.reader.cached_page(rel, page)
+        kind = "read-ahead" if ahead else "read"
         if a is None and ask:
             img = self.render(rel, page)  # a render failure is pdftoppm's, not Claude's
             try:
-                a = self.reader.page(rel, page, lambda: Image.open(img))
+                a = self.timed(kind, rel, page, lambda: self.reader.page(rel, page, lambda: Image.open(img)))
             except Exception as e:
                 raise reader.ReadFailed(f"{type(e).__name__}: {e}") from e
         a = a or {}
@@ -452,7 +492,7 @@ class Edition:
             if ln is None and ask:
                 img = self.render(rel, page)
                 try:
-                    ln = self.reader.lines(rel, page, lambda: Image.open(img))
+                    ln = self.timed(kind, rel, page, lambda: self.reader.lines(rel, page, lambda: Image.open(img)))
                 except Exception as e:  # noqa: BLE001 (the page's reading still stands)
                     out["lines_error"] = f"{type(e).__name__}: {e}"
             if ln and "error" in ln:
@@ -673,7 +713,8 @@ class Handler(BaseHTTPRequestHandler):
                         raise ValueError(f"corners: {e}") from e
                     if len(corners) != 4:
                         raise ValueError("corners: four points")
-                return self.send_json(ed.detect(q["pdf"], int(q["page"]), room, corners))
+                return self.send_json(ed.timed("detect", q["pdf"], int(q["page"]),
+                                               lambda: ed.detect(q["pdf"], int(q["page"]), room, corners)))
             if path == "/api/snap":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
                 return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))
@@ -684,7 +725,8 @@ class Handler(BaseHTTPRequestHandler):
                 answers = {k: v for k, v in q.items() if k not in ("pdf", "movement")}
                 return self.send_json(ed.structure(q["pdf"], q["movement"], answers))
             if path == "/api/read":
-                return self.send_json(ed.read_page(q["pdf"], int(q["page"]), ask=q.get("ask") != "0"))
+                return self.send_json(ed.read_page(q["pdf"], int(q["page"]), ask=q.get("ask") != "0",
+                                                   ahead=q.get("ahead") == "1"))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
@@ -697,11 +739,13 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path, q = self.route()
-        if path not in ("/api/structure", "/api/readmark"):
+        if path not in ("/api/structure", "/api/readmark", "/api/activity"):
             return self.error(HTTPStatus.NOT_FOUND, "not found")
         try:
             n = int(self.headers.get("Content-Length", 0))
             body = json.loads(self.rfile.read(n))
+            if path == "/api/activity":
+                return self.send_json({"logged": self.edition.log_activity(body)})
             if path == "/api/readmark":
                 return self.send_json(self.edition.read_mark(body["pdf"], int(body["page"]), body["box"]))
             return self.send_json(self.edition.write_structure(

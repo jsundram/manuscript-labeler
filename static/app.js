@@ -650,6 +650,7 @@ function restore(from, to) {
   if (snap.page !== S.page) { from.push(snap); openPage(snap.page); return; }  // press again to undo there
   to.push(snapshot());
   const p = JSON.parse(snap.json);
+  logEdit(S.doc.pages[S.page], p, from === S.undo ? 'undo' : 'redo');
   if (p) S.doc.pages[S.page] = p; else delete S.doc.pages[S.page];
   if (!find(S.sel)) S.sel = null;
   S.step = null;  // what's restored keeps its ends
@@ -657,12 +658,148 @@ function restore(from, to) {
 }
 
 // Every edit goes through here: snapshot for undo, apply, mark the page edited, save.
-function mutate(fn, { status = true } = {}) {
+// `by` names a machine's change (detection, Claude's reading), logged as
+// "auto": not the editor's edit or correction.
+function mutate(fn, { status = true, by = null } = {}) {
   if (S.readonly || !pg()) return;
   pushUndo();
+  const before = JSON.parse(S.undo.at(-1).json) || {};
   fn(pg());
   if (status) touchPage();
+  logEdit(before, pg(), by ? 'auto' : 'edit', by ? { by } : {});
   changed();
+}
+
+function logEdit(before, after, kind = 'edit', extra = {}) {
+  const what = describeEdit(before || {}, after || {});
+  if (what.length) logActivity(kind, what.join(', '), extra);
+}
+
+// ------------------------------------------------------------------ activity
+// What the person does, and when: every edit (what changed, and whether it
+// corrected a detection), page opened, button, key, focus, and a heartbeat
+// while they work. Sent in batches to /api/activity, which appends it to
+// data/<edition>/activity/<month>.jsonl (SPEC.md, Activity); activity.py
+// turns it into time per source, page and bar. Repeats of one event within a
+// few seconds (a drag, held arrow keys) are one entry with a count and an end.
+
+const ACT = { queue: [], last: {}, beat: 0 };
+const ACT_MERGE = { active: 90 };  // seconds within which a repeat extends the last entry of its kind; default 5
+const actWindow = (kind) => ACT_MERGE[kind] ?? 5;
+
+function logActivity(kind, what = '', extra = {}) {
+  if (!S.pdf) return;
+  const t = Math.round(Date.now()) / 1000, where = S.page ? `p${S.page}` : '';
+  const l = ACT.last[kind];
+  if (l && l.what === what && l.where === where && l.file === S.pdf && t - l.t_end <= actWindow(kind)) {
+    l.n = (l.n || 1) + 1;
+    l.t_end = t;
+    return;
+  }
+  const e = { t, t_end: t, src: 'labeler', kind, file: S.pdf, where, what, ...extra };
+  ACT.queue.push(e);
+  ACT.last[kind] = e;
+}
+
+function flushActivity(beacon = false) {
+  // an entry is sent once it can't grow (or the page is going away)
+  const now = Date.now() / 1000;
+  const send = ACT.queue.filter((e) => beacon || now - e.t_end > actWindow(e.kind));
+  if (!send.length) return Promise.resolve();
+  ACT.queue = ACT.queue.filter((e) => !send.includes(e));
+  for (const e of send) if (ACT.last[e.kind] === e) delete ACT.last[e.kind];
+  const body = JSON.stringify(send);
+  if (beacon && navigator.sendBeacon) { navigator.sendBeacon('/api/activity', new Blob([body], { type: 'application/json' })); return; }
+  return fetch('/api/activity', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body })
+    .then((r) => {
+      if (r.status >= 400 && r.status < 500) { console.warn('activity log refused a batch', r.status); return; }  // don't resend
+      if (!r.ok) throw new Error(r.statusText);
+    })
+    .catch(() => { ACT.queue = send.concat(ACT.queue).slice(-2000); });  // the server unreachable: try with the next batch
+}
+setInterval(flushActivity, 10000);
+window.addEventListener('pagehide', () => flushActivity(true));
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) ACT.last = {};  // no entry runs on across time away
+  logActivity(document.hidden ? 'blur' : 'focus');
+  if (document.hidden) flushActivity(true);
+});
+window.addEventListener('focus', () => logActivity('focus'));
+window.addEventListener('blur', () => { ACT.last = {}; logActivity('blur'); });
+
+// a heartbeat while the person works: at most every 20 s, merged into one entry while it continues
+function beat() {
+  if (!document.hasFocus()) return;  // a pointer over this window while another has focus isn't work
+  const t = Date.now() / 1000;
+  if (t - ACT.beat < 20) return;
+  ACT.beat = t;
+  logActivity('active');
+}
+for (const ev of ['pointerdown', 'pointermove', 'wheel', 'keydown']) document.addEventListener(ev, beat, { passive: true });
+
+// the buttons and controls used (text fields log their edits instead)
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('button, a, input[type=checkbox], input[type=radio], summary');
+  if (!el) return;
+  const name = el.id || el.dataset.action || el.getAttribute('aria-label') || el.title || el.textContent.trim().replace(/\s+/g, ' ');
+  logActivity('command', name.slice(0, 60));
+}, true);
+document.addEventListener('change', (e) => {
+  if (e.target.tagName === 'SELECT') logActivity('command', `${e.target.id || 'select'}=${e.target.value}`.slice(0, 60));
+}, true);
+
+// keys, outside text fields (the edits they make are logged as edits too)
+document.addEventListener('keydown', (e) => {
+  if (inField() || ['Shift', 'Control', 'Alt', 'Meta'].includes(e.key)) return;
+  const mod = (e.metaKey || e.ctrlKey ? 'mod+' : '') + (e.shiftKey && e.key.length > 1 ? 'shift+' : '');
+  logActivity('key', mod + (e.key === ' ' ? 'Space' : e.key));
+}, true);
+
+// What an edit changed on the page, as short phrases: "bar line added",
+// "bar line removed (detected)" ... A detected item (auto: true) that is
+// removed, moved or changed is a correction of detection.
+function describeEdit(a, b) {
+  const out = new Set();
+  const byId = (xs) => new Map((xs || []).map((x) => [x.id, x]));
+  const same = (x, y) => JSON.stringify(x) === JSON.stringify(y);
+  const tag = (x) => (x && x.auto ? ' (detected)' : '');
+  const changedFields = (x, y) => [...new Set([...Object.keys(x), ...Object.keys(y)])].filter((k) => k !== 'auto' && !same(x[k], y[k]));
+  for (const f of ['status', 'kind', 'part', 'clef', 'notes']) {
+    if (!same(a[f], b[f])) out.add(f === 'status' ? `status ${b.status || 'none'}` : f);
+  }
+  if (!same(a.corners?.points, b.corners?.points)) out.add(`corners${a.corners ? ' moved' + tag(a.corners) : ' added'}`);
+  const STAFF = { top: 'staff moved', bottom: 'staff moved', left: 'staff moved', right: 'staff moved', start: 'staff start',
+                  bend: 'staff bend', above: 'staff crop', below: 'staff crop', key: 'signature', time: 'signature', role: 'staff role' };
+  const BAR = { x0: 'bar line moved', x1: 'bar line moved', kind: 'bar line kind', bar_count: 'bar count',
+                ends_movement: 'movement end' };
+  const sa = byId(a.systems), sb = byId(b.systems);
+  for (const [id, s] of sb) {
+    const o = sa.get(id);
+    if (!o) { out.add('staff added'); continue; }
+    for (const k of changedFields(o, s)) {
+      if (k !== 'barlines') { out.add((STAFF[k] || `staff ${k}`) + tag(o)); continue; }
+      const ba = byId(o.barlines), bb = byId(s.barlines);
+      for (const [bid, x] of bb) {
+        const y = ba.get(bid);
+        if (!y) out.add('bar line added');
+        else for (const f of changedFields(y, x)) out.add((BAR[f] || `bar line ${f}`) + tag(y));
+      }
+      for (const [bid, y] of ba) if (!bb.has(bid)) out.add('bar line removed' + tag(y));
+    }
+  }
+  for (const [id, o] of sa) if (!sb.has(id)) out.add('staff removed' + tag(o));
+  const MARK = { x: 'mark moved', y: 'mark moved', w: 'mark resized', h: 'mark resized', kind: 'mark kind',
+                 text: 'mark text', note: 'mark note' };
+  const ma = byId(a.marks), mb = byId(b.marks);
+  for (const [id, m] of mb) {
+    const o = ma.get(id);
+    if (!o) { out.add('mark added'); continue; }
+    for (const f of changedFields(o, m)) if (!f.endsWith('_auto')) out.add((MARK[f] || `mark ${f}`) + tag(o));
+  }
+  for (const [id, o] of ma) if (!mb.has(id)) out.add('mark removed' + tag(o));
+  // marking reviewed writes the movement's key and time onto staves (markReviewed): part of reviewing, not a correction
+  if (out.has('status reviewed')) for (const w of [...out]) if (w.startsWith('signature')) out.delete(w);
+  return [...out].sort();
 }
 
 function changed() {
@@ -786,6 +923,7 @@ async function openPage(n) {
   if (!S.doc || n < 1 || n > S.numPages) return;
   const token = ++S.loadToken;
   S.page = n;
+  logActivity('open', S.doc.pages[n]?.status || 'unopened', { kind_of_page: S.doc.pages[n]?.kind || null });
   S.sel = null;
   S.step = null;  // an undo step belongs to the page it began on
   history.replaceState(null, '', `#${q(S.pdf, n)}`);
@@ -811,7 +949,7 @@ async function openPage(n) {
   // what Claude read here, if it has (shown when it disagrees), and the next
   // new page read ahead, so it opens with its kind and part
   if (S.info.reader?.on && !(n in S.reads)) readPage(n, { ask: false });
-  if (!S.readonly && n < S.numPages && !S.doc.pages[n + 1]) readPage(n + 1);
+  if (!S.readonly && n < S.numPages && !S.doc.pages[n + 1]) readPage(n + 1, { ahead: true });
 }
 
 // ------------------------------------------------------------------ Claude's readings
@@ -819,11 +957,11 @@ async function openPage(n) {
 // Claude's reading of page n ({kind, part, evidence}), or null: reading
 // off, failed or refused, or (ask false) not read yet. Asking costs about
 // a cent the first time; the server caches it.
-async function readPage(n, { ask = true } = {}) {
+async function readPage(n, { ask = true, ahead = false } = {}) {
   if (!S.info?.reader?.on) return null;
   const pdf = S.pdf;
   try {
-    const r = await getJSON(`/api/read?${q(pdf, n)}${ask ? '' : '&ask=0'}`);
+    const r = await getJSON(`/api/read?${q(pdf, n)}${ask ? '' : '&ask=0'}${ahead ? '&ahead=1' : ''}`);
     if (pdf !== S.pdf) return null;
     noteReader(r.reader);
     if (r.error && ask && n === S.page) banner(`Claude didn't read page ${n}: ${r.error}`);
@@ -903,7 +1041,7 @@ async function readMark(n, id, { replace = false } = {}) {
     mk.text = text;
     mk.text_auto = true;
   };
-  if (n === S.page) mutate(edit);
+  if (n === S.page) mutate(edit, { by: 'reading' });
   else { edit(page); touchPage(page); changed(); }  // moved on before it came: no undo step (undo snapshots this page)
   // the reading arrives selected in its field, typing replaces it; but not
   // while a key is held to place marks, or the keyboard is in another field
@@ -1083,7 +1221,7 @@ async function redetect() {
     }
     page.systems = page.systems.filter((s) => used.has(s) || !s.auto || s.barlines.some((b) => !b.auto));
     stepStart();  // detection's changes aren't the editor's: nothing follows them
-  }, { status: false });
+  }, { status: false, by: 'detection' });
 }
 
 // detected corners for this page, replacing any the editor moved
@@ -1093,7 +1231,7 @@ async function resetCorners() {
   try { ({ corners } = await getJSON(`/api/detect?${q(S.pdf, n)}`)); }
   catch (e) { banner(`Detection failed: ${e.message}`); return; }
   if (n !== S.page || !corners) return;
-  mutate((page) => { page.corners = { points: corners, auto: true }; });
+  mutate((page) => { page.corners = { points: corners, auto: true }; }, { by: 'detection' });
   S.sel = { t: 'page' };
   renderAll();
 }
@@ -2471,6 +2609,7 @@ svg.addEventListener('pointerup', () => {
   }
   if (d.moved) {
     touchPage();
+    logEdit(JSON.parse(S.undo.at(-1)?.json || 'null'), pg(), 'edit', { by_drag: true });
     changed();
     // a bar line dragged to a new place snaps to the ink there; dragging
     // its end handles is setting the lean by hand, so that's left alone
