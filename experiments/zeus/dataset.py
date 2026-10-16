@@ -58,7 +58,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(HERE.parent.parent))
+if (HERE.parent.parent / "labels.py").exists():  # a labeler checkout (in zeus-score, labels.py is beside this)
+    sys.path.insert(0, str(HERE.parent.parent))
 import compare  # noqa: E402
 import labels  # noqa: E402
 import structure  # noqa: E402

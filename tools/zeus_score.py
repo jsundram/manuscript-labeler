@@ -81,7 +81,8 @@ from fractions import Fraction
 from pathlib import Path
 
 LABELER = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(LABELER / "experiments" / "zeus"))
+if (LABELER / "experiments" / "zeus" / "compare.py").exists():  # a labeler checkout; in zeus-score they're beside this
+    sys.path.insert(0, str(LABELER / "experiments" / "zeus"))
 import compare  # noqa: E402
 import dataset  # noqa: E402
 import structure  # noqa: E402

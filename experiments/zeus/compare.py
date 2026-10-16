@@ -60,7 +60,8 @@ import numpy as np
 from PIL import Image
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent.parent))
+if (HERE.parent.parent / "labels.py").exists():  # a labeler checkout (in zeus-score, labels.py is beside this)
+    sys.path.insert(0, str(HERE.parent.parent))
 import labels  # noqa: E402
 
 MODEL = Path.home() / ".cache" / "manuscript-labeler" / "models" / "zeus" / "ayce-2026-08-03.model"
