@@ -15,13 +15,18 @@ staves, token by token: for an edition comparing a manuscript with its notes
 (the Op. 48 edition's scripts/differences.py).
 
     uv run ~/Dropbox/Code/manuscript-labeler/tools/zeus_score.py \\
-        --edition <edition-repo> --source F-Pn_Vma-ms-1067-1 --movements I II \\
-        --events DIR --shifts 0 -1 1 --out scores.json [--model M]
+        --pdf M.pdf --structure S.ily --events DIR --out scores.json \\
+        [--bars M.bars.json] [--parts vn1 vc] [--movements I II] [--shifts 0 -1 1] [--model M]
+    uv run ... tools/zeus_score.py --edition <Op48 edition> --source F-Pn_Vma-ms-1067-1 ...
 
-Reads the edition's files only: sources/G*/<source>.bars.json and .pdf, and
-Op48-N/Structure.ily (key and time). The reading is --events DIR, one file
-per part and movement, DIR/<part>-<mvt>.json (vn1-I.json ...), each what
-the edition's `scripts/events.py <quartet> <part> <mvt> --json` prints.
+Reads the manuscript (--pdf), its bar export from the labeler (--bars,
+default beside the PDF) and each movement's key and time (--structure: a
+Structure.ily, or JSON; see movements()). With --edition and --source those
+are found in the Op. 48 edition's layout. The reading is --events DIR, one
+file per part and movement, DIR/<part>-<mvt>.json (vn1-I.json ...), in the
+format of the edition's `scripts/events.py <quartet> <part> <mvt> --json`
+(zeus-score/README.md describes it). Parts and movements default to every
+one in the bar export; one with no reading file is left out, and listed.
 
 Each staff is cut as the model was trained on it (experiments/zeus/
 compare.py's page_image and staff_crop, saved as dataset.py saves it), and
@@ -39,20 +44,33 @@ Where dataset.py leaves a staff out, this scores it if it can:
 - a clef change inside a bar is written where the reading changes clef.
 Every staff still left out is listed in `left_out`, with its bars and why.
 
-Output, one JSON file: {model, labeler_commit, zeus_commit, source,
-movements, staves: [{sid, part, mvt, bars: [[bar, count]...], tokens,
-approximate: [bar...], unknown: [token...], shifts: {"k": {lp, best,
-best_lp}}}], left_out: [{sid, part, mvt, bars: [first, last], reason}]};
-lp, best and best_lp have one more entry than tokens, for the end (EOS).
+Output, one JSON file: {format: 1, model: {name, version, sha256},
+labeler_commit, zeus_commit, source, movements, staves: [{sid, part, mvt,
+bars: [[bar, count]...], tokens, approximate: [bar...], unknown: [token...],
+trained, shifts: {"k": {lp, best, best_lp}}}], left_out: [{sid, part, mvt,
+bars: [first, last], reason}]}; lp, best and best_lp have one more entry
+than tokens, for the end (EOS). `format` goes up with any change a reader
+must handle. `sha256` is the weights file's. `trained` is true where the
+model was trained on the staff's source and movement (--trained-on, where
+["*"] means every movement), false where it wasn't and the source was named
+(--source), and null when that isn't known: a model given by path, or a
+source named only by its PDF's file name that --trained-on doesn't list.
+Trained movements are named on stderr: the model has learned their reading,
+so it objects less there.
 
---model defaults to run G at epoch 8. Run I (I-lr1e5-e7) reads better,
-but it was trained on Op. 48/3 movement I with the edition's own notes (and
-both G and I on RES 507 (14) movement II), so on those staves it leans
-toward the edition's reading: choose the model per use. The models derive
+--renders is where page renders are written and read (default the
+labeler's cache). The zeus-score package (zeus-score/) runs this file with
+a registry model's --model-name, --model-version and --trained-on.
+
+--model defaults to run J at epoch 8 (65% of bars exact on the clean test,
+KHM 603 movement I; G 62%, I 64%). J was trained on every encoded Op. 48
+movement but that one, with the edition's own notes, so on those staves it
+leans toward the edition's reading; G-lr1e5-e8 saw the fewest of them. The models derive
 from Zeus's CC BY-NC-SA weights: non-commercial use.
 """
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -68,7 +86,7 @@ import compare  # noqa: E402
 import dataset  # noqa: E402
 import structure  # noqa: E402
 
-MODEL = Path.home() / ".cache/manuscript-labeler/models/zeus/sweep/G-lr1e5-e8.model"
+MODEL = Path.home() / ".cache/manuscript-labeler/models/zeus/sweep/J-lr1e5-e8.model"
 PARTS = ("vn1", "vn2", "va", "vc")
 PITCH = re.compile(r"([A-G])(\d)")
 GLYPH = {"treble": "clefs.G", "alto": "clefs.C", "tenor": "clefs.C", "bass": "clefs.F"}
@@ -181,6 +199,14 @@ def staff_image(page, s: dict) -> bytes:
     return buf.getvalue()
 
 
+def sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def zeus_commit() -> str | None:
     from importlib.metadata import distribution
     try:
@@ -191,26 +217,37 @@ def zeus_commit() -> str | None:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--edition", type=Path, required=True)
-    ap.add_argument("--source", required=True, help="a bar export's name in sources/G*/")
-    ap.add_argument("--movements", nargs="+", required=True)
+    ap.add_argument("--pdf", type=Path, help="the manuscript")
+    ap.add_argument("--bars", type=Path, help="its bar export from the labeler (default the PDF's .bars.json)")
+    ap.add_argument("--structure", type=Path, help="each movement's key and time: a Structure.ily or a .json")
+    ap.add_argument("--edition", type=Path, help="the Op. 48 edition: --source then finds the other three")
+    ap.add_argument("--source", help="the source's name (default the PDF's); with --edition, its sources/G*/<source>")
+    ap.add_argument("--parts", nargs="+", help="default every part in the bar export")
+    ap.add_argument("--movements", nargs="+", help="default every movement in the bar export")
     ap.add_argument("--events", type=Path, required=True, help="the reading: DIR/<part>-<mvt>.json")
     ap.add_argument("--shifts", type=int, nargs="+", default=[0], help="octaves to move every pitch by, 0 as given")
     ap.add_argument("--model", type=Path, default=MODEL)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--renders", type=Path, default=compare.RENDERS, help="where page renders are written and read")
+    ap.add_argument("--model-name", help="the model's registry name (default its folder's)")
+    ap.add_argument("--model-version", help="the model's registry version")
+    ap.add_argument("--model-sha256", help="its weights' sha256, if already checked (default computed)")
+    ap.add_argument("--trained-on", type=json.loads,
+                    help='JSON: {"<source>": ["I", ...]} the model was trained on; ["*"] for every movement')
+    ap.add_argument("--labeler-commit", help="the labeler commit this code is from (default this checkout's)")
     a = ap.parse_args()
+    compare.RENDERS = a.renders
 
-    pdf = next(a.edition.glob(f"sources/*/{a.source}.pdf"), None)
-    if pdf is None:
-        sys.exit(f"zeus_score: no sources/*/{a.source}.pdf in {a.edition}")
-    export = json.loads(pdf.with_name(pdf.stem + ".bars.json").read_text())
-    quartet = f"Op48-{export['source']['gerard'] - 225}"
-    expected = structure.expected((a.edition / quartet / "Structure.ily").read_text())
+    named = bool(a.source)
+    pdf, export, expected, a.source = inputs(a)
+    parts = a.parts or sorted({b["part"] for b in export["bars"]}, key=lambda p: (PARTS.index(p) if p in PARTS else len(PARTS), p))
+    if not a.movements:
+        a.movements = list(dict.fromkeys(b["movement"] for b in export["bars"] if b["part"] in parts))
 
     # The staves and their boxes, as dataset.py takes them.
     staves: dict[str, list] = {}
     for b in export["bars"]:
-        if b["part"] in PARTS and b["movement"] in a.movements:
+        if b["part"] in parts and b["movement"] in a.movements:
             staves.setdefault(b["system"], []).append(b)
     boxes_per_bar = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
     first_of_mvt, seen = set(), set()
@@ -240,7 +277,7 @@ def main():
         elif (part, mvt) not in events:
             why = f"no reading given for {part} {mvt} ({part}-{mvt}.json)"
         elif mvt not in expected:
-            why = f"Structure.ily has no movement {mvt}"
+            why = f"the structure has no movement {mvt}"
         else:
             lmx, approx, why = dataset_safe(write, boxes, events[(part, mvt)], mks[(part, mvt)], expected[mvt],
                                             first_of_mvt, splits[(part, mvt)])
@@ -278,6 +315,7 @@ def main():
                "bars": [[b["bar"], b["count"]] for b in boxes], "tokens": toks, "approximate": approx,
                "unknown": sorted({t for t in toks if tm.token_to_index(t, allow_unknown_tokens=True)
                                   == tm.unknown_token_index}),
+               "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
                "shifts": {}}
         for by in a.shifts:
             ids = [tm.token_to_index(t, allow_unknown_tokens=True) for t in shifted(toks, by)] + [tm.eos_token_index]
@@ -289,14 +327,81 @@ def main():
                 "best_lp": [round(float(lp[k, i]), 3) for k, i in enumerate(best)]}
         rows.append(row)
 
-    head = subprocess.run(["git", "-C", str(LABELER), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
-    out = {"model": a.model.name.removesuffix(".model"), "labeler_commit": head.stdout.strip() or None,
+    commit = a.labeler_commit
+    if commit is None and (LABELER / "tools" / "zeus_score.py").exists():  # a labeler checkout
+        head = subprocess.run(["git", "-C", str(LABELER), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+        commit = head.stdout.strip() or None
+    model_info = {"name": a.model_name or a.model.name.removesuffix(".model"), "version": a.model_version,
+                  "sha256": a.model_sha256 or sha256(a.model / "weights.h5")}
+    learned = sorted({r["mvt"] for r in rows if r["trained"]})
+    if learned:
+        print(f"zeus_score: {model_info['name']} was trained on {a.source} {' '.join(learned)}: "
+              f"it objects less there", file=sys.stderr)
+    out = {"format": 1, "model": model_info, "labeler_commit": commit,
            "zeus_commit": zeus_commit(), "source": a.source, "movements": a.movements,
            "staves": rows, "left_out": left_out}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(out))
     print(f"{a.source} {' '.join(a.movements)}: scored {len(rows)} staves "
           f"({sum(bool(r['approximate']) for r in rows)} with approximate bars), left out {len(left_out)}")
+
+
+def trained(trained_on: dict | None, source: str, named: bool, mvt: str) -> bool | None:
+    """Was the model trained on this source's movement? None: not known."""
+    if trained_on is None:
+        return None
+    movements = trained_on.get(source)
+    if movements is not None:
+        return "*" in movements or mvt in movements
+    return False if named else None
+
+
+def inputs(a) -> tuple[Path, dict, dict, str]:
+    """The manuscript, its bar export, each movement's key and time, and the
+    source's name: from --pdf, --bars and --structure, or, given --edition and
+    --source, from the Op. 48 edition's layout (sources/G*/<source>.pdf and
+    .bars.json, Op48-<n>/Structure.ily); an explicit file wins."""
+    pdf, bars, struct = a.pdf, a.bars, a.structure
+    if a.edition:
+        if not a.source:
+            sys.exit("zeus_score: --edition needs --source")
+        pdf = pdf or next(a.edition.glob(f"sources/*/{a.source}.pdf"), None)
+        if pdf is None:
+            sys.exit(f"zeus_score: no sources/*/{a.source}.pdf in {a.edition}")
+    if pdf is None:
+        sys.exit("zeus_score: give --pdf (with --structure), or --edition and --source")
+    bars = bars or pdf.with_name(pdf.stem + ".bars.json")
+    if not bars.exists():
+        sys.exit(f"zeus_score: no bar export {bars}")
+    export = json.loads(bars.read_text())
+    if struct is None and a.edition:
+        struct = a.edition / f"Op48-{export['source']['gerard'] - 225}" / "Structure.ily"
+    if struct is None:
+        sys.exit("zeus_score: give --structure (a Structure.ily or a .json of each movement's key and time)")
+    return pdf, export, movements(struct), a.source or pdf.stem
+
+
+def movements(path: Path) -> dict:
+    """{movement: {time, key, changes}}: a Structure.ily as the labeler reads
+    it, or JSON written that way: {"I": {"time": "6/8", "key": 1, "changes":
+    [{"bar": 32, "on_bar_line": false, "key": -2}]}}, key in fifths (sharps
+    positive), a change holding from its bar (from the bar's upbeat if not on
+    the bar line)."""
+    if path.suffix == ".json":
+        out = json.loads(path.read_text())
+        for m, e in out.items():
+            if not (isinstance(e.get("time"), str) and re.fullmatch(r"\d+/\d+", e["time"])
+                    and isinstance(e.get("key"), int)):
+                sys.exit(f'zeus_score: movement {m} in {path} needs a time ("3/4") and a key (fifths, an integer)')
+            e.setdefault("changes", [])
+            for c in e["changes"]:
+                c.setdefault("on_bar_line", True)
+                if not (isinstance(c.get("bar"), int) and ("key" in c or "time" in c)
+                        and isinstance(c.get("key", 0), int) and re.fullmatch(r"\d+/\d+", c.get("time", "1/1"))):
+                    sys.exit(f"zeus_score: a change in movement {m} of {path} needs a bar (an integer) "
+                             f"and a key (an integer) or a time: {c}")
+        return out
+    return structure.expected(path.read_text())
 
 
 def dataset_safe(fn, *args):
