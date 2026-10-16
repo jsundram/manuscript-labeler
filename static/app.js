@@ -396,8 +396,11 @@ function oddBars(s) {
   // flagged on every page, reviewed too: stacked bar lines, a staff ending away from its last bar line
   const always = bars.filter((x) => x.w < close)
     .map((x) => ({ barline: x.b, prev: x.prev, kind: 'stacked', ratio: 0, pos: x.pos, always: true }));
-  const off = endOff(s), last = bls.reduce((a, c) => Math.max(c.x0, c.x1) > Math.max(a.x0, a.x1) ? c : a);
-  if (off) always.push({ barline: null, prev: last, kind: off > 0 ? 'past' : 'short', ratio: Math.abs(off), pos: bls.length + 1, always: true });
+  const off = endOff(s);  // 0 without bar lines
+  if (off) {
+    const last = bls.reduce((a, c) => Math.max(c.x0, c.x1) > Math.max(a.x0, a.x1) ? c : a);
+    always.push({ barline: null, prev: last, kind: off > 0 ? 'past' : 'short', ratio: Math.abs(off), pos: bls.length + 1, always: true });
+  }
   const ws = bars.filter((x) => x.one && x.w >= close).map((x) => x.w).sort((a, c) => a - c);
   if (ws.length < 3) return always;
   const n = ws.length;
