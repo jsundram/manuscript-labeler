@@ -48,6 +48,7 @@ import argparse
 import hashlib
 import io
 import json
+import os
 import re
 import subprocess
 import sys
@@ -88,12 +89,29 @@ def name(n: int) -> str:
 
 # -- the staves --------------------------------------------------------------------
 
+_DIGESTS: dict = {}
+
+
+def render_dir(pdf: Path) -> Path:
+    """Where a PDF's page renders are kept: its name and a hash of its
+    contents, so two manuscripts with one name (or a re-scan) never share."""
+    st = pdf.stat()
+    key = (str(pdf.resolve()), st.st_size, st.st_mtime_ns)
+    if key not in _DIGESTS:
+        _DIGESTS[key] = hashlib.sha256(pdf.read_bytes()).hexdigest()[:10]
+    return RENDERS / f"{pdf.stem}-{_DIGESTS[key]}"
+
+
 def page_image(pdf: Path, n: int) -> np.ndarray:
-    out = RENDERS / pdf.stem / f"p{n:03d}.png"
+    out = render_dir(pdf) / f"p{n:03d}.png"
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
+        # Rendered under a name of this process's own, then renamed: another
+        # process rendering the same page never reads half a file.
+        tmp = out.with_name(f".{out.stem}.{os.getpid()}")
         subprocess.run(["pdftoppm", "-f", str(n), "-l", str(n), "-scale-to", str(RENDER_PX), "-gray", "-png",
-                        "-singlefile", str(pdf), str(out.with_suffix(""))], check=True)
+                        "-singlefile", str(pdf), str(tmp)], check=True)
+        os.replace(f"{tmp}.png", out)
     return np.asarray(Image.open(out).convert("L")).astype(np.float32)
 
 
