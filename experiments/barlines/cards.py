@@ -1086,6 +1086,13 @@ def heldout_section(heldout: tuple | None, mdl: dict) -> str:
     return out + mdl.get("measured", "") + "</section>"
 
 
+# Zeus's card is written by hand (static/models/zeus.html): its runs aren't this corpus's.
+ZEUS_SECTION = ("<section class='card'><h2>Reading the notes</h2><ul><li><a href='zeus.html'>Zeus, run J</a>: "
+                "OmniOMR's handwritten-music reader, fine-tuned on Boccherini's copyists. Reads a staff's notes; "
+                "the edition's encoding checks object where it disagrees. Its card has the family's history, stock to J."
+                "</li></ul></section>")
+
+
 def index_page(c: dict, results: dict, written: set) -> str:
     rows, other = [], []
     hs = hands_in(c)
@@ -1104,15 +1111,16 @@ def index_page(c: dict, results: dict, written: set) -> str:
                     + [f"{res['infer_s'] * 1000:.0f} ms", esc(mdl["card"]["Licence"].split(" ")[0])])
     test = [l for l in c["lines"] if l["split"] == "test"]
     n = {h: sum(len(l["bars"]) for l in test if hand(l) == h) for h in hs}
-    body = ("<h1>Bar-line models</h1><p class='lede'>Every model that finds bar lines in the manuscripts: what it is, "
-            "what it was trained on, how its training went, and where it could go next.</p>"
+    body = ("<h1>Models</h1><p class='lede'>Every model the labeler uses: Zeus, which reads the notes, and the models "
+            "that find bar lines. What each is, what it was trained on, how its training went, and where it could go next.</p>"
+            + ZEUS_SECTION
             + (f"<section class='card'><h2>Trained on later corpora</h2><ul>{''.join(other)}</ul>"
                "<p class='muted'>Each card has its own data, training and results.</p></section>" if other else "")
             + "<section class='card'><h2>Errors on the test lines (false + missed)</h2>"
             + table(["model"] + [f"{h} ({n[h]})" for h in hs] + [f"all ({sum(n.values())})", "per line", "licence"], rows)
             + "<p class='muted'>One random split of this corpus's reviewed lines; the Paris columns are small. "
               "Each model's card has its cross-validation or training curves.</p></section>" + glossary())
-    return page("Bar-line models", body)
+    return page("Models", body)
 
 
 def main():

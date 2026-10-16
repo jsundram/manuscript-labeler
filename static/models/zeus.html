@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeus, run J · model card</title><link rel="stylesheet" href="models.css">
+<style>
+.wide { overflow-x: auto; }
+.wide table { min-width: 640px; }
+td.n, th.n { text-align: right; padding-right: 12px; }
+tr.now td { font-weight: 600; }
+</style></head>
+<body><main><p><a href='index.html'>← all models</a></p>
+<h1>Zeus, run J<span class='pill ok'>the labeler's and the edition's default</span></h1>
+<p class='lede'>OmniOMR's reader for handwritten music, fine-tuned on Boccherini's copyists. It reads one staff at a time and writes out its notes. The edition uses it as a second reader: where Zeus strongly disagrees with an encoded note, the encoding checks raise a flag.</p>
+<p class='links'><a href='https://github.com/jsundram/manuscript-labeler/tree/main/zeus-score'>zeus-score</a> (the package: install, inputs, outputs; <a href='https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD.md'>this card in Markdown</a>) · <a href='https://github.com/OmniOMR/zeus'>Zeus (OmniOMR)</a> · <a href='https://github.com/jsundram/manuscript-labeler/tree/main/experiments/zeus'>experiments/zeus</a> (training data, fine-tuning, scoring) · <a href='https://github.com/jsundram/manuscript-labeler/blob/main/tools/zeus_score.py'>tools/zeus_score.py</a> (what the edition calls)</p>
+
+<section class='card'><h2>Model card</h2><dl class='kv'>
+<dt>Architecture</dt><dd>Zeus "solo26": a small convolutional network (3 stages of 2 residual blocks, 32 channels) reads a staff image 96 px high. Each 16 px-wide slice goes to a 2-layer recurrent encoder (192 units), and a 1-layer decoder writes the staff as a sequence of tokens.</dd>
+<dt>Output</dt><dd>Linearized MusicXML (LMX) tokens, 168 in all: measures, clefs, keys, times, pitches, accidentals, durations, dots, beams, slurs, ties, chords, rests, grace notes, fermatas. Pitches are named from where the head sits in Zeus's own clef. Our scoring renames them in the clef the labels give, because Zeus's clefs are often wrong on these hands.</dd>
+<dt>Starting weights</dt><dd>ayce-2026-08-03, OmniOMR's solo-staff snapshot, trained on MusiCorpus (Dolores train and validation, OmniOMR train)</dd>
+<dt>This model</dt><dd>J-lr1e5-e8, version 2026-10-16: run J's eighth and last epoch (28 MB). Published as a <a href='https://github.com/jsundram/manuscript-labeler/releases/tag/zeus-J-lr1e5-e8-2026-10-16'>release</a>; sha256 of weights.h5 <code>39eada41…</code></dd>
+<dt>Licence</dt><dd>CC BY-NC-SA 4.0, inherited from Zeus's weights: non-commercial use, share alike</dd>
+<dt>Input</dt><dd>One staff cut from the bar export: from its left end to its right, a staff space beyond each, 2.5 spaces above and below, straightened along its bend, the paper brightened to white. A staff space is about 11 px.</dd>
+<dt>Where it runs</dt><dd>The <code>zeus-score</code> package (<code>zeus-score/</code>): <code>zeus-score fetch</code> downloads the model and checks its hash, and <code>zeus-score models</code> lists what each model was trained on. It carries <code>tools/zeus_score.py</code>, which the edition's <code>encode.py checks</code> runs for every encoded movement. <code>experiments/zeus/compare.py</code> does the scoring on this card.</dd>
+<dt>Environment</dt><dd>Python 3.10 and tensorflow 2.12 in <code>~/.cache/manuscript-labeler/zeus/py</code>. It runs outside Claude Code's sandbox.</dd>
+<dt>Training time</dt><dd>2.5 hours on this Mac: 8 epochs of 321 steps. The first two epochs ran at background priority and took 33 and 44 minutes; the rest ran at full speed and took 10 to 14 minutes each.</dd>
+<dt>Adopted</dt><dd>2026-10-16, replacing run G</dd>
+</dl></section>
+
+<section class='card'><h2>Data it was trained on</h2>
+<p>2,568 staves from two kinds of source. Every staff's truth is checked: each one is read back through <code>compare.py</code> and must match its encoding exactly. Staves with two voices are left out.</p>
+<div class='wide'><table><thead><tr><th>source</th><th>work</th><th>hand</th><th class='n'>staves</th><th>its truth</th></tr></thead><tbody>
+<tr><td>D-B KHM 602</td><td>Op. 48 No. 1, I and II</td><td>the Berlin copyist</td><td class='n'>65 + 32</td><td rowspan='4'>the edition's encoding, checked (<code>events.py</code>, written as MusicXML in the labels' clefs, then turned into LMX by Zeus's own encoder)</td></tr>
+<tr><td>D-B KHM 603</td><td>Op. 48 No. 2, II only</td><td>the Berlin copyist</td><td class='n'>32</td></tr>
+<tr><td>F-Po RES 507 (14)</td><td>Op. 48 No. 3, I and II</td><td>Paris A (vn1, vc), Paris B (vn2, va)</td><td class='n'>47 + 29</td></tr>
+<tr><td>F-Pn Vma ms 1067 (1)</td><td>Op. 48 No. 3, I and II</td><td>the Vma copyist</td><td class='n'>70 + 47</td></tr>
+<tr><td colspan='3'><b>Op. 48, from the edition</b></td><td class='n'><b>322</b></td><td></td></tr>
+<tr><td>Op. 2, G. 159–164</td><td>six quartets, parts</td><td>copyists</td><td class='n'>519</td><td rowspan='5'>Philhar's encodings, made from Boccherini's autographs (boccherini-quartet-data). Each staff is paired with them automatically: detected, read by Zeus, aligned bar by bar, and kept only if every measure pairs cleanly.</td></tr>
+<tr><td>Op. 22, G. 183–188</td><td>six quartets, Berlin parts</td><td>copyists</td><td class='n'>568</td></tr>
+<tr><td>Op. 22, Paris part-books</td><td>Nos. 2, 3, 4, 6</td><td>a copyist</td><td class='n'>318</td></tr>
+<tr><td>Op. 32, G. 201–206</td><td>six quartets, parts</td><td>a copyist</td><td class='n'>444</td></tr>
+<tr><td>F-Pn RES 507 (2)</td><td>Op. 33, parts</td><td>copyists (the viola a later hand)</td><td class='n'>397</td></tr>
+<tr><td colspan='3'><b>Philhar, paired automatically</b></td><td class='n'><b>2,246</b></td><td>62.7% of those sources' 4,025 staves. The rest were left out: detection put staves or bar lines in the wrong place, or Zeus's measures didn't pair.</td></tr>
+</tbody></table></div>
+<p class='muted'>Held out: KHM 603 movement I (Op. 48 No. 2 I), the clean test. It has been kept out of every training run and every choice of recipe since it was encoded (2026-10-15). J has no development set: the old ones (KHM 602 II, Vma 1067 (1) II) went into training, because the editor wants all labelled data used.</p>
+<p class='muted'>Not used: the autograph full score of Op. 24 (MS 1292; full scores need whole systems paired), engraved prints, and the OSSQ manuscripts (Mayer A was tried in run H; it didn't help).</p>
+</section>
+
+<section class='card'><h2>How training works</h2>
+<ul>
+<li><b>Recipe</b> (since run D): Zeus's own trainer continues from the stock weights. Learning rate 1e-5 with cosine decay to 0, batch 8, 8 epochs, seed 42. The only augmentation is a sideways shift of up to 8 px. The last epoch is kept; no epoch is chosen on test scores.</li>
+<li><b>Why so gentle.</b> The first fine-tunes, at 1e-4 for 20 to 30 epochs, learned the Berlin copyist and forgot the Paris hands: RES 507 (14) II went from 83% to 39% of bars exact. At 1e-5, hands it trained on gain and unseen hands don't lose. Neither the full augmentation set nor more epochs helped.</li>
+<li><b>Built by</b> <code>experiments/zeus/dataset.py</code> (Op. 48 staves from the labels' bar export and the encoding), <code>autodetect.py</code> and <code>autopair.py</code> (Philhar staves), and <code>finetune.py</code> (Zeus's <code>train</code>).</li>
+</ul>
+<figure><figcaption>Run J, epoch by epoch: bars exact on the clean test and training loss</figcaption>
+<svg viewBox='0 0 640 220' role='img' aria-label='Bars exact on the clean test rises from 51% after epoch 1 to 65% after epochs 7 and 8; training loss falls from 0.71 to 0.19'>
+<g class='grid'><line x1='60' y1='20' x2='600' y2='20'/><line x1='60' y1='70' x2='600' y2='70'/><line x1='60' y1='120' x2='600' y2='120'/><line x1='60' y1='170' x2='600' y2='170'/></g>
+<g class='tick'><text x='52' y='24' text-anchor='end'>70%</text><text x='52' y='74' text-anchor='end'>60%</text><text x='52' y='124' text-anchor='end'>50%</text><text x='52' y='174' text-anchor='end'>40%</text>
+<text x='608' y='24'>0.8</text><text x='608' y='74'>0.6</text><text x='608' y='124'>0.4</text><text x='608' y='174'>0.2</text>
+<text x='80' y='190' text-anchor='middle'>1</text><text x='154' y='190' text-anchor='middle'>2</text><text x='229' y='190' text-anchor='middle'>3</text><text x='303' y='190' text-anchor='middle'>4</text><text x='377' y='190' text-anchor='middle'>5</text><text x='451' y='190' text-anchor='middle'>6</text><text x='526' y='190' text-anchor='middle'>7</text><text x='600' y='190' text-anchor='middle'>8</text></g>
+<text class='axis' x='330' y='212' text-anchor='middle'>epoch</text>
+<line x1='60' y1='60' x2='600' y2='60' stroke='#77726a' stroke-dasharray='4 3'/><text class='tick' x='64' y='55'>run G, 62%</text>
+<polyline fill='none' stroke='#2c5fb8' stroke-width='2' points='80,115 154,70 229,65 303,60 377,60 451,55 526,45 600,45'/>
+<polyline fill='none' stroke='#d9822b' stroke-width='2' points='80,43 154,124 229,138 303,154 377,165 451,168 526,172 600,174'/>
+</svg>
+<ul class='legend'><li><span style='background:#2c5fb8'></span>bars exact, clean test (left)</li><li><span style='background:#d9822b'></span>training loss (right)</li></ul>
+<p class='note'>51, 60, 61, 62, 62, 63, 65, 65%. The curve flattens by epoch 7, as every run's has since D.</p></figure>
+</section>
+
+<section class='card'><h2>Results on the clean test</h2>
+<p>KHM 603 movement I, 347 bars, scored by <code>compare.py</code>. A bar is exact when every event matches the encoding: pitch, duration, rest, chord and grace. Zeus's measures are paired with the labels' bar boxes using only the time signature; bars that still won't pair count as wrong.</p>
+<div class='wide'><table><thead><tr><th>model</th><th class='n'>bars exact</th><th class='n'>right in rhythm</th><th class='n'>right in pitch</th><th class='n'>events right</th><th class='n'>vn1</th><th class='n'>vn2</th><th class='n'>va</th><th class='n'>vc</th></tr></thead><tbody>
+<tr><td>stock (ayce-2026-08-03)</td><td class='n'>42%</td><td class='n'>50%</td><td class='n'>53%</td><td class='n'></td><td class='n'>40%</td><td class='n'>30%</td><td class='n'>43%</td><td class='n'>56%</td></tr>
+<tr><td>run G, epoch 8</td><td class='n'>62%</td><td class='n'>71%</td><td class='n'>69%</td><td class='n'></td><td class='n'>49%</td><td class='n'>50%</td><td class='n'>64%</td><td class='n'>86%</td></tr>
+<tr><td>run I, epoch 7</td><td class='n'>64%</td><td class='n'>74%</td><td class='n'>71%</td><td class='n'>79%</td><td class='n'>56%</td><td class='n'>46%</td><td class='n'>66%</td><td class='n'>87%</td></tr>
+<tr class='now'><td>run J, epoch 8</td><td class='n'>65%</td><td class='n'>74%</td><td class='n'>74%</td><td class='n'>80%</td><td class='n'>53%</td><td class='n'>55%</td><td class='n'>60%</td><td class='n'>91%</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>J against I:</b> 225 bars exact against 222, which is within the noise. One movement can't separate runs within about 4 points (I minus G was +1.7, with a 95% interval of −1.8 to +5.5). What clearly changed is that J invents far fewer notes: 36 extra events against I's 128.</li>
+<li><b>J's 412 wrong events:</b> 201 in duration, 164 in pitch, 36 extra, 36 missed, 35 in chord size, 11 an octave out, 10 grace notes, 7 a rest for a note or the reverse. Where J reads the note right, it shows the accidental as encoded 99% of the time.</li>
+<li><b>Where it fails:</b> dense 32nd notes. About 90 of the viola's 104 wrong pitches are in one broken-chord figure (bars 26–31 and its return in 61–67, C4 E4 A3 E4 / B3 D4 E3 D4). Zeus reads the upper notes but pulls the low string's note up toward its neighbours. The clefs were read right. The violins' passagework loses bars to duration errors in the same way.</li>
+<li><b>Where it's good:</b> the cello, at 91% exact, and sparse writing in general.</li>
+</ul>
+</section>
+
+<section class='card'><h2>As the edition's second reader</h2>
+<p>The encoding checks score each encoded bar with Zeus. An objection to a pitch, a rhythm or an accidental becomes a flag when Zeus finds its own reading more likely than ours by more than 3 in log-probability (the floor). This was measured on Op. 48 No. 2 I as it stood right after the read, before any correction. J never saw that movement. 107 of its 337 bar-parts were later corrected in a kind Zeus flags.</p>
+<div class='wide'><table><thead><tr><th>model, floor 3</th><th class='n'>bar-parts flagged</th><th class='n'>of them wrong</th><th class='n'>wrong ones flagged</th><th class='n'>pitch</th><th class='n'>rhythm</th><th class='n'>accidental</th></tr></thead><tbody>
+<tr><td>run G</td><td class='n'>122</td><td class='n'>95 (78%)</td><td class='n'>89%</td><td class='n'>12 / 19</td><td class='n'>9 / 27</td><td class='n'>78 / 80</td></tr>
+<tr class='now'><td>run J</td><td class='n'>126</td><td class='n'>96 (76%)</td><td class='n'>90%</td><td class='n'>12 / 19</td><td class='n'>10 / 27</td><td class='n'>78 / 80</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>The floor stays at 3.</b> Floors from 2.5 to 4 catch the same wrong bars, give or take one or two. At 4, J flags 114 bar-parts and 95 of them are wrong.</li>
+<li><b>A rule fixed while re-tuning.</b> Objections were dropped whenever Zeus's preferred token was a beam. J often prefers a beam where we wrote an accidental, which means it wants no accidental there. Without the fix, J flagged only 25 of the 80 wrong accidentals and G only 41. With it, both flag 78.</li>
+<li><b>Rhythm is the weak spot.</b> Only 10 of 27 rhythm corrections get flagged; LilyPond's bar check catches most of the rest.</li>
+<li><b>Movements J trained on</b> (every encoded Op. 48 movement but No. 2 I) will draw fewer objections, because it has learned the edition's reading of them.</li>
+</ul>
+</section>
+
+<section class='card'><h2>The family, stock to J</h2>
+<p>Every model fine-tuned so far. The development movements guided the recipe and flatter the models (KHM 602 II overstates by about 20 points), so the clean test is the fair column. All of them were scored on it on 2026-10-16.</p><p><b>What the clean test shows:</b> the recipe work, from the first fine-tune to D, didn't move it (47–48%); it kept unseen hands from getting worse. The big step came with E, from Boccherini's other copyists: 13 points. After that, gains are a few points a run, near the test's noise. Run H, which added another composer's hand, scored 59% against G's 62%: no gain.</p>
+<div class='wide'><table><thead><tr><th>run</th><th>date</th><th>trained on</th><th class='n'>staves</th><th>recipe</th><th>development movements</th><th class='n'>clean test</th><th>what it taught us</th></tr></thead><tbody>
+<tr><td>stock</td><td>08-03</td><td>MusiCorpus (OmniOMR)</td><td class='n'>—</td><td>—</td><td>KHM 602 II 45%, Vma II 55%, RES 507 (14) II 79%</td><td class='n'>42%</td><td>Reads the Paris hands well and the Berlin copyist poorly. Its clefs are often wrong.</td></tr>
+<tr><td>first fine-tune</td><td>10-09</td><td>KHM 602 I, RES 507 (14) II</td><td class='n'>94</td><td>lr 1e-4, 30 epochs</td><td>KHM 602 II 51 → 68%*</td><td class='n'>47%</td><td>A trained hand gains a lot. Trained on KHM 602 alone, RES 507 (14) II fell from 83% to 39%*: it overfits.</td></tr>
+<tr><td>C</td><td>10-10</td><td>KHM 602 I and II, Op. 33 Paris parts, 600 Dolores staves</td><td class='n'>889</td><td>lr 1e-4, 20 epochs</td><td>RES 507 (14) II 76%, Vma II 44%</td><td class='n'>48%</td><td>Mixing in other data didn't stop unseen hands from falling. The drop happens in epoch 1.</td></tr>
+<tr><td>sweep</td><td>10-11</td><td>run C's data</td><td class='n'>889</td><td>lr 3e-5, 1e-5, 3e-5 with augmentation; 8 epochs</td><td>lr 1e-5: RES 507 (14) II 77%, Vma II 55–56%</td><td class='n'>48%</td><td>At 1e-5, unseen hands don't lose. Augmentation didn't help.</td></tr>
+<tr><td>D</td><td>10-11</td><td>KHM 602 I, RES 507 (14) II, Op. 33, 600 Dolores</td><td class='n'>886</td><td>the recipe: lr 1e-5, cosine, 8 epochs</td><td>KHM 602 II 62–64%, Vma II 55–56%</td><td class='n'>47%</td><td>Trained hands gain without new hands losing.</td></tr>
+<tr><td>E</td><td>10-11</td><td>KHM 602 I, RES 507 (14) II, every Philhar part source (1,711 staves), 2,000 Dolores staves</td><td class='n'>3,807</td><td>the recipe</td><td>KHM 602 II 78–80%, Vma II 60–62%</td><td class='n'>60%</td><td>The first gain on an unseen hand: other Boccherini copyists' staves help.</td></tr>
+<tr><td>F</td><td>10-11</td><td>E without Dolores</td><td class='n'>1,807</td><td>the recipe</td><td>KHM 602 II 76%, Vma II 64–65%</td><td class='n'>59%</td><td>Dolores adds nothing; F ties E.</td></tr>
+<tr><td>G</td><td>10-12</td><td>more Philhar staves: the union of three detections</td><td class='n'>2,340</td><td>the recipe</td><td>KHM 602 II 81%, Vma II 64–65%</td><td class='n'>62%</td><td>More of the same hands no longer helps an unseen one.</td></tr>
+<tr><td>H</td><td>10-13</td><td>G plus 190 Philhar staves and 145 of OSSQ's Mayer A</td><td class='n'>2,675</td><td>the recipe</td><td>Vma II 66–67%, Maier 39–42% (G 47%), Andrée 22–24% (G 30%)</td><td class='n'>59%</td><td>Another composer's hand didn't help. Not adopted.</td></tr>
+<tr><td>I</td><td>10-14</td><td>G plus Op. 48 No. 3 I from the encoding (Vma 70, RES 507 (14) 47)</td><td class='n'>2,457</td><td>the recipe (epoch 8 lost)</td><td>KHM 602 II 83–84%, Vma II 69–70%</td><td class='n'>64%</td><td>A hand's own bars moved it where other hands' data didn't: Vma II gained 5 points.</td></tr>
+<tr class='now'><td>J</td><td>10-16</td><td>I plus KHM 602 II, Vma 1067 (1) II, KHM 603 II</td><td class='n'>2,568</td><td>the recipe</td><td>none (they're in training)</td><td class='n'>65%</td><td>Far fewer invented notes. Adopted.</td></tr>
+</tbody></table></div>
+<p class='muted'>Development scores are bars exact as measured at the time. * These are from before 2026-10-11, when only bars Zeus paired were counted, which flattered the models that failed more. The first fine-tune's other model, trained on KHM 602 alone, scored 83% → 39% on RES 507 (14) II. Every snapshot is kept in <code>~/.cache/manuscript-labeler/models/zeus/</code>, and every reading and score in <code>experiments/zeus/answers/</code> and <code>results/</code>.</p>
+</section>
+
+<section class='card'><h2>Known limits</h2>
+<ul>
+<li><b>Dense passagework.</b> 32nd notes, and broken chords that cross strings: durations are misread, and low notes are pulled toward their neighbours.</li>
+<li><b>Double stops</b> come out as two voices, often with different rhythms. Two-voice staves are kept out of training, so it has never learned ours.</li>
+<li><b>Clefs.</b> Its clef tokens are unreliable. Its note placement is fine, so scoring renames pitches in the labels' clef. Forcing the labelled clef made the viola worse (<code>clefread.py</code>).</li>
+<li><b>Hands it hasn't seen.</b> Gains are largest on trained hands. Op. 48 Nos. 4–6 (Vma ms 1067 (2), RES 507 (16) and (17)) are new hands until some of their staves are encoded.</li>
+<li><b>Resolution.</b> It sees about 11 px per staff space, so a head misplaced by a step is hard for it to see.</li>
+<li><b>A small clean test.</b> 347 bars from one copyist can't tell runs apart within about 4 points.</li>
+</ul>
+</section>
+
+<section class='card'><h2>Future directions</h2>
+<ul class='future'>
+<li><b>Encode a few staves of each new hand.</b> This has been the one reliable lever: Op. 48 No. 3 I moved Vma II 5 points when thousands of other staves hadn't. The first movement of each of Op. 48 Nos. 4–6, encoded and checked, would teach Zeus those copyists. The movement after it can serve as that hand's test.</li>
+<li><b>A bigger clean test, one per hand.</b> Hold one movement of each hand out for good. That would let runs be told apart within a point or two, and make seeds or ensembles worth measuring.</li>
+<li><b>Two-voice staves and double stops.</b> Write them as chords or voices in the training data instead of leaving them out. That addresses most of the 35 chord-size errors and some of the extra events.</li>
+<li><b>Rhythm, decoded under the bar check.</b> Duration is the largest error. A search over Zeus's readings that only accepts measures adding up to the time signature would fix most of what the bar check now only flags.</li>
+<li><b>Pitch, measured rather than re-read.</b> Where Zeus's step is doubtful, measure the head's place on the staff (headcheck, the aligner) instead of asking Zeus again.</li>
+<li><b>Passagework.</b> Oversample dense 32nd-note bars, or render the input taller (more than 96 px a staff) so heads in fast figures are better separated. Both mean a new run; a taller input means training from more than our data alone.</li>
+<li><b>More Philhar staves.</b> 37% of those sources' staves are still unpaired, and the Op. 24 autograph full score needs whole systems paired. Bar-line detection is no longer what limits this.</li>
+
+</ul>
+</section>
+
+<section class='card'><h2>Terms</h2><dl class='gloss'>
+<dt>Bars exact</dt><dd>The share of bars whose every event (note, rest, chord, grace) matches the encoding in pitch and duration. Marks such as slurs, dynamics and beams aren't counted.</dd>
+<dt>Right in rhythm, in pitch</dt><dd>Bars whose durations all match, or whose pitches all match, whatever the other is.</dd>
+<dt>Clean test</dt><dd>KHM 603 movement I: never trained on, and never used to choose anything.</dd>
+<dt>Development movements</dt><dd>Movements held out of a run's training and watched while choosing the recipe. They flatter the models that were chosen by them.</dd>
+<dt>Floor</dt><dd>How much more likely, in log-probability, Zeus must find its own token than ours before the encoding checks flag the bar.</dd>
+<dt>Philhar</dt><dd>Encodings of Boccherini's quartets made from his autographs (boccherini-quartet-data). Their manuscripts are copyists' parts, paired with the encodings automatically.</dd>
+</dl></section>
+<footer class="muted">Written 2026-10-16 from experiments/zeus (README, results/), run J's training log and the retune on Op. 48 No. 2 I.</footer>
+</main></body></html>

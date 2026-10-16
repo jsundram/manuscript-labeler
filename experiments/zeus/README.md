@@ -190,6 +190,23 @@ changes inside the bar.
 | zero-shot (ayce-2026-08-03) | 42% | 50% | 53% | 40% | 30% | 43% | 56% |
 | run G (2,340 staves; learning rate 1e-5, cosine decay, 8 epochs) | 62% | 71% | 69% | 49% | 50% | 64% | 86% |
 | run I (G plus Op. 48/3 I's 117 staves), epoch 7 | 64% | 74% | 71% | 56% | 46% | 66% | 87% |
+| run J (I plus KHM 602 II, Vma 1067 (1) II, KHM 603 II; 2,568 staves), epoch 8 | 65% | 74% | 74% | 53% | 55% | 60% | 91% |
+
+Every earlier run, scored on it on 2026-10-16 (last epoch):
+
+| model | bars exact | rhythm | pitch | vn1 | vn2 | va | vc |
+|---|---|---|---|---|---|---|---|
+| first fine-tune (heldout-602-II: KHM 602 I, RES 507 (14) II; lr 1e-4, 30 epochs) | 47% | 61% | 54% | 49% | 29% | 33% | 77% |
+| run C (mixC-e20) | 48% | 61% | 53% | 43% | 52% | 33% | 63% |
+| sweep, lr 1e-5 | 48% | 65% | 55% | 42% | 29% | 52% | 69% |
+| run D | 47% | 63% | 50% | 36% | 35% | 48% | 68% |
+| run E | 60% | 69% | 66% | 50% | 48% | 60% | 80% |
+| run F | 59% | 70% | 65% | 50% | 42% | 56% | 86% |
+| run H | 59% | 70% | 64% | 44% | 48% | 58% | 84% |
+
+The recipe work (the first fine-tune to D) didn't move it; it kept unseen
+hands from getting worse. Boccherini's other copyists (run E) added 13
+points. The model card, `static/models/zeus.html`, has the whole family.
 
 - **Fine-tuning holds on a movement nobody watched:** about 20 points over
   zero-shot. But the movement that guided the recipe (KHM 602 II, 81–84%)
