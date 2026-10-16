@@ -429,7 +429,7 @@ function pageOddBars() {
 // pickup, count 0, sharing the number: see repeatHere)
 function repeatEnds(movement) {
   const e = S.info?.expected?.[movement];
-  if (!e) return [];
+  if (!e || e.template) return [];  // a template's sections are placeholders
   let cum = 0;
   const out = [];
   for (const seg of e.segments) { cum += seg.bars; if (seg.repeat) out.push(cum); }
@@ -1704,9 +1704,10 @@ function renderCounts() {
     for (const m of [...mvts].sort((a, b) => ROMAN.indexOf(a) - ROMAN.indexOf(b))) {
       const r = runs[part][m];
       const e = exp[m];
+      const counts = e && !e.template;  // a template's one-bar spacers count nothing
       const counted = r ? r.bars : 0;
-      const cls = !e ? '' : counted === e.total ? 'ok' : (r && r.ended) ? 'bad' : '';
-      rows.push(`<tr><td>${m}</td><td class="${cls}">${counted}</td><td class="muted">${e ? '/ ' + e.total : ''}</td></tr>`);
+      const cls = !counts ? '' : counted === e.total ? 'ok' : (r && r.ended) ? 'bad' : '';
+      rows.push(`<tr><td>${m}</td><td class="${cls}">${counted}</td><td class="muted">${counts ? '/ ' + e.total : ''}</td></tr>`);
       const marked = tempos[part]?.[m] || [];
       const heads = e?.headings || [...(e?.titles || []), ...(e?.tempos || [])];  // Structure.ily's, in the order written
       if (marked.length || heads.length) {
@@ -1724,7 +1725,7 @@ function renderCounts() {
           : r.first.left ? '; box them at its first bar (hold c)' : '';
         warnings.push(`${PART_NAMES[part]} ${m}: ${missing.join(' and ')} not set on its first line (page ${r.first.page})${will}`);
       }
-      if (!e || !r) continue;
+      if (!counts || !r) continue;
       if (r.ended && counted !== e.total) warnings.push(`${PART_NAMES[part]} ${m}: ${counted} bars counted, ${e.total} expected`);
       const want = repeatEnds(m);
       for (const at of r.onPickup) {
