@@ -904,6 +904,23 @@ function previousPage(n, pred = () => true) {
   return null;
 }
 
+// The part a new page n carries on: that of the nearest music or title
+// page before it. A page passed over before it was labelled (the editor
+// moved on while it loaded) counts by what Claude read there, if it has
+// (cached readings only: nothing is asked); one neither labelled nor read
+// might be the next part's title page, so nothing is carried past it.
+async function carriedPart(n) {
+  for (let k = n - 1; k >= 1; k--) {
+    if (!S.doc.pages[k] && !(k in S.reads)) await readPage(k, { ask: false });
+    const p = S.doc.pages[k], r = S.reads[k];
+    if (p) { if (p.kind === 'music' || p.kind === 'title') return p.part; continue; }
+    if (!r) return null;
+    // a new part, maybe unnamed (a music page's part, Claude can't tell violin I from II, goes on)
+    if (r.kind === 'title') return r.part !== 'none' ? r.part : null;
+  }
+  return null;
+}
+
 // a new page's clef at the top: the one in force at the end of the part's
 // previous page (its clef marks included), else the part's usual clef
 function clefFor(n, part) {
@@ -962,10 +979,10 @@ async function autoLabel(n, token) {
   try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
   catch (e) { banner(`Detection failed on page ${n}: ${e.message}`); }
   const read = await reading;
+  const carried = await carriedPart(n);
   if (token !== S.loadToken || S.doc.pages[n]) return;
   const music = systems.reduce((k, d) => k + d.barlines.length, 0) >= 2;
-  const prev = previousPage(n, (p) => p.kind === 'music' || p.kind === 'title');
-  const { kind, part } = firstGuess(read, music, look, prev ? prev.part : null);
+  const { kind, part } = firstGuess(read, music, look, carried);
   const page = {
     status: 'auto', kind, part,
     clef: part && kind === 'music' ? clefFor(n, part) : null,  // a title page has no clef
