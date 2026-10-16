@@ -9,11 +9,16 @@ work) and the server (how long detection and Claude's reads took).
     uv run activity.py [--edition boccherini-opus-48] [--since 2026-10-16T00:00]
         [--until ...] [--source RES-507-17] [--pages] [--json]
 
+The labeler's Time panel (static/activity.js, GET /api/activity) shows the
+same for the source in view; while it is open the page logs "pause", and
+none of that time counts.
+
 Active time, by the Op. 48 edition's rule (its scripts/activity.py): the
 person's events in stretches, a gap of more than ten minutes ending one.
 Time from an event to the next is the page's the first was on; time after
-the page lost focus isn't counted. A stretch with a single event counts a
-minute.
+the page lost focus, or while the Time panel was open, isn't counted. A stretch with a single event counts a
+minute. A page's time is its first pass until it is first marked reviewed,
+its review after.
 """
 
 import argparse
@@ -26,7 +31,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 GAP = 10 * 60
-AWAY = {"blur"}  # the time after this isn't labelling: the tab left
+AWAY = {"blur", "pause"}  # the time after these isn't labelling: the tab left, or the Time panel open
 
 
 def read(edition_dirs: list[Path], since=None, until=None, source=None) -> list[dict]:
@@ -67,7 +72,7 @@ def segments(events: list[dict], gap: float = GAP) -> list[tuple]:
     """[(start, end, (edition, file, where))]: the person's time, piece by
     piece, each on the page it was spent on. Within a stretch, an event's
     own span and the time to the next event are its page's (not after a
-    blur); a moment already counted (a heartbeat running on
+    blur or a pause); a moment already counted (a heartbeat running on
     over the keys and edits inside it) isn't counted again; a stretch
     shorter than a minute is made up to one at its end."""
     out = []
@@ -144,6 +149,69 @@ def tallies(events: list[dict]) -> dict:
     return {"edits": dict(edits), "corrections": dict(corrections), "undone": dict(undone),
             "machine": dict(machine), "commands": dict(commands), "keys": dict(keys), "waits": dict(waits),
             "background": dict(background)}
+
+
+def source_report(events: list[dict], doc: dict, gap: float = GAP) -> dict:
+    """One source's time, for the Time page: the total, each day, each page
+    (first pass and review, edits, corrections, bars, status), the tallies,
+    and the timeline (each stretch's pieces by page, its edits and waits)."""
+    segs = segments(events, gap)
+    reviewed_at: dict = {}  # the first marking as reviewed that wasn't undone
+    for e in events:
+        where = e.get("where", "")
+        if e.get("kind") in ("edit", "redo") and "status reviewed" in whats(e):
+            reviewed_at.setdefault(where, e["t"])
+        elif e.get("kind") == "undo" and any(w.startswith("status ") for w in whats(e)):
+            reviewed_at.pop(where, None)
+    bars = bars_per_page(doc)
+    pages: dict = defaultdict(lambda: {"seconds": 0.0, "first_pass": 0.0, "review": 0.0, "edits": 0,
+                                       "corrections": 0, "opened": 0})
+    days: dict = defaultdict(float)
+    for a, b, (_, _, where) in segs:
+        p = pages[where]
+        p["seconds"] += b - a
+        r = reviewed_at.get(where)
+        p["review" if r is not None and a >= r else "first_pass"] += b - a
+        days[datetime.fromtimestamp(a).date().isoformat()] += b - a
+    for e in events:
+        if e.get("src") != "labeler":
+            continue
+        p = pages[e.get("where", "")]
+        if e.get("kind") == "edit":
+            ws = whats(e)
+            p["edits"] += e.get("n", 1)
+            p["corrections"] += e.get("n", 1) * sum(w.endswith("(detected)") for w in ws)
+        elif e.get("kind") == "open":
+            p["opened"] += 1
+    for where, p in pages.items():
+        n = where[1:]
+        lp = doc.get("pages", {}).get(n, {})
+        p.update({"page": int(n) if n.isdigit() else None, "bars": bars.get(where, 0),
+                  "status": lp.get("status"), "kind": lp.get("kind"), "part": lp.get("part"),
+                  "reviewed_at": reviewed_at.get(where)})
+        for k in ("seconds", "first_pass", "review"):
+            p[k] = round(p[k], 1)
+    timeline = []
+    for run in stretches(events, gap):
+        lo, hi = run[0]["t"], max(e["t_end"] for e in run)
+        pieces = [[round(a, 1), round(b, 1), w] for a, b, (_, _, w) in segs if lo <= a <= hi + 60]
+        # the server's work started in the session or just after it (a Re-detect, then the wait)
+        waits = [[round(e["t"], 1), round(e["t_end"], 1), e["kind"], e.get("where", "")]
+                 for e in events if e.get("src") == "labeler-server" and not e["kind"].endswith("-ahead")
+                 and lo <= e["t"] <= hi + 60]
+        hi = max([hi] + [b for _, b, _ in pieces] + [b for _, b, _, _ in waits])
+        marks = [[round(e["t"], 1), e["kind"], e.get("where", ""), e.get("what", ""), e.get("n", 1)]
+                 for e in events if lo <= e["t"] <= hi and e.get("kind") in ("edit", "open")]
+        timeline.append({"start": round(lo, 1), "end": round(hi, 1), "pieces": pieces, "marks": marks,
+                         "waits": waits})
+    music = [k for k, p in doc.get("pages", {}).items() if p.get("kind") == "music"]
+    total = sum(b - a for a, b, _ in segs)
+    return {"seconds": round(total, 1), "stretches": len(timeline), "days": {d: round(s, 1) for d, s in days.items()},
+            "bars": sum(bars.values()), "pages_total": len(doc.get("pages", {})), "music_pages": len(music),
+            "reviewed": sum(p.get("status") == "reviewed" for p in doc.get("pages", {}).values()),
+            "first_logged": round(events[0]["t"], 1) if events else None,
+            "pages": sorted(pages.values(), key=lambda p: (p["page"] is None, p["page"] or 0)),
+            "timeline": timeline, **tallies(events)}
 
 
 def minutes(s: float) -> str:

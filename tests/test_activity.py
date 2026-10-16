@@ -1,6 +1,6 @@
 """The activity log (SPEC.md, Activity): the page's edit descriptions
 (static/app.js describeEdit, under node; skipped without it), the server's
-log, and activity.py's active time."""
+log, and activity.py's active time and the Time panel's report."""
 
 import json
 import re
@@ -117,3 +117,37 @@ def test_report(tmp_path, monkeypatch):
     assert r["edits"] == {"bar line added": 3} and r["corrections"] == {"bar line removed (detected)": 3}
     assert r["waits"] == {"detect": [1, 4.0]} and r["keys"] == {"d": 1}
 
+
+def test_source_report():
+    """The Time panel: time while it is open (pause to resume) doesn't
+    count; a page's time splits at its first marking as reviewed."""
+    doc = {"pages": {"1": page([bl(1, 0.3), bl(2, 0.5)]), "2": {**page([bl(1, 0.4)]), "status": "reviewed"}}}
+    evs = [ev(0, kind="open"), ev(60, kind="edit", what="bar line moved (detected)"),
+           ev(120, kind="edit", what="status reviewed"), ev(150, kind="open", where="p2"),
+           ev(200, kind="pause", where="p2"), ev(500, kind="resume", where="p2"), ev(560, where="p2"),
+           ev(565, kind="detect", src="labeler-server", where="p2", t_end=569, seconds=4)]
+    r = activity.source_report(evs, doc)
+    p1, p2 = r["pages"]
+    assert (p1["page"], p1["first_pass"], p1["review"], p1["corrections"], p1["edits"]) == (1, 120, 30, 1, 2)
+    assert (p2["page"], p2["seconds"]) == (2, 50 + 60 + 0)  # 150-200, then 500-560; the panel's 300 s left out
+    assert r["seconds"] == 150 + 110 and r["reviewed"] == 1 and r["bars"] == 3
+    (run,) = r["timeline"]
+    assert [w for _, _, w in run["pieces"]] == ["p1", "p1", "p1", "p2", "p2"]
+    assert run["waits"] == [[565, 569, "detect", "p2"]]
+    assert activity.source_report([], doc)["timeline"] == []
+
+
+def test_undo_and_background():
+    """An undone marking as reviewed doesn't split the page's time; Claude's
+    read of the next page isn't a wait; undo and machine changes are tallied
+    apart from the editor's edits."""
+    evs = [ev(0, kind="open"), ev(60, kind="edit", what="status reviewed"), ev(70, kind="undo", what="status edited"),
+           ev(100, kind="auto", what="bar line added", by="detection"), ev(200),
+           ev(150, kind="read-ahead", src="labeler-server", t_end=160, seconds=10),
+           ev(170, kind="read", src="labeler-server", t_end=175, seconds=5)]
+    r = activity.source_report(sorted(evs, key=lambda e: e["t"]), {"pages": {"1": page([bl(1, 0.3)])}})
+    (p1,) = r["pages"]
+    assert p1["reviewed_at"] is None and p1["review"] == 0 and p1["edits"] == 1
+    assert r["undone"] == {"undo: status edited": 1} and r["machine"] == {"detection: bar line added": 1}
+    assert r["waits"] == {"read": [1, 5.0]} and r["background"] == {"read-ahead": [1, 10.0]}
+    assert [w[2] for w in r["timeline"][0]["waits"]] == ["read"]

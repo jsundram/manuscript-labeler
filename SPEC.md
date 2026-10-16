@@ -318,11 +318,20 @@ rules reads both. Label files never carry it.
 - **The server** (`src: "labeler-server"`) logs how long each detection and
   each Claude read took (`seconds`): time the editor waits.
 - **`activity.py`** reports active time by the edition's rule: a gap of
-  more than ten minutes ends a stretch, and time after a `blur` isn't
-  counted. Time is given to the page it was spent on. It reports the total,
+  more than ten minutes ends a stretch, and time after a `blur` or a
+  `pause` isn't counted. Time is given to the page it was spent on. It reports the total,
   each day, each source (with minutes per 100 bars), each page (`--pages`),
   the edits and the corrections of detection by kind, the waits, and the
   commands and keys used most.
+- **The Time panel** (the toolbar's Time button, `static/activity.js`,
+  `GET /api/activity`) shows the source in view: active time, sessions,
+  days, pages reviewed, minutes per 100 bars, first pass against review; a
+  timeline per day (pieces coloured by page, edits and corrections ticked,
+  waits on the server); time per page split at its first marking as
+  reviewed, with its bars, edits and corrections; and the tallies. While it
+  is open the page logs `pause` (then `resume`), nothing in between counts,
+  and its keys don't reach the labeler. The heartbeat also stops while the
+  labeler's window doesn't have focus.
 - **Before 2026-10-16** nothing was logged. The backups (at most one a
   minute, the newest 100 kept) give only lower bounds.
 

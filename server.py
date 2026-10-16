@@ -325,6 +325,13 @@ class Edition:
                     f.write("\n".join(lines) + "\n")
         return sum(map(len, months.values()))
 
+    def activity_report(self, rel: str) -> dict:
+        """The source's time from the log (activity.source_report)."""
+        import activity
+        d = self.data / self.root.name
+        events = [e for e in activity.read([d], source=rel) if e.get("file") == rel]
+        return activity.source_report(events, self.load(rel)["labels"])
+
     def timed(self, kind: str, pdf: str, page: int, fn, **extra):
         """fn(), with how long it took logged as a server event."""
         t0 = time.time()
@@ -727,6 +734,8 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/read":
                 return self.send_json(ed.read_page(q["pdf"], int(q["page"]), ask=q.get("ask") != "0",
                                                    ahead=q.get("ahead") == "1"))
+            if path == "/api/activity":  # the Time panel: this source's time
+                return self.send_json(ed.activity_report(q["pdf"]))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")

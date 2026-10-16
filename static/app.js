@@ -683,12 +683,12 @@ function logEdit(before, after, kind = 'edit', extra = {}) {
 // turns it into time per source, page and bar. Repeats of one event within a
 // few seconds (a drag, held arrow keys) are one entry with a count and an end.
 
-const ACT = { queue: [], last: {}, beat: 0 };
+const ACT = { queue: [], last: {}, beat: 0, paused: false };
 const ACT_MERGE = { active: 90 };  // seconds within which a repeat extends the last entry of its kind; default 5
 const actWindow = (kind) => ACT_MERGE[kind] ?? 5;
 
 function logActivity(kind, what = '', extra = {}) {
-  if (!S.pdf) return;
+  if (!S.pdf || (ACT.paused && kind !== 'pause')) return;  // the Time panel is open: nothing counts
   const t = Math.round(Date.now()) / 1000, where = S.page ? `p${S.page}` : '';
   const l = ACT.last[kind];
   if (l && l.what === what && l.where === where && l.file === S.pdf && t - l.t_end <= actWindow(kind)) {
@@ -701,10 +701,10 @@ function logActivity(kind, what = '', extra = {}) {
   ACT.last[kind] = e;
 }
 
-function flushActivity(beacon = false) {
-  // an entry is sent once it can't grow (or the page is going away)
+function flushActivity(beacon = false, all = false) {
+  // an entry is sent once it can't grow (or the page is going away, or the Time panel wants it all)
   const now = Date.now() / 1000;
-  const send = ACT.queue.filter((e) => beacon || now - e.t_end > actWindow(e.kind));
+  const send = ACT.queue.filter((e) => beacon || all || now - e.t_end > actWindow(e.kind));
   if (!send.length) return Promise.resolve();
   ACT.queue = ACT.queue.filter((e) => !send.includes(e));
   for (const e of send) if (ACT.last[e.kind] === e) delete ACT.last[e.kind];
@@ -729,7 +729,7 @@ window.addEventListener('blur', () => { ACT.last = {}; logActivity('blur'); });
 
 // a heartbeat while the person works: at most every 20 s, merged into one entry while it continues
 function beat() {
-  if (!document.hasFocus()) return;  // a pointer over this window while another has focus isn't work
+  if (ACT.paused || !document.hasFocus()) return;  // a pointer over this window while another has focus isn't work
   const t = Date.now() / 1000;
   if (t - ACT.beat < 20) return;
   ACT.beat = t;
@@ -746,6 +746,31 @@ document.addEventListener('click', (e) => {
 }, true);
 document.addEventListener('change', (e) => {
   if (e.target.tagName === 'SELECT') logActivity('command', `${e.target.id || 'select'}=${e.target.value}`.slice(0, 60));
+}, true);
+
+// The Time panel (static/activity.js): while it is open the log says
+// "pause" and nothing else (activity.py counts none of that time), and its
+// keys go no further than the panel.
+async function openTimePanel() {
+  if (!S.pdf || ACT.paused) return;
+  ACT.last = {};
+  logActivity('pause');
+  ACT.paused = true;
+  await flushActivity(false, true);
+  showTimePanel(S.pdf);
+}
+
+function closeTimePanel() {
+  if (!ACT.paused) return;
+  hideTimePanel();
+  ACT.paused = false;
+  logActivity('resume');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (!ACT.paused) return;
+  e.stopImmediatePropagation();
+  if (e.key === 'Escape') { e.preventDefault(); closeTimePanel(); }
 }, true);
 
 // keys, outside text fields (the edits they make are logged as edits too)
@@ -2734,6 +2759,7 @@ $('#review').onclick = () => {
   else markReviewedAndNext();
 };
 $('#helpbtn').onclick = () => { $('#help').hidden = !$('#help').hidden; };
+$('#timebtn').onclick = () => openTimePanel();
 $('#detailclose').onclick = () => { S.detail = false; savePref('detail', false); renderDetail(); };
 
 $('#pagestatus').onclick = () => {
