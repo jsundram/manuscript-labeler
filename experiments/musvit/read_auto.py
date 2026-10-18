@@ -56,6 +56,7 @@ def main():
     ap.add_argument("sources", nargs="+")
     ap.add_argument("--run", required=True)
     ap.add_argument("--file", default="reader.pt")
+    ap.add_argument("--again", action="store_true", help="re-check sources already read (new detections)")
     a = ap.parse_args()
     name = f"musvit-{a.run}" + ("" if a.file == "reader.pt" else f"-{Path(a.file).stem}")
     import modal
@@ -64,6 +65,9 @@ def main():
     with modal.enable_output(), app.run():
         for src in a.sources:
             cache_file = ZEUS / "answers" / f"{src}-auto-{name}.json"
+            if cache_file.exists() and not a.again:  # written only once a source is read whole
+                print(f"{src}: already read -> {cache_file.name}", flush=True)
+                continue
             cache = json.loads(cache_file.read_text()) if cache_file.exists() else {}
             todo = {k: v for k, v in crops(src).items() if k not in cache}
             if todo:
