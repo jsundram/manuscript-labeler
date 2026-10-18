@@ -1,0 +1,190 @@
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792222685.652, "t_end": 1792222685.652, "what": "reviewed", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792222690.4, "t_end": 1792222690.4, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792222686.068, "t_end": 1792222686.068, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792222944.961, "t_end": 1792222944.961, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "command", "src": "labeler", "t": 1792222955.115, "t_end": 1792222955.115, "what": "source=sources/G229/F-Po_RES-507-16.pdf", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792222955.149, "t_end": 1792222955.149, "what": "edited", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "detect", "seconds": 0.3, "src": "labeler-server", "t": 1792222968.865, "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792222968.857, "t_end": 1792222968.857, "what": "redetect", "where": "p1"}
+{"by": "detection", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792222969.168, "t_end": 1792222969.168, "what": "corners moved (detected), staff added", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792222983.189, "t_end": 1792222983.189, "what": "mark added", "where": "p1"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792222985.005, "t_end": 1792222985.005, "what": "mark moved", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 614, "src": "labeler", "t": 1792222977.632, "t_end": 1792222992.455, "what": "m", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792222992.372, "t_end": 1792222992.372, "what": "mark added", "where": "p1"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792222994.292, "t_end": 1792222994.292, "what": "mark text", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792222994.567, "t_end": 1792222994.567, "what": "Backspace", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792222994.568, "t_end": 1792222994.568, "what": "staff removed (detected)", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223000.254, "t_end": 1792223000.254, "what": "mark added", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 241, "src": "labeler", "t": 1792222995.642, "t_end": 1792223000.288, "what": "m", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 343, "src": "labeler", "t": 1792223007.958, "t_end": 1792223013.838, "what": "m", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223013.805, "t_end": 1792223013.805, "what": "mark added", "where": "p1"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223016.043, "t_end": 1792223016.043, "what": "mark text", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792222945.374, "t_end": 1792222945.374, "what": "", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 380, "src": "labeler", "t": 1792223022.149, "t_end": 1792223030.838, "what": "m", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 2, "src": "labeler", "t": 1792223026.572, "t_end": 1792223030.772, "what": "mark added", "where": "p1"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "n": 2, "src": "labeler", "t": 1792223029.062, "t_end": 1792223032.118, "what": "mark text", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223035.525, "t_end": 1792223035.525, "what": "reviewed", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "blur", "src": "labeler", "t": 1792223059.66, "t_end": 1792223059.66, "what": "", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "focus", "src": "labeler", "t": 1792223063.569, "t_end": 1792223063.569, "what": "", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 114, "src": "labeler", "t": 1792223083.362, "t_end": 1792223085.405, "what": "h", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223098.008, "t_end": 1792223098.008, "what": "auto", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223108.298, "t_end": 1792223108.298, "what": "reviewed", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 4, "src": "labeler", "t": 1792222965.542, "t_end": 1792223025.555, "what": "", "where": "p1"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223111.791, "t_end": 1792223111.791, "what": "auto", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223118.873, "t_end": 1792223118.873, "what": "0", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223118.874, "t_end": 1792223118.874, "what": "bar count (detected), status edited", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 273, "src": "labeler", "t": 1792223123.978, "t_end": 1792223128.763, "what": "m", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223128.672, "t_end": 1792223128.672, "what": "mark added", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "src": "labeler", "t": 1792223045.627, "t_end": 1792223045.627, "what": "", "where": "p2"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223130.453, "t_end": 1792223130.453, "what": "mark text", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223132.589, "t_end": 1792223132.589, "what": "mark moved", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 169, "src": "labeler", "t": 1792223138.855, "t_end": 1792223141.84, "what": "m", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223141.74, "t_end": 1792223141.74, "what": "mark added", "where": "p3"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223144.503, "t_end": 1792223144.503, "what": "mark text", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223156.405, "t_end": 1792223156.405, "what": "staff start (detected)", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223160.389, "t_end": 1792223160.389, "what": "staff bend, staff moved, staff start", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223166.673, "t_end": 1792223166.673, "what": "staff start", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 2, "src": "labeler", "t": 1792223065.63, "t_end": 1792223086.311, "what": "", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223170.568, "t_end": 1792223170.568, "what": "5", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223170.569, "t_end": 1792223170.569, "what": "bar line kind (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223180.778, "t_end": 1792223180.778, "what": "0", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223180.779, "t_end": 1792223180.779, "what": "bar count (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223189.68, "t_end": 1792223189.68, "what": "4", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223189.681, "t_end": 1792223189.681, "what": "bar line kind (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223202.853, "t_end": 1792223202.853, "what": "select=-3", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223202.854, "t_end": 1792223202.854, "what": "signature (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223205.037, "t_end": 1792223205.037, "what": "select=3/4", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223205.037, "t_end": 1792223205.037, "what": "signature", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 26, "src": "labeler", "t": 1792223224.873, "t_end": 1792223225.472, "what": "h", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223230.644, "t_end": 1792223230.644, "what": "staff bar_count", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223237.094, "t_end": 1792223237.094, "what": "bar count (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223238.832, "t_end": 1792223238.832, "what": "bar count", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223247.632, "t_end": 1792223247.632, "what": "5", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223247.632, "t_end": 1792223247.632, "what": "bar line kind (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 180, "src": "labeler", "t": 1792223249.832, "t_end": 1792223253.589, "what": "h", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223258.671, "t_end": 1792223258.671, "what": "bar count (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "detect", "seconds": 0.84, "src": "labeler-server", "t": 1792223288.614, "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 2, "src": "labeler", "t": 1792223275.531, "t_end": 1792223280.52, "what": "bar count", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223288.606, "t_end": 1792223288.606, "what": "redetect", "where": "p3"}
+{"by": "detection", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223289.462, "t_end": 1792223289.462, "what": "bar line added, bar line moved (detected), bar line removed (detected), corners moved (detected), staff bend (detected), staff crop (detected), staff moved (detected), staff start (detected)", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223304.94, "t_end": 1792223304.94, "what": "bar line moved (detected)", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223312.99, "t_end": 1792223312.99, "what": "staff moved (detected), staff start (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223325.829, "t_end": 1792223325.829, "what": "4", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223325.829, "t_end": 1792223325.829, "what": "bar line kind (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223327.929, "t_end": 1792223327.929, "what": ".", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223327.93, "t_end": 1792223327.93, "what": "movement end", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223332.955, "t_end": 1792223332.955, "what": "End at last bar line", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223332.956, "t_end": 1792223332.956, "what": "staff bend, staff moved, staff start", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223337.199, "t_end": 1792223337.199, "what": "Backspace", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223337.2, "t_end": 1792223337.2, "what": "bar line removed (detected), staff rejected", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223343.939, "t_end": 1792223343.939, "what": "mark added", "where": "p3"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223346.041, "t_end": 1792223346.041, "what": "mark text", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 335, "src": "labeler", "t": 1792223340.599, "t_end": 1792223351.038, "what": "m", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223350.858, "t_end": 1792223350.858, "what": "mark added", "where": "p3"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223352.975, "t_end": 1792223352.975, "what": "mark text", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 56, "src": "labeler", "t": 1792223366.24, "t_end": 1792223368.772, "what": "h", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 2, "src": "labeler", "t": 1792223379.677, "t_end": 1792223382.727, "what": "0", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 2, "src": "labeler", "t": 1792223379.678, "t_end": 1792223382.728, "what": "bar count (detected)", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 32, "src": "labeler", "t": 1792223403.497, "t_end": 1792223404.173, "what": "h", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 98, "src": "labeler", "t": 1792223411.481, "t_end": 1792223413.255, "what": "h", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223420.906, "t_end": 1792223420.906, "what": "Backspace", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223420.907, "t_end": 1792223420.907, "what": "bar line removed, staff rejected", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "blank", "src": "labeler", "t": 1792223431.717, "t_end": 1792223431.717, "what": "edited", "where": "p4"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223433.547, "t_end": 1792223433.547, "what": "edited", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223436.59, "t_end": 1792223436.59, "what": "f-corners", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223440.956, "t_end": 1792223440.956, "what": "corners moved (detected)", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223447.741, "t_end": 1792223447.741, "what": "corners moved", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792223450.391, "t_end": 1792223450.391, "what": "edited", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223452.64, "t_end": 1792223452.64, "what": "edited", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792223454.474, "t_end": 1792223454.474, "what": "edited", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 215, "src": "labeler", "t": 1792223457.224, "t_end": 1792223460.939, "what": "m", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223460.806, "t_end": 1792223460.806, "what": "mark added", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223471.91, "t_end": 1792223471.91, "what": "mark text", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 457, "src": "labeler", "t": 1792223474.357, "t_end": 1792223484.856, "what": "m", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 3, "src": "labeler", "t": 1792223476.99, "t_end": 1792223484.825, "what": "mark added", "where": "p5"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "n": 3, "src": "labeler", "t": 1792223479.521, "t_end": 1792223487.047, "what": "mark text", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "detect", "seconds": 0.95, "src": "labeler-server", "t": 1792223502.136, "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223490.66, "t_end": 1792223490.66, "what": "auto", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223497.082, "t_end": 1792223497.082, "what": "Backspace", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223497.082, "t_end": 1792223497.082, "what": "staff removed (detected), status edited", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223499.498, "t_end": 1792223499.498, "what": "f-corners", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223502.13, "t_end": 1792223502.13, "what": "redetect", "where": "p6"}
+{"by": "detection", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223503.097, "t_end": 1792223503.097, "what": "bar line moved (detected), corners moved (detected), staff bend (detected), staff crop (detected), staff moved (detected), staff start (detected)", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223510.373, "t_end": 1792223510.373, "what": "corners moved (detected)", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223516.146, "t_end": 1792223516.146, "what": "corners moved", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 133, "src": "labeler", "t": 1792223522.468, "t_end": 1792223524.85, "what": "m", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223524.756, "t_end": 1792223524.756, "what": "mark added", "where": "p6"}
+{"by": "reading", "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "auto", "src": "labeler", "t": 1792223527.206, "t_end": 1792223527.206, "what": "mark text", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223529.591, "t_end": 1792223529.591, "what": "select=tempo", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223529.592, "t_end": 1792223529.592, "what": "mark kind", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 18, "src": "labeler", "t": 1792223106.342, "t_end": 1792223449.523, "what": "", "where": "p3"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223535.007, "t_end": 1792223535.007, "what": "staff start (detected)", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223540.556, "t_end": 1792223540.556, "what": "staff start (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223550.957, "t_end": 1792223550.957, "what": "0", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223550.958, "t_end": 1792223550.958, "what": "bar count (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223558.24, "t_end": 1792223558.24, "what": "Snap to the ink (a)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223558.318, "t_end": 1792223558.318, "what": "bar line moved (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223562.434, "t_end": 1792223562.434, "what": "5", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223562.435, "t_end": 1792223562.435, "what": "bar line kind (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 2, "src": "labeler", "t": 1792223469.979, "t_end": 1792223489.989, "what": "", "where": "p5"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 244, "src": "labeler", "t": 1792223587.44, "t_end": 1792223591.639, "what": "b", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223590.908, "t_end": 1792223590.908, "what": "bar line added", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223593.962, "t_end": 1792223593.962, "what": "3", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 2, "src": "labeler", "t": 1792223593.963, "t_end": 1792223594.706, "what": "bar line kind", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223594.706, "t_end": 1792223594.706, "what": "4", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223602.421, "t_end": 1792223602.421, "what": "0", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223602.421, "t_end": 1792223602.421, "what": "bar count (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223620.836, "t_end": 1792223620.836, "what": "Tab", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 336, "src": "labeler", "t": 1792223628.056, "t_end": 1792223633.789, "what": "b", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223633.424, "t_end": 1792223633.424, "what": "bar line added", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223642.207, "t_end": 1792223642.207, "what": "staff start (detected)", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223647.407, "t_end": 1792223647.407, "what": "staff start (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 36, "src": "labeler", "t": 1792223655.4, "t_end": 1792223657.981, "what": "ArrowRight", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 41, "src": "labeler", "t": 1792223655.4, "t_end": 1792223659.98, "what": "staff moved, staff start", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 2, "src": "labeler", "t": 1792223658.611, "t_end": 1792223658.78, "what": "shift+ArrowRight", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 2, "src": "labeler", "t": 1792223659.221, "t_end": 1792223659.467, "what": "shift+ArrowLeft", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223659.98, "t_end": 1792223659.98, "what": "ArrowLeft", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223663.023, "t_end": 1792223663.023, "what": "staff start", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223674.189, "t_end": 1792223674.189, "what": "End at last bar line", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223674.189, "t_end": 1792223674.189, "what": "staff bend, staff moved, staff start", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223698.759, "t_end": 1792223698.759, "what": "reviewed", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 413, "src": "labeler", "t": 1792223708.779, "t_end": 1792223718.607, "what": "h", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 9, "src": "labeler", "t": 1792223510.777, "t_end": 1792223688.09, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223777.935, "t_end": 1792223777.935, "what": "edited", "where": "p3"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223787.86, "t_end": 1792223787.86, "what": "reviewed", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "n": 2, "src": "labeler", "t": 1792223793.677, "t_end": 1792223794.726, "what": "Snap to the ink (a)", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 2, "src": "labeler", "t": 1792223793.738, "t_end": 1792223794.734, "what": "bar line moved", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "n": 5, "src": "labeler", "t": 1792223803.547, "t_end": 1792223804.252, "what": "ArrowLeft", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "n": 5, "src": "labeler", "t": 1792223803.548, "t_end": 1792223804.253, "what": "bar line moved", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223837.85, "t_end": 1792223837.85, "what": "0", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223837.851, "t_end": 1792223837.851, "what": "bar count (detected)", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792223845.606, "t_end": 1792223845.606, "what": "edited", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 4, "src": "labeler", "t": 1792223708.779, "t_end": 1792223768.79, "what": "", "where": "p2"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223915.522, "t_end": 1792223915.522, "what": "0", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223915.523, "t_end": 1792223915.523, "what": "bar count (detected)", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 3, "src": "labeler", "t": 1792223790.458, "t_end": 1792223837.85, "what": "", "where": "p7"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "key", "src": "labeler", "t": 1792223955.946, "t_end": 1792223955.946, "what": "Backspace", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223955.947, "t_end": 1792223955.947, "what": "bar line removed, staff rejected", "where": "p6"}
+{"by_drag": true, "file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "edit", "src": "labeler", "t": 1792223961.241, "t_end": 1792223961.241, "what": "staff bend, staff moved", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792223972.96, "t_end": 1792223972.96, "what": "helpbtn", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "blur", "src": "labeler", "t": 1792223993.924, "t_end": 1792223993.924, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "n": 5, "src": "labeler", "t": 1792223907.956, "t_end": 1792223993.046, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "focus", "src": "labeler", "t": 1792224072.774, "t_end": 1792224072.774, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "src": "labeler", "t": 1792224073.813, "t_end": 1792224073.813, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "blur", "src": "labeler", "t": 1792224080.57, "t_end": 1792224080.57, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "blur", "src": "labeler", "t": 1792224080.571, "t_end": 1792224080.571, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "focus", "n": 2, "src": "labeler", "t": 1792227017.546, "t_end": 1792227017.57, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "src": "labeler", "t": 1792227024.771, "t_end": 1792227024.771, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "command", "src": "labeler", "t": 1792227027.938, "t_end": 1792227027.938, "what": "timebtn", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "pause", "src": "labeler", "t": 1792227027.938, "t_end": 1792227027.938, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "resume", "src": "labeler", "t": 1792227058.132, "t_end": 1792227058.132, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "active", "src": "labeler", "t": 1792227058.427, "t_end": 1792227058.427, "what": "", "where": "p6"}
+{"file": "sources/G229/F-Po_RES-507-16.pdf", "kind": "blur", "src": "labeler", "t": 1792227060.906, "t_end": 1792227060.906, "what": "", "where": "p6"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792270086.225, "t_end": 1792270086.225, "what": "reviewed", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "active", "src": "labeler", "t": 1792270086.444, "t_end": 1792270086.444, "what": "", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "command", "src": "labeler", "t": 1792270089.107, "t_end": 1792270089.107, "what": "model cards", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "blur", "src": "labeler", "t": 1792270089.149, "t_end": 1792270089.149, "what": "", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "blur", "src": "labeler", "t": 1792270089.149, "t_end": 1792270089.149, "what": "", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792301972.26, "t_end": 1792301972.26, "what": "reviewed", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "active", "src": "labeler", "t": 1792301973.226, "t_end": 1792301973.226, "what": "", "where": "p19"}
+{"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "blur", "src": "labeler", "t": 1792301973.885, "t_end": 1792301973.885, "what": "", "where": "p19"}
