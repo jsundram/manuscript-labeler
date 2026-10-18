@@ -61,6 +61,8 @@ section { margin-block: 1.5rem; }
 .cap { font-family: var(--f-ui); font-size: .86rem; color: var(--ink-soft); line-height: 1.45; margin-top: .5rem; }
 .plate .cap { color: var(--plate-soft); }
 .strip-wrap { position: relative; }
+.ident { font-family: var(--f-body); font-size: .98rem; line-height: 1.4; margin: .15rem 0 .55rem; color: var(--plate-ink); }
+.ident i { color: var(--plate-soft); font-style: normal; font-family: var(--f-ui); font-size: .84rem; }
 .zoom { overflow: hidden; border: 1px solid var(--plate-rule); border-radius: 2px; }
 
 /* the page figure */
@@ -145,6 +147,21 @@ input[type=range] { width: min(28rem, 100%); accent-color: #2148b8; }
 .tabs button { font-family: var(--f-ui); font-size: .86rem; border: 1px solid var(--rule); background: transparent; color: var(--ink); padding: .35rem .7rem; border-radius: 3px; cursor: pointer; }
 .tabs button[aria-selected="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
 
+/* the whole movement */
+.mv-row { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 8px; align-items: center; margin-bottom: 6px; font-family: var(--f-ui); font-size: .82rem; }
+.mv-cells { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 2px; }
+.mv-cell { position: relative; aspect-ratio: 1 / 1.6; border-radius: 1px; cursor: pointer; border: 0; padding: 0; }
+.mv-cell.ok { background: #2f7d4f; } .mv-cell.no { background: #b3362b; } .mv-cell.na { background: #b7b4ab; }
+.mv-cell::after { content: ""; position: absolute; left: 50%; bottom: -5px; width: 3px; height: 3px; margin-left: -1.5px; border-radius: 50%; background: var(--zj, transparent); }
+.mv-cell.sel { outline: 2px solid #2148b8; outline-offset: 1px; }
+.mv-axis { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 8px; font-family: var(--f-ui); font-size: .72rem; color: var(--plate-soft); margin-top: 8px; }
+.mv-axis div { display: flex; justify-content: space-between; }
+.mv-detail { margin-top: 1rem; border-top: 1px solid var(--plate-rule); padding-top: .8rem; }
+.mv-detail img { display: block; width: 100%; height: auto; border: 1px solid var(--plate-rule); image-rendering: auto; }
+.mv-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: var(--f-ui); font-size: .8rem; color: var(--plate-soft); margin: .2rem 0 .8rem; }
+.mv-legend b { display: inline-block; width: 10px; height: 14px; border-radius: 1px; vertical-align: -2px; margin-right: 4px; }
+.mv-stats { font-family: var(--f-ui); font-size: .86rem; color: var(--plate-ink); margin-bottom: .6rem; }
+
 /* performance */
 .parts { display: grid; gap: 8px; font-family: var(--f-ui); font-size: .86rem; }
 .parts .r { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) 6.5rem; gap: 10px; align-items: center; }
@@ -177,14 +194,15 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
 </header>
 
 <div class="wide plate" id="hero">
-  <div class="label" id="hero-label">Viola, bars 27–29</div>
+  <div class="label" id="hero-label"></div>
+  <div class="ident" id="hero-ident"></div>
   <div class="strip-wrap"><canvas id="hero-strip" aria-label="The viola staff, with the reader's attention moving across it"></canvas></div>
   <div class="cap" id="hero-cap">The staff exactly as the reader sees it. The amber glow is where it is looking as it writes each symbol, here the symbol it was least sure of.</div>
 </div>
 
 <article class="col">
 <p>The reader is a neural network that turns a picture of one staff into text: a list of symbols that says which notes are written, how long they last, how they are beamed and slurred. It was built to check the encoding of Boccherini's Op. 48 quartets against the copyists' parts. On a movement it has never seen, it gets 78 percent of bars exactly right, against 65 percent for Zeus, the reader it replaces.</p>
-<p>To see how, we follow one staff from start to finish: the viola in bars 27 to 29 of the second quartet's first movement, from the copy in Berlin (D-B KHM 603). The viola crosses strings in 32nd notes, a low note and two higher ones over and over. It is the hardest writing in the movement, and Zeus read none of these three bars right.</p>
+<p>To see how, we follow one staff from start to finish: the viola in bars 27 to 29 of the first movement of Op. 48 No. 2, from the copyist's parts in Berlin (D-B KHM 603). The viola crosses strings in 32nd notes, a low note and two higher ones over and over. It is the hardest writing in the movement, and Zeus read none of these three bars right.</p>
 
 <h2>1. From the page to a strip</h2>
 <p>The reader never sees a whole page. The labeler already knows where each staff is, because an editor marked every bar line. From that box the staff is cut out with a margin: one staff space beyond each end, two and a half above and below, so notes on ledger lines are kept. Staves bend on old paper, so the cut follows the staff's curve and straightens it. The paper is brightened to white.</p>
@@ -215,14 +233,10 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
 <article class="col">
 <h2>3. The encoder: patches look at one another</h2>
 <p>A single patch knows little. A blob could be a note head or a smudge; a stroke could be a stem or a bar line. The encoder lets every patch gather information from the others. It does this twelve times over, in twelve layers. In each, every patch asks a question of every other patch, and takes in more from the ones whose answer matches. That weighing is called <em>attention</em>.</p>
-<p>Click a patch to see where it looks. In the first layer a patch casts its net wide: on average its attention lands 20 patches away, a third of the staff. By the sixth layer it looks close by, about seven patches away, roughly the width of one beamed group of four notes. By then a patch over a note head has heard from its stem, its beam and its neighbours.</p>
+<p>Click a patch to see where it looks, and step through all twelve layers. In the first layer a patch casts its net wide: on average its attention lands 20 patches away, a third of the staff. By the sixth layer it looks close by, about seven patches away, roughly the width of one beamed group of four notes. By then a patch over a note head has heard from its stem, its beam and its neighbours.</p>
 </article>
 
-<div class="wide plate">
-  <div class="controls"><span class="label">Encoder layer</span><span class="seg" id="enc-layers"></span>
-    <span class="cap" style="margin:0">Selected patch outlined in blue; its 48 strongest targets glow. Click another.</span></div>
-  <canvas id="enc" aria-label="Where the selected patch looks, in the chosen encoder layer"></canvas>
-</div>
+<div class="wide plate" id="enc-lead"></div>
 
 <article class="col">
 <details class="aside"><summary>How attention is computed</summary>
@@ -281,17 +295,24 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
 <p>On the movement this test comes from, as it stood right after it was encoded and before anyone corrected it, the reader flagged 116 bar-parts. Ninety-five of them really were wrong, and they covered 89 percent of the errors later found. Zeus flagged 126, with 96 wrong. The new reader is as thorough, with a third fewer false alarms.</p>
 
 <h2>8. Four more staves</h2>
-<p>The same view for four other staves of the movement: one easy, one where the new reader beats Zeus, and two of its typical failures. These keep two views of the decoder's attention: all eight layers averaged, and the last layer.</p>
+<p>The same views for four other staves of the same movement and manuscript: one easy, one where the new reader beats Zeus, and two of its typical failures. Each has every decoder layer and head, and the encoder's attention in layers 1, 6 and 12.</p>
 </article>
 
 <div class="wide">
   <div class="tabs" role="tablist" id="gal-tabs"></div>
 </div>
 <div class="wide plate" id="dec-gal"></div>
+<div class="wide plate" id="enc-gal"></div>
 <div class="wide plate" id="verdict-gal"></div>
 
 <article class="col">
-<h2>9. How well it reads Boccherini</h2>
+<h2>9. The whole movement</h2>
+<p>Every bar of all four parts, read the same way, one staff at a time. Each square is a bar: green if the reader got every note and rest right, red if not, grey where it could not be judged (a bar split across two staves, or a clef change inside it). The paler the square, the less sure the reader was of its least certain symbol in that bar. The dot underneath is Zeus J's verdict on the same bar. Click a bar to see its staff and what was read.</p>
+</article>
+<div class="wide plate" id="movement"></div>
+
+<article class="col">
+<h2>10. How well it reads Boccherini</h2>
 <p>All of these numbers come from movements and hands it was not trained on, unless they say otherwise.</p>
 </article>
 
@@ -328,7 +349,7 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
     </tbody>
   </table></div>
 
-  <h2>10. What comes next</h2>
+  <h2>11. What comes next</h2>
   <ul class="next">
     <li><b>Synthetic staves in our copyists' hands.</b> Render quartet parts from encodings in handwriting cut from the Berlin, Paris and Vma copies, so the reader can train on unlimited, exactly labelled staves aimed at its weak spot, new hands.</li>
     <li><b>A second held-out movement in a new hand</b>, so progress on new hands can be measured without the music flattering it.</li>
@@ -342,6 +363,8 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
     <p>Every number and map on this page comes from the model reading these staves. To make the same view for any bar:</p>
     <pre>uv run experiments/musvit/explain.py ~/Dropbox/Code/boccherini-opus-48 \
     --source D-B_KHM-603 --movement I --part va --bar 27 --out va-27.json
+uv run experiments/musvit/explain.py ~/Dropbox/Code/boccherini-opus-48 \
+    --source D-B_KHM-603 --movement I --summary --out movement.json
 python3 experiments/musvit/explainer.py manifest.json --out page.html</pre>
     <p>The reader is read on the Mac's GPU in half precision, one staff at a time. The maps average the attention heads and scale each map to its strongest patch; the encoder keeps each patch's 48 strongest targets. Verdicts are compare.py's, on this reading. The model card has the full results.</p>
   </footer>
@@ -375,6 +398,7 @@ function prepare(d) {
   d.crossLayers = d.cross.layers || Array.from({ length: L }, (_, i) => i + 1);
   if (d.heads) { const [, Hn, P2] = d.heads.shape; d.headsArr = u8(d.heads.data); d.headMap = (t, h) => d.headsArr.subarray((t * Hn + h) * P2, (t * Hn + h + 1) * P2); d.nHeads = Hn; }
   if (d.enc_attn) { d.encIdx = u16(d.enc_attn.idx); d.encVal = u8(d.enc_attn.val); }
+  if (d.self_layers) { const [, SL, S1] = d.self_layers.shape; d.selfArr = u8(d.self_layers.data); d.selfRow = (t, l) => d.selfArr.subarray((t * SL + l) * S1, (t * SL + l) * S1 + t + 1); }
   d.T = T; d.L = L; d.P = P;
   return d;
 }
@@ -463,7 +487,7 @@ function decoderPanel(host, d, img, { heads = true, start = 0 } = {}) {
   right.append(el("div", { class: "label", text: "Writes" }), nowTok, nowBar, el("div", { class: "label", text: "Its five likeliest choices", style: "margin-top:.6rem" }), top5);
   grid.append(left, right);
   const chips = el("div", { class: "chips", role: "list" });
-  const legend = el("div", { class: "legend", html: `<span><span class="chip k-measure">measure</span> bar line</span><span><span class="chip k-pitch">C4</span> pitch</span><span><span class="chip k-dur">32nd</span> duration</span><span><span class="chip k-beam">beam</span> beams</span><span><span class="chip k-acc">natural</span> accidental</span><span><span class="chip unsure">G3</span> less than 75% sure</span><span>Chip shading behind the current one: where the last layer looks back</span>` });
+  const legend = el("div", { class: "legend", html: `<span><span class="chip k-measure">measure</span> bar line</span><span><span class="chip k-pitch">C4</span> pitch</span><span><span class="chip k-dur">32nd</span> duration</span><span><span class="chip k-beam">beam</span> beams</span><span><span class="chip k-acc">natural</span> accidental</span><span><span class="chip unsure">G3</span> less than 75% sure</span><span>Amber under earlier symbols: where the chosen layer looks back (the last layer when "all")</span>` });
   host.append(label, overview, ctr, ctr2, grid, chips, legend);
   let headBox = null;
   if (heads && d.heads) {
@@ -481,7 +505,7 @@ function decoderPanel(host, d, img, { heads = true, start = 0 } = {}) {
     b.addEventListener("click", () => { layer = o; [...seg.children].forEach(x => x.setAttribute("aria-pressed", String(x === b))); render(); });
     seg.append(b);
   });
-  label.textContent = `${partName(d.meta.part)}, bars ${d.meta.bars[0]}–${d.meta.bars[d.meta.bars.length - 1]} · ${d.T} symbols · ${d.crop.rows} × ${d.crop.cols} patches`;
+  label.textContent = `${partName(d.meta.part)}, bars ${d.meta.bars[0]}–${d.meta.bars[d.meta.bars.length - 1]} · ${d.meta.short || d.meta.source}, page ${d.meta.page} · ${d.T} symbols · ${d.crop.rows} × ${d.crop.cols} patches`;
   function map() { return layer === "avg" ? meanLayers(d, t) : d.crossMap(t, layer); }
   function render() {
     const m = map();
@@ -495,11 +519,13 @@ function decoderPanel(host, d, img, { heads = true, start = 0 } = {}) {
     nowBar.textContent = `symbol ${t + 1} of ${d.T}${s.bar ? " · bar " + s.bar : ""}`;
     top5.innerHTML = "";
     s.top.forEach(([tk, p], i) => top5.append(el("div", { class: `row${i ? " alt" : ""}` }, el("span", { text: tk === "</s>" ? "end" : tk }), el("div", { class: "bar", style: `width:${Math.max(1, p * 100)}%` }), el("span", { class: "p", text: (p * 100).toFixed(p < 0.01 ? 2 : 0) + "%" }))));
-    const back = d.self[t] || [];
+    let back;
+    if (layer !== "avg" && d.selfRow && typeof d.crossLayers[layer] === "number") back = Array.from(d.selfRow(t, layer), v => v / 255);
+    else { const r = d.self[t] || []; const mx = Math.max(1e-9, ...r); back = r.map(v => v / mx); }
     chipEls.forEach((c, i) => {
       c.classList.toggle("now", i === t); c.classList.toggle("future", i > t);
-      const w = i < t ? (back[i + 1] || 0) : 0;   // position 0 is the start token
-      c.style.boxShadow = w > 0.02 ? `inset 0 -${Math.round(3 + w * 14)}px 0 rgba(${HEAT},${Math.min(0.75, 0.15 + w * 1.4)})` : "";
+      const w = i < t ? (back[i + 1] || 0) : 0;   // position 0 is the start token; weights relative to the strongest
+      c.style.boxShadow = w > 0.06 ? `inset 0 -${Math.round(3 + w * 12)}px 0 rgba(${HEAT},${Math.min(0.8, 0.1 + w * 0.7)})` : "";
     });
     const cur = chipEls[t]; if (cur && !reduced) { const pr = chips.getBoundingClientRect(), cr = cur.getBoundingClientRect(); if (cr.top < pr.top || cr.bottom > pr.bottom) chips.scrollTop += cr.top - pr.top - 40; }
     slider.value = t;
@@ -518,6 +544,69 @@ function decoderPanel(host, d, img, { heads = true, start = 0 } = {}) {
   new ResizeObserver(() => render()).observe(host);
   render();
   return { go };
+}
+
+function encoderPanel(host, d, img, q0) {
+  host.innerHTML = "";
+  if (!d.enc_attn) return;
+  const layers = d.enc_attn.layers, K = d.enc_attn.shape[2];
+  let q = q0, li = Math.max(0, layers.indexOf(6));
+  const seg = el("span", { class: "seg", role: "group", "aria-label": "encoder layer" });
+  const cv = el("canvas", { "aria-label": "where the selected patch looks, in the chosen encoder layer" });
+  host.append(el("div", { class: "controls" }, el("span", { class: "label", text: "Encoder layer" }), seg,
+    el("span", { class: "cap", style: "margin:0", text: `Selected patch outlined in blue; its ${K} strongest targets glow. Click another patch.` })), cv);
+  const heat = () => { const out = new Uint8Array(d.P); for (let k = 0; k < K; k++) { const o = (li * d.P + q) * K + k; out[d.encIdx[o]] = d.encVal[o]; } return out; };
+  const draw = () => drawStrip(cv, d, img, { heat: heat(), sel: q, gamma: 0.45 });
+  layers.forEach((L, i) => {
+    const bt = el("button", { type: "button", text: L, "aria-pressed": String(i === li) });
+    bt.addEventListener("click", () => { li = i; [...seg.children].forEach(x => x.setAttribute("aria-pressed", String(x === bt))); draw(); });
+    seg.append(bt);
+  });
+  cv.addEventListener("click", ev => { const rc = cv.getBoundingClientRect(); const x = (ev.clientX - rc.left) / rc.width * d.crop.w, y = (ev.clientY - rc.top) / rc.height * 128; q = Math.min(7, Math.floor(y / 16)) * d.crop.cols + Math.min(d.crop.cols - 1, Math.floor(x / 16)); draw(); });
+  new ResizeObserver(draw).observe(host);
+}
+
+function leastSure(d) { let i0 = 0; d.steps.forEach((s, i) => { if (s.top[0][1] < d.steps[i0].top[0][1]) i0 = i; }); return i0; }
+function hottest(d, t, l) { let q = 0, b = -1; d.crossMap(t, Math.min(l, d.L - 1)).forEach((v, p) => { if (v > b) { b = v; q = p; } }); return q; }
+
+function movementPanel(host, M) {
+  host.innerHTML = "";
+  const parts = Object.entries(M.parts);
+  let judged = 0, right = 0, zr = 0, zj = 0;
+  for (const [, staves] of parts) for (const s of staves) for (const b of s.bars) if (b.judged) { judged++; right += b.exact; if (b.zeus_j) { zj++; zr += b.zeus_j.exact; } }
+  host.append(el("div", { class: "label", text: `${M.meta.work || ""} · ${M.meta.short || M.meta.source}` }));
+  host.append(el("div", { class: "mv-stats", html: `musvit-D3, each staff read alone: <b>${right} of ${judged}</b> judged bars right (${Math.round(right / judged * 100)}%). Zeus J, on the same bars: ${zr} of ${zj}.` }));
+  host.append(el("div", { class: "mv-legend", html: `<span><b style="background:#2f7d4f"></b>right</span><span><b style="background:#b3362b"></b>wrong</span><span><b style="background:#b7b4ab"></b>not judged</span><span><b style="background:#2f7d4f;opacity:.4"></b>paler: less sure</span><span>dot below: Zeus J right (green) or wrong (red)</span>` }));
+  const detail = el("div", { class: "mv-detail" });
+  let selEl = null;
+  for (const [part, staves] of parts) {
+    const cells = el("div", { class: "mv-cells" });
+    const all = staves.flatMap(s => s.bars.map(b => ({ b, s })));
+    for (const { b, s } of all) {
+      const cls = !b.judged ? "na" : b.exact ? "ok" : "no";
+      const c = el("button", { type: "button", class: `mv-cell ${cls}`, title: `${partName(part)}, bar ${b.bar}${b.sure != null ? ` · least sure ${Math.round(b.sure * 100)}%` : ""}`, "aria-label": `${partName(part)} bar ${b.bar}, ${cls === "ok" ? "right" : cls === "no" ? "wrong" : "not judged"}` });
+      if (b.sure != null) c.style.opacity = String(0.3 + 0.7 * b.sure);
+      if (b.zeus_j) c.style.setProperty("--zj", b.zeus_j.exact ? "#2f7d4f" : "#b3362b");
+      c.addEventListener("click", () => { if (selEl) selEl.classList.remove("sel"); selEl = c; c.classList.add("sel"); showBar(part, b, s); });
+      cells.append(c);
+    }
+    host.append(el("div", { class: "mv-row" }, el("span", { text: partName(part) }), cells));
+    host.append(el("div", { class: "mv-axis" }, el("span"), el("div", {}, el("span", { text: `bar ${all[0].b.bar}` }), el("span", { text: `bar ${all[all.length - 1].b.bar}` }))));
+  }
+  host.append(detail);
+  function showBar(part, b, s) {
+    detail.innerHTML = "";
+    detail.append(el("div", { class: "label", text: `${partName(part)}, bar ${b.bar} · its staff (${s.sid}, page ${s.page}), as the reader sees it` }),
+      el("img", { src: "data:image/jpeg;base64," + s.thumb, alt: `the staff holding bar ${b.bar}` }));
+    const rows = [["the encoding", b.encoded || "", null], ["musvit-D3 read", b.judged ? diffEvents(b.encoded, b.read) : "(not judged)", true]];
+    if (b.zeus_j) rows.push(["Zeus J read", diffEvents(b.encoded, b.zeus_j.read), true]);
+    const tb = el("tbody");
+    rows.forEach(([k, v, html]) => tb.append(el("tr", {}, el("th", { text: k }), el("td", html ? { class: "ev", html: v } : { class: "ev", text: v }))));
+    detail.append(el("div", { class: "scroll-x" }, el("table", { class: "verdicts" }, tb)));
+    if (b.unsure && b.unsure.length) detail.append(el("p", { class: "cap", text: "Symbols it was less than 75% sure of: " + b.unsure.map(([tk, p, alt, pa]) => `${tk} ${Math.round(p * 100)}% (or ${alt} ${Math.round(pa * 100)}%)`).join("; ") }));
+    if (b.judged && !b.exact) detail.append(el("p", { class: "cap", text: "What differs: " + [...new Set(b.errors)].map(e => `${b.errors.filter(x => x === e).length} ${e}`).join(", ") }));
+  }
+  const first = host.querySelector(".mv-cell.no"); if (first) first.click();
 }
 
 function partName(p) { return { vn1: "First violin", vn2: "Second violin", va: "Viola", vc: "Cello" }[p] || p; }
@@ -576,15 +665,22 @@ function scorePanel(host, d) {
 
 async function main() {
   const ex = {};
-  for (const m of MANIFEST) ex[m.id] = { ...m, d: prepare(JSON.parse(document.getElementById("ex-" + m.id).textContent)) };
+  let movement = null;
+  for (const m of MANIFEST) {
+    const data = JSON.parse(document.getElementById("ex-" + m.id).textContent);
+    if (m.kind === "movement") movement = data; else ex[m.id] = { ...m, d: prepare(data) };
+  }
   const lead = Object.values(ex).find(e => e.lead);
   const d = lead.d;
   const img = await loadImg(d.crop.jpg);
   const hi = await loadImg(d.crop.hi);
   d._img = img;
 
-  // hero: the least sure symbol's attention, layer 5
-  let least = 0; d.steps.forEach((s, i) => { if (s.top[0][1] < d.steps[least].top[0][1]) least = i; });
+  // hero: what the staff is, and the least sure symbol's attention, layer 5
+  const least = leastSure(d);
+  $("#hero-label").textContent = `${partName(d.meta.part)} part, bars ${d.meta.bars[0]}–${d.meta.bars[d.meta.bars.length - 1]}`;
+  $("#hero-ident").innerHTML = "";
+  $("#hero-ident").append(document.createTextNode((d.meta.work || "") + ". "), el("i", { text: `${(d.meta.manuscript || d.meta.source).replace(/\.$/, "")}; page ${d.meta.page}.` }));
   const heroLayer = Math.min(4, d.L - 1);
   const drawHero = () => drawStrip($("#hero-strip"), d, img, { heat: d.crossMap(least, heroLayer) });
   new ResizeObserver(drawHero).observe($("#hero"));
@@ -619,19 +715,7 @@ async function main() {
   new ResizeObserver(drawGrid).observe(gridCv.parentElement);
   showTile(hover);
 
-  // encoder attention: default query, the patch the decoder looked at hardest for the least certain symbol
-  let q = 0, best = -1; const m5 = d.crossMap(least, heroLayer); m5.forEach((v, p) => { if (v > best) { best = v; q = p; } });
-  let encL = 1;
-  const encCv = $("#enc");
-  const encHeat = () => { const out = new Uint8Array(d.P); const K = d.enc_attn.shape[2]; for (let k = 0; k < K; k++) { const o = (encL * d.P + q) * K + k; out[d.encIdx[o]] = d.encVal[o]; } return out; };
-  const drawEnc = () => drawStrip(encCv, d, img, { heat: encHeat(), sel: q, gamma: 0.45 });
-  d.enc_attn.layers.forEach((L, i) => {
-    const bt = el("button", { type: "button", text: L, "aria-pressed": String(i === encL) });
-    bt.addEventListener("click", () => { encL = i; [...$("#enc-layers").children].forEach(x => x.setAttribute("aria-pressed", String(x === bt))); drawEnc(); });
-    $("#enc-layers").append(bt);
-  });
-  encCv.addEventListener("click", ev => { q = pick(encCv, ev); drawEnc(); });
-  new ResizeObserver(drawEnc).observe(encCv.parentElement);
+  encoderPanel($("#enc-lead"), d, img, hottest(d, least, heroLayer));
 
   decoderPanel($("#dec-lead"), d, img, { heads: true, start: least });
   verdictPanel($("#verdict-lead"), d);
@@ -643,12 +727,14 @@ async function main() {
   async function show(e) {
     [...tabs.children].forEach(x => x.setAttribute("aria-selected", String(x.dataset.id === e.id)));
     if (!e.d._img) e.d._img = await loadImg(e.d.crop.jpg);
-    decoderPanel($("#dec-gal"), e.d, e.d._img, { heads: false });
+    decoderPanel($("#dec-gal"), e.d, e.d._img, { heads: true });
+    encoderPanel($("#enc-gal"), e.d, e.d._img, hottest(e.d, leastSure(e.d), 4));
     verdictPanel($("#verdict-gal"), e.d);
     $("#dec-gal").prepend(el("p", { class: "cap", style: "margin:0 0 .6rem;font-size:.95rem;color:var(--plate-ink)", text: e.caption }));
   }
   gal.forEach(e => { const bt = el("button", { type: "button", role: "tab", "data-id": e.id, text: e.title }); bt.addEventListener("click", () => show(e)); tabs.append(bt); });
   if (gal.length) show(gal[0]);
+  if (movement) movementPanel($("#movement"), movement); else $("#movement").hidden = true;
 
   // bars right by part
   const parts = [["First violin", 88, 47, 66], ["Second violin", 84, 46, 56], ["Viola", 88, 53, 68], ["Cello", 87, 79, 80]];
