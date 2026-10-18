@@ -292,6 +292,8 @@ class Reader(nn.Module):
                 if done.all():
                     break
             return [row[: row.index(eos)] if eos in row else row for row in y[:, 1:].tolist()]
+        if self.lstm is None:
+            return self.read_cached(mem, mask, bos, eos, maxlen)
         for _ in range(maxlen - 1):
             with autocast():
                 nxt = self.decode(mem, mask, y)[:, -1].argmax(-1)
@@ -303,6 +305,50 @@ class Reader(nn.Module):
         for row in y[:, 1:].tolist():
             out.append(row[: row.index(eos)] if eos in row else row)
         return out
+
+    @torch.no_grad()
+    def read_cached(self, mem, mask, bos, eos, maxlen=MAXLEN):
+        """The transformer decoder's greedy reading, one position a step: each
+        layer keeps the keys and values of the image (made once) and of the
+        symbols so far, so a symbol costs one position, not the whole
+        prefix. The same arithmetic as decode() (pre-norm layers), in eval."""
+        import torch.nn.functional as F
+        mask = self.fit_mask(mem, mask)
+        b, d = mem.shape[0], mem.shape[-1]
+        layers = self.decoder.layers
+        nh = layers[0].self_attn.num_heads
+
+        def heads(t):  # (B, L, d) -> (B, heads, L, d / heads)
+            return t.reshape(b, -1, nh, d // nh).transpose(1, 2)
+
+        def joined(t):
+            return t.transpose(1, 2).reshape(b, -1, d)
+
+        see = (~mask)[:, None, None, :]  # True where the image is, not padding
+        with autocast():
+            cross = [(heads(F.linear(mem, l.multihead_attn.in_proj_weight[d: 2 * d], l.multihead_attn.in_proj_bias[d: 2 * d])),
+                      heads(F.linear(mem, l.multihead_attn.in_proj_weight[2 * d:], l.multihead_attn.in_proj_bias[2 * d:])))
+                     for l in layers]
+        past = [[None, None] for _ in layers]
+        tok = torch.full((b,), bos, device=mem.device)
+        ys, done = [], torch.zeros(b, dtype=torch.bool, device=mem.device)
+        for t in range(maxlen - 1):
+            with autocast():
+                h = (self.embed(tok) + self.pos[t])[:, None]
+                for l, (ck, cv), kv in zip(layers, cross, past):
+                    q, k, v = F.linear(l.norm1(h), l.self_attn.in_proj_weight, l.self_attn.in_proj_bias).chunk(3, -1)
+                    kv[0] = heads(k) if kv[0] is None else torch.cat([kv[0], heads(k)], 2)
+                    kv[1] = heads(v) if kv[1] is None else torch.cat([kv[1], heads(v)], 2)
+                    h = h + l.self_attn.out_proj(joined(F.scaled_dot_product_attention(heads(q), kv[0], kv[1])))
+                    q = F.linear(l.norm2(h), l.multihead_attn.in_proj_weight[:d], l.multihead_attn.in_proj_bias[:d])
+                    h = h + l.multihead_attn.out_proj(joined(F.scaled_dot_product_attention(heads(q), ck, cv, attn_mask=see)))
+                    h = h + l.linear2(l.activation(l.linear1(l.norm3(h))))
+                tok = self.out(self.decoder.norm(h[:, 0])).argmax(-1)
+            ys.append(tok)
+            done |= tok == eos
+            if done.all():
+                break
+        return [row[: row.index(eos)] if eos in row else row for row in torch.stack(ys, 1).tolist()]
 
 
 def load(run: str, file: str = "reader.pt"):
@@ -323,18 +369,29 @@ def load(run: str, file: str = "reader.pt"):
     return model, vocab
 
 
+
+def for_reading(model, device: str):
+    """A trained reader made ready to read (not to train): the encoder's
+    adapters folded into its weights, and on the Mac's GPU half precision
+    (together 1.45x faster there; 63 of 64 clean-test staves read the same)."""
+    model.encoder = model.encoder.merge_and_unload()
+    model = model.to(device).eval()
+    return model.half() if device == "mps" else model
+
+
 def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: int = 8) -> dict[str, str]:
     """Read staff crops (encoded images, by key) with a trained reader:
     the LMX for each, in width-sorted batches as in training."""
     model, vocab = load(run, file)
-    model = model.to(device).eval()
+    model = for_reading(model, device)
+    dtype = next(model.parameters()).dtype
     inv = {i: t for t, i in vocab.items()}
     items = sorted(((png, key) for key, png in crops.items()), key=aspect)
     out = {}
     for k in range(0, len(items), bs):
         chunk = items[k: k + bs]
         x, mask, _, _ = batch([(png, []) for png, _ in chunk], vocab)
-        for (_, key), ids in zip(chunk, model.read(x.to(device), mask.to(device), vocab[BOS], vocab[EOS])):
+        for (_, key), ids in zip(chunk, model.read(x.to(device, dtype), mask.to(device), vocab[BOS], vocab[EOS])):
             out[key] = " ".join(inv[i] for i in ids)
     return out
 

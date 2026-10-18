@@ -1,18 +1,19 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["modal", "numpy", "pillow"]
+# dependencies = ["modal", "numpy", "pillow", "torch", "transformers", "peft"]
 # ///
 """Score a MuSViT reader on the clean test with compare.py, as Zeus is scored.
 
     uv run experiments/musvit/read.py <edition-repo> --run stage2-J [--file reader.pt]
-        [--source D-B_KHM-603] [--movements I]
+        [--source D-B_KHM-603] [--movements I] [--device mps|cpu]
 
 Cuts each staff of the source's bar export exactly as compare.py does (its
 staff_crop, the crop dataset.py trained on, saved as JPEG at quality 95 as
 dataset.py saves it), has the run's reader read them on Modal
 (modal_app.read), and writes the readings into compare.py's cache,
 answers/<source>-musvit-<run>.json, keyed by staff and crop as compare.py
-keys them. With --beam K, the reader gives up to K readings of each staff
+keys them. With --device, the reader reads here instead (the Mac's GPU:
+mps), into answers/<source>-musvit-<run>-<device>.json. With --beam K, the reader gives up to K readings of each staff
 (beam search) and the one kept is the likeliest after a penalty of
 --rerank (in log-probability) for each bar that doesn't fit: a bar box
 whose length (the labels' time signature) differs from its measure's, or
@@ -62,8 +63,11 @@ def main():
     ap.add_argument("--movements", nargs="+", default=["I"])
     ap.add_argument("--beam", type=int, default=0)
     ap.add_argument("--rerank", type=float, default=0.0)
+    ap.add_argument("--device", help="read here, on this torch device (mps, cpu), not on Modal")
     a = ap.parse_args()
-    name = f"musvit-{a.run}" + ("" if a.file == "reader.pt" else f"-{Path(a.file).stem}")
+    if a.beam and a.device:
+        ap.error("--beam reads on Modal only")
+    name = f"musvit-{a.run}" + ("" if a.file == "reader.pt" else f"-{Path(a.file).stem}") + (f"-{a.device}" if a.device else "")
     if a.beam:
         name += f"-beam{a.beam}" + (f"-rr{a.rerank:g}" if a.rerank else "")
 
@@ -96,9 +100,16 @@ def main():
             buf = io.BytesIO()
             Image.open(io.BytesIO(png)).convert("L").save(buf, "JPEG", quality=95)
             crops[key] = buf.getvalue()
-    print(f"{len(sids)} staves; {len(crops)} to read on Modal", flush=True)
+    print(f"{len(sids)} staves; {len(crops)} to read " + (f"here ({a.device})" if a.device else "on Modal"), flush=True)
 
-    if crops:
+    if crops and a.device:
+        sys.path.insert(0, str(HERE))
+        import time
+        import proto
+        t0 = time.time()
+        cache.update(proto.read_crops(a.run, a.file, crops, a.device))
+        print(f"read in {time.time() - t0:.0f} s ({(time.time() - t0) / len(crops):.2f} s a staff)", flush=True)
+    elif crops:
         import modal
         sys.path.insert(0, str(HERE))
         from modal_app import app, read, read_nbest
