@@ -52,6 +52,8 @@ synthetic manuscripts took Zeus from 41% to 33% SER on real piano manuscripts
 Each step is measured on Madrid (and the clean test) against the crowned
 model, and kept only if it beats it beyond the noise.
 
+Training data: Op. 48 staves from `dataL2` (beams as engraved, edition 518fdc0), not `dataL`.
+
 ### E1. Replay (cheapest; run first)
 
 Mix a share of the public staves (and later, synthetic ones) into stage 2.

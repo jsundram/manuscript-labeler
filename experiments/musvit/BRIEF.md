@@ -299,4 +299,10 @@ staves from the new pairing against 114 in dataG.
   --color. D1c-tf8-M-color (D1's recipe from grey E2-tf8): practice exam best
   0.191 at pass 12 (D1 0.189), clean test 260/347 (D1 263): −0.9 points
   (−3.7 to +1.7), differing on 23 bars. No gain; grey stays.
+- **Beams in the Op. 48 labels:** the edition's events.py recorded only beams
+  written [ ] (edition 518fdc0 adds LilyPond's automatic ones). Rebuilt as
+  dataL2 (same staves, same images; only beam tokens changed): KHM 602's
+  unbeamed short notes 728 -> 384 of 2,983 (the rest are flagged notes the
+  copyist didn't beam); other sources unchanged within 2. Uploaded to
+  musvit-staves /dataL2. Train on dataL2 from now on (dataL kept for the D runs).
 
