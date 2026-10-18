@@ -11,17 +11,22 @@ errors, and they covered 90% of the errors in the kinds it checks (pitch,
 rhythm, accidentals).
 
 The models are Zeus (OmniOMR's reader for handwritten music) fine-tuned on
-Boccherini's copyists. See [MODEL_CARD.md](MODEL_CARD.md).
+Boccherini's copyists, see [MODEL_CARD.md](MODEL_CARD.md), and readers built
+on MuSViT (PRAIG's pretrained music encoder) that read the same staves into
+the same format, see [MODEL_CARD_MUSVIT.md](MODEL_CARD_MUSVIT.md).
+`musvit-D3` gets 78% of the clean test's bars exact against Zeus J's 65%;
+Zeus J stays the default until the edition's flag threshold is retuned for
+it. Give `--model musvit-D3` to use it.
 
 > **Licences.** This code is MIT. **The models are CC BY-NC-SA 4.0:
 > non-commercial use only, and adaptations must be shared alike.** They are
-> fine-tuned from OmniOMR's Zeus weights (https://github.com/OmniOMR/zeus),
-> which carry that licence. Each model's archive holds the licence text and a
-> notice.
+> fine-tuned from OmniOMR's Zeus weights (https://github.com/OmniOMR/zeus)
+> or from MuSViT's (https://github.com/OMR-PRAIG-UA-ES/MuSViT), which carry
+> that licence. Each model's archive holds the licence text and a notice.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.0.0#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.1.0#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
@@ -30,13 +35,17 @@ environment the scoring runs in: Python 3.10, Zeus and tensorflow 2.12, about
 sandbox with no network. `uv` must be on the path. The first time, `fetch`
 also needs GitHub, PyPI and uv's Python downloads.
 
+A MuSViT model's environment is PyTorch and transformers instead, about
+1 GB, built the same way by `zeus-score fetch musvit-D3`; it scores on the
+Mac's GPU.
+
 Zeus needs tensorflow 2.12, which has no build for Apple-silicon Macs under
 that name, so the environment pins Apple's `tensorflow-macos` 2.12 instead. That
 is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.0.0#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.1.0#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 
@@ -153,7 +162,7 @@ fields this ignores. Another project can write them from its own encoding.
 ```json
 {
   "format": 1,
-  "model": {"name": "J-lr1e5-e8", "version": "2026-10-16", "sha256": "39eada41..."},
+  "model": {"name": "J-lr1e5-e8", "version": "2026-10-16", "sha256": "39eada41...", "engine": "zeus"},
   "labeler_commit": "c035c20", "zeus_commit": "c8569eb",
   "source": "D-B_KHM-603", "movements": ["II"],
   "staves": [
@@ -168,7 +177,8 @@ fields this ignores. Another project can write them from its own encoding.
 
 - **`format`** goes up with any change a reader must handle.
 - **`model`** names the weights that scored the file; `sha256` is the
-  weights file's.
+  weights file's; `engine` is `zeus` or `musvit` (added in 1.1.0; older files
+  lack it and are Zeus's). `zeus_commit` is null for a MuSViT model.
 - **`tokens`** is your reading of the staff in Zeus's text format, LMX
   (linearized MusicXML). Each `measure` token begins the next of the staff's
   `bars`, as `[bar, count]` pairs in order.
@@ -231,8 +241,11 @@ It also keeps only each bar's strongest objection of each kind.
 published model, with these fields:
 
 - `name`, `version`, and `default` on one of them;
-- `sha256` of the weights, and `url` and `archive_sha256` of the release
-  archive;
+- `engine`: `zeus` (when left out) or `musvit`: which scoring script runs it
+  and what its archive holds (Zeus: `weights.h5` and its options; MuSViT:
+  `reader.safetensors`, `reader.json`, `vocab.json`);
+- `sha256` of the weights (`weights.h5`, or `reader.safetensors`), and `url`
+  and `archive_sha256` of the release archive;
 - `licence`;
 - `trained_on`: the sources and movements, by the Op. 48 edition's names, such
   as `{"D-B_KHM-602": ["I", "II"]}`;
@@ -247,7 +260,9 @@ always mean the same weights.
 ## Development
 
 The scoring code is the labeler's own: `tools/zeus_score.py` plus
-`experiments/zeus/compare.py`, `dataset.py`, `labels.py` and `structure.py`.
+`experiments/zeus/compare.py`, `dataset.py`, `labels.py` and `structure.py`;
+for MuSViT models, `tools/musvit_score.py` (the same, with the reader in
+Zeus's place) and `experiments/musvit/proto.py` (the reader).
 They are copied into the package when it is built (`hatch_build.py`), so
 there is one copy of them; an sdist carries the copies. `tools/zeus_score.py`
 runs on its own too, from a labeler checkout. Tests:
