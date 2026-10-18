@@ -1,7 +1,7 @@
 [project]
 name = "zeus-score"
-version = "1.0.0"
-description = "Score a reading of a manuscript's staves with a Zeus OMR model fine-tuned on Boccherini's copyists"
+version = "1.1.0"
+description = "Score a reading of a manuscript's staves with an OMR model (Zeus or a MuSViT reader) trained on Boccherini's copyists"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"

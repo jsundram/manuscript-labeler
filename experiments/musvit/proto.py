@@ -206,12 +206,17 @@ class Reader(nn.Module):
     def __init__(self, encoder: str, n_vocab: int, d=256, layers=4, lora_r=16, lora_mlp=False, decoder="transformer",
                  memory="patches"):
         super().__init__()
-        from peft import LoraConfig, get_peft_model
-        from transformers import ViTModel
-        enc = ViTModel.from_pretrained(ENCODERS.get(encoder, CACHE / "weights" / encoder), add_pooling_layer=False)
-        targets = ["q_proj", "k_proj", "v_proj"] + (["o_proj", "fc1", "fc2"] if lora_mlp else [])
-        self.encoder = get_peft_model(enc, LoraConfig(r=lora_r, lora_alpha=2 * lora_r, lora_dropout=0.1,
-                                                      target_modules=targets))
+        from transformers import ViTConfig, ViTModel
+        if isinstance(encoder, dict):  # a released reader: the encoder's config, its weights in the reader's file
+            enc = ViTModel(ViTConfig(**encoder), add_pooling_layer=False)
+        else:
+            enc = ViTModel.from_pretrained(ENCODERS.get(encoder, CACHE / "weights" / encoder), add_pooling_layer=False)
+        self.encoder = enc
+        if lora_r:  # 0: no adapters (a released reader has them folded in)
+            from peft import LoraConfig, get_peft_model
+            targets = ["q_proj", "k_proj", "v_proj"] + (["o_proj", "fc1", "fc2"] if lora_mlp else [])
+            self.encoder = get_peft_model(enc, LoraConfig(r=lora_r, lora_alpha=2 * lora_r, lora_dropout=0.1,
+                                                          target_modules=targets))
         # memory "columns": each column's 8 patches joined into one vector, as Zeus packs a column's height
         self.memory = memory
         self.project = nn.Linear(enc.config.hidden_size * (H // PATCH if memory == "columns" else 1), d)
@@ -370,11 +375,25 @@ def load(run: str, file: str = "reader.pt"):
 
 
 
+def load_release(folder: Path):
+    """A released reader (release.py) and its vocabulary: reader.json (the
+    encoder's config, the decoder's shape), vocab.json and
+    reader.safetensors, the adapters folded in. Needs no MuSViT download
+    and no peft."""
+    from safetensors.torch import load_file
+    cfg = json.loads((folder / "reader.json").read_text())
+    vocab = json.loads((folder / "vocab.json").read_text())
+    model = Reader(cfg["vit"], len(vocab), d=cfg["d"], layers=cfg["layers"], lora_r=0, decoder=cfg["decoder"],
+                   memory=cfg["memory"])
+    model.load_state_dict({k: v.float() for k, v in load_file(folder / "reader.safetensors").items()})
+    return model, vocab
+
 def for_reading(model, device: str):
     """A trained reader made ready to read (not to train): the encoder's
     adapters folded into its weights, and on the Mac's GPU half precision
     (together 1.45x faster there; 63 of 64 clean-test staves read the same)."""
-    model.encoder = model.encoder.merge_and_unload()
+    if hasattr(model.encoder, "merge_and_unload"):
+        model.encoder = model.encoder.merge_and_unload()
     model = model.to(device).eval()
     return model.half() if device == "mps" else model
 

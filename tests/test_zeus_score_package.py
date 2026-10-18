@@ -90,7 +90,7 @@ def test_fetch(tmp_path, monkeypatch):
     monkeypatch.setattr(cli, "registry", lambda: [m])
     monkeypatch.setattr(cli, "ENV_BUILT", tmp_path / "env-built")
     calls = []
-    monkeypatch.setattr(cli, "uv", lambda args, offline, quiet=False: calls.append((args, offline)) or 0)
+    monkeypatch.setattr(cli, "uv", lambda args, offline, quiet=False, engine="zeus": calls.append((args, offline)) or 0)
     cache = tmp_path / "cache"
     assert cli.cmd_fetch(["A", "--cache", str(cache)]) == 0
     assert (cache / "zeus" / "A@1" / "weights.h5").read_bytes() == b"weights"
@@ -114,7 +114,7 @@ def test_score_args(tmp_path, monkeypatch):
     monkeypatch.setattr(cli, "registry", lambda: [m])
     monkeypatch.setattr(cli, "labeler_commit", lambda: "abc1234")
     calls = []
-    monkeypatch.setattr(cli, "uv", lambda args, offline, quiet=False: calls.append((args, offline)) or 0)
+    monkeypatch.setattr(cli, "uv", lambda args, offline, quiet=False, engine="zeus": calls.append((args, offline)) or 0)
     assert cli.cmd_score(["--source", "S", "--cache", str(tmp_path), "--renders", "r"]) == 0
     args, offline = calls[0]
     assert offline
@@ -127,3 +127,33 @@ def test_score_args(tmp_path, monkeypatch):
     calls.clear()
     cli.cmd_score(["--model", "/some/X.model"])
     assert "--model-name" not in calls[0][0] and "/some/X.model" in calls[0][0]
+
+
+def test_musvit_engine(tmp_path, monkeypatch):
+    """A MuSViT entry: its own folder, weights file, archive files and scoring script."""
+    m = {"name": "M", "version": "1", "default": True, "engine": "musvit", "sha256": hashlib.sha256(b"w").hexdigest(),
+         "trained_on": {}}
+    d = tmp_path / "musvit" / "M@1"
+    assert cli.folder(tmp_path, m) == d
+    d.mkdir(parents=True)
+    with pytest.raises(SystemExit, match="fetch"):
+        cli.check(d, m)
+    (d / "reader.safetensors").write_bytes(b"w")
+    cli.check(d, m)
+    a = archive(tmp_path / "a.tar.gz", {"reader.safetensors": b"w", "reader.json": b"{}", "vocab.json": b"{}"})
+    out = tmp_path / "out"
+    out.mkdir()
+    cli.extract(a, out, cli.ENGINES["musvit"]["files"])
+    assert sorted(p.name for p in out.iterdir()) == ["reader.json", "reader.safetensors", "vocab.json"]
+    with pytest.raises(ValueError):
+        cli.extract(a, tmp_path)  # Zeus's files only
+    monkeypatch.setattr(cli, "registry", lambda: [m])
+    monkeypatch.setattr(cli, "labeler_commit", lambda: None)
+    calls = []
+    monkeypatch.setattr(cli, "uv", lambda args, offline, quiet=False, engine="zeus": calls.append(engine) or 0)
+    cli.cmd_score(["--cache", str(tmp_path)])
+    (tmp_path / "x").mkdir()
+    (tmp_path / "x" / "reader.json").write_text("{}")
+    cli.cmd_score(["--model", str(tmp_path / "x")])
+    assert calls == ["musvit", "musvit"]
+    assert cli.ENGINES["musvit"]["script"].name == "musvit_score.py"

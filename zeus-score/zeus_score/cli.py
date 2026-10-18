@@ -1,5 +1,6 @@
-"""zeus-score: how likely a Zeus OMR model finds a reading of a manuscript's
-staves, token by token, with a named, versioned, checked model.
+"""zeus-score: how likely an OMR model finds a reading of a manuscript's
+staves, token by token, with a named, versioned, checked model: Zeus, or a
+MuSViT reader (a registry entry's `engine`).
 
     zeus-score --pdf M.pdf --structure S.json --events DIR --out scores.json \\
         [--bars M.bars.json] [--parts ...] [--movements ...] [--shifts 0 -1 1] \\
@@ -13,14 +14,16 @@ staves, token by token, with a named, versioned, checked model.
 
 The inputs, options and output are those of the labeler's
 tools/zeus_score.py, which this runs in an environment of its own (Python
-3.10, Zeus, tensorflow), started with uv, offline. The package's README.md
+3.10, Zeus, tensorflow), started with uv, offline; for a MuSViT reader,
+tools/musvit_score.py (PyTorch) in one of its own. The package's README.md
 describes them all. Models come from the registry
 (models.json): fetched once into --cache, checked against their sha256 when
 fetched and every time they are used. A path to a model folder still works,
 for experiments; its scores then don't say what it was trained on.
 
-The models' weights derive from OmniOMR's Zeus weights and are licensed
-CC BY-NC-SA 4.0: non-commercial use only. This code is MIT.
+The models' weights derive from OmniOMR's Zeus weights or from MuSViT
+(PRAIG), and are licensed CC BY-NC-SA 4.0: non-commercial use only. This
+code is MIT.
 """
 
 import argparse
@@ -37,15 +40,37 @@ from importlib import metadata
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ENGINE = HERE / "engine" / "score.py"
+# Each engine: its scoring script, the file its registry sha256 is of, the
+# files its archive holds, and what its environment is.
+ENGINES = {
+    "zeus": {"script": HERE / "engine" / "score.py", "weights": "weights.h5",
+             "files": {"weights.h5", "architecture_options.yaml", "model_options.yaml", "token_map.txt", "LICENSE",
+                       "NOTICE.md"},
+             "env": "Python 3.10, Zeus, tensorflow"},
+    "musvit": {"script": HERE / "engine" / "musvit_score.py", "weights": "reader.safetensors",
+               "files": {"reader.safetensors", "reader.json", "vocab.json", "LICENSE", "NOTICE.md"},
+               "env": "PyTorch, transformers"},
+}
 REGISTRY = HERE / "models.json"
 CACHE = Path.home() / ".cache" / "manuscript-labeler" / "models"
 # uv's managed Python 3.10 for Zeus, kept apart from the user's own.
 PYTHON = Path.home() / ".cache" / "manuscript-labeler" / "zeus" / "py"
-# Written by fetch once the environment is built: a failed score run before
-# then is most likely the environment missing.
+# Written by fetch once an engine's environment is built: a failed score run
+# before then is most likely the environment missing.
 ENV_BUILT = PYTHON.parent / "zeus-score-env-built"
-FILES = {"weights.h5", "architecture_options.yaml", "model_options.yaml", "token_map.txt", "LICENSE", "NOTICE.md"}
+
+
+def env_built(engine: str) -> Path:
+    return ENV_BUILT if engine == "zeus" else ENV_BUILT.with_name(f"zeus-score-{engine}-env-built")
+
+
+def engine_of(m: dict) -> str:
+    return m.get("engine", "zeus")
+
+
+def engine_at(path: Path) -> str:
+    """A model folder given by path: a MuSViT reader has reader.json."""
+    return "musvit" if (path / "reader.json").exists() else "zeus"
 
 
 def registry() -> list[dict]:
@@ -71,7 +96,7 @@ def is_path(spec: str) -> bool:
 
 
 def folder(cache: Path, m: dict) -> Path:
-    return cache / "zeus" / f"{m['name']}@{m['version']}"
+    return cache / engine_of(m) / f"{m['name']}@{m['version']}"
 
 
 def sha256(path: Path) -> str:
@@ -84,7 +109,7 @@ def sha256(path: Path) -> str:
 
 def check(d: Path, m: dict) -> None:
     """The model's weights are the registry's, or exit."""
-    w = d / "weights.h5"
+    w = d / ENGINES[engine_of(m)]["weights"]
     if not w.exists():
         sys.exit(f"zeus-score: {m['name']}@{m['version']} isn't in {d.parent}; "
                  f"run `zeus-score fetch {m['name']}@{m['version']}` once, with the network")
@@ -92,22 +117,22 @@ def check(d: Path, m: dict) -> None:
         sys.exit(f"zeus-score: {w} doesn't match the registry's sha256; fetch it again")
 
 
-def extract(archive: Path, into: Path) -> None:
+def extract(archive: Path, into: Path, files: set[str] = ENGINES["zeus"]["files"]) -> None:
     """The model's files, flat, into `into`: nothing else, no paths."""
     with tarfile.open(archive) as t:
         for member in t.getmembers():
             name = Path(member.name).name
             if member.isdir() or name.startswith("._"):  # macOS tar's metadata entries
                 continue
-            if not member.isfile() or name not in FILES:
+            if not member.isfile() or name not in files:
                 raise ValueError(f"unexpected {member.name} in {archive.name}")
             with t.extractfile(member) as src, open(into / name, "wb") as dst:
                 shutil.copyfileobj(src, dst)
 
 
-def uv(args: list[str], offline: bool, quiet: bool = False) -> int:
+def uv(args: list[str], offline: bool, quiet: bool = False, engine: str = "zeus") -> int:
     cmd = ["uv", "run", "--quiet", "--python-preference", "only-managed", *(["--offline"] if offline else []),
-           "--script", str(ENGINE), *args]
+           "--script", str(ENGINES[engine]["script"]), *args]
     return subprocess.call(cmd, env={**os.environ, "UV_PYTHON_INSTALL_DIR": str(PYTHON)},
                            stdout=subprocess.DEVNULL if quiet else None)
 
@@ -134,8 +159,9 @@ def cmd_fetch(argv: list[str]) -> int:
     ap.add_argument("--cache", type=Path, default=CACHE)
     a = ap.parse_args(argv)
     m = find(a.model)
+    eng = ENGINES[engine_of(m)]
     d = folder(a.cache, m)
-    if (d / "weights.h5").exists() and sha256(d / "weights.h5") == m["sha256"]:
+    if (d / eng["weights"]).exists() and sha256(d / eng["weights"]) == m["sha256"]:
         print(f"{m['name']}@{m['version']} is already in {d}")
     else:
         d.parent.mkdir(parents=True, exist_ok=True)
@@ -148,17 +174,18 @@ def cmd_fetch(argv: list[str]) -> int:
                 sys.exit(f"zeus-score: {m['url']} doesn't match the registry's archive_sha256")
             staged = Path(tmp) / "model"
             staged.mkdir()
-            extract(archive, staged)
+            extract(archive, staged, eng["files"])
             check(staged, m)
             if d.exists():
                 shutil.rmtree(d)
             staged.rename(d)
         print(f"{m['name']}@{m['version']} is in {d} ({m['licence']})")
-    print("building the scoring environment (Python 3.10, Zeus, tensorflow) if it isn't built")
-    if uv(["--help"], offline=False, quiet=True):
+    print(f"building the scoring environment ({eng['env']}) if it isn't built")
+    if uv(["--help"], offline=False, quiet=True, engine=engine_of(m)):
         return 1
-    ENV_BUILT.parent.mkdir(parents=True, exist_ok=True)
-    ENV_BUILT.write_text(metadata.version("zeus-score") if has_dist() else "")
+    built = env_built(engine_of(m))
+    built.parent.mkdir(parents=True, exist_ok=True)
+    built.write_text(metadata.version("zeus-score") if has_dist() else "")
     return 0
 
 
@@ -179,9 +206,10 @@ def cmd_models(argv: list[str]) -> int:
         print(REGISTRY.read_text())
         return 0
     for m in registry():
-        fetched = (folder(a.cache, m) / "weights.h5").exists()
+        fetched = (folder(a.cache, m) / ENGINES[engine_of(m)]["weights"]).exists()
         print(f"{m['name']}@{m['version']}{'  (default)' if m.get('default') else ''}"
               f"{'' if fetched else '  (not fetched)'}")
+        print(f"  engine: {engine_of(m)}")
         print(f"  licence: {m['licence']}")
         print(f"  trained on: " + "; ".join(f"{s} {' '.join(v)}" for s, v in m["trained_on"].items())
               + (f"; and {len(m.get('trained_on_other', []))} other sources" if m.get("trained_on_other") else ""))
@@ -202,18 +230,22 @@ def cmd_score(argv: list[str]) -> int:
         print(__doc__)
         print("The scoring options (tools/zeus_score.py's):\n", flush=True)
         return uv(["--help"], offline=True)
+    fetch = "zeus-score fetch"
     if a.model and is_path(a.model):
-        model = ["--model", a.model]
+        model, eng = ["--model", a.model], engine_at(Path(a.model))
+        fetch += " musvit-D3" if eng == "musvit" else ""
     else:
         m = find(a.model)
+        eng = engine_of(m)
+        fetch += f" {m['name']}@{m['version']}" if a.model else ""
         d = folder(a.cache, m)
         check(d, m)
         model = ["--model", str(d), "--model-name", m["name"], "--model-version", m["version"],
                  "--model-sha256", m["sha256"], "--trained-on", json.dumps(trained_on(m))]
     commit = labeler_commit()
-    code = uv([*rest, *model, *(["--labeler-commit", commit] if commit else [])], offline=True)
-    if code and not ENV_BUILT.exists():
-        print("zeus-score: the scoring environment may not be built: run `zeus-score fetch` once, with the network",
+    code = uv([*rest, *model, *(["--labeler-commit", commit] if commit else [])], offline=True, engine=eng)
+    if code and not env_built(eng).exists():
+        print(f"zeus-score: the scoring environment may not be built: run `{fetch}` once, with the network",
               file=sys.stderr)
     return code
 

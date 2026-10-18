@@ -8,6 +8,8 @@ from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 ENGINE = {
     "../tools/zeus_score.py": "zeus_score/engine/score.py",
+    "../tools/musvit_score.py": "zeus_score/engine/musvit_score.py",
+    "../experiments/musvit/proto.py": "zeus_score/engine/proto.py",
     "../experiments/zeus/compare.py": "zeus_score/engine/compare.py",
     "../experiments/zeus/dataset.py": "zeus_score/engine/dataset.py",
     "../labels.py": "zeus_score/engine/labels.py",

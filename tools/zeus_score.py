@@ -216,7 +216,50 @@ def zeus_commit() -> str | None:
         return None
 
 
-def main():
+class Zeus:
+    """Zeus, teacher-forced, one staff at a time (its attention doesn't mask
+    a batch's padding): for each reading of a staff, each token's
+    log-probability, the token Zeus would have written there and that one's.
+    musvit_score.py's Reader is the same for a MuSViT reader."""
+    engine = "zeus"
+    too_long = ""
+
+    def __init__(self, path: Path):
+        import tensorflow as tf
+        from zeus import Zeus as Model
+        self.weights, self.commit = path / "weights.h5", zeus_commit()
+        self.model = Model.load(path)
+        self.tm = self.model.token_map
+
+        @tf.function(reduce_retracing=True)
+        def logprobs(img, ids):
+            enc = self.model.model.encoder(tf.RaggedTensor.from_tensor(img[tf.newaxis], ragged_rank=2), training=False)
+            return tf.nn.log_softmax(self.model.model.decoder_training(enc, ids[tf.newaxis]), -1)[0]
+        self.logprobs = logprobs
+
+    def unknown(self, toks: list[str]) -> list[str]:
+        return sorted({t for t in toks if self.tm.token_to_index(t, allow_unknown_tokens=True) == self.tm.unknown_token_index})
+
+    def score(self, jpeg: bytes, readings: list[list[str]]) -> list[dict]:
+        import numpy as np
+        import tensorflow as tf
+        from zeus.model.preprocess_image import preprocess_image
+        # As Zeus's predict prepares a staff: grey, its height, width by aspect up to 1500, no padding.
+        img = preprocess_image(tf.constant(jpeg), height=self.model.architecture_options.height, transformations=[],
+                               max_image_width=1500)
+        out = []
+        for toks in readings:
+            ids = [self.tm.token_to_index(t, allow_unknown_tokens=True) for t in toks] + [self.tm.eos_token_index]
+            lp = self.logprobs(img, tf.constant(ids, tf.int32)).numpy()
+            best = lp.argmax(-1)
+            out.append({"lp": [round(float(v), 3) for v in lp[np.arange(len(ids)), ids]],
+                        "best": [self.tm.index_to_token(int(i)) for i in best],
+                        "best_lp": [round(float(lp[k, i]), 3) for k, i in enumerate(best)]})
+        return out
+
+
+def main(backend=None):
+    backend = backend or Zeus
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--pdf", type=Path, help="the manuscript")
     ap.add_argument("--bars", type=Path, help="its bar export from the labeler (default the PDF's .bars.json)")
@@ -288,58 +331,36 @@ def main():
             continue
         todo.append((sid, boxes, lmx, approx))
 
-    # Zeus, teacher-forced, one staff at a time: its attention doesn't mask a batch's padding.
-    import numpy as np
-    import tensorflow as tf
-    from zeus import Zeus
-    from zeus.model.preprocess_image import preprocess_image
-
-    model = Zeus.load(a.model)
-    tm = model.token_map
-    height = model.architecture_options.height
-
-    @tf.function(reduce_retracing=True)
-    def logprobs(img, ids):
-        enc = model.model.encoder(tf.RaggedTensor.from_tensor(img[tf.newaxis], ragged_rank=2), training=False)
-        return tf.nn.log_softmax(model.model.decoder_training(enc, ids[tf.newaxis]), -1)[0]
-
+    model = backend(a.model)
     rows, page = [], None
     for sid, boxes, lmx, approx in todo:
         s = export["systems"][sid]
         if page is None or page[0] != s["page"]:
             page = (s["page"], compare.page_image(pdf, s["page"]))
-        # As Zeus's predict prepares a staff: grey, its height, width by aspect up to 1500, no padding.
-        img = preprocess_image(tf.constant(staff_image(page[1], s)), height=height, transformations=[],
-                               max_image_width=1500)
         toks = lmx.split()
-        row = {"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
-               "bars": [[b["bar"], b["count"]] for b in boxes], "tokens": toks, "approximate": approx,
-               "unknown": sorted({t for t in toks if tm.token_to_index(t, allow_unknown_tokens=True)
-                                  == tm.unknown_token_index}),
-               "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
-               "shifts": {}}
-        for by in a.shifts:
-            ids = [tm.token_to_index(t, allow_unknown_tokens=True) for t in shifted(toks, by)] + [tm.eos_token_index]
-            lp = logprobs(img, tf.constant(ids, tf.int32)).numpy()
-            best = lp.argmax(-1)
-            row["shifts"][str(by)] = {
-                "lp": [round(float(v), 3) for v in lp[np.arange(len(ids)), ids]],
-                "best": [tm.index_to_token(int(i)) for i in best],
-                "best_lp": [round(float(lp[k, i]), 3) for k, i in enumerate(best)]}
-        rows.append(row)
+        scored = model.score(staff_image(page[1], s), [shifted(toks, by) for by in a.shifts])
+        if scored is None:
+            left_out.append({"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
+                             "bars": [boxes[0]["bar"], boxes[-1]["bar"]], "reason": model.too_long})
+            continue
+        rows.append({"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
+                     "bars": [[b["bar"], b["count"]] for b in boxes], "tokens": toks, "approximate": approx,
+                     "unknown": model.unknown(toks),
+                     "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
+                     "shifts": {str(by): sc for by, sc in zip(a.shifts, scored)}})
 
     commit = a.labeler_commit
     if commit is None and (LABELER / "tools" / "zeus_score.py").exists():  # a labeler checkout
         head = subprocess.run(["git", "-C", str(LABELER), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
         commit = head.stdout.strip() or None
     model_info = {"name": a.model_name or a.model.name.removesuffix(".model"), "version": a.model_version,
-                  "sha256": a.model_sha256 or sha256(a.model / "weights.h5")}
+                  "sha256": a.model_sha256 or sha256(model.weights), "engine": model.engine}
     learned = sorted({r["mvt"] for r in rows if r["trained"]})
     if learned:
         print(f"zeus_score: {model_info['name']} was trained on {a.source} {' '.join(learned)}: "
               f"it objects less there", file=sys.stderr)
     out = {"format": 1, "model": model_info, "labeler_commit": commit,
-           "zeus_commit": zeus_commit(), "source": a.source, "movements": a.movements,
+           "zeus_commit": model.commit, "source": a.source, "movements": a.movements,
            "staves": rows, "left_out": left_out}
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(out))
