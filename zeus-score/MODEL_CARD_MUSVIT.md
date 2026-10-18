@@ -5,8 +5,8 @@ pretrained on 9.7 million pages of printed music. It reads one staff at a time
 and writes out its notes in Zeus's output format, so the edition and
 [zeus-score](README.md) can use it in Zeus's place. On the clean test it
 gets 270 of 347 bars exact against Zeus J's 225. It is in the registry
-beside Zeus J; Zeus J stays the default until the edition's flag threshold
-is retuned for it.
+beside Zeus J. Its flags for the edition, measured at the same floor,
+are as good as Zeus J's with a third fewer false ones.
 
 > **Licence: CC BY-NC-SA 4.0. Non-commercial use only; adaptations shared
 > alike.** The encoder adapts MuSViT's weights (PRAIG, University of
@@ -200,11 +200,30 @@ staff): the reader is 5½ times slower than Zeus J at reading, because it is
 
 ## As the edition's second reader
 
-Not yet measured. Scoring Op. 48 No. 2 I's encoding, it objects (by more
-than 3 in log-probability) at 240 tokens, Zeus J at 238, so the two flag
-about as often; which flags are real errors, and the best threshold, need
-the measurement Zeus J's card reports (flags against later corrections).
-Until then Zeus J stays the default.
+Measured as Zeus J's card measures it: on Op. 48 No. 2 I as it stood right
+after the read, before any correction (neither model trained on it). 107 of
+its 337 bar-parts were later corrected in the kinds the reader checks
+(pitch, rhythm, accidentals). A bar-part is flagged where the reader finds
+its own token likelier than ours by more than the floor, in log-probability
+(the edition's `differences.objections`).
+
+| model, floor 3 | bar-parts flagged | of them wrong | wrong ones flagged | pitch | rhythm | accidental |
+|---|---:|---:|---:|---:|---:|---:|
+| Zeus J | 126 | 96 (76%) | 90% | 12 / 19 | 10 / 27 | 78 / 80 |
+| **musvit-D3** | **116** | **95 (82%)** | 89% | 10 / 19 | 13 / 27 | 78 / 80 |
+| both must object | 109 | 95 (87%) | 89% | | | |
+
+- **The floor stays at 3.** D3's flags change little from 2 to 6 (121 to 108
+  flagged, 96 to 92 right): it is surer of itself than Zeus J, whose flags
+  fall away above 4. At 8 it still catches 85% of the errors (Zeus J 59%).
+- **Against Zeus J:** a third fewer false flags (21 against 30) for one error
+  fewer caught; better on rhythm, a little worse on pitch. On 107 errors in
+  one movement, differences of two or three are within chance.
+- **Both together** (flag only where both object) cut false flags to 14 and
+  lose nothing more, at the cost of running two readers.
+- **A bias in Zeus J's favour:** the corrections were found partly by
+  following Zeus J's flags, so errors it missed are likelier to be missing
+  from the truth.
 
 ## The family
 
@@ -215,7 +234,7 @@ close ones.
 
 | run | what changed | clean test |
 |---|---|---:|
-| Zeus J | the previous default | 225 |
+| Zeus J | the default before this | 225 |
 | light encoder (stage2-602II) | MuSViT-light, 4-layer decoder | 225 |
 | full encoder (stage2-full-J) | MuSViT-Base | 241 |
 | B1 | larger adapters, Op. 48 No. 5 II added | 251 |
@@ -241,5 +260,5 @@ close ones.
   (experiments/musvit/NEXT.md).
 - **A second clean test in a new hand**, so that progress on new hands can be
   measured without the music flattering it.
-- **Measure and retune the edition's flags** with this reader, then make it
-  the default.
+- **Make it the default** in zeus-score and the edition (floor 3, measured
+  above), or flag only where it and Zeus J agree.
