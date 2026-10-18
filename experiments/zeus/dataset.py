@@ -33,9 +33,11 @@ convert_musicxml). In it:
 A bar split across two boxes (a section's short last bar and the next
 one's upbeat, one number) is cut where its upbeat starts: LilyPond counts
 the bar's positions on through both, and the upbeat is as long as the
-movement's opening pickup. Left out, and counted: staves where that cut
+movement's opening pickup. A bar with two voices (double stops the
+encoding writes as voices) is written as Zeus's data writes it: each voice
+in turn, a <backup> between. Left out, and counted: staves where that cut
 doesn't fall between two notes (or the movement has no pickup), a clef
-change inside a bar, or two voices.
+change inside a bar, or two voices in a split bar.
 
 Every staff kept is checked: its LMX, read back as compare.py reads
 Zeus's, must equal the encoding bar for bar.
@@ -81,11 +83,29 @@ def sub(parent, tag, text=None, **attrib):
     return e
 
 
+def mark(mk: dict, b: int, e: dict) -> dict:
+    """An event's marks (marks()): by bar, label and voice, since events.py
+    labels a moment, which notes in two voices share."""
+    return mk.get((b, e["label"], e.get("voice", "1")), {})
+
+
 def marks(events_by_bar: dict) -> dict:
-    """Per event (bar, label): its tuplet ratio and whether it starts or ends
-    a tuplet, beam levels, tie stop. Read across the movement, in order."""
+    """Per event (bar, label, voice): its tuplet ratio and whether it starts
+    or ends a tuplet, beam levels, tie stop. Read across the movement, in
+    order, each voice on its own."""
     out = {}
     seq = [(int(b), e) for b in sorted(events_by_bar, key=int) for e in events_by_bar[b]]
+    for v in dict.fromkeys(e.get("voice", "1") for _, e in seq):  # each voice its own tuplets and beams
+        voice_marks([(b, e) for b, e in seq if e.get("voice", "1") == v], out)
+    # ties: the note a tie ends on
+    for b, e in seq:
+        if e["tie"] and e["tie_to"]:
+            out.setdefault((e["tie_to"][0], f"n{e['tie_to'][1]}", e.get("voice", "1")), {})["tie_stop"] = True
+    return out
+
+
+def voice_marks(seq: list, out: dict):
+    """marks' tuplets and beams for one voice's events, in order."""
     # tuplets: a "stop" closes the open group before this event, a "start" opens one on it
     group, groups = None, []
     for b, e in seq:
@@ -96,7 +116,7 @@ def marks(events_by_bar: dict) -> dict:
                 group = {"ratio": (t[2], t[1]), "members": []}
                 groups.append(group)
         if group is not None and e["grace"] == "0":
-            group["members"].append((b, e["label"]))
+            group["members"].append((b, e["label"], e.get("voice", "1")))
     for g in groups:
         for i, k in enumerate(g["members"]):
             out.setdefault(k, {})["tuplet"] = g["ratio"]
@@ -119,17 +139,14 @@ def marks(events_by_bar: dict) -> dict:
                     nxt = i < len(beam) - 1 and fl[i + 1] >= lv
                     levels.append("continue" if prev and nxt else "begin" if nxt else "end" if prev
                                   else "forward hook" if i == 0 else "backward hook")
-                out.setdefault((bb, x["label"]), {})["beams"] = levels
+                out.setdefault((bb, x["label"], x.get("voice", "1")), {})["beams"] = levels
             beam = None
-    # ties: the note a tie ends on
-    for b, e in seq:
-        if e["tie"] and e["tie_to"]:
-            out.setdefault((e["tie_to"][0], f"n{e['tie_to'][1]}"), {})["tie_stop"] = True
-    return out
 
 
-def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fraction):
-    info = mk.get((b, e["label"]), {})
+def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fraction, voice: int = 1) -> Fraction:
+    """The event's notes (a chord's heads) or rest, in `voice`; the length
+    written (none for a grace)."""
+    info = mark(mk, b, e)
     dur = e["dur"] or ""
     kind = dur.rstrip(".")
     dots = dur.count(".")
@@ -137,8 +154,8 @@ def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fractio
         n = sub(m, "note")
         sub(n, "rest", measure="yes")
         sub(n, "duration", int(measure_len * 4 * DIV))
-        sub(n, "voice", 1)
-        return
+        sub(n, "voice", voice)
+        return measure_len
     length = LEN[kind] * (2 - Fraction(1, 2 ** dots))
     if "tuplet" in info:
         length *= Fraction(info["tuplet"][1], info["tuplet"][0])
@@ -162,7 +179,7 @@ def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fractio
             sub(n, "duration", int(length * 4 * DIV))
         if e["tie"] and h is not None:
             sub(n, "tie", type="start")
-        sub(n, "voice", 1)
+        sub(n, "voice", voice)
         sub(n, "type", XML_TYPE[kind])
         for _ in range(dots):
             sub(n, "dot")
@@ -195,6 +212,7 @@ def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fractio
                 sub(sub(nt, "ornaments"), "trill-mark")
         if len(nt):
             n.append(nt)
+    return length if e["grace"] == "0" else Fraction(0)
 
 
 def box_events(box: dict, events: dict, split: dict) -> list[dict] | None:
@@ -247,6 +265,9 @@ def staff_part(boxes: list[dict], events: dict, mk: dict, exp: dict, first_of_mv
         if len(attrs):
             m.append(attrs)
         evs = bar_events[k] if bar_events is not None else box_events(box, events, split)
+        if bar_events is None and len({e.get("voice", "1") for e in evs if e["grace"] == "0"}) > 1:
+            two_voices(m, box["bar"], evs, mk, measure_len)
+            continue
         changes = (clef_changes or {}).get(k, {})
         for i, e in enumerate(evs):
             if i in changes:
@@ -258,6 +279,59 @@ def staff_part(boxes: list[dict], events: dict, mk: dict, exp: dict, first_of_mv
     return part
 
 
+def lines(evs: list[dict], mk: dict | None = None, b: int = 0) -> list[int]:
+    """Which line each event of a bar goes on, 1 or 2. LilyPond opens voices
+    only where two lines sound (voices 3 and 4 for a few beats, then back to
+    voice 2), so a voice's number doesn't say which line it is: an event
+    goes on line 2 where it sounds against an event of a lower-numbered
+    voice, else on line 1. A grace note goes with the next note of its
+    voice."""
+    def span(e):
+        start = Fraction(e["pos"])
+        if e["grace"] != "0":
+            return start, start
+        d = (e["dur"] or "").rstrip(".")
+        dots = (e["dur"] or "").count(".")
+        n = LEN.get(d, Fraction(0)) * (2 - Fraction(1, 2 ** dots))
+        ratio = mark(mk or {}, b, e).get("tuplet")
+        return start, start + (n * Fraction(ratio[1], ratio[0]) if ratio else n)
+
+    line = [None] * len(evs)
+    for i, e in enumerate(evs):
+        if e["grace"] == "0":
+            a, z = span(e)
+            under = any(f["grace"] == "0" and int(f["voice"]) < int(e["voice"]) and span(f)[0] < z and a < span(f)[1]
+                        for f in evs)
+            line[i] = 2 if under else 1
+    for i, e in enumerate(evs):
+        if line[i] is None:
+            nxt = next((k for k in range(i + 1, len(evs)) if line[k] is not None and evs[k]["voice"] == e["voice"]), None)
+            line[i] = line[nxt] if nxt is not None else 1
+    return line
+
+
+def two_voices(m: ET.Element, b: int, evs: list[dict], mk: dict, measure_len: Fraction):
+    """A bar where two lines sound, as Zeus's own data writes it: line 1
+    (lines()), a <backup> to the bar's start, line 2, a <forward> over each
+    gap inside a line."""
+    where = lines(evs, mk, b)
+    for n in (1, 2):
+        at = Fraction(0)
+        if n > 1:
+            if 2 not in where:
+                break
+            sub(sub(m, "backup"), "duration", int(reached * 4 * DIV))
+        for e in (e for e, w in zip(evs, where) if w == n):
+            gap = Fraction(e["pos"]) - at
+            if gap > 0:
+                fw = sub(m, "forward")
+                sub(fw, "duration", int(gap * 4 * DIV))
+                sub(fw, "voice", n)
+                at += gap
+            at += note_elements(m, b, e, mk, measure_len, n)
+        reached = at
+
+
 def fills(part: ET.Element, boxes: list[dict], exp: dict, split: dict, last: int) -> bool:
     """LilyPond's bar check on the MusicXML written: each whole bar's notes
     and rests (not graces, not a chord's other heads) fill it exactly, so a
@@ -267,8 +341,12 @@ def fills(part: ET.Element, boxes: list[dict], exp: dict, split: dict, last: int
     for m, box in zip(part.findall("measure"), boxes):
         if box["bar"] in (0, last) or box["count"] != 1 or box["bar"] in split:
             continue
-        total = sum(int(n.findtext("duration") or 0) for n in m.findall("note")
-                    if n.find("grace") is None and n.find("chord") is None)
+        total = 0  # the first voice: everything before a <backup>
+        for n in m:
+            if n.tag == "backup":
+                break
+            if n.tag == "forward" or (n.tag == "note" and n.find("grace") is None and n.find("chord") is None):
+                total += int(n.findtext("duration") or 0)
         beats, beat_type = structure.meter(compare.in_force(exp, "time", box))
         if Fraction(total, 4 * DIV) != Fraction(beats, beat_type):
             return False
@@ -297,8 +375,9 @@ def build(boxes: list[dict], evs: dict, mk: dict, exp: dict, first_of_mvt: set, 
         return None, "a split bar that can't be cut"
     if any(len(b["clefs"]) > 1 for b in boxes):
         return None, "a clef change inside a bar"
-    if any(len({e["voice"] for e in evs.get(str(b["bar"]), []) if e["grace"] == "0"}) > 1 for b in boxes):
-        return None, "two voices"
+    if any(b["bar"] in split and len({e["voice"] for e in evs.get(str(b["bar"]), []) if e["grace"] == "0"}) > 1
+           for b in boxes):
+        return None, "two voices in a split bar"
     xml = staff_part(boxes, evs, mk, exp, first_of_mvt, split)
     if not fills(xml, boxes, exp, split, max(int(k) for k in evs)):
         return None, "a bar its durations don't fill"

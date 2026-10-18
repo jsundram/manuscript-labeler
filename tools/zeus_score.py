@@ -114,7 +114,7 @@ def one_voice(evs: list[dict], bar: int, mk: dict) -> list[dict]:
     def length(e):
         dur = e["dur"] or ""
         n = dataset.LEN.get(dur.rstrip("."), Fraction(0)) * (2 - Fraction(1, 2 ** dur.count(".")))
-        ratio = mk.get((bar, e["label"]), {}).get("tuplet")
+        ratio = dataset.mark(mk, bar, e).get("tuplet")
         return n * Fraction(ratio[1], ratio[0]) if ratio else n
 
     main = [e for e in evs if e["grace"] == "0"]
