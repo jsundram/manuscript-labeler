@@ -24,9 +24,77 @@
         ]
       },
       "kind": "title",
-      "marks": [],
+      "marks": [
+        {
+          "h": 0.1044,
+          "id": "p1m1",
+          "kind": "text",
+          "note": "",
+          "text": "",
+          "w": 0.2517,
+          "x": 0.3583,
+          "y": 0.032
+        },
+        {
+          "h": 0.0886,
+          "id": "p1m2",
+          "kind": "text",
+          "note": "",
+          "text": "Quartettino.",
+          "text_auto": true,
+          "w": 0.181,
+          "x": 0.3765,
+          "y": 0.2709
+        },
+        {
+          "h": 0.09,
+          "id": "p1m3",
+          "kind": "text",
+          "note": "",
+          "text": "",
+          "w": 0.3098,
+          "x": 0.3173,
+          "y": 0.4533
+        },
+        {
+          "h": 0.1073,
+          "id": "p1m4",
+          "kind": "text",
+          "note": "",
+          "text": "Compositore di Camera di S. M. il Re di Prussia.",
+          "text_auto": true,
+          "w": 0.6657,
+          "x": 0.1651,
+          "y": 0.5438
+        },
+        {
+          "h": 0.0821,
+          "id": "p1m5",
+          "kind": "text",
+          "note": "",
+          "text": "Per due violini, viola, e violoncello.",
+          "text_auto": true,
+          "w": 0.4809,
+          "x": 0.2348,
+          "y": 0.3637
+        },
+        {
+          "h": 0.0894,
+          "id": "p1m6",
+          "kind": "text",
+          "note": "",
+          "text": "Violoncello.",
+          "text_auto": true,
+          "w": 0.1943,
+          "x": 0.4127,
+          "y": 0.7899
+        }
+      ],
       "notes": "",
       "part": "vc",
+      "rejected_staves": [
+        0.6172
+      ],
       "status": "edited",
       "systems": []
     },
@@ -249,7 +317,7 @@
           "bend": [
             -0.0016,
             -0.0014,
-            -0.0,
+            0,
             -0.0016,
             -0.0011
           ],
@@ -341,7 +409,7 @@
           "bend": [
             0.0021,
             0.0008,
-            0.0,
+            0,
             0.0002,
             -0.0016
           ],
@@ -435,7 +503,7 @@
             0.0017,
             0.0002,
             0.0009,
-            0.0
+            0
           ],
           "bottom": 0.3722,
           "id": "p10s4",
@@ -524,7 +592,7 @@
           "below": 3.75,
           "bend": [
             0.0005,
-            0.0,
+            0,
             -0.0015,
             -0.0002,
             -0.0026
@@ -3604,7 +3672,7 @@
           "below": 3.75,
           "bend": [
             0.0016,
-            0.0,
+            0,
             -0.0002,
             -0.0025,
             -0.0049
@@ -4176,7 +4244,7 @@
             0.0032,
             0.0026,
             0.001,
-            -0.0,
+            0,
             -0.0002
           ],
           "bottom": 0.8144,
@@ -4191,11 +4259,11 @@
     "3": {
       "clef": "bass",
       "corners": {
-        "auto": true,
+        "auto": false,
         "points": [
           [
-            0.0017,
-            0.0144
+            0.0497,
+            0.0146
           ],
           [
             0.9659,
@@ -4206,24 +4274,69 @@
             0.9758
           ],
           [
-            0.0016,
-            0.9654
+            0.0379,
+            0.966
           ]
         ]
       },
       "kind": "music",
-      "marks": [],
+      "marks": [
+        {
+          "h": 0.0378,
+          "id": "p3m1",
+          "kind": "text",
+          "note": "",
+          "text": "Con un poco di Moto.",
+          "text_auto": true,
+          "w": 0.2148,
+          "x": 0.2181,
+          "y": 0.0134
+        },
+        {
+          "h": 0.0735,
+          "id": "p3m2",
+          "kind": "text",
+          "note": "",
+          "text": "Minuetto.",
+          "text_auto": true,
+          "w": 0.1274,
+          "x": 0.1154,
+          "y": 0.0542
+        },
+        {
+          "h": 0.0759,
+          "id": "p3m3",
+          "kind": "text",
+          "note": "",
+          "text": "D. C. il Minuetto",
+          "text_auto": true,
+          "w": 0.2368,
+          "x": 0.4278,
+          "y": 0.5756
+        },
+        {
+          "h": 0.0874,
+          "id": "p3m4",
+          "kind": "text",
+          "note": "",
+          "text": "Fine.",
+          "text_auto": true,
+          "w": 0.0871,
+          "x": 0.4503,
+          "y": 0.783
+        }
+      ],
       "notes": "",
       "part": "vc",
-      "status": "auto",
+      "status": "edited",
       "systems": [
         {
-          "above": 2,
+          "above": 1.5,
           "auto": true,
           "barlines": [
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p3s1b1",
               "kind": "single",
@@ -4276,7 +4389,7 @@
               "x1": 0.8675
             }
           ],
-          "below": 2.5,
+          "below": 3.5,
           "bend": [
             0,
             0,
@@ -4293,38 +4406,20 @@
         },
         {
           "above": 2.5,
-          "auto": true,
+          "auto": false,
           "barlines": [
             {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s2b1",
-              "kind": "single",
-              "x0": 0.2068,
-              "x1": 0.2068
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s2b2",
-              "kind": "single",
-              "x0": 0.2957,
-              "x1": 0.2957
-            },
-            {
-              "auto": true,
+              "auto": false,
               "bar_count": 1,
               "ends_movement": false,
               "id": "p3s2b3",
-              "kind": "single",
+              "kind": "repeat_both",
               "x0": 0.3851,
               "x1": 0.3835
             },
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p3s2b4",
               "kind": "single",
@@ -4337,6 +4432,24 @@
               "ends_movement": false,
               "id": "p3s2b5",
               "kind": "single",
+              "x0": 0.2068,
+              "x1": 0.2068
+            },
+            {
+              "auto": true,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p3s2b6",
+              "kind": "single",
+              "x0": 0.2957,
+              "x1": 0.2957
+            },
+            {
+              "auto": true,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p3s2b7",
+              "kind": "single",
               "x0": 0.5411,
               "x1": 0.5411
             },
@@ -4344,7 +4457,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s2b6",
+              "id": "p3s2b8",
               "kind": "single",
               "x0": 0.6161,
               "x1": 0.6161
@@ -4353,7 +4466,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s2b7",
+              "id": "p3s2b9",
               "kind": "single",
               "x0": 0.7107,
               "x1": 0.7115
@@ -4362,7 +4475,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s2b8",
+              "id": "p3s2b10",
               "kind": "single",
               "x0": 0.8453,
               "x1": 0.8469
@@ -4370,21 +4483,21 @@
           ],
           "below": 3.5,
           "bend": [
-            0.0005,
+            -0.0007,
             -0.0025,
-            -0.0026,
-            -0.0006,
+            -0.0021,
+            -0.0004,
             0.0013
           ],
           "bottom": 0.204,
           "id": "p3s2",
-          "left": 0.0014,
+          "left": 0.1001,
           "right": 0.8504,
-          "start": 0.0211,
+          "start": 0.1204,
           "top": 0.1646
         },
         {
-          "above": 1.5,
+          "above": 1,
           "auto": true,
           "barlines": [
             {
@@ -4460,7 +4573,7 @@
               "x1": 0.874
             }
           ],
-          "below": 3,
+          "below": 3.25,
           "bend": [
             -0.0016,
             -0.0019,
@@ -4476,14 +4589,23 @@
           "top": 0.2503
         },
         {
-          "above": 2,
+          "above": 1.75,
           "auto": true,
           "barlines": [
+            {
+              "auto": false,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p3s4b4",
+              "kind": "repeat_end",
+              "x0": 0.5556,
+              "x1": 0.5548
+            },
             {
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s4b1",
+              "id": "p3s4b5",
               "kind": "single",
               "x0": 0.2414,
               "x1": 0.2414
@@ -4492,7 +4614,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s4b2",
+              "id": "p3s4b6",
               "kind": "single",
               "x0": 0.3486,
               "x1": 0.3478
@@ -4501,22 +4623,13 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s4b3",
+              "id": "p3s4b7",
               "kind": "single",
-              "x0": 0.441,
-              "x1": 0.4408
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s4b4",
-              "kind": "single",
-              "x0": 0.5556,
-              "x1": 0.5548
+              "x0": 0.4407,
+              "x1": 0.4407
             }
           ],
-          "below": 3.5,
+          "below": 3.75,
           "bend": [
             0.0005,
             -0.0011,
@@ -4533,13 +4646,23 @@
         },
         {
           "above": 1.5,
-          "auto": true,
+          "auto": false,
+          "bar_count": 3,
           "barlines": [
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 3,
               "ends_movement": false,
-              "id": "p3s5b1",
+              "id": "p3s5b2",
+              "kind": "single",
+              "x0": 0.5607,
+              "x1": 0.5607
+            },
+            {
+              "auto": false,
+              "bar_count": 0,
+              "ends_movement": false,
+              "id": "p3s5b3",
               "kind": "single",
               "x0": 0.4561,
               "x1": 0.4553
@@ -4548,16 +4671,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s5b2",
-              "kind": "single",
-              "x0": 0.5607,
-              "x1": 0.5607
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s5b3",
+              "id": "p3s5b4",
               "kind": "single",
               "x0": 0.6732,
               "x1": 0.6732
@@ -4566,7 +4680,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s5b4",
+              "id": "p3s5b5",
               "kind": "single",
               "x0": 0.7821,
               "x1": 0.7829
@@ -4575,7 +4689,7 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s5b5",
+              "id": "p3s5b6",
               "kind": "single",
               "x0": 0.8884,
               "x1": 0.8844
@@ -4591,9 +4705,11 @@
           ],
           "bottom": 0.4621,
           "id": "p3s5",
+          "key": -3,
           "left": 0.2896,
           "right": 0.8918,
           "start": 0.3918,
+          "time": "3/4",
           "top": 0.4227
         },
         {
@@ -4601,35 +4717,17 @@
           "auto": true,
           "barlines": [
             {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s6b1",
-              "kind": "single",
-              "x0": 0.2197,
-              "x1": 0.2189
-            },
-            {
-              "auto": true,
+              "auto": false,
               "bar_count": 1,
               "ends_movement": false,
               "id": "p3s6b2",
-              "kind": "single",
+              "kind": "repeat_both",
               "x0": 0.3182,
               "x1": 0.3182
             },
             {
-              "auto": true,
-              "bar_count": 1,
-              "ends_movement": false,
-              "id": "p3s6b3",
-              "kind": "single",
-              "x0": 0.42,
-              "x1": 0.4192
-            },
-            {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 11,
               "ends_movement": false,
               "id": "p3s6b4",
               "kind": "single",
@@ -4637,7 +4735,7 @@
               "x1": 0.54
             },
             {
-              "auto": true,
+              "auto": false,
               "bar_count": 1,
               "ends_movement": false,
               "id": "p3s6b5",
@@ -4651,6 +4749,24 @@
               "ends_movement": false,
               "id": "p3s6b6",
               "kind": "single",
+              "x0": 0.2197,
+              "x1": 0.2189
+            },
+            {
+              "auto": false,
+              "bar_count": 0,
+              "ends_movement": false,
+              "id": "p3s6b7",
+              "kind": "single",
+              "x0": 0.42,
+              "x1": 0.4192
+            },
+            {
+              "auto": true,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p3s6b8",
+              "kind": "single",
               "x0": 0.7464,
               "x1": 0.7464
             },
@@ -4658,13 +4774,13 @@
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s6b7",
+              "id": "p3s6b9",
               "kind": "single",
               "x0": 0.864,
               "x1": 0.8632
             }
           ],
-          "below": 3.5,
+          "below": 3.75,
           "bend": [
             -0.0005,
             0.0016,
@@ -4680,33 +4796,46 @@
           "top": 0.5042
         },
         {
-          "above": 2,
-          "auto": true,
+          "above": 2.5,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
               "bar_count": 1,
               "ends_movement": false,
-              "id": "p3s7b1",
+              "id": "p3s7b2",
               "kind": "single",
-              "x0": 0.0182,
-              "x1": 0.0171
+              "x0": 0.234,
+              "x1": 0.2332
+            },
+            {
+              "auto": false,
+              "bar_count": 1,
+              "ends_movement": true,
+              "id": "p3s7b3",
+              "kind": "repeat_end",
+              "x0": 0.3363,
+              "x1": 0.3344
             }
           ],
-          "below": 1.5,
+          "below": 4.5,
           "bend": [
             0.0005,
-            0.0005,
-            0.0005,
-            0.0005,
-            0.0005
+            0.0001,
+            -0.0003,
+            -0.0003,
+            0.0003
           ],
-          "bottom": 0.6288,
+          "bottom": 0.6286,
           "id": "p3s7",
-          "left": 0.0014,
-          "right": 0.0232,
-          "start": 0.0232,
-          "top": 0.5894
+          "left": 0.102,
+          "rejected": [
+            0.3939,
+            0.1039
+          ],
+          "right": 0.3396,
+          "start": 0.1238,
+          "top": 0.5891
         }
       ]
     },
@@ -4764,7 +4893,51 @@
         ]
       },
       "kind": "title",
-      "marks": [],
+      "marks": [
+        {
+          "h": 0.1833,
+          "id": "p5m1",
+          "kind": "text",
+          "note": "",
+          "text": "Boccherini",
+          "w": 0.3486,
+          "x": 0.3036,
+          "y": 0.7594
+        },
+        {
+          "h": 0.0938,
+          "id": "p5m2",
+          "kind": "text",
+          "note": "",
+          "text": "Violino Primo.",
+          "text_auto": true,
+          "w": 0.1915,
+          "x": 0.3795,
+          "y": 0.5432
+        },
+        {
+          "h": 0.1449,
+          "id": "p5m3",
+          "kind": "text",
+          "note": "",
+          "text": "Quartettino.",
+          "text_auto": true,
+          "w": 0.1882,
+          "x": 0.3796,
+          "y": 0.2568
+        },
+        {
+          "h": 0.1022,
+          "id": "p5m4",
+          "kind": "text",
+          "note": "",
+          "text": "Mese di Agosto. 1794.",
+          "text_auto": true,
+          "w": 0.2547,
+          "x": 0.3361,
+          "y": 0.0384
+        }
+      ],
       "notes": "",
       "part": "vn1",
       "status": "edited",
@@ -4773,19 +4946,19 @@
     "6": {
       "clef": "treble",
       "corners": {
-        "auto": true,
+        "auto": false,
         "points": [
           [
             0.02,
             0.0393
           ],
           [
-            0.9968,
-            0.0218
+            0.9529,
+            0.0215
           ],
           [
-            0.9992,
-            0.9741
+            0.9614,
+            0.9716
           ],
           [
             0.028,
@@ -4794,37 +4967,33 @@
         ]
       },
       "kind": "music",
-      "marks": [],
+      "marks": [
+        {
+          "h": 0.0836,
+          "id": "p6m1",
+          "kind": "tempo",
+          "note": "",
+          "text": "Andantino Lento.",
+          "text_auto": true,
+          "w": 0.2005,
+          "x": 0.3232,
+          "y": 0.0692
+        }
+      ],
       "notes": "",
       "part": "vn1",
-      "status": "auto",
+      "rejected_staves": [
+        0.1078
+      ],
+      "status": "edited",
       "systems": [
         {
-          "above": 3.5,
-          "auto": true,
-          "barlines": [],
-          "below": 1.5,
-          "bend": [
-            -0.01,
-            -0.01,
-            -0.01,
-            -0.01,
-            -0.01
-          ],
-          "bottom": 0.1272,
-          "id": "p6s1",
-          "left": 0.9714,
-          "right": 0.9968,
-          "start": 0.9968,
-          "top": 0.0883
-        },
-        {
-          "above": 2.5,
+          "above": 2,
           "auto": true,
           "barlines": [
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p6s2b1",
               "kind": "single",
@@ -4877,16 +5046,16 @@
               "x1": 0.7671
             },
             {
-              "auto": true,
+              "auto": false,
               "bar_count": 1,
               "ends_movement": false,
               "id": "p6s2b7",
               "kind": "single",
-              "x0": 0.857,
-              "x1": 0.8602
+              "x0": 0.8576,
+              "x1": 0.8599
             }
           ],
-          "below": 2.5,
+          "below": 3.25,
           "bend": [
             0.0089,
             0.0046,
@@ -4902,8 +5071,8 @@
           "top": 0.1719
         },
         {
-          "above": 2.5,
-          "auto": true,
+          "above": 3.25,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
@@ -4915,17 +5084,17 @@
               "x1": 0.2211
             },
             {
-              "auto": true,
+              "auto": false,
               "bar_count": 1,
               "ends_movement": false,
               "id": "p6s3b2",
-              "kind": "single",
-              "x0": 0.2972,
-              "x1": 0.2988
+              "kind": "repeat_both",
+              "x0": 0.2946,
+              "x1": 0.2946
             },
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p6s3b3",
               "kind": "single",
@@ -4960,16 +5129,25 @@
               "x1": 0.7447
             },
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p6s3b7",
               "kind": "single",
               "x0": 0.8926,
               "x1": 0.8902
+            },
+            {
+              "auto": false,
+              "bar_count": 1,
+              "ends_movement": false,
+              "id": "p6s3b8",
+              "kind": "repeat_end",
+              "x0": 0.8255,
+              "x1": 0.8234
             }
           ],
-          "below": 3,
+          "below": 3.25,
           "bend": [
             0.01,
             0.005,
@@ -4981,12 +5159,12 @@
           "id": "p6s3",
           "left": 0.0832,
           "right": 0.8957,
-          "start": 0.12,
+          "start": 0.1024,
           "top": 0.2597
         },
         {
-          "above": 1.5,
-          "auto": true,
+          "above": 1.75,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
@@ -5003,8 +5181,8 @@
               "ends_movement": false,
               "id": "p6s4b2",
               "kind": "single",
-              "x0": 0.2784,
-              "x1": 0.2773
+              "x0": 0.2775,
+              "x1": 0.2775
             },
             {
               "auto": true,
@@ -5043,24 +5221,27 @@
               "x1": 0.7768
             }
           ],
-          "below": 2,
+          "below": 2.75,
           "bend": [
             0.0105,
-            0.007,
-            0.0005,
-            -0.0023,
-            -0.0058
+            0.0069,
+            0.0016,
+            -0.002,
+            -0.0051
           ],
           "bottom": 0.3828,
           "id": "p6s4",
           "left": 0.0889,
-          "right": 0.8986,
-          "start": 0.1257,
+          "rejected": [
+            0.8973
+          ],
+          "right": 0.8655,
+          "start": 0.1059,
           "top": 0.3438
         },
         {
-          "above": 3,
-          "auto": true,
+          "above": 2.5,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
@@ -5126,7 +5307,7 @@
               "x1": 0.8789
             }
           ],
-          "below": 2,
+          "below": 2.75,
           "bend": [
             0.01,
             0.005,
@@ -5138,12 +5319,12 @@
           "id": "p6s5",
           "left": 0.0907,
           "right": 0.8832,
-          "start": 0.1314,
+          "start": 0.1135,
           "top": 0.4322
         },
         {
           "above": 3,
-          "auto": true,
+          "auto": false,
           "barlines": [
             {
               "auto": true,
@@ -5209,23 +5390,23 @@
               "x1": 0.839
             }
           ],
-          "below": 2,
+          "below": 3,
           "bend": [
             0.0058,
             0.0041,
-            0.0003,
-            -0.0046,
-            -0.0077
+            0.0004,
+            -0.0043,
+            -0.0075
           ],
           "bottom": 0.5573,
           "id": "p6s6",
-          "left": 0.0875,
-          "right": 0.8429,
-          "start": 0.1325,
+          "left": 0.1,
+          "right": 0.8423,
+          "start": 0.1112,
           "top": 0.5184
         },
         {
-          "above": 3,
+          "above": 2.25,
           "auto": true,
           "barlines": [
             {
@@ -5375,7 +5556,7 @@
               "x1": 0.8557
             }
           ],
-          "below": 8,
+          "below": 4.75,
           "bend": [
             0.0083,
             0.0039,
@@ -5497,12 +5678,12 @@
               "ends_movement": false,
               "id": "p7s1b6",
               "kind": "double",
-              "x0": 0.8079,
-              "x1": 0.8071
+              "x0": 0.8054,
+              "x1": 0.8043
             },
             {
-              "auto": true,
-              "bar_count": 1,
+              "auto": false,
+              "bar_count": 0,
               "ends_movement": false,
               "id": "p7s1b7",
               "kind": "single",
@@ -5514,7 +5695,7 @@
           "bend": [
             -0.0005,
             0.0004,
-            -0.0,
+            0,
             -0.0014,
             -0.0029
           ],
@@ -6519,7 +6700,7 @@
       "systems": []
     }
   },
-  "schema": 4,
+  "schema": 5,
   "source": {
     "gerard": 229,
     "pdf": "sources/G229/F-Po_RES-507-16.pdf",
