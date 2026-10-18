@@ -7,6 +7,7 @@ import re
 from pathlib import Path
 LAB = Path(__file__).resolve().parent.parent.parent
 md = (LAB / "zeus-score/MODEL_CARD_MUSVIT.md").read_text()
+md = re.sub(r"```bibtex\n.*?```", "(BibTeX in the Markdown card.)", md, flags=re.S)
 
 def inline(s):
     s = html.escape(s, quote=False)

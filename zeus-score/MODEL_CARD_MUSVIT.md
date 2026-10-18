@@ -20,6 +20,20 @@ A second model, **musvit-D1**, is the same recipe without the Madrid copies,
 KHM 602 II and Op. 48 No. 5 I. Those can still test it, so it is the
 reference for experiments; D3 is the one to use.
 
+If you use it, cite MuSViT:
+
+```bibtex
+@inproceedings{Penarrubia:ECCV:2026,
+  author    = {Penarrubia, Carlos and Rios-Vila, Antonio and Fuentes-Martinez, Eliseo and Martinez-Sevilla, Juan C. and Castellanos, Francisco J. and Alfaro-Contreras, Mar{\'\i}a and Calvo-Zaragoza, Jorge},
+  title     = {MuSViT: A Foundation Vision Model for Sheet Music Representation},
+  booktitle = {Computer Vision -- ECCV 2026},
+  publisher = {Springer Nature Switzerland},
+  year      = {2026},
+  pages     = {459--476},
+  doi       = {10.1007/978-3-032-37271-0_25}
+}
+```
+
 ## The model
 
 | | |
@@ -28,6 +42,7 @@ reference for experiments; D3 is the one to use.
 | Output | Linearized MusicXML (LMX), Zeus's format: 137 tokens in all (the public staves' and ours), including two voices written as Zeus's data writes them (line 1, `<backup>`, line 2). |
 | Starting weights | MuSViT (PRAIG/musvit on Hugging Face, ECCV 2026), MAE-pretrained on IMSLP pages |
 | This model | D3-tf8-all, pass 24 of a 30-pass schedule. 195 MB (half precision, its adapters folded into the encoder). sha256 of reader.safetensors in the registry. |
+| How MuSViT is used | As its model card advises for fine-tuning: loaded as a plain ViTModel (not AutoModel, which would hide 70% of the patches), position embeddings interpolated to each staff's size, pixels 0–1 with no normalisation, grey copied to three channels. Its pages were pretrained at 1024 × 1024, so a staff here is drawn larger than it was then. |
 | Input | The staff Zeus is given: compare.py's crop from the bar export (a staff space beyond each end, 2.5 above and below, straightened, the paper brightened), saved as JPEG at quality 95, then resized to 128 px high. |
 | Environment | Python 3.10–3.12, PyTorch, transformers, safetensors. No MuSViT download and no peft: the archive holds the whole reader. On a Mac it reads on the GPU (mps) in half precision. |
 | Training | On Modal's GPUs: stage 1 about an hour on an L40S, stage 2 about 22 minutes. |
