@@ -31,6 +31,8 @@ proto.Reader.read_cached reads, with the attention weights kept:
   each of the 8 decoder layers (heads averaged; scaled to each map's
   maximum; with --light, the layers' average and the last layer only); `heads`: the last layer's 8 heads apart (not with --light);
   `self`: the last layer's attention over the symbols before it;
+- `embedding`, `pixels` (not with --light): how each patch enters the
+  encoder (embedding() says what each holds);
 - `bars`: compare.py's verdict per bar on this reading (its events against
   the encoding's), with the clean test's (where the staff was read in a batch
   of 8, which changes a reading a little) and Zeus J's;
@@ -288,6 +290,38 @@ def verdicts(path, part, mvt):
             for b in json.loads(path.read_text())["bars"] if b["part"] == part and b["movement"] == mvt}
 
 
+@torch.no_grad()
+def embedding(model, x) -> dict:
+    """How a patch enters the encoder: the 256 grey values of each patch
+    (`pixels`, the staff 128 px high), the 768 numbers one learned
+    multiplication makes of them (`patch`), the fixed position vectors for
+    this staff's grid (`position`: MuSViT's 64 x 64 sine-cosine table for a
+    whole page, stretched to it), and the 768 filters of that multiplication
+    (`filters`: the three colour channels' weights added, as the channels of
+    a grey staff are equal; each scaled to its own range). Vectors are int8
+    with a scale per patch: value = int8 * scales[patch]."""
+    emb = model.encoder.embeddings
+    xs = x.float().cpu()
+    proj = emb.patch_embeddings.projection.float().cpu()
+    patch = proj(xs).flatten(2).transpose(1, 2)[0]  # (P, 768)
+    H, W = xs.shape[-2:]
+    pe = emb.position_embeddings
+    pos = emb.interpolate_pos_encoding(torch.zeros(1, patch.shape[0] + 1, patch.shape[1], device=pe.device, dtype=pe.dtype),
+                                       H, W).float().cpu()[0, 1:]
+    w = proj.weight.sum(1)  # (768, 16, 16)
+    lo, hi = w.amin((1, 2), keepdim=True), w.amax((1, 2), keepdim=True)
+    filters = ((w - lo) / (hi - lo).clamp_min(1e-9) * 255).round().to(torch.uint8)
+
+    def q(v):  # each row (patch) its own scale: value = int8 * scales[row]
+        s = (v.abs().amax(1, keepdim=True) / 127).clamp_min(1e-9)
+        return {"shape": list(v.shape), "scales": [round(float(x), 6) for x in s[:, 0]],
+                "data": base64.b64encode((v / s).round().clamp(-127, 127).to(torch.int8).numpy().tobytes()).decode()}
+    stats = {"patch": [round(float(patch.min()), 3), round(float(patch.max()), 3), round(float(patch.std()), 3)],
+             "position": [round(float(pos.min()), 3), round(float(pos.max()), 3)]}
+    return {"patch": q(patch), "position": q(pos), "filters": {"shape": list(filters.shape), "data": b64(filters.numpy())},
+            "bias_range": [round(float(proj.bias.min()), 3), round(float(proj.bias.max()), 3)], "stats": stats}
+
+
 def summary(a, pdf, export, model, vocab, dtype):
     """Every staff of the movement read alone: per bar, the verdict, how sure the reader was, and a thumbnail."""
     zres = a.zeus_results or RESULTS / f"{a.source}-{a.movement}-J-lr1e5-e8.model.json"
@@ -408,6 +442,9 @@ def main():
         "bars": bars,
         "scored": scored,
     }
+    if not a.light:
+        out["embedding"] = embedding(model, x)
+        out["pixels"] = b64(seen)
     if "enc_attn" in got:
         idx, val = got["enc_attn"]
         out["enc_attn"] = {"layers": [i + 1 for i in enc_layers], "shape": list(val.shape),

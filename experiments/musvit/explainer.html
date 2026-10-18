@@ -114,6 +114,14 @@ input[type=range] { width: min(28rem, 100%); accent-color: #2148b8; }
 .heads figure { margin: 0; }
 .heads figcaption { font-family: var(--f-ui); font-size: .72rem; color: var(--plate-soft); }
 
+/* embedding */
+.emb-grid { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 18px; align-items: start; }
+@media (max-width: 760px) { .emb-grid { grid-template-columns: minmax(0, 1fr); } }
+.vec { display: grid; grid-template-columns: 9rem minmax(0, 1fr) 7.5rem; gap: 8px; align-items: center; font-family: var(--f-ui); font-size: .8rem; margin-bottom: 6px; }
+.vec canvas { width: 100%; height: 44px; display: block; border: 1px solid var(--plate-rule); }
+.vec .rng { font-family: var(--f-mono); font-size: .72rem; color: var(--plate-soft); text-align: right; }
+.filters canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; border: 1px solid var(--plate-rule); }
+
 /* architecture */
 .arch { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: stretch; font-family: var(--f-ui); }
 .arch .blk { border: 1px solid var(--plate-rule); border-radius: 3px; padding: 10px; background: #fff; position: relative; }
@@ -220,7 +228,7 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
 <p>Then the strip is shrunk to 128 pixels high, keeping its proportions. A staff space, the gap between two lines, is now about 14 pixels. That is the whole input: a grey picture, 128 pixels high and as wide as the staff.</p>
 
 <h2>2. Cut into patches</h2>
-<p>The reader cuts the strip into squares of 16 by 16 pixels: eight rows of them, and one column for every 16 pixels of width. This staff makes <b class="num" id="n-patches"></b> patches. Each patch is flattened into a list of numbers and multiplied out into a vector of 768 numbers, a description of what is in that square. A second vector is added saying where the square sits, so the reader knows which patch is on the top line and which is two patches to the left.</p>
+<p>The reader cuts the strip into squares of 16 by 16 pixels: eight rows of them, and one column for every 16 pixels of width. This staff makes <b class="num" id="n-patches"></b> patches. Each becomes a list of 768 numbers describing what is in that square, plus 768 more saying where the square sits.</p>
 </article>
 
 <div class="wide plate">
@@ -229,6 +237,16 @@ pre { font-family: var(--f-mono); font-size: .8rem; background: color-mix(in srg
   <div class="controls"><canvas id="tile" width="128" height="128" style="width:96px;height:96px;image-rendering:pixelated;border:1px solid var(--plate-rule);flex:none"></canvas>
     <div id="tile-cap" class="cap" style="margin:0;max-width:34rem"></div></div>
 </div>
+
+<article class="col">
+<h3>What a patch becomes</h3>
+<p>Each pixel arrives as a whole number from 0 (black) to 255 (white), eight bits. The reader divides by 255, so ink is near 0 and paper near 1. MuSViT was built for colour pages, so the grey value is copied into three channels, red, green and blue: a patch enters as 16 × 16 × 3 = 768 numbers.</p>
+<p>One multiplication turns those into 768 new numbers. Think of it as 768 small templates, each 16 by 16 pixels, laid over the patch in turn; each output number says how strongly the patch matches one template. The templates were learned when MuSViT was trained on printed pages, and our training left them alone; they are shown below. The outputs are decimal numbers (stored in half precision on the Mac), most between about −1 and 1.</p>
+<p>Why 768? It is the width of every vector in MuSViT, all the way through: the size of the standard "base" vision transformer, 12 attention heads of 64 numbers each. A wider model can carry more detail per patch but costs more to run. That a 16-pixel colour patch also happens to be 768 numbers is a coincidence of that design.</p>
+<p>Then the patch's place is added, as another 768 numbers. A single number from 1 to 920 would do as a label, but the reader would struggle to use it: attention compares vectors by multiplying them together, number by number, so position works best as a direction in the same space. In MuSViT the position vectors are not learned. They are fixed waves, sines and cosines at 192 frequencies, from one cycle every six patches of the page grid to one every 60,000. The first 384 numbers mark the column, the last 384 the row. Fast waves tell neighbours apart, slow ones give the rough location, and a step of one patch shifts every wave by the same amount, which attention can recognise wherever it happens. The table was made for a whole page cut into 64 × 64 patches; for this strip it is stretched to 8 × 115.</p>
+</article>
+
+<div class="wide plate" id="embed-lead"></div>
 
 <article class="col">
 <h2>3. The encoder: patches look at one another</h2>
@@ -546,6 +564,76 @@ function decoderPanel(host, d, img, { heads = true, start = 0 } = {}) {
   return { go };
 }
 
+function embeddingPanel(host, d, img, gridCv, getSel) {
+  host.innerHTML = "";
+  if (!d.embedding) { host.hidden = true; return null; }
+  const E = d.embedding, P = d.P, D = E.patch.shape[1];
+  const i8 = s => { const b = u8(s); return new Int8Array(b.buffer, b.byteOffset, b.byteLength); };
+  const patch = i8(E.patch.data), pos = i8(E.position.data), pix = u8(d.pixels);
+  const ps = E.patch.scales, qs = E.position.scales, W = d.crop.w, cols = d.crop.cols;
+  const posNorm = new Float32Array(P);
+  for (let p = 0; p < P; p++) { let s = 0; for (let k = 0; k < D; k++) s += pos[p * D + k] ** 2; posNorm[p] = Math.sqrt(s) || 1; }  // per-row scales cancel in a cosine
+  const pixCv = el("canvas", { width: 448, height: 448, style: "width:100%;max-width:15rem;aspect-ratio:1;border:1px solid var(--plate-rule)", "aria-label": "the patch's 256 grey values" });
+  const strips = {}, ranges = {};
+  const vecRow = (key, label) => { strips[key] = el("canvas"); ranges[key] = el("span", { class: "rng" }); return el("div", { class: "vec" }, el("span", { text: label }), strips[key], ranges[key]); };
+  const simCv = el("canvas", { "aria-label": "how alike every position's vector is to this patch's" });
+  const filtCv = el("canvas", { width: 32 * 17, height: 24 * 17, "aria-label": "the 768 learned templates" });
+  const filtCap = el("div", { class: "cap" });
+  host.append(el("div", { class: "label", text: "Inside one patch · point at a square in the grid above" }),
+    el("div", { class: "emb-grid" },
+      el("div", {}, pixCv, el("div", { class: "cap", text: "Its 256 pixels, 0 (ink) to 255 (paper), as stored. The reader divides each by 255." })),
+      el("div", {}, vecRow("patch", "the patch's 768 numbers"), vecRow("pos", "its position's 768"), vecRow("sum", "added: what the encoder gets"),
+        el("div", { class: "cap", text: "Each number is one thin bar: amber above zero, blue below, scaled to the row's largest. The spike near the right of the patch's row is number 743, large in every patch (about 12, against a typical 0.4): a constant the network learned to carry, not a description of the patch; big networks often keep one. The position row has four quarters, the column's sines and cosines, then the row's; the fastest waves are at the left of each quarter." }))),
+    el("div", { class: "label", text: "Which positions look alike: the selected patch's position vector compared with every other", style: "margin-top:1rem" }), simCv,
+    el("div", { class: "cap", text: "Bright: a position vector pointing the same way (cosine similarity near 1). The likeness falls off smoothly with distance, faster across the rows than along them, because the strip's 8 rows were stretched from 64 and its 115 columns from 64." }),
+    el("div", { class: "label", text: "The 768 learned templates", style: "margin-top:1rem" }), el("div", { class: "filters" }, filtCv), filtCap);
+  // the filters, once
+  const fg = filtCv.getContext("2d"), fd = u8(E.filters.data), tile = fg.createImageData(16, 16);
+  for (let f = 0; f < 768; f++) {
+    for (let k = 0; k < 256; k++) { const v = fd[f * 256 + k]; tile.data.set([v, v, v, 255], k * 4); }
+    fg.putImageData(tile, (f % 32) * 17, Math.floor(f / 32) * 17);
+  }
+  const base = fg.getImageData(0, 0, filtCv.width, filtCv.height);
+  function strip(cv, vals, scale) {
+    const dpr = devicePixelRatio || 1, w = cv.clientWidth || 600, h = cv.clientHeight || 44;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.fillStyle = "#fff"; g.fillRect(0, 0, w, h);
+    let mx = 0; for (const v of vals) mx = Math.max(mx, Math.abs(v)); mx = mx || 1;
+    const bw = w / vals.length;
+    vals.forEach((v, k) => { const a = v / mx; g.fillStyle = a >= 0 ? "#e87016" : "#2148b8"; const bh = Math.abs(a) * (h / 2 - 1); g.fillRect(k * bw, a >= 0 ? h / 2 - bh : h / 2, Math.max(bw, 0.6), bh); });
+    g.fillStyle = "#cfd1c8"; g.fillRect(0, h / 2, w, 0.5);
+    return [Math.min(...vals), Math.max(...vals)];
+  }
+  function update() {
+    const p = getSel(); if (p == null) return;
+    const r = Math.floor(p / cols), c = p % cols;
+    // pixels as numbers
+    const g = pixCv.getContext("2d"); g.font = "12px IBM Plex Mono, monospace"; g.textAlign = "center"; g.textBaseline = "middle";
+    for (let y = 0; y < 16; y++) for (let x = 0; x < 16; x++) {
+      const v = pix[(r * 16 + y) * W + c * 16 + x];
+      g.fillStyle = `rgb(${v},${v},${v})`; g.fillRect(x * 28, y * 28, 28, 28);
+      g.fillStyle = v < 128 ? "#fff" : "#23201d"; g.fillText(String(v), x * 28 + 14, y * 28 + 14);
+    }
+    const pv = Array.from(patch.subarray(p * D, (p + 1) * D), v => v * ps[p]), qv = Array.from(pos.subarray(p * D, (p + 1) * D), v => v * qs[p]);
+    const sv = pv.map((v, k) => v + qv[k]);
+    const fmt = ([a, b]) => `${a.toFixed(2)} to ${b.toFixed(2)}`;
+    ranges.patch.textContent = fmt(strip(strips.patch, pv)); ranges.pos.textContent = fmt(strip(strips.pos, qv)); ranges.sum.textContent = fmt(strip(strips.sum, sv));
+    // which positions look alike
+    const sim = new Float32Array(P); let lo = 1;
+    for (let o = 0; o < P; o++) { let s = 0; for (let k = 0; k < D; k++) s += pos[p * D + k] * pos[o * D + k]; sim[o] = s / (posNorm[p] * posNorm[o]); lo = Math.min(lo, sim[o]); }
+    drawStrip(simCv, d, img, { heat: Uint8Array.from(sim, v => Math.round(Math.max(0, (v - lo) / (1 - lo || 1)) ** 3 * 255)), sel: p });
+    // the templates this patch matches most
+    fg.putImageData(base, 0, 0);
+    const top = pv.map((v, k) => [v, k]).sort((a, b) => b[0] - a[0]).slice(0, 12);
+    fg.strokeStyle = "#e87016"; fg.lineWidth = 2;
+    for (const [, k] of top) fg.strokeRect((k % 32) * 17 - 0.5, Math.floor(k / 32) * 17 - 0.5, 17, 17);
+    filtCap.textContent = `Each 16 × 16 square is one template, its weights shown grey (the three colour channels added). To the eye they look like static: no single template is a note head or a stem; what a patch is shows only in the pattern across all 768. Outlined: the 12 this patch matches most (template ${top.slice(0, 3).map(([v, k]) => `${k + 1}: ${v.toFixed(2)}`).join(", ")} …). A bias is added to each, between ${E.bias_range[0]} and ${E.bias_range[1]}.`;
+  }
+  new ResizeObserver(update).observe(host);
+  update();
+  return update;
+}
+
 function encoderPanel(host, d, img, q0) {
   host.innerHTML = "";
   if (!d.enc_attn) return;
@@ -707,11 +795,13 @@ async function main() {
     const r = Math.floor(p / d.crop.cols), c = p % d.crop.cols;
     tg.fillStyle = "#fbfbf7"; tg.fillRect(0, 0, 128, 128);
     tg.drawImage(img, c * 16, r * 16, 16, 16, 0, 0, 128, 128);
-    $("#tile-cap").textContent = `Patch ${p + 1} of ${d.P}: row ${r + 1} of 8, column ${c + 1} of ${d.crop.cols}. Its 256 grey pixels (shown 8 times larger) become 768 numbers, plus a second 768 for its place on the staff.`;
+    $("#tile-cap").textContent = `Patch ${p + 1} of ${d.P}: row ${r + 1} of 8, column ${c + 1} of ${d.crop.cols}. Its 256 grey pixels (shown 8 times larger) become 768 numbers, plus 768 more for its place on the staff. Below: those numbers.`;
   };
   const pick = (cv, ev) => { const rc = cv.getBoundingClientRect(); const x = (ev.clientX - rc.left) / rc.width * d.crop.w, y = (ev.clientY - rc.top) / rc.height * 128; return Math.min(7, Math.floor(y / 16)) * d.crop.cols + Math.min(d.crop.cols - 1, Math.floor(x / 16)); };
-  gridCv.addEventListener("pointermove", ev => { hover = pick(gridCv, ev); drawGrid(); showTile(hover); });
+  let updEmb = null;
+  gridCv.addEventListener("pointermove", ev => { hover = pick(gridCv, ev); drawGrid(); showTile(hover); if (updEmb) updEmb(); });
   hover = 3 * d.crop.cols + Math.floor(d.crop.cols * 0.45);
+  updEmb = embeddingPanel($("#embed-lead"), d, img, gridCv, () => hover);
   new ResizeObserver(drawGrid).observe(gridCv.parentElement);
   showTile(hover);
 
