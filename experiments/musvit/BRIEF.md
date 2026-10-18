@@ -271,3 +271,26 @@ D2-bocch-tf8-M (from G1-bocch-tf8) on Op. 48 + dataM, scores C1, C4, D1, D2 and
 Zeus J on Madrid and D1, D2 on the clean test. Summary: scratchpad
 `overnight-summary.md`; log `overnight.log`. Test on Op02-1-G159: 116 plain
 staves from the new pairing against 114 in dataG.
+
+## 2026-10-18: the stage gate
+
+- **Overnight:** re-pairing kept 3,219 staves (Zeus F 3,158), none wrong on
+  Op. 48; dataM 2,444 two-voice Philhar staves; dataT (Madrid) 372. D1-tf8-M
+  (C1's recipe on Op. 48 + dataM): clean test 263, Madrid 5.8%; D2 (C4's)
+  257, 10.7%; C1 7.4%, C4 7.3%, Zeus J 17.3% on Madrid.
+- **Madrid is flattered by the music:** H1 (D1's recipe, 1,508 staves, no
+  Op. 22 or Op. 32) 24.1% on Madrid, 31.7% on Op. 32, clean test 247; R1 (a
+  random 1,508, both works in) 11.6%, 9.3%, 254. Madrid can't rank readers.
+  (A spend-limit stop at about $50 metered disabled the workspace mid-run;
+  the user raised it and both were rerun.)
+- **Crowned: D3-tf8-all**, D1's recipe and pass 24 on everything but the
+  clean test (3,411 staves): clean test 270 (78%), +13.0 points on Zeus J
+  (+9.2 to +17.0). Released as `musvit-D3`, with `musvit-D1` as the held-out
+  reference (`release.py`; zeus-score 1.1.0 runs them through
+  `tools/musvit_score.py`).
+- **Mac:** cached decoding (`Reader.read_cached`) and `for_reading` (adapters
+  folded, half precision on mps): 1.9 → 0.28 s a staff, same accuracy (D1
+  265 on the Mac). Zeus J: 0.05 s. Scoring: 66 staves in 42 s, as Zeus J.
+- **Public benchmarks:** README.md, round 4. No published number exists for
+  Zeus's solo snapshot; scored here with one metric for every model.
+

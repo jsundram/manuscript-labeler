@@ -76,6 +76,23 @@ def read(run: str, file: str, crops: dict[str, bytes]) -> dict[str, str]:
     return proto.read_crops(run, file, crops, "cuda")
 
 
+@app.function(image=image, gpu="L4", timeout=6 * 3600, volumes={"/cache": cache, "/staves": staves})
+def read_samples(run: str, file: str, samples: str) -> dict[str, str]:
+    """LMX for each staff of a samples file in the staves volume (its lines,
+    the staves' paths without suffix), by a trained run's reader: for test
+    sets too big to send (the public benchmarks)."""
+    from concurrent.futures import ThreadPoolExecutor
+    os.environ["MUSVIT_CACHE"] = "/cache"
+    import sys
+    sys.path.insert(0, "/root")
+    import proto
+    root = Path(samples).parent
+    lines = Path(samples).read_text().split()
+    with ThreadPoolExecutor(64) as ex:  # each file's first read off the volume is slow
+        crops = dict(zip(lines, ex.map(lambda l: (root / l).with_suffix(".jpg").read_bytes(), lines)))
+    return proto.read_crops(run, file, crops, "cuda")
+
+
 @app.function(image=image, gpu="L4", timeout=3600, volumes={"/cache": cache})
 def read_nbest(run: str, file: str, crops: dict[str, bytes], k: int = 8) -> dict[str, list]:
     """Up to k readings of each staff crop, with log-probabilities (read.py --beam)."""
