@@ -45,6 +45,7 @@ ENCODERS = {"light": CACHE / "weights" / "musvit-light", "full": CACHE / "weight
 H, PATCH, MAXW, MAXLEN = 128, 16, 2688, 512
 PAD, BOS, EOS, UNK = "<pad>", "<s>", "</s>", "<unk>"
 AMP = False  # bfloat16 autocast on CUDA (--amp); a run's config.json records it
+COLOR = False  # read staves in colour, three channels (--color), not grey copied to three; config.json records it
 
 
 def autocast():
@@ -69,7 +70,8 @@ def opened(src) -> Image.Image:
 
 
 def image(path, shift: int = 0) -> torch.Tensor:
-    im = opened(path).convert("L")
+    """A staff 128 px high, its width by aspect: (H, w) grey, or (3, H, w) with COLOR."""
+    im = opened(path).convert("RGB" if COLOR else "L")
     w = min(MAXW, round(im.width * H / im.height / PATCH) * PATCH)
     a = np.asarray(im.resize((w, H), Image.BILINEAR), dtype=np.float32) / 255
     if shift:  # Zeus's h:8, a sideways shift: white in on one side, ink out the other
@@ -78,7 +80,7 @@ def image(path, shift: int = 0) -> torch.Tensor:
             a[:, :shift] = 1
         else:
             a[:, shift:] = 1
-    return torch.from_numpy(a)
+    return torch.from_numpy(a).permute(2, 0, 1).contiguous() if COLOR else torch.from_numpy(a)
 
 
 def zeus_augment(a: np.ndarray) -> np.ndarray:
@@ -114,13 +116,14 @@ AUGMENT = "shift"  # or "zeus" (--augment): see zeus_augment
 def batch(items, vocab, augment=False):
     ims = [image(p, random.randint(-8, 8) if augment else 0) for p, _ in items]
     if augment and AUGMENT == "zeus":
+        assert not COLOR, "Zeus's augmentation is for grey staves"
         ims = [torch.from_numpy(zeus_augment(i.numpy())) for i in ims]
-    W = max(i.shape[1] for i in ims)
+    W = max(i.shape[-1] for i in ims)
     x = torch.ones(len(ims), 3, H, W)
     cols = torch.zeros(len(ims), W // PATCH, dtype=torch.bool)  # True = padding
     for k, im in enumerate(ims):
-        x[k, :, :, : im.shape[1]] = im
-        cols[k, im.shape[1] // PATCH:] = True
+        x[k, :, :, : im.shape[-1]] = im
+        cols[k, im.shape[-1] // PATCH:] = True
     # patch order is row-major over (H/16, W/16), after the CLS token
     mask = torch.cat([torch.zeros(len(ims), 1, dtype=torch.bool), cols.repeat(1, H // PATCH)], 1)
     ids = [[vocab.get(t, vocab[UNK]) for t in toks][: MAXLEN - 1] for _, toks in items]
@@ -360,13 +363,14 @@ def load(run: str, file: str = "reader.pt"):
     """A trained reader and its vocabulary, from runs/RUN/ (its encoder,
     decoder depth and precision from config.json; the first runs, without
     one, were MuSViT-light, 4 layers, float32)."""
-    global AMP
+    global AMP, COLOR
     vocab = json.loads((CACHE / "runs" / run / "vocab.json").read_text())
     cfg = {"encoder": "light", "layers": 4, "amp": False, "lora_r": 16, "lora_mlp": False, "decoder": "transformer",
            "memory": "patches"}
     if (CACHE / "runs" / run / "config.json").exists():
         cfg |= json.loads((CACHE / "runs" / run / "config.json").read_text())
     AMP = cfg["amp"] and torch.cuda.is_available()
+    COLOR = cfg.get("color", False)
     model = Reader(cfg["encoder"], len(vocab), layers=cfg["layers"], lora_r=cfg["lora_r"], lora_mlp=cfg["lora_mlp"],
                    decoder=cfg["decoder"], memory=cfg["memory"])
     got = model.load_state_dict(torch.load(CACHE / "runs" / run / file, map_location="cpu"), strict=False)
@@ -381,7 +385,9 @@ def load_release(folder: Path):
     reader.safetensors, the adapters folded in. Needs no MuSViT download
     and no peft."""
     from safetensors.torch import load_file
+    global COLOR
     cfg = json.loads((folder / "reader.json").read_text())
+    COLOR = cfg.get("color", False)
     vocab = json.loads((folder / "vocab.json").read_text())
     model = Reader(cfg["vit"], len(vocab), d=cfg["d"], layers=cfg["layers"], lora_r=0, decoder=cfg["decoder"],
                    memory=cfg["memory"])
@@ -529,10 +535,12 @@ def main():
                     help="shift: sideways up to 8 px; zeus: Zeus's fuller set (zeus_augment)")
     ap.add_argument("--stop-at", type=int, help="stop after this pass, the learning rate still scheduled over --epochs "
                     "(to repeat a held-out run's best pass with nothing held out)")
+    ap.add_argument("--color", action="store_true", help="read staves in colour (three channels), not grey")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     a = ap.parse_args()
-    global AMP, AUGMENT
+    global AMP, AUGMENT, COLOR
     AUGMENT = a.augment
+    COLOR = a.color
     readapt = False
     random.seed(0)
     torch.manual_seed(0)
@@ -563,13 +571,15 @@ def main():
             a.lora_r = 16
         (out / "config.json").write_text(json.dumps({"encoder": a.encoder, "layers": a.layers, "amp": a.amp,
                                                      "lora_r": a.lora_r, "lora_mlp": a.lora_mlp, "decoder": a.decoder,
-                                                     "memory": a.memory}))
+                                                     "memory": a.memory, "color": a.color}))
     unseen = sum(t not in vocab for _, ts in dev_items for t in ts)
     print(f"{len(train)} training staves, {len(dev_items)} dev, vocabulary {len(vocab)}, dev tokens unseen in training {unseen}", flush=True)
 
     model = load(a.init, a.init_file)[0] if a.init else Reader(a.encoder, len(vocab), layers=a.layers, decoder=a.decoder,
                                                               memory=a.memory,
                                                               lora_r=a.lora_r or 16, lora_mlp=a.lora_mlp)
+    # load() set COLOR from the run it loaded: training reads as told, scoring alone as that run was trained
+    COLOR = a.color or (a.epochs == 0 and COLOR)
     if readapt and a.epochs:
         model.readapt(a.lora_r, a.lora_mlp)
     # a run started from one that saved its whole encoder (readapted, or with unlocked layers) saves it too

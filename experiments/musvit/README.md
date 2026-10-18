@@ -42,6 +42,7 @@ bars exact on the clean test.
 | Zeus's own decoder design (LSTMs) on MuSViT | 221, the weakest | Transformers attend across the whole staff; LSTMs drift. |
 | Continued pretraining on our manuscripts (label-free) | +3.5 alone, nothing with the 8-layer decoder | It sharpens pitch (seeing) but not rhythm (reading). |
 | Column memory (Zeus's column packing) | +3.7 alone, nothing with the 8-layer decoder; spurious events near zero | It overlaps with what the deeper decoder fixes. |
+| Colour instead of grey (the scans are colour; stage 2 only, D1's recipe) | no change: practice exam 19.1% against 19.0%, clean test 260 against 263 (−0.9 points, −3.7 to +1.7) | Ink against paper carries the music; hue adds little the grey doesn't, at least without colour in stage 1. |
 | Combining the gains | they don't stack (C1 265, C4 263, C5 253) | The changes fix the same errors; the rest are of another kind; and the test can't see differences under about 4 points. |
 
 **What we learned about measuring**

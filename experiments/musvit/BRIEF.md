@@ -293,4 +293,10 @@ staves from the new pairing against 114 in dataG.
   265 on the Mac). Zeus J: 0.05 s. Scoring: 66 staves in 42 s, as Zeus J.
 - **Public benchmarks:** README.md, round 4. No published number exists for
   Zeus's solo snapshot; scored here with one metric for every model.
+- **Colour test (2026-10-18, user asked):** compare.page_image/staff_crop take
+  colour (grey crops byte-identical), color_staves.py cut 3,542 staves again in
+  colour (19 min on 8 cores), proto.py --color reads three channels, read.py
+  --color. D1c-tf8-M-color (D1's recipe from grey E2-tf8): practice exam best
+  0.191 at pass 12 (D1 0.189), clean test 260/347 (D1 263): −0.9 points
+  (−3.7 to +1.7), differing on 23 bars. No gain; grey stays.
 

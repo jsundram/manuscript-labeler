@@ -61,7 +61,7 @@ def main():
     save_file(state, d / "reader.safetensors")
     reader = {"vit": model.encoder.config.to_dict(), "d": model.project.out_features,
               "layers": len(model.decoder.layers), "decoder": "transformer", "memory": model.memory,
-              "height": proto.H, "from": {"run": a.run, "file": a.file}}
+              "height": proto.H, "color": proto.COLOR, "from": {"run": a.run, "file": a.file}}
     (d / "reader.json").write_text(json.dumps(reader, indent=1))
     (d / "vocab.json").write_text(json.dumps(vocab, indent=1))
     shutil.copy(a.licence, d / "LICENSE")

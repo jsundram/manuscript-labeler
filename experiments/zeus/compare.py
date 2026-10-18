@@ -103,33 +103,36 @@ def render_dir(pdf: Path) -> Path:
     return RENDERS / f"{pdf.stem}-{_DIGESTS[key]}"
 
 
-def page_image(pdf: Path, n: int) -> np.ndarray:
-    out = render_dir(pdf) / f"p{n:03d}.png"
+def page_image(pdf: Path, n: int, color: bool = False) -> np.ndarray:
+    """A page rendered at RENDER_PX: grey (H, W), or with color (H, W, 3)."""
+    out = render_dir(pdf) / f"p{n:03d}{'-rgb' if color else ''}.png"
     if not out.exists():
         out.parent.mkdir(parents=True, exist_ok=True)
         # Rendered under a name of this process's own, then renamed: another
         # process rendering the same page never reads half a file.
         tmp = out.with_name(f".{out.stem}.{os.getpid()}")
-        subprocess.run(["pdftoppm", "-f", str(n), "-l", str(n), "-scale-to", str(RENDER_PX), "-gray", "-png",
-                        "-singlefile", str(pdf), str(tmp)], check=True)
+        subprocess.run(["pdftoppm", "-f", str(n), "-l", str(n), "-scale-to", str(RENDER_PX), *([] if color else ["-gray"]),
+                        "-png", "-singlefile", str(pdf), str(tmp)], check=True)
         os.replace(f"{tmp}.png", out)
-    return np.asarray(Image.open(out).convert("L")).astype(np.float32)
+    return np.asarray(Image.open(out).convert("RGB" if color else "L")).astype(np.float32)
 
 
 def staff_crop(g: np.ndarray, s: dict) -> bytes:
     """The staff, straightened along its bend, as Zeus reads a staff."""
-    H, W = g.shape
+    H, W = g.shape[:2]
     sp = (s["bottom"] - s["top"]) / 4 * H
     x0, x1 = int(max(0, s["left"] * W - sp)), int(min(W, s["right"] * W + sp))
     up, dn = int(2.5 * sp), int(2.5 * sp)
     h = int((s["bottom"] - s["top"]) * H) + up + dn
-    out = np.full((h, x1 - x0), 255.0, np.float32)
+    out = np.full((h, x1 - x0, *g.shape[2:]), 255.0, np.float32)  # a colour page gives a colour crop
     for x in range(x0, x1):
         y0 = int(round((s["top"] + labels.bend_at(s, x / W)) * H)) - up
         a, b = max(0, y0), min(H, y0 + h)
         if b > a:
             out[a - y0:b - y0, x - x0] = g[a:b, x]
-    out = np.clip(out / max(np.percentile(out, 90), 1) * 255, 0, 255).astype(np.uint8)
+    # the paper brightened to white: each channel by its own 90th percentile, so a colour crop is white-balanced too
+    ref = np.percentile(out.reshape(-1, *g.shape[2:]), 90, axis=0)
+    out = np.clip(out / np.maximum(ref, 1) * 255, 0, 255).astype(np.uint8)
     buf = io.BytesIO()
     Image.fromarray(out).save(buf, "PNG")
     return buf.getvalue()

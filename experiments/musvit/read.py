@@ -64,6 +64,7 @@ def main():
     ap.add_argument("--beam", type=int, default=0)
     ap.add_argument("--rerank", type=float, default=0.0)
     ap.add_argument("--device", help="read here, on this torch device (mps, cpu), not on Modal")
+    ap.add_argument("--color", action="store_true", help="hand the reader colour crops (a run trained with proto.py --color)")
     a = ap.parse_args()
     if a.beam and a.device:
         ap.error("--beam reads on Modal only")
@@ -89,16 +90,20 @@ def main():
     cache = json.loads(cache_file.read_text()) if cache_file.exists() else {}
     nbest_file = ZEUS / "answers" / f"{a.source}-{name.split('-rr')[0]}.nbest.json"
     nbest = json.loads(nbest_file.read_text()) if a.beam and nbest_file.exists() else {}
-    crops, keys, page = {}, {}, (None, None)
+    crops, keys, page, rgb = {}, {}, (None, None), None
     for sid in sids:
         s = export["systems"][sid]
         if page[0] != s["page"]:
             page = (s["page"], compare.page_image(pdf, s["page"]))
+            rgb = compare.page_image(pdf, s["page"], color=True) if a.color else None
         png = compare.staff_crop(page[1], s)
-        key = keys[sid] = f"{sid}:{hashlib.sha1(png).hexdigest()[:10]}"
+        key = keys[sid] = f"{sid}:{hashlib.sha1(png).hexdigest()[:10]}"  # compare.py keys a reading by the grey crop
         if key not in (nbest if a.beam else cache):
             buf = io.BytesIO()
-            Image.open(io.BytesIO(png)).convert("L").save(buf, "JPEG", quality=95)
+            if a.color:  # the same staff, the same crop, in colour
+                Image.open(io.BytesIO(compare.staff_crop(rgb, s))).convert("RGB").save(buf, "JPEG", quality=95)
+            else:
+                Image.open(io.BytesIO(png)).convert("L").save(buf, "JPEG", quality=95)
             crops[key] = buf.getvalue()
     print(f"{len(sids)} staves; {len(crops)} to read " + (f"here ({a.device})" if a.device else "on Modal"), flush=True)
 
