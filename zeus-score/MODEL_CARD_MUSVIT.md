@@ -4,8 +4,8 @@ A reader for Boccherini's copyists built on MuSViT, an image encoder
 pretrained on 9.7 million pages of printed music. It reads one staff at a time
 and writes out its notes in Zeus's output format, so the edition and
 [zeus-score](README.md) can use it in Zeus's place. On the clean test it
-gets 270 of 347 bars exact against Zeus J's 225. It is in the registry
-beside Zeus J. Its flags for the edition, measured at the same floor,
+gets 270 of 347 bars exact against Zeus J's 225. It is zeus-score's default
+since 1.2.0. Its flags for the edition, measured at the same floor,
 are as good as Zeus J's with a third fewer false ones.
 
 > **Licence: CC BY-NC-SA 4.0. Non-commercial use only; adaptations shared
@@ -260,5 +260,6 @@ close ones.
   (experiments/musvit/NEXT.md).
 - **A second clean test in a new hand**, so that progress on new hands can be
   measured without the music flattering it.
-- **Make it the default** in zeus-score and the edition (floor 3, measured
-  above), or flag only where it and Zeus J agree.
+- **The edition's switch:** zeus-score 1.2.0 makes it the default; the edition
+  takes it when it upgrades (floor 3, measured above). Zeus J remains the more
+  independent reader for Op. 48 No. 5, which D3 trained on.

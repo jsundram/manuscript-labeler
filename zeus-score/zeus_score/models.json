@@ -4,7 +4,6 @@
   {
    "name": "J-lr1e5-e8",
    "version": "2026-10-16",
-   "default": true,
    "sha256": "39eada410ca5ded4265aec3775d1b345fcbbf23ab550906a703912dcd8832d6d",
    "archive_sha256": "c2711cf1bf6fcc96fbbdb8af74806d8fd51acb1d216b5f94423c8e5b7f65d9f9",
    "url": "https://github.com/jsundram/manuscript-labeler/releases/download/zeus-J-lr1e5-e8-2026-10-16/J-lr1e5-e8-2026-10-16.tar.gz",
@@ -36,6 +35,7 @@
   {
    "name": "musvit-D3",
    "version": "2026-10-18",
+   "default": true,
    "engine": "musvit",
    "sha256": "2f7d84b567ce4f01e8dc6afd3c39b60fa9578f275d81e6f1c7b0fac852c6faf6",
    "archive_sha256": "c889946e3f581c92b83982cde2d69ea254bb880de3039cddc2d69020119ebd06",

@@ -63,7 +63,7 @@ page = f"""<!doctype html>
 td.n, th.n {{ text-align: right; padding-right: 12px; }}
 </style></head>
 <body><main><p><a href='index.html'>← all models</a></p>
-<h1>{html.escape(title)}<span class='pill'>in the registry; Zeus J stays the default</span></h1>
+<h1>{html.escape(title)}<span class='pill ok'>zeus-score's default since 1.2.0</span></h1>
 <p class='links'><a href='https://github.com/jsundram/manuscript-labeler/tree/main/zeus-score'>zeus-score</a> (<a href='https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD_MUSVIT.md'>this card in Markdown</a>) · <a href='https://github.com/OMR-PRAIG-UA-ES/MuSViT'>MuSViT (PRAIG)</a> · <a href='https://github.com/jsundram/manuscript-labeler/tree/main/experiments/musvit'>experiments/musvit</a> (the reader, training, results) · <a href='zeus.html'>Zeus J's card</a></p>
 {chr(10).join(out)}
 <footer class="muted">Generated from zeus-score/MODEL_CARD_MUSVIT.md, 2026-10-18.</footer>

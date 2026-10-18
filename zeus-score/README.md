@@ -14,9 +14,9 @@ The models are Zeus (OmniOMR's reader for handwritten music) fine-tuned on
 Boccherini's copyists, see [MODEL_CARD.md](MODEL_CARD.md), and readers built
 on MuSViT (PRAIG's pretrained music encoder) that read the same staves into
 the same format, see [MODEL_CARD_MUSVIT.md](MODEL_CARD_MUSVIT.md).
-`musvit-D3` gets 78% of the clean test's bars exact against Zeus J's 65%;
-Zeus J stays the default until the edition's flag threshold is retuned for
-it. Give `--model musvit-D3` to use it.
+`musvit-D3`, the default since 1.2.0, gets 78% of the clean test's bars exact
+against Zeus J's 65%, and at the edition's flag floor of 3 its flags are as
+thorough with a third fewer false ones. Give `--model J-lr1e5-e8` for Zeus J.
 
 > **Licences.** This code is MIT. **The models are CC BY-NC-SA 4.0:
 > non-commercial use only, and adaptations must be shared alike.** They are
@@ -26,18 +26,17 @@ it. Give `--model musvit-D3` to use it.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.1.0#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.2.0#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
-environment the scoring runs in: Python 3.10, Zeus and tensorflow 2.12, about
-1.4 GB, built by uv. Everything after that works offline, including inside a
+environment the scoring runs in: for musvit-D3, PyTorch and transformers,
+about 1 GB, built by uv; it scores on the Mac's GPU. Everything after that works offline, including inside a
 sandbox with no network. `uv` must be on the path. The first time, `fetch`
 also needs GitHub, PyPI and uv's Python downloads.
 
-A MuSViT model's environment is PyTorch and transformers instead, about
-1 GB, built the same way by `zeus-score fetch musvit-D3`; it scores on the
-Mac's GPU.
+A Zeus model's environment is Python 3.10, Zeus and tensorflow 2.12 instead,
+about 1.4 GB, built the same way by `zeus-score fetch J-lr1e5-e8`.
 
 Zeus needs tensorflow 2.12, which has no build for Apple-silicon Macs under
 that name, so the environment pins Apple's `tensorflow-macos` 2.12 instead. That
@@ -45,7 +44,7 @@ is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.1.0#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.2.0#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 
