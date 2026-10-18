@@ -248,3 +248,22 @@ Limiting only the violins would be a rule fitted to this movement. It
 would have to be chosen on the dev movements first. Reading one staff at a
 time instead of in batches of 8 barely matters (run I: 222 bars
 against 222; run G: 215 against 216).
+
+## Apple's GPU plugin, tensorflow-metal (2026-10-16)
+
+Zeus's tensorflow 2.12 runs on the CPU here. With `tensorflow-metal` 0.8.0
+(the version for 2.12; `uv run --with tensorflow-metal==0.8.0 ...`) it sees
+the M1's GPU:
+
+| | CPU | GPU |
+|---|---|---|
+| reading the clean test (66 staves, run J) | 112 s | 58 s |
+| one training epoch (25 steps of 8 staves) | 83 s (3 s a step) | 3,095 s (123 s a step) |
+
+- **Training is 37 times slower on the GPU:** don't train with it. (The
+  recurrent layers and ragged tensors are likely why; not investigated.)
+- **Reading is twice as fast, but not identical:** 16 of 66 staves came out
+  differently, mostly a slur, tie or beam moved; 3 bars exact on the CPU were
+  wrong on the GPU, none the other way (222 against 225). Too few to call it
+  worse, but readings across models should all come from one runtime: every
+  clean-test score here is the CPU's.
