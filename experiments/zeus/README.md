@@ -191,6 +191,10 @@ changes inside the bar.
 | run G (2,340 staves; learning rate 1e-5, cosine decay, 8 epochs) | 62% | 71% | 69% | 49% | 50% | 64% | 86% |
 | run I (G plus Op. 48/3 I's 117 staves), epoch 7 | 64% | 74% | 71% | 56% | 46% | 66% | 87% |
 | run J (I plus KHM 602 II, Vma 1067 (1) II, KHM 603 II; 2,568 staves), epoch 8 | 65% | 74% | 74% | 53% | 55% | 60% | 91% |
+| not Zeus: MuSViT-light with a new decoder, J's staves less KHM 602 II (experiments/musvit, `stage2-602II`) | 65% | 77% | 73% | 55% | 61% | 59% | 85% |
+| not Zeus: MuSViT (full) with a new decoder, J's staves less KHM 602 II (`stage2-full-602II`, best) | 67% | 75% | 78% | 51% | 65% | 62% | 90% |
+| not Zeus: MuSViT (full) with a new decoder, all of J's staves (`stage2-full-J`, pass 12) | 69% | 78% | 80% | 56% | 65% | 67% | 90% |
+| not Zeus: MuSViT (full), 8-layer decoder, larger adapters, two-voice data, KHM 602 II and Op. 48/5 I held out (`C1-tf8-L`, best) | 76% | 83% | 84% | 65% | 74% | 77% | 90% |
 
 Every earlier run, scored on it on 2026-10-16 (last epoch):
 
