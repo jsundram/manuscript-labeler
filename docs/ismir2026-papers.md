@@ -549,6 +549,37 @@ each bar's time to its boxes in every manuscript.
   transcription (P1-3, P6-1, P7-7, P10-3, VioPTT). They exist for when no
   score exists, and we have one.
 
+## Links to update from (2026-10-19)
+
+These are the tabs, kept for redoing the table on a machine that can open
+them. Search URLs are reduced to their query.
+
+| Link | What it is | Status here |
+|---|---|---|
+| https://arxiv.org/html/2608.10978v1 | P13-3 OSSQ-OMR | in table |
+| https://arxiv.org/html/2609.05662v1 | Full-page handwritten monophonic OMR (PRAIG) | in "Off the program"; not opened, code unreleased |
+| https://arxiv.org/pdf/2502.18008 | NotaGen | in "Off the program"; not opened |
+| https://arxiv.org/pdf/2509.23759 | VioPTT | in "Off the program"; not opened |
+| https://arxiv.org/abs/2607.21899 | P4-3 CODA | in table |
+| https://mac.kaist.ac.kr/pubs.html | KAIST MAC lab publications | **unread** (unreachable): check its 2025–26 entries |
+| https://link.springer.com/article/10.1007/s10032-025-00541-x | Monte Carlo dropout staff regions (IJDAR 2025); also saved locally as `s10032-025-00541-x.pdf` | in "Off the program" |
+| https://observatorio-cientifico.ua.es/documentos/6a24a94c7c4c5464f33aed29 | an Alicante record, **unidentified** (it isn't the MC-dropout paper, which is `6869740b…`) | **unread** |
+| https://scholar.google.com/citations?view_op=view_citation&hl=es&user=Z_ueniEAAAAJ&sortby=pubdate&citation_for_view=Z_ueniEAAAAJ:YsMSGLbcyi4C | a Scholar entry, **unidentified** | **unread** |
+| https://annotifyapp.github.io/communication/2025/04/01/Data-Annotation.html | Annotify: a general Git and data-annotation course | dropped |
+| https://github.com/CPJKU/beat_this_live | P6-3 online beat tracking | in "Off the program" |
+| https://bibbase.org/network/publication/anonymous-doesnotationmattermusicxmltokenisationforsymbolicmusicgenerationandunderstanding-2026 | P5-1 | in table |
+| search: "CapCyCin: Improving Music Captioning through Cycle-Consistent Music–Text Alignment" | P8-9 | dropped |
+| search: "When AI Annotates First: Measuring Its Impact on Music Score Labeling" | P7-4 | in table; no text yet |
+| search: "The Debussy Dataset: Evaluating Optical Music Recognition on Modern Staff Notation Manuscripts" | P3-7 | in table |
+
+Still to fill in with a working browser:
+- PDFs for every arXiv link in the tables above;
+- the three unread rows;
+- abstracts for P7-4, P12-4, P8-8, P7-7 and P12-7, once the
+  [ISMIR program](https://ismir2026program.ismir.net/) is up;
+- a check of [pymatchmaker](https://pymatchmaker.readthedocs.io)'s repository
+  link.
+
 ## Suggested order
 
 1. **Today:** add `mcr-metric` beside bars-exact in `tools/musvit_score.py`
