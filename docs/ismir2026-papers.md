@@ -486,6 +486,69 @@ not of notation.
 - **Everything else:** audio generation, separation, beat tracking,
   captioning, recommendation or ethnomusicology.
 
+## Off the program: other papers and tools
+
+Links collected separately, judged the same way. Pages that couldn't be
+opened from here are marked.
+
+| Item | What it is | Verdict |
+|---|---|---|
+| [Full-Page OMR of Handwritten Monophonic Scores](https://arxiv.org/abs/2609.05662) (Rosello, Ríos-Vila, Rizo, Calvo-Zaragoza; PRAIG, Sept 2026) | See below. Code "on acceptance": not out yet. | **High: read now** |
+| [Monte Carlo dropout for staff-region detection](https://link.springer.com/article/10.1007/s10032-025-00541-x) (Oliva-Bulpitt, Martinez-Esteso, Galan-Cuenca, Castellanos, Gallego; IJDAR 2025, open access) | See below. | Low–medium (the idea, not the model) |
+| [Matchmaker / pymatchmaker](https://pymatchmaker.readthedocs.io) (Park, Cancino-Chacón, Chiruthapudi, Nam; ISMIR 2025) | An open library for real-time score following, from audio or MIDI to a symbolic score. Online time warping; its best variant is OLTW-Arzt with the onset-sensitive LSE feature. Tested on piano. | Medium, for aligning recordings |
+| [NotaGen](https://arxiv.org/abs/2502.18008) (Wang, Wu, … Sun; 2025) | See below. | Low–medium |
+| [VioPTT](https://arxiv.org/abs/2509.23759) (Wang, Peng, Su, Cheung; 2025) | Violin transcription that also labels playing technique, trained on synthetic data (MOSA-VPT). STRAdi (P10-3) builds on it. Audio only. | Low |
+| [beat_this_live](https://github.com/CPJKU/beat_this_live) (P6-3) | Online beat and downbeat tracking. Its README is still the offline Beat This one. | Low |
+| [Pixel Labeler](https://zenodo.org/records/17488553) and [Human vs. Machine: active learning for OMR](https://zenodo.org/records/17706567) (Alicante, ISMIR 2025) | The P7-4 group's prior work. The second paper finds entropy-based selection beats five experts' choice of what to label: 81.1% F1 from 8 patches, where humans needed 16. | Medium, with P7-4 |
+| CapCyCin (P8-9) | Music captioning. | None |
+| annotifyapp.github.io | A general course on data annotation and Git; nothing about music. | None |
+
+**Full-page handwritten monophonic OMR (arXiv 2609.05662).**
+- **Method:** a page generator renders the same RISM incipits two ways:
+  - typeset, with Verovio and Augraphy;
+  - handwritten, with Smashcima.
+  An SMT page transcriber is pretrained on each and fine-tuned on three real
+  handwritten collections.
+- **Why it matters here:**
+  - Single-line parts are our material.
+  - Typeset-against-handwritten synthetic pretraining is exactly NEXT.md's
+    E3-against-E4 question, already measured, by the group behind MuSViT.
+  - Full-page reading would also skip staff and bar detection. But the
+    synoptic edition needs bar boxes anyway, so the value for us is the
+    pretraining result and, once released, the generator.
+
+**Monte Carlo dropout for staff regions (IJDAR 2025).**
+- **Method:** dropout is left on at inference, several predictions are made
+  per page, and they are merged per pixel.
+- **Results:** 63.6% less relative error than the baseline, with most of the
+  gain at staff edges.
+- **For us:** our staff finder is classical and already finds every staff,
+  so the model isn't needed. The transferable idea is disagreement between
+  stochastic predictions as a confidence signal. `experiments/barlines/ensemble.py`
+  already votes across detectors. The share of votes could set how strongly
+  a proposed bar line is drawn, so the editor's eye goes to the doubtful
+  ones.
+
+**NotaGen (arXiv 2502.18008).**
+- **What it is:** an LLM-style symbolic generator (ABC). Pretrained on 1.6M
+  pieces, fine-tuned on about 9k classical works with
+  period–composer–instrumentation prompts, then CLaMP-DPO.
+- **Its role elsewhere:** it is the generator behind TUTTI's synthetic data.
+- **For us:** it could write unlimited "Classical / Boccherini / string
+  quartet" parts for E2. But OSSQ, kern quartets and Philhar's Boccherini
+  are real and not yet used up.
+
+**Aligning recordings.** We have the symbolic score (the edition's LilyPond),
+so audio alignment is an audio-to-symbolic problem. The bar labels then carry
+each bar's time to its boxes in every manuscript.
+- **Offline:** DTW over chroma and onset features (synctoolbox) is the
+  standard tool.
+- **Online:** Matchmaker.
+- **Confidence:** P14-1 says where an alignment can't be trusted.
+- **Not needed:** image-based following (CODA, P4-3) and audio-only
+  transcription (P1-3, P6-1, P7-7, P10-3, VioPTT). They exist for when no
+  score exists, and we have one.
+
 ## Suggested order
 
 1. **Today:** add `mcr-metric` beside bars-exact in `tools/musvit_score.py`
