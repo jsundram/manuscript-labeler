@@ -87,10 +87,12 @@ mps`), scored by compare.py.
 
 ## Next
 
-1. A second run of D3S-h96 and of D3L2 (about $1.40 for both), to see if
-   277 against 272 holds.
-2. If it does, release D3S-h96 as musvit-D4: same accuracy or better,
-   30% faster.
+1. **Done, 2026-10-20:** D3S-h96 released as musvit-D4, zeus-score 1.3.0's
+   default, as accurate and 30% faster (GitHub release
+   `musvit-D4-2026-10-20`). The release reads 40 of 40 test staves exactly
+   as the run did.
+2. A second run of D3S-h96 and of D3L2 (about $1.40), in the next round of
+   training, to see if 277 against 272 holds.
 3. Measure the staff size MuSViT saw in pretraining, to choose between 96
    px and smaller.
 

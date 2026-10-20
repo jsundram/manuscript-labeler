@@ -14,9 +14,11 @@ The models are Zeus (OmniOMR's reader for handwritten music) fine-tuned on
 Boccherini's copyists, see [MODEL_CARD.md](MODEL_CARD.md), and readers built
 on MuSViT (PRAIG's pretrained music encoder) that read the same staves into
 the same format, see [MODEL_CARD_MUSVIT.md](MODEL_CARD_MUSVIT.md).
-`musvit-D3`, the default since 1.2.0, gets 78% of the clean test's bars exact
-against Zeus J's 65%, and at the edition's flag floor of 3 its flags are as
-thorough with a third fewer false ones. Give `--model J-lr1e5-e8` for Zeus J.
+`musvit-D4`, the default since 1.3.0, gets 80% of the clean test's bars exact
+(musvit-D3 78%, Zeus J 65%) and reads about 30% faster than D3. Its flags for
+the edition haven't been re-measured: D3's, at the edition's flag floor of 3,
+were as thorough as Zeus J's with a third fewer false ones. Give
+`--model musvit-D3` or `--model J-lr1e5-e8` for the earlier readers.
 
 > **Licences.** This code is MIT. **The models are CC BY-NC-SA 4.0:
 > non-commercial use only, and adaptations must be shared alike.** They are
@@ -26,11 +28,11 @@ thorough with a third fewer false ones. Give `--model J-lr1e5-e8` for Zeus J.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.2.0#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.3.0#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
-environment the scoring runs in: for musvit-D3, PyTorch and transformers,
+environment the scoring runs in: for a MuSViT reader, PyTorch and transformers,
 about 1 GB, built by uv; it scores on the Mac's GPU. Everything after that works offline, including inside a
 sandbox with no network. `uv` must be on the path. The first time, `fetch`
 also needs GitHub, PyPI and uv's Python downloads.
@@ -44,7 +46,7 @@ is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.2.0#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.3.0#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 

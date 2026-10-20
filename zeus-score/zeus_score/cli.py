@@ -233,7 +233,7 @@ def cmd_score(argv: list[str]) -> int:
     fetch = "zeus-score fetch"
     if a.model and is_path(a.model):
         model, eng = ["--model", a.model], engine_at(Path(a.model))
-        fetch += " musvit-D3" if eng == "musvit" else ""
+        fetch += f" {find(None)['name']}" if eng == "musvit" else ""  # the default reader
     else:
         m = find(a.model)
         eng = engine_of(m)

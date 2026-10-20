@@ -33,9 +33,46 @@
    "card": "https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD.md"
   },
   {
+   "name": "musvit-D4",
+   "version": "2026-10-20",
+   "default": true,
+   "engine": "musvit",
+   "sha256": "304fead9b4edc1623ad880754f4d47134ca11a0d4493027cfe5ed76dfa837b5b",
+   "archive_sha256": "086f6557544ca861a7486002a070b0a4dccd7146ca88c5142f69e5a27e1b87ef",
+   "url": "https://github.com/jsundram/manuscript-labeler/releases/download/musvit-D4-2026-10-20/musvit-D4-2026-10-20.tar.gz",
+   "licence": "CC BY-NC-SA 4.0, non-commercial use only (adapted from MuSViT's weights; first trained on MusiCorpus)",
+   "base": "MuSViT (PRAIG/musvit, ViT-Base, MAE-pretrained on IMSLP), stage 1 on MusiCorpus (Dolores and OmniOMR train and validation); then 10,790 synthetic staves drawn in the copyists' hands (OpenScore quartets, CC0, and the training music); staves read 96 px high",
+   "trained_on": {
+    "D-B_KHM-602": ["I", "II"],
+    "D-B_KHM-603": ["II"],
+    "F-Po_RES-507-14": ["I", "II"],
+    "F-Pn_Vma-ms-1067-1": ["I", "II"],
+    "F-Po_RES-507-17": ["I", "II"],
+    "F-Pn_Vma-ms-1067-3": ["I", "II"]
+   },
+   "trained_on_other": [
+    "Op02-1-G159", "Op02-2-G160", "Op02-3-G161", "Op02-4-G162", "Op02-5-G163", "Op02-6-G164",
+    "Op02-4-CZ-Pu-vn1", "Op02-4-CZ-Pu-vn2", "Op02-4-CZ-Pu-va", "Op02-4-CZ-Pu-vc", "Op22-1-G183",
+    "Op22-2-G184", "Op22-3-G185", "Op22-4-G186", "Op22-5-G187", "Op22-6-G188", "Op22-Paris-vn1",
+    "Op22-Paris-vn2", "Op22-Paris-va", "Op22-Paris-vc", "Op22-6-Vmbr153-vn1", "Op22-6-Vmbr153-vn2",
+    "Op22-6-Vmbr153-va", "Op22-6-Vmbr153-vc", "Op32-G201-206", "F-Pn_RES-507-2", "Op33-1-G207",
+    "Op33-3-G209", "Op33-4-G210", "Op33-5-G211", "Op33-6-G212", "Op22-1-EMc", "Op22-2-EMc",
+    "Op22-3-EMc", "Op22-4-EMc", "Op22-6-EMc"
+   ],
+   "trained_at": "dda8c51",
+   "accuracy": {
+    "D-B_KHM-603": {
+     "movements": ["I"],
+     "bars_exact": 0.798,
+     "events_right": 0.929,
+     "measure": "experiments/zeus/compare.py: bars whose every event matches the edition's encoding; 347 bars; read on a Mac (mps, half precision)"
+    }
+   },
+   "card": "https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD_MUSVIT.md"
+  },
+  {
    "name": "musvit-D3",
    "version": "2026-10-18",
-   "default": true,
    "engine": "musvit",
    "sha256": "2f7d84b567ce4f01e8dc6afd3c39b60fa9578f275d81e6f1c7b0fac852c6faf6",
    "archive_sha256": "c889946e3f581c92b83982cde2d69ea254bb880de3039cddc2d69020119ebd06",

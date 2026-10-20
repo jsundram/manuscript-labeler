@@ -1,12 +1,23 @@
-# MuSViT reader D3 (musvit-D3, 2026-10-18)
+# MuSViT readers D4 and D3 (musvit-D4, 2026-10-20; musvit-D3, 2026-10-18)
 
 A reader for Boccherini's copyists built on MuSViT, an image encoder
 pretrained on 9.7 million pages of printed music. It reads one staff at a time
 and writes out its notes in Zeus's output format, so the edition and
 [zeus-score](README.md) can use it in Zeus's place. On the clean test it
-gets 270 of 347 bars exact against Zeus J's 225. It is zeus-score's default
-since 1.2.0. Its flags for the edition, measured at the same floor,
+gets 270 of 347 bars exact against Zeus J's 225. It was zeus-score's default
+from 1.2.0. Its flags for the edition, measured at the same floor,
 are as good as Zeus J's with a third fewer false ones.
+
+**musvit-D4, the default since 1.3.0,** is D3's recipe with two changes:
+staves read 96 px high instead of 128, and a stage of 10,790 synthetic staves
+drawn in the copyists' hands between the public staves and ours. It gets 277
+of 347 bars exact (80%) and 92.9% of events right (D3: 91.6%); wrong pitches
+fell from 45 to 25. Against D3 that is +7 bars, with a 95% interval of −5 to
++19: as good, not shown to be better. It reads about 30% faster. Its flags
+for the edition haven't been re-measured. How it was chosen:
+[reports/2026-10-20-synthetic-and-strip-height](https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-synthetic-and-strip-height).
+The rest of this card describes D3; D4 shares its data and training but for
+those two changes.
 
 > **Licence: CC BY-NC-SA 4.0. Non-commercial use only; adaptations shared
 > alike.** The encoder adapts MuSViT's weights (PRAIG, University of
@@ -243,7 +254,8 @@ close ones.
 | C2–C5 | pretrained encoder, column memory, both | 253–263 |
 | C6 | Zeus's own decoder design on MuSViT | 221 |
 | D1 | re-paired Philhar staves with two voices (2,444 against 2,246) | 265 |
-| **D3** | D1 with the practice exam and Madrid in training | **270** |
+| D3 | D1 with the practice exam and Madrid in training | 270 |
+| **D4** | D3 at 96 px, after a synthetic stage | **277** |
 
 ## Known limits
 

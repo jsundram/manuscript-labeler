@@ -26,8 +26,10 @@ improved most (311 bars right). One run of each.
 **Why a report.** It decides the next release: a candidate musvit-D4 that
 reads as well or better and 30% faster.
 
-**What followed.** Proposed: a second run of the 96 px synthetic-first
-reader and of the 128 px baseline before releasing.
+**What followed.** Released the same day as musvit-D4, zeus-score 1.3.0's
+default, on the grounds that it is as accurate and faster; the release reads
+exactly as the run did (40 of 40 staves identical). A second run of each is
+left for the next round of training.
 
 ## 2026-10-19: Smashcima for Segment Anything: tried, dropped
 
