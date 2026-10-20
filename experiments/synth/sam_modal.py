@@ -24,8 +24,8 @@ runs = modal.Volume.from_name("copyist-sam-runs", create_if_missing=True)
 @app.function(gpu="L4", timeout=6 * 3600, volumes={"/root/.cache/huggingface": hf, "/runs": runs})
 def train(files: dict[str, bytes], args: list[str], name: str = "") -> dict[str, bytes]:
     import os
-    for name, b in files.items():
-        p = Path("/data") / name
+    for fname, b in files.items():
+        p = Path("/data") / fname
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_bytes(b)
     r = subprocess.run([sys.executable, "/root/sam_train.py", "/data/train", "/data/test", "/out", *args],
@@ -45,8 +45,8 @@ def train(files: dict[str, bytes], args: list[str], name: str = "") -> dict[str,
 
 @app.function(gpu="L4", timeout=2 * 3600, volumes={"/root/.cache/huggingface": hf})
 def score(files: dict[str, bytes], tests: list[str], decoders: list[str]) -> str:
-    for name, b in files.items():
-        p = Path("/data") / name
+    for fname, b in files.items():
+        p = Path("/data") / fname
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_bytes(b)
     r = subprocess.run([sys.executable, "/root/sam_eval.py", "--decoders", *decoders, "--tests", *tests,
