@@ -1,0 +1,263 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Zeus Fine-Tunes</title>
+<style>
+:root {
+  /* layout: one 900px column of white cards on a warm paper ground, as the bar-line model cards */
+  --bg: #f4f2ee; --panel: #ffffff; --ink: #1f1d1a; --muted: #6f6a62; --line: #ddd8cf;
+  --accent: #2c5fb8; --auto: #b8661a; --ok: #2e7d32; --bad: #c62828; --soft: #f8f6f2;
+  --c-sw1: #b9b2a6; --c-sw2: #8f877a; --c-sw3: #d1a774; --c-d: #7d9bd1; --c-e: #4f7cc4; --c-f: #2d8a6e; --c-g: #c2412d;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #191816; --panel: #22211e; --ink: #ece8e1; --muted: #a39d93; --line: #3a3833; --soft: #2a2925;
+  --accent: #8fb0ee; --auto: #e3a05e; --ok: #74c27a; --bad: #ef7b7b;
+  --c-sw1: #6f6a62; --c-sw2: #9a9389; --c-sw3: #c79a63; --c-d: #7d9bd1; --c-e: #6f9be6; --c-f: #4fbf9a; --c-g: #f0735d;
+  color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #191816; --panel: #22211e; --ink: #ece8e1; --muted: #a39d93; --line: #3a3833; --soft: #2a2925;
+  --accent: #8fb0ee; --auto: #e3a05e; --ok: #74c27a; --bad: #ef7b7b;
+  --c-sw1: #6f6a62; --c-sw2: #9a9389; --c-sw3: #c79a63; --c-d: #7d9bd1; --c-e: #6f9be6; --c-f: #4fbf9a; --c-g: #f0735d;
+  color-scheme: dark }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.55 var(--font); }
+main { max-width: 900px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; }
+h1 { font-size: 22px; margin: 0 0 4px; text-wrap: balance; }
+h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin: 0 0 10px; }
+h3 { font-size: 15px; margin: 0 0 6px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+p { margin: 0 0 8px; max-width: 72ch; }
+a { color: var(--accent); }
+code { font: 12px var(--mono); background: var(--soft); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+.muted { color: var(--muted); }
+.lede { font-size: 15px; margin: 0 0 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin: 0 0 16px; min-width: 0; }
+.pill { display: inline-block; font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 10px; border: 1px solid var(--line); color: var(--muted); white-space: nowrap; }
+.pill.ok { color: var(--ok); border-color: var(--ok); }
+.pill.auto { color: var(--auto); border-color: var(--auto); }
+.pill.bad { color: var(--bad); border-color: var(--bad); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: 13px; }
+th, td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--muted); font-size: 12px; }
+table.num td + td, table.num th + th { text-align: right; }
+tr.best td { font-weight: 600; }
+dl.kv { display: grid; grid-template-columns: 170px 1fr; gap: 5px 14px; margin: 0; }
+dl.kv dt { color: var(--muted); }
+dl.kv dd { margin: 0; min-width: 0; }
+.big { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 12px 0 4px; }
+.big div { border-top: 2px solid var(--line); padding-top: 6px; }
+.big b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+.big span { font-size: 12px; color: var(--muted); }
+figure { margin: 6px 0 12px; }
+figcaption { font-weight: 600; margin-bottom: 4px; }
+svg { width: 100%; height: auto; display: block; }
+svg .grid { stroke: var(--line); stroke-width: 1; }
+svg .base { stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 2 3; }
+svg .tick { font-size: 10px; fill: var(--muted); }
+svg .axis { font-size: 11px; fill: var(--muted); }
+svg .lab { font-size: 11px; font-weight: 600; }
+.note { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+ul, ol { margin: 0 0 8px; padding-left: 20px; max-width: 74ch; }
+li { margin-bottom: 5px; }
+.runs { display: grid; gap: 14px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cols > * { min-width: 0; }
+footer { margin-top: 28px; font-size: 11px; color: var(--muted); }
+@media (max-width: 640px) { dl.kv, .cols { grid-template-columns: 1fr; } dl.kv dt { margin-top: 6px; } }
+</style>
+<main>
+<h1>Zeus fine-tunes for the Boccherini manuscripts</h1>
+<p class="lede">Every Zeus fine-tune and detector retrain from 10 to 12 October 2026: what each was trained on, how it scored, and what that suggests about when to train again. <span class="muted">Zeus is the OMR model that reads a staff into notes; the untouched model is <code>ayce-2026-08-03</code>.</span></p>
+
+<section class="card">
+<h2>Current best</h2>
+<h3>Run G, epoch 8 <span class="pill ok">current best</span></h3>
+<p>Run F's recipe on 2,340 staves: 2,246 from Philhar-encoded Boccherini parts, paired automatically, plus 94 from the labelled Op. 48 copies.</p>
+<div class="big">
+<div><b>81%</b><span>KHM 602 II, exact bars (untouched 45%)</span></div>
+<div><b>65%</b><span>Vma ms 1067 (1) II, the unseen hand (untouched 55%)</span></div>
+<div><b>0</b><span>runaways on either test (untouched: 2 on each)</span></div>
+</div>
+<dl class="kv">
+<dt>Weights</dt><dd><code>~/.cache/manuscript-labeler/models/zeus/sweep/G-lr1e5-e8.model</code></dd>
+<dt>Recipe</dt><dd>lr 1e-5, cosine decay to 0, 8 epochs, batch 8, augmentation <code>h:8</code> (sideways shift only)</dd>
+<dt>Training time</dt><dd>about 85 minutes on the Mac, scoring every epoch included</dd>
+<dt>Rhythm / pitch, e8</dt><dd>KHM 602 II 90% / 83%; Vma 1067 (1) II 75% / 71% of bars right</dd>
+</dl>
+</section>
+
+<section class="card">
+<h2>How the runs are scored</h2>
+<dl class="kv">
+<dt>Measure</dt><dd><b>Exact bars</b>: the share of all bars on the test staves whose notes Zeus read exactly as the edition's encoding has them (compare.py). Bars on a staff Zeus couldn't pair count as wrong.</dd>
+<dt>Pairing</dt><dd>Zeus's measures are paired with the labelled bar boxes using only the time signature, so an extra or missed bar line, a bar split by a repeat, a multi-bar rest or a runaway doesn't lose the rest of the staff.</dd>
+<dt>KHM 602 II</dt><dd>D-B KHM 602, Op. 48 no. 1 (G.226), movement II: 32 staves, 284 bars. The Berlin copyist. Movement I is trained on from run D on, so this measures a trained hand on music it hasn't seen.</dd>
+<dt>Vma ms 1067 (1) II</dt><dd>F-Pn Vma ms 1067 (1), Op. 48 no. 3 (G.228), movement II: 47 staves, 268 bars. A hand no run trained on. Only movement II's encoding is trusted, so this copyist has no training staves yet. From the sweep on it is also the dev set: read during training for monitoring only, never trained on or used to pick an epoch.</dd>
+<dt>RES 507 (14) II</dt><dd>F-Po RES 507 (14), also Op. 48 no. 3, movement II: 268 bars. Unseen in the sweep; trained on from run D on.</dd>
+<dt>Noise</dt><dd>About ±3 points. Each test is under 300 bars, so differences smaller than that can't be told apart.</dd>
+<dt>Runaways</dt><dd>Readings that run to Zeus's 700-token limit. Counted at 690 tokens or more.</dd>
+<dt>Not used</dt><dd>Zeus's symbol error rate on our staves: our training files have no stems, so it improves by matching that style rather than by reading better.</dd>
+</dl>
+</section>
+
+<section class="card">
+<h2>Every run</h2>
+<div class="scroll"><table>
+<tr><th>Run</th><th>Date</th><th>Trained on</th><th>Staves</th><th>Recipe</th><th>Vma II e6–8</th><th>KHM II e6–8</th><th>Verdict</th></tr>
+<tr><td>untouched</td><td>—</td><td>Zeus's own data (about 43,000 staves an epoch)</td><td>—</td><td>—</td><td>55%</td><td>45%</td><td>baseline</td></tr>
+<tr><td>per-hand</td><td>9 Oct</td><td>checked staves of the labelled copies, KHM 602 II held out</td><td>126</td><td>the trainer's defaults</td><td>—</td><td>62%</td><td><span class="pill">superseded</span></td></tr>
+<tr><td>C</td><td>10 Oct</td><td>KHM 602 I+II, Op33 Paris parts, 600 Dolores</td><td>889</td><td>lr 1e-4, 20 epochs</td><td>44% (e20)</td><td>trained on</td><td><span class="pill bad">hurt unseen hands</span></td></tr>
+<tr><td>sweep lr 3e-5</td><td>11 Oct</td><td>run C's data</td><td>889</td><td>lr 3e-5, 8 epochs</td><td>52–53%</td><td>trained on</td><td><span class="pill">rejected</span></td></tr>
+<tr><td>sweep lr 1e-5</td><td>11 Oct</td><td>run C's data</td><td>889</td><td>lr 1e-5, 8 epochs</td><td>55–56%</td><td>trained on</td><td><span class="pill ok">recipe adopted</span></td></tr>
+<tr><td>sweep lr 3e-5 + aug</td><td>11 Oct</td><td>run C's data</td><td>889</td><td>lr 3e-5, full augmentation</td><td>51–52%</td><td>trained on</td><td><span class="pill">rejected</span></td></tr>
+<tr><td>D</td><td>11 Oct</td><td>KHM 602 I, RES 507 (14) II, Op33 Paris, 600 Dolores</td><td>886</td><td>lr 1e-5, 8 epochs</td><td>55–56%</td><td>62–64%</td><td><span class="pill">superseded</span></td></tr>
+<tr><td>E</td><td>11 Oct</td><td>D's labelled staves + 1,713 paired Philhar staves + 2,000 Dolores</td><td>3,807</td><td>same</td><td>60–62%</td><td>78–80%</td><td><span class="pill">superseded</span></td></tr>
+<tr><td>F</td><td>11 Oct</td><td>E without Dolores</td><td>1,807</td><td>same</td><td>64–65%</td><td>76%</td><td><span class="pill">superseded</span></td></tr>
+<tr class="best"><td>G</td><td>12 Oct</td><td>labelled staves + 2,246 Philhar staves (union of three detections)</td><td>2,340</td><td>same</td><td>64–65%</td><td>81%</td><td><span class="pill ok">current best</span></td></tr>
+</table></div>
+<p class="note">"Trained on": the test movement was in that run's training data, so its score there means nothing. The labelled staves are KHM 602 I (65) and RES 507 (14) II (29). Dolores staves come from MusiCorpus's training split.</p>
+</section>
+
+<section class="card">
+<h2>Exact bars by epoch</h2>
+<figure><figcaption>Vma ms 1067 (1) II: the hand no run trained on</figcaption><svg viewBox="0 0 640 260" role="img" aria-label="Exact bars on Vma ms 1067 (1) II by epoch"><line class="grid" x1="40" x2="528" y1="226.0" y2="226.0"/><text class="tick" x="34" y="229.0" text-anchor="end">40%</text><line class="grid" x1="40" x2="528" y1="155.3" y2="155.3"/><text class="tick" x="34" y="158.3" text-anchor="end">50%</text><line class="grid" x1="40" x2="528" y1="84.7" y2="84.7"/><text class="tick" x="34" y="87.7" text-anchor="end">60%</text><line class="grid" x1="40" x2="528" y1="14.0" y2="14.0"/><text class="tick" x="34" y="17.0" text-anchor="end">70%</text><text class="tick" x="40.0" y="240" text-anchor="middle">1</text><text class="tick" x="109.7" y="240" text-anchor="middle">2</text><text class="tick" x="179.4" y="240" text-anchor="middle">3</text><text class="tick" x="249.1" y="240" text-anchor="middle">4</text><text class="tick" x="318.9" y="240" text-anchor="middle">5</text><text class="tick" x="388.6" y="240" text-anchor="middle">6</text><text class="tick" x="458.3" y="240" text-anchor="middle">7</text><text class="tick" x="528.0" y="240" text-anchor="middle">8</text><text class="axis" x="284" y="256" text-anchor="middle">epoch</text><line class="base" x1="40" x2="528" y1="120.0" y2="120.0"/><text class="tick" x="44" y="116.0">untouched 55%</text><polyline points="40.0,148.3 109.7,155.3 179.4,162.4 249.1,162.4 318.9,127.1 388.6,134.1 458.3,141.2 528.0,141.2" fill="none" stroke="var(--c-sw1)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="141.2" r="3" fill="var(--c-sw1)"/><polyline points="40.0,134.1 109.7,134.1 179.4,120.0 249.1,141.2 318.9,112.9 388.6,112.9 458.3,112.9 528.0,120.0" fill="none" stroke="var(--c-sw2)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="120.0" r="3" fill="var(--c-sw2)"/><polyline points="40.0,162.4 109.7,141.2 179.4,127.1 249.1,176.5 318.9,162.4 388.6,148.3 458.3,141.2 528.0,148.3" fill="none" stroke="var(--c-sw3)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="148.3" r="3" fill="var(--c-sw3)"/><polyline points="40.0,112.9 109.7,105.9 179.4,148.3 249.1,120.0 318.9,120.0 388.6,112.9 458.3,120.0 528.0,120.0" fill="none" stroke="var(--c-d)" stroke-width="2"/><circle cx="528.0" cy="120.0" r="3" fill="var(--c-d)"/><polyline points="40.0,134.1 109.7,134.1 179.4,84.7 249.1,105.9 318.9,63.5 388.6,70.5 458.3,84.7 528.0,70.5" fill="none" stroke="var(--c-e)" stroke-width="2"/><circle cx="528.0" cy="70.5" r="3" fill="var(--c-e)"/><polyline points="40.0,141.2 109.7,127.1 179.4,70.5 249.1,77.6 318.9,63.5 388.6,49.3 458.3,49.3 528.0,56.4" fill="none" stroke="var(--c-f)" stroke-width="2"/><circle cx="528.0" cy="56.4" r="3" fill="var(--c-f)"/><polyline points="40.0,112.9 109.7,42.3 179.4,49.3 249.1,49.3 318.9,77.6 388.6,56.4 458.3,49.3 528.0,49.3" fill="none" stroke="var(--c-g)" stroke-width="2"/><circle cx="528.0" cy="49.3" r="3" fill="var(--c-g)"/><text class="lab" x="536.0" y="52.3" fill="var(--c-g)">G 65</text><text class="lab" x="536.0" y="63.3" fill="var(--c-f)">F 64</text><text class="lab" x="536.0" y="74.3" fill="var(--c-e)">E 62</text><text class="lab" x="536.0" y="123.0" fill="var(--c-d)">D 55</text><text class="lab" x="536.0" y="134.0" fill="var(--c-sw2)">lr 1e-5 55</text><text class="lab" x="536.0" y="145.0" fill="var(--c-sw1)">lr 3e-5 52</text><text class="lab" x="536.0" y="156.0" fill="var(--c-sw3)">lr 3e-5 + aug 51</text></svg></figure>
+<figure><figcaption>KHM 602 II: the Berlin hand, an unseen movement</figcaption><svg viewBox="0 0 640 260" role="img" aria-label="Exact bars on KHM 602 II by epoch"><line class="grid" x1="40" x2="528" y1="226.0" y2="226.0"/><text class="tick" x="34" y="229.0" text-anchor="end">40%</text><line class="grid" x1="40" x2="528" y1="183.6" y2="183.6"/><text class="tick" x="34" y="186.6" text-anchor="end">50%</text><line class="grid" x1="40" x2="528" y1="141.2" y2="141.2"/><text class="tick" x="34" y="144.2" text-anchor="end">60%</text><line class="grid" x1="40" x2="528" y1="98.8" y2="98.8"/><text class="tick" x="34" y="101.8" text-anchor="end">70%</text><line class="grid" x1="40" x2="528" y1="56.4" y2="56.4"/><text class="tick" x="34" y="59.4" text-anchor="end">80%</text><line class="grid" x1="40" x2="528" y1="14.0" y2="14.0"/><text class="tick" x="34" y="17.0" text-anchor="end">90%</text><text class="tick" x="40.0" y="240" text-anchor="middle">1</text><text class="tick" x="109.7" y="240" text-anchor="middle">2</text><text class="tick" x="179.4" y="240" text-anchor="middle">3</text><text class="tick" x="249.1" y="240" text-anchor="middle">4</text><text class="tick" x="318.9" y="240" text-anchor="middle">5</text><text class="tick" x="388.6" y="240" text-anchor="middle">6</text><text class="tick" x="458.3" y="240" text-anchor="middle">7</text><text class="tick" x="528.0" y="240" text-anchor="middle">8</text><text class="axis" x="284" y="256" text-anchor="middle">epoch</text><line class="base" x1="40" x2="528" y1="204.8" y2="204.8"/><text class="tick" x="44" y="200.8">untouched 45%</text><polyline points="40.0,162.4 109.7,170.9 179.4,166.6 249.1,137.0 318.9,153.9 388.6,124.2 458.3,128.5 528.0,132.7" fill="none" stroke="var(--c-d)" stroke-width="2"/><circle cx="528.0" cy="132.7" r="3" fill="var(--c-d)"/><polyline points="40.0,124.2 109.7,128.5 179.4,77.6 249.1,69.1 318.9,60.6 388.6,60.6 458.3,64.9 528.0,56.4" fill="none" stroke="var(--c-e)" stroke-width="2"/><circle cx="528.0" cy="56.4" r="3" fill="var(--c-e)"/><polyline points="40.0,132.7 109.7,115.8 179.4,90.3 249.1,77.6 318.9,73.4 388.6,73.4 458.3,73.4 528.0,73.4" fill="none" stroke="var(--c-f)" stroke-width="2"/><circle cx="528.0" cy="73.4" r="3" fill="var(--c-f)"/><polyline points="40.0,103.0 109.7,60.6 179.4,64.9 249.1,35.2 318.9,39.4 388.6,52.2 458.3,52.2 528.0,52.2" fill="none" stroke="var(--c-g)" stroke-width="2"/><circle cx="528.0" cy="52.2" r="3" fill="var(--c-g)"/><text class="lab" x="536.0" y="55.2" fill="var(--c-g)">G 81</text><text class="lab" x="536.0" y="66.2" fill="var(--c-e)">E 80</text><text class="lab" x="536.0" y="77.2" fill="var(--c-f)">F 76</text><text class="lab" x="536.0" y="135.7" fill="var(--c-d)">D 62</text></svg></figure>
+<figure><figcaption>RES 507 (14) II during the sweep, when it was unseen</figcaption><svg viewBox="0 0 640 260" role="img" aria-label="Exact bars on RES 507 (14) II by epoch, the sweep"><line class="grid" x1="40" x2="528" y1="226.0" y2="226.0"/><text class="tick" x="34" y="229.0" text-anchor="end">60%</text><line class="grid" x1="40" x2="528" y1="155.3" y2="155.3"/><text class="tick" x="34" y="158.3" text-anchor="end">70%</text><line class="grid" x1="40" x2="528" y1="84.7" y2="84.7"/><text class="tick" x="34" y="87.7" text-anchor="end">80%</text><line class="grid" x1="40" x2="528" y1="14.0" y2="14.0"/><text class="tick" x="34" y="17.0" text-anchor="end">90%</text><text class="tick" x="40.0" y="240" text-anchor="middle">1</text><text class="tick" x="109.7" y="240" text-anchor="middle">2</text><text class="tick" x="179.4" y="240" text-anchor="middle">3</text><text class="tick" x="249.1" y="240" text-anchor="middle">4</text><text class="tick" x="318.9" y="240" text-anchor="middle">5</text><text class="tick" x="388.6" y="240" text-anchor="middle">6</text><text class="tick" x="458.3" y="240" text-anchor="middle">7</text><text class="tick" x="528.0" y="240" text-anchor="middle">8</text><text class="axis" x="284" y="256" text-anchor="middle">epoch</text><line class="base" x1="40" x2="528" y1="91.7" y2="91.7"/><text class="tick" x="44" y="87.7">untouched 79%</text><polyline points="40.0,112.9 109.7,127.1 179.4,127.1 249.1,120.0 318.9,134.1 388.6,120.0 458.3,112.9 528.0,112.9" fill="none" stroke="var(--c-sw1)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="112.9" r="3" fill="var(--c-sw1)"/><polyline points="40.0,183.6 109.7,169.5 179.4,148.3 249.1,141.2 318.9,105.9 388.6,105.9 458.3,105.9 528.0,105.9" fill="none" stroke="var(--c-sw2)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="105.9" r="3" fill="var(--c-sw2)"/><polyline points="40.0,112.9 109.7,105.9 179.4,98.8 249.1,98.8 318.9,105.9 388.6,120.0 458.3,98.8 528.0,91.7" fill="none" stroke="var(--c-sw3)" stroke-width="2" stroke-dasharray="5 3"/><circle cx="528.0" cy="91.7" r="3" fill="var(--c-sw3)"/><text class="lab" x="536.0" y="94.7" fill="var(--c-sw3)">lr 3e-5 + aug 79</text><text class="lab" x="536.0" y="108.9" fill="var(--c-sw2)">lr 1e-5 77</text><text class="lab" x="536.0" y="119.9" fill="var(--c-sw1)">lr 3e-5 76</text></svg></figure>
+<p class="note">Dashed lines are the sweep (run C's data). The dotted grey line is the untouched model.</p>
+<div class="cols">
+<div><h3>Vma ms 1067 (1) II</h3><div class="scroll"><table class="num"><tr><th>run</th><th>e1</th><th>e2</th><th>e3</th><th>e4</th><th>e5</th><th>e6</th><th>e7</th><th>e8</th></tr><tr><td>lr 3e-5</td><td>51</td><td>50</td><td>49</td><td>49</td><td>54</td><td>53</td><td>52</td><td>52</td></tr><tr><td>lr 1e-5</td><td>53</td><td>53</td><td>55</td><td>52</td><td>56</td><td>56</td><td>56</td><td>55</td></tr><tr><td>lr 3e-5 + aug</td><td>49</td><td>52</td><td>54</td><td>47</td><td>49</td><td>51</td><td>52</td><td>51</td></tr><tr><td>D</td><td>56</td><td>57</td><td>51</td><td>55</td><td>55</td><td>56</td><td>55</td><td>55</td></tr><tr><td>E</td><td>53</td><td>53</td><td>60</td><td>57</td><td>63</td><td>62</td><td>60</td><td>62</td></tr><tr><td>F</td><td>52</td><td>54</td><td>62</td><td>61</td><td>63</td><td>65</td><td>65</td><td>64</td></tr><tr><td>G</td><td>56</td><td>66</td><td>65</td><td>65</td><td>61</td><td>64</td><td>65</td><td>65</td></tr></table></div></div>
+<div><h3>KHM 602 II</h3><div class="scroll"><table class="num"><tr><th>run</th><th>e1</th><th>e2</th><th>e3</th><th>e4</th><th>e5</th><th>e6</th><th>e7</th><th>e8</th></tr><tr><td>D</td><td>55</td><td>53</td><td>54</td><td>61</td><td>57</td><td>64</td><td>63</td><td>62</td></tr><tr><td>E</td><td>64</td><td>63</td><td>75</td><td>77</td><td>79</td><td>79</td><td>78</td><td>80</td></tr><tr><td>F</td><td>62</td><td>66</td><td>72</td><td>75</td><td>76</td><td>76</td><td>76</td><td>76</td></tr><tr><td>G</td><td>69</td><td>79</td><td>78</td><td>85</td><td>84</td><td>81</td><td>81</td><td>81</td></tr></table></div><h3 style="margin-top:12px">RES 507 (14) II, sweep</h3><div class="scroll"><table class="num"><tr><th>run</th><th>e1</th><th>e2</th><th>e3</th><th>e4</th><th>e5</th><th>e6</th><th>e7</th><th>e8</th></tr><tr><td>lr 3e-5</td><td>76</td><td>74</td><td>74</td><td>75</td><td>73</td><td>75</td><td>76</td><td>76</td></tr><tr><td>lr 1e-5</td><td>66</td><td>68</td><td>71</td><td>72</td><td>77</td><td>77</td><td>77</td><td>77</td></tr><tr><td>lr 3e-5 + aug</td><td>76</td><td>77</td><td>78</td><td>78</td><td>77</td><td>75</td><td>78</td><td>79</td></tr></table></div></div>
+</div>
+</section>
+
+<section class="card runs">
+<h2>The runs, one by one</h2>
+<div>
+<h3>Run C <span class="pill bad">hurt unseen hands</span></h3>
+<p>Zeus's default learning rate (1e-4) for 20 epochs on KHM 602 I and II, 192 Op. 33 Paris staves and 600 Dolores staves. On hands it hadn't trained on, exact bars fell: RES 507 (14) II 79% → 76%, Vma 1067 (1) II 55% → 44%. Most of the drop came in epoch 1, and the later epochs were noisy (epoch 6: 50% and 32%), so stopping early wouldn't have saved it. Dolores test SER rose from 12% to 15% and its runaways doubled. The model was forgetting what it knew.</p>
+</div>
+<div>
+<h3>The sweep <span class="pill ok">recipe adopted</span></h3>
+<p>Run C's data, 8 epochs, three ways. lr 3e-5 still cost the unseen hands a few points. lr 1e-5 cost nothing: RES 507 (14) II 77% and Vma 55–56%, the untouched model's level within noise. Zeus's full augmentation (rotation, vertical shift, noise, contrast, blur) at lr 3e-5 didn't help either. From here on: lr 1e-5, cosine decay, 8 epochs.</p>
+</div>
+<div>
+<h3>Run D <span class="pill">superseded</span></h3>
+<p>The recipe with KHM 602 II held out, to check it still teaches a hand. KHM 602 II 45% → 62–64%, the same as the per-hand fine-tune; Vma unchanged at 55–56%. So the gain on a trained hand comes without the loss on new ones. Dolores test: SER 12.2% → 12.7% on readings that didn't run away; runaways 8 → 22 of 400.</p>
+</div>
+<div>
+<h3>Run E <span class="pill">superseded</span></h3>
+<p>The first run with the Philhar parts: 1,713 staves paired automatically with Philhar's encodings of Op. 2, Op. 22 (Berlin and Paris), Op. 32 and Op. 33 (Paris), plus 2,000 Dolores staves. KHM 602 II rose to 78–80%. Vma rose to 60–62%, the first gain on a hand the model never saw. 476 steps an epoch, about 2 hours 20 minutes with scoring.</p>
+</div>
+<div>
+<h3>Run F <span class="pill">superseded</span></h3>
+<p>E without Dolores. A tie overall (mean of both tests, epochs 6–8: E 70.2, F 70.3): Dolores was worth 2–4 points on KHM and cost 3 on Vma, both about the noise. F reached 62% on Vma by epoch 3. Half the data, twice as fast. Its epoch-8 model re-paired every source (below).</p>
+</div>
+<div>
+<h3>Run G <span class="pill ok">current best</span></h3>
+<p>F's recipe on the staves kept by any of three detections (filter only, with the YOLO vote, with the retrained YOLOs): 2,246 Philhar staves, 30% more than F. KHM 602 II 81% (high of 85% at epoch 4, within noise). Vma flat at 64–65%. Learned faster: 79% and 66% by epoch 2. More of the same hands helped the Berlin hand and did nothing for the unseen one.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>Training data</h2>
+<h3>Where the Boccherini staves come from</h3>
+<p>Philhar's LilyPond encodings (boccherini-quartet-data) are trusted transcriptions of quartets we have manuscript parts for. No one labelled those manuscripts, so each staff is paired with its bars automatically:</p>
+<ol>
+<li>Detection finds the staves and bar lines (the labeler's own detection: rule-based staff tracing, the learned bar-line filter, and the YOLO bar-line detectors' vote).</li>
+<li>Zeus reads each staff.</li>
+<li>The reading is matched to the encoding, measure by measure, using durations. A staff is kept when it matches.</li>
+<li>Only "plain" staves go into training: one voice, every bar filled, one movement.</li>
+</ol>
+<p>On the three labelled Op. 48 copies, where the answer is known, pairing with run F's model kept 103, 88 and 123 staves and got none wrong.</p>
+<div class="scroll"><table class="num">
+<tr><th>Source (shelfmark)</th><th>Part staves</th><th>Ready (best detection)</th><th>In F</th><th>In G</th></tr>
+<tr><td>Op. 2, Eichstätt (D-Eu Esl VIII 351–355, 357)</td><td>776</td><td>527</td><td>398</td><td>519</td></tr>
+<tr><td>Op. 22, Berlin (D-B KHM 563–568)</td><td>788</td><td>600</td><td>542</td><td>568</td></tr>
+<tr><td>Op. 22, Paris part-books</td><td>550</td><td>346</td><td>252</td><td>318</td></tr>
+<tr><td>Op. 32 (D-B KHM 577)</td><td>931</td><td>468</td><td>197</td><td>444</td></tr>
+<tr><td>Op. 33, Paris parts (F-Pn Rés. 507 (2))</td><td>692</td><td>445</td><td>324</td><td>397</td></tr>
+<tr><td>Op. 22 no. 6, Vmbr ms. 153 (Baillot) ⚠</td><td>169</td><td>88</td><td>—</td><td>—</td></tr>
+<tr><td>Op. 2 no. 4, Prague (CZ-Pu 59 R 23) ⚠</td><td>119</td><td>50</td><td>—</td><td>—</td></tr>
+<tr><td>Op. 33, Berlin full scores (D-B KHM 579–584) ⚠</td><td>272</td><td>53</td><td>—</td><td>—</td></tr>
+</table></div>
+<p class="note">"Ready" is the plain staves kept by any detection. "In F" and "In G" are what dataset.py accepted after its own checks. ⚠ sources are left out of training so far; about 190 staves in three more hands.</p>
+<h3 style="margin-top:14px">Yield on the part copies, as the pipeline improved</h3>
+<div class="scroll"><table class="num">
+<tr><th>Step</th><th>Plain staves</th><th>Of 4,025</th></tr>
+<tr><td>Untouched Zeus, bar boxes must equal measures</td><td>942</td><td>23%</td></tr>
+<tr><td>Untouched Zeus, counts may differ if both end measures pair one-to-one</td><td>1,905</td><td>47%</td></tr>
+<tr><td>Run F reads them</td><td>2,180</td><td>54%</td></tr>
+<tr><td>+ the YOLO vote, which the Philhar sources had never had</td><td>2,353</td><td>58%</td></tr>
+<tr><td>Any of filter only, vote, retrained YOLOs</td><td>2,524</td><td>63%</td></tr>
+</table></div>
+<p class="note">The 4,025 excludes the Op. 33 Berlin scores. Rows from "Run F reads them" on include sources it trained on, so some of the gain is the model knowing those staves.</p>
+<h3 style="margin-top:14px">Scale against Zeus's own training</h3>
+<p>The untouched model trained on about 43,000 staves an epoch for 200 epochs: 10,899 scanned (Dolores 7,852, OLiMPiC scanned 2,352, OmniOMR 695) and about 32,000 rendered. Run G's 2,340 staves for 8 epochs is a nudge, which is why a gentle learning rate matters.</p>
+</section>
+
+<section class="card">
+<h2>Bar-line detectors retrained on the kept staves</h2>
+<h3>Retrained YOLO26n and YOLO11n <span class="pill bad">not installed</span></h3>
+<dl class="kv">
+<dt>Trained on</dt><dd>Op. 48's 456 reviewed lines plus 2,575 kept Philhar staves whose bar boxes matched Zeus's measures one-to-one (15,442 bar lines, 529 pages). 6 epochs each, about 2 hours each.</dd>
+<dt>Held-out Op. 48 pages</dt><dd>Bar lines missed by the vote, of 141 (Vma ms 1067 (2)) and 231 (RES 507 (16), the autograph): today's pair 0 and 3; retrained pair 5 and 37; retrained YOLO26n with today's YOLO11n 0 and 16.</dd>
+<dt>On its own</dt><dd>Retrained YOLO26n found 133 of 141 on the Vma copyist but 73 of 231 on the autograph. YOLO11n: 86% recall.</dd>
+<dt>Philhar yield</dt><dd>2,393 staves alone; 46 more than the other two detections together.</dd>
+<dt>Why</dt><dd>The kept staves are the ones detection already got right, so faint or unusual bar lines never reach training, and the Philhar hands outnumber Op. 48's six to one. The detectors got better at the hands they already knew and worse at a new one.</dd>
+</dl>
+<p class="note">Turning on the existing detectors' vote, with no training, gained more: Op. 32 went from 268 to 410 staves.</p>
+</section>
+
+<section class="card">
+<h2>What these runs suggest</h2>
+<ul>
+<li><b>Train gently.</b> lr 1e-5, cosine decay, 8 epochs. Higher rates and longer runs made unseen hands worse. Scores level off by epoch 4–6, at about 30% of the peak learning rate, so more epochs are unlikely to help.</li>
+<li><b>A hand improves most from its own staves.</b> KHM 602 went 45% → 62% from 65 staves of its own movement I, and → 81% with Op. 22 Berlin and Op. 32, which may share its copyist.</li>
+<li><b>Breadth helps an unseen hand, up to a point.</b> D → F added five or more new hands and gained 9 points on Vma. F → G added more staves in the same hands and gained none.</li>
+<li><b>Dolores didn't help.</b> See below.</li>
+<li><b>Training on your own output narrows you.</b> Every automatically kept staff is one the pipeline already handled, so self-training sharpens the hands it knows and can't teach what it misses. That held for the bar-line detectors and is likely to hold for Zeus.</li>
+<li><b>Use what's already there first.</b> The biggest detection gain came from turning on detectors that existed but weren't running for these sources.</li>
+</ul>
+<h3 style="margin-top:12px">Why Dolores was dead weight</h3>
+<ul>
+<li>The untouched model already trained on Dolores's training and validation splits, and had nearly memorized them (3.4% symbol error on validation). Showing it those staves again adds almost nothing new.</li>
+<li>In a fine-tune, old data usually serves as rehearsal, to stop the model forgetting. At lr 1e-5 for 8 epochs the model barely drifts (run D's Dolores test error moved 12.2% → 12.7%), so there was little to protect.</li>
+<li>Not tested: whether rehearsal would matter under a harsher recipe, such as run C's.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>When to train again</h2>
+<ul>
+<li><b>Retrain Zeus when there's a trusted encoding in a hand it hasn't trained on.</b> The next one is Op. 48 no. 3 movement I: it would give the Vma ms 1067 (1) copyist training staves, with movement II still the test. By analogy with KHM 602 (65 staves, +17 points), expect a large gain on that hand.</li>
+<li><b>Don't retrain for more staves in hands already covered</b>, for more epochs, or for Dolores.</li>
+<li><b>For the detectors, label pages in new hands.</b> Pseudo-labels from the pipeline don't teach it what it misses.</li>
+<li><b>Fold in the small additions with the next real run,</b> rather than running for them alone: the ⚠ sources (about 190 staves, three more hands) and, once dataset.py supports them, the roughly 550 staves left out as not plain (double stops, two voices, repeat-split bars).</li>
+<li><b>Keep the tests fixed.</b> Same three movements and the same scoring, so new runs compare with these. A third unseen hand would make the unseen-hand number less noisy.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Data not yet used</h2>
+<dl class="kv">
+<dt>OSSQ-OMR</dt><dd>A string-quartet OMR benchmark (MALerLab, github.com/MALerLab/string-quartet-omr-benchmark): 116 quartet scores by 47 composers, 1773–1994. Six are handwritten manuscripts, all by women composers. None of it is in our training data, and as far as we know none was in the untouched model's. The manuscripts are full scores in later hands than our copyists', so they'd add breadth rather than resemblance.</dd>
+<dt>Op. 24 autograph</dt><dd>F-Pn MS 1292: a full score in a hand unlike the others. Left out.</dd>
+<dt>Engravings</dt><dd>Prints (Hummel's and others) are left out for now.</dd>
+</dl>
+</section>
+
+<section class="card">
+<h2>Where things are</h2>
+<dl class="kv">
+<dt>Zeus models</dt><dd><code>~/.cache/manuscript-labeler/models/zeus/sweep/&lt;run&gt;-e&lt;N&gt;.model</code> (lr3e5, lr1e5, lr3e5aug, D-lr1e5, E-lr1e5, F-lr1e5, G-lr1e5)</dd>
+<dt>Training runs</dt><dd><code>~/.cache/manuscript-labeler/zeus/runs/logs/</code></dd>
+<dt>Training data</dt><dd><code>~/.cache/manuscript-labeler/zeus/data/</code> (through F), <code>…/zeus/dataG/</code> (G)</dd>
+<dt>Pairing results</dt><dd><code>experiments/zeus/results/autopair-&lt;source&gt;-any-count[-&lt;model&gt;].json</code></dd>
+<dt>Scripts</dt><dd><code>experiments/zeus/</code>: finetune.py, compare.py, autodetect.py, autopair.py, dataset.py, philhar.py, pseudo_lines.py; <code>tools/predict_barlines.py --pdf</code></dd>
+</dl>
+</section>
+
+<footer>Compiled 12 October 2026 from the run logs (sweep, runD–runG), the pairing results and the bar-line vote evaluation.</footer>
+</main>
+
+</body></html>

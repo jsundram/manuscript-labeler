@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Philhar Manuscript Sources</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; the source table is the page, the yield bars sit beside its numbers. */
+:root{
+  --paper:#f3f4f1; --sheet:#fbfbf9; --ink:#1d2226; --ink2:#4c555c; --ink3:#7a838a;
+  --rule:#d5d9d6; --gall:#7a4a22; --staff:#2f5b78; --warn:#a35a12; --warnbg:#f6ead9; --bar:#d9e2e7;
+  --display:'Libre Caslon Text',Georgia,'Times New Roman',serif;
+  --body:'Source Sans 3','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#16191b; --sheet:#1d2124; --ink:#e7e9e6; --ink2:#b2b8bb; --ink3:#868e93;
+  --rule:#343a3e; --gall:#d29a67; --staff:#86b7d6; --warn:#e2a35e; --warnbg:#3a2c1c; --bar:#2c3a43;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16191b; --sheet:#1d2124; --ink:#e7e9e6; --ink2:#b2b8bb; --ink3:#868e93;
+  --rule:#343a3e; --gall:#d29a67; --staff:#86b7d6; --warn:#e2a35e; --warnbg:#3a2c1c; --bar:#2c3a43;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:36px 64px;display:grid;gap:36px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4.4vw,44px);line-height:1.08;margin:0 0 10px;text-wrap:balance}
+h2{font-family:var(--display);font-weight:400;font-size:24px;margin:0 0 12px;text-wrap:balance}
+p{margin:0;max-width:68ch}
+.lede{color:var(--ink2);font-size:17px}
+.lede b{color:var(--ink)}
+.headline{display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:20px;align-items:baseline}
+.headline div{display:flex;flex-direction:column}
+.headline strong{font-family:var(--display);font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.headline span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-top:6px}
+.headline .pct{color:var(--staff)}
+.scroll{overflow-x:auto;background:var(--sheet);border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--rule)}
+thead th{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);background:var(--sheet);border-bottom:1px solid var(--ink3)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.opus td{padding-top:16px}
+.op{font-family:var(--display);font-weight:700;white-space:nowrap}
+.g{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);font-weight:400}
+.shelf{font-family:var(--mono);font-size:13px}
+.type{white-space:nowrap}
+.none{color:var(--ink3);font-style:italic}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:1px 6px;border-radius:2px;border:1px solid currentColor;white-space:nowrap}
+.tag.skip{color:var(--ink3)}
+.tag.warn{color:var(--warn);background:var(--warnbg)}
+.tag.auto{color:var(--gall)}
+.yield{display:grid;gap:10px;background:var(--sheet);border:1px solid var(--rule);padding:16px}
+.row{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr) 112px;gap:12px;align-items:center}
+.row .name{font-size:14.5px}
+.track{position:relative;height:14px;background:var(--bar)}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--staff)}
+.track u{position:absolute;inset:0 auto 0 0;background:var(--gall);opacity:.85;text-decoration:none}
+.row .fig{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums;color:var(--ink2)}
+.row.total{border-top:1px solid var(--ink3);padding-top:10px;font-weight:600}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink2)}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key b{width:12px;height:12px;display:inline-block}
+.notes{display:grid;gap:10px;max-width:72ch}
+.notes p{color:var(--ink2)}
+.notes p b{color:var(--ink)}
+code{font-family:var(--mono);font-size:13px;background:var(--bar);padding:1px 4px}
+footer{font-size:13px;color:var(--ink3)}
+@media (max-width:560px){.row{grid-template-columns:1fr 96px}.row .track{grid-column:1 / -1;grid-row:2}}
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Philhar Manuscript Sources</h1>
+  <p class="lede">Every quartet set Philhar encoded in LilyPond, with the manuscripts we have for it, and how many of their staves are now <b>ready to train Zeus on</b>. A staff is ready when the pairing matched each of its measures to exactly one bar of the encoding.</p>
+  <div class="headline">
+    <div><strong>1,905</strong><span>staves ready</span></div>
+    <div><strong>4,025</strong><span>staves detected on part copies</span></div>
+    <div><strong class="pct">47%</strong><span>yield</span></div>
+    <div><strong>192</strong><span>ready a day ago</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>Sources by opus</h2>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Encoding</th><th>Manuscript</th><th>Library, shelfmark</th><th>Type</th><th>Date</th><th class="num">Ready</th></tr></thead>
+    <tbody>
+      <tr class="opus"><td rowspan="3"><span class="op">Op. 2</span><span class="g">G.159–164</span></td><td>Eichstätt copies, one per quartet</td><td class="shelf">D-Eu Esl VIII 351–355, 357</td><td class="type">parts</td><td>ca. 1780 (no. 1 ca. 1790)</td><td class="num">400</td></tr>
+      <tr><td>Prague copy, no. 4 only</td><td class="shelf">CZ-Pu 59 R 23</td><td class="type">parts</td><td>1775–1799</td><td class="num">27 <span class="tag warn">check</span></td></tr>
+      <tr><td>Stockholm</td><td class="shelf">S-Skma W 4-R</td><td class="type">print (Hummel)</td><td></td><td class="num"><span class="tag skip">skipped</span></td></tr>
+      <tr class="opus"><td><span class="op">Op. 8</span><span class="g">G.165–170</span></td><td>Stams, nos. 1–2, three sample pages</td><td class="shelf">A-ST Mus.ms. 576, 577</td><td class="type">parts</td><td>ca. 1780</td><td class="num"><span class="tag skip">skipped</span></td></tr>
+      <tr class="opus"><td><span class="op">Op. 9</span><span class="g">G.171–176</span></td><td class="none" colspan="5">No manuscript on disk; prints only</td></tr>
+      <tr class="opus"><td><span class="op">Op. 15</span><span class="g">G.177–182</span></td><td class="none" colspan="5">No manuscript on disk; prints only</td></tr>
+      <tr class="opus"><td rowspan="3"><span class="op">Op. 22</span><span class="g">G.183–188</span></td><td>Berlin copies, one per quartet</td><td class="shelf">D-B KHM 563–568</td><td class="type">parts</td><td>1776–1800</td><td class="num">573</td></tr>
+      <tr><td>Baillot's part-books, nos. 4, 2, 6, 3</td><td class="shelf">F-Pn Vmb ms. 153</td><td class="type">parts</td><td>1775–1800</td><td class="num">275</td></tr>
+      <tr><td>Second copy of no. 6, another hand, bound in the same books</td><td class="shelf">F-Pn Vmb ms. 153 (5)</td><td class="type">parts</td><td></td><td class="num">61 <span class="tag warn">check</span></td></tr>
+      <tr class="opus"><td><span class="op">Op. 24</span><span class="g">G.189–194</span></td><td>Autograph</td><td class="shelf">F-Pn MS 1292</td><td class="type">score</td><td>1777</td><td class="num"><span class="tag skip">skipped</span></td></tr>
+      <tr class="opus"><td><span class="op">Op. 26</span><span class="g">G.195–200</span></td><td class="none" colspan="5">No manuscript on disk; prints only</td></tr>
+      <tr class="opus"><td><span class="op">Op. 32</span><span class="g">G.201–206</span></td><td>Berlin copy</td><td class="shelf">D-B KHM 577</td><td class="type">parts</td><td>1780–1800</td><td class="num">204</td></tr>
+      <tr class="opus"><td rowspan="2"><span class="op">Op. 33</span><span class="g">G.207–212</span></td><td>Paris parts (viola in a later hand)</td><td class="shelf">Rés. 507 (2)</td><td class="type">parts</td><td>1781</td><td class="num">365</td></tr>
+      <tr><td>Berlin copies, one per quartet</td><td class="shelf">D-B KHM 579–584</td><td class="type">score</td><td>ca. 1781</td><td class="num">47 <span class="tag warn">check</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Yield on part copies</h2>
+  <div class="yield">
+    <div class="key"><span><b style="background:var(--gall)"></b>ready under the old rule (detection's bar count must match)</span><span><b style="background:var(--staff)"></b>ready now</span><span><b style="background:var(--bar)"></b>staves detected</span></div>
+    <div class="row"><span class="name">Op. 22 Berlin</span><span class="track"><i style="width:73%"></i><u style="width:38%"></u></span><span class="fig">573 / 788 · 73%</span></div>
+    <div class="row"><span class="name">Op. 33 Paris</span><span class="track"><i style="width:53%"></i><u style="width:31%"></u></span><span class="fig">365 / 692 · 53%</span></div>
+    <div class="row"><span class="name">Op. 2 Eichstätt</span><span class="track"><i style="width:52%"></i><u style="width:19%"></u></span><span class="fig">400 / 776 · 52%</span></div>
+    <div class="row"><span class="name">Op. 22 Paris (Baillot)</span><span class="track"><i style="width:50%"></i><u style="width:37%"></u></span><span class="fig">275 / 550 · 50%</span></div>
+    <div class="row"><span class="name">Op. 22 no. 6, 2nd copy</span><span class="track"><i style="width:36%"></i><u style="width:3%"></u></span><span class="fig">61 / 169 · 36%</span></div>
+    <div class="row"><span class="name">Op. 2 Prague</span><span class="track"><i style="width:23%"></i><u style="width:0%"></u></span><span class="fig">27 / 119 · 23%</span></div>
+    <div class="row"><span class="name">Op. 32 Berlin</span><span class="track"><i style="width:22%"></i><u style="width:8%"></u></span><span class="fig">204 / 931 · 22%</span></div>
+    <div class="row total"><span class="name">All part copies</span><span class="track"><i style="width:47%"></i><u style="width:23%"></u></span><span class="fig">1,905 / 4,025 · 47%</span></div>
+  </div>
+</section>
+
+<section class="notes">
+  <h2>Reading the numbers</h2>
+  <p><b>The denominator is what detection found,</b> not the staves on the page. It counts empty staves picked up as music and boxes that straddle two staves, both common on the Op. 32 pages. The yield on real music staves is somewhat higher.</p>
+  <p><b>Detection is where staves are lost.</b> Its staff and bar-line detectors were trained on the Op. 48 sources only. On the Op. 32 hand, with thin, short bar lines and ten staves to a landscape page, it misses most bar lines and misplaces some staves.</p>
+  <p><b>The new rule:</b> a staff no longer needs detection's bar count to match Zeus's. When they differ, its first and last measures must each pair with a single bar. On the three labelled Op. 48 sources this kept 304 staves with none wrong. It was designed around the one failure it removed, so it is lightly tested.</p>
+  <p><b><span class="tag warn">check</span> marks sources where detection found almost no bar lines,</b> so nearly every staff got in through the new rule alone. Leave them out of the first training run, or spot-check a few first.</p>
+  <p><b>Skipped:</b> engraved prints, for now; the Op. 24 autograph, whose hand is unlike the others; and the Stams pages, three fragments whose numbering disagrees.</p>
+  <p><b>Held out for testing:</b> KHM 602 movement II and Vma ms 1067 (1) movement II stay out of training.</p>
+</section>
+
+<footer>Scans live in <code>boccherini-quartet-data/manuscripts</code> and <code>boccherini-sources/digitizations</code>. Pairing results are in the labeler's <code>experiments/zeus/results/autopair-*-any-count.json</code>. October 11, 2026.</footer>
+</div>
+
+</body></html>

@@ -1,0 +1,288 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Boccherini OMR Lab Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column (~68ch) for prose; tables break out to a wider measure with their own scroll. */
+:root {
+  --paper: #f6f7f9;
+  --ink: #1c2230;
+  --muted: #5b6475;
+  --rule: #d9dde5;
+  --wash: #eceff4;
+  --accent: #2c5a85;      /* blue-black ink */
+  --sepia: #8a5a2b;       /* manuscript notes */
+  --good: #2e7a4f;
+  --bad: #b23b3b;
+  --flat: #7a7f8c;
+  --bar: #9db6cf;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14181f; --ink: #e3e7ee; --muted: #9aa3b2; --rule: #2c3340; --wash: #1d232c;
+    --accent: #8fb6dd; --sepia: #d2a575; --good: #6cc391; --bad: #ef8a8a; --flat: #9aa0ad; --bar: #3d5a78;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14181f; --ink: #e3e7ee; --muted: #9aa3b2; --rule: #2c3340; --wash: #1d232c;
+  --accent: #8fb6dd; --sepia: #d2a575; --good: #6cc391; --bad: #ef8a8a; --flat: #9aa0ad; --bar: #3d5a78;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.6 var(--body); }
+.page { max-width: 1060px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 80px; }
+.prose { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; line-height: 1.2; }
+h1 { font-size: 2.6rem; margin: 0 0 8px; }
+h2 { font-size: 1.7rem; margin: 56px 0 12px; padding-top: 16px; border-top: 1px solid var(--rule); }
+h3 { font-size: 1.2rem; margin: 28px 0 8px; }
+.eyebrow { font: 600 0.75rem/1 var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--sepia); margin: 0 0 12px; }
+.byline { color: var(--muted); font-size: 0.9rem; margin: 0 0 28px; }
+p, li { margin: 0 0 12px; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: 0.85em; }
+.abstract { background: var(--wash); padding: 20px 24px; border-left: 3px solid var(--accent); max-width: 76ch; }
+.abstract p:last-child { margin-bottom: 0; }
+.keynums { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin: 24px 0 8px; }
+.keynums div { border-top: 2px solid var(--ink); padding-top: 8px; min-width: 0; }
+.keynums b { display: block; font: 600 1.6rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.keynums span { color: var(--muted); font-size: 0.85rem; }
+.tablewrap { overflow-x: auto; margin: 12px 0 20px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; vertical-align: top; padding: 7px 10px; border-bottom: 1px solid var(--rule); }
+th { font-weight: 600; font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+td.num, th.num { text-align: right; white-space: nowrap; }
+td.when { white-space: nowrap; color: var(--muted); font-family: var(--mono); font-size: 0.8rem; }
+tr.pending td { color: var(--muted); font-style: italic; }
+.v { display: inline-block; font: 600 0.7rem/1 var(--body); letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 6px; border-radius: 3px; white-space: nowrap; border: 1px solid currentColor; }
+.v.good { color: var(--good); } .v.bad { color: var(--bad); } .v.flat { color: var(--flat); } .v.run { color: var(--accent); }
+.barcell { display: flex; align-items: center; gap: 8px; min-width: 150px; }
+.barcell i { display: block; height: 10px; background: var(--bar); border-radius: 1px; }
+.barcell i.hi { background: var(--accent); }
+.note { color: var(--muted); font-size: 0.85rem; }
+.pipeline { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; margin: 16px 0; }
+.pipeline div { flex: 1 1 150px; min-width: 0; border: 1px solid var(--rule); padding: 10px 12px; background: var(--paper); }
+.pipeline b { display: block; font-family: var(--display); font-size: 1.05rem; }
+.pipeline span { font-size: 0.82rem; color: var(--muted); }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.cols > div { min-width: 0; }
+.cols h3 { margin-top: 8px; }
+.worked { border-top: 3px solid var(--good); padding-top: 4px; }
+.didnt { border-top: 3px solid var(--bad); padding-top: 4px; }
+ul { padding-left: 1.2em; }
+footer { margin-top: 64px; color: var(--muted); font-size: 0.82rem; border-top: 1px solid var(--rule); padding-top: 12px; }
+@media (max-width: 560px) { h1 { font-size: 2rem; } h2 { font-size: 1.4rem; } }
+</style>
+
+<div class="page">
+<p class="eyebrow">Lab report · manuscript-labeler · 1–13 October 2026</p>
+<h1>Reading Boccherini's quartet manuscripts by machine</h1>
+<p class="byline">Bar-line detection and Zeus fine-tuning for the Op. 48 edition: every model trained, every data source, every result so far.</p>
+
+<div class="abstract prose">
+<p><b>Summary.</b> We want a machine reading of Boccherini's string-quartet manuscripts good enough to draft an edition's encoding. The pipeline has two learned stages: finding the bar lines (which cuts each staff into bars) and reading each staff's notes (Zeus, a handwritten-music reader from OmniOMR). Bar-line detection is close to solved on Boccherini's copyists: the labeler finds 99% of bar lines on pages no model has seen. Reading is not. Fine-tuning Zeus on encodings we already have raised a trained copyist's hand from 45% to 81% of bars exactly right, and an unseen copyist's from 55% to 65%. On non-Boccherini hands (OSSQ) the fine-tuned model is no better overall and narrower: better on one hand, worse on two. The gains come from labelled data in the hand being read; extra data from other hands adds little.</p>
+</div>
+
+<div class="keynums">
+  <div><b>99%</b><span>bar lines found on 8 held-out Op. 48 pages (369 of 372)</span></div>
+  <div><b>45% → 81%</b><span>bars exact, a trained copyist (KHM 602 II), zero-shot → run G</span></div>
+  <div><b>55% → 65%</b><span>bars exact, an unseen copyist (Vma ms 1067 (1) II)</span></div>
+  <div><b>2,669</b><span>training-ready Boccherini staves found without hand labelling</span></div>
+</div>
+
+<h2>1. The task and the pipeline</h2>
+<div class="prose">
+<p>The edition (Boccherini, Op. 48, G. 226–231) is encoded by hand in LilyPond from manuscript part-books. The labeler is a browser tool in which the editor confirms each page's staves, bar lines, clefs and marks. Those labels are the ground truth for the bar-line detectors. The edition's encodings, paired with the labelled bars, are the ground truth for the reader.</p>
+</div>
+<div class="pipeline">
+  <div><b>Page</b><span>scan or photo of a part-book page</span></div>
+  <div><b>Staves</b><span>rule-based tracing (detect.py); staff ends from YOLO26n</span></div>
+  <div><b>Bar lines</b><span>vote, 2 of 3: the labeler's own (rules + learned filter), YOLO26n, YOLO11n</span></div>
+  <div><b>Notes</b><span>Zeus reads each staff to LMX (linearised MusicXML)</span></div>
+  <div><b>Pairing</b><span>staff ↔ encoded bars, by alignment (autopair, barpair)</span></div>
+</div>
+<p class="note prose">The pairing step turns any encoding of a work into training data for its manuscripts, without hand labelling: each detected staff is lined up with the encoding's bars. A staff is kept only if the alignment holds up. On the three labelled sources it has kept 0 wrong staves.</p>
+
+<h2>2. Data sources</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Source</th><th>What it is</th><th>Hand(s)</th><th>Labels / truth</th><th>Used for</th></tr></thead>
+<tbody>
+<tr><td>D-B KHM 602</td><td>Op. 48/1 (G. 226), parts, Berlin</td><td>Berlin copyist</td><td>reviewed labels; Op48-1 encoding (trusted)</td><td>bar lines: train · Zeus: train (I), dev (II)</td></tr>
+<tr><td>D-B KHM 603</td><td>Op. 48/2 (G. 227), parts</td><td>same copyist</td><td>reviewed labels</td><td>bar lines: train</td></tr>
+<tr><td>F-Po RES 507 (14)</td><td>Op. 48/3 (G. 228), parts, Paris</td><td>two hands (Paris A, Paris B, faint ink)</td><td>reviewed labels; Op48-3 II encoding (trusted)</td><td>bar lines: train · Zeus: train (II)</td></tr>
+<tr><td>F-Pn Vma ms 1067 (1)</td><td>Op. 48/3, later copy (1810–40), photographed</td><td>Vma copyist</td><td>reviewed labels; Op48-3 II</td><td>bar lines: train (unseen-copy test on 10-06) · <b>Zeus: dev set for an unseen hand</b></td></tr>
+<tr><td>F-Pn Vma ms 1067 (2), F-Po RES 507 (16)</td><td>Op. 48/4 (G. 229); RES 507 (16) is the autograph</td><td>Vma copyist; Boccherini</td><td>8 pages labelled, held out for good</td><td><b>bar lines: held-out test</b> (61 staves, 372 bar lines)</td></tr>
+<tr><td>Philhar encodings (boccherini-quartet-data)</td><td>LilyPond encodings of Op. 2, 22, 32, 33 (and 24, skipped) from Boccherini's autographs</td><td>—</td><td>encodings only</td><td>Zeus: training data via pairing</td></tr>
+<tr><td>Philhar's manuscripts</td><td>27 sources: Op. 2 Eichstätt and Prague; Op. 22 Berlin, Paris part-books, Vmbr ms. 153 (5); Op. 32; Op. 33 Paris parts and Berlin scores</td><td>about a dozen copyists</td><td>none (paired automatically)</td><td>Zeus: train (1,711 → 2,669 staves); bar lines: pseudo-labels (failed, see 4)</td></tr>
+<tr><td>MusiCorpus: CVC Dolores</td><td>single-staff manuscript copies from Catalan archives, 18th–19th c.</td><td>many</td><td>transcriptions</td><td>in ayce's training; mixed into runs C–E as a regulariser</td></tr>
+<tr><td>MusiCorpus: OmniOMR, OLiMPiC</td><td>historical scans; printed piano scores</td><td>—</td><td>transcriptions</td><td>in ayce's training (only their test splits are unseen)</td></tr>
+<tr><td>MUSCIMA++ v2.0</td><td>140 pages, 20 pieces rewritten by 50 musicians (CC BY-NC-SA)</td><td>50 writers</td><td>symbol annotations</td><td>bar-line pretraining test (no gain)</td></tr>
+<tr><td><a href="https://github.com/MALerLab/ossq-omr">OSSQ-OMR</a> (MALerLab, ISMIR 2026, CC0)</td><td>116 quartets by 47 composers; 6 have manuscripts on IMSLP</td><td>Andrée, Maier, E. Mayer, Hensel</td><td>MusicXML; line breaks follow the manuscript</td><td>Zeus: test of narrowing (Maier, Andrée held out), train (Mayer A, run H) · bar lines: train (Andrée, Mayer A)</td></tr>
+</tbody></table></div>
+<p class="note prose">Of the six OSSQ manuscripts, three were unusable: Hensel is a 1000-pixel scan; Mayer E minor is a pencil draft whose layout isn't the encoding's; Mayer D survives only as a piano four-hands arrangement.</p>
+
+<h2>3. Models</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Model</th><th>Architecture</th><th>Pretrained on</th><th>Our training</th><th>Card</th></tr></thead>
+<tbody>
+<tr><td>Hand-tuned rules</td><td>staff tracing and ink-run thresholds (detect.py)</td><td>—</td><td>thresholds tuned on reviewed pages (tune_barlines.py)</td><td><a href="http://127.0.0.1:8048/static/models/rules.html">rules</a></td></tr>
+<tr><td>Learned filter</td><td>gradient-boosted trees (scikit-learn HistGradientBoosting) over the rules' candidates; second pass sees bar widths</td><td>—</td><td>trains in seconds on every reviewed page</td><td><a href="http://127.0.0.1:8048/static/models/learned.html">learned</a></td></tr>
+<tr><td>YOLO26n, YOLO11n</td><td>Ultralytics one-stage detectors, nano size, 640 px tiles of straightened staves</td><td>COCO</td><td>reviewed Op. 48 lines; classes bar line, staff start, staff end</td><td><a href="http://127.0.0.1:8048/static/models/yolo26n-ends.html">YOLO26n + ends</a>, <a href="http://127.0.0.1:8048/static/models/yolo11n.html">YOLO11n</a></td></tr>
+<tr><td>Detectron2</td><td>Faster R-CNN, ResNet-50 FPN</td><td>COCO</td><td>same lines</td><td><a href="http://127.0.0.1:8048/static/models/detectron2.html">detectron2</a></td></tr>
+<tr><td>D-FINE small</td><td>DETR-family transformer detector</td><td>COCO</td><td>same lines (CPU only on the Mac)</td><td><a href="http://127.0.0.1:8048/static/models/dfine.html">dfine</a></td></tr>
+<tr><td>YOLO26n on MLX</td><td>same model, Apple MLX port</td><td>COCO</td><td>25 epochs</td><td><a href="http://127.0.0.1:8048/static/models/yolo26n-mlx.html">yolo26n-mlx</a></td></tr>
+<tr><td>MeasureDetector</td><td>Faster R-CNN (2019, TensorFlow)</td><td>printed and handwritten scores</td><td>none (can't retrain on Apple silicon)</td><td>—</td></tr>
+<tr><td><a href="https://github.com/OmniOMR/zeus">Zeus</a> ayce-2026-08-03</td><td>encoder-decoder: CNN + BiLSTM encoder over a 128 px staff image, autoregressive LMX decoder with Bahdanau attention (solo26)</td><td>Dolores, OLiMPiC, OmniOMR (weights CC BY-NC-SA)</td><td>fine-tuned runs C–H (section 5)</td><td><a href="https://claude.ai/artifact/3wqTa3curxdsXXHt625zki">Zeus fine-tunes report card</a></td></tr>
+<tr><td>Claude, one pass</td><td>vision LLM reading a bar, few-shot</td><td>—</td><td>none</td><td>—</td></tr>
+</tbody></table></div>
+<p class="note">Bar-line cards are served by the labeler: start it (<span class="mono">uv run server.py &lt;edition&gt;</span>) for those links to open.</p>
+
+<h2>4. Bar-line detection, step by step</h2>
+<p class="note prose">Errors = false + missed bar lines. Test sets changed as the corpus grew, so compare within a row's test set, not down the column.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Date</th><th>Step</th><th>Test set</th><th>Result</th><th></th></tr></thead>
+<tbody>
+<tr><td class="when">10-01</td><td>Hand-tuned rules (detect.py)</td><td>KHM 602/603, 43 lines, 287 bar lines</td><td>30 errors on straightened lines (27 missed)</td><td><span class="v flat">baseline</span></td></tr>
+<tr><td class="when">10-05</td><td>Bake-off round 1: Detectron2, YOLO11n, D-FINE, learned filter, MeasureDetector</td><td>same</td><td>Detectron2 12, D-FINE 16, learned filter 18, YOLO11n 20, MeasureDetector 567 (off the shelf). Votes of unlike methods: 6–8</td><td><span class="v good">learned filter shipped</span></td></tr>
+<tr><td class="when">10-06</td><td>Three hands (KHM + Paris A + Paris B); ink judged relative to the paper</td><td>63 lines, 431 bar lines</td><td>Detectron2 11, YOLO11n 15, YOLO26n 16, learned filter 24 (was 34: the faint Paris B ink now becomes candidates)</td><td><span class="v good">kept</span></td></tr>
+<tr><td class="when">10-06</td><td>Unseen copy: Vma ms 1067 (1)</td><td>72 lines, 376 bar lines</td><td>D-FINE 24, YOLO26n 27, YOLO11n 32, learned filter 138, Detectron2 121. Vote of both YOLOs + filter: 17</td><td><span class="v good">detectors carry over</span></td></tr>
+<tr><td class="when">10-07</td><td>Vote in the labeler: own + YOLO26n + YOLO11n, 2 of 3 (cached predictions)</td><td>end to end, three-hand / Vma</td><td>41 → 21 errors on familiar hands; 150 → 37 on Vma</td><td><span class="v good">shipped</span></td></tr>
+<tr><td class="when">10-07</td><td>Staff start and end as YOLO26n classes</td><td>same</td><td>right end within 1 staff space 56% → 95%; bar-line errors 18 → 6 (familiar)</td><td><span class="v good">shipped</span></td></tr>
+<tr><td class="when">10-07</td><td>MUSCIMA++ pretraining</td><td>familiar / Vma</td><td>13 → 8 familiar, but 21 → 30 on the unseen Vma hand</td><td><span class="v bad">dropped</span></td></tr>
+<tr><td class="when">10-07</td><td>Staves by segmentation (YOLO-seg); oemer</td><td>13 pages</td><td>segmentation never learned (NaN losses, recall ≈ 0.2); oemer crashed on every page</td><td><span class="v bad">dropped</span></td></tr>
+<tr><td class="when">10-08</td><td>Production pair retrained on all four reviewed sources; 8 pages held out for good</td><td>held out: Vma (2) 141, RES 507 (16) 231</td><td>vote misses 1 / 4 (later remeasured 0 / 3)</td><td><span class="v good">installed</span></td></tr>
+<tr><td class="when">10-08</td><td>Detectron2 as a third voter</td><td>held out</td><td>1 / 8 (3 of 4) or 1 / 2 (2 of 4): within noise</td><td><span class="v flat">not worth it</span></td></tr>
+<tr><td class="when">10-11</td><td>Retrain on Philhar pseudo-labels (2,575 staves, 15,442 bar lines, kept by pairing)</td><td>held out</td><td>misses 5 / 37 (today 0 / 3). Only staves detection already got right were labels; Philhar swamped Op. 48</td><td><span class="v bad">not installed</span></td></tr>
+<tr><td class="when">10-13</td><td>Retrain on OSSQ labels: Andrée + Mayer A, 1,208 bar lines, 353 filled in where detection had missed</td><td>held out; Maier (held out)</td><td>Op. 48: 0 / 5 (today 0 / 3). Maier staves with the right bar count 109 → 147 of 200</td><td><span class="v flat">not installed; used for harvesting</span></td></tr>
+<tr><td class="when">10-13</td><td>Same, YOLO11n threshold 0.10 → 0.40 (false counted double, chosen on validation)</td><td>held out</td><td>1 / 6: the false bar line went, misses rose</td><td><span class="v bad">dropped</span></td></tr>
+</tbody></table></div>
+<div class="prose">
+<p><b>Where it stands.</b> On Boccherini's hands detection is no longer the bottleneck. The three bar lines today's pair still misses on the autograph are each drawn through a note's stem, and the detectors disagree about them. The OSSQ retrain shows the detectors can learn new, faint hands from labels made by the encoding. The cost was a small loss on Op. 48, so for now we use that pair only to harvest more training staves.</p>
+</div>
+
+<h2>5. Reading the notes: Zeus, step by step</h2>
+<p class="note prose">Bars exactly right (every note's pitch, duration and the bar's rests), scored by compare.py against the edition's encoding after the 10-11 scoring fix. KHM 602 II is a trained hand in an unseen movement. Vma ms 1067 (1) II is a hand the model never trained on, and it has been our main dev set since the sweep.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>Date</th><th>Model</th><th>Trained on</th><th>Recipe</th><th>KHM 602 II</th><th>Vma 1067 (1) II</th><th></th></tr></thead>
+<tbody>
+<tr><td class="when">10-07</td><td>ayce, zero-shot</td><td>— (Dolores, OLiMPiC, OmniOMR)</td><td>—</td><td class="num"><div class="barcell"><i style="width:45px"></i>45%</div></td><td class="num"><div class="barcell"><i style="width:55px"></i>55%</div></td><td><span class="v flat">baseline</span></td></tr>
+<tr><td class="when">10-09</td><td>first fine-tune</td><td>126 checked staves: KHM 602 I, RES 507 (14) II</td><td>30 epochs, lr 1e-4</td><td class="num"><div class="barcell"><i style="width:62px"></i>62%</div></td><td class="num">—</td><td><span class="v bad">unseen hand 83% → 39%</span></td></tr>
+<tr><td class="when">10-09</td><td>Claude, few-shot, one pass</td><td>—</td><td>10-bar pilot</td><td class="num">worse than Zeus</td><td class="num">—</td><td><span class="v bad">dropped</span></td></tr>
+<tr><td class="when">10-10</td><td>run C</td><td>KHM 602 I+II, Op. 33 (paired), 600 Dolores</td><td>20 epochs, lr 1e-4</td><td class="num">(trained on it)</td><td class="num"><div class="barcell"><i style="width:44px"></i>44%</div></td><td><span class="v bad">unseen hands fell</span></td></tr>
+<tr><td class="when">10-11</td><td>sweep</td><td>run C's data</td><td>8 epochs; lr 3e-5, 1e-5, 3e-5 + augmentation</td><td class="num">—</td><td class="num">lr 1e-5: 55–56%</td><td><span class="v good">lr 1e-5 does no harm</span></td></tr>
+<tr><td class="when">10-11</td><td>run D</td><td>KHM 602 I, RES 507 (14) II, Op. 33, 600 Dolores (886)</td><td>8 epochs, lr 1e-5, cosine</td><td class="num"><div class="barcell"><i style="width:63px"></i>62–64%</div></td><td class="num"><div class="barcell"><i style="width:55px"></i>55–56%</div></td><td><span class="v good">recipe</span></td></tr>
+<tr><td class="when">10-11</td><td>run E</td><td>1,711 Philhar staves + 2,000 Dolores (3,807)</td><td>D's recipe</td><td class="num"><div class="barcell"><i style="width:79px"></i>78–80%</div></td><td class="num"><div class="barcell"><i style="width:61px"></i>60–62%</div></td><td><span class="v good">first gain on an unseen hand</span></td></tr>
+<tr><td class="when">10-11</td><td>run F</td><td>E without Dolores (1,807)</td><td>D's recipe</td><td class="num"><div class="barcell"><i style="width:76px"></i>76%</div></td><td class="num"><div class="barcell"><i style="width:64px"></i>64–65%</div></td><td><span class="v flat">tie with E</span></td></tr>
+<tr><td class="when">10-12</td><td>run G</td><td>union of staves kept by three detections (2,340)</td><td>D's recipe</td><td class="num"><div class="barcell"><i style="width:81px"></i>81%</div></td><td class="num"><div class="barcell"><i style="width:65px"></i>64–65%</div></td><td><span class="v good">best before I</span></td></tr>
+<tr><td class="when">10-13</td><td>run H</td><td>G + 190 Philhar staves found with the OSSQ-trained detection + 145 Mayer A (2,675)</td><td>D's recipe</td><td class="num"><div class="barcell"><i style="width:81px"></i>80–82%</div></td><td class="num"><div class="barcell"><i style="width:67px"></i>66–67%</div></td><td><span class="v flat">tie with G; other hands fell</span></td></tr>
+<tr><td class="when">10-14</td><td>run I</td><td>G + Op. 48/3 movement I from the edition's encoding: 70 Vma staves, 47 RES 507 (14) (2,457)</td><td>D's recipe (stopped in epoch 8; e6–e7 scored)</td><td class="num"><div class="barcell"><i class="hi" style="width:84px"></i>83–84%</div></td><td class="num"><div class="barcell"><i class="hi" style="width:70px"></i>69–70%</div></td><td><span class="v good">Vma +5 over G: its own bars</span></td></tr>
+</tbody></table></div>
+<p class="note prose">Ranges are epochs 6–8 (run I: 6–7). Before run I, Vma movement I, which no decision had looked at, was the clean test: untouched 45%, G 51%, H 48%; RES 507 (14) I: 60%, 69%, 68%. <b>The clean test (10-15):</b> KHM 603 movement I (Op. 48/2, encoded 10-15; same copyist as KHM 602, a movement no decision had seen), 347 bars: untouched 42%, G 62%, I 64% (after the cello's treble-clef solos were labelled). Held out of training from now on. Image fixes for Vma's phone photos (even lighting, grey levels, sharpening) didn't help G on Vma II (65% → 63–65%). Other held-out checks: RES 507 (14) II, untouched 79%, run C 76%. Dolores test symbol error rate rose 12% → 15% under run C. Full per-epoch curves are in the <a href="https://claude.ai/artifact/3wqTa3curxdsXXHt625zki">Zeus fine-tunes report card</a>.</p>
+
+<h3>Non-Boccherini hands: OSSQ manuscripts</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>Manuscript</th><th class="num">Bars scored</th><th class="num">Untouched (ayce)</th><th class="num">Run G</th><th class="num">Change</th><th class="num">Run H</th><th class="num">Run I</th><th>Bar lines right (today → OSSQ pair)</th></tr></thead>
+<tbody>
+<tr><td>E. Mayer, quartet in A</td><td class="num">3,636</td><td class="num">23%</td><td class="num">34%</td><td class="num" style="color:var(--good)">+11</td><td class="num">(trained on it)</td><td class="num">—</td><td>145 / 476 staves (training source)</td></tr>
+<tr><td>Elfrida Andrée</td><td class="num">3,295</td><td class="num">35%</td><td class="num">30%</td><td class="num" style="color:var(--bad)">−5</td><td class="num" style="color:var(--bad)">22–24%</td><td class="num" style="color:var(--bad)">26–27%</td><td>112 / 580 staves (training source)</td></tr>
+<tr><td>Amanda Maier</td><td class="num">925</td><td class="num">54%</td><td class="num">47%</td><td class="num" style="color:var(--bad)">−7</td><td class="num" style="color:var(--bad)">39–42%</td><td class="num">46%</td><td>109 → 147 / 200 staves (held out)</td></tr>
+</tbody></table></div>
+<p class="note prose">score.py's measure is stricter than compare.py's: systems are lined up automatically, OSSQ's line breaks are sometimes a bar off, and a bar on an unmatched system counts as wrong. Compare the two models with each other here, not with the Op. 48 numbers.</p>
+
+<h2>6. Training data found without labelling</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>Date</th><th>Change</th><th class="num">Training-ready Philhar staves</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td class="when">10-10</td><td>autopair: Zeus's reading aligned with the encoding; Op. 33 Paris only</td><td class="num">192</td><td>0 wrong on 3 labelled sources</td></tr>
+<tr><td class="when">10-11</td><td>All 27 sources, <span class="mono">--any-count</span></td><td class="num">1,905</td><td>bar boxes may differ from Zeus's measures if the ends pin the staff</td></tr>
+<tr><td class="when">10-11</td><td>Re-paired with run F's reading</td><td class="num">2,180</td><td>a better reader pairs more</td></tr>
+<tr><td class="when">10-11</td><td>Union with the detectors' vote and the bootstrap pair</td><td class="num">2,524</td><td>each staff is checked against the encoding on its own</td></tr>
+<tr><td class="when">10-13</td><td>barpair: placed by bar lines, Zeus only as an anchor</td><td class="num">2,558</td><td>+162 over autopair with today's detection (2,393); 0 wrong on labelled sources, where it was tuned</td></tr>
+<tr><td class="when">10-13</td><td>OSSQ-trained detection added</td><td class="num">2,669 of 4,025</td><td>→ run H</td></tr>
+</tbody></table></div>
+<p class="prose">Why the rest are rejected (1,243 staves before barpair): 1,179 because Zeus's reading doesn't line up with the encoding, and only 64 because the bar-line count is off. Reading quality gates the training data, so data and reading improve together, slowly.</p>
+
+<h2>7. What worked, what didn't, and why</h2>
+<div class="cols">
+<div class="worked">
+<h3>Worked</h3>
+<ul>
+<li><b>Votes of unlike detectors.</b> The learned filter and the YOLOs make different mistakes, so 2 of 3 removes most of each one's own.</li>
+<li><b>Judging ink against the paper.</b> It rescued the faint Paris B hand: a third of its bar lines had never become candidates.</li>
+<li><b>Staff ends as detector classes.</b> They cut the most-edited thing (a staff's right end) from 56% to 95% within a staff space.</li>
+<li><b>A small learning rate (1e-5) for Zeus.</b> The trained hand gains without losing the unseen one. At 1e-4 every run forgot the hands it hadn't seen.</li>
+<li><b>Pairing encodings made elsewhere.</b> Philhar's encodings became 2,000+ staves of training data with no labelling, and none wrong where we could check.</li>
+<li><b>Labels from the encoding for bar lines</b> (OSSQ). Filling in a missed line from the same line on the other staves taught a new hand: Maier 55% → 74% of staves right.</li>
+</ul>
+</div>
+<div class="didnt">
+<h3>Didn't</h3>
+<ul>
+<li><b>Self-labelled bar lines</b> (Philhar bootstrap). They showed only what the detector already found, and the volume swamped Op. 48.</li>
+<li><b>Pretraining on other handwriting</b> (MUSCIMA++). It helped familiar hands and hurt the unseen one.</li>
+<li><b>Mixing in generic data for Zeus</b> (Dolores). It made no difference once the learning rate was low (E ties F).</li>
+<li><b>More of the same hands.</b> F → G added 500 staves: the trained hand rose, the unseen hand stayed at 65%.</li>
+<li><b>Reading with Claude</b> in one pass, and oemer and segmentation for staves.</li>
+<li><b>Adding Mayer A and more Philhar staves</b> (run H). Vma moved 2 points, inside the noise; Maier and Andrée lost another 5–6 points.</li>
+<li><b>Threshold tuning</b> on the OSSQ pair: it traded a false bar line for more misses.</li>
+</ul>
+</div>
+</div>
+<div class="prose">
+<h3>Why we think so</h3>
+<p>Both stages learn the hand, not music notation in general. Every gain on a hand came from labelled data in that hand: KHM's copyist from the Op. 48/1 encoding, the Philhar copyists from Philhar's encodings, Maier's bar lines from Andrée's and Mayer's. Data from other hands helps a new hand only when the hands resemble each other. Mayer A, whose writing is closer to the trained copyists, gained 11 points from G. Andrée and Maier lost some.</p>
+<p>The unseen Vma copyist moved once, when the Philhar hands arrived (55% → 61–65%), and stayed flat through G and H (run H's 66–67% is within noise of G): more data from other hands didn't reach it. Its own bars did. Run I added 70 Vma staves from Op. 48/3 movement I and Vma II rose to 69–70%, five points over G, with Maier about level with G and Andrée three points below, a smaller narrowing than H's.</p>
+<p>Zeus's errors are mostly durations in dense passagework and pitches one step off (a note head's place misjudged), not wrong clefs or keys. A LilyPond-style bar check catches 55–80% of rhythm errors. What it can't see, wrong pitches, needs a measurement of note heads rather than another reading.</p>
+</div>
+
+<h2>8. Is this a paper yet?</h2>
+<div class="prose">
+<p>Not yet. Candidate contributions:</p>
+<ul>
+<li>Turning existing editions' encodings into training data for their manuscripts by alignment, with a measured wrong-pair rate of zero.</li>
+<li>Bar-line labels for a new hand derived from an encoding (system-wide consistency plus bar counts), measured on a held-out hand.</li>
+<li>A careful account of fine-tuning a handwritten-music reader per copyist: the learning-rate cliff, narrowing on other hands, and the limits of more data from the same hands.</li>
+</ul>
+<p>What a reviewer would ask for:</p>
+<ul>
+<li>One run per setting, with no seeds or error bars. Differences of 2–3 points are noise.</li>
+<li>Small test sets: 8 bar-line pages, two Zeus movements.</li>
+<li>Vma II has been watched since the sweep, so it is a dev set, not a test set. KHM 603 I (Op. 48/2) is now the clean test: G and I read 62–64% there against 81–84% on the dev movement KHM 602 II, so the dev numbers flatter.</li>
+<li>The two OSSQ measures aren't comparable with compare.py.</li>
+<li>Zeus's weights are non-commercial, so the fine-tuned models inherit CC BY-NC-SA.</li>
+</ul>
+<p>A blog post fits now, as "what it takes to read one composer's manuscripts". A workshop paper (WoRMS, ISMIR LBD) fits once there's a clean held-out test and repeated runs.</p>
+</div>
+
+<h2>9. Next directions</h2>
+<div class="prose">
+<ol>
+<li><b>Encode for each hand.</b> Run I confirmed it: 70 staves of the Vma copyist's own bars moved Vma II five points, where 1,800 staves of other hands hadn't. Next, Op. 48/4 (Vma ms 1067 (2), RES 507 (16) autograph). Hold its first movement out too, as a second clean test in another hand.</li>
+<li><b>Clefs, before pitch by measurement.</b> On the clean test, only 2–6 of 348 bars are wrong by one-step pitches alone, so measuring note heads (the edition's headcheck) is worth 2 points at most there. Whole passages shifted by a clef cost more: 11–19 bars (3–5 points). There are two kinds:
+<ul>
+<li>The cello's two treble-clef solos (bars 42–46, 79–82) had no clef mark in the labels, so the scoring read Zeus's notes there in bass clef. They are labelled now (2026-10-15), and the cello rose from 82% to 86–87%.</li>
+<li>Viola passages (25–29, 62–67) and violin 2's bars 10–13 come out 4–6 steps off, in clefs the labels have right. <b>Tried: limiting Zeus to the labelled clef. It doesn't help.</b> Each staff was read one at a time, freely and limited to the labelled clef. Run I went from 64% to 65%, and run G from 62% to 61%.
+<ul>
+<li>Violin 2 gains 5–7 bars: two treble staves that Zeus read as alto now come out right.</li>
+<li>The viola loses 4–7 bars. Zeus's wrong clef token on its own did no harm: it wrote tenor or treble on a viola staff but placed the notes correctly, and the scoring re-reads them in alto. Forcing alto sends the rest of the reading down a worse path.</li>
+</ul>
+Limiting only the violins would be a rule fitted to the test movement; it would have to be chosen on the dev movements first.</li>
+</ul></li>
+<li><b>Noise: a bigger test, not more seeds.</b> On the clean test, I beats G by 1.7 points, with a 95% interval of −1.8 to +5.5 (paired, resampled by 4-bar blocks). Only 34 bars differ between them. One movement can't tell runs apart within about 4 points, however many times each run is repeated. Repeat runs (about 2 hours each) are worth it only once the test is bigger: Op. 48/4 I, and later movements as they're encoded. Until then, treat differences under 4 points as ties.</li>
+<li><b>Bar lines through stems.</b> The remaining misses on the autograph. Few in number; a targeted labelled set would do.</li>
+<li><b>A reader built on <a href="https://grfia.dlsi.ua.es/musvit/">MuSViT</a>.</b> MuSViT is an image encoder pretrained on 9.7M IMSLP pages (ECCV 2026, CC BY-NC-SA, encoder weights only). Its staff-level setup reads 128 px staves, as Zeus does, and its released code trains a CTC sequence head with LoRA adapters, which could learn to write LMX for compare.py to score. Zeus's decoder can't be reused, so the head would train first on OLiMPiC, Dolores and OmniOMR, then on our staves. The question it answers: does an encoder that has seen far more hands cope with an unseen copyist better than Zeus? First test, about 2–3 days: the 25M light encoder on G's data plus Dolores, scored on Vma II and the clean test. Stop if it doesn't beat G there (65% and 62%). Its vectors could also, with no training, rank staves or IMSLP manuscripts by likeness to the Vma hand, if they turn out to capture the hand; that's untested.</li>
+</ol>
+</div>
+
+<footer>
+Sources: experiments/barlines/results.md, experiments/zeus/README.md, the Zeus fine-tunes report card, and this session's runs (scratchpad ossq/, why/, ossqbar/). Numbers are as measured; nothing here is a re-run. Bar-line model cards need the labeler running locally.
+</footer>
+</div>
+
+</body></html>
