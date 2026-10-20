@@ -4,6 +4,38 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: OSSQ's period staves in the public stage
+
+[Report](2026-10-20-ossq-stage-1/)
+
+**Context.** OSSQ-OMR pairs scanned string-quartet prints with their
+encodings. The user asked for its staves to be prepared on Modal, kept to
+music printed 1750–1800, and then: "I think we do 1) OSSQ staves." The
+period subset (13,241 staves of Haydn, Mozart and Beethoven Op. 18) was
+re-cropped to our convention and checked first.
+
+**Question.** Does a public stage with OSSQ's print staves (Public 22k,
+against Public 9k) make a better reader of our manuscripts, with D4's
+other stages unchanged?
+
+**Finding.** No. 268 of 347 bars against D4's 277 (−9, −21 to +3), with
+pitch down most (302 against 311). Public 22k itself read unseen hands
+better: OmniOMR 0.229 to 0.183, Dolores 0.117 to 0.112. Boccherini 3k
+washed that out. The debrief guessed OSSQ's labels ignore the
+cellos' clef changes; a check of all 13,241 showed they don't. Instead, 8
+of the lost bars are four cello clef changes where the OSSQ reader left
+out the clef sign but wrote the notes' real pitches, which compare.py,
+placing notes by staff position, counts a 13th off. On three of the four,
+D4 left the clef out too, with wrong pitches the scorer counts right; only
+one (3 bars) is the OSSQ reader's own mistake. Without them, a tie.
+
+**Why a report.** It was the main use planned for OSSQ, at $11.62, and it
+closes that path for now.
+
+**What followed.** D4 stays the default. The same day, G. 213's three
+copies (the Sibley and Berlin prints, KHM 587) were paired with OSSQ's
+encoding, which gives a print test if OSSQ is tried again.
+
 ## 2026-10-20: A drawn stage before the Boccherini stage, at 128 and 96 px
 
 [Report](2026-10-20-synthetic-and-strip-height/)
