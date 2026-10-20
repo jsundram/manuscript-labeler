@@ -17,7 +17,7 @@ The plan as written:
 Nothing new is tried until these are done. The aim is a model we can name,
 use and compare everything else against.
 
-1. **Read the overnight results** (scratchpad `overnight-summary.md`): Zeus J,
+1. **Read the overnight results** (`drivers/overnight-summary.md`): Zeus J,
    C1, C4 and the two retrained readers (D1, D2: same recipes, plus the
    re-paired Philhar staves with two voices) on the Madrid test (375 staves)
    and the clean test.

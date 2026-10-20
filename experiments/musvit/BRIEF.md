@@ -235,7 +235,7 @@ metered (`modal billing summary`).
 
 **Running / queued overnight:**
 1. Re-pairing the 34 autodetected sources (Philhar, plus the 3 labelled Op. 48
-   ones as a check) with `C4-bocch-tf8-L`: scratchpad `repair.sh` (read_auto.py,
+   ones as a check) with `C4-bocch-tf8-L`: `drivers/repair.sh` (read_auto.py,
    then autopair.py `--model /nonexistent/musvit-C4-bocch-tf8-L-best`). Results:
    `experiments/zeus/results/autopair-<src>-any-count-musvit-C4-bocch-tf8-L-best.json`;
    compare with `...-F-lr1e5-e8.json` (Zeus F's pairing). Op02-1-G159 done: 135 kept
@@ -247,7 +247,7 @@ metered (`modal billing summary`).
    34-37:va; 187 Op22-3 2-7:va,10-15:vn1,18-23:vn2,26-31:vc; 185 Op22-4 10-13:vc;
    186bis Op22-6 2-5:vc,10-13:vn2,18-21:va. 631 staves detected. Paired with
    both Zeus J and C4; the staves both keep with the same bars go to
-   `results/autopair-<src>-any-count-both.json` (scratchpad `madrid.sh`). A hand
+   `results/autopair-<src>-any-count-both.json` (`drivers/madrid.sh`). A hand
    no model has trained on: test only, never train on it.
 3. Then (overnight chain): rebuild Philhar pairs with two voices (dataset.py
    `--pairs ... --results <new results>`), build the Madrid test staves, retrain
@@ -264,12 +264,12 @@ retune, packaging, licence); extend pretraining with the shelf's manuscripts;
 measure what fine-tuning gives up on public benchmarks (C1: Dolores 12.5% →
 35.7% SER).
 
-**Overnight chain launched 2026-10-18 ~02:45** (session scratchpad `overnight.py`,
+**Overnight chain launched 2026-10-18 ~02:45** (`drivers/overnight.py`,
 under `caffeinate -i`): waits for repair.sh and madrid.sh, builds dataM (Philhar
 pairs, two voices) and dataT (Madrid test), retrains D1-tf8-M (from E2-tf8) and
 D2-bocch-tf8-M (from G1-bocch-tf8) on Op. 48 + dataM, scores C1, C4, D1, D2 and
-Zeus J on Madrid and D1, D2 on the clean test. Summary: scratchpad
-`overnight-summary.md`; log `overnight.log`. Test on Op02-1-G159: 116 plain
+Zeus J on Madrid and D1, D2 on the clean test. Summary:
+`drivers/overnight-summary.md`. Test on Op02-1-G159: 116 plain
 staves from the new pairing against 114 in dataG.
 
 ## 2026-10-18: the stage gate
