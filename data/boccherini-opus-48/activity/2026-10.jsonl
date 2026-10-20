@@ -188,3 +188,45 @@
 {"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "open", "kind_of_page": "music", "src": "labeler", "t": 1792301972.26, "t_end": 1792301972.26, "what": "reviewed", "where": "p19"}
 {"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "active", "src": "labeler", "t": 1792301973.226, "t_end": 1792301973.226, "what": "", "where": "p19"}
 {"file": "sources/G230/F-Po_RES-507-17.pdf", "kind": "blur", "src": "labeler", "t": 1792301973.885, "t_end": 1792301973.885, "what": "", "where": "p19"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792469956.496, "t_end": 1792469956.496, "what": "reviewed", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792469958.838, "t_end": 1792469958.838, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792469965.128, "t_end": 1792469965.128, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "command", "src": "labeler", "t": 1792469989.768, "t_end": 1792469989.768, "what": "Ask Claude what the box says (about half a cent), in place o", "where": "p1"}
+{"by": "reading", "file": "sources/G226/D-B_KHM-602.pdf", "kind": "auto", "src": "labeler", "t": 1792469999.259, "t_end": 1792469999.259, "what": "mark text", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "command", "src": "labeler", "t": 1792470004.3, "t_end": 1792470004.3, "what": "Ask Claude what the box says (about half a cent), in place o", "where": "p1"}
+{"by": "reading", "file": "sources/G226/D-B_KHM-602.pdf", "kind": "auto", "src": "labeler", "t": 1792470006.264, "t_end": 1792470006.264, "what": "mark text", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470011.773, "t_end": 1792470011.773, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470019.452, "t_end": 1792470019.452, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792470021.822, "t_end": 1792470021.822, "what": "reviewed", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "command", "src": "labeler", "t": 1792470039.955, "t_end": 1792470039.955, "what": "Ask Claude what the box says (about half a cent), in place o", "where": "p9"}
+{"by": "reading", "file": "sources/G226/D-B_KHM-602.pdf", "kind": "auto", "src": "labeler", "t": 1792470042.366, "t_end": 1792470042.366, "what": "mark text", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470045.704, "t_end": 1792470045.704, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470075.671, "t_end": 1792470075.671, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "n": 2, "src": "labeler", "t": 1792469979.717, "t_end": 1792470000.033, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470081.347, "t_end": 1792470081.347, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470020.041, "t_end": 1792470020.041, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470040.515, "t_end": 1792470040.515, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470075.953, "t_end": 1792470075.953, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470199.524, "t_end": 1792470199.524, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "command", "src": "labeler", "t": 1792470202.614, "t_end": 1792470202.614, "what": "Ask Claude what the box says (about half a cent), in place o", "where": "p9"}
+{"by": "reading", "file": "sources/G226/D-B_KHM-602.pdf", "kind": "auto", "src": "labeler", "t": 1792470206.004, "t_end": 1792470206.004, "what": "mark text", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "edit", "src": "labeler", "t": 1792470211.672, "t_end": 1792470211.672, "what": "mark text", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470220.396, "t_end": 1792470220.396, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470227.918, "t_end": 1792470227.918, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "open", "kind_of_page": "title", "src": "labeler", "t": 1792470229.999, "t_end": 1792470229.999, "what": "reviewed", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470242.408, "t_end": 1792470242.408, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470264.818, "t_end": 1792470264.818, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "edit", "src": "labeler", "t": 1792470273.071, "t_end": 1792470273.071, "what": "mark text", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470274.481, "t_end": 1792470274.481, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470199.897, "t_end": 1792470199.897, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470228.179, "t_end": 1792470228.179, "what": "", "where": "p9"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470265.145, "t_end": 1792470265.145, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470451.137, "t_end": 1792470451.137, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470490.573, "t_end": 1792470490.573, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792470542.009, "t_end": 1792470542.009, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792470543.899, "t_end": 1792470543.899, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792470542.224, "t_end": 1792470542.224, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "focus", "src": "labeler", "t": 1792471051.036, "t_end": 1792471051.036, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "active", "src": "labeler", "t": 1792471051.975, "t_end": 1792471051.975, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792471052.201, "t_end": 1792471052.201, "what": "", "where": "p1"}
+{"file": "sources/G226/D-B_KHM-602.pdf", "kind": "blur", "src": "labeler", "t": 1792471052.202, "t_end": 1792471052.202, "what": "", "where": "p1"}
