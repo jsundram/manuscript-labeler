@@ -102,11 +102,12 @@ def legacy_labels_path(pdf: Path) -> Path:
     return Path(pdf).with_name(Path(pdf).stem + ".labels.json")
 
 
-def labels_files(edition: Path, data: Path = DATA) -> list[tuple[Path, Path]]:
-    """(labels file, its PDF in the edition) for every labelled source."""
+def labels_files(edition: Path, data: Path = DATA, under: str = "sources") -> list[tuple[Path, Path]]:
+    """(labels file, its PDF in the edition) for every labelled source;
+    `under`: the folder its PDFs are in (the scan archive's: digitizations)."""
     root = data / Path(edition).resolve().name
     return [(lp, Path(edition) / lp.relative_to(root).with_name(lp.name.replace(".labels.json", ".pdf")))
-            for lp in sorted(root.glob("sources/**/*.labels.json"))]
+            for lp in sorted(root.glob(f"{under}/**/*.labels.json"))]
 
 
 def new_doc(source: dict) -> dict:

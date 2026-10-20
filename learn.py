@@ -31,10 +31,12 @@ VERSION = 3        # bump when detect.FEATURES or the labelling changes
 FOLDS = 5          # the second pass learns from first passes that didn't see its pages
 
 
-def reviewed_pages(edition: Path, data: Path = labels.DATA) -> list[tuple[Path, int, dict]]:
-    """(pdf, page number, labels page) for every reviewed music page."""
+def reviewed_pages(edition: Path, data: Path = labels.DATA, archive: Path | None = None) -> list[tuple[Path, int, dict]]:
+    """(pdf, page number, labels page) for every reviewed music page, the
+    scan archive's too when given (server.py --archive)."""
     out = []
-    for lp, pdf in labels.labels_files(edition, data):
+    files = labels.labels_files(edition, data) + (labels.labels_files(archive, data, "digitizations") if archive else [])
+    for lp, pdf in files:
         try:
             doc = json.loads(lp.read_text())
         except (ValueError, OSError):
@@ -145,10 +147,11 @@ def train(pages: list, render) -> dict:
             "pages": len(pages), "candidates": int(len(y)), "bar_lines": int(y.sum())}
 
 
-def load_or_train(edition: Path, cache: Path, render, data: Path = labels.DATA) -> dict | None:
-    """The model for this edition's reviewed pages, from the cache if they
-    haven't changed, else trained now. None if there's nothing to learn from."""
-    pages = reviewed_pages(edition, data)
+def load_or_train(edition: Path, cache: Path, render, data: Path = labels.DATA, archive: Path | None = None) -> dict | None:
+    """The model for this edition's reviewed pages (and the archive's), from
+    the cache if they haven't changed, else trained now. None if there's
+    nothing to learn from."""
+    pages = reviewed_pages(edition, data, archive)
     if not pages:
         return None
     path = cache / "models" / f"barlines-{key(pages)}.pkl"

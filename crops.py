@@ -262,11 +262,12 @@ def propose(g: np.ndarray, systems: list[dict], model: dict) -> None:
 
 # -- training --------------------------------------------------------------------
 
-def reviewed_pages(edition: Path, data: Path = labels.DATA) -> list[tuple[Path, int, dict]]:
+def reviewed_pages(edition: Path, data: Path = labels.DATA, archive: Path | None = None) -> list[tuple[Path, int, dict]]:
     """(pdf, page number, labels page) for every reviewed music page with a
-    staff whose crop the editor set."""
+    staff whose crop the editor set, the scan archive's too when given."""
     out = []
-    for lp, pdf in labels.labels_files(edition, data):
+    files = labels.labels_files(edition, data) + (labels.labels_files(archive, data, "digitizations") if archive else [])
+    for lp, pdf in files:
         try:
             doc = labels.migrate(json.loads(lp.read_text()))
         except (ValueError, OSError, labels.NewerSchema):
@@ -340,10 +341,11 @@ def train(pages: list, gray, older: set) -> dict:
     return {**fit(ex), "pages": len(pages)}
 
 
-def load_or_train(edition: Path, cache: Path, gray, data: Path = labels.DATA) -> dict | None:
-    """The model for this edition's reviewed crops, from the cache if they
-    haven't changed, else trained now. None if there's nothing to learn from."""
-    pages = reviewed_pages(edition, data)
+def load_or_train(edition: Path, cache: Path, gray, data: Path = labels.DATA, archive: Path | None = None) -> dict | None:
+    """The model for this edition's reviewed crops (and the archive's), from
+    the cache if they haven't changed, else trained now. None if there's
+    nothing to learn from."""
+    pages = reviewed_pages(edition, data, archive)
     if not pages:
         return None
     older = OLDER_CROPS

@@ -634,7 +634,7 @@ class Edition:
                             img = Image.open(self.render(self.rel(pdf), n))
                             img.load()
                             return img
-                        m = learn.load_or_train(self.root, self.cache, render, self.data)
+                        m = learn.load_or_train(self.root, self.cache, render, self.data, self.archive)
                         self.model = m
                         self.model_state = (f"learned from {m['pages']} reviewed pages ({m['bar_lines']} bar lines)"
                                             if m else "no reviewed pages yet: hand-tuned rules")
@@ -666,7 +666,7 @@ class Edition:
                     try:
                         def gray(pdf, n):
                             return detect._gray(Image.open(self.render(self.rel(pdf), n)))
-                        m = crops.load_or_train(self.root, self.cache, gray, self.data)
+                        m = crops.load_or_train(self.root, self.cache, gray, self.data, self.archive)
                         self.crop_model = m
                         self.crop_state = (f"learned from {m['pages']} reviewed pages ({m['sides']} crop edges)"
                                            if m else "no reviewed crops yet: rules")
