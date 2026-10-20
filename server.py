@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["anthropic", "numpy", "pillow", "scikit-learn"]
+# dependencies = ["anthropic", "markdown-it-py", "numpy", "pillow", "scikit-learn"]
 # ///
 """Local labeling server.
 
@@ -37,12 +37,13 @@ import webbrowser
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 sys.path.insert(0, str(Path(__file__).parent))
 import crops  # noqa: E402
 import labels  # noqa: E402
 import reader  # noqa: E402
+import repo_pages  # noqa: E402
 import structure  # noqa: E402
 
 HERE = Path(__file__).parent
@@ -680,6 +681,35 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def send_repo_page(self, rel: str):
+        if rel.strip("/") == "":
+            self.send_response(HTTPStatus.FOUND)
+            self.send_header("Location", "/r/reports/index.md")
+            self.end_headers()
+            return
+        p = repo_pages.resolve(unquote(rel))
+        if p is None:
+            return self.error(HTTPStatus.NOT_FOUND, "not found")
+        if p.is_dir():
+            if not self.path.split("?")[0].endswith("/"):  # so the page's relative links resolve inside it
+                self.send_response(HTTPStatus.MOVED_PERMANENTLY)
+                self.send_header("Location", self.path.split("?")[0] + "/")
+                self.end_headers()
+                return
+            p = repo_pages.index_of(p)
+            if p is None:
+                return self.error(HTTPStatus.NOT_FOUND, "no README.md or index.html here")
+        out = repo_pages.page(p)
+        if out is None:
+            return self.error(HTTPStatus.NOT_FOUND, "not a kind of file served here")
+        body, ctype = out
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        self.wfile.write(body)
+
     def error(self, status, msg):
         self.send_json({"error": msg}, status)
 
@@ -699,6 +729,8 @@ class Handler(BaseHTTPRequestHandler):
                 if STATIC.resolve() not in f.parents or not f.is_file():
                     return self.error(HTTPStatus.NOT_FOUND, "not found")
                 return self.send_file(f)
+            if path == "/r" or path.startswith("/r/"):  # the repo's reports and the write-ups they link to
+                return self.send_repo_page(path[3:])
             if path == "/api/marktexts":
                 return self.send_json({"texts": ed.mark_texts()})
             if path == "/api/sources":

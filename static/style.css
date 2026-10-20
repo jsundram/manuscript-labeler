@@ -55,6 +55,8 @@ aside {
 aside > header, aside > section { padding: 10px 12px; border-bottom: 1px solid var(--line); }
 aside > section.grow { overflow-y: auto; min-height: 0; }
 
+#reportslink { float: right; font-size: 12px; font-weight: normal; }
+
 #meta dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1px 8px; }
 #meta dt { color: var(--muted); }
 #meta dd { margin: 0; overflow-wrap: anywhere; }
