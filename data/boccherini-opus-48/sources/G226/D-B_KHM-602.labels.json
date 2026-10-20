@@ -40,7 +40,8 @@
           "id": "p1m2",
           "kind": "text",
           "note": "",
-          "text": "Compositor di Camera di S. M. il re di Prussia",
+          "text": "di Luigi Boccherini",
+          "text_auto": true,
           "w": 0.3613,
           "x": 0.3674,
           "y": 0.3723
@@ -50,7 +51,8 @@
           "id": "p1m3",
           "kind": "text",
           "note": "",
-          "text": "",
+          "text": "Compositor di Camera di S. M. il Re di Prussia",
+          "text_auto": true,
           "w": 0.7262,
           "x": 0.1336,
           "y": 0.4423
@@ -60,7 +62,7 @@
           "id": "p1m4",
           "kind": "text",
           "note": "",
-          "text": "Quartettino Per due Violini, Viola i Violoncello",
+          "text": "Quartettino Per due Violini, Viola, e Violoncello",
           "w": 0.5994,
           "x": 0.1242,
           "y": 0.2097
@@ -9409,7 +9411,7 @@
             -0.0067,
             -0.0044,
             -0.0015,
-            -0.0,
+            0,
             0.0024
           ],
           "bottom": 0.5882,
@@ -10576,7 +10578,8 @@
           "id": "p9m1",
           "kind": "text",
           "note": "Mese di Frebraro. 1794",
-          "text": "",
+          "text": "Mese di Febraro. 1794.",
+          "text_auto": true,
           "w": 0.2801,
           "x": 0.3667,
           "y": 0.0778
@@ -10586,7 +10589,7 @@
           "id": "p9m2",
           "kind": "text",
           "note": "",
-          "text": "",
+          "text": "Quartettino",
           "w": 0.1634,
           "x": 0.3621,
           "y": 0.2254
@@ -10596,7 +10599,8 @@
           "id": "p9m3",
           "kind": "text",
           "note": "",
-          "text": "Quartettino",
+          "text": "Violino 2.do",
+          "text_auto": true,
           "w": 0.1783,
           "x": 0.3769,
           "y": 0.373
