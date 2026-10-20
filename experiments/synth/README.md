@@ -116,6 +116,83 @@ One staff takes about 0.35 s on one core. `gen.py` writes `hands.GROUP.json`
 (each staff's hand) beside the samples file. With `--match-density`, each
 hand is given music as dense as the middle half of its own real staves.
 
+## Clef changes inside the staff (dataS4)
+
+Every reader we have misses the clean test's four cello clef changes (KHM 603
+I, p20s8, p20s9, p21s4, p21s5), and our training staves have few changes
+(`experiments/ossq/clef-check.md`). `gen_clefs.py` draws staves that have
+them.
+
+**The music** is OSQ staves (`osq-all.txt`, re-rooted at
+`~/Data/manuscript-labeler/experiments/synth/osq-lmx`). OSQ's one Boccherini
+is G. 213, so nothing of Op. 48 is drawn. A stretch of a real staff moves to
+the clef a copyist would write it in, where it sits high:
+- the stretch's lowest and highest notes must fit the new clef;
+- it must reach above the part's usual staff;
+- no note may be left past four ledger lines in either clef.
+
+The pitches are kept. Only the clef, and so where the notes sit, changes.
+
+**The clef tokens** go where dataL2's labels put them:
+- at a bar line, right after `measure` (and any key and time);
+- inside a bar, right before the next note's pitch, and only between beamed
+  groups and tuplets.
+
+About three in four changes are at a bar line. A key written again after a
+change is drawn but never labelled, as in dataL2.
+
+**Kinds** (`kinds.S4-clef.json` gives each staff's kind, source and clefs):
+
+| kind | staves | what |
+|---|---:|---|
+| vc-treble | 1,106 | cello, bass to treble (mostly back) |
+| vc-tenor | 875 | cello, bass to tenor (mostly back) |
+| vc-open | 477 | cello opening in tenor or treble, mostly back to bass |
+| va-treble | 678 | viola, alto to treble (mostly back) |
+| va-open | 199 | viola opening in treble |
+| osq-real | 237 | OSQ staves that already change clef or open unusually, as they are |
+| vn-plain | 398 | violins unchanged, for balance |
+
+**Sources:**
+- Treble-high cello staves are scarce (about 7% of OSQ's cello staves), so
+  a cello staff may be drawn twice, in another hand with another stretch.
+- Paris B never draws an unusual opening clef: it leaves the opening clef
+  off, so the clef couldn't be seen.
+
+**The drawing:** `copyist.draw(..., changes=True)`. It's off for dataS3's
+sets, and with it off the output is the same as before.
+- A change at a bar line is drawn after the bar line, mostly. Verovio puts
+  it before.
+- The key is written again after the new clef, in that clef's positions:
+  Berlin 85%, Vma 80%, Paris 10%.
+- Changes are drawn about full size.
+- Each clef, not just the opening one, may be the copyist's own
+  (`harvest_clefs.py`):
+  - tenor is the hand's alto clef moved a space up;
+  - the cut is cleaned of residue and thickened if hairline.
+- `lmx2xml.add_stems` now applies a clef inside a bar from where it stands.
+  This also redraws, with corrected stems, 16 of the 191 OpenScore staves
+  that already change clef inside a bar, with or without `changes`. Their
+  labels don't change, and staves with one clef draw as before.
+
+**Checked by eye:** contact sheets of every kind, with each staff's label
+written under it (clef, bar, first note after it).
+- The clef stands where the label puts it, and the notes after it sit on the
+  right lines.
+- A restated key sits in the new clef's positions.
+- Doubtful: some of Vma's own treble cuts are faint or cut in half, and a few
+  carry a sharp from their source's key.
+
+Rebuild (about 5 minutes, six processes, sandbox off to write the cache):
+
+```sh
+uv run experiments/synth/gen_clefs.py ~/.cache/manuscript-labeler/zeus/dataS4 S4-clef --n 4000 --jobs 6 --seed 48
+modal volume put musvit-staves ~/.cache/manuscript-labeler/zeus/dataS4 /dataS4
+```
+
+`--plan-only` prints the plan and stops; `--limit N` draws only the first N
+staves. Training names the list `/staves/dataS4/samples.S4-clef.txt`.
+
 ## Why not Smashcima
 
 We tried Smashcima 1.1.2 first, with MUSCIMA++ glyphs. It draws single

@@ -34,9 +34,13 @@ def _pos(note):
 def add_stems(part: ET.Element):
     middle = MIDDLE[("G", "2")]
     for measure in part.findall("measure"):
-        clef = measure.find("attributes/clef")
-        if clef is not None:
-            middle = MIDDLE.get((clef.findtext("sign"), clef.findtext("line")), middle)
+        mid_at = {}  # each note's middle line: a clef inside the bar applies from where it stands
+        for el in measure:
+            if el.tag == "attributes" and el.find("clef") is not None:
+                clef = el.find("clef")
+                middle = MIDDLE.get((clef.findtext("sign"), clef.findtext("line")), middle)
+            elif el.tag == "note":
+                mid_at[el] = middle
         # group notes: chords (chord tag joins previous) and beams
         groups, cur, open_beam = [], [], False
         chords = []
@@ -66,8 +70,9 @@ def add_stems(part: ET.Element):
             ps = [p for p in map(_pos, notes) if p is not None]
             if not ps:
                 continue
-            far = max(ps, key=lambda p: abs(p - middle))
-            d = "down" if far >= middle else "up"
+            mid = mid_at.get(notes[0], middle)
+            far = max(ps, key=lambda p: abs(p - mid))
+            d = "down" if far >= mid else "up"
             if voice == "2":
                 d = "down"
             elif any(m.findtext("voice") == "2" for m in measure.findall("note")):

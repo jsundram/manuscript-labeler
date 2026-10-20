@@ -445,17 +445,189 @@ def take_clef(svg, lmx: str, hand: str, p: dict, rng: random.Random):
 
 
 def paste_clef(a: np.ndarray, clef, cx0: float, ss: float, rng: random.Random):
-    """The copyist's clef into the ink, the staff where the crop's is (both are nine spaces high)."""
-    ink, x, room = clef
+    """The copyist's clef into the ink, the staff where the crop's is (both are nine spaces high).
+    clef: (ink, x, room) or (ink, x, room, dy): dy moves it up (negative) or down, in spaces."""
+    ink, x, room = clef[:3]
+    dy = clef[3] if len(clef) > 3 else 0
     f = a.shape[0] / ink.shape[0]
     w = ink.shape[1] * f
     fx = min(1.0, max(0.75, room / SP * ss / w))  # narrowed a little if it would run into what follows
     patch = cv2.resize(ink, (max(1, int(w * fx)), a.shape[0]), interpolation=cv2.INTER_AREA)
+    k = int(round(dy * ss))
+    if k:
+        patch = np.roll(patch, k, axis=0)
+        if k < 0:
+            patch[k:] = 0  # what rolled round from the top
+        else:
+            patch[:k] = 0
     left = int(round((x - cx0) / SP * ss))
     right = min(a.shape[1], left + patch.shape[1])
     if left < 0 or right <= left:
         return
     np.maximum(a[:, left:right], patch[:, : right - left] * rng.uniform(0.8, 1.0), out=a[:, left:right])
+
+
+# -- clef changes inside the staff (draw(..., changes=True); dataS3's sets were drawn without) -------------
+
+# per hand: the chance a change at a bar line is written after it (else before, as engravers do), and the
+# chance the key is written again after the new clef (Berlin and Vma do, Paris doesn't; the label never has it)
+CHANGE_HABITS = {"berlin": (0.95, 0.85), "vma": (0.95, 0.8), "parisA": (0.9, 0.1), "parisB": (0.9, 0.1),
+                 "generic": (0.8, 0.5)}
+CLEF_GLYPH = {"E050": "G", "E07A": "G", "E05C": "C", "E07B": "C", "E062": "F", "E07C": "F"}
+
+
+def mark_changes(xml: str, hand: str, rng: random.Random) -> str:
+    """The MusicXML's clef changes at a bar line marked to be drawn after it, and the key in force
+    written again with some of them. Only the drawing changes; the label is the LMX."""
+    root = etree.fromstring(xml.encode())
+    after, again = CHANGE_HABITS[hand]
+    fifths = None
+    for i, m in enumerate(root.iter("measure")):
+        at = m[0] if len(m) and m[0].tag == "attributes" else None
+        clef = at.find("clef") if at is not None else None
+        if i and clef is not None and rng.random() < after:
+            clef.set("after-barline", "yes")
+            if fifths not in (None, "0") and at.find("key") is None and rng.random() < again:
+                key = etree.Element("key")
+                etree.SubElement(key, "fifths").text = fifths
+                at.insert(1 if at[0].tag == "divisions" else 0, key)
+        for k in m.iter("key"):
+            fifths = k.findtext("fifths")
+    return etree.tostring(root, encoding="unicode")
+
+
+_KEYPOS: dict = {}
+
+
+def key_offsets(sign: str, line: int, fifths: int) -> list:
+    """Each accidental of the key signature's height below the top staff line (SVG units), in this clef:
+    verovio's own placing, from a one-bar score."""
+    k = (sign, line, fifths)
+    if k not in _KEYPOS:
+        xml = ('<?xml version="1.0"?><score-partwise version="3.1"><part-list><score-part id="P1"><part-name/>'
+               '</score-part></part-list><part id="P1"><measure number="1"><attributes><divisions>1</divisions>'
+               f'<key><fifths>{fifths}</fifths></key><clef><sign>{sign}</sign><line>{line}</line></clef>'
+               '</attributes><note><rest/><duration>4</duration><type>whole</type></note></measure></part>'
+               '</score-partwise>')
+        tk = verovio.toolkit()
+        tk.setOptions({"breaks": "none", "svgViewBox": True, "header": "none", "footer": "none", "scale": 100})
+        tk.loadData(xml)
+        svg = etree.fromstring(tk.renderToSVG(1).encode())
+        _, top, _, _ = staff_box(svg)
+        ks = svg.find(f".//{{{SVG}}}g[@class='keySig']")
+        _KEYPOS[k] = [_use_xy(u)[1] - top for u in ks.iter(f"{{{SVG}}}use")] if ks is not None else []
+    return _KEYPOS[k]
+
+
+def _set_xy(use, x, y, scale=1.0):
+    t = use.get("transform", "")
+    m = re.search(r"scale\(([-\d.]+),\s*([-\d.]+)\)", t)
+    sx, sy = (float(m.group(1)), float(m.group(2))) if m else (1.0, 1.0)
+    use.set("transform", f"translate({x:.0f}, {y:.0f}) scale({sx * scale:.3f}, {sy * scale:.3f})")
+
+
+def change_clefs(svg) -> list:
+    """[(clef <g>, sign, line)] of the clefs inside the staff (verovio puts them in a layer), in order."""
+    _, top, _, _ = staff_box(svg)
+    out = []
+    for layer in svg.iter(f"{{{SVG}}}g"):
+        if not _cls(layer, "layer"):
+            continue
+        for c in layer.iter(f"{{{SVG}}}g"):
+            u = c.find(f"{{{SVG}}}use") if _cls(c, "clef") else None
+            if u is None:
+                continue
+            sign = CLEF_GLYPH.get(u.get(f"{{{XL}}}href", "")[1:5])
+            if sign:
+                out.append((c, sign, 5 - round((_use_xy(u)[1] - top) / SP)))
+    return out
+
+
+def copyist_changes(svg, rng: random.Random):
+    """Changes drawn as the copyists draw them: about full size (verovio draws them small), and a key
+    written again after a change goes after the new clef, in its positions (verovio puts it before)."""
+    _, top, _, _ = staff_box(svg)
+    for c, sign, line in change_clefs(svg):
+        u = c.find(f"{{{SVG}}}use")
+        grow = rng.uniform(1.05, 1.25)
+        xc, yc = _use_xy(u)
+        _set_xy(u, xc, yc, grow)
+        staff = next((a for a in c.iterancestors() if _cls(a, "staff")), None)
+        ks = staff.find(f"{{{SVG}}}g[@class='keySig']") if staff is not None else None
+        layer = next((a for a in c.iterancestors() if _cls(a, "layer")), None)
+        first = next((e for e in layer.iter(f"{{{SVG}}}g") if e is c or any(
+            _cls(e, k) for k in ("note", "rest", "chord", "mRest", "space", "mSpace"))), None) if layer is not None else None
+        if ks is None or first is not c or any(_cls(e, "clef") for e in staff if e is not layer):
+            continue  # only a clef that opens its bar (verovio may put it in the first beam), never in the opening bar
+        accs = list(ks.iter(f"{{{SVG}}}use"))
+        codes = {a.get(f"{{{XL}}}href", "")[1:5] for a in accs}
+        xs = [_use_xy(a)[0] for a in accs]
+        if not accs or len(codes) != 1 or codes - {"E262", "E260"} or min(xs) > xc:
+            continue  # a key with naturals (a real change), or none before this clef
+        fifths = len(accs) * (1 if codes == {"E262"} else -1)
+        offs = key_offsets(sign, line, fifths)
+        if len(offs) != len(accs):
+            continue
+        x0, gap = min(xs), xc - (max(xs) + 0.8 * SP)
+        _set_xy(u, x0, yc, 1.0)
+        shift = 2.1 * SP * grow + max(gap, 0.3 * SP)
+        for a, x, off in zip(sorted(accs, key=lambda a: _use_xy(a)[0]), sorted(xs), offs):
+            _set_xy(a, x + shift, top + off)
+
+
+def inner_clef(ink: np.ndarray) -> np.ndarray:
+    """A harvested clef cleaned for use inside the staff, where the cut's leftovers would show: faint
+    residue (lifted staff lines, paper) and small fragments taken off, and trimmed to its ink."""
+    out = np.where(ink < 0.25, 0, ink).astype(np.float32)
+    n, lab, stats, _ = cv2.connectedComponentsWithStats((out > 0).astype(np.uint8), connectivity=8)
+    if n < 2:
+        return ink
+    area = stats[1:, cv2.CC_STAT_AREA]
+    keep = np.zeros(n, bool)
+    peak = np.zeros(n, np.float32)
+    np.maximum.at(peak, lab.ravel(), out.ravel())
+    # big strokes, and small dark ones (a bass clef's dots); residue is faint
+    keep[1:] = (area >= 0.08 * area.max()) | ((area >= 0.01 * area.max()) & (peak[1:] >= 0.7))
+    out[~keep[lab]] = 0
+    cols = np.flatnonzero((out > 0.3).sum(0) >= 2)
+    if len(cols) < 3:
+        return ink
+    out = out[:, max(0, cols[0] - 1):cols[-1] + 2]
+    if (out > 0.5).mean() < 0.14:  # hairline cuts (Vma's treble clefs) blur to grey: thicken them a little
+        out = np.maximum(out, 0.8 * cv2.dilate(out, np.ones((2, 2), np.uint8)))
+    return np.clip(out / 0.75, 0, 1)
+
+
+def take_clefs(svg, lmx: str, hand: str, p: dict, rng: random.Random) -> list:
+    """take_clef for every clef on the staff, the opening one and the changes: each to be drawn in the
+    copyist's own hand (removed from the SVG; returned as (ink, x, room, dy)) with chance real_clef.
+    A tenor clef is the copyist's alto clef a space higher."""
+    _, top, _, _ = staff_box(svg)
+    first = svg.find(f".//{{{SVG}}}g[@class='measure']")
+    opening = first.find(f".//{{{SVG}}}g[@class='clef']") if first is not None else None
+    kind = next((t.split(":")[1] for t in lmx.split() if t.startswith("clef:")), None)
+    found = []
+    if opening is not None and kind and opening.getparent() is not None and not _cls(opening.getparent(), "layer"):
+        found.append((opening, kind[0], int(kind[1]), False))
+    found += [(c, s, l, True) for c, s, l in change_clefs(svg)]
+    # what follows each clef: glyphs, and noteheads (ellipses after redraw)
+    after = [_use_xy(u)[0] for u in svg.iter(f"{{{SVG}}}use") if not any(_cls(a, "clef") for a in u.iterancestors())]
+    after += [float(e.get("cx")) - float(e.get("rx")) for e in svg.iter(f"{{{SVG}}}ellipse")]
+    out = []
+    for el, sign, line, inside in found:
+        k, dy = f"{sign}{line}", 0
+        if k == "C4":
+            k, dy = "C3", -1
+        lib = clef_library(hand, k)
+        if not lib or rng.random() >= p["real_clef"]:
+            continue
+        x = _use_xy(el.find(f"{{{SVG}}}use"))[0]
+        nxt = [v for v in after if v > x + 0.5 * SP]
+        room = (min(nxt) if nxt else x + 3 * SP) - x - 0.15 * SP
+        el.getparent().remove(el)
+        ink = rng.choice(lib)
+        out.append((inner_clef(ink) if inside else ink, x, room, dy))
+    return out
 
 
 def plain(svg, ss: float) -> np.ndarray:
@@ -481,18 +653,24 @@ def on_white(a: np.ndarray, li: np.ndarray) -> np.ndarray:
 
 
 def draw(lmx: str, hand: str = "generic", seed: int = 0, width: float | None = None, return_params=False,
-         stages: dict | None = None):
+         stages: dict | None = None, changes: bool = False):
     """width: the staff's length in staff spaces (a real staff's, to match it); else the hand's.
-    stages: if a dict, it gets each stage's image (engraved, redrawn, warped, margins), for showing how it's made."""
+    stages: if a dict, it gets each stage's image (engraved, redrawn, warped, margins), for showing how it's made.
+    changes: clef changes inside the staff drawn as the copyists draw them (mark_changes, copyist_changes),
+    each clef, not just the opening one, possibly the copyist's own (gen_clefs.py; off for dataS3's sets)."""
     rng = random.Random(seed)
     p = sample(HANDS[hand], rng)
     xml = lmx_to_musicxml(lmx)
+    if changes:
+        xml = mark_changes(xml, hand, rng)
     svg = engrave(xml, p["font"], width or p["width"])
     check(svg, lmx, xml)
+    if changes:
+        copyist_changes(svg, rng)
     if stages is not None:
         stages["engraved"] = plain(svg, p["ss"])
     redraw(svg, p, rng)
-    clef = take_clef(svg, lmx, hand, p, rng)
+    clefs = take_clefs(svg, lmx, hand, p, rng) if changes else [take_clef(svg, lmx, hand, p, rng)]
     if stages is not None:
         stages["redrawn"] = plain(svg, p["ss"])
     inner = svg.find(f"{{{SVG}}}svg")
@@ -529,8 +707,9 @@ def draw(lmx: str, hand: str = "generic", seed: int = 0, width: float | None = N
     h, w = a.shape
     if stages is not None:
         stages["warped"] = on_white(a, li)
-    if clef is not None:
-        paste_clef(a, clef, cx0, p["ss"], rng)
+    for clef in clefs:
+        if clef is not None:
+            paste_clef(a, clef, cx0, p["ss"], rng)
     distract(a, p["ss"], rng)
     if stages is not None:
         stages["margins"] = on_white(a, li)

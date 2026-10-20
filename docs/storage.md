@@ -86,6 +86,10 @@ space. `du` still counts them twice.
   the synthetic staves. `dataG213` is G. 213's three copies paired with
   OSSQ's encoding (`experiments/zeus/g213/README.md`). See
   `experiments/musvit/BRIEF.md`.
+- **`dataS4`:** 3,970 synthetic staves that change clef inside the staff
+  (cello bass to tenor or treble and back, viola alto to treble), drawn by
+  `experiments/synth/gen_clefs.py` (README there). List
+  `samples.S4-clef.txt`; on Modal at `/dataS4` in `musvit-staves`.
 - **`g213/`:** the Sibley scan of G. 213 (IMSLP 78818) and OSSQ's encoding
   of it, both downloadable again.
 - **`data/`:** Zeus-format datasets: Dolores, OmniOMR, and each manuscript's
