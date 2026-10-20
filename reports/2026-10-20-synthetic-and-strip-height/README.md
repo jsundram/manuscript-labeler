@@ -106,6 +106,26 @@ mps`), scored by compare.py.
 3. Measure the staff size MuSViT saw in pretraining, to choose between 96
    px and smaller.
 
+## Flags for the edition (2026-10-20)
+
+The edition flags its encoded notes where a reader finds them unlikely
+(zeus-score). Measured by the edition's `scripts/flag_test.py` (`uv run
+scripts/flag_test.py musvit-D4@2026-10-20 musvit-D3@2026-10-18`, in the
+edition's repo) on Op. 48 No. 2 I (KHM 603 I, the same movement as the
+clean test): each reader scores the notes as they stood right after the
+read, and its flags are counted against the bar-parts corrected later.
+
+| reader | bars flagged | real errors | false flags | errors caught |
+|---|---:|---:|---:|---:|
+| musvit-D3 | 116 | 95 | 21 | 95 of 107 |
+| musvit-D4 | 108 | 94 | 14 | 94 of 107 |
+
+At the edition's floor of 3. D4 catches as many errors with a third fewer
+false flags; it missed two D3 caught and caught one D3 missed. The pattern
+held at every floor from 2 to 8. D3's numbers match its model card, so the
+measurement is comparable with earlier ones. It is the same movement as
+the clean test, so it is a second measure, not a second test.
+
 ## Cost
 
 - **Modal, L40S:** five runs (four Boccherini 3k runs and Drawn 11k at

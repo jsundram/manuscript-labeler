@@ -14,7 +14,10 @@ drawn in the copyists' hands between the public staves and ours. It gets 277
 of 347 bars exact (80%) and 92.9% of events right (D3: 91.6%); wrong pitches
 fell from 45 to 25. Against D3 that is +7 bars, with a 95% interval of −5 to
 +19: as good, not shown to be better. It reads about 30% faster. Its flags
-for the edition haven't been re-measured. How it was chosen:
+for the edition, on the same movement at the edition's floor of 3: 108
+bar-parts flagged, 94 real errors, 14 false (D3: 116, 95, 21). It catches
+as many errors with a third fewer false flags, at every floor from 2 to 8.
+How it was chosen:
 [reports/2026-10-20-synthetic-and-strip-height](https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-synthetic-and-strip-height).
 The rest of this card describes D3; D4 shares its data and training but for
 those two changes.

@@ -16,7 +16,8 @@ on MuSViT (PRAIG's pretrained music encoder) that read the same staves into
 the same format, see [MODEL_CARD_MUSVIT.md](MODEL_CARD_MUSVIT.md).
 `musvit-D4`, the default since 1.3.0, gets 80% of the clean test's bars exact
 (musvit-D3 78%, Zeus J 65%) and reads about 30% faster than D3. Its flags for
-the edition haven't been re-measured: D3's, at the edition's flag floor of 3,
+the edition, at the edition's flag floor of 3, catch as many errors as D3's
+(94 against 95 of 107) with a third fewer false ones (14 against 21); D3's
 were as thorough as Zeus J's with a third fewer false ones. Give
 `--model musvit-D3` or `--model J-lr1e5-e8` for the earlier readers.
 
