@@ -306,6 +306,50 @@ staves from the new pairing against 114 in dataG.
   copyist didn't beam); other sources unchanged within 2. Uploaded to
   musvit-staves /dataL2. Train on dataL2 from now on (dataL kept for the D runs).
 
+- **Synthetic staves, first test (2026-10-18, user asked):**
+  - **The synthesizer** is `experiments/synth/` (README there):
+    - Verovio lays out each staff from its LMX, and `copyist.py` redraws it
+      in a hand's manner on real paper.
+    - Labels are exact by construction: `copyist.check` keeps a staff only if
+      every note, rest and beamed group is drawn.
+    - Smashcima was dropped: it draws no key signatures, slurs, ties, tuplets
+      or grace notes.
+  - **dataS (10,762 staves):**
+    - 7,935 of new music: OpenScore String Quartets (CC0), 102 classical
+      scores, cut to our staves' sizes (`score_to_lmx.py`, 44,609 available);
+    - 2,827 of D1's own training music redrawn in other hands.
+  - **Reading check:** musvit-D1 reads them as it reads real staves it hasn't
+    seen. Symbol errors:
+    - 17.2% on new music, against 17.7% on the real practice exam;
+    - 13.3% on its own training music.
+  - **Runs**, both D1's recipe on dataL2:
+    - S0-tf8-L2 (no synthetic staves): practice exam best 0.181 at pass 24;
+      clean test 266/347. With D1's 263 on dataL, the beams fix changes
+      nothing measurable.
+    - S1-tf8-L2-synth50 (`--replay 0.5` from dataS, half of each pass drawn
+      afresh): practice exam best 0.169 at pass 6, stopped at pass 15;
+      clean test 262/347.
+    - S1 against S0: −4 bars (−15 to +7), differing on 32 bars (14 against
+      18). Rhythm 287 against 298, pitch 296 against 296.
+  - **Verdict:** better on the practice exam, no gain on the clean test.
+  - **Not yet tried:**
+    - the copyists' own clefs (`harvest_clefs.py`; drawn in dataS2, not
+      uploaded);
+    - a smaller share;
+    - synthetic staves first, then real ones (the Smashcima paper's order).
+  - **Then tried, 2026-10-19: synthetic staves first, then real.** It
+    gains. SF2 (dataS3 alone from E2-tf8, then D1's recipe on dataL2):
+    clean test 278/347 against S0's 266, +12 bars (+1 to +23).
+    PF2-copyist (the same with Philhar's music, copyist-drawn): 280, +14
+    (+2 to +26). Plain print or copyist's hand, Philhar's music or
+    OpenScore's: inside the noise. One seed each. Details:
+    reports/2026-10-19-synthetic-first; drivers `synth_first.py`,
+    `philhar_first.py`.
+  - **Caveat (code review, 2026-10-20):** `copyist.py` takes paper and margin
+    ink from every dataL2 staff, the practice exam's included, so the
+    copyist-drawn staves carry some practice-exam pixels. Passes were picked
+    on the practice exam; the clean test isn't in dataL2.
+
 ## 2026-10-18: the cheap runs (replay, strip height)
 
 proto.py gains `--replay F --replay-from <samples>` (a fresh draw of
