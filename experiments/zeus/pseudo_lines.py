@@ -42,6 +42,10 @@ def main():
     c = json.loads((a.corpus / "corpus.json").read_text())
     if any(l.get("pseudo") for l in c["lines"]):
         sys.exit(f"{a.corpus} already has pseudo lines")
+    sp = c.get("split")
+    if not isinstance(sp, dict) or "test_pages" not in c:
+        sys.exit(f"{a.corpus} records no test pages to keep out; rebuild it with corpus.py --paper")
+    test = {(src, n) for src, n in c["test_pages"]}  # the corpus's reviewed test pages, by pdf stem
 
     staves: dict[tuple[str, int], dict[str, dict]] = {}  # (source, page) -> {staff: kept}
     for f in a.results:
@@ -51,10 +55,16 @@ def main():
                 staves.setdefault((d["source"], k["page"]), {}).setdefault(k["staff"], k)
     print(f"{sum(len(v) for v in staves.values())} staves on {len(staves)} pages")
 
-    added = []
+    added, skipped = [], 0
     with tempfile.TemporaryDirectory() as tmp:
         for (source, n), kept in sorted(staves.items()):
-            pdf = Path(json.loads((HERE / "auto" / f"{source}.json").read_text())["pdf"])
+            pdf = json.loads((HERE / "auto" / f"{source}.json").read_text())["pdf"]
+            if pdf is None:
+                sys.exit(f"auto/{source}.json names no PDF; leave {source} out")
+            pdf = Path(pdf)
+            if (pdf.stem, n) in test or pdf.stem in sp["test_sources"]:  # never train on a test page
+                skipped += len(kept)
+                continue
             link = Path(tmp) / f"{source}.pdf"  # render names its file by the stem: no dots in it
             if not link.exists():
                 link.symlink_to(pdf)
@@ -85,7 +95,8 @@ def main():
     c["lines"] += added
     c["pseudo"] = {"results": [str(f) for f in a.results], "lines": len(added)}
     (a.corpus / "corpus.json").write_text(json.dumps(c, indent=1))
-    print(f"added {len(added)} lines, {sum(len(l['bars']) for l in added)} bar lines")
+    print(f"added {len(added)} lines, {sum(len(l['bars']) for l in added)} bar lines; "
+          f"{skipped} on test pages left out")
 
 
 if __name__ == "__main__":
