@@ -897,17 +897,60 @@ window.addEventListener('beforeunload', (e) => {
 async function loadSources() {
   const j = await getJSON('/api/sources');
   S.sources = j.sources;
-  const sel = $('#source');
-  sel.innerHTML = j.sources.map((s) => {
-    const done = s.statuses.reviewed || 0;
-    const g = s.source.gerard ? `G${s.source.gerard} · ` : '';
-    return `<option value="${esc(s.pdf)}">${esc(g + s.source.siglum + ' ' + s.source.shelfmark)} (${done}/${s.pages})</option>`;
-  }).join('');
   const h = parseHash();
   const pdf = S.sources.some((s) => s.pdf === h.pdf) ? h.pdf : S.sources[0]?.pdf;
   if (!pdf) { banner('No PDFs found under sources/.'); return; }
-  sel.value = pdf;
+  S.pdf = pdf;
+  renderSourcePicker();
   await loadSource(pdf, h.page);
+}
+
+// The source picker: a source's dot is its pages' dots summed up. Green when
+// every page is reviewed, blue while any is edited or reviewed, orange when
+// only detection has run, hollow when nothing has.
+function sourceState(s) {
+  const st = s.statuses || {};
+  if ((st.reviewed || 0) >= s.pages) return 'reviewed';
+  if (st.reviewed || st.edited) return 'edited';
+  return st.auto ? 'auto' : '';
+}
+
+const SOURCE_STATE = { reviewed: 'every page reviewed', edited: 'in progress', auto: 'detected, not yet edited', '': 'not started' };
+
+function sourceItem(s) {
+  const g = s.source.gerard ? `G${s.source.gerard} · ` : '';
+  const st = sourceState(s);
+  return `<span class="dot ${st}" title="${SOURCE_STATE[st]}"></span><span class="what">${esc(g + s.source.siglum + ' ' + s.source.shelfmark)}</span><span class="muted">${s.statuses.reviewed || 0}/${s.pages}</span>`;
+}
+
+function renderSourcePicker() {
+  const cur = S.sources.find((s) => s.pdf === S.pdf);
+  if (cur) $('#source').innerHTML = sourceItem(cur) + '<span class="caret">▾</span>';
+  $('#sourcelist').innerHTML = S.sources.map((s) =>
+    `<li role="option" tabindex="-1" data-pdf="${esc(s.pdf)}" aria-selected="${s.pdf === S.pdf}">${sourceItem(s)}</li>`).join('');
+}
+
+// The open source's counts follow its pages as they're edited and reviewed.
+function refreshSourceStatus() {
+  const cur = S.sources?.find((s) => s.pdf === S.pdf);
+  if (!cur || !S.doc) return;
+  const statuses = {};
+  for (const p of Object.values(S.doc.pages || {})) statuses[p.status || '?'] = (statuses[p.status || '?'] || 0) + 1;
+  if (JSON.stringify(statuses) === JSON.stringify(cur.statuses)) return;
+  cur.statuses = statuses;
+  renderSourcePicker();
+}
+
+function showSourceList(open) {
+  $('#sourcelist').hidden = !open;
+  $('#source').setAttribute('aria-expanded', String(open));
+  if (open) ($('#sourcelist li[aria-selected="true"]') || $('#sourcelist li'))?.focus();
+}
+
+function pickSource(pdf) {
+  showSourceList(false);
+  $('#source').focus();
+  if (pdf && pdf !== S.pdf) loadSource(pdf);
 }
 
 function parseHash() {
@@ -921,6 +964,7 @@ async function loadSource(pdf, page) {
   const j = await getJSON(`/api/source?${q(pdf)}`);
   S.pdf = pdf;
   S.doc = j.labels;
+  renderSourcePicker();
   S.step = null;
   S.etag = j.etag;
   S.readonly = j.readonly;
@@ -1776,6 +1820,7 @@ function renderPages() {
     items.push(`<li data-page="${n}" class="${n === S.page ? 'current' : ''}"><span class="dot ${p ? p.status : ''}"></span><span class="n">${n}</span><span class="what">${what}</span></li>`);
   }
   $('#pages').innerHTML = items.join('');
+  refreshSourceStatus();
   $('#pages li.current')?.scrollIntoView({ block: 'nearest' });
 }
 
@@ -2747,7 +2792,20 @@ for (const btn of document.querySelectorAll('[data-place]')) {
   btn.onclick = () => setPlacing(S.placing === btn.dataset.place ? null : btn.dataset.place);
 }
 
-$('#source').addEventListener('change', (e) => loadSource(e.target.value));
+$('#source').addEventListener('click', () => showSourceList($('#sourcelist').hidden));
+$('#sourcelist').addEventListener('click', (e) => { const li = e.target.closest('li'); if (li) pickSource(li.dataset.pdf); });
+$('#sourcelist').addEventListener('keydown', (e) => {
+  const li = e.target.closest('li');
+  if (e.key === 'Escape') { e.preventDefault(); pickSource(null); }
+  else if (e.key === 'Enter' && li) { e.preventDefault(); pickSource(li.dataset.pdf); }
+  else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    (e.key === 'ArrowDown' ? li?.nextElementSibling : li?.previousElementSibling)?.focus();
+  }
+  e.stopPropagation();  // the list's keys aren't the page's shortcuts
+});
+document.addEventListener('click', (e) => { if (!e.target.closest('#sourcepick')) showSourceList(false); });
+$('#sourcepick').addEventListener('focusout', (e) => { if (!e.relatedTarget?.closest('#sourcepick')) showSourceList(false); });
 $('#pages').addEventListener('click', (e) => { const li = e.target.closest('li'); if (li) openPage(+li.dataset.page); });
 $('#prev').onclick = () => openPage(S.page - 1);
 $('#next').onclick = () => openPage(S.page + 1);

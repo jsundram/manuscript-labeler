@@ -12,7 +12,10 @@
 <aside id="left">
   <header>
     <h1>Manuscript Labeler <a id="reportslink" href="/r/reports/index.md" target="_blank" title="The project's reports: what we tried and found">Reports</a></h1>
-    <select id="source" aria-label="Source"></select>
+    <div id="sourcepick">
+      <button id="source" aria-haspopup="listbox" aria-expanded="false" aria-label="Source"></button>
+      <ul id="sourcelist" role="listbox" aria-label="Sources" hidden></ul>
+    </div>
   </header>
   <section id="meta"></section>
   <section>

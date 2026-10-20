@@ -56,6 +56,24 @@ aside > header, aside > section { padding: 10px 12px; border-bottom: 1px solid v
 aside > section.grow { overflow-y: auto; min-height: 0; }
 
 #reportslink { float: right; font-size: 12px; font-weight: normal; }
+#sourcepick { position: relative; }
+#source {
+  width: 100%; display: grid; grid-template-columns: 12px 1fr auto auto; gap: 6px; align-items: center;
+  text-align: left; padding: 4px 6px;
+}
+#source .caret { color: var(--muted); }
+#sourcelist {
+  position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 2px);
+  list-style: none; margin: 0; padding: 3px; max-height: 70vh; overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 5px; box-shadow: 0 4px 14px rgba(0,0,0,.12);
+}
+#sourcelist li {
+  display: grid; grid-template-columns: 12px 1fr auto; gap: 6px; align-items: center;
+  padding: 4px 6px; border-radius: 4px; cursor: pointer;
+}
+#sourcelist li:hover, #sourcelist li:focus { background: var(--bg); outline: none; }
+#sourcelist li[aria-selected="true"] { background: #e3ebf8; }
+#source .what, #sourcelist .what { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 #meta dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1px 8px; }
 #meta dt { color: var(--muted); }
@@ -77,10 +95,10 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 }
 #pages li:hover { background: var(--bg); }
 #pages li.current { background: #e3ebf8; }
-#pages .dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--muted); align-self: center; }
-#pages .dot.auto { background: var(--auto); border-color: var(--auto); }
-#pages .dot.edited { background: var(--accent); border-color: var(--accent); }
-#pages .dot.reviewed { background: var(--ok); border-color: var(--ok); }
+.dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--muted); align-self: center; }
+.dot.auto { background: var(--auto); border-color: var(--auto); }
+.dot.edited { background: var(--accent); border-color: var(--accent); }
+.dot.reviewed { background: var(--ok); border-color: var(--ok); }
 #pages .n { color: var(--muted); text-align: right; }
 #pages .what { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
