@@ -40,6 +40,7 @@ from PIL import Image
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from lmx2xml import lmx_to_musicxml  # noqa: E402
+from harvest_clefs import TRAIN  # noqa: E402
 
 SVG = "http://www.w3.org/2000/svg"
 XL = "http://www.w3.org/1999/xlink"
@@ -332,7 +333,8 @@ def staff_box(svg):
 
 # -- ink and paper -------------------------------------------------------------------
 
-_REAL = sorted(DATA.glob("*/*.jpg"))
+# paper and margin ink come only from D1's training staves, never the practice exam's (KHM 602 II, Op. 48/5 I)
+_REAL = sorted(DATA / f"{k}.jpg" for t in TRAIN for k in (DATA / f"samples.{t}.txt").read_text().split())
 
 
 def paper(h, w, rng):
