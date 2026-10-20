@@ -187,6 +187,9 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     if a.init:
         head.load_state_dict(torch.load(proto.CACHE / "runs" / a.init / "pointer.pt", map_location="cpu"))
+        dec = proto.CACHE / "runs" / a.init / "decoder.pt"  # a stage B run's decoder goes with its head
+        if dec.exists():
+            reader.load_state_dict(torch.load(dec, map_location="cpu"), strict=False)
     if a.eval_only:
         res = {}
         for d in a.test:
@@ -208,7 +211,6 @@ def main():
     warm = max(1, steps // 20)  # a short warm-up, then cosine decay
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda i: min(1, (i + 1) / warm) * 0.5 * (1 + math.cos(math.pi * min(1, i / steps))))
     log = {"args": {k: str(v) for k, v in vars(a).items()}}
-    best = None
     for ep in range(1, a.epochs + 1):
         t0, tot = time.time(), np.zeros(3)
         order = sorted(train, key=lambda it: it["w"] / it["h"])  # width-sorted batches, shuffled in order
