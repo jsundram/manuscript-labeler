@@ -45,7 +45,11 @@ Zeus's, must equal the encoding bar for bar.
 --pairs takes the staves autopair.py kept on a source nobody labelled
 (results/autopair-<name>.json), with Philhar's encoding (philhar.py):
 only its plain staves (every measure one bar), in the clef autopair.py
-chose, the key and time Philhar's Trame.ily gives.
+chose, the key and time Philhar's Trame.ily gives. With --musicxml, the
+staves autopair.py --musicxml kept, cut from that score (musicxml_pairs):
+
+    uv run experiments/zeus/dataset.py <edition-repo> --pairs G213-Sibley --musicxml sq8454356_cleaned.musicxml \\
+        --results experiments/zeus/results/autopair-G213-Sibley-musvit-D3S-h96.json --out DIR
 """
 
 import argparse
@@ -463,6 +467,188 @@ def pairs(a):
         print("  check failed:", row)
 
 
+MXL_CLEF = {"G2": "treble", "C3": "alto", "C4": "tenor", "F4": "bass"}
+VOCAB = Path.home() / ".cache/manuscript-labeler/models/musvit/musvit-D4@2026-10-20/vocab.json"
+# tokens dropped rather than refusing the staff, as experiments/ossq/ossq_modal.py drops them
+SOFT = re.compile(r"^(stem:.*|beam:continue|arpeggiate|staff:\d+|tremolo:unmeasured|staccatissimo|spiccato|breath-mark|caesura)$")
+
+
+def musicxml_pairs(a):
+    """--pairs with --musicxml: the staves autopair.py --musicxml kept, each
+    cut from the score's part as experiments/ossq/ossq_modal.py writes OSSQ's
+    staves (lmx's slice_part_to_systems: divisions, key and clef on every
+    staff, time where the music has it; no stems; tokens the reader's
+    vocabulary lacks dropped if minor, else the staff left out). Only plain
+    staves (every measure one bar, or two measures of a bar a repeat splits
+    read as one) within one movement, whose clef as autopair.py chose it is
+    the encoding's at every bar (--clef chosen: the chosen clef written in
+    place of the encoding's, for a copy whose clefs differ, or a score that
+    leaves a part's clef changes out, as OSSQ's G. 213 does; then the
+    encoding has one clef on the staff and the reading wrote that clef and
+    no other). With --max-unlike, a staff any of whose measures is further
+    than that from its bar (autopair.py's "worst") is left out: where the
+    print abbreviates what the score writes out, or the reverse. A viola or
+    cello staff with a note more than 9 steps from the middle line in the
+    clef written is left out (the copy changes clef there; the score has
+    none); so are the staves listed in --drop (checked by eye)."""
+    import copy
+    import io
+    from lmx.musicxml.slice_part_to_systems import slice_part_to_systems
+    from lmx.tokenization.Encoder import Encoder
+    sys.path.insert(0, str(HERE / "ossq"))
+    import mxl
+
+    res = json.loads(a.results.read_text())
+    pdf = Path(json.loads((HERE / "auto" / f"{a.pairs}.json").read_text())["pdf"])
+    mvts = mxl.movements(a.musicxml)
+    parts = dict(zip(mxl.PARTS, ET.parse(a.musicxml).getroot().findall("part")))
+    roman = ["I", "II", "III", "IV", "V", "VI"]
+    vocab = set(json.loads(VOCAB.read_text()))
+    # staves left out by eye: {staff: why}, from --drop FILE (lines "p57-5 why ...")
+    dropped = {}
+    if a.drop:
+        for line in a.drop.read_text().splitlines():
+            if line.strip() and not line.startswith("#"):
+                sid, _, why = line.strip().partition(" ")
+                dropped[sid] = why
+    out = a.out / a.pairs
+    out.mkdir(parents=True, exist_ok=True)
+    left_out, kept, bad, notes = Counter(), [], [], []
+    page = None
+    for k in res["kept"]:
+        part, sid = k["part"], k["staff"]
+        where = {b[0] for b in k["bars"]}
+        if not set(k.get("steps", {"one": 1})) <= {"one", "join"}:
+            left_out["not plain"] += 1
+            continue
+        if len(where) > 1:
+            left_out["two movements"] += 1
+            continue
+        if a.max_unlike is not None and k.get("worst", 0) > a.max_unlike:
+            left_out["a measure unlike its bar"] += 1
+            notes.append(f"{sid} {part}: a measure {k['worst']} from its bar")
+            continue
+        mvt = roman.index(where.pop())
+        idx = [b[1] for b in k["bars"]]
+        if idx != list(range(idx[0], idx[-1] + 1)):
+            left_out["bars not consecutive"] += 1
+            continue
+        bars = mvts[part][mvt][idx[0]:idx[-1] + 1]
+        enc_clefs = {MXL_CLEF.get(b["clef"], b["clef"]) for b in bars} | \
+            ({"(changes inside a bar)"} if any(b["clef_change"] for b in bars) else set())
+        if a.clef == "encoding" and enc_clefs != {k["clef"]}:
+            left_out["clef chosen isn't the encoding's"] += 1
+            notes.append(f"{sid} {part} {roman[mvt]} bars {bars[0]['number']}-{bars[-1]['number']}: "
+                         f"chosen {k['clef']}, encoding {sorted(enc_clefs)}")
+            continue
+        if a.clef == "chosen" and len(enc_clefs) > 1:
+            left_out["the encoding's clef changes on the staff"] += 1
+            continue
+        read = {MXL_CLEF.get(c, c) for c in k.get("read_clefs", [])}
+        if a.clef == "chosen" and read != {k["clef"]}:
+            left_out["the reading wrote another clef"] += 1
+            notes.append(f"{sid} {part}: chosen {k['clef']}, read {sorted(read)}")
+            continue
+        # the measures' place in the whole part: a system break before the first and after the last
+        start = sum(len(m) for m in mvts[part][:mvt]) + idx[0]
+        end = start + len(idx)
+        # a bar the score splits in two at a key change (MuseScore's X measure) where the print
+        # draws no bar line (G. 213 IV, X2): the label would have a measure the image hasn't
+        ms = parts[part].findall("measure")
+        if any(not (ms[i].get("number") or "").isdigit() and ms[i].find("attributes/key") is not None
+               for i in range(start, end) if i):
+            left_out["a bar split at a key change"] += 1
+            continue
+        p = copy.deepcopy(parts[part])
+        for i, m in enumerate(p.findall("measure")):
+            pr = m.find("print")
+            if pr is not None:
+                pr.attrib.pop("new-system", None)
+                pr.attrib.pop("new-page", None)
+            if i in (start, end):
+                if pr is None:
+                    pr = ET.Element("print")
+                    m.insert(0, pr)
+                pr.set("new-system", "yes")
+        systems = [s.part for pg in slice_part_to_systems(p) for s in pg.systems]
+        staff = next(s for s in systems if len(s.findall("measure")) == len(idx)
+                     and s.find("measure").get("number") == bars[0]["number"]
+                     and sum(len(x.findall("measure")) for x in systems[:systems.index(s)]) == start)
+        for note in staff.iter("note"):
+            for st in note.findall("stem"):
+                note.remove(st)
+        # a hidden rest (OSSQ fills a second voice with them) is a <forward>: time passes, nothing shown
+        for m in staff.findall("measure"):
+            for i, el in enumerate(list(m)):
+                if el.tag == "note" and el.get("print-object") == "no" and el.find("rest") is not None \
+                        and el.find("chord") is None:
+                    fw = ET.Element("forward")
+                    sub(fw, "duration", el.findtext("duration"))
+                    if el.findtext("voice"):
+                        sub(fw, "voice", el.findtext("voice"))
+                    m.remove(el)
+                    m.insert(i, fw)
+        if a.clef == "chosen" and enc_clefs != {k["clef"]}:
+            for c in staff.iter("clef"):
+                for ch in list(c):
+                    if ch.tag in ("sign", "line"):
+                        c.remove(ch)
+                sub(c, "sign", CLEF[k["clef"]][0])
+                sub(c, "line", CLEF[k["clef"]][1])
+            notes.append(f"{sid} {part}: clef written {k['clef']} (encoding {sorted(enc_clefs)})")
+        err = io.StringIO()
+        enc = Encoder(errout=err, fail_on_unknown_tokens=False)
+        try:
+            enc.process_part(staff)
+        except Exception as e:
+            left_out[f"encoder {type(e).__name__}"] += 1
+            continue
+        toks = enc.output_tokens
+        missing = re.findall(r"Token '([^']+)' not in the vocabulary", err.getvalue())
+        unknown = [t for t in toks if t not in vocab]
+        hard = [t for t in missing + unknown if not SOFT.match(t)]
+        if hard:
+            left_out[f"vocabulary lacks {sorted(set(hard))[0]}"] += 1
+            continue
+        if "print-object:no" in toks:
+            left_out["a hidden object"] += 1
+            continue
+        lmx = " ".join(t for t in toks if t in vocab)
+        # the check: read back as compare.py reads a reading (each note in its own clef), it is the encoding
+        measures, _ = compare.parse(lmx)
+        ok = len(measures) == len(bars)
+        for b, ms in zip(bars, measures):
+            zs = [compare.zeus_event(e, e["zclef"]) for e in ms]
+            if not (len(zs) == len(b["events"]) and all(map(compare.same, b["events"], zs))):
+                ok = False
+                bad.append((sid, b["number"], " ".join(map(compare.text, b["events"])), " ".join(map(compare.text, zs))))
+        if not ok:
+            left_out["failed the check"] += 1
+            continue
+        # the viola's and cello's clef changes, which OSSQ's score leaves out: a note more than 9
+        # steps from the middle line in the clef written (past 2-3 ledger lines) says the copy
+        # changed clef there
+        if part in ("va", "vc") and any(abs(p) > 9 for m in measures for e in m for p in e["pos"]):
+            left_out["notes far off the staff in the clef written"] += 1
+            notes.append(f"{sid} {part}: notes far off the staff in {k['clef']}")
+            continue
+        if sid in dropped:
+            left_out["left out by eye"] += 1
+            notes.append(f"{sid} {part}: left out by eye: {dropped[sid]}")
+            continue
+        if page is None or page[0] != k["page"]:
+            page = (k["page"], compare.page_image(pdf, k["page"]))
+        save(out, sid, page[1], k["system"], lmx)
+        kept.append(f"{a.pairs}/{sid}")
+    name = a.name or a.pairs
+    (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
+    print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
+    for row in notes:
+        print("  " + row)
+    for row in bad[:20]:
+        print("  check failed:", row)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -471,11 +657,19 @@ def main():
     ap.add_argument("--pairs", help="autopair.py's results for an unlabelled source")
     ap.add_argument("--philhar", type=Path, help="with --pairs: Philhar's lilypond/ folder")
     ap.add_argument("--quartets", help="with --pairs: the quartets to take staves from (Op33-1,...)")
+    ap.add_argument("--musicxml", type=Path, help="with --pairs and --results: autopair.py --musicxml's score (OSSQ's)")
+    ap.add_argument("--drop", type=Path, help="with --musicxml: staves to leave out, checked by eye (lines: staff why)")
+    ap.add_argument("--max-unlike", type=float, help="with --musicxml: leave out a staff with a measure this unlike its bar")
+    ap.add_argument("--clef", choices=("encoding", "chosen"), default="encoding",
+                    help="with --musicxml: keep a staff only where autopair.py's clef is the encoding's, "
+                         "or write autopair.py's clef")
     ap.add_argument("--any-count", action="store_true", help="with --pairs: autopair.py --any-count's results")
     ap.add_argument("--results", type=Path, help="with --pairs: this results file instead (e.g. several merged)")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--name")
     a = ap.parse_args()
+    if a.pairs and a.musicxml:
+        return musicxml_pairs(a)
     if a.pairs:
         return pairs(a)
     if not (a.source and a.movements):

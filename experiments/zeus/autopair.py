@@ -42,6 +42,20 @@ paired with one bar, not a run of rests). Keeping a staff depends on counts, and
 Zeus read its notes right, so the kept staves aren't just the ones Zeus
 already reads well. A bar rest is never half of a split bar.
 
+With --neighbours, a staff is also put out when the staff beside it
+begins or ends with a measure paired with two bars or with a run of rest
+bars: the reading may have dropped this staff's last (or first) bar,
+typically a bar rest at the line's end, and the neighbour taken it, which
+leaves this staff paired one-to-one but a bar short (found on G. 213's
+Sibley copy, viola p10-5, with --any-count). Or with an extra measure:
+half a bar the line breaks, whose other half this staff paired as the
+whole bar (G. 213, Berlin print, violin 1 p16-11/12, bar IV 129: the
+reading of the second half doubled it to a whole bar's length).
+
+With --short-ends, a staff is also put out when its first or last
+measure, paired with a whole bar, reads under 3/4 of the bar's length:
+half of a bar split across a line break, taken for the whole.
+
 Each kept staff's clef is chosen as the one under which Zeus's notes
 (placed by its own staff positions) name the encoding's pitches most often.
 
@@ -56,6 +70,13 @@ system's).
     UV_PYTHON_INSTALL_DIR=~/.cache/manuscript-labeler/zeus/py \\
       uv run --python-preference only-managed experiments/zeus/autopair.py <edition-repo> \\
         --source F-Pn_RES-507-2 --philhar <boccherini-quartet-data>/lilypond --quartets Op33-1,...,Op33-6
+
+With --musicxml, the encoding is a MusicXML score of one quartet (OSSQ's,
+read by ossq/mxl.py: parts in score order vn1, vn2, va, vc, as the page map
+names them), and nothing is scored. Movements start where its bar numbers
+start again; a bar is (movement, its index there: 0, 1, ...), every
+<measure> one (a bar a repeat splits is two measures there, so none is
+split here).
 """
 
 import argparse
@@ -72,6 +93,8 @@ HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE.parent.parent)]
 import compare  # noqa: E402
 import philhar  # noqa: E402
+sys.path.insert(0, str(HERE / "ossq"))
+import mxl  # noqa: E402
 import structure  # noqa: E402
 
 PARTS = ("vn1", "vn2", "va", "vc")
@@ -146,12 +169,15 @@ def length(tok: list[tuple]) -> Fraction:
 # -- the alignment -------------------------------------------------------------------
 
 def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: list[int],
-          halves: set[int], band: int = BAND) -> list[tuple]:
+          halves: set[int], band: int = BAND, joins: set[int] = frozenset()) -> list[tuple]:
     """[(op, zeus indices, bar indices)] in order, by least cost. `breaks`:
     the Zeus measures that end a staff, the only place a bar may split.
     `spans`: the bars each entry of E stands for (a multi-bar rest, more than one).
     `halves`: the entries of E split by a repeat (Structure.ily), which
-    may split anywhere. Neither half of a split may fill the bar alone."""
+    may split anywhere. Neither half of a split may fill the bar alone.
+    `joins`: the entries of E that, with the next, are one bar a repeat
+    splits in two (a MusicXML score's two measures): one measure may stand
+    for both ("join", priced as a split)."""
     n, m = len(Z), len(E)
     INF = float("inf")
     cost = [[INF] * (m + 1) for _ in range(n + 1)]
@@ -177,7 +203,9 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                     back[i2][j2] = (i, j, step)
             if i < n and j < m:
                 go(i + 1, j + 1, unlike(Z[i], E[j]), "one")
-                go(i + 1, j + 2, unlike(Z[i], E[j] + E[j + 1]) + COST["two"], "two") if j + 1 < m else None
+                if j + 1 < m:
+                    go(i + 1, j + 2, unlike(Z[i], E[j] + E[j + 1]) + COST["split" if j in joins else "two"],
+                       "join" if j in joins else "two")
                 if rest_bar(E[j]) and spans[j] > 1:
                     for k in range(2, spans[j] + 1):
                         if i + k <= n and all(rest_bar(Z[x]) for x in range(i, i + k)):
@@ -257,20 +285,42 @@ def philhar_encoding(edition: Path, lily: Path, quartets: list[str], part: str):
     return blocks, split_bars
 
 
+def musicxml_encoding(path: Path, part: str):
+    """The same from a MusicXML score (mxl.py), bars as (movement, index);
+    each bar's events are already as compared. In place of the bars a repeat
+    splits: the measures followed by the other half of their bar (an
+    implicit measure numbered X1, X2 ...), which the reading may join."""
+    mvts = mxl.movements(path)[part]
+    roman = ["I", "II", "III", "IV", "V", "VI"]
+    joins = {(roman[k], i - 1) for k, bars in enumerate(mvts) for i, b in enumerate(bars)
+             if i and not (b["number"] or "").isdigit()}
+    return [((roman[k],), {str(i): b["events"] for i, b in enumerate(bars)}) for k, bars in enumerate(mvts)], joins
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
     ap.add_argument("--source", required=True, help="auto/<source>.json; a labelled source is scored")
     ap.add_argument("--philhar", type=Path, help="Philhar's lilypond/ folder: pair with these encodings")
     ap.add_argument("--quartets", help="with --philhar: the quartets in the source, in order (Op33-1,...)")
+    ap.add_argument("--musicxml", type=Path, help="pair with this MusicXML score (OSSQ's) of the source's one quartet")
     ap.add_argument("--model", type=Path, default=compare.MODEL)
     ap.add_argument("--band", type=int, default=BAND, help="bars from the straight line the alignment may stray")
     ap.add_argument("--debug", nargs="*", default=[], help="staves (p7-6 ...) whose pairing to print")
+    ap.add_argument("--neighbours", action="store_true",
+                    help="a staff is also put out when the staff beside it begins or ends with a measure paired "
+                         "with two bars or a run of rests (results/autopair-<source>[-any-count]-neighbours...json)")
+    ap.add_argument("--short-ends", action="store_true",
+                    help="a staff is also put out when its first or last measure, paired with a whole bar, reads "
+                         "under 3/4 of it (results/autopair-<source>[-any-count][-neighbours]-short-ends...json)")
     ap.add_argument("--any-count", action="store_true",
                     help="keep a staff whatever number of bar boxes detection found on it (results/autopair-<source>-any-count.json)")
     a = ap.parse_args()
     auto = json.loads((HERE / "auto" / f"{a.source}.json").read_text())
-    if a.philhar:
+    if a.musicxml:
+        pdf, export = Path(auto["pdf"]), None
+        encoding = lambda part: musicxml_encoding(a.musicxml, part)
+    elif a.philhar:
         pdf, export = Path(auto["pdf"]), None
         encoding = lambda part: philhar_encoding(a.edition, a.philhar, a.quartets.split(","), part)
     else:
@@ -305,7 +355,7 @@ def main():
         cache_file.write_text(json.dumps(cache, indent=1, sort_keys=True))
 
     truth = truth_staves(export) if export else {}
-    tally, wrong, clef_tally, kept = Counter(), [], Counter(), []
+    tally, wrong, clef_tally, kept, not_kept = Counter(), [], Counter(), [], []
     for part in PARTS:
         mine = [(sid, n, s) for sid, pt, n, s in staves if pt == part]
         if not mine:
@@ -319,7 +369,7 @@ def main():
             for k, (bar, evs) in enumerate(got):
                 # a multi-bar rest is one entry, up to the next bar there is
                 upto = int(got[k + 1][0]) if k + 1 < len(got) else int(bar) + 1
-                enc = compare.encoded(evs)
+                enc = evs if a.musicxml else compare.encoded(evs)
                 bars.append([(*where, b) for b in range(int(bar), max(int(bar) + 1, upto))])
                 E.append(tokens(enc, steps_enc))
                 E_raw.append(enc)
@@ -333,7 +383,10 @@ def main():
                 owner.append(sid)
         breaks = {k for k in range(len(owner) - 1) if owner[k] != owner[k + 1]}
         halves = {j for j, bs in enumerate(bars) if bs[0] in split_bars}
-        path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band)
+        joins = set()
+        if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
+            halves, joins = set(), halves
+        path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
         for step, zs, js in path:
             if any(owner[z] in a.debug for z in zs):
                 print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
@@ -342,6 +395,13 @@ def main():
         # each staff's bars, and whether it holds up
         held = defaultdict(set)
         bad = set()
+        why = defaultdict(list)  # staff -> why it's put out (results' "not kept")
+
+        def out_(staves, reason):
+            for st in staves:
+                if st is not None:
+                    bad.add(st)
+                    why[st].append(reason)
         pairs = defaultdict(list)  # staff -> [(zeus measure, bar index)] paired one to one
         plain = defaultdict(lambda: True)  # every measure one bar, none split by a repeat
         last_owner = None
@@ -353,14 +413,13 @@ def main():
             for z in zs:
                 held[owner[z]].update(b for j in js for b in bars[j])
             if step in ("extra", "two"):
-                bad.update(staves_here)
-            if step in ("one", "split") and unlike(sum((Z[z] for z in zs), []), E[js[0]]) > UNLIKE:
-                bad.update(staves_here)  # nothing like its bar: the pairing has slipped
+                out_(staves_here, f"{step} at {[list(bars[j][0]) for j in js] or 'none'}")
+            if step in ("one", "split", "join") and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
+                out_(staves_here, f"unlike {[list(bars[j][0]) for j in js]}")  # nothing like its bar: the pairing has slipped
             if step == "missed":
                 # a bar no staff holds: the staves either side are suspect
-                bad.add(last_owner)
                 nxt = next((owner[z] for st, zz, _ in path[path.index((step, zs, js)) + 1:] for z in zz), None)
-                bad.add(nxt)
+                out_([last_owner, nxt], f"beside a missed bar {list(bars[js[0]][0])}")
             if step == "one":
                 pairs[owner[zs[0]]].append((zs[0], js[0]))
             if zs:
@@ -370,8 +429,32 @@ def main():
         ends = {}
         for step, zs, js in path:
             for z in zs:
-                one = step == "one" and len(bars[js[0]]) == 1
+                one = step in ("one", "join") and all(len(bars[j]) == 1 for j in js)
                 ends.setdefault(owner[z], [one, one])[1] = one
+        if a.neighbours:
+            # a staff's end measure that stands for more than one bar (two bars, or a bar rest for
+            # a run of rest bars) may have taken a bar the staff beside it holds but its reading
+            # dropped (a bar rest at a line's end); an extra measure there may be half a bar the
+            # line breaks, whose other half the staff beside it paired as the whole bar: that
+            # staff is suspect too
+            step_of = {z: (step, js) for step, zs, js in path for z in zs}
+            for k in sorted(breaks):
+                if step_of[k + 1][0] in ("two", "rests", "extra"):
+                    out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
+                if step_of[k][0] in ("two", "rests", "extra"):
+                    out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
+        if a.short_ends:
+            # a staff's first or last measure paired with a whole bar but read much shorter than it:
+            # half of a bar the line breaks (the other half on the staff beside it, taken as extra)
+            ends_at = {}
+            for z, o in enumerate(owner):
+                ends_at.setdefault(o, [z, z])[1] = z
+            step_of = {z: (step, js) for step, zs, js in path for z in zs}
+            for o, (z0, z1) in ends_at.items():
+                for z in {z0, z1}:
+                    step, js = step_of[z]
+                    if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]]):
+                        out_([o], f"an end measure shorter than its bar {list(bars[js[0]][0])}")
         for sid, n, s in mine:
             count = sum(1 for o in owner if o == sid)
             found = boxes(s, aspect[n])
@@ -395,29 +478,42 @@ def main():
                 wrong.append(f"{part} {sid}: paired {sorted(got)[:1]}..{sorted(got)[-1:]} ({len(got)}), labels "
                              + (f"{sorted(t[2])[:1]}..{sorted(t[2])[-1:]} ({len(t[2])})" if t else "no staff"))
             if not keep:
+                reasons = list(dict.fromkeys(why[sid]))
+                if count == 0:
+                    reasons.append("nothing read")
+                if count != found and not (a.any_count and all(ends.get(sid, [False]))):
+                    reasons.append(f"{count} measures, {found} bar boxes" + (", an end not one bar" if a.any_count else ""))
+                not_kept.append({"staff": sid, "part": part, "page": n, "why": reasons, "bars": sorted(got),
+                                 "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs)))})
                 continue
             # the clef under which Zeus's notes name the encoding's pitches most often
-            score = {}
-            for clef in CLEFS:
-                hits = 0
-                for z, j in pairs[sid]:
-                    zev = [compare.zeus_event(e, clef) for e in Z_raw[z]]
-                    hits += sum(1 for x, y in compare.align(E_raw[j], zev)
-                                if x is not None and y is not None and E_raw[j][x]["pitches"]
-                                and E_raw[j][x]["pitches"] == zev[y]["pitches"])
-                score[clef] = hits
+            # (and bar by bar, for a clef the encoding doesn't have: "bar_clefs", each one-to-one
+            # pair's hits under each clef; "read_clefs": the clefs the reading wrote; "worst": the
+            # most unlike of those pairs)
+            by_bar = [{clef: sum(1 for x, y in compare.align(E_raw[j], zev)
+                                 if x is not None and y is not None and E_raw[j][x]["pitches"]
+                                 and E_raw[j][x]["pitches"] == zev[y]["pitches"])
+                       for clef in CLEFS for zev in [[compare.zeus_event(e, clef) for e in Z_raw[z]]]}
+                      for z, j in pairs[sid]]
+            score = {clef: sum(h[clef] for h in by_bar) for clef in CLEFS}
             best = max(score, key=score.get)
             kept.append({"staff": sid, "part": part, "page": n, "system": s, "clef": best, "bars": sorted(got),
-                         "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None})
+                         "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
+                         "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
+                         "bar_clefs": by_bar, "read_clefs": compare.parse(cache[keys[sid]])[1],
+                         "worst": round(max((unlike(Z[z], E[j]) for z, j in pairs[sid]), default=0.0), 3)})
             if t is not None and len(t[3]) == 1:
                 clef_tally["clef chosen = labels'" if best == next(iter(t[3])) else "clef chosen wrong"] += 1
         if export:
             tally["labelled staves"] += len({b["system"] for b in export["bars"] if b["part"] == part})
 
-    out = {"source": a.source, "tally": tally, "clefs": clef_tally, "kept but wrong": wrong, "kept": kept}
+    out = {"source": a.source, "tally": tally, "clefs": clef_tally, "kept but wrong": wrong, "kept": kept,
+           "not kept": not_kept}
     (HERE / "results").mkdir(exist_ok=True)
     by = "" if a.model == compare.MODEL else f"-{a.model.stem}"  # paired with another model's reading
-    (HERE / "results" / f"autopair-{a.source}{'-any-count' if a.any_count else ''}{by}.json").write_text(json.dumps(out, indent=1))
+    (HERE / "results" / f"autopair-{a.source}{'-any-count' if a.any_count else ''}{'-neighbours' if a.neighbours else ''}"
+                        f"{'-short-ends' if a.short_ends else ''}"
+                        f"{by}.json").write_text(json.dumps(out, indent=1))
     print(json.dumps({"tally": tally, "clefs": clef_tally}, indent=1))
     print("\n".join(wrong))
 

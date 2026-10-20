@@ -83,7 +83,11 @@ space. `du` still counts them twice.
 
 - **`dataG` … `dataT`, `dataL2`, `dataS3`, `dataM`:** staff sets, one per
   build. `dataL2` is Op. 48's training staves with every beam. `dataS3` is
-  the synthetic staves. See `experiments/musvit/BRIEF.md`.
+  the synthetic staves. `dataG213` is G. 213's three copies paired with
+  OSSQ's encoding (`experiments/zeus/g213/README.md`). See
+  `experiments/musvit/BRIEF.md`.
+- **`g213/`:** the Sibley scan of G. 213 (IMSLP 78818) and OSSQ's encoding
+  of it, both downloadable again.
 - **`data/`:** Zeus-format datasets: Dolores, OmniOMR, and each manuscript's
   staves.
 - **`renders/`:** pages rendered at 2,800 px, one folder per PDF (named for

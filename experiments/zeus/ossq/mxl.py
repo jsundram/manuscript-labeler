@@ -88,6 +88,27 @@ def systems(path: Path) -> list[dict]:
     return [{name: per[k][a:b] for k, name in enumerate(PARTS)} for a, b in zip(starts, ends)]
 
 
+def movements(path: Path) -> dict[str, list[list[dict]]]:
+    """{part: [[bar, ...] per movement]}: a movement starts where the bar
+    numbers start again (a numbered bar no higher than the last numbered
+    one; MuseScore's X1, X2 ... are bars left out of the count). Every
+    <measure> is a bar here: a bar a repeat splits is two measures."""
+    parts = ET.parse(path).getroot().findall("part")
+    assert len(parts) == 4, len(parts)
+    out = {}
+    for name, p in zip(PARTS, parts):
+        mvts, last = [], None
+        for b in bars(p):
+            n = int(b["number"]) if (b["number"] or "").isdigit() else None
+            if not mvts or (n is not None and last is not None and n <= last):
+                mvts.append([])
+                last = None
+            mvts[-1].append(b)
+            last = n if n is not None else last
+        out[name] = mvts
+    return out
+
+
 if __name__ == "__main__":
     s = systems(Path(sys.argv[1]))
     print(len(s), "systems;", sum(len(x["vn1"]) for x in s), "bars")

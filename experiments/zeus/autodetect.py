@@ -27,6 +27,11 @@ staves are grouped into systems by the gaps between them, and a system of
 four staves is vn1, vn2, va, vc, top to bottom (any other is left out).
 The filter is trained on every reviewed page.
 
+--whole-page: pages whose paper is the whole image (a scan cropped to the
+page), detected with the image's corners as the paper's, where
+find_page_corners took a dark band inside the page for its edge and cut
+the staves short (the Sibley scan of G. 213, page 1).
+
 Writes auto/<name>.json: {n: {part, systems}}, each staff with its "part".
 """
 
@@ -83,6 +88,7 @@ def main():
     ap.add_argument("--pdf", type=Path, help="an unlabelled source")
     ap.add_argument("--name", help="with --pdf: what to call it")
     ap.add_argument("--pages", help="with --pdf: pages and their part, 5-31:vn1,... (or :score)")
+    ap.add_argument("--whole-page", default="", help="pages (1,3-4) whose paper is the whole image")
     a = ap.parse_args()
     edition = a.edition.resolve()
     cache = cache_dir()
@@ -121,8 +127,9 @@ def main():
     src.model = model
     rel = src.rel(pdf)
     out = {"source": name, "pdf": str(pdf), "filter_pages": model["pages"], "pages": {}}
+    whole = set(page_map(a.whole_page.replace(",", ":x,") + ":x")) if a.whole_page else set()
     for n, part in sorted(parts.items()):
-        d = src.detect(rel, n)
+        d = src.detect(rel, n, corners=[[0, 0], [1, 0], [1, 1], [0, 1]] if n in whole else None)
         staves = sorted(d["systems"], key=lambda s: s["top"])
         if part == "score":
             groups = systems(staves)
