@@ -557,6 +557,7 @@ def main():
 
     train = staves(a.train, a.limit)
     dev_items = train if a.overfit else staves(a.dev, a.dev_limit)
+    pool = staves(a.replay_from) if a.replay else []  # replay staves count toward the vocabulary as training does
     if a.init:
         init_cfg = CACHE / "runs" / a.init / "config.json"
         if init_cfg.exists():
@@ -568,11 +569,11 @@ def main():
             if not readapt:
                 a.lora_r, a.lora_mlp = c.get("lora_r", 16), c.get("lora_mlp", False)
         vocab = json.loads((CACHE / "runs" / a.init / "vocab.json").read_text())
-        missing = sorted({t for _, ts in train for t in ts} - set(vocab))
+        missing = sorted({t for _, ts in train + pool for t in ts} - set(vocab))
         if missing:
             print(f"training tokens not in {a.init}'s vocabulary, read as {UNK}: {missing}", flush=True)
     else:
-        tokens = {t for _, ts in train + staves(a.vocab_extra) for t in ts}
+        tokens = {t for _, ts in train + pool + staves(a.vocab_extra) for t in ts}
         vocab = {t: i for i, t in enumerate([PAD, BOS, EOS, UNK] + sorted(tokens))}
     out = CACHE / "runs" / a.name
     out.mkdir(parents=True, exist_ok=True)
@@ -584,8 +585,8 @@ def main():
                                                      "lora_r": a.lora_r, "lora_mlp": a.lora_mlp, "decoder": a.decoder,
                                                      "memory": a.memory, "color": a.color}
                                                     | ({"height": a.height} if a.height != 128 else {})
-                                                    | ({"replay": a.replay} if a.replay else {})))
-    pool = staves(a.replay_from) if a.replay else []
+                                                    | ({"replay": a.replay, "replay_from": [str(f) for f in a.replay_from]}
+                                                       if a.replay else {})))
     n_replay = round(len(train) * a.replay / (1 - a.replay)) if a.replay else 0
     if pool:
         print(f"replay: {n_replay} of {len(pool)} staves from --replay-from in each pass ({a.replay:.0%})", flush=True)
