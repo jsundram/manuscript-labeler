@@ -4,6 +4,31 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: What Modal has cost us so far
+
+[Report](2026-10-20-modal-compute/) · [page](https://claude.ai/artifact/M4P24Eiua6etJvUnay9Tjq)
+
+**Context.** The user is pricing compute for the modelling work: "I'd like
+to understand how we used modal so far, and how much it's cost in
+practice", with machines, cost, peak GPU memory, GPU utilization and
+training speed, to see whether we could have more speed, lower cost or
+both, and whether Modal's elastic billing fits our bursty work.
+
+**Question.** What has Modal cost, on what, and what would change it?
+
+**Finding.** $101.81 metered for 60.2 GPU-hours, all between 17 and 20
+October; the public stage is nearly half. Training containers used about
+one CPU core, and CPU-only changes slowed passes a lot, so the GPU
+probably waits on batch building: more CPU workers, or an L4, may be the
+cheaper win. Elastic billing fits this use; an always-on L40S pays only
+past 300–400 GPU-hours a month. Peak GPU memory and utilization were never
+logged.
+
+**Why a report.** It sets the baseline for choosing compute.
+
+**What followed.** Three timing runs (under $1) and two one-line logging
+changes are proposed, not run.
+
 ## 2026-10-20: Drawn staves with clef changes
 
 [Report](2026-10-20-clef-change-staves/)

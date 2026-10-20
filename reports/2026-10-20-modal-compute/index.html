@@ -1,0 +1,262 @@
+<title>Modal Compute Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a billing ledger. Summary and answers first, the meter strip of every hour, then the itemised tables. */
+:root {
+  --paper: #f6f7f9; --sheet: #ffffff; --ink: #1c2230; --muted: #5d6677; --rule: #dde1e8;
+  --l40s: #2c6a98; --l4: #c0841a; --other: #9aa3b2; --good: #2f7d4f; --warn: #a8551c;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #12161e; --sheet: #1a2029; --ink: #e4e8ef; --muted: #9aa4b5; --rule: #2c3442;
+  --l40s: #6aa8d8; --l4: #e0a845; --other: #6b7487; --good: #6cc08f; --warn: #e39a5f; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #12161e; --sheet: #1a2029; --ink: #e4e8ef; --muted: #9aa4b5; --rule: #2c3442;
+  --l40s: #6aa8d8; --l4: #e0a845; --other: #6b7487; --good: #6cc08f; --warn: #e39a5f; color-scheme: dark }
+
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1000px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 64px; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: 2.3rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.muted { color: var(--muted); }
+.num, td.n, th.n { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+section { display: grid; gap: 14px; min-width: 0; }
+header { display: grid; gap: 10px; }
+
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.fig { background: var(--sheet); padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+.fig .big { font: 500 1.75rem/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.fig .sub { font-size: 0.85rem; color: var(--muted); }
+
+.answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.answer { border-top: 3px solid var(--ink); padding-top: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.answer.yes { border-color: var(--good); }
+.answer.maybe { border-color: var(--warn); }
+.verdict { font: 600 0.78rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.answer.yes .verdict { color: var(--good); }
+.answer.maybe .verdict { color: var(--warn); }
+.answer p { font-size: 0.93rem; }
+
+.panel { background: var(--sheet); border: 1px solid var(--rule); padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.82rem; color: var(--muted); }
+.key { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 10px; height: 10px; display: inline-block; }
+.chart { overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 640px; height: auto; }
+.chart text { fill: var(--muted); font: 10px var(--mono); }
+
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: minmax(0, 15rem) 1fr 4.5rem; gap: 12px; align-items: center; font-size: 0.88rem; }
+.bar .track { height: 14px; background: var(--paper); position: relative; }
+.bar .fill { position: absolute; inset: 0 auto 0 0; background: var(--l40s); }
+.bar .fill.l4 { background: var(--l4); }
+.bar .fill.cpu { background: var(--other); }
+.bar .v { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .bar { grid-template-columns: 1fr 4rem; } .bar .track { grid-column: 1 / -1; grid-row: 2; } }
+
+.tablebox { overflow-x: auto; border: 1px solid var(--rule); background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+th { font: 600 0.72rem/1.2 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: var(--paper); position: sticky; top: 0; }
+td.n, th.n { text-align: right; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+tr.total td { font-weight: 600; border-top: 2px solid var(--ink); }
+.runs { max-height: 560px; }
+.gpu { font: 500 0.75rem/1 var(--mono); padding: 2px 6px; color: var(--sheet); white-space: nowrap; }
+.gpu.L40S { background: var(--l40s); } .gpu.L4 { background: var(--l4); }
+
+ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 70ch; }
+code { font: 0.86em var(--mono); background: var(--paper); padding: 1px 4px; }
+details { border-top: 1px solid var(--rule); padding-top: 12px; }
+summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+summary:focus-visible, a:focus-visible { outline: 2px solid var(--l40s); outline-offset: 2px; }
+a { color: var(--l40s); }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.two > * { min-width: 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Boccherini OMR · compute · billed to 2026-10-20, 4 pm EDT</div>
+    <h1>What Modal has cost us, and whether to change</h1>
+    <p class="muted">From <code>modal billing report</code> and the training logs. Billing starts on 17 October: there was no earlier Modal use.</p>
+  </header>
+
+  <section aria-labelledby="sum">
+    <h2 id="sum">Summary</h2>
+    <div class="figures">
+      <div class="fig"><span class="eyebrow">Spent to date</span><span class="big">$101.81</span><span class="sub">metered; about $72 after the $30 monthly credit</span></div>
+      <div class="fig"><span class="eyebrow">GPU time</span><span class="big">60.2 h</span><span class="sub">L40S 37.3 h · L4 22.9 h</span></div>
+      <div class="fig"><span class="eyebrow">When</span><span class="big">4 days</span><span class="sub">all of it in 87 hours, 17–20 Oct; 4 busy days of 20 in October</span></div>
+      <div class="fig"><span class="eyebrow">One whole reader</span><span class="big">$4.24</span><span class="sub">musvit-D4's three stages, 2.1 GPU-hours; its last two alone about $1.40</span></div>
+    </div>
+
+    <div class="answers">
+      <div class="answer yes">
+        <span class="verdict">Elastic: yes, it fits</span>
+        <h3>Per-second billing suits the bursts</h3>
+        <p>An always-on L40S costs $577–796 a month. It only beats Modal past about 300–400 L40S-hours a month: our busiest four days, every day. It would also run sweeps one at a time, where we ran up to four GPUs at once.</p>
+      </div>
+      <div class="answer maybe">
+        <span class="verdict">Speed: probably CPU-bound</span>
+        <h3>A faster GPU likely buys nothing yet</h3>
+        <p>Training containers averaged one CPU core, and two changes that only added CPU work slowed a pass 41–96%. Building batches with several CPU workers is the cheapest speed-up: eight cores cost $0.38 an hour against the L40S's $1.95.</p>
+      </div>
+      <div class="answer maybe">
+        <span class="verdict">Cost: one test away</span>
+        <h3>The L4 might do at 41% of the price</h3>
+        <p>If the GPU is waiting on the CPU, an L4 ($0.80 an hour) may run nearly as fast as the L40S ($1.95). It hasn't been timed on the same recipe. 96 px strips already made passes 11–45% faster.</p>
+      </div>
+    </div>
+    <p class="muted">Not measured: peak GPU memory and GPU utilization were never logged. Memory is estimated at 4–15 GB, well inside the L4's 24 GB. Three timing runs, under $1 in all, would settle speed and cost (below).</p>
+  </section>
+
+  <section aria-labelledby="burst">
+    <h2 id="burst">Every billed hour</h2>
+    <p>Spend per hour from the first billed hour to the last, in UTC. GPUs ran in 55 of the 87 hours. The tall stretch on the 17th–18th is the overnight sweeps, about four GPUs at once.</p>
+    <div class="panel">
+      <div class="legend">
+        <span class="key"><span class="sw" style="background:var(--l40s)"></span>L40S</span>
+        <span class="key"><span class="sw" style="background:var(--l4)"></span>L4</span>
+        <span class="key"><span class="sw" style="background:var(--other)"></span>CPU and memory</span>
+      </div>
+      <div class="chart" id="hours" role="img" aria-label="Hourly spend from 17 to 20 October: a sweep peaking near $7 an hour overnight on the 17th, then bursts of $1 to $3 an hour"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="work">
+    <h2 id="work">Where the money went</h2>
+    <div class="panel bars" id="bywork"></div>
+    <p class="muted">The public stage is the expensive one: each run is 1.4–5 hours. Segment Anything's memory was 36% of its bill, probably because every training window was sent in the function call.</p>
+  </section>
+
+  <section aria-labelledby="runs-typical" class="two">
+    <div style="display:grid;gap:12px">
+      <h2 id="runs-typical">A typical run</h2>
+      <div class="tablebox"><table>
+        <thead><tr><th>stage</th><th class="n">wall time</th><th class="n">cost</th></tr></thead>
+        <tbody>
+          <tr><td>Boccherini stage (1.5k–3.4k staves)</td><td class="n">10–30 min</td><td class="n">$0.50–0.95</td></tr>
+          <tr><td>Drawn stage (11k–15k staves)</td><td class="n">20–40 min</td><td class="n">$0.63–1.24</td></tr>
+          <tr><td>Public 9k</td><td class="n">1.4–2.7 h</td><td class="n">$2.80–5.52</td></tr>
+          <tr><td>Public 22k</td><td class="n">5.1 h</td><td class="n">$10.30</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">L40S, one GPU each. 85–95% of a run's billed time is training passes; the rest is start-up, copying staves and scoring the practice exam.</p>
+    </div>
+    <div style="display:grid;gap:12px">
+      <h2>The same month, other ways</h2>
+      <div class="tablebox"><table>
+        <thead><tr><th>option</th><th class="n">this month</th></tr></thead>
+        <tbody>
+          <tr><td>Modal, as used</td><td class="n">$101.81 (~$72 net)</td></tr>
+          <tr><td>RunPod pods, the same GPU-hours, stopped as tightly as Modal</td><td class="n">$40–54</td></tr>
+          <tr><td>One RunPod L40S, always on (730 h)</td><td class="n">$577–796</td></tr>
+          <tr><td>One local 32 GB GPU, $3–4k up front, over 3 years</td><td class="n">$83–111</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted">Elastic's premium at this use is about $40–50 a month. A month of daily sweeps would tip the balance toward renting a GPU for that month. The local GPU figure is an assumption, not a quote.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="next">
+    <h2 id="next">What to measure next</h2>
+    <div class="two">
+      <div style="display:grid;gap:8px">
+        <h3>Two one-line logging changes</h3>
+        <ul>
+          <li>In <code>proto.py</code>, print <code>torch.cuda.max_memory_allocated()</code> each pass: peak memory.</li>
+          <li>In <code>modal_app.train</code>, run <code>nvidia-smi --query-gpu=utilization.gpu,memory.used -l 30</code> beside training: utilization every 30 s.</li>
+        </ul>
+      </div>
+      <div style="display:grid;gap:8px">
+        <h3>Three timing runs, under $1</h3>
+        <ul>
+          <li>D4's Boccherini stage on an L4, against its L40S time.</li>
+          <li>The same on an L40S with 8 CPU cores and batches built by worker processes.</li>
+          <li>A larger batch, if memory allows. It changes training, so it needs its own clean-test check.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <details>
+    <summary>Every training run (58)</summary>
+    <p class="muted" style="margin-block:10px">s/pass is the median time of one training pass from the run's log; "in passes" is the share of billed time spent training, not GPU utilization. Rows without a log are matched to runs by time.</p>
+    <div class="tablebox runs"><table>
+      <thead><tr><th>started (UTC)</th><th>run</th><th>stage</th><th class="n">px</th><th>GPU</th><th class="n">staves</th><th class="n">passes</th><th class="n">s/pass</th><th class="n">staves/s</th><th class="n">GPU-h</th><th class="n">$</th><th class="n">in passes</th></tr></thead>
+      <tbody id="runrows"></tbody>
+    </table></div>
+  </details>
+
+  <details>
+    <summary>Prices, 2026-10-20</summary>
+    <div class="tablebox" style="margin-top:10px"><table>
+      <thead><tr><th>GPU</th><th class="n">memory</th><th class="n">Modal $/h</th><th class="n">RunPod community $/h</th><th class="n">RunPod secure $/h</th></tr></thead>
+      <tbody>
+        <tr><td>T4</td><td class="n">16 GB</td><td class="n">0.59</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td><strong>L4</strong> (used)</td><td class="n">24 GB</td><td class="n">0.80</td><td class="n">0.44</td><td class="n">0.59</td></tr>
+        <tr><td>A10</td><td class="n">24 GB</td><td class="n">1.10</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td><strong>L40S</strong> (used)</td><td class="n">48 GB</td><td class="n">1.95</td><td class="n">0.79</td><td class="n">1.09</td></tr>
+        <tr><td>A100 40 GB</td><td class="n">40 GB</td><td class="n">2.10</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>A100 80 GB</td><td class="n">80 GB</td><td class="n">2.50</td><td class="n">1.19–1.39</td><td class="n">1.79</td></tr>
+        <tr><td>RTX PRO 6000</td><td class="n">96 GB</td><td class="n">3.03</td><td class="n"></td><td class="n"></td></tr>
+        <tr><td>H100</td><td class="n">80 GB</td><td class="n">3.95</td><td class="n">1.99–2.69</td><td class="n">2.89–3.99</td></tr>
+        <tr><td>RTX 4090</td><td class="n">24 GB</td><td class="n"></td><td class="n">0.34</td><td class="n">0.89</td></tr>
+        <tr><td>RTX 5090</td><td class="n">32 GB</td><td class="n"></td><td class="n">0.69</td><td class="n">1.19</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted" style="margin-top:10px">Modal: modal.com/pricing; billing agrees, no hour billed above $1.95 an L40S-hour or $0.80 an L4-hour. RunPod: runpod.io/pricing, on-demand. Both read 2026-10-20.</p>
+  </details>
+
+  <details>
+    <summary>Incidents and caveats</summary>
+    <ul style="margin-top:10px">
+      <li>A spend limit at about $50 metered disabled the workspace mid-run on 18 October; two runs were lost and rerun ($0.59).</li>
+      <li>Modal preempted one pointer run after 24 minutes. Training can't resume, so a preempted run starts over.</li>
+      <li>The CPU-bound reading is inferred from billing's CPU use and from slow-downs, not measured on the GPU.</li>
+      <li>The full write-up, with the billing data, is in the repo: <code>reports/2026-10-20-modal-compute/</code>.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+const DATA = {"hours":[["10-17 05",0,0.079,0.007],["10-17 06",0,0.492,0.021],["10-17 07",0,0.404,0.029],["10-17 08",0,0.683,0.026],["10-17 09",0,0.847,0.06],["10-17 10",0,0.821,0.061],["10-17 11",0,0.451,0.03],["10-17 12",0,0,0],["10-17 13",0,0,0],["10-17 14",0,0,0],["10-17 15",0,0,0],["10-17 16",0,0.302,0.02],["10-17 17",0,0,0],["10-17 18",0.197,0,0.006],["10-17 19",1.95,0,0.061],["10-17 20",1.687,0.005,0.05],["10-17 21",0.843,0.026,0.8],["10-17 22",5.539,0.012,0.17],["10-17 23",6.703,0.006,0.21],["10-18 00",6.853,0.018,0.211],["10-18 01",5.841,0,0.184],["10-18 02",5.889,0.008,0.183],["10-18 03",3.7,0.052,0.117],["10-18 04",1.381,0.01,0.043],["10-18 05",0,0.046,0.002],["10-18 06",0,0.314,0.014],["10-18 07",0,0.206,0.007],["10-18 08",0,0.217,0.007],["10-18 09",0.888,0.177,0.036],["10-18 10",0.918,0.151,0.04],["10-18 11",0,0,0],["10-18 12",0,0,0],["10-18 13",0,0,0],["10-18 14",0,0,0],["10-18 15",0,0,0],["10-18 16",0.778,0.111,0.032],["10-18 17",0.745,0.642,0.061],["10-18 18",0,0.217,0.015],["10-18 19",0,0,0],["10-18 20",0.76,0.008,0.023],["10-18 21",0,0,0],["10-18 22",0,0,0],["10-18 23",5.052,0.905,0.211],["10-19 00",1.346,0.287,0.061],["10-19 01",0,0,0],["10-19 02",1.539,0.009,0.047],["10-19 03",0.295,0.006,0.009],["10-19 04",0,0.763,0.12],["10-19 05",0,0,0],["10-19 06",0,0,0],["10-19 07",0,0,0],["10-19 08",0,0,0],["10-19 09",2.687,1.216,0.836],["10-19 10",0.611,1.595,1.58],["10-19 11",0,0.961,0.682],["10-19 12",0,0,0],["10-19 13",0,0,0],["10-19 14",0,0.42,0.235],["10-19 15",0,1.403,1.04],["10-19 16",0,1.65,1.015],["10-19 17",0,0.695,0.079],["10-19 18",0,0.895,0.374],["10-19 19",0,0.64,0.293],["10-19 20",0,0,0],["10-19 21",0,0,0],["10-19 22",0,0,0],["10-19 23",0,0,0],["10-20 00",0,0,0],["10-20 01",0,0.039,0.004],["10-20 02",0,0,0],["10-20 03",0,0,0],["10-20 04",0,0,0],["10-20 05",0,0,0],["10-20 06",2.823,0,0.247],["10-20 07",0.561,0,0.804],["10-20 08",0,0,0.1],["10-20 09",0.983,0.195,0.125],["10-20 10",1.95,0,0.061],["10-20 11",1.95,0,0.061],["10-20 12",1.95,0,0.061],["10-20 13",1.95,0,0.062],["10-20 14",1.819,0,0.057],["10-20 15",0.671,0.323,0.041],["10-20 16",0,0,0.001],["10-20 17",0,0,0],["10-20 18",0.077,0,0.002],["10-20 19",1.784,0,0.055]],"runs":[{"start":"2026-10-17T06:00:00","end":"2026-10-17T07:00:00","run":"noPublic-602II","stage":"Boccherini stage","px":"128","gpu":"L4","staves":"2536","passes":"30","s_per_pass":"80","staves_per_s":"31.7","train_h":"0.67","gpu_h":"0.95","cost":"0.8","train_share":"0.7","copy_s":"","app":"ap-lXjqbdfB3gFNPZEGXkv9oZ"},{"start":"2026-10-17T08:00:00","end":"2026-10-17T11:00:00","run":"stage1-public","stage":"Public 9k","px":"128","gpu":"L4","staves":"8765","passes":"30","s_per_pass":"284","staves_per_s":"30.9","train_h":"2.37","gpu_h":"2.61","cost":"2.23","train_share":"0.91","copy_s":"194","app":"ap-8dBTk9upBqcBFV4kZ0cY3s"},{"start":"2026-10-17T11:00:00","end":"2026-10-17T11:00:00","run":"stage2-602II","stage":"Boccherini stage","px":"128","gpu":"L4","staves":"2536","passes":"15","s_per_pass":"75","staves_per_s":"33.8","train_h":"0.31","gpu_h":"0.36","cost":"0.31","train_share":"0.86","copy_s":"15","app":"ap-BxOd0x26RkEKEchFlRV6qM"},{"start":"2026-10-17T16:00:00","end":"2026-10-17T16:00:00","run":"stage2-J","stage":"Boccherini stage","px":"128","gpu":"L4","staves":"2568","passes":"15","s_per_pass":"76","staves_per_s":"33.8","train_h":"0.32","gpu_h":"0.36","cost":"0.31","train_share":"0.89","copy_s":"14","app":"ap-eBitImHLd2gKWWH9iUCRW1"},{"start":"2026-10-17T18:00:00","end":"2026-10-17T20:00:00","run":"stage1-full","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"97","staves_per_s":"90.4","train_h":"1.61","gpu_h":"1.73","cost":"3.47","train_share":"0.93","copy_s":"10","app":"ap-r5Uxg1o9PdvVUPyAlklugv"},{"start":"2026-10-17T20:00:00","end":"2026-10-17T20:00:00","run":"stage2-full-602II","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2536","passes":"21","s_per_pass":"27","staves_per_s":"93.9","train_h":"0.16","gpu_h":"0.2","cost":"0.4","train_share":"0.79","copy_s":"12","app":"ap-DOUCmQK4gHdGr4b1TVyThp"},{"start":"2026-10-17T20:00:00","end":"2026-10-17T21:00:00","run":"stage2-full-J","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2568","passes":"12","s_per_pass":"27","staves_per_s":"95.1","train_h":"0.09","gpu_h":"0.13","cost":"0.26","train_share":"0.69","copy_s":"13","app":"ap-nTju3gvdC2432ru7qKd67J"},{"start":"2026-10-17T21:00:00","end":"2026-10-17T22:00:00","run":"B0-base","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2629","passes":"24","s_per_pass":"25","staves_per_s":"105.2","train_h":"0.17","gpu_h":"0.2","cost":"0.41","train_share":"0.83","copy_s":"23","app":"ap-4UbfNcbek8wHscrkyl7wes"},{"start":"2026-10-17T21:00:00","end":"2026-10-17T22:00:00","run":"B1-lora64mlp","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2629","passes":"30","s_per_pass":"37","staves_per_s":"71.1","train_h":"0.31","gpu_h":"0.36","cost":"0.73","train_share":"0.86","copy_s":"17","app":"ap-829tkFhxPsZB570PeI4tVW"},{"start":"2026-10-17T21:00:00","end":"2026-10-17T22:00:00","run":"B2-unfreeze4","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2629","passes":"30","s_per_pass":"25","staves_per_s":"105.2","train_h":"0.21","gpu_h":"0.27","cost":"0.55","train_share":"0.77","copy_s":"14","app":"ap-FSybfgcU5AqwPPxkVO8v26"},{"start":"2026-10-17T21:00:00","end":"2026-10-17T22:00:00","run":"B3-augzeus","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2629","passes":"30","s_per_pass":"49","staves_per_s":"53.7","train_h":"0.41","gpu_h":"0.44","cost":"0.88","train_share":"0.93","copy_s":"13","app":"ap-qVuXtRQgywnux1EmDtOwra"},{"start":"2026-10-17T21:00:00","end":"2026-10-17T22:00:00","run":"pretrain (MuSViT on our unlabelled staves)","stage":"Pretraining","px":"128","gpu":"L40S","staves":"","passes":"20","s_per_pass":"90","staves_per_s":"","train_h":"0.5","gpu_h":"0.55","cost":"1.11","train_share":"0.91","copy_s":"148","app":"ap-j3tEIokTkJ4lMy9BJjfGRa"},{"start":"2026-10-17T22:00:00","end":"2026-10-17T23:00:00","run":"E1-lstm","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"79","staves_per_s":"110.9","train_h":"1.37","gpu_h":"1.41","cost":"2.85","train_share":"0.97","copy_s":"11","app":"ap-61ZxczGHh7LZLwKlonrwO4"},{"start":"2026-10-17T22:00:00","end":"2026-10-18T00:00:00","run":"E2-tf8","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"40","s_per_pass":"121","staves_per_s":"72.4","train_h":"1.35","gpu_h":"1.54","cost":"3.08","train_share":"0.88","copy_s":"14","app":"ap-2jGYt5Da87gSn42lXC48cL"},{"start":"2026-10-17T22:00:00","end":"2026-10-18T00:00:00","run":"stage1-bocch","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"112","staves_per_s":"78.3","train_h":"1.85","gpu_h":"1.98","cost":"3.98","train_share":"0.93","copy_s":"14","app":"ap-88lVNWEERF4zjae6kC3VgG"},{"start":"2026-10-17T23:00:00","end":"2026-10-17T23:00:00","run":"C0-full4-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"24","s_per_pass":"33","staves_per_s":"81.6","train_h":"0.22","gpu_h":"0.25","cost":"0.51","train_share":"0.88","copy_s":"15","app":"ap-R1sdJzmWqiWdOrYcAe3qoS"},{"start":"2026-10-17T23:00:00","end":"2026-10-18T01:00:00","run":"F1-columns","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"107","staves_per_s":"81.9","train_h":"1.79","gpu_h":"1.91","cost":"3.84","train_share":"0.93","copy_s":"14","app":"ap-36LPHEGtnyt5xkJhcdZpjd"},{"start":"2026-10-17T23:00:00","end":"2026-10-18T00:00:00","run":"not identified","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.27","cost":"0.55","train_share":"","copy_s":"","app":"ap-E7PI7PvfwPryO9pPInfmVR"},{"start":"2026-10-18T00:00:00","end":"2026-10-18T00:00:00","run":"C1-tf8-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"30","s_per_pass":"38","staves_per_s":"70.9","train_h":"0.32","gpu_h":"0.41","cost":"0.83","train_share":"0.77","copy_s":"12","app":"ap-WgMNk1gLZnXFBxSogX9mp1"},{"start":"2026-10-18T00:00:00","end":"2026-10-18T00:00:00","run":"C2-bocch4-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"30","s_per_pass":"35","staves_per_s":"77.0","train_h":"0.29","gpu_h":"0.33","cost":"0.67","train_share":"0.88","copy_s":"12","app":"ap-CIVYOw0UFk8bZ1iuCL4d1w"},{"start":"2026-10-18T00:00:00","end":"2026-10-18T02:00:00","run":"F2-zeus","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"160","staves_per_s":"55.0","train_h":"2.72","gpu_h":"2.74","cost":"5.52","train_share":"0.99","copy_s":"12","app":"ap-QM5IGXeMbRPktBS8Bchgcd"},{"start":"2026-10-18T00:00:00","end":"2026-10-18T03:00:00","run":"G1-bocch-tf8","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"127","staves_per_s":"69.0","train_h":"2.1","gpu_h":"2.33","cost":"4.68","train_share":"0.9","copy_s":"15","app":"ap-er5lflh3PeYFDi00cjiJIl"},{"start":"2026-10-18T01:00:00","end":"2026-10-18T02:00:00","run":"C3-columns4-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"24","s_per_pass":"35","staves_per_s":"77.0","train_h":"0.24","gpu_h":"0.3","cost":"0.6","train_share":"0.78","copy_s":"12","app":"ap-zLcu8sIarS6Ctc9CVQlitt"},{"start":"2026-10-18T02:00:00","end":"2026-10-18T03:00:00","run":"C6-zeus-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"24","s_per_pass":"57","staves_per_s":"47.3","train_h":"0.38","gpu_h":"0.43","cost":"0.86","train_share":"0.89","copy_s":"11","app":"ap-lQGZZpqpUnNT0kRiZj9sdO"},{"start":"2026-10-18T02:00:00","end":"2026-10-18T04:00:00","run":"G2-bocch-tf8-cols","stage":"Public 9k","px":"128","gpu":"L40S","staves":"8765","passes":"60","s_per_pass":"123","staves_per_s":"71.3","train_h":"2.11","gpu_h":"2.36","cost":"4.75","train_share":"0.89","copy_s":"14","app":"ap-QS1jpT5ldSkfYl6kjqC7So"},{"start":"2026-10-18T03:00:00","end":"2026-10-18T03:00:00","run":"C4-bocch-tf8-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"30","s_per_pass":"38","staves_per_s":"70.9","train_h":"0.32","gpu_h":"0.38","cost":"0.76","train_share":"0.84","copy_s":"12","app":"ap-sG66gel06cYMnP7QnGrIrl"},{"start":"2026-10-18T04:00:00","end":"2026-10-18T04:00:00","run":"C5-bocch-tf8-cols-L","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2694","passes":"18","s_per_pass":"42","staves_per_s":"64.1","train_h":"0.21","gpu_h":"0.27","cost":"0.54","train_share":"0.78","copy_s":"15","app":"ap-amKMG1O7ElChFpa3v7gTLH"},{"start":"2026-10-18T09:00:00","end":"2026-10-18T09:00:00","run":"D1-tf8-M","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"30","s_per_pass":"39","staves_per_s":"74.2","train_h":"0.32","gpu_h":"0.38","cost":"0.77","train_share":"0.85","copy_s":"32","app":"ap-lJfo0j61qtScnw2QvCJVFq"},{"start":"2026-10-18T09:00:00","end":"2026-10-18T10:00:00","run":"D2-bocch-tf8-M","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"18","s_per_pass":"42","staves_per_s":"68.9","train_h":"0.21","gpu_h":"0.25","cost":"0.5","train_share":"0.84","copy_s":"14","app":"ap-JFKMivEpQbv51RsjW5feBc"},{"start":"2026-10-18T10:00:00","end":"2026-10-18T10:00:00","run":"H1 or R1, stopped by the spend limit","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.12","cost":"0.25","train_share":"","copy_s":"","app":"ap-5V8aTfY8oc4nIkSJgaDKcz"},{"start":"2026-10-18T10:00:00","end":"2026-10-18T10:00:00","run":"H1 or R1, stopped by the spend limit","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.17","cost":"0.34","train_share":"","copy_s":"","app":"ap-iszQT7bxPe36dAnTUlxW6f"},{"start":"2026-10-18T16:00:00","end":"2026-10-18T16:00:00","run":"H1-tf8-noOp22-32","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"1508","passes":"21","s_per_pass":"21","staves_per_s":"71.8","train_h":"0.12","gpu_h":"0.16","cost":"0.32","train_share":"0.76","copy_s":"13","app":"ap-nepyeTwbzLiG6GnuJQhS8G"},{"start":"2026-10-18T16:00:00","end":"2026-10-18T16:00:00","run":"R1-tf8-matched","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"1508","passes":"30","s_per_pass":"21","staves_per_s":"71.8","train_h":"0.18","gpu_h":"0.24","cost":"0.48","train_share":"0.74","copy_s":"14","app":"ap-nC6AEAP4wRCKdxpDS3HLms"},{"start":"2026-10-18T17:00:00","end":"2026-10-18T17:00:00","run":"D3-tf8-all","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"54","staves_per_s":"63.2","train_h":"0.36","gpu_h":"0.38","cost":"0.77","train_share":"0.95","copy_s":"17","app":"ap-pGR7IgFKDZMXdghIYJI27P"},{"start":"2026-10-18T20:00:00","end":"2026-10-18T20:00:00","run":"D1c-tf8-M-color","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"21","s_per_pass":"55","staves_per_s":"52.6","train_h":"0.33","gpu_h":"0.39","cost":"0.78","train_share":"0.84","copy_s":"71","app":"ap-N48G5y1dzHo5svK4sTzU3I"},{"start":"2026-10-18T23:00:00","end":"2026-10-19T00:00:00","run":"E2-h96 (log not kept)","stage":"Public 9k","px":"96","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"1.39","cost":"2.8","train_share":"","copy_s":"","app":"ap-GkEKgDouHi9xRuzEmxPr64"},{"start":"2026-10-18T23:00:00","end":"2026-10-18T23:00:00","run":"H1-L2 or a replay run (log not kept)","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.29","cost":"0.59","train_share":"","copy_s":"","app":"ap-0JmdBPYaq36shBP2Hgf4FT"},{"start":"2026-10-18T23:00:00","end":"2026-10-18T23:00:00","run":"H1-L2 or a replay run (log not kept)","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.21","cost":"0.43","train_share":"","copy_s":"","app":"ap-E5I6UfF948OQF63MfI8wMe"},{"start":"2026-10-18T23:00:00","end":"2026-10-18T23:00:00","run":"H1-L2 or a replay run (log not kept)","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.37","cost":"0.74","train_share":"","copy_s":"","app":"ap-xsjicEaJXER7UdPDlhoaKx"},{"start":"2026-10-18T23:00:00","end":"2026-10-18T23:00:00","run":"S0-tf8-L2","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"30","s_per_pass":"38","staves_per_s":"76.1","train_h":"0.32","gpu_h":"0.37","cost":"0.75","train_share":"0.86","copy_s":"69","app":"ap-pPw8p7Yb6kFdORPbCI3eo0"},{"start":"2026-10-18T23:00:00","end":"2026-10-19T00:00:00","run":"S1-tf8-L2-synth50","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"15","s_per_pass":"81","staves_per_s":"35.7","train_h":"0.34","gpu_h":"0.39","cost":"0.77","train_share":"0.88","copy_s":"72","app":"ap-OoH8Cc4MLJ3xqqq0kWkFnu"},{"start":"2026-10-19T00:00:00","end":"2026-10-19T00:00:00","run":"D1-h96 (log not kept)","stage":"Boccherini stage","px":"96","gpu":"L40S","staves":"","passes":"","s_per_pass":"","staves_per_s":"","train_h":"","gpu_h":"0.26","cost":"0.52","train_share":"","copy_s":"","app":"ap-CoiQs2tzqklr55ZlnH5qs8"},{"start":"2026-10-19T02:00:00","end":"2026-10-19T02:00:00","run":"SF1-synth","stage":"Drawn 11k","px":"128","gpu":"L40S","staves":"10790","passes":"10","s_per_pass":"182","staves_per_s":"59.4","train_h":"0.51","gpu_h":"0.58","cost":"1.17","train_share":"0.87","copy_s":"88","app":"ap-9RR7CTIqajrh6yunYyIz0Y"},{"start":"2026-10-19T02:00:00","end":"2026-10-19T03:00:00","run":"SF2-tf8-L2-after-synth","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"30","s_per_pass":"37","staves_per_s":"78.2","train_h":"0.31","gpu_h":"0.36","cost":"0.72","train_share":"0.88","copy_s":"30","app":"ap-MKCldA0yAKpEoRPNQCsOl4"},{"start":"2026-10-19T09:00:00","end":"2026-10-19T09:00:00","run":"PF1-copyist","stage":"Drawn Philhar 11k","px":"128","gpu":"L40S","staves":"10787","passes":"10","s_per_pass":"178","staves_per_s":"60.6","train_h":"0.5","gpu_h":"0.57","cost":"1.15","train_share":"0.86","copy_s":"114","app":"ap-z0mzvSWyIUZWfKkPfLQAmu"},{"start":"2026-10-19T09:00:00","end":"2026-10-19T09:00:00","run":"PF1-plain","stage":"Engraved Philhar 11k","px":"128","gpu":"L40S","staves":"10787","passes":"6","s_per_pass":"160","staves_per_s":"67.4","train_h":"0.27","gpu_h":"0.35","cost":"0.71","train_share":"0.76","copy_s":"220","app":"ap-sGU45MLQWtDDpr73sKM8ib"},{"start":"2026-10-19T09:00:00","end":"2026-10-19T10:00:00","run":"PF2-copyist","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"30","s_per_pass":"46","staves_per_s":"62.9","train_h":"0.39","gpu_h":"0.47","cost":"0.95","train_share":"0.82","copy_s":"62","app":"ap-tOdNE6aU1aR2UxFbVOF3Jg"},{"start":"2026-10-19T09:00:00","end":"2026-10-19T09:00:00","run":"PF2-plain","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"2892","passes":"18","s_per_pass":"46","staves_per_s":"62.2","train_h":"0.23","gpu_h":"0.29","cost":"0.59","train_share":"0.8","copy_s":"64","app":"ap-02WaCRF8U3hx17g39v7Esj"},{"start":"2026-10-20T06:00:00","end":"2026-10-20T06:00:00","run":"D3L2-h96","stage":"Boccherini stage","px":"96","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"35","staves_per_s":"97.5","train_h":"0.23","gpu_h":"0.26","cost":"0.52","train_share":"0.9","copy_s":"66","app":"ap-WPsC7yLBGbNV988sPcecOz"},{"start":"2026-10-20T06:00:00","end":"2026-10-20T06:00:00","run":"D3L2-tf8-all","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"47","staves_per_s":"72.6","train_h":"0.31","gpu_h":"0.35","cost":"0.71","train_share":"0.89","copy_s":"105","app":"ap-VduWaobn6LYi6UNmK1eTOV"},{"start":"2026-10-20T06:00:00","end":"2026-10-20T07:00:00","run":"D3S-h96","stage":"Boccherini stage","px":"96","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"48","staves_per_s":"71.1","train_h":"0.32","gpu_h":"0.37","cost":"0.74","train_share":"0.88","copy_s":"117","app":"ap-W3RvSg9l20ad6vam2WBWLM"},{"start":"2026-10-20T06:00:00","end":"2026-10-20T06:00:00","run":"D3S-synth-all","stage":"Boccherini stage","px":"128","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"54","staves_per_s":"63.2","train_h":"0.37","gpu_h":"0.41","cost":"0.83","train_share":"0.9","copy_s":"95","app":"ap-c5Hc0C02RvxPw9Q6ScnmRY"},{"start":"2026-10-20T06:00:00","end":"2026-10-20T06:00:00","run":"SF1-h96","stage":"Drawn 11k","px":"96","gpu":"L40S","staves":"10790","passes":"10","s_per_pass":"110","staves_per_s":"97.6","train_h":"0.31","gpu_h":"0.35","cost":"0.7","train_share":"0.88","copy_s":"68","app":"ap-XUwoOSrL8WurtbhL2u2Iib"},{"start":"2026-10-20T09:00:00","end":"2026-10-20T14:00:00","run":"E3-h96-ossq","stage":"Public 22k","px":"96","gpu":"L40S","staves":"22006","passes":"60","s_per_pass":"292","staves_per_s":"75.4","train_h":"4.88","gpu_h":"5.13","cost":"10.3","train_share":"0.95","copy_s":"301","app":"ap-31xDznj4PSj70XFbquTd0R"},{"start":"2026-10-20T14:00:00","end":"2026-10-20T14:00:00","run":"SF1-h96-ossq","stage":"Drawn 11k","px":"96","gpu":"L40S","staves":"10790","passes":"10","s_per_pass":"100","staves_per_s":"107.9","train_h":"0.28","gpu_h":"0.31","cost":"0.63","train_share":"0.9","copy_s":"38","app":"ap-wlSmvBl5OS5TObchBJqWhy"},{"start":"2026-10-20T15:00:00","end":"2026-10-20T15:00:00","run":"D3S-h96-ossq","stage":"Boccherini stage","px":"96","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"48","staves_per_s":"71.1","train_h":"0.32","gpu_h":"0.34","cost":"0.69","train_share":"0.94","copy_s":"34","app":"ap-Z9Ko2W3TR3drjz9FPbLR7A"},{"start":"2026-10-20T18:00:00","end":"2026-10-20T19:00:00","run":"SF1-h96-clef","stage":"Drawn 15k","px":"96","gpu":"L40S","staves":"14760","passes":"10","s_per_pass":"201","staves_per_s":"73.4","train_h":"0.56","gpu_h":"0.62","cost":"1.24","train_share":"0.9","copy_s":"86","app":"ap-d33ncB8l8Cy4J70LJvW978"},{"start":"2026-10-20T19:00:00","end":"2026-10-20T19:00:00","run":"D3S-h96-clef","stage":"Boccherini stage","px":"96","gpu":"L40S","staves":"3411","passes":"24","s_per_pass":"47","staves_per_s":"72.6","train_h":"0.32","gpu_h":"0.34","cost":"0.68","train_share":"0.93","copy_s":"35","app":"ap-eDFaFMz6HtjkEeRZ5WSw6k"}]};
+const WORK = [
+  ["Public stage (Public 9k, Public 22k)", 47.50, ""], ["Boccherini stage", 24.40, ""], ["Segment Anything", 15.29, "l4"],
+  ["Drawn stage", 5.60, ""], ["Readings and benchmarks", 4.78, "l4"], ["Data prep (CPU)", 2.02, "cpu"],
+  ["MuSViT pretraining", 1.11, ""], ["The pointer", 1.11, "l4"]];
+const max = WORK[0][1];
+document.getElementById("bywork").innerHTML = WORK.map(([k, v, c]) =>
+  `<div class="bar"><span>${k}</span><span class="track"><span class="fill ${c}" style="width:${(v / max * 100).toFixed(1)}%"></span></span><span class="v">$${v.toFixed(2)}</span></div>`).join("");
+
+(function hours() {
+  const H = DATA.hours, W = 900, Ht = 220, L = 34, B = 30, T = 10, bw = (W - L - 6) / H.length;
+  const top = 8, y = (v) => T + (Ht - T - B) * (1 - v / top);
+  let s = `<svg viewBox="0 0 ${W} ${Ht}" xmlns="http://www.w3.org/2000/svg">`;
+  for (const v of [0, 2, 4, 6, 8]) s += `<line x1="${L}" x2="${W - 4}" y1="${y(v)}" y2="${y(v)}" stroke="var(--rule)" stroke-width="1"/><text x="${L - 6}" y="${y(v) + 3}" text-anchor="end">$${v}</text>`;
+  H.forEach(([t, a, b, c], i) => {
+    const x = L + i * bw + 0.5; let base = 0;
+    for (const [v, col] of [[a, "var(--l40s)"], [b, "var(--l4)"], [c, "var(--other)"]]) {
+      if (v > 0) { s += `<rect x="${x.toFixed(1)}" y="${y(base + v).toFixed(1)}" width="${(bw - 1).toFixed(1)}" height="${(y(base) - y(base + v)).toFixed(1)}" fill="${col}"><title>${t}h UTC: $${(a + b + c).toFixed(2)}</title></rect>`; base += v; }
+    }
+    if (t.endsWith(" 00")) s += `<line x1="${x}" x2="${x}" y1="${Ht - B}" y2="${Ht - B + 5}" stroke="var(--muted)"/><text x="${x + 2}" y="${Ht - B + 16}">Oct ${+t.slice(3, 5)}</text>`;
+  });
+  s += `<line x1="${L}" x2="${W - 4}" y1="${Ht - B}" y2="${Ht - B}" stroke="var(--muted)"/></svg>`;
+  document.getElementById("hours").innerHTML = s;
+})();
+
+const fmt = (v, d) => v === "" || v == null ? "" : (+v).toFixed(d);
+document.getElementById("runrows").innerHTML = DATA.runs.map((r) =>
+  `<tr><td class="n">${r.start.slice(5, 13).replace("T", " ")}h</td><td>${r.run}</td><td>${r.stage}</td><td class="n">${r.px}</td><td><span class="gpu ${r.gpu}">${r.gpu}</span></td>` +
+  `<td class="n">${r.staves ? (+r.staves).toLocaleString("en-US") : ""}</td><td class="n">${r.passes}</td><td class="n">${r.s_per_pass}</td><td class="n">${fmt(r.staves_per_s, 0)}</td>` +
+  `<td class="n">${fmt(r.gpu_h, 2)}</td><td class="n">${fmt(r.cost, 2)}</td><td class="n">${r.train_share ? Math.round(r.train_share * 100) + "%" : ""}</td></tr>`).join("");
+</script>
