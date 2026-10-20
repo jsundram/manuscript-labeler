@@ -4,21 +4,22 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
-## 2026-10-20: D3's recipe with a synthetic stage, at 128 and 96 px
+## 2026-10-20: A drawn stage before the Boccherini stage, at 128 and 96 px
 
 [Report](2026-10-20-synthetic-and-strip-height/)
 
-**Context.** A synthetic stage first had gained 12 to 14 bars with D1's
-recipe (Synthetic staves first, then real). The brief had named 96 px as a
-candidate strip height for the next crowned run, since it read as well as
-128 and faster. The user asked for both: the synthetic stage with D3's
-recipe, and the 96 px change as a fast follow.
+**Context.** A drawn stage first had gained 12 to 14 bars before
+Boccherini 2.9k, D1's recipe (Synthetic staves first, then real). The
+brief had named 96 px as a candidate strip height for the next crowned
+run, since it read as well as 128 and faster. The user asked for both:
+Drawn 11k before Boccherini 3k, D3's last stage, and the 96 px change as
+a fast follow.
 
-**Question.** Does a synthetic stage help D3's recipe, and does 96 px,
+**Question.** Does Drawn 11k help before Boccherini 3k, and does 96 px,
 with and without it?
 
-**Finding.** They only help together. At 128 px the synthetic stage did
-nothing (270 against 272). At 96 px without it, reading fell to 260
+**Finding.** They only help together. At 128 px Drawn 11k did nothing
+(270 against 272). At 96 px without it, reading fell to 260
 (−12, beyond the noise); with it, 277 (80%), the best so far: +17 over 96
 px alone, +7 over the released D3, which is inside the noise. Pitch
 improved most (311 bars right). One run of each.
@@ -129,14 +130,14 @@ pointing from D3's own reading. Stage B wasn't needed.
 
 [Report](2026-10-19-synthetic-first/)
 
-**Context.** Mixing synthetic staves into the real training stage (S1)
-gave nothing on the clean test. The Smashcima paper trains on synthetic
+**Context.** Mixing drawn staves into the real training stage,
+Boccherini 2.9k (S1), gave nothing on the clean test. The Smashcima paper trains on synthetic
 staves first, then real ones, so we tried that order (SF), and then the
 same with Philhar's own music drawn two ways, in a copyist's hand and in
 plain print (PF), to ask whether the hand or the music matters.
 
-**Question.** Does a synthetic stage of its own, before D1's recipe, help
-the reader on the clean test? Does the hand it's drawn in, or the music,
+**Question.** Does a drawn stage of its own (Drawn 11k, or Drawn Philhar
+11k), before Boccherini 2.9k, help the reader on the clean test? Does the hand it's drawn in, or the music,
 matter?
 
 **Finding.** The order matters. SF2 read 278 of 347 bars (+12 on S0's 266,
@@ -149,8 +150,8 @@ summary files, unreported, until code review on 2026-10-20 turned them up.
 The Copyist Staves page and the brief still said synthetic staves didn't
 help; that was the mixed run.
 
-**What followed.** Nothing yet. Proposed: a crowned run with the synthetic
-stage first (D3's recipe from SF1 or PF1-copyist), Madrid and Op. 32
+**What followed.** Nothing yet. Proposed: a crowned run with the drawn
+stage first (Boccherini 3k from SF1 or PF1-copyist), Madrid and Op. 32
 scores for SF2 and PF2, and a second seed.
 
 ## 2026-10-19: Copyist Staves (backfilled)
