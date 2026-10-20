@@ -164,8 +164,8 @@ def rendered_targets(lmx: str, det: dict, ss: float) -> tuple[list, dict]:
 
 
 def opening_end(det: dict) -> float | None:
-    """Where the staff's opening (clef, key, time) ends: the first note, rest or bar line's left edge, less a space's
-    worth of room, as the labels' "start" is placed (the classical map's input)."""
+    """Where the staff's opening (clef, key, time) ends: the first note, rest, accidental or bar line's left edge,
+    the classical map's input. The labels' "start" sits about a space earlier, so this is a little tighter."""
     xs = [np.nonzero(det["idm"] == i)[1].min() for i, (k, _) in enumerate(det["tagged"], 1)
           if (k == "head" or k.startswith("rest") or k in ("accidental", "barline")) and (det["idm"] == i).any()]
     return float(min(xs)) if xs else None

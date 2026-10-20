@@ -14,7 +14,7 @@ shape and size:
 - like nothing well enough: thrown out.
 
 Writes GLYPHS/<hand>/curated.json: per file its kind, its verdict (kept,
-moved from, out) and its scores. rebuild.py draws only kept and moved glyphs.
+moved from, out) and its scores. rebuild.py doesn't read it yet: it draws from every cut glyph.
 
     uv run experiments/synth/curate.py GLYPHS/berlin [--keep 0.55]
 """

@@ -5,7 +5,7 @@
 """Segment Anything 2.1 (small), untrained, on two-bar windows of a mapped staff: a point on each head, a box round
 each other symbol the segmenter found; the masks drawn over the window, one colour each.
 
-    uv run experiments/synth/sam_try.py D-B_KHM-602/p7s1 --maps DIR --out OUT.png [--bars 1 2]
+    uv run experiments/synth/sam_try.py D-B_KHM-602/p7s1 --maps DIR --out OUT.png [--windows 0 1]
 """
 import argparse
 import json

@@ -15,7 +15,7 @@ a beamed group). What's left is sorted against the label:
   (staccato, trill, tuplet number), or something the label doesn't hold
   (words, the neighbours' ink).
 
-    uv run experiments/synth/segment.py D-B_KHM-602/p10s4 [...] [--maps DIR] [--glyphs DIR] [--sheet]
+    uv run experiments/synth/segment.py D-B_KHM-602/p10s4 [...] [--maps DIR] [--glyphs DIR] [--sheet OUT.png]
 
 Writes each staff's symbols beside its map (KEY.symbols.json) and each cut
 glyph into GLYPHS/<hand>/<kind>/ (ink as a PNG, the crop's full height kept
@@ -308,7 +308,8 @@ COLORS = {"beam": (200, 0, 200), "accidental": (0, 120, 255), "dot": (0, 200, 0)
 def sheet(g: np.ndarray, seg: dict, m: dict) -> np.ndarray:
     vis = cv2.cvtColor(g, cv2.COLOR_GRAY2BGR)
     tint = vis.copy()
-    tint[seg["taken"] > 0 & (g < 160)] = (0.5 * tint[seg["taken"] > 0 & (g < 160)] + 0.5 * np.array([150, 110, 70])).astype(np.uint8)
+    taken = (seg["taken"] > 0) & (g < 160)
+    tint[taken] = (0.5 * tint[taken] + 0.5 * np.array([150, 110, 70])).astype(np.uint8)
     for s in seg["symbols"]:
         col = COLORS.get(s["kind"].split("-")[0], (0, 0, 255))
         mask = np.isin(seg["lab"], s["comps"])

@@ -9,7 +9,7 @@ trained on dataset.py's staves (BRIEF.md, "Order of work" 1).
         [--encoder light|full] [--epochs 20] [--lr 3e-4] [--limit N] [--overfit]
 
 SAMPLES are dataset.py's samples.*.txt (each line a stave's path without
-suffix; .jpg and .lmx beside it). Staves are read at 128 px high and their
+suffix; .jpg and .lmx beside it). Staves are read at 128 px high (--height) and their
 own width (rounded to 16 px). The encoder gets LoRA adapters on its
 attention; the decoder is plain torch.nn (no NVIDIA-only kernels), so the
 same code runs on the CPU, the Mac's GPU (mps) and CUDA.

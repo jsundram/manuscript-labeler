@@ -17,7 +17,7 @@ Stage B (--stage B): the decoder trains too, its reading loss kept (--read-weigh
     uv run experiments/musvit/pointer.py NAME --run D3-tf8-all --train DIR [...] --test DIR [...] [--stage A]
 
 DIRs hold pos_data.py's staves (<name>.jpg, .lmx, .pos.json). Writes runs/NAME/pointer.pt (and decoder.pt in stage
-B), log.json, and predictions.json: for each test staff, [token index, kind, x, y, x predicted, y predicted] in the
+B), log.json, and predictions-<test dir>.json: for each test staff, [token index, kind, x, y, x predicted, y predicted] in the
 image's pixels, with its staff space. On Modal: pointer_modal.py.
 """
 import argparse

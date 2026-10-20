@@ -10,7 +10,7 @@ what comes from the real staves (measured against the synthetic ones, per
 hand), real staves beside drawings of the same music at the same length,
 close-ups, one staff in every hand, new music, and the checks.
 
-    uv run experiments/synth/explainer.py OUT.html [--synth DIR] [--osq-list FILE] [--seed 0]
+    uv run experiments/synth/explainer.py OUT.html --osq-list FILE [--synth DIR] [--seed 0]
 
 Everything is drawn afresh from the current copyist.py (and its harvested
 clefs); the synthetic statistics come from a generated folder (gen.py's,
