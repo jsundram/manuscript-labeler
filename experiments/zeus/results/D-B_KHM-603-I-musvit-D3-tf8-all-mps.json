@@ -1,8 +1,48 @@
 {
  "tally": {
   "all": {
+   "clef errors": 4,
    "bars": 347,
    "bars exact": 270,
+   "bars exact as written": 264,
+   "bars right, clef apart": 270,
+   "bars right in rhythm": 288,
+   "bars right in pitch": 297,
+   "events": 2045,
+   "notes right": 1713,
+   "accidental shown as encoded": 1698,
+   "event: right": 1873,
+   "event: missed": 29,
+   "event: extra": 16,
+   "event: pitch": 45,
+   "event: chord size": 29,
+   "event: duration": 78,
+   "event: octave": 1,
+   "bars not compared": 1
+  },
+  "vc": {
+   "clef errors": 4,
+   "bars": 87,
+   "bars exact": 80,
+   "bars exact as written": 74,
+   "bars right, clef apart": 80,
+   "bars right in rhythm": 86,
+   "bars right in pitch": 80,
+   "events": 372,
+   "notes right": 341,
+   "accidental shown as encoded": 339,
+   "event: right": 364,
+   "event: pitch": 2,
+   "event: chord size": 5,
+   "bars not compared": 1,
+   "event: missed": 1
+  },
+  "I": {
+   "clef errors": 4,
+   "bars": 347,
+   "bars exact": 270,
+   "bars exact as written": 264,
+   "bars right, clef apart": 270,
    "bars right in rhythm": 288,
    "bars right in pitch": 297,
    "events": 2045,
@@ -20,6 +60,8 @@
   "va": {
    "bars": 88,
    "bars exact": 68,
+   "bars exact as written": 68,
+   "bars right, clef apart": 68,
    "bars right in rhythm": 71,
    "bars right in pitch": 68,
    "events": 543,
@@ -33,40 +75,11 @@
    "event: duration": 2,
    "event: octave": 1
   },
-  "I": {
-   "bars": 347,
-   "bars exact": 270,
-   "bars right in rhythm": 288,
-   "bars right in pitch": 297,
-   "events": 2045,
-   "notes right": 1713,
-   "accidental shown as encoded": 1698,
-   "event: right": 1873,
-   "event: missed": 29,
-   "event: extra": 16,
-   "event: pitch": 45,
-   "event: chord size": 29,
-   "event: duration": 78,
-   "event: octave": 1,
-   "bars not compared": 1
-  },
-  "vc": {
-   "bars": 87,
-   "bars exact": 80,
-   "bars right in rhythm": 86,
-   "bars right in pitch": 80,
-   "events": 372,
-   "notes right": 341,
-   "accidental shown as encoded": 339,
-   "event: right": 364,
-   "event: pitch": 2,
-   "event: chord size": 5,
-   "bars not compared": 1,
-   "event: missed": 1
-  },
   "vn1": {
    "bars": 88,
    "bars exact": 66,
+   "bars exact as written": 66,
+   "bars right, clef apart": 66,
    "bars right in rhythm": 71,
    "bars right in pitch": 75,
    "events": 563,
@@ -82,6 +95,8 @@
   "vn2": {
    "bars": 84,
    "bars exact": 56,
+   "bars exact as written": 56,
+   "bars right, clef apart": 56,
    "bars right in rhythm": 60,
    "bars right in pitch": 74,
    "events": 567,
@@ -113,7 +128,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -124,7 +141,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -135,7 +154,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -146,7 +167,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -157,7 +180,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -168,7 +193,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -179,7 +206,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -190,7 +219,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -201,7 +232,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -212,7 +245,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -223,7 +258,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -234,7 +271,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -245,7 +284,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -256,7 +297,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -267,7 +310,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -278,7 +323,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -289,7 +336,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -300,7 +349,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -311,7 +362,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -322,7 +375,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -333,7 +388,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -344,7 +401,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -355,7 +414,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -368,7 +429,9 @@
    "pitch": false,
    "errors": [
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -384,7 +447,9 @@
     "extra",
     "extra",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -400,7 +465,9 @@
     "pitch",
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -411,7 +478,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -427,7 +496,9 @@
     "missed",
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -443,7 +514,9 @@
     "pitch",
     "pitch",
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -460,7 +533,9 @@
     "pitch",
     "pitch",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -475,7 +550,9 @@
     "pitch",
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -488,7 +565,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -499,7 +578,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -510,7 +591,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -521,7 +604,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -534,7 +619,9 @@
    "pitch": false,
    "errors": [
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -547,7 +634,9 @@
    "pitch": false,
    "errors": [
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -558,7 +647,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -569,7 +660,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -580,7 +673,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -593,7 +688,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -604,7 +701,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -615,7 +714,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -626,7 +727,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -637,7 +740,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -648,7 +753,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -659,7 +766,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -673,7 +782,9 @@
    "errors": [
     "missed",
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -684,7 +795,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -695,7 +808,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -706,7 +821,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -717,7 +834,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -728,7 +847,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -739,7 +860,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -750,7 +873,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -761,7 +886,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -772,7 +899,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -783,7 +912,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -794,7 +925,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -810,7 +943,9 @@
     "duration",
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -824,7 +959,9 @@
    "errors": [
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -841,7 +978,9 @@
     "pitch",
     "extra",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -852,7 +991,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -867,7 +1008,9 @@
     "missed",
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -883,7 +1026,9 @@
     "missed",
     "octave",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -900,7 +1045,9 @@
     "pitch",
     "pitch",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -914,7 +1061,9 @@
    "errors": [
     "missed",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -925,7 +1074,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -936,7 +1087,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -947,7 +1100,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -958,7 +1113,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -969,7 +1126,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -980,7 +1139,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -991,7 +1152,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1002,7 +1165,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1013,7 +1178,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1026,7 +1193,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1037,7 +1206,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1048,7 +1219,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1059,7 +1232,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1070,7 +1245,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1081,7 +1258,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1092,7 +1271,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1103,7 +1284,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1114,7 +1297,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1125,7 +1310,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1136,7 +1323,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "va",
@@ -1147,7 +1336,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1158,7 +1349,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1169,7 +1362,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1180,7 +1375,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1191,7 +1388,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1204,7 +1403,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1215,7 +1416,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1226,7 +1429,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1237,7 +1442,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1248,7 +1455,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1259,7 +1468,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1270,7 +1481,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1281,7 +1494,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1292,7 +1507,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1303,7 +1520,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1314,7 +1533,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1325,7 +1546,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1336,7 +1559,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1347,7 +1572,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1358,7 +1585,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1369,7 +1598,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1380,7 +1611,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1391,7 +1624,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1402,7 +1637,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1413,7 +1650,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1424,7 +1663,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1435,7 +1676,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1446,7 +1689,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1457,7 +1702,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1468,7 +1715,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1479,7 +1728,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1492,7 +1743,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1503,7 +1756,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1514,7 +1769,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1525,7 +1782,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1536,7 +1795,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1547,7 +1808,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1558,7 +1821,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1569,7 +1834,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1580,7 +1847,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1593,7 +1862,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1604,7 +1875,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1615,7 +1888,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -1626,7 +1901,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1637,7 +1914,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1648,7 +1927,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1659,7 +1940,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -1670,7 +1953,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -1681,7 +1966,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1692,7 +1979,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1703,7 +1992,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1714,7 +2005,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1725,7 +2018,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1736,7 +2031,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1747,7 +2044,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1758,7 +2057,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1769,7 +2070,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1780,7 +2083,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1791,7 +2096,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1802,7 +2109,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1813,7 +2122,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1824,7 +2135,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1835,7 +2148,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1846,7 +2161,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1857,7 +2174,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1868,7 +2187,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1882,7 +2203,9 @@
    "errors": [
     "chord size",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1893,7 +2216,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1904,7 +2229,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1915,7 +2242,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1926,7 +2255,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1937,7 +2268,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1948,7 +2281,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1959,7 +2294,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1970,7 +2307,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1983,7 +2322,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -1994,7 +2335,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2007,7 +2350,9 @@
    "pitch": false,
    "errors": [
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -2018,7 +2363,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -2029,7 +2376,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -2040,7 +2389,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": false,
+   "clef right": false
   },
   {
    "part": "vc",
@@ -2053,7 +2404,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2064,7 +2417,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2075,7 +2430,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2086,7 +2443,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2097,7 +2456,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2108,7 +2469,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vc",
@@ -2119,7 +2482,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2130,7 +2495,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2141,7 +2508,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2152,7 +2521,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2163,7 +2534,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2174,7 +2547,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2185,7 +2560,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2199,7 +2576,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2210,7 +2589,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2221,7 +2602,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2232,7 +2615,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2245,7 +2630,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2256,7 +2643,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2267,7 +2656,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2278,7 +2669,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2289,7 +2682,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2300,7 +2695,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2311,7 +2708,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2325,7 +2724,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2336,7 +2737,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2347,7 +2750,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2358,7 +2763,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2372,7 +2779,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2383,7 +2792,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2394,7 +2805,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2405,7 +2818,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2416,7 +2831,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2430,7 +2847,9 @@
    "errors": [
     "extra",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2443,7 +2862,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2454,7 +2875,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2476,7 +2899,9 @@
     "chord size",
     "duration",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2492,7 +2917,9 @@
     "duration",
     "chord size",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2503,7 +2930,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2514,7 +2943,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2525,7 +2956,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2536,7 +2969,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2547,7 +2982,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2558,7 +2995,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2569,7 +3008,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2580,7 +3021,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2593,7 +3036,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2604,7 +3049,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2615,7 +3062,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2626,7 +3075,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2637,7 +3088,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2648,7 +3101,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2659,7 +3114,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2670,7 +3127,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2681,7 +3140,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2692,7 +3153,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2703,7 +3166,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2719,7 +3184,9 @@
     "duration",
     "pitch",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2733,7 +3200,9 @@
    "errors": [
     "missed",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2744,7 +3213,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2755,7 +3226,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2766,7 +3239,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2777,7 +3252,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2791,7 +3268,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2804,7 +3283,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2817,7 +3298,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2830,7 +3313,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2841,7 +3326,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2854,7 +3341,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2865,7 +3354,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2876,7 +3367,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2887,7 +3380,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2910,7 +3405,9 @@
     "chord size",
     "duration",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2924,7 +3421,9 @@
    "errors": [
     "chord size",
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2935,7 +3434,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2946,7 +3447,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2957,7 +3460,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2968,7 +3473,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2979,7 +3486,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -2990,7 +3499,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3001,7 +3512,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3012,7 +3525,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3025,7 +3540,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3040,7 +3557,9 @@
     "missed",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3051,7 +3570,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3062,7 +3583,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3073,7 +3596,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3086,7 +3611,9 @@
    "pitch": false,
    "errors": [
     "extra"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3097,7 +3624,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3108,7 +3637,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3119,7 +3650,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3130,7 +3663,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3141,7 +3676,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3152,7 +3689,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn1",
@@ -3165,7 +3704,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3176,7 +3717,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3187,7 +3730,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3198,7 +3743,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3209,7 +3756,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3220,7 +3769,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3231,7 +3782,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3242,7 +3795,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3253,7 +3808,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3264,7 +3821,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3275,7 +3834,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3288,7 +3849,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3299,7 +3862,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3310,7 +3875,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3321,7 +3888,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3332,7 +3901,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3343,7 +3914,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3354,7 +3927,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3365,7 +3940,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3376,7 +3953,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3387,7 +3966,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3400,7 +3981,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3413,7 +3996,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3426,7 +4011,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3439,7 +4026,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3455,7 +4044,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3471,7 +4062,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3487,7 +4080,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3500,7 +4095,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3514,7 +4111,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3528,7 +4127,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3544,7 +4145,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3555,7 +4158,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3566,7 +4171,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3577,7 +4184,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3588,7 +4197,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3599,7 +4210,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3610,7 +4223,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3621,7 +4236,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3632,7 +4249,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3645,7 +4264,9 @@
    "pitch": false,
    "errors": [
     "chord size"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3656,7 +4277,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3667,7 +4290,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3678,7 +4303,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3689,7 +4316,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3700,7 +4329,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3713,7 +4344,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3724,7 +4357,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3735,7 +4370,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3749,7 +4386,9 @@
    "errors": [
     "chord size",
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3760,7 +4399,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3771,7 +4412,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3782,7 +4425,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3793,7 +4438,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3804,7 +4451,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3819,7 +4468,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3830,7 +4481,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3843,7 +4496,9 @@
    "pitch": true,
    "errors": [
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3856,7 +4511,9 @@
    "pitch": false,
    "errors": [
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3871,7 +4528,9 @@
     "pitch",
     "pitch",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3882,7 +4541,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3896,7 +4557,9 @@
    "errors": [
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3913,7 +4576,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3928,7 +4593,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3944,7 +4611,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3960,7 +4629,9 @@
     "duration",
     "duration",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3971,7 +4642,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3982,7 +4655,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -3993,7 +4668,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4004,7 +4681,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4015,7 +4694,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4026,7 +4707,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4037,7 +4720,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4048,7 +4733,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4074,7 +4761,9 @@
     "duration",
     "chord size",
     "duration"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4085,7 +4774,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4096,7 +4787,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4107,7 +4800,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4120,7 +4815,9 @@
    "pitch": false,
    "errors": [
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4131,7 +4828,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4142,7 +4841,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4153,7 +4854,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4164,7 +4867,9 @@
    "exact": true,
    "rhythm": true,
    "pitch": true,
-   "errors": []
+   "errors": [],
+   "exact as written": true,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4180,7 +4885,9 @@
     "missed",
     "duration",
     "missed"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   },
   {
    "part": "vn2",
@@ -4194,7 +4901,9 @@
    "errors": [
     "extra",
     "pitch"
-   ]
+   ],
+   "exact as written": false,
+   "clef right": true
   }
  ]
 }

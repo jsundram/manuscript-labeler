@@ -1,7 +1,7 @@
 # /// script
 # requires-python = "==3.10.*"
 # dependencies = [
-#   "zeus @ git+https://github.com/OmniOMR/zeus.git@main",
+#   "zeus @ git+https://github.com/OmniOMR/zeus.git@c8569eb1c8b5bb24511de6a5e53ef2450de6206c",
 #   "tensorflow-macos==2.12.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
 #   "numpy", "pillow",
 # ]
@@ -41,6 +41,15 @@ grace note), are aligned with Zeus's by edit distance, and scored:
 - per encoded event: right, wrong pitch (an octave out, or a step),
   wrong duration, a note for a rest or the reverse, missed; and Zeus's
   extra events.
+The clef the reading writes is scored apart, since placing notes in the
+labels' clef forgives a clef left out only if the notes are written where
+they sit, not if they are written at their real pitch:
+- a bar exact as written: its notes at the pitches the reading wrote (in
+  its own clefs), as they would go into the edition;
+- a bar right, clef apart: exact as above, or as written;
+- clef errors: each run of bars on a staff whose notes the reading puts in
+  a clef other than the labels' counts once (a clef sign missed or misread,
+  or a wrong opening clef), however many bars it spans.
 Multi-voice bars are compared in each side's order, which differs.
 """
 
@@ -506,6 +515,9 @@ def main():
 
     # Zeus's events by bar (part, movement, number), where its measures pair with the boxes
     zeus_bars: dict[tuple, list] = defaultdict(list)
+    written_bars: dict[tuple, list] = defaultdict(list)  # the same, at the pitches the reading wrote
+    clef_wrong: set = set()  # bars whose notes the reading put in a clef other than the labels'
+    clef_errors: Counter = Counter()  # (part, movement) -> runs of such bars, each one error
     boxes_seen: Counter = Counter()
     unpaired, reconciled, clef_read = [], [], Counter()
     for sid, boxes in staves.items():
@@ -520,12 +532,23 @@ def main():
                 continue
             reconciled.append((sid, boxes[0]["part"], len(boxes), len(measures)))
             measures = made
+        in_wrong = False  # within a run of bars in the wrong clef
         for b, ms in zip(boxes, measures):
             key = (b["part"], b["movement"], b["bar"])
             if len(b["clefs"]) != 1:  # a clef change inside the bar: where it falls isn't known
                 continue
             boxes_seen[key] += 1
             zeus_bars[key] += [zeus_event(e, b["clefs"][0]) for e in ms]
+            written_bars[key] += [zeus_event(e, e["zclef"] if e["zclef"] in MIDDLE else "G2") for e in ms]
+            notes = [e for e in ms if e["kind"] == "note"]
+            if not notes:  # a bar of rests says nothing about the clef
+                continue
+            wrong = any(MIDDLE.get(e["zclef"], "B4") != MIDDLE[b["clefs"][0]] for e in notes)
+            if wrong:
+                clef_wrong.add(key)
+                if not in_wrong:
+                    clef_errors[(b["part"], b["movement"])] += 1
+            in_wrong = wrong
 
     # the encoding
     enc_bars: dict[tuple, list] = {}
@@ -538,6 +561,9 @@ def main():
     # bars no reading could be compared on: a clef change inside the bar (where it falls isn't known)
     clef_changes = {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs if len(b["clefs"]) != 1}
     tally: dict[str, Counter] = defaultdict(Counter)
+    for (part, mvt), n in clef_errors.items():
+        for g in ("all", part, mvt):
+            tally[g]["clef errors"] += n
     rows = []
     for key, n in sorted(all_boxes.items(), key=lambda kv: (kv[0][1], kv[0][0], kv[0][2])):
         part = key[0]
@@ -559,10 +585,15 @@ def main():
         row = {"part": part, "movement": key[1], "bar": key[2], "encoded": " ".join(map(text, enc)),
                "zeus": " ".join(map(text, zs)), "exact": len(enc) == len(zs) and all(map(same, enc, zs)),
                "rhythm": rhythm(enc) == rhythm(zs), "pitch": pitch(enc) == pitch(zs), "errors": []}
+        ws = written_bars[key]
+        row["exact as written"] = len(enc) == len(ws) and all(map(same, enc, ws))
+        row["clef right"] = key not in clef_wrong
         for g in ("all", part, key[1]):
             t = tally[g]
             t["bars"] += 1
             t["bars exact"] += row["exact"]
+            t["bars exact as written"] += row["exact as written"]
+            t["bars right, clef apart"] += row["exact"] or row["exact as written"]
             t["bars right in rhythm"] += row["rhythm"]
             t["bars right in pitch"] += row["pitch"]
             t["events"] += len(enc)
@@ -602,6 +633,8 @@ def main():
         print(f"\n{g}: {t['bars']} bars ({t['bars unread']} unread, counted wrong), {t['bars not compared']} not compared")
         print(f"  bars exact {pct('bars exact', 'bars')}, right in rhythm {pct('bars right in rhythm', 'bars')}, "
               f"right in pitch {pct('bars right in pitch', 'bars')}")
+        print(f"  clef apart: bars exact as written {pct('bars exact as written', 'bars')}, "
+              f"right, clef apart {pct('bars right, clef apart', 'bars')}; clef errors {t['clef errors']}")
         print(f"  events right {pct('event: right', 'events')}; "
               + ", ".join(f"{k[7:]} {t[k]}" for k in sorted(t) if k.startswith("event: ") and k != "event: right"))
         print(f"  accidentals shown as encoded, on right notes: {pct('accidental shown as encoded', 'notes right')}")
