@@ -4,6 +4,31 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: D3's recipe with a synthetic stage, at 128 and 96 px
+
+[Report](2026-10-20-synthetic-and-strip-height/)
+
+**Context.** A synthetic stage first had gained 12 to 14 bars with D1's
+recipe (Synthetic staves first, then real). The brief had named 96 px as a
+candidate strip height for the next crowned run, since it read as well as
+128 and faster. The user asked for both: the synthetic stage with D3's
+recipe, and the 96 px change as a fast follow.
+
+**Question.** Does a synthetic stage help D3's recipe, and does 96 px,
+with and without it?
+
+**Finding.** They only help together. At 128 px the synthetic stage did
+nothing (270 against 272). At 96 px without it, reading fell to 260
+(−12, beyond the noise); with it, 277 (80%), the best so far: +17 over 96
+px alone, +7 over the released D3, which is inside the noise. Pitch
+improved most (311 bars right). One run of each.
+
+**Why a report.** It decides the next release: a candidate musvit-D4 that
+reads as well or better and 30% faster.
+
+**What followed.** Proposed: a second run of the 96 px synthetic-first
+reader and of the 128 px baseline before releasing.
+
 ## 2026-10-19: Smashcima for Segment Anything: tried, dropped
 
 [Report](2026-10-19-smashcima/)
