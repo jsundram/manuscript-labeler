@@ -1,0 +1,196 @@
+<title>Boccherini Manuscript Census</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an inventory. The staves split by what labels they could get, then where the next labels come from, then the shelf list. */
+:root {
+  --paper: #f5f6f4; --sheet: #ffffff; --ink: #1d2422; --muted: #5c6763; --rule: #dbe0dc;
+  --kept: #2f6b5a; --unkept: #8fb8aa; --philhar: #c58a22; --none: #b5543c;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #111614; --sheet: #19201d; --ink: #e3e9e6; --muted: #98a6a0; --rule: #2b3531;
+  --kept: #5fb39a; --unkept: #3e6b5d; --philhar: #e0a94a; --none: #e07b62; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --paper: #111614; --sheet: #19201d; --ink: #e3e9e6; --muted: #98a6a0; --rule: #2b3531;
+  --kept: #5fb39a; --unkept: #3e6b5d; --philhar: #e0a94a; --none: #e07b62; color-scheme: dark }
+
+body { background: var(--paper); color: var(--ink); font: 15px/1.55 var(--body); }
+.wrap { max-width: 1040px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 64px; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: 2.3rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.45rem; }
+h3 { font-size: 1.05rem; }
+p { margin: 0; max-width: 70ch; }
+.eyebrow { font: 500 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.muted { color: var(--muted); }
+section { display: grid; gap: 14px; min-width: 0; }
+header { display: grid; gap: 10px; }
+a { color: var(--kept); }
+a:focus-visible, summary:focus-visible, select:focus-visible { outline: 2px solid var(--kept); outline-offset: 2px; }
+code { font: 0.86em var(--mono); background: var(--sheet); padding: 1px 4px; }
+
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.fig { background: var(--sheet); padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+.fig .big { font: 500 1.75rem/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.fig .sub { font-size: 0.85rem; color: var(--muted); }
+
+.panel { background: var(--sheet); border: 1px solid var(--rule); padding: 18px; display: grid; gap: 14px; min-width: 0; }
+.stack { display: flex; height: 34px; width: 100%; }
+.stack span { display: block; height: 100%; }
+.stackkey { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.sk { display: grid; grid-template-columns: 12px 1fr; gap: 4px 10px; align-items: start; font-size: 0.88rem; }
+.sk .sw { width: 12px; height: 12px; margin-top: 4px; }
+.sk b { font: 500 1.05rem var(--mono); font-variant-numeric: tabular-nums; }
+.sk .what { grid-column: 2; color: var(--muted); font-size: 0.83rem; }
+
+.sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.src { border-top: 3px solid var(--ink); padding-top: 10px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.src.k { border-color: var(--unkept); } .src.p { border-color: var(--philhar); } .src.n { border-color: var(--none); } .src.t { border-color: var(--kept); }
+.src .count { font: 500 1.3rem var(--mono); font-variant-numeric: tabular-nums; }
+.src p { font-size: 0.9rem; }
+
+.tablebox { overflow-x: auto; border: 1px solid var(--rule); background: var(--sheet); }
+table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+th { font: 600 0.72rem/1.2 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: var(--paper); position: sticky; top: 0; }
+td.n, th.n { text-align: right; white-space: nowrap; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+.shelf { max-height: 640px; }
+.enc { font: 500 0.72rem/1.3 var(--mono); padding: 2px 6px; white-space: nowrap; color: var(--sheet); display: inline-block; }
+.enc.none { background: var(--none); } .enc.philhar { background: var(--philhar); } .enc.paired { background: var(--kept); }
+td.note { color: var(--muted); font-size: 0.8rem; min-width: 18rem; }
+.shelf table { width: max-content; min-width: 100%; }
+.shelf td.nw { white-space: nowrap; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+.two > * { min-width: 0; display: grid; gap: 10px; align-content: start; }
+.filter { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 0.88rem; }
+select { font: inherit; padding: 4px 8px; background: var(--sheet); color: var(--ink); border: 1px solid var(--rule); }
+ul { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; max-width: 72ch; }
+details { border-top: 1px solid var(--rule); padding-top: 12px; display: grid; gap: 10px; }
+summary { cursor: pointer; font-family: var(--display); font-weight: 600; font-size: 1.1rem; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Boccherini OMR · sources · counted 2026-10-20</div>
+    <h1>How many manuscript staves we have, and how many are labelled</h1>
+    <p class="muted">Every manuscript and autograph of the quartets in the scan archive, outside Op. 48. Staves are counted with the labeler's own staff finder, so the numbers match what it would propose.</p>
+  </header>
+
+  <section aria-labelledby="sum">
+    <h2 id="sum">Summary</h2>
+    <div class="figures">
+      <div class="fig"><span class="eyebrow">Manuscripts</span><span class="big">54</span><span class="sub">1,840 pages, 1,387 of them music</span></div>
+      <div class="fig"><span class="eyebrow">Staves</span><span class="big">~11,500</span><span class="sub">within about 2% where checked against labels</span></div>
+      <div class="fig"><span class="eyebrow">Labelled and in training</span><span class="big">2,916</span><span class="sub">2,817 in Boccherini 3k, plus KHM 587's 99 not yet trained on</span></div>
+      <div class="fig"><span class="eyebrow">No encoding of the work</span><span class="big">~3,830</span><span class="sub">19 manuscripts: Op. 42, 43, 44, 53, 64 and US-Wc's "Op. 54"</span></div>
+    </div>
+
+    <div class="panel">
+      <div class="stack" id="stack" role="img" aria-label="Of about 11,500 staves: 2,916 labelled, 2,882 in paired manuscripts but not kept, 1,865 with a Philhar encoding but not paired, 3,826 with no encoding"></div>
+      <div class="stackkey" id="stackkey"></div>
+    </div>
+
+    <p><strong>Why "paired" isn't "labelled".</strong> A manuscript counts as paired when its staves were matched to an encoding bar by bar. Only the staves that matched cleanly are kept: 2,445 of the 4,884 in dataM's manuscripts, 372 of Madrid's 678, 99 of KHM 587's 236. That is why the paired manuscripts hold about 5,800 staves but Boccherini 3k has 3,411: its 2,817 kept staves from these, plus 595 from Op. 48.</p>
+  </section>
+
+  <section aria-labelledby="next">
+    <h2 id="next">Where the next labels can come from</h2>
+    <div class="sources">
+      <div class="src t"><span class="eyebrow">Already in training</span><span class="count">2,916</span><p>dataM (Philhar's encodings), Madrid (Philhar's too) and KHM 587 (OSSQ's).</p></div>
+      <div class="src k"><span class="eyebrow">Paired, not kept</span><span class="count">~2,880</span><p>Staves in those same manuscripts that the first pairing couldn't match. Re-pairing with the G. 213 fixes, or labelling the bar lines in the labeler, can recover many. Under way.</p></div>
+      <div class="src p"><span class="eyebrow">Encoded, never paired</span><span class="count">~1,870</span><p>Philhar encoded these works, but seven sources were never paired: the Op. 24 autograph (775), MS-202, D-B SA 3364, D-LEm and three small items. Under way.</p></div>
+      <div class="src n"><span class="eyebrow">No encoding</span><span class="count">~3,830</span><p>Needs notes from somewhere: hand encoding, or a print read by an OMR system for printed music. Only Op. 53 No. 2 has a print in the archive (Pleyel, c. 1798).</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="breakdowns" class="two">
+    <div>
+      <h2 id="breakdowns">By library</h2>
+      <div class="tablebox"><table id="bylib"></table></div>
+    </div>
+    <div>
+      <h2>By opus</h2>
+      <div class="tablebox"><table id="byopus"></table></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="shelf">
+    <h2 id="shelf">Every manuscript</h2>
+    <div class="filter"><label for="encf">Show</label>
+      <select id="encf"><option value="">all 54</option><option value="none">no encoding</option><option value="philhar">encoded, not paired</option><option value="paired">paired</option></select>
+      <span class="muted" id="shown"></span></div>
+    <div class="tablebox shelf"><table>
+      <thead><tr><th>G</th><th>Opus</th><th>Library, shelfmark</th><th>Hand</th><th class="n">Pages</th><th class="n">Music pages</th><th class="n">Staves</th><th>Encoding</th><th>Note</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <p class="muted">≈ marks an estimate by eye, for documents the staff finder can't read (faint scores, microfilm, two-page photos).</p>
+  </section>
+
+  <details>
+    <summary>How the staves were counted</summary>
+    <ul>
+      <li>The labeler's staff finder and its empty-staff test, on 2,800 px renders: the detection the labeler proposes.</li>
+      <li>Four rules on top: scanner calibration cards aren't music; a page with one inked staff is a title page; a page with little ink on its staves is a title page; a faint staff under a heading is a heading line.</li>
+      <li>About 60 pages corrected by eye. Nine documents counted by eye instead.</li>
+      <li>Against Op. 48's 888 labelled staves, it counts 907 (+2.1%) and no title pages. On KHM 587 the finder undercounts: page 15 has 10 staves, not 7.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>Doubts and exclusions</summary>
+    <ul>
+      <li>US-Wc "Op. 54" is about 1,350 staves, ±10%, from 85 photos of two-page openings with 8 title openings: probably several part-books. Its G. 250–255 numbering is the folder's name, unverified.</li>
+      <li>The two 20-page CZ-Pu PDFs hold the same pages; counted once. MS-200's image 14 repeats image 13.</li>
+      <li>Left out: S-Skma W 4-R, catalogued as a manuscript but the Hummel print; a BnF item marked not a quartet; Op. 48 (G. 226–231); all prints.</li>
+      <li>The table, per-page counts and scripts: <a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-manuscript-census">reports/2026-10-20-manuscript-census</a>.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+const DATA = {"manuscripts":[["159","Op. 2 no. 1","D-B SA 3364","copyist","PDF","21","16","200","212","Philhar LilyPond exists, not paired","Shelfmark SA 3364 per the SBB title; not in RISM."],["159","Op. 2 no. 1","D-Eu Esl VIII 351","copyist","PDF","29","27","211","227","dataM",""],["159","Op. 2 no. 1","F-Pn MS-202","copyist","PDF","33","29","321","325","Philhar LilyPond exists, not paired","19th-century copy; a full score."],["160","Op. 2 no. 2","D-Eu Esl VIII 352","copyist","PDF","17","15","125","140","dataM",""],["161","Op. 2 no. 3","D-Eu Esl VIII 353","copyist","PDF","17","12","102","116","dataM",""],["162","Op. 2 no. 4","CZ-Pu 59 R 23","copyist","PDF","20","15","117","133","dataM","Counted once from CZ-Pu_59_R_23.pdf; 550503024_CZ-Pu.pdf is the same 20 pages, and the cover/title/part PDFs split the same pages."],["162","Op. 2 no. 4","D-Eu Esl VIII 354","copyist","PDF","17","14","111","130","dataM",""],["163","Op. 2 no. 5","D-Eu Esl VIII 355","copyist","PDF","17","13","113","127","dataM",""],["164","Op. 2 no. 6","D-Eu Esl VIII 357","copyist","PDF","17","13","100","108","dataM",""],["165","Op. 8 no. 1","A-ST Mus.ms. 576","copyist: A-ST 120","PDF","1","0","0","6","Philhar LilyPond exists, not paired","Only one page scanned (vlc f. 1r): a title page with a one-staff incipit, so no music staves counted."],["167","Op. 8 no. 3","A-ST Mus.ms. 577","copyist: A-ST 120","PDF","4","3","24","48","Philhar LilyPond exists, not paired",""],["168","Op. 8 no. 4","F-Pn MS-200","copyist","PDF","16","11","≈244","2","Philhar LilyPond exists, not paired","Bilevel microfilm of two-page openings; the counter finds almost nothing. Counted by eye: 11 openings of music, 244 staves; image 14 repeats image 13 and is not counted."],["183","Op. 22 no. 1","D-B KHM 563","copyist: Font, Francisco","PDF","33","16","130","136","dataM",""],["183","Op. 22 no. 1","E-Mc 1/7040-188 bis","copyist","PDF","40","20","162","235","dataT (Madrid test set)",""],["184","Op. 22 no. 2","D-B KHM 564","copyist: Font, Francisco","PDF","33","16","125","134","dataM",""],["184","Op. 22 no. 2","E-Mc 1/7040-188","copyist","PDF","40","20","157","211","dataT (Madrid test set)",""],["184, 185, 186, 188","Op. 22 no. 2,3,4,6","F-Pn VMB MS-153","copyist","PDF","168","89","664","807","dataM","Four part files: vc (Gallica) + vn1, vn2, va from an earlier pass."],["185","Op. 22 no. 3","D-B KHM 565","copyist: Font, Francisco","PDF","33","24","163","164","dataM",""],["185","Op. 22 no. 3","E-Mc 1/7040-187","copyist","PDF","32","24","168","209","dataT (Madrid test set)",""],["186","Op. 22 no. 4","D-B KHM 566","copyist: Font, Francisco","PDF","33","16","124","134","dataM",""],["186","Op. 22 no. 4","E-Mc 1/7040-185","copyist","PDF","16","8","62","72","dataT (Madrid test set)",""],["187","Op. 22 no. 5","D-B KHM 567","copyist: Font, Francisco","PDF","33","16","128","134","dataM",""],["188","Op. 22 no. 6","D-B KHM 568","copyist: Font, Francisco","PDF","33","16","126","131","dataM",""],["188","Op. 22 no. 6","E-Mc 1/7040-186 bis","copyist","PDF","32","16","129","147","dataT (Madrid test set)",""],["189–194","Op. 24","F-Pn MS-1292","autograph","PDF","118","109","775","778","Philhar LilyPond exists, not paired","Full score; pairing was tried (29 of 468 staves kept), not in dataM."],["201–206","Op. 32","D-B KHM 577","copyist: Schober","PDF","161","129","≈1060","925","dataM","Estimate. The counter misses staves on these dense 11-staff pages: a 20-page eye sample gave 132 staves where it found 106 (x1.25), and 4 of the 20 were blank ruled pages."],["202, 204","Op. 32 no. 2,4","D-LEm Becker III.12.4","copyist: Kindscher, Johann Ludwig Gottfried","PDF","28","19","301","306","Philhar LilyPond exists, not paired","Full score."],["207","Op. 33 no. 1","D-B KHM 579","copyist","PDF","21","18","≈140","126","dataM","Estimate. Faint-ink full score, 2 systems of 4 per page; music pages counted by eye x 8, less partial pages. The counter found about two thirds."],["207–212","Op. 33","F-Po RES-507 (2)","autograph","PDF","104","92","637","652","dataM",""],["208","Op. 33 no. 2","D-B KHM 580","copyist","PDF","25","22","≈172","122","dataM","Estimate, as KHM 579."],["209","Op. 33 no. 3","D-B KHM 581","copyist","PDF","25","21","≈164","113","dataM","Estimate, as KHM 579."],["210","Op. 33 no. 4","D-B KHM 582","copyist","PDF","17","14","≈108","99","dataM","Estimate, as KHM 579."],["211","Op. 33 no. 5","D-B KHM 583","copyist","PDF","25","21","≈164","131","dataM","Estimate, as KHM 579."],["212","Op. 33 no. 6","D-B KHM 584","copyist","PDF","17","13","≈100","89","dataM","Estimate, as KHM 579."],["213","Op. 39","D-B KHM 587","copyist: Schober","PDF","41","30","236","244","OSSQ",""],["216","Op. 42 no. 1","D-B KHM 591","copyist: Berlin27 (GraunWV)","PDF","21","12","103","103","none",""],["216","Op. 42 no. 1","F-Pn D-11157","copyist: Picquot, Louis","PDF","20","15","99","102","none",""],["217","Op. 42 no. 2","D-B KHM 593","copyist: KH 8 (Drosopoulou)","PDF","21","16","113","116","none",""],["217","Op. 42 no. 2","F-Pn D-11158","copyist: Picquot, Louis","PDF","22","13","76","82","none",""],["218","Op. 43 no. 1","D-B KHM 594","copyist: Schober","PDF","27","16","113","120","none",""],["219","Op. 43 no. 2","D-B KHM 595","copyist: Schober","PDF","33","16","117","121","none",""],["220","Op. 44 no. 1","D-B KHM 596","autograph","PDF","9","8","92","101","none",""],["220","Op. 44 no. 1","D-B KHM 597","copyist: Schober","PDF","25","16","136","143","none",""],["221","Op. 44 no. 2","D-B KHM 598","copyist: Schober","PDF","33","24","143","150","none",""],["222","Op. 44 no. 3","D-B KHM 599","copyist: Schober","PDF","25","16","115","126","none",""],["223","Op. 44 no. 4","D-B KHM 600","copyist: Schober","PDF","25","16","123","128","none",""],["223","Op. 44 no. 4","F-Po RES-507 (10)","autograph","PDF","16","12","115","123","none",""],["224","Op. 44 no. 5","F-Po RES-507 (11)","autograph","PDF","18","13","109","114","none",""],["225","Op. 44 no. 6","D-B KHM 601","copyist: Schober","PDF","25","16","115","120","none",""],["237","Op. 53 no. 2","D-B KHM 610","copyist: Schober","PDF","17","15","110","116","none",""],["248","Op. 64 no. 1","F-Pn Vma ms 1067 (5)","copyist","PDF","32","24","331","341","none",""],["248, 249","Op. 64 no. 1,2","US-Wc M452.A2 B68 Case","copyist","PDF","48","40","336","337","none",""],["249","Op. 64 no. 2","F-Pn Vma ms 1067 (6)","copyist","PDF","21","13","130","136","none",""],["250–255","Op. 54 (?)","US-Wc M452.A2 B68 op. 54 Case","copyist","PDF","85","149","≈1350","549","none","Estimate. Every image is a two-page opening; counted half by half, with 24 openings corrected by eye; about 10 staves a full page. 8 title openings (part-books), so likely more than one Violino Primo book. Not in opera.json; G 250-255 is the folder&#x27;s name, unverified."]]};
+const ms = DATA.manuscripts.map(([g, opus, lib, hand, fmt, pages, music, staves, raw, enc, note]) => ({
+  g, opus, lib, hand, pages: +pages, music: +music, stavesText: staves, staves: +staves.replace(/[≈,]/g, ""), enc, note,
+  cls: enc === "none" ? "none" : enc.startsWith("Philhar") ? "philhar" : "paired",
+  library: lib.split(" ")[0]}));
+const fmt = (n) => n.toLocaleString("en-US");
+
+const parts = [
+  [2916, "var(--kept)", "Labelled, in training", "dataM 2,445 · Madrid 372 · KHM 587 99"],
+  [2882, "var(--unkept)", "Paired, not kept", "in the same manuscripts; the pairing couldn't match them"],
+  [1865, "var(--philhar)", "Encoded, never paired", "Philhar's LilyPond covers the work"],
+  [3826, "var(--none)", "No encoding", "no notes for the work anywhere yet"]];
+const total = parts.reduce((a, p) => a + p[0], 0);
+document.getElementById("stack").innerHTML = parts.map(([n, c, t]) => `<span style="width:${(n / total * 100).toFixed(2)}%;background:${c}" title="${t}: ${fmt(n)}"></span>`).join("");
+document.getElementById("stackkey").innerHTML = parts.map(([n, c, t, w]) =>
+  `<div class="sk"><span class="sw" style="background:${c}"></span><span><b>${fmt(n)}</b> ${t}</span><span class="what">${w}</span></div>`).join("");
+
+function groupTable(id, key, label) {
+  const g = {};
+  for (const m of ms) { const k = m[key]; g[k] ??= { n: 0, staves: 0, none: 0, philhar: 0, paired: 0 }; g[k].n++; g[k].staves += m.staves; g[k][m.cls] += m.staves; }
+  const opn = (k) => parseFloat(k.replace(/[^0-9.]/g, "")) || 0;
+  const rows = Object.entries(g).sort((a, b) => key === "op" ? opn(a[0]) - opn(b[0]) : b[1].staves - a[1].staves);
+  document.getElementById(id).innerHTML = `<thead><tr><th>${label}</th><th class="n">MSS</th><th class="n">staves</th><th class="n">none</th><th class="n">unpaired</th><th class="n">paired</th></tr></thead><tbody>` +
+    rows.map(([k, v]) => `<tr><td>${k}</td><td class="n">${v.n}</td><td class="n">${fmt(v.staves)}</td><td class="n">${v.none ? fmt(v.none) : ""}</td><td class="n">${v.philhar ? fmt(v.philhar) : ""}</td><td class="n">${v.paired ? fmt(v.paired) : ""}</td></tr>`).join("") + "</tbody>";
+}
+for (const m of ms) m.opusShort = m.opus.replace(/ no\..*/, "");
+groupTable("bylib", "library", "library");
+(function () { for (const m of ms) m.op = m.opusShort; groupTable("byopus", "op", "opus"); })();
+
+const label = { none: "no encoding", philhar: "Philhar, not paired", paired: "" };
+function render() {
+  const f = document.getElementById("encf").value;
+  const rows = ms.filter((m) => !f || m.cls === f);
+  document.getElementById("rows").innerHTML = rows.map((m) =>
+    `<tr><td class="nw">${m.g}</td><td class="nw">${m.opus}</td><td class="nw">${m.lib}</td><td>${m.hand}</td><td class="n">${m.pages}</td><td class="n">${m.music}</td><td class="n">${m.stavesText}</td>` +
+    `<td><span class="enc ${m.cls}">${m.cls === "paired" ? m.enc.replace(" (Madrid test set)", " (Madrid)") : label[m.cls]}</span></td><td class="note">${m.note}</td></tr>`).join("");
+  document.getElementById("shown").textContent = `${rows.length} manuscripts, ${fmt(rows.reduce((a, m) => a + m.staves, 0))} staves`;
+}
+document.getElementById("encf").addEventListener("change", render);
+render();
+</script>

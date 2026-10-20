@@ -4,6 +4,32 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: Boccherini Manuscript Census
+
+[Page](https://claude.ai/artifact/GEGbPnXax1fNfotaSK1pDy) · [folder](2026-10-20-manuscript-census/)
+
+**Context.** Labelled Boccherini staves are the scarce training data. The
+user asked: "How many staves of unlabeled (no lilypond or ossq encodings)
+manuscripts other than op 48 do we have (boccherini-sources)? Can you give
+me that breakdown?"
+
+**Question.** How many manuscript staves are on disk, and which could get
+labels, from where?
+
+**Finding.** About 11,500 staves in 54 manuscripts. 2,916 are labelled and
+in training (dataM and Madrid from Philhar's encodings, KHM 587 from
+OSSQ's). About 2,880 more are in those same manuscripts but the first
+pairing didn't keep them, about 1,870 have a Philhar encoding but were
+never paired, and about 3,830 have no encoding. "Paired" had been read as
+"labelled"; it isn't.
+
+**Why a report.** It sizes the next sources of training data.
+
+**What followed.** The user: "I can't believe we've been sitting on the
+philhar pairings without trying to use them." Re-pairing dataM's sources
+with the G. 213 fixes and pairing the seven unpaired ones started the same
+day.
+
 ## 2026-10-20: What Modal has cost us so far
 
 [Page](https://claude.ai/artifact/M4P24Eiua6etJvUnay9Tjq) · [write-up](2026-10-20-modal-compute/)
