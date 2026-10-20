@@ -306,3 +306,40 @@ staves from the new pairing against 114 in dataG.
   copyist didn't beam); other sources unchanged within 2. Uploaded to
   musvit-staves /dataL2. Train on dataL2 from now on (dataL kept for the D runs).
 
+## 2026-10-18: the cheap runs (replay, strip height)
+
+proto.py gains `--replay F --replay-from <samples>` (a fresh draw of
+F/(1−F) × the training staves from stage 1's staves each pass, mixed in by
+width; passes get longer, Boccherini exposure per pass unchanged) and
+`--height` (the strip's height; config.json records it when not 128, and
+load()/load_release and stage 2 from such a run follow it). Default runs are
+unchanged. Drivers and summaries: `drivers/cheap/` (cheap.py,
+analyze.py; paired bootstrap, 95%).
+
+- **Replay (E1), on the unseen-music setup:** H1's recipe (no Op. 22 or 32) on
+  dataL2, 0/10/30% Dolores+OmniOMR train staves.
+
+  | | H1-L2 (none) | r10 | r30 |
+  |---|---:|---:|---:|
+  | Madrid SER | 21.2% | 24.6% (+2.3 to +4.5) | 25.2% (+2.7 to +5.2) |
+  | Op. 32 SER | 31.9% | 33.4% (+0.6 to +2.5) | 34.3% (+1.4 to +3.6) |
+  | Dolores SER | 36.4% | 16.5% | 13.7% |
+  | OmniOMR SER | 42.1% | 22.6% | 20.9% |
+  | clean test | 253 | 244 (−5.2 to 0.0 pts) | 253 (±2.6) |
+
+  SER as written, readings cut at 2× the reference. Replay keeps the general
+  skill (Dolores back near stage 1's 16.7%) but reads the unseen hands
+  *worse*. Not kept: general reading is not what fails on a new copyist.
+- **Beams fix (dataL2 against dataL, same recipe):** Madrid 24.1% → 21.2%
+  (−4.0 to −1.8), Op. 32 31.6% → 31.9% (−0.7 to +1.2), clean test 247 → 253
+  (−0.9 to +4.3 pts). One seed each; the bootstrap doesn't cover run-to-run
+  noise.
+- **Strip height 96 px (both stages retrained):** E2-h96 (E2-tf8's recipe):
+  practice exam best 0.100 at pass 55 (E2-tf8 0.124, but E2-tf8 stopped early
+  at pass 40 by patience; E2-h96 ran all 60), Dolores 11.5% against 16.7%.
+  D1-h96 (D1's recipe on dataL): practice exam 0.190 (D1 0.189), clean test
+  259 against 263 (−4.6 to +2.0 pts), Dolores 38.9% against 40.0%. On the Mac
+  (mps, half precision, 64 staves, warm): 0.215 s a staff against 0.307 for
+  D1, 30% faster. As good within the noise, and faster: a candidate height
+  for the next crowned run, not a reason to retrain D3 alone.
+- **Cost:** about $7 on Modal (stage 1 at 96 px about $3).

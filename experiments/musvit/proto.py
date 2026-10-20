@@ -42,7 +42,7 @@ from torch import nn
 
 CACHE = Path(os.environ.get("MUSVIT_CACHE", Path.home() / ".cache" / "manuscript-labeler" / "musvit"))
 ENCODERS = {"light": CACHE / "weights" / "musvit-light", "full": CACHE / "weights" / "musvit"}
-H, PATCH, MAXW, MAXLEN = 128, 16, 2688, 512
+H, PATCH, MAXW, MAXLEN = 128, 16, 2688, 512  # H: the strip's height (--height); a run's config.json records it
 PAD, BOS, EOS, UNK = "<pad>", "<s>", "</s>", "<unk>"
 AMP = False  # bfloat16 autocast on CUDA (--amp); a run's config.json records it
 COLOR = False  # read staves in colour, three channels (--color), not grey copied to three; config.json records it
@@ -70,7 +70,7 @@ def opened(src) -> Image.Image:
 
 
 def image(path, shift: int = 0) -> torch.Tensor:
-    """A staff 128 px high, its width by aspect: (H, w) grey, or (3, H, w) with COLOR."""
+    """A staff H px high (128 unless --height), its width by aspect: (H, w) grey, or (3, H, w) with COLOR."""
     im = opened(path).convert("RGB" if COLOR else "L")
     w = min(MAXW, round(im.width * H / im.height / PATCH) * PATCH)
     a = np.asarray(im.resize((w, H), Image.BILINEAR), dtype=np.float32) / 255
@@ -363,7 +363,7 @@ def load(run: str, file: str = "reader.pt"):
     """A trained reader and its vocabulary, from runs/RUN/ (its encoder,
     decoder depth and precision from config.json; the first runs, without
     one, were MuSViT-light, 4 layers, float32)."""
-    global AMP, COLOR
+    global AMP, COLOR, H
     vocab = json.loads((CACHE / "runs" / run / "vocab.json").read_text())
     cfg = {"encoder": "light", "layers": 4, "amp": False, "lora_r": 16, "lora_mlp": False, "decoder": "transformer",
            "memory": "patches"}
@@ -371,6 +371,7 @@ def load(run: str, file: str = "reader.pt"):
         cfg |= json.loads((CACHE / "runs" / run / "config.json").read_text())
     AMP = cfg["amp"] and torch.cuda.is_available()
     COLOR = cfg.get("color", False)
+    H = cfg.get("height", 128)
     model = Reader(cfg["encoder"], len(vocab), layers=cfg["layers"], lora_r=cfg["lora_r"], lora_mlp=cfg["lora_mlp"],
                    decoder=cfg["decoder"], memory=cfg["memory"])
     got = model.load_state_dict(torch.load(CACHE / "runs" / run / file, map_location="cpu"), strict=False)
@@ -385,9 +386,10 @@ def load_release(folder: Path):
     reader.safetensors, the adapters folded in. Needs no MuSViT download
     and no peft."""
     from safetensors.torch import load_file
-    global COLOR
+    global COLOR, H
     cfg = json.loads((folder / "reader.json").read_text())
     COLOR = cfg.get("color", False)
+    H = cfg.get("height", 128)
     vocab = json.loads((folder / "vocab.json").read_text())
     model = Reader(cfg["vit"], len(vocab), d=cfg["d"], layers=cfg["layers"], lora_r=0, decoder=cfg["decoder"],
                    memory=cfg["memory"])
@@ -536,11 +538,19 @@ def main():
     ap.add_argument("--stop-at", type=int, help="stop after this pass, the learning rate still scheduled over --epochs "
                     "(to repeat a held-out run's best pass with nothing held out)")
     ap.add_argument("--color", action="store_true", help="read staves in colour (three channels), not grey")
+    ap.add_argument("--height", type=int, default=128, help="the strip's height in px, a multiple of 16 (a new run; "
+                    "with --init, the run it starts from sets it)")
+    ap.add_argument("--replay", type=float, default=0, help="this share of each pass's staves drawn afresh from "
+                    "--replay-from (stage 1's staves, so stage 2 keeps what it knew)")
+    ap.add_argument("--replay-from", nargs="+", type=Path, default=[])
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     a = ap.parse_args()
-    global AMP, AUGMENT, COLOR
+    global AMP, AUGMENT, COLOR, H
     AUGMENT = a.augment
     COLOR = a.color
+    assert a.height % PATCH == 0, "--height must be a multiple of 16"
+    H = a.height
+    assert 0 <= a.replay < 1 and (not a.replay or a.replay_from), "--replay is a share below 1, with --replay-from"
     readapt = False
     random.seed(0)
     torch.manual_seed(0)
@@ -553,6 +563,7 @@ def main():
             c = json.loads(init_cfg.read_text())
             a.encoder, a.layers, a.decoder = c["encoder"], c["layers"], c.get("decoder", "transformer")
             a.memory = c.get("memory", "patches")
+            a.height = H = c.get("height", 128)
             readapt = a.lora_r is not None or a.lora_mlp
             if not readapt:
                 a.lora_r, a.lora_mlp = c.get("lora_r", 16), c.get("lora_mlp", False)
@@ -571,7 +582,13 @@ def main():
             a.lora_r = 16
         (out / "config.json").write_text(json.dumps({"encoder": a.encoder, "layers": a.layers, "amp": a.amp,
                                                      "lora_r": a.lora_r, "lora_mlp": a.lora_mlp, "decoder": a.decoder,
-                                                     "memory": a.memory, "color": a.color}))
+                                                     "memory": a.memory, "color": a.color}
+                                                    | ({"height": a.height} if a.height != 128 else {})
+                                                    | ({"replay": a.replay} if a.replay else {})))
+    pool = staves(a.replay_from) if a.replay else []
+    n_replay = round(len(train) * a.replay / (1 - a.replay)) if a.replay else 0
+    if pool:
+        print(f"replay: {n_replay} of {len(pool)} staves from --replay-from in each pass ({a.replay:.0%})", flush=True)
     unseen = sum(t not in vocab for _, ts in dev_items for t in ts)
     print(f"{len(train)} training staves, {len(dev_items)} dev, vocabulary {len(vocab)}, dev tokens unseen in training {unseen}", flush=True)
 
@@ -600,7 +617,7 @@ def main():
     rest = [p for n, p in named.items() if p.requires_grad and n not in unfrozen]
     opt = torch.optim.AdamW([{"params": rest, "lr": a.lr}] + ([{"params": enc_own, "lr": a.lr * a.encoder_lr}] if enc_own else []),
                             weight_decay=0.01)
-    steps = a.epochs * math.ceil(len(train) / a.batch_size)
+    steps = a.epochs * math.ceil((len(train) + n_replay) / a.batch_size)
     warm = max(1, min(200, steps // 10))
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1, (s + 1) / warm) * 0.5 * (1 + math.cos(math.pi * min(s, steps) / steps)))
     loss_fn = nn.CrossEntropyLoss(ignore_index=vocab[PAD])
@@ -609,6 +626,8 @@ def main():
     by_width = sorted(train, key=aspect)
     log, best, since_best = [], float("inf"), 0
     for ep in range(1, a.epochs + 1):
+        if n_replay:  # a fresh draw each pass, mixed in by width with the rest
+            by_width = sorted(train + random.sample(pool, n_replay), key=aspect)
         chunks = [by_width[k: k + a.batch_size] for k in range(0, len(by_width), a.batch_size)]
         random.shuffle(chunks)
         t0, total = time.time(), 0.0
