@@ -17,6 +17,13 @@ same code runs on the CPU, the Mac's GPU (mps) and CUDA.
 Two stages (BRIEF.md): stage 1 on public staves with --vocab-extra naming
 the stage 2 data, so one vocabulary covers both; stage 2 with --init STAGE1.
 
+Long runs (the public stage) can be resumed: --checkpoint saves the whole
+training state after every pass (runs/NAME/state.pt: weights, optimizer,
+schedule, pass, random state), and --resume continues from it with the same
+command, or starts if there's none. --schedule wsd holds the learning rate
+after warmup and decays it over the last --decay share of passes, so a run
+resumed before its decay began can be given more --epochs.
+
 --overfit trains and scores on the same staves: the pipeline works if it
 learns them exactly. Each epoch prints the dev staves' symbol error rate
 (SER, edit distance over reference length) and exact staves; the model and
@@ -543,6 +550,14 @@ def main():
     ap.add_argument("--replay", type=float, default=0, help="this share of each pass's staves drawn afresh from "
                     "--replay-from (stage 1's staves, so stage 2 keeps what it knew)")
     ap.add_argument("--replay-from", nargs="+", type=Path, default=[])
+    ap.add_argument("--checkpoint", action="store_true", help="save the whole training state after every pass "
+                    "(runs/NAME/state.pt), for --resume: for long runs")
+    ap.add_argument("--resume", action="store_true", help="continue runs/NAME from its state.pt if it has one, else "
+                    "start; the same command otherwise (implies --checkpoint)")
+    ap.add_argument("--schedule", choices=["cosine", "wsd"], default="cosine",
+                    help="cosine: warmup then cosine over --epochs; wsd: warmup, hold, then decay over the last --decay "
+                    "share, so a resumed run that hasn't begun decaying can be given more --epochs")
+    ap.add_argument("--decay", type=float, default=0.2, help="wsd: the share of passes the learning rate decays over")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     a = ap.parse_args()
     global AMP, AUGMENT, COLOR, H
@@ -618,15 +633,65 @@ def main():
     rest = [p for n, p in named.items() if p.requires_grad and n not in unfrozen]
     opt = torch.optim.AdamW([{"params": rest, "lr": a.lr}] + ([{"params": enc_own, "lr": a.lr * a.encoder_lr}] if enc_own else []),
                             weight_decay=0.01)
-    steps = a.epochs * math.ceil((len(train) + n_replay) / a.batch_size)
+    per_pass = math.ceil((len(train) + n_replay) / a.batch_size)
+    steps = a.epochs * per_pass
     warm = max(1, min(200, steps // 10))
-    sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1, (s + 1) / warm) * 0.5 * (1 + math.cos(math.pi * min(s, steps) / steps)))
+    decay_from = round(steps * (1 - a.decay))  # wsd: the step its decay begins
+
+    def lr_share(s):
+        if a.schedule == "cosine":
+            return min(1, (s + 1) / warm) * 0.5 * (1 + math.cos(math.pi * min(s, steps) / steps))
+        tail = max(1, steps - decay_from)
+        return min(1, (s + 1) / warm) * (1 if s < decay_from else 0.5 * (1 + math.cos(math.pi * min(s - decay_from, tail) / tail)))
+    sched = torch.optim.lr_scheduler.LambdaLR(opt, lr_share)
     loss_fn = nn.CrossEntropyLoss(ignore_index=vocab[PAD])
+
+    def weights():
+        return {k: v for k, v in model.state_dict().items()
+                if whole or "lora" in k or not k.startswith("encoder.") or k in unfrozen}
 
     # batches of similar width, so little of each is padding
     by_width = sorted(train, key=aspect)
-    log, best, since_best = [], float("inf"), 0
-    for ep in range(1, a.epochs + 1):
+    log, best, since_best, first = [], float("inf"), 0, 1
+    # what must match for a resume: the data, the model's shape and the optimizer's settings
+    same = {"train": [str(f) for f in a.train], "replay": a.replay, "batch_size": a.batch_size, "lr": a.lr,
+            "init": a.init, "init_file": a.init_file, "schedule": a.schedule, "decay": a.decay, "per_pass": per_pass}
+    checkpoint = out / "state.pt"
+    if a.resume and checkpoint.exists():
+        ck = torch.load(checkpoint, map_location="cpu", weights_only=False)
+        if ck["same"] != same:
+            raise SystemExit(f"--resume: runs/{a.name} was started with other settings: "
+                             f"{ {k: v for k, v in ck['same'].items() if same.get(k) != v} }")
+        if ck["done"] and ck["epochs"] == a.epochs:
+            print(f"--resume: runs/{a.name} already finished (pass {ck['ep']})", flush=True)
+            return
+        if ck["epochs"] != a.epochs and (a.schedule != "wsd" or ck["ep"] * per_pass > ck["decay_from"]):
+            raise SystemExit(f"--resume: --epochs {ck['epochs']} → {a.epochs} only with --schedule wsd, "
+                             f"before the decay began (pass {ck['decay_from'] // per_pass})")
+        bad = model.load_state_dict(ck["weights"], strict=False).unexpected_keys
+        assert not bad, f"--resume: weights the model doesn't have: {bad[:5]}"
+        opt.load_state_dict(ck["opt"])
+        sched.load_state_dict(ck["sched"])
+        log, best, since_best, first = ck["log"], ck["best"], ck["since_best"], ck["ep"] + 1
+        random.setstate(ck["random"])
+        torch.set_rng_state(ck["torch"])
+        if ck.get("cuda") is not None and torch.cuda.is_available():
+            torch.cuda.set_rng_state_all(ck["cuda"])
+        print(f"--resume: runs/{a.name} from pass {ck['ep']} of {ck['epochs']}"
+              + (f", now {a.epochs}" if ck["epochs"] != a.epochs else ""), flush=True)
+
+    def save_state(ep, done):
+        """The whole training state, written then renamed, so a cut-off write leaves the last one."""
+        if not (a.checkpoint or a.resume):
+            return
+        ck = {"same": same, "epochs": a.epochs, "decay_from": decay_from, "ep": ep, "done": done,
+              "weights": weights(), "opt": opt.state_dict(), "sched": sched.state_dict(),
+              "log": log, "best": best, "since_best": since_best, "random": random.getstate(),
+              "torch": torch.get_rng_state(), "cuda": torch.cuda.get_rng_state_all() if torch.cuda.is_available() else None}
+        torch.save(ck, out / "state.pt.tmp")
+        os.replace(out / "state.pt.tmp", checkpoint)
+
+    for ep in range(first, a.epochs + 1):
         if n_replay:  # a fresh draw each pass, mixed in by width with the rest
             by_width = sorted(train + random.sample(pool, n_replay), key=aspect)
         chunks = [by_width[k: k + a.batch_size] for k in range(0, len(by_width), a.batch_size)]
@@ -648,6 +713,7 @@ def main():
         last = ep == a.epochs or ep == a.stop_at
         if ep % a.eval_every and not last:
             print(f"epoch {ep:2}  loss {total / len(chunks):.3f}  {secs:5.0f} s", flush=True)
+            save_state(ep, done=False)
             continue
         ser, exact, shown, ser_capped, runaway = score(model, dev_items, vocab, a.device)
         row = {"epoch": ep, "loss": total / len(chunks), "train_secs": secs, "dev_ser": ser, "dev_exact": exact,
@@ -658,19 +724,22 @@ def main():
         for name, want, got in shown:
             print(f"   {name}\n     want {want}\n     got  {got}", flush=True)
         (out / "log.json").write_text(json.dumps(log, indent=1))
-        state = {k: v for k, v in model.state_dict().items()
-                 if whole or "lora" in k or not k.startswith("encoder.") or k in unfrozen}
+        state = weights()
         torch.save(state, out / "reader.pt")
+        stop = None
         if ser < best:
             best, since_best = ser, 0
             torch.save(state, out / "best.pt")
         else:
             since_best += 1
             if a.patience and since_best >= a.patience:
-                print(f"stopping: no better SER in {a.patience} scorings; best {best:.3f} kept in best.pt", flush=True)
-                break
-        if ep == a.stop_at:
-            print(f"stopping at pass {ep} (--stop-at); reader.pt is this pass", flush=True)
+                stop = f"stopping: no better SER in {a.patience} scorings; best {best:.3f} kept in best.pt"
+        if stop is None and ep == a.stop_at:
+            stop = f"stopping at pass {ep} (--stop-at); reader.pt is this pass"
+        # --stop-at leaves the run resumable; patience and the last pass finish it
+        save_state(ep, done=ep == a.epochs or (stop is not None and ep != a.stop_at))
+        if stop:
+            print(stop, flush=True)
             break
 
 

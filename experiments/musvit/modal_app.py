@@ -11,7 +11,10 @@ Volumes (made once with `modal volume create` and `modal volume put`):
   musvit         /cache   weights/musvit-light (and musvit), runs/NAME/
 
 The run's model and log land in the musvit volume's runs/NAME/; fetch them
-with `modal volume get musvit runs/NAME <dir>`. The Modal client is a uv
+with `modal volume get musvit runs/NAME <dir>`. A long run given --resume
+(proto.py) saves its whole state after every pass, the volume is committed
+as each one lands, and a container that fails or is preempted is retried
+and carries on from the last pass. The Modal client is a uv
 tool: `uv tool install modal`.
 """
 
@@ -62,10 +65,38 @@ def local_copy(src="/staves", dst="/tmp/staves", threads=64, skip=("pdfs", "unla
 def train(args: list[str]):
     local_copy(only=sorted({a.split("/")[2] for a in args if a.startswith("/staves/") and a.count("/") >= 3}) or None)
     args = [a.replace("/staves/", "/tmp/staves/", 1) if a.startswith("/staves/") else a for a in args]
+    stop = None
+    if "--checkpoint" in args or "--resume" in args:
+        stop = commit_checkpoints(Path("/cache/runs") / args[0])
     try:
         subprocess.run(["python", "/root/proto.py", *args], check=True, env={**os.environ, "MUSVIT_CACHE": "/cache"})
     finally:
+        if stop:
+            stop.set()
         cache.commit()
+
+
+def commit_checkpoints(run: Path, every: int = 60):
+    """Commit the volume whenever the run's state.pt changes (checked each
+    minute), so a container cut off mid-run leaves its last pass saved.
+    Returns the event that stops it."""
+    import threading
+    stop, seen = threading.Event(), [None]
+
+    def watch():
+        while not stop.wait(every):
+            try:
+                m = (run / "state.pt").stat().st_mtime_ns
+            except OSError:
+                continue
+            if m != seen[0]:
+                try:
+                    cache.commit()
+                    seen[0] = m
+                except Exception as e:  # try again next minute; the final commit still runs
+                    print(f"checkpoint commit failed: {type(e).__name__}: {e}", flush=True)
+    threading.Thread(target=watch, daemon=True).start()
+    return stop
 
 
 @app.function(image=image, gpu="L4", timeout=1800, volumes={"/cache": cache})
@@ -174,4 +205,7 @@ def cut_all(chunk: int = 10):
 
 @app.local_entrypoint()
 def main(args: str, gpu: str = "L4"):
-    train.with_options(gpu=gpu).remote(shlex.split(args))
+    argv = shlex.split(args)
+    # a resumable run is retried after a failure or preemption, and picks up from its last pass
+    retries = modal.Retries(max_retries=2, initial_delay=30.0) if "--resume" in argv else None
+    train.with_options(gpu=gpu, retries=retries).remote(argv)
