@@ -1097,6 +1097,10 @@ async function readMark(n, id, { replace = false } = {}) {
   }
   if (pdf !== S.pdf) return;
   if (r) noteReader(r.reader);
+  // the editor may be choosing the mark's kind as the reading arrives: putting
+  // it in redraws the panel, which would close the menu under them
+  await menuClosed();
+  if (pdf !== S.pdf) return;
   const page = S.doc.pages[n];
   const m = page?.marks.find((x) => x.id === id);
   const text = (r?.error ? '' : r?.text || '').trim();
@@ -1118,6 +1122,15 @@ async function readMark(n, id, { replace = false } = {}) {
   // while a key is held to place marks, or the keyboard is in another field
   const g = field();
   if (g && !S.held && (!inField() || document.activeElement === g)) { g.focus(); g.select(); }
+}
+
+// resolves once no menu in the panel has the keyboard (at once if none does)
+function menuClosed() {
+  const el = document.activeElement;
+  if (el?.tagName !== 'SELECT' || !el.closest('#inspector')) return Promise.resolve();
+  return new Promise((done) => {
+    const t = setInterval(() => { if (document.activeElement !== el) { clearInterval(t); done(); } }, 150);
+  });
 }
 
 // a text used before brings its usual kind, unless a kind was chosen
