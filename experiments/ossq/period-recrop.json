@@ -1,0 +1,355 @@
+[
+ {
+  "sqid": "sq10307350",
+  "path": "Haydn,_Joseph/String_Quartet_in_F_major,_Hob.III73,_Op.74_No.2",
+  "staves": 476,
+  "written": 476,
+  "skipped": {},
+  "padded_1space": 39
+ },
+ {
+  "sqid": "sq10313029",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_minor,_Hob.III74,_Op.74_No.3_(The_Horseman)",
+  "staves": 378,
+  "written": 378,
+  "skipped": {},
+  "padded_1space": 8
+ },
+ {
+  "sqid": "sq10328092",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III20,_Op.9_No.2",
+  "staves": 280,
+  "written": 280,
+  "skipped": {},
+  "padded_1space": 28
+ },
+ {
+  "sqid": "sq10372717",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III72,_Op.74_No.1",
+  "staves": 444,
+  "written": 444,
+  "skipped": {},
+  "padded_1space": 6
+ },
+ {
+  "sqid": "sq12113164",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.2_in_D_major,_K.155134a",
+  "staves": 131,
+  "written": 130,
+  "skipped": {
+   "0005-0002-1": "strips disagree (1 of 8 agree)"
+  },
+  "padded_1space": 6
+ },
+ {
+  "sqid": "sq12772795",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_minor,_Hob.III76,_Op.76_No.2",
+  "staves": 407,
+  "written": 407,
+  "skipped": {},
+  "padded_1space": 3
+ },
+ {
+  "sqid": "sq15049456",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III75,_Op.76_No.1",
+  "staves": 476,
+  "written": 476,
+  "skipped": {},
+  "padded_1space": 4
+ },
+ {
+  "sqid": "sq15230467",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.1_in_G_major,_K.8073f",
+  "staves": 132,
+  "written": 132,
+  "skipped": {},
+  "padded_1space": 6
+ },
+ {
+  "sqid": "sq15624112",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.23_in_F_major,_K.590",
+  "staves": 394,
+  "written": 394,
+  "skipped": {},
+  "padded_1space": 23
+ },
+ {
+  "sqid": "sq15730717",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.22_in_B-flat_major,_K.589",
+  "staves": 315,
+  "written": 315,
+  "skipped": {},
+  "padded_1space": 3
+ },
+ {
+  "sqid": "sq16138966",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.21_in_D_major,_K.575",
+  "staves": 316,
+  "written": 316,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq7070781",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "staves": 36,
+  "written": 36,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq7075297",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "staves": 112,
+  "written": 112,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq7078259",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "staves": 104,
+  "written": 104,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq7093885",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "staves": 103,
+  "written": 103,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq7103818",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.14_in_G_major,_K.387_(Op._10,_No._1)",
+  "staves": 339,
+  "written": 339,
+  "skipped": {},
+  "padded_1space": 9
+ },
+ {
+  "sqid": "sq7114183",
+  "path": "Haydn,_Joseph/String_Quartet_in_B_minor,_Hob.III68,_Op.64_No.2",
+  "staves": 320,
+  "written": 320,
+  "skipped": {},
+  "padded_1space": 2
+ },
+ {
+  "sqid": "sq7127785",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III65,_Op.64_No.1",
+  "staves": 352,
+  "written": 352,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq7249986",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III66,_Op.64,_No.4",
+  "staves": 380,
+  "written": 380,
+  "skipped": {},
+  "padded_1space": 16
+ },
+ {
+  "sqid": "sq7284122",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_major,_Hob.III63,_Op.64_No.5",
+  "staves": 347,
+  "written": 347,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq7294793",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.15_in_D_minor,_K.421417b_(Op._10,_No._2)",
+  "staves": 252,
+  "written": 252,
+  "skipped": {},
+  "padded_1space": 3
+ },
+ {
+  "sqid": "sq7302710",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.16_in_E-flat_major,_K.428421b_(Op._10,_No._4)",
+  "staves": 296,
+  "written": 296,
+  "skipped": {},
+  "padded_1space": 5
+ },
+ {
+  "sqid": "sq7353137",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.17_in_B-flat_major,_K.458_(Op._10,_No._3)",
+  "staves": 316,
+  "written": 316,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq7471661",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.19_in_C_major,_K.465_(Op._10,_No._6)",
+  "staves": 342,
+  "written": 342,
+  "skipped": {},
+  "padded_1space": 2
+ },
+ {
+  "sqid": "sq8071278",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.1,_Op.18_No.1",
+  "staves": 471,
+  "written": 471,
+  "skipped": {},
+  "padded_1space": 2
+ },
+ {
+  "sqid": "sq8088531",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III32,_Op.20_No.2",
+  "staves": 348,
+  "written": 348,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8455808",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_minor,_Hob.III33,_Op.20_No.3",
+  "staves": 475,
+  "written": 475,
+  "skipped": {},
+  "padded_1space": 3
+ },
+ {
+  "sqid": "sq8461409",
+  "path": "Haydn,_Joseph/String_Quartet_in_B-flat_major_(\u201cLa_Chasse\u201d),_Hob._III1,_Op.1_No.1",
+  "staves": 239,
+  "written": 239,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq8509238",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_major,_Hob.III34,_Op.20_No.4",
+  "staves": 436,
+  "written": 436,
+  "skipped": {},
+  "padded_1space": 4
+ },
+ {
+  "sqid": "sq8556926",
+  "path": "Haydn,_Joseph/String_Quartet_in_B-flat_major,_Hob.III5,_Op.1_No.5",
+  "staves": 240,
+  "written": 239,
+  "skipped": {
+   "0002-0001-1": "lines found in 1 of 6 strips"
+  },
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8796660",
+  "path": "Haydn,_Joseph/String_Quartet_in_A_major,_Hob.III36,_Op.20_No.6",
+  "staves": 340,
+  "written": 340,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8806134",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III6,_Op.1_No.6",
+  "staves": 236,
+  "written": 234,
+  "skipped": {
+   "0005-0005-3": "lines found in 2 of 9 strips",
+   "0005-0005-4": "lines found in 1 of 9 strips"
+  },
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8806881",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III2,_Op.1_No.2",
+  "staves": 240,
+  "written": 239,
+  "skipped": {
+   "0013-0005-4": "lines found in 1 of 7 strips"
+  },
+  "padded_1space": 5
+ },
+ {
+  "sqid": "sq8807040",
+  "path": "Haydn,_Joseph/String_Quartet_in_F_minor,_Hob.III35,_Op.20_No.5",
+  "staves": 415,
+  "written": 415,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq8853405",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.2,_Op.18_No.2",
+  "staves": 356,
+  "written": 356,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8907120",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.3,_Op.18_No.3",
+  "staves": 436,
+  "written": 436,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq8913219",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.4,_Op.18_No.4",
+  "staves": 354,
+  "written": 354,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq9146376",
+  "path": "Haydn,_Joseph/String_Quartet_in_A_major,_Hob.III24,_Op.9_No.6",
+  "staves": 316,
+  "written": 316,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq9199617",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.4_in_C_major,_K.157",
+  "staves": 156,
+  "written": 156,
+  "skipped": {},
+  "padded_1space": 1
+ },
+ {
+  "sqid": "sq9396439",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.5,_Op.18_No.5",
+  "staves": 396,
+  "written": 396,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq9719026",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.6,_Op.18_No.6",
+  "staves": 356,
+  "written": 356,
+  "skipped": {},
+  "padded_1space": 0
+ },
+ {
+  "sqid": "sq9961690",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III19,_Op.9_No.1",
+  "staves": 395,
+  "written": 388,
+  "skipped": {
+   "0002-0001-2": "strips disagree (0 of 8 agree)",
+   "0002-0001-3": "lines found in 0 of 8 strips",
+   "0005-0002-3": "strips disagree (1 of 8 agree)",
+   "0008-0001-3": "lines found in 1 of 8 strips",
+   "0013-0001-1": "lines found in 0 of 7 strips",
+   "0015-0001-1": "lines found in 1 of 6 strips",
+   "0015-0001-2": "lines found in 1 of 8 strips"
+  },
+  "padded_1space": 4
+ }
+]

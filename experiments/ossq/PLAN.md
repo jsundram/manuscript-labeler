@@ -221,3 +221,97 @@ Schubert and later) stay out for now. The editions scanned are mostly
 19th- and 20th-century engravings: period music, modern print. And it is
 the OpenScore corpus our synthetic stage already draws from, so the images
 are new to the reader but the music isn't.
+
+## Period staves for stage 1 (2026-10-20)
+
+The 1750–1800 works above, re-cropped to our convention and checked for
+label slips. Data only; nothing was trained. Code: `period.py` (app
+`ossq-period`, CPU only, at most 4 containers, plus musvit-zeus's
+`read_samples` for the check).
+
+**Selected:** 42 scanned scores, 13,253 staves:
+- Haydn: all 24 scanned (Op. 1, 9, 20, 64, 74, 76), 7,540 staves.
+- Mozart: all 15 scanned, K. 80 to K. 590, 3,344 staves. K. 464 is four
+  scores, one per movement.
+- Beethoven: Op. 18 Nos. 1–6, 2,369 staves.
+
+**Re-cropped** from the 256 px JPEGs in `ossq/scanned/`, without going
+back to the PDFs:
+- **Finding the lines:** each strip is split into ~300 px columns. In each
+  column, the darkness profile is searched for the best five-line comb
+  near the expected space (`staff_px` scaled to the JPEG). The comb must lie
+  near the box's middle, and its faintest line must be at least 0.15 darker
+  than the spaces between.
+- **Straightening:** a line is fitted through the columns that agree, so a
+  skewed scan is straightened along the staff, as `staff_crop` does.
+- **Crop:** 2.5 spaces above the top line to 2.5 below the bottom one (9
+  spaces), so the staff is 4/9 of the height.
+  - The box's full width plus one space of white at each end: the JPEG holds
+    nothing beyond the box, and the box ends where the staff does.
+  - Paper brightened to white by its 90th percentile. Grey JPEG, 256 px high.
+- **Result:** 13,241 written, 12 skipped:
+  - 9 where too few columns showed five lines;
+  - 3 where the columns disagreed.
+  - Seven of the 12 are in Haydn Op. 9 No. 1 (sq9961690). The other five
+    are one or two per score in four scores. They weren't looked at.
+- **Tilt:** 15 staves are tilted 3–4 spaces across their width (skewed
+  pages in sq10307350, sq7249986, sq9199617, sq7103818, sq7302710). They
+  are kept, straightened. Past 5 spaces a staff would be skipped; none is.
+- **White fill:** 192 staves have more than a space of white filled in above
+  or below, where the YOLO box stopped short of 2.5 spaces.
+- Each score's numbers are in `period-recrop.json`. Each staff's geometry
+  (top line, slope, space, columns agreeing, white fill) is in
+  `/staves/ossq-period/sq<id>/manifest.json`.
+
+**The crops look like ours.** The contact sheet (`period.py::sheet`) shows
+24 re-cropped staves under 6 of dataL2's and 6 of dolores':
+- the staff centred at about 4/9 of the height, as in dataL2;
+- 2.5 spaces of neighbouring ink (dynamics, ledger notes, slurs) above and
+  below, and nothing of the staff cut off;
+- the clef, or the system's brace, at the left edge.
+
+The tilted staves come out straight. dolores is a public set cut its own
+way, so dataL2 is the fair comparison.
+
+**Pairing check:** 25 staves per score, evenly spaced through it (1,050
+staves). They were read by musvit-D4 (run D3S-h96, `reader.pt`, 96 px).
+- **Measure counts:** the reading's count matched the label's on 938 staves
+  (89%). On 104 the reader found fewer measures, on 8 more.
+- **First measure:** its rhythm matched the label's on 90% of staves.
+- **Per score:** the share whose measure count differs ranges from 0 to 36%.
+  The highest are Beethoven Op. 18 No. 2 (36%), K. 590 and one of K. 464's
+  movements (sq7078259, 28%), and Haydn Op. 64 No. 2 and K. 465 (24%).
+  Sixteen scores are at 4% or below.
+- **No score is suspect.** In every score:
+  - the mismatches are scattered through it, not a run from some point to
+    its end (which is what a slipped system would leave);
+  - the first measure's rhythm matches on at least 18 of 25 staves. A
+    shifted label would almost never match.
+- **The misses are the reader's.** Of the 104 readings short of the label,
+  only 16 lose just the last measure. The rest drop or merge one in the
+  middle, mostly on long staves (median 10 measures, against 7 overall).
+- **Disagreements looked at,** image against label against reading:
+  - K. 465's cello, last system: 13 bars, read as 12; a repeated bar dropped.
+  - K. 590's first violin: tied half notes read as dotted halves, and 16th
+    figures read as triplets.
+  - Op. 18 No. 2: a run of 16th triplets.
+  - The opening of Op. 76 No. 1: the print has a barline the encoding lacks.
+
+  Each label matched its image.
+- Every reading, with its counts, is in `period-pairing.json`.
+
+**Lists** (`musvit-staves`, keys relative to `/staves/ossq-period/`):
+- `samples.ossq-period.txt`: all 13,241.
+- `samples.ossq-period-clean.txt`: also 13,241, since no score was excluded.
+- `samples.ossq-period-check.txt`: the 1,050 read for the check.
+
+**Cost:** about $0.30. The re-crop was $0.19 (CPU, about 25 min on 4
+containers; reads off the volume are slow), and the check $0.11 (an L4 for
+a few minutes).
+
+```
+modal run experiments/ossq/period.py::recrop               # re-crop the 42 scores -> /staves/ossq-period/
+modal run experiments/ossq/period.py::sheet                # contact sheet (--keys sqX/name,... for chosen staves)
+modal run experiments/ossq/period.py::check                # pairing check with musvit-D4
+modal run experiments/ossq/period.py::clean [--exclude sqX,...]   # both lists
+```
