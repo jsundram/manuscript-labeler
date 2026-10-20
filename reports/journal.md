@@ -4,6 +4,32 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: Drawn staves with clef changes
+
+[Report](2026-10-20-clef-change-staves/)
+
+**Context.** The OSSQ report found that every reader so far misses the
+same four cello clef changes in the clean test, and that those passages
+also draw false flags in the edition. The user asked how to fix the clef
+detection problem and agreed to "pinning zeus, clef change data set and
+flag". compare.py was changed to score the clef apart, and a set of 3,970
+drawn staves with clef changes inside the staff was built (dataS4).
+
+**Question.** With the clef-change staves in the drawn stage (Drawn 15k,
+against Drawn 11k) and D4's chain otherwise unchanged, does the reader
+write the clef changes, and at what cost elsewhere?
+
+**Finding.** Mostly yes: clef errors 4 → 1, and pitch 316 bars against
+311. Bars exact tied at 277 (+0, −11 to +11). In the edition's flag test
+it caught the same 94 of 107 errors with 11 false flags against 14; the
+clef-passage false flags remain. All inside the noise.
+
+**Why a report.** It is the first targeted use of drawn staves: a set made
+for one weakness, measured on it.
+
+**What followed.** Not adopted yet. The second runs of D4 and D3L2-h96
+come first, to tell small gains from luck.
+
 ## 2026-10-20: OSSQ's period staves in the public stage
 
 [Report](2026-10-20-ossq-stage-1/)

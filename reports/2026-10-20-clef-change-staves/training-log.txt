@@ -1,0 +1,8 @@
+b7d0n8cqn.output:14760 training staves, 147 dev, vocabulary 137, dev tokens unseen in training 0
+b7d0n8cqn.output:epoch  2  loss 0.064    195 s  dev SER 0.277  exact 2/147  (runaways 1; SER cut at 2x 0.251)
+b7d0n8cqn.output:epoch  4  loss 0.035    204 s  dev SER 0.258  exact 1/147  (runaways 2; SER cut at 2x 0.256)
+b7d0n8cqn.output:epoch  6  loss 0.020    201 s  dev SER 0.248  exact 0/147  (runaways 1; SER cut at 2x 0.242)
+b7d0n8cqn.output:epoch  8  loss 0.012    199 s  dev SER 0.246  exact 0/147  (runaways 1; SER cut at 2x 0.240)
+b7d0n8cqn.output:epoch 10  loss 0.008    201 s  dev SER 0.240  exact 0/147  (runaways 1; SER cut at 2x 0.235)
+b88brq1qu.output:3411 training staves, 147 dev, vocabulary 137, dev tokens unseen in training 0
+b88brq1qu.output:epoch 24  loss 0.006     47 s  dev SER 0.001  exact 144/147  (runaways 0; SER cut at 2x 0.001)
