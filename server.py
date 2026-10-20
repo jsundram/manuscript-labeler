@@ -590,7 +590,7 @@ class Edition:
             raise  # the box (mark_jpeg): the request's fault, not Claude's
         except Exception as e:
             raise reader.ReadFailed(f"{type(e).__name__}: {e}") from e
-        return {**{k: a[k] for k in ("text", "legible", "error") if k in a}, "reader": self.reader_state(rel)}
+        return {**{k: a[k] for k in ("text", "legible", "kind", "error") if k in a}, "reader": self.reader_state(rel)}
 
     def barline_state(self) -> str:
         """How bar lines are found, for the source panel."""

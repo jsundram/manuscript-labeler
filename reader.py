@@ -62,6 +62,14 @@ PAGE_SCHEMA = {
 MARK_PROMPT = """This is a cut-out from a late-18th-century Italian music manuscript (parts of a string quartet): a word or phrase written on the page, such as a tempo, a section title, a direction ("Segue il Trio", "Da Capo"), a dynamic, or a title-page line.
 
 Transcribe it as an editor would type it: the words in full, with the copyist's abbreviations expanded ("All.tto mod.to" is "Allegretto moderato") and superscript letters joined, keeping the copyist's spelling, capitals and punctuation otherwise. Ignore music notation and ink from beyond the phrase.
+
+Also say what kind of writing it is:
+- "tempo": a tempo or character marking at the head of a movement or section ("Allegro", "Andantino con moto", "Grave").
+- "title": the name of a movement or section ("Minuetto", "Trio", "Rondo", "Menuetto da Capo" when it heads music).
+- "dynamic": a dynamic or expression word in the music ("p", "for.", "cresc.", "dolce", "smorz.").
+- "text": anything else written as words: directions ("Segue", "Volti subito", "Da Capo"), title-page lines, a part's name.
+- "stray": not writing: a blot, a stray stroke or bleed-through.
+- "other": anything else (a number, a stamp).
 """
 KNOWN = """
 The editor has already typed these texts in other manuscripts of the same works. If this one says the same, answer with that text exactly; otherwise transcribe it:
@@ -69,8 +77,9 @@ The editor has already typed these texts in other manuscripts of the same works.
 """
 MARK_SCHEMA = {
     "type": "object",
-    "properties": {"text": {"type": "string"}, "legible": {"type": "boolean"}},
-    "required": ["text", "legible"],
+    "properties": {"text": {"type": "string"}, "legible": {"type": "boolean"},
+                   "kind": {"type": "string", "enum": ["tempo", "title", "dynamic", "text", "stray", "other"]}},
+    "required": ["text", "legible", "kind"],
     "additionalProperties": False,
 }
 

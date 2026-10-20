@@ -1063,7 +1063,9 @@ const READ_WAIT = 15000;  // ms a new page waits for Claude's reading before goi
 // asked on its own on a reviewed page. The answer is dropped if the mark
 // changed meanwhile (moved, resized, made a kind without words) or the
 // editor typed in its field; one Claude can't make out is only shown, as
-// the field's placeholder. It never changes the mark's kind.
+// the field's placeholder. Claude says the mark's kind too: it's taken while
+// the mark is still the plain text kind it was made with, so a kind the
+// editor chose stands.
 async function readMark(n, id, { replace = false } = {}) {
   const pdf = S.pdf;
   const m0 = S.doc.pages[n]?.marks.find((m) => m.id === id);
@@ -1073,6 +1075,7 @@ async function readMark(n, id, { replace = false } = {}) {
   const field = () => (S.sel?.id === id && n === S.page ? $('#inspector [data-f="text"]') : null);
   const button = () => (S.sel?.id === id && n === S.page ? $('#inspector [data-act="read-mark"]') : null);
   const textAt = (m0.text || '').trim();  // the mark's text when asked
+  const kindAt = m0.kind;
   const fieldAt = field() ? field().value.trim() : null;  // and its field, if open
   S.readingMarks.add(id);
   // not a redraw: the field keeps the cursor
@@ -1111,10 +1114,12 @@ async function readMark(n, id, { replace = false } = {}) {
   if (f && f.value.trim() !== (fieldAt ?? textAt)) return;  // typing, not yet set
   if (!replace && (m.text || '').trim()) return;
   if (r.legible === false) { f?.setAttribute('placeholder', `Claude can't make it out (perhaps "${text}")`); return; }
+  const kind = kindAt === 'text' && m.kind === 'text' && MARK_KINDS.includes(r.kind) && r.kind !== 'text' ? r.kind : null;
   const edit = (pg) => {
     const mk = pg.marks.find((x) => x.id === id);
     mk.text = text;
     mk.text_auto = true;
+    if (kind) mk.kind = kind;
   };
   if (n === S.page) mutate(edit, { by: 'reading' });
   else { edit(page); touchPage(page); changed(); }  // moved on before it came: no undo step (undo snapshots this page)
