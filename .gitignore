@@ -9,3 +9,6 @@ __pycache__/
 
 # autodetect.py's bar-line filters, trained per held-out source
 /experiments/zeus/auto/cache/
+
+# explainer.py output; the published page is saved in reports/2026-10-19-copyist-staves/
+/experiments/synth/explainer.html
