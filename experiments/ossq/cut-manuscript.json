@@ -1,0 +1,29 @@
+[
+ {
+  "sqid": "sq7313978",
+  "kind": "manuscript",
+  "path": "Andr\u00e9e,_Elfrida/String_Quartet_in_A_major",
+  "type": "0",
+  "encoding_systems": 161,
+  "systems_found": 154,
+  "error": "161 encoding systems against 154 systems found"
+ },
+ {
+  "sqid": "sq7551068",
+  "kind": "manuscript",
+  "path": "Maier,_Amanda/String_Quartet_in_A_major",
+  "type": "0",
+  "encoding_systems": 50,
+  "systems_found": 14,
+  "error": "50 encoding systems against 14 systems found"
+ },
+ {
+  "sqid": "sq8818128",
+  "kind": "manuscript",
+  "path": "Mayer,_Emilie/String_Quartet_in_A_Major",
+  "type": "0",
+  "encoding_systems": 127,
+  "systems_found": 8,
+  "error": "127 encoding systems against 8 systems found"
+ }
+]

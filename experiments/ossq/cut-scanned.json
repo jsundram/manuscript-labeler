@@ -1,0 +1,1447 @@
+[
+ {
+  "sqid": "sq10307350",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_F_major,_Hob.III73,_Op.74_No.2",
+  "type": "1",
+  "encoding_systems": 119,
+  "systems_found": 119,
+  "bar_check": false,
+  "why": {
+   "written": 473,
+   "written, only rests": 3
+  },
+  "written": 476,
+  "seconds": 39
+ },
+ {
+  "sqid": "sq10313029",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_minor,_Hob.III74,_Op.74_No.3_(The_Horseman)",
+  "type": "1",
+  "encoding_systems": 95,
+  "systems_found": 95,
+  "bar_check": false,
+  "why": {
+   "written": 378,
+   "a hidden object": 1,
+   "vocab lacks 10in4": 1
+  },
+  "written": 378,
+  "seconds": 36
+ },
+ {
+  "sqid": "sq10328092",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III20,_Op.9_No.2",
+  "type": "1",
+  "encoding_systems": 70,
+  "systems_found": 70,
+  "bar_check": false,
+  "why": {
+   "written": 280
+  },
+  "written": 280,
+  "seconds": 34
+ },
+ {
+  "sqid": "sq10372717",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III72,_Op.74_No.1",
+  "type": "1",
+  "encoding_systems": 112,
+  "systems_found": 112,
+  "bar_check": false,
+  "why": {
+   "written": 442,
+   "a hidden object": 4,
+   "written, only rests": 2
+  },
+  "written": 444,
+  "seconds": 82
+ },
+ {
+  "sqid": "sq10381459",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III21,_Op.9_No.3",
+  "type": "1",
+  "encoding_systems": 88,
+  "systems_found": 87,
+  "error": "88 encoding systems against 87 systems found"
+ },
+ {
+  "sqid": "sq10414906",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_minor,_Hob.III22,_Op.9_No.4",
+  "type": "1",
+  "encoding_systems": 100,
+  "systems_found": 99,
+  "error": "100 encoding systems against 99 systems found"
+ },
+ {
+  "sqid": "sq10502527",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/Grosse_Fuge_in_B-flat_major,_Op.133",
+  "type": "1",
+  "encoding_systems": 109,
+  "systems_found": 109,
+  "bar_check": false,
+  "why": {
+   "written": 432,
+   "written, only rests": 4
+  },
+  "written": 436,
+  "seconds": 31
+ },
+ {
+  "sqid": "sq10517302",
+  "kind": "scanned",
+  "path": "Stanford,_Charles_Villiers/String_Quartet_No.1,_Op.44",
+  "type": "1``",
+  "encoding_systems": 183,
+  "systems_found": 160,
+  "error": "183 encoding systems against 160 systems found"
+ },
+ {
+  "sqid": "sq10527526",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.12,_Op.127",
+  "type": "1",
+  "encoding_systems": 159,
+  "systems_found": 159,
+  "bar_check": false,
+  "why": {
+   "written": 624,
+   "a hidden object": 12
+  },
+  "written": 624,
+  "seconds": 46
+ },
+ {
+  "sqid": "sq10675759",
+  "kind": "scanned",
+  "path": "Borodin,_Alexander/String_Quartet_No.2",
+  "type": "1",
+  "encoding_systems": 179,
+  "systems_found": 178,
+  "error": "179 encoding systems against 178 systems found"
+ },
+ {
+  "sqid": "sq11154985",
+  "kind": "scanned",
+  "path": "Busoni,_Ferruccio/String_Quartet_No.1,_Op.19,_BV_208",
+  "type": "1",
+  "encoding_systems": 168,
+  "systems_found": 168,
+  "bar_check": false,
+  "why": {
+   "written": 661,
+   "a hidden object": 11
+  },
+  "written": 661,
+  "seconds": 122
+ },
+ {
+  "sqid": "sq11164006",
+  "kind": "scanned",
+  "path": "Cherubini,_Luigi/String_Quartet_No.1",
+  "type": "1",
+  "encoding_systems": 179,
+  "systems_found": 179,
+  "bar_check": false,
+  "why": {
+   "written": 689,
+   "a hidden object": 12,
+   "written, only rests": 15
+  },
+  "written": 704,
+  "seconds": 56
+ },
+ {
+  "sqid": "sq11539384",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.13_in_B\u266d_major,_Op.130",
+  "type": "1",
+  "encoding_systems": 199,
+  "systems_found": 199,
+  "bar_check": false,
+  "why": {
+   "written": 778,
+   "a hidden object": 17,
+   "lmx lacks 18in8": 1
+  },
+  "written": 778,
+  "seconds": 55
+ },
+ {
+  "sqid": "sq12113164",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.2_in_D_major,_K.155134a",
+  "type": "1",
+  "encoding_systems": 35,
+  "systems_found": 35,
+  "bar_check": false,
+  "why": {
+   "written": 131,
+   "a hidden object": 9
+  },
+  "written": 131,
+  "seconds": 18
+ },
+ {
+  "sqid": "sq12536479",
+  "kind": "scanned",
+  "path": "Nielsen,_Carl/String_Quartet_No.1,_Op.13",
+  "type": "1",
+  "encoding_systems": 116,
+  "systems_found": 116,
+  "bar_check": false,
+  "why": {
+   "written": 418,
+   "a hidden object": 9,
+   "3 staves found, not 4": 7,
+   "vocab lacks beats:9": 8,
+   "written, only rests": 1
+  },
+  "written": 419,
+  "seconds": 48
+ },
+ {
+  "sqid": "sq12772795",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_minor,_Hob.III76,_Op.76_No.2",
+  "type": "1",
+  "encoding_systems": 104,
+  "systems_found": 104,
+  "bar_check": false,
+  "why": {
+   "written": 405,
+   "a hidden object": 8,
+   "vocab lacks 9in2": 1,
+   "written, only rests": 2
+  },
+  "written": 407,
+  "seconds": 37
+ },
+ {
+  "sqid": "sq14387632",
+  "kind": "scanned",
+  "path": "Beach,_Amy/String_Quartet,_Op._89",
+  "type": "1",
+  "encoding_systems": 87,
+  "error": "no pdf"
+ },
+ {
+  "sqid": "sq14720995",
+  "kind": "scanned",
+  "path": "Glinka,_Mikhail/String_Quartet",
+  "type": "1",
+  "encoding_systems": 104,
+  "systems_found": 104,
+  "bar_check": false,
+  "why": {
+   "written": 410,
+   "a hidden object": 5,
+   "written, only rests": 1
+  },
+  "written": 411,
+  "seconds": 32
+ },
+ {
+  "sqid": "sq15049456",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III75,_Op.76_No.1",
+  "type": "1",
+  "encoding_systems": 119,
+  "systems_found": 119,
+  "bar_check": false,
+  "why": {
+   "written": 475,
+   "written, only rests": 1
+  },
+  "written": 476,
+  "seconds": 54
+ },
+ {
+  "sqid": "sq15230467",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.1_in_G_major,_K.8073f",
+  "type": "1",
+  "encoding_systems": 34,
+  "systems_found": 34,
+  "bar_check": false,
+  "why": {
+   "written": 132,
+   "a hidden object": 4
+  },
+  "written": 132,
+  "seconds": 14
+ },
+ {
+  "sqid": "sq15624112",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.23_in_F_major,_K.590",
+  "type": "1",
+  "encoding_systems": 100,
+  "systems_found": 100,
+  "bar_check": false,
+  "why": {
+   "written": 393,
+   "3 staves found, not 4": 1,
+   "written, only rests": 1,
+   "a hidden object": 2
+  },
+  "written": 394,
+  "seconds": 31
+ },
+ {
+  "sqid": "sq15730717",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.22_in_B-flat_major,_K.589",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 79,
+  "bar_check": false,
+  "why": {
+   "written": 313,
+   "written, only rests": 2,
+   "a hidden object": 1
+  },
+  "written": 315,
+  "seconds": 33
+ },
+ {
+  "sqid": "sq16138966",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.21_in_D_major,_K.575",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 79,
+  "bar_check": false,
+  "why": {
+   "written": 314,
+   "written, only rests": 2
+  },
+  "written": 316,
+  "seconds": 28
+ },
+ {
+  "sqid": "sq7070781",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "type": "1",
+  "encoding_systems": 9,
+  "systems_found": 9,
+  "bar_check": true,
+  "why": {
+   "written": 36
+  },
+  "written": 36,
+  "seconds": 4
+ },
+ {
+  "sqid": "sq7075297",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "type": "1",
+  "encoding_systems": 28,
+  "systems_found": 28,
+  "bar_check": true,
+  "why": {
+   "written": 112
+  },
+  "written": 112,
+  "seconds": 11
+ },
+ {
+  "sqid": "sq7078259",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "type": "1",
+  "encoding_systems": 26,
+  "systems_found": 26,
+  "bar_check": true,
+  "why": {
+   "written": 104
+  },
+  "written": 104,
+  "seconds": 13
+ },
+ {
+  "sqid": "sq7093885",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.18_in_A_major,_K.464_(Op._10,_No._5)",
+  "type": "1",
+  "encoding_systems": 26,
+  "systems_found": 26,
+  "bar_check": true,
+  "why": {
+   "written": 103,
+   "a hidden object": 1
+  },
+  "written": 103,
+  "seconds": 13
+ },
+ {
+  "sqid": "sq7103818",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.14_in_G_major,_K.387_(Op._10,_No._1)",
+  "type": "1",
+  "encoding_systems": 87,
+  "systems_found": 87,
+  "bar_check": true,
+  "why": {
+   "written": 339,
+   "a hidden object": 9
+  },
+  "written": 339,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq7108150",
+  "kind": "scanned",
+  "path": "Brahms,_Johannes/String_Quartet_No.1,_Op.51_No.1",
+  "type": "1",
+  "encoding_systems": 117,
+  "systems_found": 117,
+  "bar_check": false,
+  "why": {
+   "written": 443,
+   "a hidden object": 15,
+   "written, dropped ['arpeggiate']": 10
+  },
+  "written": 453,
+  "seconds": 37
+ },
+ {
+  "sqid": "sq7114183",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_B_minor,_Hob.III68,_Op.64_No.2",
+  "type": "1",
+  "encoding_systems": 80,
+  "systems_found": 80,
+  "bar_check": false,
+  "why": {
+   "written": 320
+  },
+  "written": 320,
+  "seconds": 37
+ },
+ {
+  "sqid": "sq7123582",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_B-flat_major,_Hob.III67,_Op.64_No.3",
+  "type": "1",
+  "encoding_systems": 103,
+  "systems_found": 104,
+  "error": "103 encoding systems against 104 systems found"
+ },
+ {
+  "sqid": "sq7127785",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III65,_Op.64_No.1",
+  "type": "1",
+  "encoding_systems": 88,
+  "systems_found": 88,
+  "bar_check": true,
+  "why": {
+   "written": 349,
+   "written, only rests": 3
+  },
+  "written": 352,
+  "seconds": 33
+ },
+ {
+  "sqid": "sq7158117",
+  "kind": "scanned",
+  "path": "Jan\u00e1\u010dek,_Leo\u0161/String_Quartet_No.1_\u201cKreutzer_Sonata\u201d",
+  "type": "1",
+  "encoding_systems": 138,
+  "systems_found": 138,
+  "bar_check": true,
+  "why": {
+   "bar count != csv note": 2,
+   "written": 514,
+   "written, only rests": 19,
+   "staff excepted by omrdp": 1,
+   "vocab lacks beat-type:16": 8,
+   "vocab lacks 4in6": 1,
+   "a hidden object": 1
+  },
+  "written": 533,
+  "seconds": 49
+ },
+ {
+  "sqid": "sq7224846",
+  "kind": "scanned",
+  "path": "Mendelssohn,_Felix/String_Quartet_No.1,_Op.12",
+  "type": "1",
+  "encoding_systems": 99,
+  "systems_found": 99,
+  "bar_check": false,
+  "why": {
+   "written": 382,
+   "lmx lacks 5in6": 1,
+   "written, only rests": 5,
+   "a hidden object": 4,
+   "vocab lacks 4in6": 4
+  },
+  "written": 387,
+  "seconds": 31
+ },
+ {
+  "sqid": "sq7249986",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III66,_Op.64,_No.4",
+  "type": "1",
+  "encoding_systems": 95,
+  "systems_found": 95,
+  "bar_check": false,
+  "why": {
+   "written": 379,
+   "written, only rests": 1
+  },
+  "written": 380,
+  "seconds": 44
+ },
+ {
+  "sqid": "sq7267316",
+  "kind": "scanned",
+  "path": "Jan\u00e1\u010dek,_Leo\u0161/String_Quartet_No.2_\u201cIntimate_Letters\u201d",
+  "type": "1",
+  "encoding_systems": 193,
+  "systems_found": 194,
+  "error": "193 encoding systems against 194 systems found"
+ },
+ {
+  "sqid": "sq7284122",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_major,_Hob.III63,_Op.64_No.5",
+  "type": "1",
+  "encoding_systems": 87,
+  "systems_found": 87,
+  "bar_check": true,
+  "why": {
+   "written, only rests": 4,
+   "written": 343,
+   "vocab lacks 10in8": 1
+  },
+  "written": 347,
+  "seconds": 29
+ },
+ {
+  "sqid": "sq7294793",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.15_in_D_minor,_K.421417b_(Op._10,_No._2)",
+  "type": "1",
+  "encoding_systems": 64,
+  "systems_found": 64,
+  "bar_check": false,
+  "why": {
+   "written": 252,
+   "a hidden object": 4
+  },
+  "written": 252,
+  "seconds": 29
+ },
+ {
+  "sqid": "sq7295726",
+  "kind": "scanned",
+  "path": "Bart\u00f3k,_B\u00e9la/String_Quartet_No.1,_Op.7_(Sz.40)",
+  "type": "1",
+  "encoding_systems": 147,
+  "systems_found": 147,
+  "bar_check": true,
+  "why": {
+   "written": 547,
+   "written, only rests": 16,
+   "a hidden object": 17,
+   "vocab lacks beats:5": 7,
+   "lmx lacks 9in6": 1
+  },
+  "written": 563,
+  "seconds": 62
+ },
+ {
+  "sqid": "sq7300376",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III64,_Op.64_No.6",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 80,
+  "error": "79 encoding systems against 80 systems found"
+ },
+ {
+  "sqid": "sq7302602",
+  "kind": "scanned",
+  "path": "Brahms,_Johannes/String_Quartet_No.2,_Op.51_No.2",
+  "type": "1",
+  "encoding_systems": 123,
+  "systems_found": 123,
+  "bar_check": false,
+  "why": {
+   "written": 479,
+   "a hidden object": 13
+  },
+  "written": 479,
+  "seconds": 40
+ },
+ {
+  "sqid": "sq7302710",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.16_in_E-flat_major,_K.428421b_(Op._10,_No._4)",
+  "type": "1",
+  "encoding_systems": 74,
+  "systems_found": 74,
+  "bar_check": false,
+  "why": {
+   "written": 296
+  },
+  "written": 296,
+  "seconds": 28
+ },
+ {
+  "sqid": "sq7353137",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.17_in_B-flat_major,_K.458_(Op._10,_No._3)",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 79,
+  "bar_check": false,
+  "why": {
+   "written": 316
+  },
+  "written": 316,
+  "seconds": 26
+ },
+ {
+  "sqid": "sq7354505",
+  "kind": "scanned",
+  "path": "Indy,_Vincent_d\u2019/String_Quartet_No.1,_Op.35",
+  "type": "1",
+  "encoding_systems": 243,
+  "systems_found": 243,
+  "bar_check": false,
+  "why": {
+   "written": 932,
+   "a hidden object": 29,
+   "written, only rests": 9,
+   "vocab lacks 10in8": 1,
+   "vocab lacks 9in4": 1
+  },
+  "written": 941,
+  "seconds": 87
+ },
+ {
+  "sqid": "sq7358579",
+  "kind": "scanned",
+  "path": "Glazunov,_Alexander/String_Quartet_No.1,_Op.1",
+  "type": "1",
+  "encoding_systems": 169,
+  "systems_found": 169,
+  "bar_check": false,
+  "why": {
+   "vocab lacks beats:9": 12,
+   "written": 634,
+   "written, only rests": 18,
+   "a hidden object": 12
+  },
+  "written": 652,
+  "seconds": 45
+ },
+ {
+  "sqid": "sq7358708",
+  "kind": "scanned",
+  "path": "Faur\u00e9,_Gabriel/String_Quartet,_Op.121",
+  "type": "1",
+  "encoding_systems": 155,
+  "systems_found": 155,
+  "bar_check": false,
+  "why": {
+   "written": 597,
+   "written, only rests": 16,
+   "a hidden object": 7
+  },
+  "written": 613,
+  "seconds": 48
+ },
+ {
+  "sqid": "sq7362818",
+  "kind": "scanned",
+  "path": "Elgar,_Edward/String_Quartet,_Op.83",
+  "type": "1",
+  "encoding_systems": 180,
+  "systems_found": 180,
+  "bar_check": false,
+  "why": {
+   "written": 708,
+   "written, only rests": 5,
+   "a hidden object": 2,
+   "written, dropped ['arpeggiate']": 5
+  },
+  "written": 718,
+  "seconds": 84
+ },
+ {
+  "sqid": "sq7383977",
+  "kind": "scanned",
+  "path": "Arriaga,_Juan_Cris\u00f3stomo_de/String_Quartet_No.3_in_E-flat_Major",
+  "type": "2",
+  "encoding_systems": 168,
+  "systems_found": 168,
+  "bar_check": false,
+  "why": {
+   "written": 669,
+   "written, only rests": 3
+  },
+  "written": 672,
+  "seconds": 59
+ },
+ {
+  "sqid": "sq7397765",
+  "kind": "scanned",
+  "path": "Schubert,_Franz/String_Quartet_in_D_minor,_D.810,_Op.14_(\u201cDeath_and_the_Maiden\u201d)",
+  "type": "1",
+  "encoding_systems": 179,
+  "systems_found": 179,
+  "bar_check": false,
+  "why": {
+   "written": 715,
+   "a hidden object": 1
+  },
+  "written": 715,
+  "seconds": 56
+ },
+ {
+  "sqid": "sq7471661",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.19_in_C_major,_K.465_(Op._10,_No._6)",
+  "type": "1",
+  "encoding_systems": 100,
+  "systems_found": 100,
+  "bar_check": false,
+  "why": {
+   "written": 342,
+   "lmx lacks clef:PERCUSSION2": 58
+  },
+  "written": 342,
+  "seconds": 38
+ },
+ {
+  "sqid": "sq7541288",
+  "kind": "scanned",
+  "path": "M\u00fcller-Hermann,_Johanna/String_Quartet,_Op.6",
+  "type": "1",
+  "encoding_systems": 141,
+  "systems_found": 141,
+  "bar_check": false,
+  "why": {
+   "written, only rests": 5,
+   "written": 551,
+   "vocab lacks beats:9": 4,
+   "vocab lacks beats:5": 4
+  },
+  "written": 556,
+  "seconds": 57
+ },
+ {
+  "sqid": "sq7555331",
+  "kind": "scanned",
+  "path": "Smyth,_Ethel/String_Quartet_in_E_minor",
+  "type": "1`",
+  "encoding_systems": 236,
+  "systems_found": 223,
+  "error": "236 encoding systems against 223 systems found"
+ },
+ {
+  "sqid": "sq7648382",
+  "kind": "scanned",
+  "path": "Schubert,_Franz/String_Quartet_in_C_minor,_D.703",
+  "type": "1",
+  "encoding_systems": 39,
+  "systems_found": 39,
+  "bar_check": false,
+  "why": {
+   "written": 154,
+   "written, only rests": 2
+  },
+  "written": 156,
+  "seconds": 14
+ },
+ {
+  "sqid": "sq7872392",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.9,_Op.59_No.3",
+  "type": "1",
+  "encoding_systems": 139,
+  "systems_found": 139,
+  "bar_check": false,
+  "why": {
+   "a hidden object": 8,
+   "written": 540,
+   "written, only rests": 8
+  },
+  "written": 548,
+  "seconds": 43
+ },
+ {
+  "sqid": "sq8071278",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.1,_Op.18_No.1",
+  "type": "1",
+  "encoding_systems": 119,
+  "systems_found": 119,
+  "bar_check": true,
+  "why": {
+   "written": 471,
+   "vocab lacks beats:9": 4,
+   "lmx lacks 7in16": 1
+  },
+  "written": 471,
+  "seconds": 44
+ },
+ {
+  "sqid": "sq8075304",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III31,_Op.20_No.1",
+  "type": "1",
+  "encoding_systems": 71,
+  "systems_found": 72,
+  "error": "71 encoding systems against 72 systems found"
+ },
+ {
+  "sqid": "sq8088531",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III32,_Op.20_No.2",
+  "type": "1",
+  "encoding_systems": 87,
+  "systems_found": 87,
+  "bar_check": false,
+  "why": {
+   "written, only rests": 2,
+   "written": 346
+  },
+  "written": 348,
+  "seconds": 30
+ },
+ {
+  "sqid": "sq8455808",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_minor,_Hob.III33,_Op.20_No.3",
+  "type": "1",
+  "encoding_systems": 119,
+  "systems_found": 119,
+  "bar_check": false,
+  "why": {
+   "written": 475,
+   "a hidden object": 1
+  },
+  "written": 475,
+  "seconds": 45
+ },
+ {
+  "sqid": "sq8461409",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_B-flat_major_(\u201cLa_Chasse\u201d),_Hob._III1,_Op.1_No.1",
+  "type": "1",
+  "encoding_systems": 60,
+  "systems_found": 60,
+  "bar_check": false,
+  "why": {
+   "written": 239,
+   "a hidden object": 1
+  },
+  "written": 239,
+  "seconds": 28
+ },
+ {
+  "sqid": "sq8482283",
+  "kind": "scanned",
+  "path": "Ravel,_Maurice/String_Quartet_in_F_major",
+  "type": "1",
+  "encoding_systems": 187,
+  "systems_found": 187,
+  "bar_check": false,
+  "why": {
+   "written": 677,
+   "written, only rests": 4,
+   "5 staves found, not 4": 1,
+   "a hidden object": 6,
+   "written, dropped ['arpeggiate']": 2,
+   "lmx lacks 18in8": 4,
+   "vocab lacks beats:5": 40,
+   "vocab lacks 9in4": 4,
+   "vocab lacks 5in3": 1,
+   "lmx lacks 8in10": 6
+  },
+  "written": 683,
+  "seconds": 70
+ },
+ {
+  "sqid": "sq8509238",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_major,_Hob.III34,_Op.20_No.4",
+  "type": "1",
+  "encoding_systems": 110,
+  "systems_found": 110,
+  "bar_check": false,
+  "why": {
+   "written": 436,
+   "a hidden object": 4
+  },
+  "written": 436,
+  "seconds": 37
+ },
+ {
+  "sqid": "sq8556926",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_B-flat_major,_Hob.III5,_Op.1_No.5",
+  "type": "1",
+  "encoding_systems": 60,
+  "systems_found": 60,
+  "bar_check": false,
+  "why": {
+   "written": 240
+  },
+  "written": 240,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq8561633",
+  "kind": "scanned",
+  "path": "Mendelssohn,_Felix/String_Quartet_No._6_in_F_Minor,_Op.80",
+  "type": "1",
+  "encoding_systems": 109,
+  "systems_found": 109,
+  "bar_check": false,
+  "why": {
+   "written": 435,
+   "a hidden object": 1
+  },
+  "written": 435,
+  "seconds": 36
+ },
+ {
+  "sqid": "sq8623643",
+  "kind": "scanned",
+  "path": "Mendelssohn,_Felix/String_Quartet_No.4_in_E_minor,_Op.44_No.2",
+  "type": "1",
+  "encoding_systems": 139,
+  "systems_found": 139,
+  "bar_check": false,
+  "why": {
+   "written": 556
+  },
+  "written": 556,
+  "seconds": 40
+ },
+ {
+  "sqid": "sq8630159",
+  "kind": "scanned",
+  "path": "Schulhoff,_Erwin/String_Quartet_No.1",
+  "type": "1",
+  "encoding_systems": 120,
+  "systems_found": 120,
+  "bar_check": false,
+  "why": {
+   "written": 451,
+   "a hidden object": 17,
+   "written, only rests": 7,
+   "5 staves found, not 4": 1,
+   "lmx lacks 3in4": 1
+  },
+  "written": 458,
+  "seconds": 50
+ },
+ {
+  "sqid": "sq8661306",
+  "kind": "scanned",
+  "path": "Debussy,_Claude/String_Quartet_in_G_minor,_Op.10",
+  "type": "1",
+  "encoding_systems": 198,
+  "systems_found": 198,
+  "bar_check": false,
+  "why": {
+   "written": 746,
+   "a hidden object": 5,
+   "written, dropped ['arpeggiate']": 1,
+   "vocab lacks key:fifths:6": 24,
+   "written, only rests": 5,
+   "vocab lacks 4in6": 5,
+   "vocab lacks beats:15": 4,
+   "vocab lacks 9in4": 1,
+   "lmx lacks 19in16": 1
+  },
+  "written": 752,
+  "seconds": 85
+ },
+ {
+  "sqid": "sq8741475",
+  "kind": "scanned",
+  "path": "Bart\u00f3k,_B\u00e9la/String_Quartet_No.2,_Op.17_(Sz.67)",
+  "type": "1",
+  "encoding_systems": 193,
+  "systems_found": 193,
+  "bar_check": false,
+  "why": {
+   "vocab lacks beats:9": 111,
+   "written": 601,
+   "encoder ValueError: invalid literal for int() with base 10: '3+4'": 1,
+   "written, only rests": 10,
+   "a hidden object": 10,
+   "written, dropped ['arpeggiate']": 12,
+   "vocab lacks 4in6": 23,
+   "5 staves found, not 4": 1
+  },
+  "written": 623,
+  "seconds": 61
+ },
+ {
+  "sqid": "sq8796660",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_A_major,_Hob.III36,_Op.20_No.6",
+  "type": "1",
+  "encoding_systems": 87,
+  "systems_found": 87,
+  "bar_check": false,
+  "why": {
+   "written": 330,
+   "a hidden object": 8,
+   "written, only rests": 10
+  },
+  "written": 340,
+  "seconds": 30
+ },
+ {
+  "sqid": "sq8806134",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III6,_Op.1_No.6",
+  "type": "1",
+  "encoding_systems": 59,
+  "systems_found": 59,
+  "bar_check": false,
+  "why": {
+   "written": 233,
+   "written, only rests": 3
+  },
+  "written": 236,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq8806746",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_D_major,_Hob.III3,_Op.1_No.3",
+  "type": "1",
+  "encoding_systems": 70,
+  "systems_found": 69,
+  "error": "70 encoding systems against 69 systems found"
+ },
+ {
+  "sqid": "sq8806881",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_E-flat_major,_Hob.III2,_Op.1_No.2",
+  "type": "1",
+  "encoding_systems": 60,
+  "systems_found": 60,
+  "bar_check": false,
+  "why": {
+   "written": 238,
+   "written, only rests": 2
+  },
+  "written": 240,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq8807040",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_F_minor,_Hob.III35,_Op.20_No.5",
+  "type": "1",
+  "encoding_systems": 104,
+  "systems_found": 104,
+  "bar_check": false,
+  "why": {
+   "written": 413,
+   "a hidden object": 1,
+   "written, only rests": 2
+  },
+  "written": 415,
+  "seconds": 35
+ },
+ {
+  "sqid": "sq8807667",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_G_major,_Hob.III4,_Op.1_No.4",
+  "type": "1",
+  "encoding_systems": 80,
+  "systems_found": 79,
+  "error": "80 encoding systems against 79 systems found"
+ },
+ {
+  "sqid": "sq8811375",
+  "kind": "scanned",
+  "path": "Borodin,_Alexander/String_Quartet_No.1",
+  "type": "1",
+  "encoding_systems": 288,
+  "systems_found": 288,
+  "bar_check": false,
+  "why": {
+   "written": 1127,
+   "5 staves found, not 4": 1,
+   "written, only rests": 19,
+   "a hidden object": 1,
+   "vocab lacks 4in3": 1
+  },
+  "written": 1146,
+  "seconds": 116
+ },
+ {
+  "sqid": "sq8812200",
+  "kind": "scanned",
+  "path": "Wolf,_Hugo/Italian_Serenade",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 79,
+  "bar_check": false,
+  "why": {
+   "written": 215,
+   "vocab lacks key:fifths:6": 100,
+   "a hidden object": 1
+  },
+  "written": 215,
+  "seconds": 32
+ },
+ {
+  "sqid": "sq8823783",
+  "kind": "scanned",
+  "path": "Wolf,_Hugo/String_Quartet",
+  "type": "1",
+  "encoding_systems": 279,
+  "systems_found": 279,
+  "bar_check": false,
+  "why": {
+   "written": 1092,
+   "a hidden object": 7,
+   "written, only rests": 13,
+   "5 staves found, not 4": 1
+  },
+  "written": 1105,
+  "seconds": 80
+ },
+ {
+  "sqid": "sq8853405",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.2,_Op.18_No.2",
+  "type": "1",
+  "encoding_systems": 89,
+  "systems_found": 89,
+  "bar_check": false,
+  "why": {
+   "written": 356
+  },
+  "written": 356,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq8885439",
+  "kind": "scanned",
+  "path": "Dvo\u0159\u00e1k,_Anton\u00edn/String_Quartet_No.12,_Op.96_(\u201cAmerican\u201d)",
+  "type": "1",
+  "encoding_systems": 159,
+  "systems_found": 159,
+  "bar_check": false,
+  "why": {
+   "written": 625,
+   "a hidden object": 7,
+   "written, only rests": 1,
+   "written, dropped ['arpeggiate']": 3
+  },
+  "written": 629,
+  "seconds": 78
+ },
+ {
+  "sqid": "sq8885571",
+  "kind": "scanned",
+  "path": "Mendelssohn,_Felix/String_Quartet_No.2,_Op.13",
+  "type": "1",
+  "encoding_systems": 114,
+  "systems_found": 114,
+  "bar_check": false,
+  "why": {
+   "written": 450,
+   "a hidden object": 3,
+   "written, only rests": 3
+  },
+  "written": 453,
+  "seconds": 36
+ },
+ {
+  "sqid": "sq8907120",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.3,_Op.18_No.3",
+  "type": "1",
+  "encoding_systems": 109,
+  "systems_found": 109,
+  "bar_check": false,
+  "why": {
+   "written": 434,
+   "written, only rests": 2
+  },
+  "written": 436,
+  "seconds": 34
+ },
+ {
+  "sqid": "sq8913219",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.4,_Op.18_No.4",
+  "type": "1",
+  "encoding_systems": 89,
+  "systems_found": 89,
+  "bar_check": false,
+  "why": {
+   "written": 353,
+   "a hidden object": 2,
+   "written, only rests": 1
+  },
+  "written": 354,
+  "seconds": 28
+ },
+ {
+  "sqid": "sq8928855",
+  "kind": "scanned",
+  "path": "Brahms,_Johannes/String_Quartet_No.3,_Op.67",
+  "type": "1",
+  "encoding_systems": 120,
+  "systems_found": 120,
+  "bar_check": false,
+  "why": {
+   "written": 455,
+   "vocab lacks 7in6": 2,
+   "lmx lacks 8in12": 8,
+   "written, only rests": 3,
+   "a hidden object": 8,
+   "vocab lacks beats:5": 4
+  },
+  "written": 458,
+  "seconds": 36
+ },
+ {
+  "sqid": "sq8938822",
+  "kind": "scanned",
+  "path": "Bridge,_Frank/String_Quartet_No.1,_H.70",
+  "type": "1",
+  "encoding_systems": 199,
+  "systems_found": 199,
+  "bar_check": false,
+  "why": {
+   "written": 784,
+   "a hidden object": 3,
+   "written, only rests": 4,
+   "written, dropped ['arpeggiate']": 2,
+   "lmx lacks 11in6": 1,
+   "lmx lacks 8in6": 2
+  },
+  "written": 790,
+  "seconds": 80
+ },
+ {
+  "sqid": "sq8940236",
+  "kind": "scanned",
+  "path": "Reger,_Max/String_Quartet_No.1,_Op.54_No.1",
+  "type": "1",
+  "encoding_systems": 173,
+  "systems_found": 173,
+  "bar_check": false,
+  "why": {
+   "written": 670,
+   "a hidden object": 19,
+   "written, only rests": 3
+  },
+  "written": 673,
+  "seconds": 73
+ },
+ {
+  "sqid": "sq9010547",
+  "kind": "scanned",
+  "path": "Schumann,_Robert/String_Quartet_No.1,_Op.41_No.1",
+  "type": "1",
+  "encoding_systems": 104,
+  "systems_found": 104,
+  "bar_check": false,
+  "why": {
+   "written": 411,
+   "a hidden object": 5
+  },
+  "written": 411,
+  "seconds": 30
+ },
+ {
+  "sqid": "sq9071492",
+  "kind": "scanned",
+  "path": "Moeran,_Ernest_John/String_Quartet_in_A_minor",
+  "type": "1",
+  "encoding_systems": 151,
+  "systems_found": 151,
+  "bar_check": false,
+  "why": {
+   "lmx lacks 12in4": 26,
+   "written": 537,
+   "written, only rests": 2,
+   "vocab lacks beats:9": 28,
+   "vocab lacks 7in6": 5,
+   "vocab lacks 4in3": 4,
+   "a hidden object": 2
+  },
+  "written": 539,
+  "seconds": 43
+ },
+ {
+  "sqid": "sq9137469",
+  "kind": "scanned",
+  "path": "Dvo\u0159\u00e1k,_Anton\u00edn/String_Quartet_No.10,_Op.51",
+  "type": "1",
+  "encoding_systems": 176,
+  "systems_found": 176,
+  "bar_check": false,
+  "why": {
+   "written": 694,
+   "written, dropped ['arpeggiate']": 9,
+   "written, only rests": 1
+  },
+  "written": 704,
+  "seconds": 52
+ },
+ {
+  "sqid": "sq9146376",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_A_major,_Hob.III24,_Op.9_No.6",
+  "type": "1",
+  "encoding_systems": 79,
+  "systems_found": 79,
+  "bar_check": false,
+  "why": {
+   "written": 315,
+   "written, only rests": 1
+  },
+  "written": 316,
+  "seconds": 38
+ },
+ {
+  "sqid": "sq9199617",
+  "kind": "scanned",
+  "path": "Mozart,_Wolfgang_Amadeus/String_Quartet_No.4_in_C_major,_K.157",
+  "type": "1",
+  "encoding_systems": 40,
+  "systems_found": 40,
+  "bar_check": false,
+  "why": {
+   "written": 155,
+   "a hidden object": 4,
+   "written, only rests": 1
+  },
+  "written": 156,
+  "seconds": 14
+ },
+ {
+  "sqid": "sq9396439",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.5,_Op.18_No.5",
+  "type": "1",
+  "encoding_systems": 99,
+  "systems_found": 99,
+  "bar_check": false,
+  "why": {
+   "written": 395,
+   "written, only rests": 1
+  },
+  "written": 396,
+  "seconds": 44
+ },
+ {
+  "sqid": "sq9529900",
+  "kind": "scanned",
+  "path": "Schumann,_Robert/String_Quartet_No.3,_Op.41_No.3",
+  "type": "1",
+  "encoding_systems": 94,
+  "systems_found": 94,
+  "bar_check": false,
+  "why": {
+   "written": 359,
+   "a hidden object": 17
+  },
+  "written": 359,
+  "seconds": 28
+ },
+ {
+  "sqid": "sq9608209",
+  "kind": "scanned",
+  "path": "Strauss,_Richard/String_Quartet_in_A_major,_Op.2",
+  "type": "1",
+  "encoding_systems": 162,
+  "systems_found": 162,
+  "bar_check": false,
+  "why": {
+   "written": 640,
+   "a hidden object": 5,
+   "written, only rests": 2,
+   "vocab lacks natural-sharp": 1
+  },
+  "written": 642,
+  "seconds": 53
+ },
+ {
+  "sqid": "sq9631717",
+  "kind": "scanned",
+  "path": "Grieg,_Edvard/String_Quartet_No.1,_Op.27",
+  "type": "1",
+  "encoding_systems": 214,
+  "systems_found": 214,
+  "bar_check": false,
+  "why": {
+   "written": 840,
+   "written, only rests": 8,
+   "a hidden object": 7,
+   "vocab lacks 4in6": 1
+  },
+  "written": 848,
+  "seconds": 84
+ },
+ {
+  "sqid": "sq9719026",
+  "kind": "scanned",
+  "path": "Beethoven,_Ludwig_van/String_Quartet_No.6,_Op.18_No.6",
+  "type": "1",
+  "encoding_systems": 89,
+  "systems_found": 89,
+  "bar_check": false,
+  "why": {
+   "written": 356
+  },
+  "written": 356,
+  "seconds": 27
+ },
+ {
+  "sqid": "sq9790696",
+  "kind": "scanned",
+  "path": "Delius,_Frederick/String_Quartet_in_E_minor",
+  "type": "1`",
+  "encoding_systems": 159,
+  "systems_found": 36,
+  "error": "159 encoding systems against 36 systems found"
+ },
+ {
+  "sqid": "sq9961690",
+  "kind": "scanned",
+  "path": "Haydn,_Joseph/String_Quartet_in_C_major,_Hob.III19,_Op.9_No.1",
+  "type": "1",
+  "encoding_systems": 100,
+  "systems_found": 100,
+  "bar_check": false,
+  "why": {
+   "written": 395,
+   "a hidden object": 1,
+   "no staff height found": 1
+  },
+  "written": 395,
+  "seconds": 37
+ }
+]
