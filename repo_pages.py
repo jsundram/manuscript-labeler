@@ -10,14 +10,20 @@ import html
 import mimetypes
 from pathlib import Path
 
-from markdown_it import MarkdownIt
 
 REPO = Path(__file__).resolve().parent
 ROOTS = ("reports", "docs", "experiments", "zeus-score")
 MEDIA = {".jpg", ".jpeg", ".png", ".svg", ".gif", ".webp", ".pdf"}
 TEXT = {".py", ".sh", ".txt", ".json", ".toml", ".lmx", ".csv"}
 INDEXES = ("README.md", "index.html", "index.md")
-MD = MarkdownIt("commonmark", {"html": True}).enable(["table", "strikethrough"])  # as GitHub reads the repo's Markdown
+
+
+def _markdown():
+    """The renderer, imported on first use so tools that import server.py
+    don't need markdown-it-py."""
+    from markdown_it import MarkdownIt
+    return MarkdownIt("commonmark", {"html": True}).enable(["table", "strikethrough"])  # as GitHub reads the repo's Markdown
+
 
 STYLE = """
 :root { --bg: #f4f2ee; --panel: #fff; --ink: #1f1d1a; --muted: #77726a; --line: #ddd8cf; --accent: #2c5fb8; --code: #efece6; }
@@ -65,7 +71,7 @@ def page(path: Path) -> tuple[bytes, str] | None:
     ext = path.suffix.lower()
     if ext == ".md":
         rel = path.relative_to(REPO)
-        body = MD.render(path.read_text())
+        body = _markdown().render(path.read_text())
         title = next((line.lstrip("# ").strip() for line in path.read_text().splitlines() if line.startswith("# ")), rel.name)
         doc = (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
                f'<meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title>'
