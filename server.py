@@ -480,12 +480,16 @@ class Edition:
         r = detect.snap_start(g, top * h, bottom * h, x * w)
         return {"x": r / w} if r is not None else {}
 
-    def detect(self, rel: str, page: int, room: float | None = None, corners: list | None = None) -> dict:
+    def detect(self, rel: str, page: int, room: float | None = None, corners: list | None = None,
+               near: float | None = None) -> dict:
         """Detection on one page; `corners`, the editor's, else detected. Its
         bar lines are voted with the detectors' cached predictions for the
         page when there are any, and its staves' ends and music starts come
         from them where a detector learned those (detections.py); if reading
-        them fails, detection goes ahead without."""
+        them fails, detection goes ahead without. `near` (a page fraction):
+        only the staff the editor placed with its top line about there,
+        fitted to the ink (detect.fit_staff), then its bar lines found as
+        detection finds them; no systems if no staff is there."""
         from PIL import Image
 
         import detect
@@ -493,6 +497,12 @@ class Edition:
 
         img = Image.open(self.render(rel, page))
         corners = corners or detect.find_page_corners(img)
+        staves = None
+        if near is not None:
+            st = detect.fit_staff(detect._gray(img), near * img.size[1])
+            if st is None:
+                return {"systems": [], "corners": corners}
+            staves = [st]
         try:  # a bad cache mustn't stop detection
             pdf = self.pdf(rel)
             root, name = (pdf.parent, pdf.name) if self.archived(pdf) else (self.root, rel)  # as predict_barlines --pdf
@@ -510,14 +520,14 @@ class Edition:
             tries.append((None, None))
         for v, en in tries:
             try:
-                systems = detect.detect_page(img, room, model=self.model, corners=corners, vote=v, ends=en)
+                systems = detect.detect_page(img, room, model=self.model, corners=corners, vote=v, ends=en, staves=staves)
                 break
             except Exception as e:
                 if v is None and en is None:
                     raise
                 print(f"cached predictions failed on {rel} p{page} ({'ends' if en else 'vote'}): "
                       f"{type(e).__name__}: {e}", flush=True)
-        if self.crop_model is not None:  # else crop_margins' rule
+        if self.crop_model is not None and staves is None:  # else crop_margins' rule (one staff: the rule)
             try:
                 crops.propose(detect._gray(img), systems, self.crop_model)
             except Exception as e:
@@ -812,8 +822,9 @@ class Handler(BaseHTTPRequestHandler):
                         raise ValueError(f"corners: {e}") from e
                     if len(corners) != 4:
                         raise ValueError("corners: four points")
+                near = float(q["near"]) if q.get("near") else None
                 return self.send_json(ed.timed("detect", q["pdf"], int(q["page"]),
-                                               lambda: ed.detect(q["pdf"], int(q["page"]), room, corners)))
+                                               lambda: ed.detect(q["pdf"], int(q["page"]), room, corners, near)))
             if path == "/api/snap":
                 f = {k: float(q[k]) for k in ("top", "bottom", "x0", "x1")}
                 return self.send_json(ed.snap(q["pdf"], int(q["page"]), **f))

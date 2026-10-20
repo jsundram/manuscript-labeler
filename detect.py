@@ -51,18 +51,9 @@ def _staff_gap(P: np.ndarray, h: int) -> float | None:
     return float(np.average(np.arange(lo, hi), weights=counts[lo:hi] + 1e-9))
 
 
-def find_staves(g: np.ndarray, strips: int = 24) -> list[dict]:
-    """Five-line staves, top to bottom: [{top, bottom, gap, lines, path, score}] in pixels.
-
-    Hand-ruled lines on a curled page are wavy, so no single tilt lines them
-    up across the page. Instead the page is cut into narrow vertical strips;
-    in each strip every row gets a "staff here" score (five dark rows a staff
-    space apart, with lighter rows between them), and a staff is traced
-    across the strips allowing a little drift from one strip to the next.
-
-    `top`, `bottom` and `lines` are y at the page's horizontal centre; `path`
-    is [(x, y_top_line)] at each strip where the staff was clearly seen.
-    """
+def _staff_scores(g: np.ndarray, strips: int) -> dict | None:
+    """find_staves' "staff here" scores: per strip and row (S), and for the
+    best drifting path across the strips ending at each row (score, back)."""
     h, w = g.shape
     x_lo, x_hi = int(w * 0.08), int(w * 0.92)
     edges = np.linspace(x_lo, x_hi, strips + 1).astype(int)
@@ -78,10 +69,10 @@ def find_staves(g: np.ndarray, strips: int = 24) -> list[dict]:
 
     gap = _staff_gap(P, h)
     if not gap:
-        return []
+        return None
     n = h - int(round(4.5 * gap)) - 3
     if n <= 0:
-        return []
+        return None
     # allow +-2 px of wobble per line: running max over 5 rows
     Pm = sliding_window_view(np.pad(P, ((2, 2), (0, 0))), 5, axis=0).max(axis=-1)
     on = np.mean([Pm[int(round(i * gap)):][:n] for i in range(5)], axis=0)
@@ -97,29 +88,80 @@ def find_staves(g: np.ndarray, strips: int = 24) -> list[dict]:
         arg = win.argmax(axis=1)
         back.append(arg - D)
         A = S[:, k] + win[np.arange(n), arg]
-    score = A / strips
+    return {"S": S, "back": back, "score": A / strips, "gap": gap, "xc": xc, "w": w, "strips": strips}
 
-    staves = []
-    for end in _peaks(score, threshold=0.35, min_sep=int(gap * 5)):
-        ys = [end]
-        for k in range(strips - 1, 0, -1):
-            ys.append(ys[-1] + int(back[k - 1][ys[-1]]))
-        ys = np.array(ys[::-1])
-        seen = S[ys, np.arange(strips)]
-        good = seen > max(0.15, 0.5 * float(np.median(seen)))
-        if good.sum() < 3:
-            continue
-        path = [(float(x), float(y)) for x, y, ok in zip(xc, ys, good) if ok]
-        top = int(round(np.interp(w / 2, [p[0] for p in path], [p[1] for p in path])))
-        lines = [top + int(round(i * gap)) for i in range(5)]
-        staves.append({"top": lines[0], "bottom": lines[-1], "gap": gap, "lines": lines,
-                       "path": path, "score": float(score[end])})
+
+def _trace(sc: dict, end: int, min_seen: float = 0.15) -> dict | None:
+    """The staff whose best path ends at row `end`, or None if it was
+    clearly seen in fewer than three strips."""
+    S, back, gap, xc, w, strips = sc["S"], sc["back"], sc["gap"], sc["xc"], sc["w"], sc["strips"]
+    ys = [end]
+    for k in range(strips - 1, 0, -1):
+        ys.append(ys[-1] + int(back[k - 1][ys[-1]]))
+    ys = np.array(ys[::-1])
+    seen = S[ys, np.arange(strips)]
+    good = seen > max(min_seen, 0.5 * float(np.median(seen)))
+    if good.sum() < 3:
+        return None
+    path = [(float(x), float(y)) for x, y, ok in zip(xc, ys, good) if ok]
+    top = int(round(np.interp(w / 2, [p[0] for p in path], [p[1] for p in path])))
+    lines = [top + int(round(i * gap)) for i in range(5)]
+    return {"top": lines[0], "bottom": lines[-1], "gap": gap, "lines": lines,
+            "path": path, "score": float(sc["score"][end])}
+
+
+def fit_staff(g: np.ndarray, near: float, strips: int = 24) -> dict | None:
+    """The staff the editor placed by hand with its top line near `near`
+    (pixels), as find_staves gives staves: of the five-line paths ending
+    within two staff spaces of it, however weak, the one whose top line
+    lies nearest. find_staves' threshold misses staves dense with ink
+    (beams and runs over the lines), and the editor has already said one
+    is there. None if no row there looks like a staff at all."""
+    sc = _staff_scores(g, strips)
+    if sc is None:
+        return None
+    lo, hi = max(0, int(near - 2 * sc["gap"])), min(len(sc["score"]), int(near + 2 * sc["gap"]) + 1)
+    if hi <= lo:
+        return None
+    score, reach = sc["score"], max(1, int(sc["gap"]))
+
+    def climb(end):
+        """To the strongest row within a staff space, again until it stays: a
+        window's edge can cut a staff's peak and leave a shoulder a line off."""
+        while True:
+            a, b = max(0, end - reach), min(len(score), end + reach + 1)
+            best = a + int(np.argmax(score[a:b]))
+            if best == end:
+                return end
+            end = best
+    ends = sorted({climb(lo + i) for i in _peaks(score[lo:hi], threshold=0.05, min_sep=int(sc["gap"] * 3))})
+    staves = [st for end in ends if (st := _trace(sc, end, min_seen=0.05)) is not None]
+    return min(staves, key=lambda st: abs(st["top"] - near), default=None)
+
+
+def find_staves(g: np.ndarray, strips: int = 24) -> list[dict]:
+    """Five-line staves, top to bottom: [{top, bottom, gap, lines, path, score}] in pixels.
+
+    Hand-ruled lines on a curled page are wavy, so no single tilt lines them
+    up across the page. Instead the page is cut into narrow vertical strips;
+    in each strip every row gets a "staff here" score (five dark rows a staff
+    space apart, with lighter rows between them), and a staff is traced
+    across the strips allowing a little drift from one strip to the next.
+
+    `top`, `bottom` and `lines` are y at the page's horizontal centre; `path`
+    is [(x, y_top_line)] at each strip where the staff was clearly seen.
+    """
+    sc = _staff_scores(g, strips)
+    if sc is None:
+        return []
+    staves = [st for end in _peaks(sc["score"], threshold=0.35, min_sep=int(sc["gap"] * 5))
+              if (st := _trace(sc, end)) is not None]
 
     # two ends can trace back onto one staff: keep the stronger
     staves.sort(key=lambda s: -s["score"])
     kept: list[dict] = []
     for s in staves:
-        if all(abs(s["top"] - k["top"]) > 3 * gap for k in kept):
+        if all(abs(s["top"] - k["top"]) > 3 * sc["gap"] for k in kept):
             kept.append(s)
     return sorted(kept, key=lambda s: s["top"])
 
@@ -923,7 +965,8 @@ def find_page_corners(img: Image.Image) -> list[list[float]]:
 
 
 def detect_page(img: Image.Image, room: float | None = None, model: dict | None = None,
-                collect: list | None = None, corners: list | None = None, vote=None, ends=None) -> list[dict]:
+                collect: list | None = None, corners: list | None = None, vote=None, ends=None,
+                staves: list[dict] | None = None) -> list[dict]:
     """Proposed systems for one page, normalized coordinates.
 
     `room`: the clef-and-key room (left edge to music start, in staff
@@ -953,18 +996,20 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     start, which it learned from the rules' starts: measured with the
     detector's (experiments/barlines/landmarks.py), bar lines came out
     no worse.
+    `staves`: these (fit_staff's) instead of find_staves', each kept even
+    if it looks empty: a staff the editor added.
     """
     g = _gray(img)
     h, w = g.shape
     corners = corners or find_page_corners(img)
     found = []
-    for st in find_staves(g):
+    for st in staves if staves is not None else find_staves(g):
         band, y0 = straighten(g, st)
         local = {**st, "top": st["top"] - y0, "bottom": st["bottom"] - y0,
                  "lines": [y - y0 for y in st["lines"]]}
         paper = paper_x(corners, (st["top"] + st["bottom"]) / 2 / h, w)
         left, right = staff_extent(band, local, paper)
-        if inner_ink(band, local, left, right) < EMPTY_INK:
+        if staves is None and inner_ink(band, local, left, right) < EMPTY_INK:
             continue  # an empty ruled staff (text above or below doesn't count)
         clef, start, brace = music_start(band, local, left, right)
         found.append((st, band, local, left, right, clef, start, brace, paper))

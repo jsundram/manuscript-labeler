@@ -2329,6 +2329,36 @@ function addSystem() {
     ss.push(s);
     S.sel = { t: 'sys', id: s.id };
   });
+  const s = S.sel?.t === 'sys' ? find(S.sel) : null;
+  if (s) fitAddedStaff(S.page, s);
+}
+
+// A staff the editor added is fitted to the ink near where they put it
+// (detect.fit_staff, which finds staves too dense for the page's finder),
+// then given the bar lines detection finds on it. Left as placed if no
+// staff is there, or if the editor changed it meanwhile.
+async function fitAddedStaff(n, s0) {
+  const shape = (s) => JSON.stringify([s.top, s.bottom, s.left, s.right, s.start, s.barlines.length]);
+  const placed = shape(s0);
+  const room = roomFromPreviousPage(n);
+  let systems = [];
+  try { ({ systems } = await getJSON(`/api/detect?${q(S.pdf, n)}&near=${s0.top.toFixed(4)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
+  catch (e) { banner(`Fitting the staff failed: ${e.message}`); return; }
+  const page = S.doc.pages[n];
+  const s = page?.systems.find((x) => x.id === s0.id);
+  if (!s || n !== S.page || shape(s) !== placed) return;
+  const d = systems[0];
+  if (!d) { flash('No staff lines found there: the staff stays as placed.'); return; }
+  if (page.systems.some((x) => x !== s && Math.min(x.bottom, d.bottom) - Math.max(x.top, d.top) > 0.5 * (d.bottom - d.top))) {
+    flash('That staff is already boxed: the new one stays as placed.');
+    return;
+  }
+  mutate((pg) => {
+    const t = pg.systems.find((x) => x.id === s0.id);
+    // not its crop: alone, the crop rule can't see the staves around it (the default 2.5 spaces stands)
+    Object.assign(t, { top: d.top, bottom: d.bottom, left: d.left, right: d.right, start: d.start ?? d.left, bend: d.bend });
+    for (const b of d.barlines) newBarline(pg, t, b);
+  }, { by: 'detection' });
 }
 
 // A mark covers the box dragged out with m held (or after + Mark); a plain
