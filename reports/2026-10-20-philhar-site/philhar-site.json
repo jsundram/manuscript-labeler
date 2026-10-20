@@ -1,0 +1,3069 @@
+{
+ "site": "https://le-concert.pagesperso-orange.fr/ (Philhar, Editions 'Le Concert')",
+ "snapshot": "https://web.archive.org/web/20230929061441/https://le-concert.pagesperso-orange.fr/",
+ "crawled": "2026-10-20",
+ "note": "Composer pages fetched from Wayback captures of 2023-09-30 to 2023-10-03 (nearest to 2023-09-29). 'archived' is the first Wayback capture with status 200 and a zip type (CDX). Manuscript details resolved from RISM Online and IMSLP on 2026-10-20.",
+ "sets": [
+  {
+   "composer": "Jean BARRIERE",
+   "composer_dates": "1707-1747",
+   "page": "barriere.html",
+   "title": "Sonates pour violoncelle et basse continue",
+   "scoring": "vc, bc",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin-Leclerc - Paris - 1733 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "barriere/livre-I-1/13029-1-Barriere-Sonate-L1-1-lily.zip",
+     "archived": "20231003051128",
+     "bytes": 73579,
+     "wayback": "https://web.archive.org/web/20231003051128/https://le-concert.pagesperso-orange.fr/barriere/livre-I-1/13029-1-Barriere-Sonate-L1-1-lily.zip"
+    },
+    {
+     "zip": "barriere/livre-I-2/13029-2-Barriere-Sonate-L1-2-lily.zip",
+     "archived": "20231001213200",
+     "bytes": 74778,
+     "wayback": "https://web.archive.org/web/20231001213200/https://le-concert.pagesperso-orange.fr/barriere/livre-I-2/13029-2-Barriere-Sonate-L1-2-lily.zip"
+    },
+    {
+     "zip": "barriere/livre-I-3/13029-3-Barriere-Sonate-L1-3-lily.zip",
+     "archived": "20231001213154",
+     "bytes": 73691,
+     "wayback": "https://web.archive.org/web/20231001213154/https://le-concert.pagesperso-orange.fr/barriere/livre-I-3/13029-3-Barriere-Sonate-L1-3-lily.zip"
+    },
+    {
+     "zip": "barriere/livre-IV-4/13029-22-Barriere-Sonate-L4-4-lily.zip",
+     "archived": "20231001213234",
+     "bytes": 70801,
+     "wayback": "https://web.archive.org/web/20231001213234/https://le-concert.pagesperso-orange.fr/barriere/livre-IV-4/13029-22-Barriere-Sonate-L4-4-lily.zip"
+    }
+   ],
+   "n_works": 4,
+   "n_archived": 4
+  },
+  {
+   "composer": "Ludwig van BEETHOVEN",
+   "composer_dates": "1770-1827",
+   "page": "beethoven.html",
+   "title": "Les Créatures de Prométhée, op.43, ouverture",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Breitkopf - 1862-1890 - n°B.25 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/Die_Gesch%C3%B6pfe_des_Prometheus,_Op.43_%28Beethoven,_Ludwig_van%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "beethoven/1237-beethoven-promethee-lily-v218.zip",
+     "archived": "20231001212633",
+     "bytes": 96167,
+     "wayback": "https://web.archive.org/web/20231001212633/https://le-concert.pagesperso-orange.fr/beethoven/1237-beethoven-promethee-lily-v218.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Georges BIZET",
+   "composer_dates": "1838-1875",
+   "page": "bizet.html",
+   "title": "Carmen, n°1-Prélude",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Choudens - 1877 - A.C.3795"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "bizet/1367-1-bizet-carmen-prelude-lily-v218.zip",
+     "archived": "20231001214434",
+     "bytes": 101324,
+     "wayback": "https://web.archive.org/web/20231001214434/https://le-concert.pagesperso-orange.fr/bizet/1367-1-bizet-carmen-prelude-lily-v218.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "Sonates pour Violoncelle et Basse",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "F. Bland - London - ca.1780"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": [
+    "D-Eu Esl VIII 407 (G.1, RISM 450200982) and Esl VIII 349 (G.4, RISM 450200979): Eichstätt copies, ca. 1790, digitized"
+   ],
+   "lilypond": [
+    {
+     "zip": "boccherini/sonates/g1/13004-1-Boccherini-Sonate-G1-lily.zip",
+     "archived": "20231001201908",
+     "bytes": 71344,
+     "wayback": "https://web.archive.org/web/20231001201908/https://le-concert.pagesperso-orange.fr/boccherini/sonates/g1/13004-1-Boccherini-Sonate-G1-lily.zip"
+    },
+    {
+     "zip": "boccherini/sonates/g4/13004-4-Boccherini-Sonate-G4-lily.zip",
+     "archived": "20231001201803",
+     "bytes": 73087,
+     "wayback": "https://web.archive.org/web/20231001201803/https://le-concert.pagesperso-orange.fr/boccherini/sonates/g4/13004-4-Boccherini-Sonate-G4-lily.zip"
+    },
+    {
+     "zip": "boccherini/sonates/g5/13004-5-Boccherini-Sonate-G5-lily.zip",
+     "archived": "20231001201907",
+     "bytes": 72092,
+     "wayback": "https://web.archive.org/web/20231001201907/https://le-concert.pagesperso-orange.fr/boccherini/sonates/g5/13004-5-Boccherini-Sonate-G5-lily.zip"
+    },
+    {
+     "zip": "boccherini/sonates/g6/13004-6-Boccherini-Sonate-G6-lily.zip",
+     "archived": "20231002082345",
+     "bytes": 71485,
+     "wayback": "https://web.archive.org/web/20231002082345/https://le-concert.pagesperso-orange.fr/boccherini/sonates/g6/13004-6-Boccherini-Sonate-G6-lily.zip"
+    }
+   ],
+   "n_works": 4,
+   "n_archived": 4
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Trios pour 2 Violons et Violoncelle - opus 4 (G.83 - G.88)",
+   "scoring": "2 vl, vc",
+   "category": "string trio",
+   "source_kind": "print+manuscript",
+   "philhar_source": [
+    "Venier - Paris - 1768 Hummel - Amsterdam - 1783 Manuscrit (parties) - n.d. Manuscrit (score) - n.d."
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit (parties) - n.d.",
+     "library": "US-R (Sibley Music Library, Rochester)",
+     "shelfmark": "M351.B664M",
+     "rism": "130195",
+     "date": "1766 (RISM: 1766p); IMSLP: ca. 1775",
+     "format": "3 parts (vl 1, vl 2, vlc), p. 27-63 each",
+     "hand": "unknown copyist",
+     "scan": "IMSLP (Sibley scan); not linked from RISM",
+     "identified_by": "IMSLP page for G.83-88; Philhar names no library"
+    },
+    {
+     "named": "Manuscrit (score) - n.d.",
+     "library": "probably I-MC (Montecassino), via Internet Culturale",
+     "shelfmark": "1-C-7 g-l",
+     "rism": "852015747 (G.83) and siblings",
+     "date": "1750-1799",
+     "format": "score",
+     "scan": "Internet Culturale; IMSLP",
+     "identified_by": "IMSLP lists an Internet Culturale manuscript score; RISM I-MC 1-C-7g is a score; unconfirmed match"
+    }
+   ],
+   "manuscript_copy_leads": [
+    "D-B KHM 620-624 (G.87, 88, 85, 83, 86): parts, copyist Schober (the KHM 577 Op. 32 hand), 4+4+4 pp each, SBB digitized",
+    "I-MC 1-C-7 g-l: Montecassino score, digitized",
+    "D-LEm Becker III.11.27-28 (G.88, G.86), ca. 1768, digitized"
+   ],
+   "lilypond": [
+    {
+     "zip": "boccherini/trios/g83/11018-1-Boccherini-Trio-G83-lily.zip",
+     "archived": "20231001202016",
+     "bytes": 72912,
+     "wayback": "https://web.archive.org/web/20231001202016/https://le-concert.pagesperso-orange.fr/boccherini/trios/g83/11018-1-Boccherini-Trio-G83-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g84/11018-2-Boccherini-Trio-G84-lily.zip",
+     "archived": "20231002162807",
+     "bytes": 74400,
+     "wayback": "https://web.archive.org/web/20231002162807/https://le-concert.pagesperso-orange.fr/boccherini/trios/g84/11018-2-Boccherini-Trio-G84-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g85/11018-3-Boccherini-Trio-G85-lily.zip",
+     "archived": "20231001202054",
+     "bytes": 74271,
+     "wayback": "https://web.archive.org/web/20231001202054/https://le-concert.pagesperso-orange.fr/boccherini/trios/g85/11018-3-Boccherini-Trio-G85-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g86/11018-4-Boccherini-Trio-G86-lily.zip",
+     "archived": "20231001201830",
+     "bytes": 72723,
+     "wayback": "https://web.archive.org/web/20231001201830/https://le-concert.pagesperso-orange.fr/boccherini/trios/g86/11018-4-Boccherini-Trio-G86-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g87/11018-5-Boccherini-Trio-G87-lily.zip",
+     "archived": "20231001202056",
+     "bytes": 76596,
+     "wayback": "https://web.archive.org/web/20231001202056/https://le-concert.pagesperso-orange.fr/boccherini/trios/g87/11018-5-Boccherini-Trio-G87-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g88/11018-6-Boccherini-Trio-G88-lily.zip",
+     "archived": "20231002141309",
+     "bytes": 74226,
+     "wayback": "https://web.archive.org/web/20231002141309/https://le-concert.pagesperso-orange.fr/boccherini/trios/g88/11018-6-Boccherini-Trio-G88-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Trios pour Violon, Alto et Violoncelle - opus 14 (G.95 - G.100)",
+   "scoring": "vl, va, vc",
+   "category": "string trio",
+   "source_kind": "print",
+   "philhar_source": [
+    "Chevardière - Paris - 1774 (Gallica-BNF) Hummel - Amsterdam - 1784 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": [
+    "D-Eu Esl VIII 21 (G.98): parts vl, va, vc, ca. 1790, 2+2+2 folios, digitized"
+   ],
+   "lilypond": [
+    {
+     "zip": "boccherini/trios/g95/11025-1-Boccherini-Trio-Op14-1-lily.zip",
+     "archived": "20231001201905",
+     "bytes": 74540,
+     "wayback": "https://web.archive.org/web/20231001201905/https://le-concert.pagesperso-orange.fr/boccherini/trios/g95/11025-1-Boccherini-Trio-Op14-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g96/11025-2-Boccherini-Trio-Op14-2-lily.zip",
+     "archived": "20231001201922",
+     "bytes": 76213,
+     "wayback": "https://web.archive.org/web/20231001201922/https://le-concert.pagesperso-orange.fr/boccherini/trios/g96/11025-2-Boccherini-Trio-Op14-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g97/11025-3-Boccherini-Trio-Op14-3-lily.zip",
+     "archived": "20231002082237",
+     "bytes": 77497,
+     "wayback": "https://web.archive.org/web/20231002082237/https://le-concert.pagesperso-orange.fr/boccherini/trios/g97/11025-3-Boccherini-Trio-Op14-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g98/11025-4-Boccherini-Trio-Op14-4-lily.zip",
+     "archived": "20231001202129",
+     "bytes": 75189,
+     "wayback": "https://web.archive.org/web/20231001202129/https://le-concert.pagesperso-orange.fr/boccherini/trios/g98/11025-4-Boccherini-Trio-Op14-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g99/11025-5-Boccherini-Trio-Op14-5-lily.zip",
+     "archived": "20231002141857",
+     "bytes": 76019,
+     "wayback": "https://web.archive.org/web/20231002141857/https://le-concert.pagesperso-orange.fr/boccherini/trios/g99/11025-5-Boccherini-Trio-Op14-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/trios/g100/11025-6-Boccherini-Trio-Op14-6-lily.zip",
+     "archived": "20231001202051",
+     "bytes": 74327,
+     "wayback": "https://web.archive.org/web/20231001202051/https://le-concert.pagesperso-orange.fr/boccherini/trios/g100/11025-6-Boccherini-Trio-Op14-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.2 (G.159 - G.164)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Venier - Paris - ca.1767 (source principale) Hummel - Amsterdam -"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_String_Quartets,_G.159-164_%28Op.2%29_%28Boccherini,_Luigi%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op2/op2-1/10007-1-Boccherini-Op2-1-lily.zip",
+     "archived": "20231001201925",
+     "bytes": 80460,
+     "wayback": "https://web.archive.org/web/20231001201925/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-1/10007-1-Boccherini-Op2-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op2/op2-2/10007-2-Boccherini-Op2-2-lily.zip",
+     "archived": "20231001202045",
+     "bytes": 78977,
+     "wayback": "https://web.archive.org/web/20231001202045/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-2/10007-2-Boccherini-Op2-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op2/op2-3/10007-3-Boccherini-Op2-3-lily.zip",
+     "archived": "20231001201844",
+     "bytes": 77802,
+     "wayback": "https://web.archive.org/web/20231001201844/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-3/10007-3-Boccherini-Op2-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op2/op2-4/10007-4-Boccherini-Op2-4-lily.zip",
+     "archived": "20231001202158",
+     "bytes": 76457,
+     "wayback": "https://web.archive.org/web/20231001202158/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-4/10007-4-Boccherini-Op2-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op2/op2-5/10007-5-Boccherini-Op2-5-lily.zip",
+     "archived": "20231001201851",
+     "bytes": 77915,
+     "wayback": "https://web.archive.org/web/20231001201851/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-5/10007-5-Boccherini-Op2-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op2/op2-6/10007-6-Boccherini-Op2-6-lily.zip",
+     "archived": "20231001201808",
+     "bytes": 76127,
+     "wayback": "https://web.archive.org/web/20231001201808/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op2/op2-6/10007-6-Boccherini-Op2-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.8 (G.165 - G.170)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Venier - Paris - ca.1769 (BNF-Gallica) Hummel - Amsterdam -"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_String_Quartets%2C_G.165-170_%28Boccherini%2C_Luigi%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op8/op8-1/10024-1-Boccherini-Op8-1-lily.zip",
+     "archived": "20231002215615",
+     "bytes": 80961,
+     "wayback": "https://web.archive.org/web/20231002215615/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-1/10024-1-Boccherini-Op8-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op8/op8-2/10024-2-Boccherini-Op8-2-lily.zip",
+     "archived": "20231001201946",
+     "bytes": 81288,
+     "wayback": "https://web.archive.org/web/20231001201946/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-2/10024-2-Boccherini-Op8-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op8/op8-3/10024-3-Boccherini-Op8-3-lily.zip",
+     "archived": "20231001201823",
+     "bytes": 79906,
+     "wayback": "https://web.archive.org/web/20231001201823/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-3/10024-3-Boccherini-Op8-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op8/op8-4/10024-4-Boccherini-Op8-4-lily.zip",
+     "archived": "20231001202038",
+     "bytes": 81433,
+     "wayback": "https://web.archive.org/web/20231001202038/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-4/10024-4-Boccherini-Op8-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op8/op8-5/10024-5-Boccherini-Op8-5-lily.zip",
+     "archived": "20231001201859",
+     "bytes": 80619,
+     "wayback": "https://web.archive.org/web/20231001201859/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-5/10024-5-Boccherini-Op8-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op8/op8-6/10024-6-Boccherini-Op8-6-lily.zip",
+     "archived": "20231002145844",
+     "bytes": 81832,
+     "wayback": "https://web.archive.org/web/20231002145844/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op8/op8-6/10024-6-Boccherini-Op8-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.9 (G.171 - G.176)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Venier - Paris - ca.1772 (BNF-Gallica) Hummel - Amsterdam - n°313"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_String_Quartets%2C_G.171-176_%28Boccherini%2C_Luigi%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op9/op9-1/10025-1-Boccherini-Op9-1-lily.zip",
+     "archived": "20231003033139",
+     "bytes": 81571,
+     "wayback": "https://web.archive.org/web/20231003033139/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-1/10025-1-Boccherini-Op9-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op9/op9-2/10025-2-Boccherini-Op9-2-lily.zip",
+     "archived": "20231001201921",
+     "bytes": 79587,
+     "wayback": "https://web.archive.org/web/20231001201921/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-2/10025-2-Boccherini-Op9-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op9/op9-3/10025-3-Boccherini-Op9-3-lily.zip",
+     "archived": "20231001201927",
+     "bytes": 79902,
+     "wayback": "https://web.archive.org/web/20231001201927/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-3/10025-3-Boccherini-Op9-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op9/op9-4/10025-4-Boccherini-Op9-4-lily.zip",
+     "archived": "20231002082254",
+     "bytes": 79103,
+     "wayback": "https://web.archive.org/web/20231002082254/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-4/10025-4-Boccherini-Op9-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op9/op9-5/10025-5-Boccherini-Op9-5-lily.zip",
+     "archived": "20231002160138",
+     "bytes": 80998,
+     "wayback": "https://web.archive.org/web/20231002160138/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-5/10025-5-Boccherini-Op9-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op9/op9-6/10025-6-Boccherini-Op9-6-lily.zip",
+     "archived": "20231001201811",
+     "bytes": 81289,
+     "wayback": "https://web.archive.org/web/20231001201811/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op9/op9-6/10025-6-Boccherini-Op9-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.15 (G.177 - G.182)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Venier - Paris - ca.1773 (BNF-Gallica) Hummel - Amsterdam - n°324"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_String_Quartets%2C_G.177-182_%28Boccherini%2C_Luigi%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op15/op15-1/10026-1-Boccherini-Op15-1-lily.zip",
+     "archived": "20231001201856",
+     "bytes": 75360,
+     "wayback": "https://web.archive.org/web/20231001201856/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-1/10026-1-Boccherini-Op15-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op15/op15-2/10026-2-Boccherini-Op15-2-lily.zip",
+     "archived": "20231001201800",
+     "bytes": 75446,
+     "wayback": "https://web.archive.org/web/20231001201800/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-2/10026-2-Boccherini-Op15-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op15/op15-3/10026-3-Boccherini-Op15-3-lily.zip",
+     "archived": "20231001202235",
+     "bytes": 74961,
+     "wayback": "https://web.archive.org/web/20231001202235/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-3/10026-3-Boccherini-Op15-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op15/op15-4/10026-4-Boccherini-Op15-4-lily.zip",
+     "archived": "20231002150016",
+     "bytes": 73886,
+     "wayback": "https://web.archive.org/web/20231002150016/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-4/10026-4-Boccherini-Op15-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op15/op15-5/10026-5-Boccherini-Op15-5-lily.zip",
+     "archived": "20231001202413",
+     "bytes": 73565,
+     "wayback": "https://web.archive.org/web/20231001202413/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-5/10026-5-Boccherini-Op15-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op15/op15-6/10026-6-Boccherini-Op15-6-lily.zip",
+     "archived": "20231002141537",
+     "bytes": 73150,
+     "wayback": "https://web.archive.org/web/20231002141537/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op15/op15-6/10026-6-Boccherini-Op15-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.22 (G.183 - G.188)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print+manuscript",
+   "philhar_source": [
+    "Chevardière - Paris - ca.1780 (BNF-Gallica) Manuscrit, copiste inconnu, ayant appartenu à Pierre Baillot (BNF-Gallica)"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_String_Quartets%2C_G.183-188_%28Boccherini%2C_Luigi%29"
+   ],
+   "manuscripts": [
+    {
+     "named": "Manuscrit, copiste inconnu, ayant appartenu à Pierre Baillot (BNF-Gallica)",
+     "library": "F-Pn",
+     "shelfmark": "Vmb ms. 153",
+     "date": "1775-1800",
+     "format": "parts",
+     "scan": "Gallica; already on disk and paired (reports/2026-10-11-philhar-manuscript-sources)",
+     "note": "Philhar's cSource names the Chevardière print as the source; the manuscript gave variants"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op22/op22-1/10027-1-Boccherini-Op22-1-lily.zip",
+     "archived": "20231001201811",
+     "bytes": 76193,
+     "wayback": "https://web.archive.org/web/20231001201811/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-1/10027-1-Boccherini-Op22-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op22/op22-2/10027-2-Boccherini-Op22-2-lily.zip",
+     "archived": "20231001202006",
+     "bytes": 75821,
+     "wayback": "https://web.archive.org/web/20231001202006/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-2/10027-2-Boccherini-Op22-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op22/op22-3/10027-3-Boccherini-Op22-3-lily.zip",
+     "archived": "20231001201817",
+     "bytes": 77267,
+     "wayback": "https://web.archive.org/web/20231001201817/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-3/10027-3-Boccherini-Op22-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op22/op22-4/10027-4-Boccherini-Op22-4-lily.zip",
+     "archived": "20231001202207",
+     "bytes": 76607,
+     "wayback": "https://web.archive.org/web/20231001202207/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-4/10027-4-Boccherini-Op22-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op22/op22-5/10027-5-Boccherini-Op22-5-lily.zip",
+     "archived": "20231001201959",
+     "bytes": 77027,
+     "wayback": "https://web.archive.org/web/20231001201959/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-5/10027-5-Boccherini-Op22-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op22/op22-6/10027-6-Boccherini-Op22-6-lily.zip",
+     "archived": "20231001201800",
+     "bytes": 76076,
+     "wayback": "https://web.archive.org/web/20231001201800/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op22/op22-6/10027-6-Boccherini-Op22-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.24 (G.189 - G.194)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "manuscript+print",
+   "philhar_source": [
+    "Manuscrit autographe, 1777 (BNF-Gallica) Sieber - Paris - ca.1778 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit autographe, 1777 (BNF-Gallica)",
+     "library": "F-Pn",
+     "shelfmark": "MS-1292",
+     "date": "1777",
+     "format": "score (autograph)",
+     "scan": "Gallica; already on disk; pairing tried, 29 of 468 staves kept (census report)"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op24/op24-1/10028-1-Boccherini-Op24-1-lily.zip",
+     "archived": "20231001201829",
+     "bytes": 81527,
+     "wayback": "https://web.archive.org/web/20231001201829/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-1/10028-1-Boccherini-Op24-1-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op24/op24-2/10028-2-Boccherini-Op24-2-lily.zip",
+     "archived": "20231001201918",
+     "bytes": 81713,
+     "wayback": "https://web.archive.org/web/20231001201918/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-2/10028-2-Boccherini-Op24-2-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op24/op24-3/10028-3-Boccherini-Op24-3-lily.zip",
+     "archived": "20231001201931",
+     "bytes": 80258,
+     "wayback": "https://web.archive.org/web/20231001201931/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-3/10028-3-Boccherini-Op24-3-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op24/op24-4/10028-4-Boccherini-Op24-4-lily.zip",
+     "archived": "20231001202124",
+     "bytes": 79619,
+     "wayback": "https://web.archive.org/web/20231001202124/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-4/10028-4-Boccherini-Op24-4-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op24/op24-5/10028-5-Boccherini-Op24-5-lily.zip",
+     "archived": "20231001201955",
+     "bytes": 82811,
+     "wayback": "https://web.archive.org/web/20231001201955/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-5/10028-5-Boccherini-Op24-5-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op24/op24-6/10028-6-Boccherini-Op24-6-lily.zip",
+     "archived": "20231001201844",
+     "bytes": 82050,
+     "wayback": "https://web.archive.org/web/20231001201844/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op24/op24-6/10028-6-Boccherini-Op24-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Luigi BOCCHERINI",
+   "composer_dates": "1743-1805",
+   "page": "boccherini.html",
+   "title": "6 Quatuors, op.26 (G.195 - G.200)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Artaria - Vienne - ca.1780 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boccherini/quatuors/op26/op26-1/10030-1-Boccherini-Op26-1-G195-lily.zip",
+     "archived": "20231001201858",
+     "bytes": 76951,
+     "wayback": "https://web.archive.org/web/20231001201858/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-1/10030-1-Boccherini-Op26-1-G195-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op26/op26-2/10030-2-Boccherini-Op26-2-G196-lily.zip",
+     "archived": "20231001201337",
+     "bytes": 75182,
+     "wayback": "https://web.archive.org/web/20231001201337/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-2/10030-2-Boccherini-Op26-2-G196-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op26/op26-3/10030-3-Boccherini-Op26-3-G197-lily.zip",
+     "archived": "20231001202017",
+     "bytes": 76089,
+     "wayback": "https://web.archive.org/web/20231001202017/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-3/10030-3-Boccherini-Op26-3-G197-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op26/op26-4/10030-4-Boccherini-Op26-4-G198-lily.zip",
+     "archived": "20231001201922",
+     "bytes": 75924,
+     "wayback": "https://web.archive.org/web/20231001201922/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-4/10030-4-Boccherini-Op26-4-G198-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op26/op26-5/10030-5-Boccherini-Op26-5-G199-lily.zip",
+     "archived": "20231001202205",
+     "bytes": 76422,
+     "wayback": "https://web.archive.org/web/20231001202205/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-5/10030-5-Boccherini-Op26-5-G199-lily.zip"
+    },
+    {
+     "zip": "boccherini/quatuors/op26/op26-6/10030-6-Boccherini-Op26-6-G200-lily.zip",
+     "archived": "20231001201830",
+     "bytes": 76581,
+     "wayback": "https://web.archive.org/web/20231001201830/https://le-concert.pagesperso-orange.fr/boccherini/quatuors/op26/op26-6/10030-6-Boccherini-Op26-6-G200-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "François-Adrien BOIELDIEU",
+   "composer_dates": "1775-1834",
+   "page": "boieldieu.html",
+   "title": "Ouvertures",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Erard La Dame blanche",
+    "Henry Lemoine - Paris - parties n°93",
+    "éditeur non déterminé - parties n°2003 O§224 Jean de Paris"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/Le_calife_de_Bagdad_%28Boieldieu,_Fran%C3%A7ois_Adrien%29",
+    "http://imslp.org/wiki/La_dame_blanche_%28Boieldieu,_Fran%C3%A7ois_Adrien%29",
+    "http://imslp.org/wiki/Jean_de_Paris_%28Boieldieu,_Fran%C3%A7ois_Adrien%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boieldieu/19-Boieldieu-CalifeBagdad-LYS.zip",
+     "archived": "20231001212819",
+     "bytes": 88721,
+     "wayback": "https://web.archive.org/web/20231001212819/https://le-concert.pagesperso-orange.fr/boieldieu/19-Boieldieu-CalifeBagdad-LYS.zip"
+    },
+    {
+     "zip": "boieldieu/18-Boieldieu-DameBlanche-LYS.zip",
+     "archived": "20231001212709",
+     "bytes": 104107,
+     "wayback": "https://web.archive.org/web/20231001212709/https://le-concert.pagesperso-orange.fr/boieldieu/18-Boieldieu-DameBlanche-LYS.zip"
+    },
+    {
+     "zip": "boieldieu/17-Boieldieu-JeanDeParis-LYS.zip",
+     "archived": "20231001213134",
+     "bytes": 101508,
+     "wayback": "https://web.archive.org/web/20231001213134/https://le-concert.pagesperso-orange.fr/boieldieu/17-Boieldieu-JeanDeParis-LYS.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Joseph BODIN de BOISMORTIER",
+   "composer_dates": "1689-1755",
+   "page": "boismortier.html",
+   "title": "6 Sonates à 2 Bassons, Violoncelles ou Basses - opus 14",
+   "scoring": "2 bn/vc/b",
+   "category": "two basses",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin - Paris - 1726"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boismortier/op-14/13039b-1-Boismortier-Duo-op14-1-Lily.zip",
+     "archived": "20231002154828",
+     "bytes": 70824,
+     "wayback": "https://web.archive.org/web/20231002154828/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-1-Boismortier-Duo-op14-1-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-14/13039b-2-Boismortier-Duo-op14-2-Lily.zip",
+     "archived": "20231001212650",
+     "bytes": 69576,
+     "wayback": "https://web.archive.org/web/20231001212650/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-2-Boismortier-Duo-op14-2-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-14/13039b-3-Boismortier-Duo-op14-3-Lily.zip",
+     "archived": "20231001212518",
+     "bytes": 69766,
+     "wayback": "https://web.archive.org/web/20231001212518/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-3-Boismortier-Duo-op14-3-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-14/13039b-4-Boismortier-Duo-op14-4-Lily.zip",
+     "archived": "20231001212416",
+     "bytes": 70993,
+     "wayback": "https://web.archive.org/web/20231001212416/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-4-Boismortier-Duo-op14-4-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-14/13039b-5-Boismortier-Duo-op14-5-Lily.zip",
+     "archived": "20231001212720",
+     "bytes": 70764,
+     "wayback": "https://web.archive.org/web/20231001212720/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-5-Boismortier-Duo-op14-5-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-14/13039b-6-Boismortier-Duo-op14-6-Lily.zip",
+     "archived": "20231001212350",
+     "bytes": 70424,
+     "wayback": "https://web.archive.org/web/20231001212350/https://le-concert.pagesperso-orange.fr/boismortier/op-14/13039b-6-Boismortier-Duo-op14-6-Lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Joseph BODIN de BOISMORTIER",
+   "composer_dates": "1689-1755",
+   "page": "boismortier.html",
+   "title": "5 Sonates pour Violoncelle et Basse continue - opus 26",
+   "scoring": "vc, bc",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin - Paris - 1729"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boismortier/op-26/13042b-1-Boismortier-Duo-op26-1-Lily.zip",
+     "archived": "20231001212342",
+     "bytes": 71559,
+     "wayback": "https://web.archive.org/web/20231001212342/https://le-concert.pagesperso-orange.fr/boismortier/op-26/13042b-1-Boismortier-Duo-op26-1-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-26/13042b-2-Boismortier-Duo-op26-2-Lily.zip",
+     "archived": "20231002083837",
+     "bytes": 71784,
+     "wayback": "https://web.archive.org/web/20231002083837/https://le-concert.pagesperso-orange.fr/boismortier/op-26/13042b-2-Boismortier-Duo-op26-2-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-26/13042b-3-Boismortier-Duo-op26-3-Lily.zip",
+     "archived": "20231001212704",
+     "bytes": 71573,
+     "wayback": "https://web.archive.org/web/20231001212704/https://le-concert.pagesperso-orange.fr/boismortier/op-26/13042b-3-Boismortier-Duo-op26-3-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-26/13042b-4-Boismortier-Duo-op26-4-Lily.zip",
+     "archived": "20231001212523",
+     "bytes": 71658,
+     "wayback": "https://web.archive.org/web/20231001212523/https://le-concert.pagesperso-orange.fr/boismortier/op-26/13042b-4-Boismortier-Duo-op26-4-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-26/13042b-5-Boismortier-Duo-op26-5-Lily.zip",
+     "archived": "20231001212325",
+     "bytes": 71530,
+     "wayback": "https://web.archive.org/web/20231001212325/https://le-concert.pagesperso-orange.fr/boismortier/op-26/13042b-5-Boismortier-Duo-op26-5-Lily.zip"
+    }
+   ],
+   "n_works": 5,
+   "n_archived": 5
+  },
+  {
+   "composer": "Joseph BODIN de BOISMORTIER",
+   "composer_dates": "1689-1755",
+   "page": "boismortier.html",
+   "title": "6 Sonates à 2 Bassons, Violoncelles ou Basses - opus 40",
+   "scoring": "2 bn/vc/b",
+   "category": "two basses",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin - Paris - 1732"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boismortier/op-40/13041b-1-Boismortier-Duo-op40-1-Lily.zip",
+     "archived": "20231001212730",
+     "bytes": 69399,
+     "wayback": "https://web.archive.org/web/20231001212730/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-1-Boismortier-Duo-op40-1-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-40/13041b-2-Boismortier-Duo-op40-2-Lily.zip",
+     "archived": "20231001212317",
+     "bytes": 69279,
+     "wayback": "https://web.archive.org/web/20231001212317/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-2-Boismortier-Duo-op40-2-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-40/13041b-3-Boismortier-Duo-op40-3-Lily.zip",
+     "archived": "20231001212509",
+     "bytes": 70493,
+     "wayback": "https://web.archive.org/web/20231001212509/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-3-Boismortier-Duo-op40-3-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-40/13041b-4-Boismortier-Duo-op40-4-Lily.zip",
+     "archived": "20231001212600",
+     "bytes": 69312,
+     "wayback": "https://web.archive.org/web/20231001212600/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-4-Boismortier-Duo-op40-4-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-40/13041b-5-Boismortier-Duo-op40-5-Lily.zip",
+     "archived": "20231001212420",
+     "bytes": 70642,
+     "wayback": "https://web.archive.org/web/20231001212420/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-5-Boismortier-Duo-op40-5-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-40/13041b-6-Boismortier-Duo-op40-6-Lily.zip",
+     "archived": "20231001212942",
+     "bytes": 70358,
+     "wayback": "https://web.archive.org/web/20231001212942/https://le-concert.pagesperso-orange.fr/boismortier/op-40/13041b-6-Boismortier-Duo-op40-6-Lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Joseph BODIN de BOISMORTIER",
+   "composer_dates": "1689-1755",
+   "page": "boismortier.html",
+   "title": "5 Sonates à 2 Bassons, Violoncelles ou Basses - opus 50",
+   "scoring": "2 bn/vc/b",
+   "category": "two basses",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin - Paris - 1734"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "boismortier/op-50/13043b-1-Boismortier-Duo-op50-1-Lily.zip",
+     "archived": "20231001212923",
+     "bytes": 72469,
+     "wayback": "https://web.archive.org/web/20231001212923/https://le-concert.pagesperso-orange.fr/boismortier/op-50/13043b-1-Boismortier-Duo-op50-1-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-50/13043b-2-Boismortier-Duo-op50-2-Lily.zip",
+     "archived": "20231002083546",
+     "bytes": 72028,
+     "wayback": "https://web.archive.org/web/20231002083546/https://le-concert.pagesperso-orange.fr/boismortier/op-50/13043b-2-Boismortier-Duo-op50-2-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-50/13043b-3-Boismortier-Duo-op50-3-Lily.zip",
+     "archived": "20231001212505",
+     "bytes": 72547,
+     "wayback": "https://web.archive.org/web/20231001212505/https://le-concert.pagesperso-orange.fr/boismortier/op-50/13043b-3-Boismortier-Duo-op50-3-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-50/13043b-4-Boismortier-Duo-op50-4-Lily.zip",
+     "archived": "20231001212511",
+     "bytes": 72456,
+     "wayback": "https://web.archive.org/web/20231001212511/https://le-concert.pagesperso-orange.fr/boismortier/op-50/13043b-4-Boismortier-Duo-op50-4-Lily.zip"
+    },
+    {
+     "zip": "boismortier/op-50/13043b-5-Boismortier-Duo-op50-5-Lily.zip",
+     "archived": "20231001212554",
+     "bytes": 71738,
+     "wayback": "https://web.archive.org/web/20231001212554/https://le-concert.pagesperso-orange.fr/boismortier/op-50/13043b-5-Boismortier-Duo-op50-5-Lily.zip"
+    }
+   ],
+   "n_works": 5,
+   "n_archived": 5
+  },
+  {
+   "composer": "Johann Evangelist BRANDL",
+   "composer_dates": "1760-1837",
+   "page": "brandl.html",
+   "title": "Notturno pour 2 Altos et violoncelle, op.19",
+   "scoring": "2 va, vc",
+   "category": "string trio",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "brandl/11022-Brandl-Notturno-lily.zip",
+     "archived": "20231001213146",
+     "bytes": 207874,
+     "wayback": "https://web.archive.org/web/20231001213146/https://le-concert.pagesperso-orange.fr/brandl/11022-Brandl-Notturno-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Jean-Baptiste BREVAL",
+   "composer_dates": "1753-1823",
+   "page": "breval.html",
+   "title": "6 Quatuors à cordes - opus 5",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Annereau - Paris - 1778"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/6_String_Quartets,_Op.5_%28Br%C3%A9val,_Jean-Baptiste%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "breval/op5/10004-breval-op5-1-lys.zip",
+     "archived": "20150922172141",
+     "bytes": 76065,
+     "wayback": "https://web.archive.org/web/20150922172141/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-1-lys.zip"
+    },
+    {
+     "zip": "breval/op5/10004-breval-op5-2-lys.zip",
+     "archived": "20150922182954",
+     "bytes": 76657,
+     "wayback": "https://web.archive.org/web/20150922182954/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-2-lys.zip"
+    },
+    {
+     "zip": "breval/op5/10004-breval-op5-3-lys.zip",
+     "archived": "20150922224930",
+     "bytes": 82502,
+     "wayback": "https://web.archive.org/web/20150922224930/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-3-lys.zip"
+    },
+    {
+     "zip": "breval/op5/10004-breval-op5-4-lys.zip",
+     "archived": "20150922233022",
+     "bytes": 76307,
+     "wayback": "https://web.archive.org/web/20150922233022/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-4-lys.zip"
+    },
+    {
+     "zip": "breval/op5/10004-breval-op5-5-lys.zip",
+     "archived": "20150922181200",
+     "bytes": 73391,
+     "wayback": "https://web.archive.org/web/20150922181200/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-5-lys.zip"
+    },
+    {
+     "zip": "breval/op5/10004-breval-op5-6-lys.zip",
+     "archived": "20150922224859",
+     "bytes": 83399,
+     "wayback": "https://web.archive.org/web/20150922224859/https://le-concert.pagesperso-orange.fr/breval/op5/10004-breval-op5-6-lys.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Jean-Baptiste BREVAL",
+   "composer_dates": "1753-1823",
+   "page": "breval.html",
+   "title": "6 Sonates pour Violoncelle et Basse - opus 12",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Richomme - Paris - 1783"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "breval/op12/13002b-1-Breval-Op12-1-Lily.zip",
+     "archived": "20231002083250",
+     "bytes": 70179,
+     "wayback": "https://web.archive.org/web/20231002083250/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-1-Breval-Op12-1-Lily.zip"
+    },
+    {
+     "zip": "breval/op12/13002b-2-Breval-Op12-2-Lily.zip",
+     "archived": "20231001212508",
+     "bytes": 70535,
+     "wayback": "https://web.archive.org/web/20231001212508/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-2-Breval-Op12-2-Lily.zip"
+    },
+    {
+     "zip": "breval/op12/13002b-3-Breval-Op12-3-Lily.zip",
+     "archived": "20231001212514",
+     "bytes": 71108,
+     "wayback": "https://web.archive.org/web/20231001212514/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-3-Breval-Op12-3-Lily.zip"
+    },
+    {
+     "zip": "breval/op12/13002b-4-Breval-Op12-4-Lily.zip",
+     "archived": "20231001212623",
+     "bytes": 70670,
+     "wayback": "https://web.archive.org/web/20231001212623/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-4-Breval-Op12-4-Lily.zip"
+    },
+    {
+     "zip": "breval/op12/13002b-5-Breval-Op12-5-Lily.zip",
+     "archived": "20231001212437",
+     "bytes": 71037,
+     "wayback": "https://web.archive.org/web/20231001212437/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-5-Breval-Op12-5-Lily.zip"
+    },
+    {
+     "zip": "breval/op12/13002b-6-Breval-Op12-6-Lily.zip",
+     "archived": "20231001212812",
+     "bytes": 70946,
+     "wayback": "https://web.archive.org/web/20231001212812/https://le-concert.pagesperso-orange.fr/breval/op12/13002b-6-Breval-Op12-6-Lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Giuseppe-Maria CAMBINI",
+   "composer_dates": "1746-1825",
+   "page": "cambini.html",
+   "title": "Symphonies",
+   "scoring": "2 ob, 2 hn, strings (+fl, bn)",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boyer, Paris, 1787",
+    "Leduc, Paris, 1776"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "cambini/Symphonies/1104b-1-Cambini-Symphonie-Op5-1-lily.zip",
+     "archived": "20231001212457",
+     "bytes": 106190,
+     "wayback": "https://web.archive.org/web/20231001212457/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1104b-1-Cambini-Symphonie-Op5-1-lily.zip"
+    },
+    {
+     "zip": "cambini/Symphonies/1104b-2-Cambini-Symphonie-Op5-2-lily.zip",
+     "archived": "20231001212656",
+     "bytes": 92287,
+     "wayback": "https://web.archive.org/web/20231001212656/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1104b-2-Cambini-Symphonie-Op5-2-lily.zip"
+    },
+    {
+     "zip": "cambini/Symphonies/1104b-3-Cambini-Symphonie-Op5-3-lily.zip",
+     "archived": "20231001212629",
+     "bytes": 88782,
+     "wayback": "https://web.archive.org/web/20231001212629/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1104b-3-Cambini-Symphonie-Op5-3-lily.zip"
+    },
+    {
+     "zip": "cambini/Symphonies/1103b-1-Cambini-Symphonie-Livre2-1-faM-lily.zip",
+     "archived": "20231001212556",
+     "bytes": 98571,
+     "wayback": "https://web.archive.org/web/20231001212556/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1103b-1-Cambini-Symphonie-Livre2-1-faM-lily.zip"
+    },
+    {
+     "zip": "cambini/Symphonies/1103b-2-Cambini-Symphonie-Livre2-2-mim-lily.zip",
+     "archived": "20231001212556",
+     "bytes": 95854,
+     "wayback": "https://web.archive.org/web/20231001212556/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1103b-2-Cambini-Symphonie-Livre2-2-mim-lily.zip"
+    },
+    {
+     "zip": "cambini/Symphonies/1103b-3-Cambini-Symphonie-Livre2-3-reM-lily.zip",
+     "archived": "20231001212937",
+     "bytes": 98378,
+     "wayback": "https://web.archive.org/web/20231001212937/https://le-concert.pagesperso-orange.fr/cambini/Symphonies/1103b-3-Cambini-Symphonie-Livre2-3-reM-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Giuseppe-Maria CAMBINI",
+   "composer_dates": "1746-1825",
+   "page": "cambini.html",
+   "title": "Trios pour violon, alto et basse, op.40",
+   "scoring": "vl, va, b",
+   "category": "string trio",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber - Paris - (ca. 1817) (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "cambini/Op40-1/Op40-1.zip",
+     "archived": "20231001212708",
+     "bytes": 72286,
+     "wayback": "https://web.archive.org/web/20231001212708/https://le-concert.pagesperso-orange.fr/cambini/Op40-1/Op40-1.zip"
+    },
+    {
+     "zip": "cambini/Op40-2/Op40-2.zip",
+     "archived": "20231002150830",
+     "bytes": 71727,
+     "wayback": "https://web.archive.org/web/20231002150830/https://le-concert.pagesperso-orange.fr/cambini/Op40-2/Op40-2.zip"
+    },
+    {
+     "zip": "cambini/Op40-3/Op40-3.zip",
+     "archived": "20231002153707",
+     "bytes": 72286,
+     "wayback": "https://web.archive.org/web/20231002153707/https://le-concert.pagesperso-orange.fr/cambini/Op40-3/Op40-3.zip"
+    },
+    {
+     "zip": "cambini/Op40-4/Op40-4.zip",
+     "archived": "20231002155158",
+     "bytes": 72763,
+     "wayback": "https://web.archive.org/web/20231002155158/https://le-concert.pagesperso-orange.fr/cambini/Op40-4/Op40-4.zip"
+    },
+    {
+     "zip": "cambini/Op40-5/Op40-5.zip",
+     "archived": "20231001212543",
+     "bytes": 73139,
+     "wayback": "https://web.archive.org/web/20231001212543/https://le-concert.pagesperso-orange.fr/cambini/Op40-5/Op40-5.zip"
+    },
+    {
+     "zip": "cambini/Op40-6/Op40-6.zip",
+     "archived": "20231001212501",
+     "bytes": 73111,
+     "wayback": "https://web.archive.org/web/20231001212501/https://le-concert.pagesperso-orange.fr/cambini/Op40-6/Op40-6.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Carlo Antonio CAMPIONI",
+   "composer_dates": "1720-1788",
+   "page": "campioni.html",
+   "title": "Duos pour violon et violoncelle op.7",
+   "scoring": "vl, vc",
+   "category": "string duo",
+   "source_kind": "manuscript+print",
+   "philhar_source": [
+    "Manuscrit - Bremner"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/6_Duos_for_Violin_and_Cello_%28Campioni%2C_Carlo_Antonio%29"
+   ],
+   "manuscripts": [
+    {
+     "named": "Manuscrit - Bremner",
+     "library": "D-B (Staatsbibliothek zu Berlin)",
+     "shelfmark": "Mus.ms. 2861",
+     "rism": "452007625",
+     "date": "ca. 1780",
+     "format": "2 parts (vl, vlc), 10 + 10 folios; 41 images",
+     "scan": "SBB digital (PPN626958725, resolver SBB00001DA400000000); IMSLP",
+     "identified_by": "IMSLP's only manuscript scan for the set is SBB's 1780 copy",
+     "note": "Encoding mixes the manuscript and Bremner's print (London, ca. 1765); comments mark 'BR:' and 'MS:' readings"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "campioni/13021-1-Campioni-Op7-Duo-1-LYS.zip",
+     "archived": "20231002161939",
+     "bytes": 71856,
+     "wayback": "https://web.archive.org/web/20231002161939/https://le-concert.pagesperso-orange.fr/campioni/13021-1-Campioni-Op7-Duo-1-LYS.zip"
+    },
+    {
+     "zip": "campioni/13021-2-Campioni-Op7-Duo-2-LYS.zip",
+     "archived": "20231001212508",
+     "bytes": 71820,
+     "wayback": "https://web.archive.org/web/20231001212508/https://le-concert.pagesperso-orange.fr/campioni/13021-2-Campioni-Op7-Duo-2-LYS.zip"
+    },
+    {
+     "zip": "campioni/13021-3-Campioni-Op7-Duo-3-LYS.zip",
+     "archived": "20231001212836",
+     "bytes": 71624,
+     "wayback": "https://web.archive.org/web/20231001212836/https://le-concert.pagesperso-orange.fr/campioni/13021-3-Campioni-Op7-Duo-3-LYS.zip"
+    },
+    {
+     "zip": "campioni/13021-4-Campioni-Op7-Duo-4-LYS.zip",
+     "archived": "20231001212552",
+     "bytes": 71805,
+     "wayback": "https://web.archive.org/web/20231001212552/https://le-concert.pagesperso-orange.fr/campioni/13021-4-Campioni-Op7-Duo-4-LYS.zip"
+    },
+    {
+     "zip": "campioni/13021-5-Campioni-Op7-Duo-5-LYS.zip",
+     "archived": "20231001212613",
+     "bytes": 71574,
+     "wayback": "https://web.archive.org/web/20231001212613/https://le-concert.pagesperso-orange.fr/campioni/13021-5-Campioni-Op7-Duo-5-LYS.zip"
+    },
+    {
+     "zip": "campioni/13021-6-Campioni-Op7-Duo-6-LYS.zip",
+     "archived": "20231001212524",
+     "bytes": 71716,
+     "wayback": "https://web.archive.org/web/20231001212524/https://le-concert.pagesperso-orange.fr/campioni/13021-6-Campioni-Op7-Duo-6-LYS.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Jean-Baptiste CANAVAS",
+   "composer_dates": "1713-1784",
+   "page": "canavas.html",
+   "title": "6 Sonates pour Violoncelle et Basse continue - op.1",
+   "scoring": "vc, bc",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Dun (Boivin-Leclerc) - Paris (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_Cello_Sonatas%2C_Op.1_%28Canavas%2C_Jean-Baptiste%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "canavas/op1/13063-1-Canavas-Sonate-op1-1-lily.zip",
+     "archived": "20231001213304",
+     "bytes": 73302,
+     "wayback": "https://web.archive.org/web/20231001213304/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-1-Canavas-Sonate-op1-1-lily.zip"
+    },
+    {
+     "zip": "canavas/op1/13063-2-Canavas-Sonate-op1-2-lily.zip",
+     "archived": "20231001213153",
+     "bytes": 71425,
+     "wayback": "https://web.archive.org/web/20231001213153/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-2-Canavas-Sonate-op1-2-lily.zip"
+    },
+    {
+     "zip": "canavas/op1/13063-3-Canavas-Sonate-op1-3-lily.zip",
+     "archived": "20231001213356",
+     "bytes": 72034,
+     "wayback": "https://web.archive.org/web/20231001213356/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-3-Canavas-Sonate-op1-3-lily.zip"
+    },
+    {
+     "zip": "canavas/op1/13063-4-Canavas-Sonate-op1-4-lily.zip",
+     "archived": "20231001213306",
+     "bytes": 72095,
+     "wayback": "https://web.archive.org/web/20231001213306/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-4-Canavas-Sonate-op1-4-lily.zip"
+    },
+    {
+     "zip": "canavas/op1/13063-5-Canavas-Sonate-op1-5-lily.zip",
+     "archived": "20231001215528",
+     "bytes": 72789,
+     "wayback": "https://web.archive.org/web/20231001215528/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-5-Canavas-Sonate-op1-5-lily.zip"
+    },
+    {
+     "zip": "canavas/op1/13063-6-Canavas-Sonate-op1-6-lily.zip",
+     "archived": "20231001213249",
+     "bytes": 72596,
+     "wayback": "https://web.archive.org/web/20231001213249/https://le-concert.pagesperso-orange.fr/canavas/op1/13063-6-Canavas-Sonate-op1-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Gabriel FAURÉ",
+   "composer_dates": "1845-1924",
+   "page": "faure.html",
+   "title": "Élégie, op.24",
+   "scoring": "vc, orchestra / vc, pf",
+   "category": "orchestral",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "faure/1413-Faure-Elegie-Orchestre-Lily.zip",
+     "archived": "20231001182540",
+     "bytes": 84520,
+     "wayback": "https://web.archive.org/web/20231001182540/https://le-concert.pagesperso-orange.fr/faure/1413-Faure-Elegie-Orchestre-Lily.zip"
+    },
+    {
+     "zip": "faure/1413-Faure-Elegie-Piano-Lily.zip",
+     "archived": "20231001181125",
+     "bytes": 70624,
+     "wayback": "https://web.archive.org/web/20231001181125/https://le-concert.pagesperso-orange.fr/faure/1413-Faure-Elegie-Piano-Lily.zip"
+    }
+   ],
+   "n_works": 2,
+   "n_archived": 2
+  },
+  {
+   "composer": "Willem de FESCH",
+   "composer_dates": "1687-1761",
+   "page": "fesch.html",
+   "title": "6 Sonates pour 2 Violoncelles - op.4, Livre II",
+   "scoring": "2 vc",
+   "category": "two basses",
+   "source_kind": "print",
+   "philhar_source": [
+    "de Fesch - Amsterdam - 1726 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/12_Sonatas%2C_Op.4_%28Fesch%2C_Willem_de%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "fesch/op4/13059b-7-deFesch-op4-7-lily.zip",
+     "archived": "20231002095905",
+     "bytes": 69989,
+     "wayback": "https://web.archive.org/web/20231002095905/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-7-deFesch-op4-7-lily.zip"
+    },
+    {
+     "zip": "fesch/op4/13059b-8-deFesch-op4-8-lily.zip",
+     "archived": "20231002143118",
+     "bytes": 70737,
+     "wayback": "https://web.archive.org/web/20231002143118/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-8-deFesch-op4-8-lily.zip"
+    },
+    {
+     "zip": "fesch/op4/13059b-9-deFesch-op4-9-lily.zip",
+     "archived": "20231001214335",
+     "bytes": 70321,
+     "wayback": "https://web.archive.org/web/20231001214335/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-9-deFesch-op4-9-lily.zip"
+    },
+    {
+     "zip": "fesch/op4/13059b-10-deFesch-op4-10-lily.zip",
+     "archived": "20231001214448",
+     "bytes": 70337,
+     "wayback": "https://web.archive.org/web/20231001214448/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-10-deFesch-op4-10-lily.zip"
+    },
+    {
+     "zip": "fesch/op4/13059b-11-deFesch-op4-11-lily.zip",
+     "archived": "20231002083645",
+     "bytes": 70018,
+     "wayback": "https://web.archive.org/web/20231002083645/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-11-deFesch-op4-11-lily.zip"
+    },
+    {
+     "zip": "fesch/op4/13059b-12-deFesch-op4-12-lily.zip",
+     "archived": "20231001214620",
+     "bytes": 70403,
+     "wayback": "https://web.archive.org/web/20231001214620/https://le-concert.pagesperso-orange.fr/fesch/op4/13059b-12-deFesch-op4-12-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Willem de FESCH",
+   "composer_dates": "1687-1761",
+   "page": "fesch.html",
+   "title": "6 Sonates pour Violoncelle et Basse continue - op.13",
+   "scoring": "vc, bc",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "John Walsh - London - ~1750 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_Cello_Sonatas%2C_Op.13_%28Fesch%2C_Willem_de%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "fesch/op13/13056b-1-deFesch-Sonate-op13-1-lily.zip",
+     "archived": "20231001214351",
+     "bytes": 71588,
+     "wayback": "https://web.archive.org/web/20231001214351/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-1-deFesch-Sonate-op13-1-lily.zip"
+    },
+    {
+     "zip": "fesch/op13/13056b-2-deFesch-Sonate-op13-2-lily.zip",
+     "archived": "20231001214918",
+     "bytes": 71064,
+     "wayback": "https://web.archive.org/web/20231001214918/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-2-deFesch-Sonate-op13-2-lily.zip"
+    },
+    {
+     "zip": "fesch/op13/13056b-3-deFesch-Sonate-op13-3-lily.zip",
+     "archived": "20231002083743",
+     "bytes": 71250,
+     "wayback": "https://web.archive.org/web/20231002083743/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-3-deFesch-Sonate-op13-3-lily.zip"
+    },
+    {
+     "zip": "fesch/op13/13056b-4-deFesch-Sonate-op13-4-lily.zip",
+     "archived": "20231001214437",
+     "bytes": 71259,
+     "wayback": "https://web.archive.org/web/20231001214437/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-4-deFesch-Sonate-op13-4-lily.zip"
+    },
+    {
+     "zip": "fesch/op13/13056b-5-deFesch-Sonate-op13-5-lily.zip",
+     "archived": "20231002083928",
+     "bytes": 71638,
+     "wayback": "https://web.archive.org/web/20231002083928/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-5-deFesch-Sonate-op13-5-lily.zip"
+    },
+    {
+     "zip": "fesch/op13/13056b-6-deFesch-Sonate-op13-6-lily.zip",
+     "archived": "20231001214313",
+     "bytes": 71349,
+     "wayback": "https://web.archive.org/web/20231001214313/https://le-concert.pagesperso-orange.fr/fesch/op13/13056b-6-deFesch-Sonate-op13-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Felice GIARDINI",
+   "composer_dates": "1716-1796",
+   "page": "giardini.html",
+   "title": "Duo pour Violon et Violoncelle, faM",
+   "scoring": "vl, vc",
+   "category": "string duo",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit (IMSLP)",
+     "library": "not named (IMSLP upload by 'Zelenka', 2010)",
+     "shelfmark": null,
+     "rism": "850810319? (I-Gl M. (3) 22.7, parts, 1760-1780) — unconfirmed",
+     "format": "parts",
+     "scan": "IMSLP: 'Duet for Violin and Cello in F major (Giardini, Felice)'"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "giardini/Duo-vl-vc/13023b-Giardini-Duo-Vl-Vc-lily.zip",
+     "archived": "20231001213614",
+     "bytes": 69862,
+     "wayback": "https://web.archive.org/web/20231001213614/https://le-concert.pagesperso-orange.fr/giardini/Duo-vl-vc/13023b-Giardini-Duo-Vl-Vc-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Tommaso GIORDANI",
+   "composer_dates": "1738-1806",
+   "page": "giordani.html",
+   "title": "6 Quatuors à cordes - opus 8",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Napier - London - 1775 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/6_String_Quartets,_Op.8_%28Giordani,_Tommaso%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "giordani/op8-1/10006-Giordani-Op8-1-lily.zip",
+     "archived": "20231001212737",
+     "bytes": 78934,
+     "wayback": "https://web.archive.org/web/20231001212737/https://le-concert.pagesperso-orange.fr/giordani/op8-1/10006-Giordani-Op8-1-lily.zip"
+    },
+    {
+     "zip": "giordani/op8-2/10006-Giordani-Op8-2-lily.zip",
+     "archived": "20231001212528",
+     "bytes": 77556,
+     "wayback": "https://web.archive.org/web/20231001212528/https://le-concert.pagesperso-orange.fr/giordani/op8-2/10006-Giordani-Op8-2-lily.zip"
+    },
+    {
+     "zip": "giordani/op8-3/10006-Giordani-Op8-3-lily.zip",
+     "archived": "20231003062309",
+     "bytes": 78273,
+     "wayback": "https://web.archive.org/web/20231003062309/https://le-concert.pagesperso-orange.fr/giordani/op8-3/10006-Giordani-Op8-3-lily.zip"
+    },
+    {
+     "zip": "giordani/op8-4/10006-Giordani-Op8-4-lily.zip",
+     "archived": "20231002083253",
+     "bytes": 76366,
+     "wayback": "https://web.archive.org/web/20231002083253/https://le-concert.pagesperso-orange.fr/giordani/op8-4/10006-Giordani-Op8-4-lily.zip"
+    },
+    {
+     "zip": "giordani/op8-5/10006-Giordani-Op8-5-lily.zip",
+     "archived": "20231001213046",
+     "bytes": 75300,
+     "wayback": "https://web.archive.org/web/20231001213046/https://le-concert.pagesperso-orange.fr/giordani/op8-5/10006-Giordani-Op8-5-lily.zip"
+    },
+    {
+     "zip": "giordani/op8-6/10006-Giordani-Op8-6-lily.zip",
+     "archived": "20231001212421",
+     "bytes": 75263,
+     "wayback": "https://web.archive.org/web/20231001212421/https://le-concert.pagesperso-orange.fr/giordani/op8-6/10006-Giordani-Op8-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "François-Joseph GOSSEC",
+   "composer_dates": "1734-1829",
+   "page": "gossec.html",
+   "title": "Quatuors op.14 pour flûte ou violon, violon, alto et basse (ca. 1770)",
+   "scoring": "fl/vl, vl, va, b",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Magasin Musical (Paris)"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gossec/q-op14-1/10013-1-Gossec-Quatuor-Op14-1-lily.zip",
+     "archived": "20231001212728",
+     "bytes": 77622,
+     "wayback": "https://web.archive.org/web/20231001212728/https://le-concert.pagesperso-orange.fr/gossec/q-op14-1/10013-1-Gossec-Quatuor-Op14-1-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op14-2/10013-2-Gossec-Quatuor-Op14-2-lily.zip",
+     "archived": "20231001213036",
+     "bytes": 77110,
+     "wayback": "https://web.archive.org/web/20231001213036/https://le-concert.pagesperso-orange.fr/gossec/q-op14-2/10013-2-Gossec-Quatuor-Op14-2-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op14-3/10013-3-Gossec-Quatuor-Op14-3-lily.zip",
+     "archived": "20231001213133",
+     "bytes": 74431,
+     "wayback": "https://web.archive.org/web/20231001213133/https://le-concert.pagesperso-orange.fr/gossec/q-op14-3/10013-3-Gossec-Quatuor-Op14-3-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op14-4/10013-4-Gossec-Quatuor-Op14-4-lily.zip",
+     "archived": "20231001212847",
+     "bytes": 75758,
+     "wayback": "https://web.archive.org/web/20231001212847/https://le-concert.pagesperso-orange.fr/gossec/q-op14-4/10013-4-Gossec-Quatuor-Op14-4-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op14-5/10013-5-Gossec-Quatuor-Op14-5-lily.zip",
+     "archived": "20231001212752",
+     "bytes": 74512,
+     "wayback": "https://web.archive.org/web/20231001212752/https://le-concert.pagesperso-orange.fr/gossec/q-op14-5/10013-5-Gossec-Quatuor-Op14-5-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op14-6/10013-6-Gossec-Quatuor-Op14-6-lily.zip",
+     "archived": "20231001212703",
+     "bytes": 73598,
+     "wayback": "https://web.archive.org/web/20231001212703/https://le-concert.pagesperso-orange.fr/gossec/q-op14-6/10013-6-Gossec-Quatuor-Op14-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "François-Joseph GOSSEC",
+   "composer_dates": "1734-1829",
+   "page": "gossec.html",
+   "title": "Quatuors op.15 pour 2 violons, alto et basse (ca.1772)",
+   "scoring": "2 vl, va, b",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber, Paris, ca.1772 (Gallica-BNF, IMSLP)"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "Gallica",
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gossec/q-op15-1/10014-1-Gossec-Quatuor-Op15-1-lily.zip",
+     "archived": "20231002083342",
+     "bytes": 76695,
+     "wayback": "https://web.archive.org/web/20231002083342/https://le-concert.pagesperso-orange.fr/gossec/q-op15-1/10014-1-Gossec-Quatuor-Op15-1-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op15-2/10014-2-Gossec-Quatuor-Op15-2-lily.zip",
+     "archived": "20231001212846",
+     "bytes": 75519,
+     "wayback": "https://web.archive.org/web/20231001212846/https://le-concert.pagesperso-orange.fr/gossec/q-op15-2/10014-2-Gossec-Quatuor-Op15-2-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op15-3/10014-3-Gossec-Quatuor-Op15-3-lily.zip",
+     "archived": "20231001212909",
+     "bytes": 75599,
+     "wayback": "https://web.archive.org/web/20231001212909/https://le-concert.pagesperso-orange.fr/gossec/q-op15-3/10014-3-Gossec-Quatuor-Op15-3-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op15-4/10014-4-Gossec-Quatuor-Op15-4-lily.zip",
+     "archived": "20231001212715",
+     "bytes": 76102,
+     "wayback": "https://web.archive.org/web/20231001212715/https://le-concert.pagesperso-orange.fr/gossec/q-op15-4/10014-4-Gossec-Quatuor-Op15-4-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op15-5/10014-5-Gossec-Quatuor-Op15-5-lily.zip",
+     "archived": "20231001212719",
+     "bytes": 74954,
+     "wayback": "https://web.archive.org/web/20231001212719/https://le-concert.pagesperso-orange.fr/gossec/q-op15-5/10014-5-Gossec-Quatuor-Op15-5-lily.zip"
+    },
+    {
+     "zip": "gossec/q-op15-6/10014-6-Gossec-Quatuor-Op15-6-lily.zip",
+     "archived": "20231001213556",
+     "bytes": 76520,
+     "wayback": "https://web.archive.org/web/20231001213556/https://le-concert.pagesperso-orange.fr/gossec/q-op15-6/10014-6-Gossec-Quatuor-Op15-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "François-Joseph GOSSEC",
+   "composer_dates": "1734-1829",
+   "page": "gossec.html",
+   "title": "Symphonie en si bémol, RH-52 (ca.1782)",
+   "scoring": "2 ob, 2 hn, strings",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber - Paris - 1784 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/Symphonie_No.1_%28Gossec,_Fran%C3%A7ois_Joseph%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gossec/symphonie1/1031-Gossec-Symph1-sib-lily.zip",
+     "archived": "20231001212812",
+     "bytes": 87595,
+     "wayback": "https://web.archive.org/web/20231001212812/https://le-concert.pagesperso-orange.fr/gossec/symphonie1/1031-Gossec-Symph1-sib-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "François-Joseph GOSSEC",
+   "composer_dates": "1734-1829",
+   "page": "gossec.html",
+   "title": "Symphonie en mi bémol, RH-53 (ca.1782)",
+   "scoring": "2 ob, 2 hn, strings",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber - Paris - ca.1784 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/Symphonie_No.2_%28Gossec,_Fran%C3%A7ois_Joseph%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gossec/symphonie2/1032-Gossec-Symph2-mib-lily.zip",
+     "archived": "20231001212807",
+     "bytes": 88050,
+     "wayback": "https://web.archive.org/web/20231001212807/https://le-concert.pagesperso-orange.fr/gossec/symphonie2/1032-Gossec-Symph2-mib-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Charles GOUNOD",
+   "composer_dates": "1818-1893",
+   "page": "gounod.html",
+   "title": "Marche funèbre d'une marionnette",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "H. Lemoine - 8148.H. / 8149.H."
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gounod/Marionnette/551-Gounod-MarcheFunebreMarionnette-lily.zip",
+     "archived": "20231002184813",
+     "bytes": 98253,
+     "wayback": "https://web.archive.org/web/20231002184813/https://le-concert.pagesperso-orange.fr/gounod/Marionnette/551-Gounod-MarcheFunebreMarionnette-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "André GRETRY",
+   "composer_dates": "1741-1813",
+   "page": "gretry.html",
+   "title": "La Caravane du Caire, ouverture",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber - 968"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "gretry/1224-Gretry-Caravane-Lily.zip",
+     "archived": "20231001212928",
+     "bytes": 76967,
+     "wayback": "https://web.archive.org/web/20231001212928/https://le-concert.pagesperso-orange.fr/gretry/1224-Gretry-Caravane-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Johan HALVORSEN",
+   "composer_dates": "1864-1935",
+   "page": "halvorsen.html",
+   "title": "Marche d'entrée des Boyards",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Hawkes & Son, London, 1913 - #4932"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "halvorsen/1619b-Halvorsen-Boyards-lily.zip",
+     "archived": "20231001212505",
+     "bytes": 97307,
+     "wayback": "https://web.archive.org/web/20231001212505/https://le-concert.pagesperso-orange.fr/halvorsen/1619b-Halvorsen-Boyards-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Joseph HAYDN",
+   "composer_dates": "1732-1809",
+   "page": "haydn-j.html",
+   "title": "Trios pour Baryton, alto et violoncelle, Hob.XI",
+   "scoring": "baryton, va, vc",
+   "category": "string trio",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit Johann Elssler, ca.1790 (Staatsbibliothek zu Berlin)"
+   ],
+   "scan_mentions": [
+    "Staatsbibliothek zu Berlin"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit Johann Elssler, ca.1790 (Staatsbibliothek zu Berlin)",
+     "library": "D-B",
+     "shelfmark": "Mus.ms. 10037",
+     "rism": "452005366",
+     "date": "ca. 1790",
+     "format": "3 parts (baryton, va, vc) for 72 trios, 635 images; Hob. XI:25-27 are a few pages of each part",
+     "hand": "Johann Elssler (1769-1843) and others",
+     "scan": "SBB digital (PPN820525103, resolver SBB0001967C00000000); IMSLP per trio"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "haydn-j/Trios-by/25/11026-25-HaydnJ-TrioBaryton-25-lily.zip",
+     "archived": "20231002211551",
+     "bytes": 72688,
+     "wayback": "https://web.archive.org/web/20231002211551/https://le-concert.pagesperso-orange.fr/haydn-j/Trios-by/25/11026-25-HaydnJ-TrioBaryton-25-lily.zip"
+    },
+    {
+     "zip": "haydn-j/Trios-by/26/11026-26-HaydnJ-TrioBaryton-26-lily.zip",
+     "archived": "20231002151701",
+     "bytes": 73543,
+     "wayback": "https://web.archive.org/web/20231002151701/https://le-concert.pagesperso-orange.fr/haydn-j/Trios-by/26/11026-26-HaydnJ-TrioBaryton-26-lily.zip"
+    },
+    {
+     "zip": "haydn-j/Trios-by/27/11026-27-HaydnJ-TrioBaryton-27-lily.zip",
+     "archived": "20231002083641",
+     "bytes": 73759,
+     "wayback": "https://web.archive.org/web/20231002083641/https://le-concert.pagesperso-orange.fr/haydn-j/Trios-by/27/11026-27-HaydnJ-TrioBaryton-27-lily.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Michael HAYDN",
+   "composer_dates": "1737-1806",
+   "page": "haydn-m.html",
+   "title": "Quintette pour 2 violons, 2 altos et violoncelle, faM, MH.411",
+   "scoring": "2 vl, 2 va, vc",
+   "category": "string quintet",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit (ca.1760-99). SLUB-Dresden (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP",
+    "SLUB"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit (ca.1760-99). SLUB-Dresden (IMSLP)",
+     "library": "D-Dl (SLUB Dresden)",
+     "shelfmark": "Mus.3403-P-513",
+     "rism": "210044350",
+     "date": "ca. 1770-1800",
+     "format": "5 parts (vl 1, 2, va 1, 2, vlc), 8+8+7+7+7 folios",
+     "scan": "SLUB digital (ppn398103402; returns 403 to scripted requests); IMSLP copy of SLUB's scan",
+     "note": "Title names 'von Robinig' crossed out, 'Weizner' added: a Salzburg copy"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "haydn-m/MH-411/12005-HaydnM-Quintette-MH411-Lily.zip",
+     "archived": "20231002173727",
+     "bytes": 97754,
+     "wayback": "https://web.archive.org/web/20231002173727/https://le-concert.pagesperso-orange.fr/haydn-m/MH-411/12005-HaydnM-Quintette-MH411-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Franz-Anton HOFFMEISTER",
+   "composer_dates": "1754-1812",
+   "page": "hoffmeister.html",
+   "title": "3 Duos pour violon et violoncelle - opus 6",
+   "scoring": "vl, vc",
+   "category": "string duo",
+   "source_kind": "print",
+   "philhar_source": [
+    "Forster - London - n.d. (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/3_Duets_for_Violin_and_Cello,_Op.6_%28Hoffmeister,_Franz_Anton%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "hoffmeister/13022-1-hoffmeister-op6-duo-1-lys.zip",
+     "archived": "20150922233028",
+     "bytes": 73579,
+     "wayback": "https://web.archive.org/web/20150922233028/https://le-concert.pagesperso-orange.fr/hoffmeister/13022-1-hoffmeister-op6-duo-1-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/13022-2-hoffmeister-op6-duo-2-lys.zip",
+     "archived": "20150922192023",
+     "bytes": 70942,
+     "wayback": "https://web.archive.org/web/20150922192023/https://le-concert.pagesperso-orange.fr/hoffmeister/13022-2-hoffmeister-op6-duo-2-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/13022-3-hoffmeister-op6-duo-3-lys.zip",
+     "archived": "20150922192307",
+     "bytes": 71333,
+     "wayback": "https://web.archive.org/web/20150922192307/https://le-concert.pagesperso-orange.fr/hoffmeister/13022-3-hoffmeister-op6-duo-3-lys.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Franz-Anton HOFFMEISTER",
+   "composer_dates": "1754-1812",
+   "page": "hoffmeister.html",
+   "title": "3 Trios pour 2 violons et violoncelle - opus 22",
+   "scoring": "2 vl, vc",
+   "category": "string trio",
+   "source_kind": "print",
+   "philhar_source": [
+    "André - Offenbach s/Main - n.d. (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/6_String_Trios,_Op.22_%28Hoffmeister,_Franz_Anton%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": [
+    "D-Eu Esl VIII 430 (trio in G, ca. 1800): not yet matched to op. 22"
+   ],
+   "lilypond": [
+    {
+     "zip": "hoffmeister/11021-1-hoffmeister-op22-trio-1-lys.zip",
+     "archived": "20150922225053",
+     "bytes": 79465,
+     "wayback": "https://web.archive.org/web/20150922225053/https://le-concert.pagesperso-orange.fr/hoffmeister/11021-1-hoffmeister-op22-trio-1-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/11021-2-hoffmeister-op22-trio-2-lys.zip",
+     "archived": "20150922195536",
+     "bytes": 75795,
+     "wayback": "https://web.archive.org/web/20150922195536/https://le-concert.pagesperso-orange.fr/hoffmeister/11021-2-hoffmeister-op22-trio-2-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/11021-3-hoffmeister-op22-trio-3-lys.zip",
+     "archived": "20150922233048",
+     "bytes": 74720,
+     "wayback": "https://web.archive.org/web/20150922233048/https://le-concert.pagesperso-orange.fr/hoffmeister/11021-3-hoffmeister-op22-trio-3-lys.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Franz-Anton HOFFMEISTER",
+   "composer_dates": "1754-1812",
+   "page": "hoffmeister.html",
+   "title": "3 Quatuors pour 2 violons, alto et violoncelle - opus 14",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Hoffmeister - Vienna - ca. 1791. (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/3_String_Quartets,_Op.14_%28Hoffmeister,_Franz_Anton%29",
+    "http://imslp.org/wiki/6_String_Trios,_Op.22_%28Hoffmeister,_Franz_Anton%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": [
+    "D-Eu Esl VIII 395 (G major quartet, ca. 1790), D-LEb Go. S. 215 (3 quartets, A, C, E-flat, ca. 1810): keys not yet matched to op. 14"
+   ],
+   "lilypond": [
+    {
+     "zip": "hoffmeister/10010-1-hoffmeister-op14-quatuor-1-lys.zip",
+     "archived": "20150922233211",
+     "bytes": 83129,
+     "wayback": "https://web.archive.org/web/20150922233211/https://le-concert.pagesperso-orange.fr/hoffmeister/10010-1-hoffmeister-op14-quatuor-1-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/10010-2-hoffmeister-op14-quatuor-2-lys.zip",
+     "archived": "20150922225059",
+     "bytes": 82906,
+     "wayback": "https://web.archive.org/web/20150922225059/https://le-concert.pagesperso-orange.fr/hoffmeister/10010-2-hoffmeister-op14-quatuor-2-lys.zip"
+    },
+    {
+     "zip": "hoffmeister/10010-3-hoffmeister-op14-quatuor-3-lys.zip",
+     "archived": "20150922193731",
+     "bytes": 88255,
+     "wayback": "https://web.archive.org/web/20150922193731/https://le-concert.pagesperso-orange.fr/hoffmeister/10010-3-hoffmeister-op14-quatuor-3-lys.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Leopold HOFMANN",
+   "composer_dates": "1738-1793",
+   "page": "hofmann.html",
+   "title": "Divertimento pour 2 Violoncelles et Basse",
+   "scoring": "2 vc, b",
+   "category": "string trio",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit (D-Eu Esl VIII 405, IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit (D-Eu Esl VIII 405, IMSLP)",
+     "library": "D-Eu (UB Eichstätt-Ingolstadt)",
+     "shelfmark": "Esl VIII 405",
+     "rism": "450300198",
+     "date": "ca. 1800 (1795-1805)",
+     "format": "3 parts (vlc 1, vlc 2, b), 2+2+2 folios",
+     "hand": "RISM: Steger, Johann Georg",
+     "scan": "Eichstätt digital (urn:nbn:de:bvb:824-esl-viii-405-6; bot gate, hand download); IMSLP",
+     "note": "Same Eichstätt collection as our Op. 2 copies (Esl VIII 351-357, stamped Bibl. Steger)"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "hofmann/11029-Hofmann-Divertimento-2cellosBasse-lily.zip",
+     "archived": "20231001212839",
+     "bytes": 1065720,
+     "wayback": "https://web.archive.org/web/20231001212839/https://le-concert.pagesperso-orange.fr/hofmann/11029-Hofmann-Divertimento-2cellosBasse-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Johann Nepomuk HUMMEL",
+   "composer_dates": "1778-1837",
+   "page": "hummel.html",
+   "title": "Quatuors op.30 (1804-1808)",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Riedl, Vienna, n.d. - 611 Richault, Paris, ca.1825 - 1007.R."
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "hummel/op-30/10011-1-Hummel-Quatuor-1-lily.zip",
+     "archived": "20231002143310",
+     "bytes": 97894,
+     "wayback": "https://web.archive.org/web/20231002143310/https://le-concert.pagesperso-orange.fr/hummel/op-30/10011-1-Hummel-Quatuor-1-lily.zip"
+    },
+    {
+     "zip": "hummel/op-30/10011-2-Hummel-Quatuor-2-lily.zip",
+     "archived": "20231002083435",
+     "bytes": 93929,
+     "wayback": "https://web.archive.org/web/20231002083435/https://le-concert.pagesperso-orange.fr/hummel/op-30/10011-2-Hummel-Quatuor-2-lily.zip"
+    },
+    {
+     "zip": "hummel/op-30/10011-3-Hummel-Quatuor-3-lily.zip",
+     "archived": "20231002083420",
+     "bytes": 97525,
+     "wayback": "https://web.archive.org/web/20231002083420/https://le-concert.pagesperso-orange.fr/hummel/op-30/10011-3-Hummel-Quatuor-3-lily.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Johann Nepomuk HUMMEL",
+   "composer_dates": "1778-1837",
+   "page": "hummel.html",
+   "title": "Ouverture, op.101 (1824)",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Richault, Paris, ca.1825 - 1110.R."
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "hummel/op-101/1226-Hummel-Ouverture-op101-Lily.zip",
+     "archived": "20231002083451",
+     "bytes": 94825,
+     "wayback": "https://web.archive.org/web/20231002083451/https://le-concert.pagesperso-orange.fr/hummel/op-101/1226-Hummel-Ouverture-op101-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Johann Nepomuk HUMMEL",
+   "composer_dates": "1778-1837",
+   "page": "hummel.html",
+   "title": "Sonate pour Piano et Violoncelle, op.104 (1824)",
+   "scoring": "pf, vc",
+   "category": "piano and cello",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit holographe - HAAB-Weimar (IMSLP)"
+   ],
+   "scan_mentions": [
+    "HAAB",
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit holographe - HAAB-Weimar (IMSLP)",
+     "library": "D-WRz (HAAB Weimar)",
+     "date": "1824",
+     "format": "autograph score (25 pp) and cello part (9 pp)",
+     "scan": "IMSLP (AAB scan)"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "hummel/op-104/13025b-Hummel-SonateCello-Op104-lily.zip",
+     "archived": "20231002155005",
+     "bytes": 89985,
+     "wayback": "https://web.archive.org/web/20231002155005/https://le-concert.pagesperso-orange.fr/hummel/op-104/13025b-Hummel-SonateCello-Op104-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Hyacinthe JADIN",
+   "composer_dates": "1776-1800",
+   "page": "jadin.html",
+   "title": "Quatuors à cordes - opus 1, opus 4",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Opus 1: Au Magazin de musique - Paris - 1795 (IMSLP) Opus 4: Pleyel - Paris - 1798 (IMSLP) op.1"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/3_String_Quartets,_Op.1_%28Jadin,_Hyacinthe%29",
+    "https://imslp.org/wiki/3_String_Quartets,_Op.4_%28Jadin,_Hyacinthe%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "jadin/op1-1/10008-1-Jadin-Op1-1-lily.zip",
+     "archived": "20231001212643",
+     "bytes": 80307,
+     "wayback": "https://web.archive.org/web/20231001212643/https://le-concert.pagesperso-orange.fr/jadin/op1-1/10008-1-Jadin-Op1-1-lily.zip"
+    },
+    {
+     "zip": "jadin/op1-2/10008-2-Jadin-Op1-2-lily.zip",
+     "archived": "20231001212654",
+     "bytes": 79684,
+     "wayback": "https://web.archive.org/web/20231001212654/https://le-concert.pagesperso-orange.fr/jadin/op1-2/10008-2-Jadin-Op1-2-lily.zip"
+    },
+    {
+     "zip": "jadin/op1-3/10008-3-Jadin-Op1-3-lily.zip",
+     "archived": "20231001212911",
+     "bytes": 79019,
+     "wayback": "https://web.archive.org/web/20231001212911/https://le-concert.pagesperso-orange.fr/jadin/op1-3/10008-3-Jadin-Op1-3-lily.zip"
+    },
+    {
+     "zip": "jadin/op4-1/10009-1-Jadin-Op4-1-lily.zip",
+     "archived": "20231001212500",
+     "bytes": 75522,
+     "wayback": "https://web.archive.org/web/20231001212500/https://le-concert.pagesperso-orange.fr/jadin/op4-1/10009-1-Jadin-Op4-1-lily.zip"
+    },
+    {
+     "zip": "jadin/op4-2/10009-2-Jadin-Op4-2-lily.zip",
+     "archived": "20231002083409",
+     "bytes": 80526,
+     "wayback": "https://web.archive.org/web/20231002083409/https://le-concert.pagesperso-orange.fr/jadin/op4-2/10009-2-Jadin-Op4-2-lily.zip"
+    },
+    {
+     "zip": "jadin/op4-3/10009-3-Jadin-Op4-3-lily.zip",
+     "archived": "20231001212733",
+     "bytes": 83442,
+     "wayback": "https://web.archive.org/web/20231001212733/https://le-concert.pagesperso-orange.fr/jadin/op4-3/10009-3-Jadin-Op4-3-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Hyacinthe JADIN",
+   "composer_dates": "1776-1800",
+   "page": "jadin.html",
+   "title": "Trios à cordes - opus 2",
+   "scoring": "vl, va, vc",
+   "category": "string trio",
+   "source_kind": "print",
+   "philhar_source": [
+    "Imprimerie du Conservatoire - Paris - 1797 (IMSLP) op.2"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/3_String_Trios,_Op.2_%28Jadin,_Hyacinthe%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "jadin/op2-1/11019-1-Jadin-Op2-1-lily.zip",
+     "archived": "20231001212604",
+     "bytes": 226644,
+     "wayback": "https://web.archive.org/web/20231001212604/https://le-concert.pagesperso-orange.fr/jadin/op2-1/11019-1-Jadin-Op2-1-lily.zip"
+    },
+    {
+     "zip": "jadin/op2-2/11019-2-Jadin-Op2-2-lily.zip",
+     "archived": "20231001212645",
+     "bytes": 224571,
+     "wayback": "https://web.archive.org/web/20231001212645/https://le-concert.pagesperso-orange.fr/jadin/op2-2/11019-2-Jadin-Op2-2-lily.zip"
+    },
+    {
+     "zip": "jadin/op2-3/11019-3-Jadin-Op2-3-lily.zip",
+     "archived": "20231001213012",
+     "bytes": 226007,
+     "wayback": "https://web.archive.org/web/20231001213012/https://le-concert.pagesperso-orange.fr/jadin/op2-3/11019-3-Jadin-Op2-3-lily.zip"
+    }
+   ],
+   "n_works": 3,
+   "n_archived": 3
+  },
+  {
+   "composer": "Hans KOESSLER",
+   "composer_dates": "1853-1926",
+   "page": "koessler.html",
+   "title": "Suite pour 3 Violoncelles (1925)",
+   "scoring": "3 vc",
+   "category": "string trio",
+   "source_kind": "manuscript",
+   "philhar_source": [
+    "Manuscrit autographe (Staatsbibliothek zu Berlin, IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP",
+    "Staatsbibliothek zu Berlin"
+   ],
+   "links": [],
+   "manuscripts": [
+    {
+     "named": "Manuscrit autographe (Staatsbibliothek zu Berlin, IMSLP)",
+     "library": "D-B",
+     "date": "1925",
+     "format": "autograph",
+     "scan": "IMSLP"
+    }
+   ],
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "koessler/11028-Koessler-Suite3cellos-lily.zip",
+     "archived": "20231003004614",
+     "bytes": 256227,
+     "wayback": "https://web.archive.org/web/20231003004614/https://le-concert.pagesperso-orange.fr/koessler/11028-Koessler-Suite3cellos-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Salvatore LANZETTI",
+   "composer_dates": "1710-1780",
+   "page": "lanzetti.html",
+   "title": "6 Sonates pour Violoncelle et Basse - opus 2",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Walsh - London - n.d."
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "lanzetti/op-2/op2-1/13060b-1-Lanzetti-Sonate-op2-1-lily.zip",
+     "archived": "20231002182220",
+     "bytes": 71108,
+     "wayback": "https://web.archive.org/web/20231002182220/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-1/13060b-1-Lanzetti-Sonate-op2-1-lily.zip"
+    },
+    {
+     "zip": "lanzetti/op-2/op2-2/13060b-2-Lanzetti-Sonate-op2-2-lily.zip",
+     "archived": "20231003022016",
+     "bytes": 71471,
+     "wayback": "https://web.archive.org/web/20231003022016/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-2/13060b-2-Lanzetti-Sonate-op2-2-lily.zip"
+    },
+    {
+     "zip": "lanzetti/op-2/op2-3/13060b-3-Lanzetti-Sonate-op2-3-lily.zip",
+     "archived": "20231002163258",
+     "bytes": 71293,
+     "wayback": "https://web.archive.org/web/20231002163258/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-3/13060b-3-Lanzetti-Sonate-op2-3-lily.zip"
+    },
+    {
+     "zip": "lanzetti/op-2/op2-4/13060b-4-Lanzetti-Sonate-op2-4-lily.zip",
+     "archived": "20231002181838",
+     "bytes": 71334,
+     "wayback": "https://web.archive.org/web/20231002181838/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-4/13060b-4-Lanzetti-Sonate-op2-4-lily.zip"
+    },
+    {
+     "zip": "lanzetti/op-2/op2-5/13060b-5-Lanzetti-Sonate-op2-5-lily.zip",
+     "archived": "20231002224957",
+     "bytes": 72765,
+     "wayback": "https://web.archive.org/web/20231002224957/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-5/13060b-5-Lanzetti-Sonate-op2-5-lily.zip"
+    },
+    {
+     "zip": "lanzetti/op-2/op2-6/13060b-6-Lanzetti-Sonate-op2-6-lily.zip",
+     "archived": "20231002163457",
+     "bytes": 71248,
+     "wayback": "https://web.archive.org/web/20231002163457/https://le-concert.pagesperso-orange.fr/lanzetti/op-2/op2-6/13060b-6-Lanzetti-Sonate-op2-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Etienne-Nicolas MEHUL",
+   "composer_dates": "1763-1817",
+   "page": "mehul.html",
+   "title": "La chasse du Jeune Henry - ouverture (1791)",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "mehul/Chasse/1011-Mehul-ChasseJeuneHenry-lily.zip",
+     "archived": "20231002083901",
+     "bytes": 183841,
+     "wayback": "https://web.archive.org/web/20231002083901/https://le-concert.pagesperso-orange.fr/mehul/Chasse/1011-Mehul-ChasseJeuneHenry-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Jacques OFFENBACH",
+   "composer_dates": "1819-1880",
+   "page": "offenbach.html",
+   "title": "Duos pour 2 violoncelles, op.50",
+   "scoring": "2 vc",
+   "category": "two basses",
+   "source_kind": "print",
+   "philhar_source": [
+    "Schott, 1379-1 & 1366-2"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "offenbach/duos-op50/13007b-1-Offenbach-Duo-Op50-1-Lily.zip",
+     "archived": "20231002083319",
+     "bytes": 69072,
+     "wayback": "https://web.archive.org/web/20231002083319/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-1-Offenbach-Duo-Op50-1-Lily.zip"
+    },
+    {
+     "zip": "offenbach/duos-op50/13007b-2-Offenbach-Duo-Op50-2-Lily.zip",
+     "archived": "20231001212430",
+     "bytes": 69118,
+     "wayback": "https://web.archive.org/web/20231001212430/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-2-Offenbach-Duo-Op50-2-Lily.zip"
+    },
+    {
+     "zip": "offenbach/duos-op50/13007b-3-Offenbach-Duo-Op50-3-Lily.zip",
+     "archived": "20231001212621",
+     "bytes": 69683,
+     "wayback": "https://web.archive.org/web/20231001212621/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-3-Offenbach-Duo-Op50-3-Lily.zip"
+    },
+    {
+     "zip": "offenbach/duos-op50/13007b-4-Offenbach-Duo-Op50-4-Lily.zip",
+     "archived": "20231001212344",
+     "bytes": 69594,
+     "wayback": "https://web.archive.org/web/20231001212344/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-4-Offenbach-Duo-Op50-4-Lily.zip"
+    },
+    {
+     "zip": "offenbach/duos-op50/13007b-5-Offenbach-Duo-Op50-5-Lily.zip",
+     "archived": "20231001212424",
+     "bytes": 69839,
+     "wayback": "https://web.archive.org/web/20231001212424/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-5-Offenbach-Duo-Op50-5-Lily.zip"
+    },
+    {
+     "zip": "offenbach/duos-op50/13007b-6-Offenbach-Duo-Op50-6-Lily.zip",
+     "archived": "20231001212546",
+     "bytes": 71098,
+     "wayback": "https://web.archive.org/web/20231001212546/https://le-concert.pagesperso-orange.fr/offenbach/duos-op50/13007b-6-Offenbach-Duo-Op50-6-Lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Jacques OFFENBACH",
+   "composer_dates": "1819-1880",
+   "page": "offenbach.html",
+   "title": "Orphée aux Enfers - ouverture (arrangement Carl BINDER)",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "offenbach/orphee/1286b-Offenbach-Orphee-Ouverture-lily.zip",
+     "archived": "20231001213029",
+     "bytes": 240200,
+     "wayback": "https://web.archive.org/web/20231001213029/https://le-concert.pagesperso-orange.fr/offenbach/orphee/1286b-Offenbach-Orphee-Ouverture-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "George ONSLOW",
+   "composer_dates": "1784-1853",
+   "page": "onslow.html",
+   "title": "Quatuors",
+   "scoring": "2 vl, va, vc",
+   "category": "string quartet",
+   "source_kind": "print",
+   "philhar_source": [
+    "Breitkopf - Steiner",
+    "Breitkopf - Steiner - Naderman",
+    "Pleyel - Breitkopf - Steiner - Artaria"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/String_Quartet_No.1,_Op.4_No.1_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.2,_Op.4_No.2_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.3,_Op.4_No.3_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.4,_Op.8_No.1_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.5,_Op.8_No.2_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.6,_Op.8_No.3_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.10,_Op.10_No.1_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.11,_Op.10_No.2_%28Onslow,_George%29",
+    "http://imslp.org/wiki/String_Quartet_No.12,_Op.10_No.3_%28Onslow,_George%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "onslow/10015-1-Onslow-Quatuor1-Op4-1-LYS.zip",
+     "archived": "20231001213155",
+     "bytes": 88872,
+     "wayback": "https://web.archive.org/web/20231001213155/https://le-concert.pagesperso-orange.fr/onslow/10015-1-Onslow-Quatuor1-Op4-1-LYS.zip"
+    },
+    {
+     "zip": "onslow/10015-2-Onslow-Quatuor2-Op4-2-LYS.zip",
+     "archived": "20231002210227",
+     "bytes": 89740,
+     "wayback": "https://web.archive.org/web/20231002210227/https://le-concert.pagesperso-orange.fr/onslow/10015-2-Onslow-Quatuor2-Op4-2-LYS.zip"
+    },
+    {
+     "zip": "onslow/10015-3-Onslow-Quatuor3-Op4-3-LYS.zip",
+     "archived": "20231001213041",
+     "bytes": 89260,
+     "wayback": "https://web.archive.org/web/20231001213041/https://le-concert.pagesperso-orange.fr/onslow/10015-3-Onslow-Quatuor3-Op4-3-LYS.zip"
+    },
+    {
+     "zip": "onslow/10016-1-Onslow-Quatuor4-Op8-1-LYS.zip",
+     "archived": "20231001213206",
+     "bytes": 87142,
+     "wayback": "https://web.archive.org/web/20231001213206/https://le-concert.pagesperso-orange.fr/onslow/10016-1-Onslow-Quatuor4-Op8-1-LYS.zip"
+    },
+    {
+     "zip": "onslow/10016-2-Onslow-Quatuor5-Op8-2-LYS.zip",
+     "archived": "20231001213703",
+     "bytes": 85607,
+     "wayback": "https://web.archive.org/web/20231001213703/https://le-concert.pagesperso-orange.fr/onslow/10016-2-Onslow-Quatuor5-Op8-2-LYS.zip"
+    },
+    {
+     "zip": "onslow/10016-3-Onslow-Quatuor6-Op8-3-LYS.zip",
+     "archived": "20231001213504",
+     "bytes": 86849,
+     "wayback": "https://web.archive.org/web/20231001213504/https://le-concert.pagesperso-orange.fr/onslow/10016-3-Onslow-Quatuor6-Op8-3-LYS.zip"
+    },
+    {
+     "zip": "onslow/10017-1-Onslow-Quatuor10-Op10-1-LYS.zip",
+     "archived": "20231001213147",
+     "bytes": 86824,
+     "wayback": "https://web.archive.org/web/20231001213147/https://le-concert.pagesperso-orange.fr/onslow/10017-1-Onslow-Quatuor10-Op10-1-LYS.zip"
+    },
+    {
+     "zip": "onslow/10017-2-Onslow-Quatuor11-Op10-2-LYS.zip",
+     "archived": "20231001213310",
+     "bytes": 88843,
+     "wayback": "https://web.archive.org/web/20231001213310/https://le-concert.pagesperso-orange.fr/onslow/10017-2-Onslow-Quatuor11-Op10-2-LYS.zip"
+    },
+    {
+     "zip": "onslow/10017-3-Onslow-Quatuor12-Op10-3-LYS.zip",
+     "archived": "20231001213313",
+     "bytes": 88524,
+     "wayback": "https://web.archive.org/web/20231001213313/https://le-concert.pagesperso-orange.fr/onslow/10017-3-Onslow-Quatuor12-Op10-3-LYS.zip"
+    }
+   ],
+   "n_works": 9,
+   "n_archived": 9
+  },
+  {
+   "composer": "Louis François Joseph PATOUART",
+   "composer_dates": "1719-1793",
+   "page": "patouart.html",
+   "title": "6 Sonates pour Violoncelle et Basse - opus 1",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Le Menu - Paris - 1749 (BNF)"
+   ],
+   "scan_mentions": [
+    "BNF"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "patouart/op1/op1-1/13067-1-Patouart-Sonate-op1-1-lily.zip",
+     "archived": "20231002083534",
+     "bytes": 73454,
+     "wayback": "https://web.archive.org/web/20231002083534/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-1/13067-1-Patouart-Sonate-op1-1-lily.zip"
+    },
+    {
+     "zip": "patouart/op1/op1-2/13067-2-Patouart-Sonate-op1-2-lily.zip",
+     "archived": "20231002083636",
+     "bytes": 71881,
+     "wayback": "https://web.archive.org/web/20231002083636/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-2/13067-2-Patouart-Sonate-op1-2-lily.zip"
+    },
+    {
+     "zip": "patouart/op1/op1-3/13067-3-Patouart-Sonate-op1-3-lily.zip",
+     "archived": "20231002083558",
+     "bytes": 71839,
+     "wayback": "https://web.archive.org/web/20231002083558/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-3/13067-3-Patouart-Sonate-op1-3-lily.zip"
+    },
+    {
+     "zip": "patouart/op1/op1-4/13067-4-Patouart-Sonate-op1-4-lily.zip",
+     "archived": "20231002234124",
+     "bytes": 73718,
+     "wayback": "https://web.archive.org/web/20231002234124/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-4/13067-4-Patouart-Sonate-op1-4-lily.zip"
+    },
+    {
+     "zip": "patouart/op1/op1-5/13067-5-Patouart-Sonate-op1-5-lily.zip",
+     "archived": "20231002083729",
+     "bytes": 73350,
+     "wayback": "https://web.archive.org/web/20231002083729/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-5/13067-5-Patouart-Sonate-op1-5-lily.zip"
+    },
+    {
+     "zip": "patouart/op1/op1-6/13067-6-Patouart-Sonate-op1-6-lily.zip",
+     "archived": "20231002083322",
+     "bytes": 73073,
+     "wayback": "https://web.archive.org/web/20231002083322/https://le-concert.pagesperso-orange.fr/patouart/op1/op1-6/13067-6-Patouart-Sonate-op1-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Louis François Joseph PATOUART",
+   "composer_dates": "1719-1793",
+   "page": "patouart.html",
+   "title": "6 Sonates pour Violoncelle et Basse - opus 2",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Moria, Paris, 1760 (BNF, IMSLP)"
+   ],
+   "scan_mentions": [
+    "BNF",
+    "IMSLP"
+   ],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "patouart/op2/op2-1/13069-1-Patouart-Sonate-op2-1-lily.zip",
+     "archived": "20231002151502",
+     "bytes": 72185,
+     "wayback": "https://web.archive.org/web/20231002151502/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-1/13069-1-Patouart-Sonate-op2-1-lily.zip"
+    },
+    {
+     "zip": "patouart/op2/op2-2/13069-2-Patouart-Sonate-op2-2-lily.zip",
+     "archived": "20231002083532",
+     "bytes": 73125,
+     "wayback": "https://web.archive.org/web/20231002083532/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-2/13069-2-Patouart-Sonate-op2-2-lily.zip"
+    },
+    {
+     "zip": "patouart/op2/op2-3/13069-3-Patouart-Sonate-op2-3-lily.zip",
+     "archived": "20231002083815",
+     "bytes": 73458,
+     "wayback": "https://web.archive.org/web/20231002083815/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-3/13069-3-Patouart-Sonate-op2-3-lily.zip"
+    },
+    {
+     "zip": "patouart/op2/op2-4/13069-4-Patouart-Sonate-op2-4-lily.zip",
+     "archived": "20231002083301",
+     "bytes": 73412,
+     "wayback": "https://web.archive.org/web/20231002083301/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-4/13069-4-Patouart-Sonate-op2-4-lily.zip"
+    },
+    {
+     "zip": "patouart/op2/op2-5/13069-5-Patouart-Sonate-op2-5-lily.zip",
+     "archived": "20231002153203",
+     "bytes": 72811,
+     "wayback": "https://web.archive.org/web/20231002153203/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-5/13069-5-Patouart-Sonate-op2-5-lily.zip"
+    },
+    {
+     "zip": "patouart/op2/op2-6/13069-6-Patouart-Sonate-op2-6-lily.zip",
+     "archived": "20231003040942",
+     "bytes": 74913,
+     "wayback": "https://web.archive.org/web/20231003040942/https://le-concert.pagesperso-orange.fr/patouart/op2/op2-6/13069-6-Patouart-Sonate-op2-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Amilcare PONCHIELLI",
+   "composer_dates": "1834-1886",
+   "page": "ponchielli.html",
+   "title": "Danse des Heures (extrait de La Gioconda)",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Ricordi - 1904 - B.B. 533"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "ponchielli/1618b-Ponchielli-DansDesHeures-lily.zip",
+     "archived": "20231001213620",
+     "bytes": 534434,
+     "wayback": "https://web.archive.org/web/20231001213620/https://le-concert.pagesperso-orange.fr/ponchielli/1618b-Ponchielli-DansDesHeures-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Giovanni-Battista SAMMARTINI",
+   "composer_dates": "1700-1775",
+   "page": "sammartini-gb.html",
+   "title": "6 Sonates pour Violoncelle et Basse - op.4",
+   "scoring": "vc, b",
+   "category": "cello and bass",
+   "source_kind": "print",
+   "philhar_source": [
+    "Boivin et Le Clerc - Paris- ~1750 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/Category:Sammartini,_Giovanni_Battista"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "sammartini-gb/op4/13019b-1-Sammartini-Op4-1-lily.zip",
+     "archived": "20231002084258",
+     "bytes": 69098,
+     "wayback": "https://web.archive.org/web/20231002084258/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-1-Sammartini-Op4-1-lily.zip"
+    },
+    {
+     "zip": "sammartini-gb/op4/13019b-2-Sammartini-Op4-2-lily.zip",
+     "archived": "20231001212436",
+     "bytes": 69154,
+     "wayback": "https://web.archive.org/web/20231001212436/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-2-Sammartini-Op4-2-lily.zip"
+    },
+    {
+     "zip": "sammartini-gb/op4/13019b-3-Sammartini-Op4-3-lily.zip",
+     "archived": "20231001212510",
+     "bytes": 69867,
+     "wayback": "https://web.archive.org/web/20231001212510/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-3-Sammartini-Op4-3-lily.zip"
+    },
+    {
+     "zip": "sammartini-gb/op4/13019b-4-Sammartini-Op4-4-lily.zip",
+     "archived": "20231001212559",
+     "bytes": 69714,
+     "wayback": "https://web.archive.org/web/20231001212559/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-4-Sammartini-Op4-4-lily.zip"
+    },
+    {
+     "zip": "sammartini-gb/op4/13019b-5-Sammartini-Op4-5-lily.zip",
+     "archived": "20231001212801",
+     "bytes": 69201,
+     "wayback": "https://web.archive.org/web/20231001212801/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-5-Sammartini-Op4-5-lily.zip"
+    },
+    {
+     "zip": "sammartini-gb/op4/13019b-6-Sammartini-Op4-6-lily.zip",
+     "archived": "20231001212623",
+     "bytes": 70066,
+     "wayback": "https://web.archive.org/web/20231001212623/https://le-concert.pagesperso-orange.fr/sammartini-gb/op4/13019b-6-Sammartini-Op4-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Camille SAINT-SAENS",
+   "composer_dates": "1835-1921",
+   "page": "st-saens.html",
+   "title": "Havanaise, pour violon et orchestre, op.83",
+   "scoring": "vl, orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Durand et Schoenewerk, Paris - 1888 - n°D.S. 3914 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/Havanaise,_Op.83_%28Saint-Sa%C3%ABns,_Camille%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "st-saens/1400-StSaens-Havanaise-Lily.zip",
+     "archived": "20231001213049",
+     "bytes": 97583,
+     "wayback": "https://web.archive.org/web/20231001213049/https://le-concert.pagesperso-orange.fr/st-saens/1400-StSaens-Havanaise-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Camille SAINT-SAENS",
+   "composer_dates": "1835-1921",
+   "page": "st-saens.html",
+   "title": "Danse Macabre, poème symphonique, op.40",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "print",
+   "philhar_source": [
+    "Durand et Schoenewerk, Paris - 1875 - n°D.S. 2148 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "http://imslp.org/wiki/Danse_macabre,_Op.40_%28Saint-Sa%C3%ABns,_Camille%29"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "st-saens/166-StSaens-DanseMacabre-lily.zip",
+     "archived": "20231001213150",
+     "bytes": 132717,
+     "wayback": "https://web.archive.org/web/20231001213150/https://le-concert.pagesperso-orange.fr/st-saens/166-StSaens-DanseMacabre-lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Anton STAMITZ",
+   "composer_dates": "1750-1809",
+   "page": "stamitz-anton.html",
+   "title": "6 Duos pour Violon et Violoncelle - livre I",
+   "scoring": "vl, vc",
+   "category": "string duo",
+   "source_kind": "print",
+   "philhar_source": [
+    "Le Menu et Boyer - Paris- 1781 (IMSLP)"
+   ],
+   "scan_mentions": [
+    "IMSLP"
+   ],
+   "links": [
+    "https://imslp.org/wiki/6_Duos_for_Violin_and_Cello,_Book_1_(Stamitz,_Anton)"
+   ],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-1/13047b-1-StamitzA-Duo-Vl-Vc-Livre1-1-lily.zip",
+     "archived": "20231001212759",
+     "bytes": 71791,
+     "wayback": "https://web.archive.org/web/20231001212759/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-1/13047b-1-StamitzA-Duo-Vl-Vc-Livre1-1-lily.zip"
+    },
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-2/13047b-2-StamitzA-Duo-Vl-Vc-Livre1-2-lily.zip",
+     "archived": "20231001212753",
+     "bytes": 69879,
+     "wayback": "https://web.archive.org/web/20231001212753/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-2/13047b-2-StamitzA-Duo-Vl-Vc-Livre1-2-lily.zip"
+    },
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-3/13047b-3-StamitzA-Duo-Vl-Vc-Livre1-3-lily.zip",
+     "archived": "20231001212919",
+     "bytes": 70825,
+     "wayback": "https://web.archive.org/web/20231001212919/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-3/13047b-3-StamitzA-Duo-Vl-Vc-Livre1-3-lily.zip"
+    },
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-4/13047b-4-StamitzA-Duo-Vl-Vc-Livre1-4-lily.zip",
+     "archived": "20231001212842",
+     "bytes": 71198,
+     "wayback": "https://web.archive.org/web/20231001212842/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-4/13047b-4-StamitzA-Duo-Vl-Vc-Livre1-4-lily.zip"
+    },
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-5/13047b-5-StamitzA-Duo-Vl-Vc-Livre1-5-lily.zip",
+     "archived": "20231001212750",
+     "bytes": 72018,
+     "wayback": "https://web.archive.org/web/20231001212750/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-5/13047b-5-StamitzA-Duo-Vl-Vc-Livre1-5-lily.zip"
+    },
+    {
+     "zip": "stamitz-anton/duo-vl-vc-livre1-6/13047b-6-StamitzA-Duo-Vl-Vc-Livre1-6-lily.zip",
+     "archived": "20231001212549",
+     "bytes": 71866,
+     "wayback": "https://web.archive.org/web/20231001212549/https://le-concert.pagesperso-orange.fr/stamitz-anton/duo-vl-vc-livre1-6/13047b-6-StamitzA-Duo-Vl-Vc-Livre1-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  },
+  {
+   "composer": "Eduard STRAUSS",
+   "composer_dates": "1835-1916",
+   "page": "strauss-e.html",
+   "title": "Bahn frei, Polka schnell, op.45",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "strauss-e/1534-StraussE-BahnFrei-Lily.zip",
+     "archived": "20231001213252",
+     "bytes": 93663,
+     "wayback": "https://web.archive.org/web/20231001213252/https://le-concert.pagesperso-orange.fr/strauss-e/1534-StraussE-BahnFrei-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Josef STRAUSS",
+   "composer_dates": "1827-1870",
+   "page": "strauss-josef.html",
+   "title": "Auf Ferienreisen, Polka schnell, op.133",
+   "scoring": "orchestra",
+   "category": "orchestral",
+   "source_kind": "not stated",
+   "philhar_source": null,
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "strauss-josef/1562-StraussJosef-AufFerienreisen-Lily.zip",
+     "archived": "20231002191007",
+     "bytes": 90985,
+     "wayback": "https://web.archive.org/web/20231002191007/https://le-concert.pagesperso-orange.fr/strauss-josef/1562-StraussJosef-AufFerienreisen-Lily.zip"
+    }
+   ],
+   "n_works": 1,
+   "n_archived": 1
+  },
+  {
+   "composer": "Paul WRANITZKY",
+   "composer_dates": "1756-1808",
+   "page": "wranitzky.html",
+   "title": "6 Trios pour Violon, Alto et Violoncelle - opus 17",
+   "scoring": "vl, va, vc",
+   "category": "string trio",
+   "source_kind": "print",
+   "philhar_source": [
+    "Sieber - Paris - ca.1791 André - Offenbach- ca.1790 Imbault - Paris - ca.1810"
+   ],
+   "scan_mentions": [],
+   "links": [],
+   "manuscripts": null,
+   "manuscript_copy_leads": null,
+   "lilypond": [
+    {
+     "zip": "wranitzky/op17-1/11023-1-Wranitzky-Trio-Op17-1-lily.zip",
+     "archived": "20231001212655",
+     "bytes": 79762,
+     "wayback": "https://web.archive.org/web/20231001212655/https://le-concert.pagesperso-orange.fr/wranitzky/op17-1/11023-1-Wranitzky-Trio-Op17-1-lily.zip"
+    },
+    {
+     "zip": "wranitzky/op17-2/11023-2-Wranitzky-Trio-Op17-2-lily.zip",
+     "archived": "20231001212859",
+     "bytes": 78418,
+     "wayback": "https://web.archive.org/web/20231001212859/https://le-concert.pagesperso-orange.fr/wranitzky/op17-2/11023-2-Wranitzky-Trio-Op17-2-lily.zip"
+    },
+    {
+     "zip": "wranitzky/op17-3/11023-3-Wranitzky-Trio-Op17-3-lily.zip",
+     "archived": "20231001212813",
+     "bytes": 78882,
+     "wayback": "https://web.archive.org/web/20231001212813/https://le-concert.pagesperso-orange.fr/wranitzky/op17-3/11023-3-Wranitzky-Trio-Op17-3-lily.zip"
+    },
+    {
+     "zip": "wranitzky/op17-4/11023-4-Wranitzky-Trio-Op17-4-lily.zip",
+     "archived": "20231001212650",
+     "bytes": 76764,
+     "wayback": "https://web.archive.org/web/20231001212650/https://le-concert.pagesperso-orange.fr/wranitzky/op17-4/11023-4-Wranitzky-Trio-Op17-4-lily.zip"
+    },
+    {
+     "zip": "wranitzky/op17-5/11023-5-Wranitzky-Trio-Op17-5-lily.zip",
+     "archived": "20231001212827",
+     "bytes": 78938,
+     "wayback": "https://web.archive.org/web/20231001212827/https://le-concert.pagesperso-orange.fr/wranitzky/op17-5/11023-5-Wranitzky-Trio-Op17-5-lily.zip"
+    },
+    {
+     "zip": "wranitzky/op17-6/11023-6-Wranitzky-Trio-Op17-6-lily.zip",
+     "archived": "20231001212850",
+     "bytes": 76587,
+     "wayback": "https://web.archive.org/web/20231001212850/https://le-concert.pagesperso-orange.fr/wranitzky/op17-6/11023-6-Wranitzky-Trio-Op17-6-lily.zip"
+    }
+   ],
+   "n_works": 6,
+   "n_archived": 6
+  }
+ ]
+}

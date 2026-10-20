@@ -26,6 +26,7 @@ registry.
 | `OMR/datasets/musicorpus` | MusiCorpus v1.0: Dolores and OmniOMR staves with their MusicXML (below) | 4.0 GB | LINDAT, link below | Test staves on Modal (`musvit-staves/public`) |
 | `OMR/datasets/openscore-quartets` | 102 classical quartets as MusicXML; CC0 | 15 MB | [OpenScore String Quartets](https://github.com/OpenScore/StringQuartets) | |
 | `OMR/datasets/ossq-omr` | OSSQ-OMR's metadata (scan URLs, splits) and, optionally, its IMSLP scans; made by `experiments/ossq/register_local.sh` | small (1 GB with scans) | [ossq-omr](https://github.com/MALerLab/ossq-omr) omr-dev 7a17e45; IMSLP | Staves on Modal (`musvit-staves/ossq`), scans and renders in `ossq-raw` |
+| `manuscript-labeler/philhar-site` | Philhar's LilyPond zips for three manuscript-sourced works (M. Haydn MH 411, Campioni op. 7, Hofmann), with a README; CC BY-NC-SA | 7 MB | Wayback Machine captures of le-concert.pagesperso-orange.fr; see `reports/2026-10-20-philhar-site/` | |
 | `manuscript-labeler/zeus` | Staff sets, page renders, Zeus runs (below) | 16 GB | `experiments/zeus` and `experiments/synth` | Most staff sets on Modal (`musvit-staves`) |
 | `manuscript-labeler/musvit` | MuSViT's code (an unmodified clone of its GitHub repo), weights and runs | 2 GB | `experiments/musvit` | Readers as GitHub releases; runs on Modal (`musvit`) |
 | `manuscript-labeler/experiments/sam` | Segment Anything: training and test windows, trained decoders, scores | 0.6 GB | `experiments/synth/sam_*.py` | Later runs on Modal (`copyist-sam-runs`) |

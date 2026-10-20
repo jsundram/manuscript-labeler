@@ -4,6 +4,32 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-20: Philhar's site, beyond the quartets
+
+[Notes](2026-10-20-philhar-site/)
+
+**Context.** Philhar's Boccherini encodings already label our manuscripts.
+His site is down but archived. The user: "it lists his lilypond sources for
+many other works. On each composer page he lists the source for the works,
+and some of them are also manuscript sources. So we have another potential
+manuscript <-> lilypond paired dataset."
+
+**Question.** Which of his works come from a manuscript in a period hand,
+with LilyPond and a scan we can still get?
+
+**Finding.** 38 composers, 251 LilyPond zips, all archived. Ten sets name
+a manuscript; six are new 1750–1810 string music with scans online: 18
+works, about 1,700 staves of parts. Best: Boccherini's op. 4 trios (Sibley
+parts, and Berlin's Schober copies), Michael Haydn's quintet MH 411, and
+Campioni's op. 7 duos. Same file layout as the quartets, other file names;
+philhar.py reads them after renaming.
+
+**Why a report.** It names the next hands to pair, and what pairing them
+would need.
+
+**What followed.** A sample of three works' LilyPond is in
+`~/Data/manuscript-labeler/philhar-site/`. Nothing paired yet.
+
 ## 2026-10-20: Boccherini Manuscript Census
 
 [Page](https://claude.ai/artifact/GEGbPnXax1fNfotaSK1pDy) · [folder](2026-10-20-manuscript-census/)
