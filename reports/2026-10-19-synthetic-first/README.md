@@ -116,6 +116,26 @@ The rest come from `drivers/philhar-first-summary.md`.
 2. Madrid and Op. 32 scores for SF2 and PF2.
 3. A second seed of SF2 and S0.
 
+## Cost
+
+- **Machine:** Modal L40S GPUs (`modal_app.py --gpu L40S`). The synthetic
+  staves were drawn, and the clean test read, on the Mac (a Mac mini, M1,
+  16 GB).
+- **Billed: $5.29** for the six runs here, SF1, SF2 and PF1 and PF2 in both
+  hands, one Modal app each (measured, `modal billing report`): L40S $5.13
+  (about 2.6 GPU-hours), memory and CPU $0.16.
+- **Training time:** 2.2 GPU-hours of passes (measured, the run logs). A
+  synthetic pass took about 3 minutes, so a synthetic stage 16–30 minutes;
+  a real stage took 14–23 minutes.
+- **Wall time:** SF1 then SF2, about 70 minutes (2026-10-18, 10 to 11 pm).
+  The four PF runs, two chains at once, about 100 minutes (2026-10-19, 4:40
+  to 6:20 am). Measured roughly, from the drivers' and summaries' file
+  times.
+- **The baseline S0** ($0.75) was run for the Copyist Staves page and is
+  counted there.
+- **Drawing dataS3:** about 10 minutes on the Mac, six processes (measured,
+  `gen3.log`'s times). The Philhar sets weren't timed.
+
 ## Reproduce
 
 - **Data:** `experiments/synth/gen.py` (dataS3);

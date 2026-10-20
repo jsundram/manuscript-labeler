@@ -245,13 +245,17 @@ follow from what wasn't tested. None has been done.
 
 ## Cost
 
-About 68 GPU-minutes of training on a Modal L4:
+About 68 GPU-minutes of training on a Modal L4 (measured, the run logs):
 - `ptrA1`: 6 epochs of about 143 s, 14 minutes.
 - `ptrA2-dolores`: 6 epochs of about 300 s, 30 minutes. A first attempt was
   preempted after 5 epochs (24 minutes) and rerun from the start.
 - `ptrA1-eval`: one pass over the Dolores test.
 
-The agent that ran it put the Modal spend at about $1–2. Fetching Dolores's
+**Billed: $1.11** for the three `musvit-pointer` apps (measured, `modal
+billing report`): L4 $1.03 (about 1.3 GPU-hours, with start-up and
+scoring), memory and CPU $0.08. The agent that ran it had estimated $1–2.
+The runs fell between 11 am and 2 pm on 2026-10-19. The position sets were
+drawn on the Mac (a Mac mini, M1, 16 GB); that wasn't timed. Fetching Dolores's
 polygons and links took about 140 MB of range requests from the 15.1 GB
 MusiCorpus zip. The staff images and MusicXML were already in Zeus's local
 copy.

@@ -302,10 +302,22 @@ specks where staff lines were lifted.
 
 ## Cost
 
-The eight runs' epochs took 32,056 s of L4 time in all, about 8.9 GPU-hours
-(from the logs). At the $0.80 an hour noted for the L4 on 16 October, that's
-about $7. Not counted: one Smashcima run lost when the Mac's disk filled,
-one relaunch of run3, and scoring (about 5 minutes per decoder on Modal).
+- **Machine:** Modal L4 GPUs for training and scoring (`sam_modal.py`).
+  Windows, renders and figures were made on the Mac (a Mac mini, M1, 16 GB).
+- **Billed: $15.29** for the `copyist-sam` app on 2026-10-19 and 20
+  (measured, `modal billing report`): L4 $9.21 (about 11.5 GPU-hours),
+  memory $5.52, CPU $0.55. This covers everything: the eight runs, early
+  test runs, the Smashcima run lost when the Mac's disk filled, run3's
+  relaunch, and scoring.
+- **Training time:** the eight runs' epochs took 32,056 s of L4 time, about
+  8.9 GPU-hours (measured, the logs). The rest of the billed GPU time is
+  start-up, scoring and the runs that didn't finish.
+- **Wall time:** the runs filled 2026-10-19 from midnight to about 4 pm,
+  often two or three at once, with one scoring pass that evening (billing's
+  hours).
+- **An earlier version said about $7.** That counted epoch time at the
+  L4's $0.80 an hour and left out memory, which was over a third of the
+  bill.
 
 ## What's next
 

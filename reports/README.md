@@ -15,7 +15,13 @@ what the labeler does; reports say what we learned getting there.
 2. **Add a row to the index,** at the top.
 3. **Add a journal entry,** at the top. Say what prompted the report, the
    question it answers, what it concluded, and what was done about it.
-4. **Cite the report in commits** that act on it, by its folder: "See
+4. **Record its cost,** in a Cost section and in the index's Cost column:
+   the machine, and the time it took (wall hours on the Mac). For cloud work
+   also the dollars: on Modal, the GPU type, GPU-hours and $ (from
+   `modal billing report --show-resources --json`, which can be split by
+   app); for the Claude API, the $. Say whether each number is measured
+   (logs, billing) or estimated. Analysis alone costs "none".
+5. **Cite the report in commits** that act on it, by its folder: "See
    reports/2026-10-19-smashcima."
 
 **A page published as an artifact is a report too.** Save its HTML here, in

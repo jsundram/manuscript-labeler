@@ -121,6 +121,22 @@ the rendered training staves too.
 - **A Smashcima that draws the missing symbols, in a quill-like hand.** As
   of 1.1.2, it does neither.
 
+## Cost
+
+- **Machine:** a Modal L4 GPU for training. The windows were drawn on the
+  Mac (a Mac mini, M1, 16 GB).
+- **Training:** 4 epochs of about 1,660 s, 1.8 hours of wall time
+  (measured, the run's log).
+- **Billed: $2.18** for the run's Modal app: L4 $1.50 (1.9 GPU-hours),
+  memory $0.59, CPU $0.09 (measured, `modal billing report`). This is part
+  of the $15.29 in
+  [Segment Anything on the Berlin hand](../2026-10-19-segment-anything/).
+- **Not counted:** the first Smashcima run, lost when the Mac's disk filled.
+  Billing has one more L4 app in the hours between the windows being drawn
+  and this run, at $1.74; it was probably that run.
+- **Drawing the windows:** about 40 minutes on the Mac, four processes at
+  once (measured, the generator logs' times).
+
 ## Where things are
 
 - **The generator:** `experiments/synth/sam_smashcima.py`. It points MUSCIMA++ at its new
