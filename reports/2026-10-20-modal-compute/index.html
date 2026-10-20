@@ -188,6 +188,22 @@ a { color: var(--l40s); }
     </div>
   </section>
 
+  <section aria-labelledby="related">
+    <h2 id="related">The reports behind these runs</h2>
+    <p class="muted">Each run's own report gives what it was for and what it found. The links go to the repository on GitHub.</p>
+    <ul>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-synthetic-and-strip-height">A drawn stage before the Boccherini stage, at 128 and 96 px</a> <span class="muted">· musvit-D4's chain, $3.49; 96 px passes 11–45% faster</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-ossq-stage-1">OSSQ's period staves in the public stage</a> <span class="muted">· Public 22k, the single costliest run: $10.30, 5.1 h</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-clef-change-staves">Drawn staves with clef changes</a> <span class="muted">· Drawn 15k → Boccherini 3k, $1.92</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-19-synthetic-first">Synthetic staves first, then real</a> <span class="muted">· the first drawn stages, $5.29</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-19-segment-anything">Segment Anything on the Berlin hand</a> <span class="muted">· the L4 runs with the heavy memory bill, $15.29</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-19-pointer">The pointer</a> <span class="muted">· $1.11 on L4; the preempted run</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/blob/main/experiments/musvit/README.md">Zeus rebuilt on MuSViT</a> <span class="muted">· the 17–18 October sweeps, $53</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/blob/main/experiments/musvit/BRIEF.md">Brief: a Zeus rebuilt on MuSViT</a> <span class="muted">· the day-by-day log, and the spend limit on the 18th</span></li>
+          <li><a href="https://github.com/jsundram/manuscript-labeler/blob/main/reports/index.md">All reports</a> <span class="muted">· the index, with each report's cost</span></li>
+    </ul>
+  </section>
+
   <details>
     <summary>Every training run (58)</summary>
     <p class="muted" style="margin-block:10px">s/pass is the median time of one training pass from the run's log; "in passes" is the share of billed time spent training, not GPU utilization. Rows without a log are matched to runs by time.</p>
@@ -223,7 +239,7 @@ a { color: var(--l40s); }
       <li>A spend limit at about $50 metered disabled the workspace mid-run on 18 October; two runs were lost and rerun ($0.59).</li>
       <li>Modal preempted one pointer run after 24 minutes. Training can't resume, so a preempted run starts over.</li>
       <li>The CPU-bound reading is inferred from billing's CPU use and from slow-downs, not measured on the GPU.</li>
-      <li>The full write-up, with the billing data, is in the repo: <code>reports/2026-10-20-modal-compute/</code>.</li>
+      <li>The full write-up, with the billing data: <a href="https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-modal-compute">reports/2026-10-20-modal-compute</a>.</li>
     </ul>
   </details>
 </div>

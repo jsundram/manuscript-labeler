@@ -6,7 +6,7 @@ themselves are listed in [index.md](index.md).
 
 ## 2026-10-20: What Modal has cost us so far
 
-[Report](2026-10-20-modal-compute/) · [page](https://claude.ai/artifact/M4P24Eiua6etJvUnay9Tjq)
+[Page](https://claude.ai/artifact/M4P24Eiua6etJvUnay9Tjq) · [write-up](2026-10-20-modal-compute/)
 
 **Context.** The user is pricing compute for the modelling work: "I'd like
 to understand how we used modal so far, and how much it's cost in
