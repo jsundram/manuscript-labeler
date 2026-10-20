@@ -142,10 +142,9 @@ va 32; vc 43, 79, 82. D4's add vn1 62, va 27, 31 and vc 87, and lack vn1
 
 ## Cost
 
-- **Modal, L40S:** Drawn 15k about 36 minutes (10 passes, ~200 s each),
-  Boccherini 3k about 20 minutes (24 passes, ~47 s each). About **$1.60**
-  (~, estimated from the OSSQ chain's billed $0.63 and $0.69 for the same
-  stages; not yet billed).
+- **Modal, L40S:** Drawn 15k 0.62 GPU-hours, $1.24 (10 passes, ~200 s
+  each); Boccherini 3k 0.34 GPU-hours, $0.68 (24 passes, ~47 s each).
+  **$1.92** in all (`modal billing report`, 2026-10-20, by app).
 - **Mac (Mac mini, M1, 16 GB):** building dataS4 and checking it by eye,
   CPU only, about an hour; reading the clean test, under a minute; the flag
   test, a few minutes.
