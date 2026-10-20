@@ -183,6 +183,13 @@ PDF's path within the edition, named `<pdf name>.labels.json`
 `labels.labels_path`). Coordinates are fractions of
 the page width and height (0–1), so they don't depend on render resolution.
 
+A manuscript from the scan archive (`server.py --archive`, 2026-10-20) is
+`archive:<its path in the archive>` (`archive:digitizations/G213/463058700_D-B/463058700_D-B.pdf`).
+Its labels file and bar export both go under `data/<archive folder>/`, at
+its path there, since the archive is read only. Its metadata comes from the
+folder's `metadata.json`, and its bars are counted against
+`data/<archive folder>/structure/G<n>/Structure.ily` when the work has one.
+
 ```json
 {
   "schema": 2,

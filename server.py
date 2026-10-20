@@ -4,7 +4,7 @@
 # ///
 """Local labeling server.
 
-    uv run server.py <edition-repo> [--port 8048] [--no-open]
+    uv run server.py <edition-repo> [--archive <scan archive>] [--port 8048] [--no-open]
 
 Serves the editor (`static/`), renders PDF pages with `pdftoppm`, proposes
 staves and bar lines (`detect.py`), asks Claude what each new page is and
@@ -15,6 +15,10 @@ and saves:
                                             versioned), in this repo (labels.DATA)
     <pdf>.bars.json     flat bar export for the synoptic build, next to the PDF
                         in the edition, rewritten on save
+
+With --archive (the boccherini-sources archive), its manuscripts are listed
+too, after the edition's sources, as `archive:<path>`. The archive is never
+written to: their labels and bar exports go to data/<archive>/<pdf path>.
 
 Saving is atomic (temp file + rename), refuses to overwrite a file that
 changed since the editor loaded it, and keeps rolling backups in the cache
@@ -52,11 +56,15 @@ RENDER_PX = 2800  # long side of a page render; detect.py was tuned near this
 JPEG_QUALITY = 90  # PNG at this size is ~7 MB and takes seconds to encode
 BACKUP_EVERY = 60  # seconds between backups of one file
 BACKUPS_KEPT = 100
+ARCHIVE = "archive:"  # a source from the scan archive (--archive), before its path there
+OP48 = range(226, 232)  # the edition's own works: listed from the edition, not the archive
+PART_PDF = re.compile(r"\.(violin\d|viola|cello|basso|tenor|title|cover|v\d|va|vc)$", re.I)  # a part cut from a whole PDF
 
 
 class Edition:
-    def __init__(self, root: Path, cache: Path, data: Path = labels.DATA):
+    def __init__(self, root: Path, cache: Path, data: Path = labels.DATA, archive: Path | None = None):
         self.root = root.resolve()
+        self.archive = archive.resolve() if archive else None  # read only
         self.cache = cache
         self.data = data  # where the labels files live (labels.labels_path)
         self.write_lock = threading.Lock()
@@ -84,21 +92,55 @@ class Edition:
     # -- paths ---------------------------------------------------------------
 
     def pdf(self, rel: str) -> Path:
-        """Resolve a pdf path from the client, refusing anything outside the edition."""
-        p = (self.root / rel).resolve()
-        if p.suffix.lower() != ".pdf" or not p.is_file() or self.root not in p.parents:
+        """Resolve a pdf path from the client, refusing anything outside the
+        edition (or, for `archive:…`, the archive)."""
+        base, path = (self.archive, rel[len(ARCHIVE):]) if rel.startswith(ARCHIVE) and self.archive else (self.root, rel)
+        p = (base / path).resolve()
+        if p.suffix.lower() != ".pdf" or not p.is_file() or base not in p.parents:
             raise LookupError(f"no such source: {rel}")
         return p
 
+    def archived(self, pdf: Path) -> bool:
+        return self.archive is not None and self.archive in pdf.resolve().parents
+
     def rel(self, p: Path) -> str:
+        if self.archived(p):
+            return ARCHIVE + p.resolve().relative_to(self.archive).as_posix()
         return p.relative_to(self.root).as_posix()
 
     def labels_path(self, pdf: Path) -> Path:
-        return labels.labels_path(pdf, self.data, self.root)
+        return labels.labels_path(pdf, self.data, self.archive if self.archived(pdf) else self.root)
 
-    @staticmethod
-    def bars_path(pdf: Path) -> Path:
+    def bars_path(self, pdf: Path) -> Path:
+        """Next to the PDF in the edition; for the archive, next to its labels."""
+        if self.archived(pdf):
+            lp = self.labels_path(pdf)
+            return lp.with_name(lp.name.removesuffix(".labels.json") + ".bars.json")
         return pdf.with_name(pdf.stem + ".bars.json")
+
+    def info(self, rel: str) -> dict:
+        """labels.source_info, from the edition's sources/README.md or the archive's metadata.json."""
+        if rel.startswith(ARCHIVE):
+            m = self.pdf(rel).parent / "metadata.json"
+            try:
+                meta = json.loads(m.read_text())
+            except (OSError, ValueError):
+                meta = {}
+            return labels.archive_source_info(rel, meta)
+        return labels.source_info(rel, self.readme_rows())
+
+    def structure_file(self, rel: str, work: str) -> Path | None:
+        """The work's Structure.ily: the edition's; for an archive source of
+        one work, data/<archive>/structure/G<n>/Structure.ily if there is one."""
+        if not rel.startswith(ARCHIVE):
+            return labels.structure_path(self.root, work)
+        gs = re.findall(r"\d+", work)
+        p = self.data / self.archive.name / "structure" / f"G{gs[0]}" / "Structure.ily" if len(gs) == 1 else None
+        return p if p and p.exists() else None
+
+    def shown(self, p: Path) -> str:
+        """A path for the page: in the edition, or in the labeler's repo."""
+        return p.relative_to(self.root).as_posix() if p.is_relative_to(self.root) else p.relative_to(self.data.parent).as_posix()
 
     def readme_rows(self) -> dict:
         f = self.root / "sources" / "README.md"
@@ -113,12 +155,28 @@ class Edition:
             self.page_counts[key] = int(re.search(r"^Pages:\s+(\d+)", out, re.M).group(1))
         return self.page_counts[key]
 
-    def list_sources(self) -> list[dict]:
-        rows = self.readme_rows()
+    def archive_pdfs(self) -> list[Path]:
+        """The archive's manuscripts (metadata.json: a manuscript or an
+        autograph), leaving out Op. 48 and parts cut from a whole PDF."""
         out = []
-        for pdf in sorted(self.root.glob("sources/**/*.pdf")):
+        for pdf in sorted(self.archive.glob("digitizations/**/*.pdf")) if self.archive else []:
+            try:
+                meta = json.loads((pdf.parent / "metadata.json").read_text())
+            except (OSError, ValueError):
+                continue
+            gs = [int(g) for g in meta.get("gerard_numbers") or re.findall(r"\d+", pdf.parent.parent.name)]
+            a_part = PART_PDF.search(pdf.stem) and any(not PART_PDF.search(q.stem) for q in pdf.parent.glob("*.pdf"))
+            if (meta.get("record_type") or meta.get("medium")) in ("manuscript", "autograph") \
+                    and not (gs and all(g in OP48 for g in gs)) and not a_part:
+                out.append(pdf)
+        return out
+
+    def list_sources(self) -> list[dict]:
+        out = []
+        pdfs = [(p, "edition") for p in sorted(self.root.glob("sources/**/*.pdf"))] + [(p, "archive") for p in self.archive_pdfs()]
+        for pdf, group in pdfs:
             rel = self.rel(pdf)
-            info = labels.source_info(rel, rows)
+            info = self.info(rel)
             statuses: dict[str, int] = {}
             lp = self.labels_path(pdf)
             if lp.exists():
@@ -128,7 +186,7 @@ class Edition:
                         statuses[p.get("status", "?")] = statuses.get(p.get("status", "?"), 0) + 1
                 except (ValueError, OSError):
                     statuses["unreadable"] = 1
-            out.append({**info, "pdf": rel, "pages": self.num_pages(pdf), "statuses": statuses})
+            out.append({**info, "pdf": rel, "group": group, "pages": self.num_pages(pdf), "statuses": statuses})
         return out
 
     def mark_texts(self) -> list[dict]:
@@ -156,12 +214,11 @@ class Edition:
 
     def load(self, rel: str) -> dict:
         pdf = self.pdf(rel)
-        rows = self.readme_rows()
-        info = labels.source_info(rel, rows)
+        info = self.info(rel)
         lp = self.labels_path(pdf)
         readonly = None
         old = labels.legacy_labels_path(pdf)
-        if not lp.exists() and old.exists():
+        if not lp.exists() and not self.archived(pdf) and old.exists():
             # labelled before the labels moved here: copy them over (the
             # edition's file stays), or the source would open unlabelled and
             # its first save would overwrite its bar export
@@ -179,7 +236,7 @@ class Edition:
         else:
             etag = "none"
             doc = labels.new_doc(info["source"])
-        sp = labels.structure_path(self.root, info["display"].get("work", ""))
+        sp = self.structure_file(rel, info["display"].get("work", ""))
         stext = sp.read_text() if sp else None
         expected = structure.expected(stext) if sp else {}
         return {
@@ -191,7 +248,7 @@ class Edition:
             "source": info["source"],
             "display": info["display"],
             "expected": expected,
-            "structure": self.rel(sp) if sp else None,
+            "structure": self.shown(sp) if sp else None,
             # movements this source could write to Structure.ily now
             "structure_offers": structure.offers(doc, stext) if not readonly else [],
             "labels_file": lp.relative_to(self.data.parent).as_posix(),
@@ -235,8 +292,8 @@ class Edition:
             if reviewed_crops(current) != reviewed_crops(data):
                 self.train_crops()
             # the movements it could now write to Structure.ily (a review may complete one)
-            info = labels.source_info(rel, self.readme_rows())
-            sp = labels.structure_path(self.root, info["display"].get("work", ""))
+            info = self.info(rel)
+            sp = self.structure_file(rel, info["display"].get("work", ""))
             return {"etag": hashlib.sha1(data).hexdigest(),
                     "structure_offers": structure.offers(doc, sp.read_text() if sp else None)}
 
@@ -248,7 +305,7 @@ class Edition:
         file has no real block for it yet (structure.is_template), from a
         labels file this version reads. `text`: Structure.ily as read once."""
         info = self.load(rel)
-        sp = self.root / info["structure"] if info["structure"] else None
+        sp = self.structure_file(rel, info["display"].get("work", "")) if info["structure"] else None
         if text is None:
             text = sp.read_text() if sp else ""
         existing = labels.parse_structure(text).get(movement)
@@ -270,9 +327,9 @@ class Edition:
         once, and everything decided from that reading."""
         with self.write_lock:
             info = self.load(rel)
-            if not info["structure"]:
+            sp = self.structure_file(rel, info["display"].get("work", "")) if info["structure"] else None
+            if not sp:
                 raise ValueError("no Structure.ily for this work")
-            sp = self.root / info["structure"]
             old = sp.read_text()
             r = self.structure(rel, movement, answers, old)
             if not r["writable"]:
@@ -292,8 +349,9 @@ class Edition:
                     "offers": structure.offers(info["labels"], new)}
 
     def backup(self, lp: Path, data: bytes):
-        rel = lp.relative_to(self.data / self.root.name).as_posix()  # as when it sat beside the PDF
-        d = self.cache / "backups" / self.root.name / rel.replace("/", "__").removesuffix(".json")
+        rel = lp.relative_to(self.data).as_posix()  # <edition>/<pdf path>, as when it sat beside the PDF
+        top, _, rel = rel.partition("/")
+        d = self.cache / "backups" / top / rel.replace("/", "__").removesuffix(".json")
         d.mkdir(parents=True, exist_ok=True)
         existing = sorted(d.glob("*.json"))
         if existing and time.time() - existing[-1].stat().st_mtime < BACKUP_EVERY:
@@ -436,7 +494,9 @@ class Edition:
         img = Image.open(self.render(rel, page))
         corners = corners or detect.find_page_corners(img)
         try:  # a bad cache mustn't stop detection
-            preds = detections.page_predictions(self.root, rel, page, self.cache)
+            pdf = self.pdf(rel)
+            root, name = (pdf.parent, pdf.name) if self.archived(pdf) else (self.root, rel)  # as predict_barlines --pdf
+            preds = detections.page_predictions(root, name, page, self.cache)
             vote = detections.make_vote(preds, img.size[0], img.size[1]) if preds else None
             ends = detections.make_ends(preds, img.size[0], img.size[1]) if preds else None
         except Exception as e:
@@ -819,6 +879,7 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("edition", type=Path, help="edition repo (holds sources/**/*.pdf)")
+    ap.add_argument("--archive", type=Path, help="the scan archive (boccherini-sources): list its manuscripts too, read only")
     ap.add_argument("--port", type=int, default=8048)
     ap.add_argument("--no-open", action="store_true", help="don't open a browser")
     args = ap.parse_args()
@@ -828,9 +889,11 @@ def main():
             sys.exit(f"{tool} not found. Install poppler: brew install poppler")
     if not (args.edition / "sources").is_dir():
         sys.exit(f"{args.edition} has no sources/ folder")
+    if args.archive and not (args.archive / "digitizations").is_dir():
+        sys.exit(f"{args.archive} has no digitizations/ folder")
 
     cache = Path(os.environ.get("MANUSCRIPT_LABELER_CACHE", Path.home() / ".cache" / "manuscript-labeler"))
-    Handler.edition = Edition(args.edition, cache)
+    Handler.edition = Edition(args.edition, cache, archive=args.archive)
     Handler.edition.train_model()
     Handler.edition.train_crops()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)

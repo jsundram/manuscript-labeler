@@ -15,8 +15,10 @@ Needs [uv](https://docs.astral.sh/uv/) and poppler (`brew install poppler`).
 uv run server.py ~/path/to/edition-repo
 ```
 
-The edition repo holds the PDFs under `sources/`. The browser opens at
-http://127.0.0.1:8048/. Pick a source and work through it page by page:
+The edition repo holds the PDFs under `sources/`. Add
+`--archive ~/path/to/boccherini-sources` to list the scan archive's
+manuscripts too, after the edition's own; the archive is never written to.
+The browser opens at http://127.0.0.1:8048/. Pick a source and work through it page by page:
 
 - Each page opens with proposed staves and bar lines (dashed orange = not
   yet touched). Fix them by dragging, or with the keys below.

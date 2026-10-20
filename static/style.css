@@ -73,6 +73,11 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 }
 #sourcelist li:hover, #sourcelist li:focus { background: var(--bg); outline: none; }
 #sourcelist li[aria-selected="true"] { background: #e3ebf8; }
+#sourcelist li.group {
+  display: block; cursor: default; margin-top: 4px; padding: 6px 6px 2px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+}
+#sourcelist li.group:hover { background: none; }
 #source .what, #sourcelist .what { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 #meta dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1px 8px; }

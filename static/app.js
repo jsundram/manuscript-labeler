@@ -926,7 +926,9 @@ function sourceItem(s) {
 function renderSourcePicker() {
   const cur = S.sources.find((s) => s.pdf === S.pdf);
   if (cur) $('#source').innerHTML = sourceItem(cur) + '<span class="caret">▾</span>';
-  $('#sourcelist').innerHTML = S.sources.map((s) =>
+  // the archive's manuscripts (server.py --archive) come after the edition's sources, under a heading
+  $('#sourcelist').innerHTML = S.sources.map((s, i) =>
+    (s.group === 'archive' && S.sources[i - 1]?.group !== 'archive' ? '<li class="group" role="presentation">Other manuscripts, from the archive</li>' : '') +
     `<li role="option" tabindex="-1" data-pdf="${esc(s.pdf)}" aria-selected="${s.pdf === S.pdf}">${sourceItem(s)}</li>`).join('');
 }
 
@@ -2793,14 +2795,15 @@ for (const btn of document.querySelectorAll('[data-place]')) {
 }
 
 $('#source').addEventListener('click', () => showSourceList($('#sourcelist').hidden));
-$('#sourcelist').addEventListener('click', (e) => { const li = e.target.closest('li'); if (li) pickSource(li.dataset.pdf); });
+$('#sourcelist').addEventListener('click', (e) => { const li = e.target.closest('li[data-pdf]'); if (li) pickSource(li.dataset.pdf); });
 $('#sourcelist').addEventListener('keydown', (e) => {
-  const li = e.target.closest('li');
+  const li = e.target.closest('li[data-pdf]');
   if (e.key === 'Escape') { e.preventDefault(); pickSource(null); }
   else if (e.key === 'Enter' && li) { e.preventDefault(); pickSource(li.dataset.pdf); }
   else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
     e.preventDefault();
-    (e.key === 'ArrowDown' ? li?.nextElementSibling : li?.previousElementSibling)?.focus();
+    const all = [...$('#sourcelist').querySelectorAll('li[data-pdf]')];  // headings aren't stops
+    all[all.indexOf(li) + (e.key === 'ArrowDown' ? 1 : -1)]?.focus();
   }
   e.stopPropagation();  // the list's keys aren't the page's shortcuts
 });

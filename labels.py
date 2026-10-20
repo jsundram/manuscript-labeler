@@ -653,6 +653,31 @@ def source_info(pdf_rel: str, readme_rows: dict) -> dict:
     return {"source": source, "display": row}
 
 
+def archive_source_info(pdf_rel: str, meta: dict) -> dict:
+    """source_info for a scan in the archive (server.py --archive), from its
+    folder's metadata.json: `G213/463058700_D-B/…pdf` with D-B, KHM 587."""
+    folder = pdf_rel.split(":", 1)[-1].split("/")
+    gs = meta.get("gerard_numbers") or re.findall(r"\d+", folder[1] if len(folder) > 1 else "")
+    rism = str(meta.get("source_id") or "")
+    source = {
+        "pdf": pdf_rel,
+        "siglum": meta.get("siglum") or "",
+        "shelfmark": meta.get("shelfmark") or Path(pdf_rel).stem,
+        "rism": rism,
+        "gerard": int(gs[0]) if gs else None,
+    }
+    display = {
+        "work": "G " + ", ".join(gs) if gs else "",
+        "description": " · ".join(x for x in (meta.get("institution"), meta.get("source_type") or meta.get("record_type"),
+                                               (meta.get("published") or {}).get("date"), meta.get("full_title")) if x),
+        "rism_url": f"https://rism.online/sources/{rism}" if rism else "",
+        "online": meta.get("url") or "",
+        "online_label": meta.get("portal") or next((name for host, name in (("staatsbibliothek", "SBB"), ("gallica", "Gallica"),
+                                                                             ("bne.es", "BNE"), ("loc.gov", "LOC")) if host in (meta.get("url") or "")), "scan"),
+    }
+    return {"source": source, "display": display}
+
+
 def structure_path(edition: Path, work: str) -> Path | None:
     """`Op. 48/1, G 226` -> `<edition>/Op48-1/Structure.ily`, if it exists."""
     m = re.search(r"Op\.\s*(\d+)\s*/\s*(\d+)", work or "")
