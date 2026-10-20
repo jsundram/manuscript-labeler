@@ -3,6 +3,8 @@ __pycache__/
 *.png
 .DS_Store
 .env
+# the editor's IMSLP session, for downloads they ask for (never committed)
+.imslp-cookies.txt
 
 # base weights Ultralytics downloads into the working directory
 /*.pt
