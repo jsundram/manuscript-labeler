@@ -37,16 +37,18 @@ cache = modal.Volume.from_name("musvit")
 staves = modal.Volume.from_name("musvit-staves")
 
 
-def local_copy(src="/staves", dst="/tmp/staves", threads=64, skip=("pdfs", "unlabeled")):
+def local_copy(src="/staves", dst="/tmp/staves", threads=64, skip=("pdfs", "unlabeled"), only=None):
     """Copy the volume's staves to the container's own disk first. Opening a
     file on the volume the first time takes about 0.15 s, so reading
     11,000 staves one by one left the GPU idle for close to an hour; 64 at
-    a time takes about a minute."""
+    a time takes about a minute. With only, just those top folders (the ones
+    a run's sample lists name), so a big set it doesn't use isn't copied."""
     import time
     from concurrent.futures import ThreadPoolExecutor
     t = time.time()
     files = [Path(d) / f for d, _, fs in os.walk(src) for f in fs
-             if not f.endswith(".pickle") and Path(d).relative_to(src).parts[:1] not in [(k,) for k in skip]]
+             if not f.endswith(".pickle") and Path(d).relative_to(src).parts[:1] not in [(k,) for k in skip]
+             and (only is None or Path(d).relative_to(src).parts[:1] in [(k,) for k in only])]
     def one(f):
         out = Path(dst) / f.relative_to(src)
         out.parent.mkdir(parents=True, exist_ok=True)
@@ -58,7 +60,7 @@ def local_copy(src="/staves", dst="/tmp/staves", threads=64, skip=("pdfs", "unla
 
 @app.function(image=image, gpu="L4", timeout=24 * 3600, volumes={"/cache": cache, "/staves": staves})
 def train(args: list[str]):
-    local_copy()
+    local_copy(only=sorted({a.split("/")[2] for a in args if a.startswith("/staves/") and a.count("/") >= 3}) or None)
     args = [a.replace("/staves/", "/tmp/staves/", 1) if a.startswith("/staves/") else a for a in args]
     try:
         subprocess.run(["python", "/root/proto.py", *args], check=True, env={**os.environ, "MUSVIT_CACHE": "/cache"})
