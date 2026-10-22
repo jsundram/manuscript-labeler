@@ -45,7 +45,15 @@ Zeus's, must equal the encoding bar for bar.
 --pairs takes the staves autopair.py kept on a source nobody labelled
 (results/autopair-<name>.json), with Philhar's encoding (philhar.py):
 only its plain staves (every measure one bar), in the clef autopair.py
-chose, the key and time Philhar's Trame.ily gives. With --musicxml, the
+chose, the key and time Philhar's Trame.ily gives. With --clef-checks, a
+staff is left out where its clef may change on it: Philhar's clef changes
+within its bars, the reading wrote two clefs, or a viola or cello note
+lies more than 9 steps from the middle line in it.
+With --min-pitch, a staff is left out where the reading names fewer than
+that share of the encoding's notes right in the clef chosen: the pairing
+counts rhythm and steps, so a bar of the same rhythm elsewhere (a lone bar
+on a short staff) can pass it. --max-unlike and --drop work as with
+--musicxml (below). With --musicxml, the
 staves autopair.py --musicxml kept, cut from that score (musicxml_pairs):
 
     uv run experiments/zeus/dataset.py <edition-repo> --pairs G213-Sibley --musicxml sq8454356_cleaned.musicxml \\
@@ -433,9 +441,15 @@ def pairs(a):
                                       min(int(k) for k in d["bars"]))
         return loaded[(q, mvt, part)]
 
+    dropped = {}
+    if a.drop:  # staves left out by eye: lines "p57-5 why ..."
+        for line in a.drop.read_text().splitlines():
+            if line.strip() and not line.startswith("#"):
+                sid, _, why = line.strip().partition(" ")
+                dropped[sid] = why
     out = a.out / a.pairs
     out.mkdir(parents=True, exist_ok=True)
-    left_out, kept, bad = Counter(), [], []
+    left_out, kept, bad, notes = Counter(), [], [], []
     page = None
     for k in res["kept"]:
         where = {tuple(b[:2]) for b in k["bars"]}
@@ -449,12 +463,49 @@ def pairs(a):
         if q not in allowed:
             left_out["another quartet"] += 1
             continue
+        if a.max_unlike is not None and k.get("worst", 0) > a.max_unlike:
+            left_out["a measure unlike its bar"] += 1
+            notes.append(f"{k['staff']} {part}: a measure {k['worst']} from its bar")
+            continue
         evs, mk, exp, first = load(q, mvt, part)
+        if a.min_pitch is not None and "bar_clefs" in k:
+            # the encoding's notes the reading names right in the clef chosen (autopair.py's "bar_clefs")
+            n_notes = sum(1 for _, _, b in k["bars"] for e in compare.encoded(evs.get(str(b), [])) if e["pitches"])
+            hits = sum(h[k["clef"]] for h in k["bar_clefs"])
+            if n_notes and hits / n_notes < a.min_pitch:
+                left_out["few pitches as the encoding's"] += 1
+                notes.append(f"{k['staff']} {part}: {hits} of {n_notes} pitches as the encoding's")
+                continue
+        if a.clef_checks:
+            # one clef on the staff, as written: Philhar's clef doesn't change on it (or changes back),
+            # the reading wrote one clef at most, and a viola or cello note is no more than 9 steps from
+            # the middle line in it (past 2-3 ledger lines the copy changes clef). (A reading's one clef
+            # may differ from the one chosen: many full-score systems have no clef drawn, and the
+            # chosen one is the clef the notes' places name the encoding's pitches in.)
+            glyphs = {e.get("clef") for _, _, b in k["bars"] for e in evs.get(str(b), [])
+                      if e["kind"] == "note" and e.get("clef")}
+            read = {MXL_CLEF.get(c, c) for c in k.get("read_clefs", [])}
+            if len(glyphs) > 1:
+                left_out["Philhar's clef changes on the staff"] += 1
+                continue
+            if len(read) > 1:
+                left_out["the reading wrote two clefs"] += 1
+                notes.append(f"{k['staff']} {part}: chosen {k['clef']}, read {sorted(read)}")
+                continue
         mv = f"{q}-{mvt}"
         boxes = [{"part": part, "movement": mv, "bar": b, "count": 1, "clefs": [k["clef"]]} for _, _, b in k["bars"]]
         lmx, why = build(boxes, evs, mk, exp, {(part, mv, first, 1)}, {}, bad, k["staff"])
         if lmx is None:
             left_out[why] += 1
+            continue
+        if a.clef_checks and part in ("va", "vc") and any(
+                abs(p) > 9 for m in compare.parse(lmx)[0] for e in m for p in e["pos"]):
+            left_out["notes far off the staff in the clef written"] += 1
+            notes.append(f"{k['staff']} {part}: notes far off the staff in {k['clef']}")
+            continue
+        if k["staff"] in dropped:
+            left_out["left out by eye"] += 1
+            notes.append(f"{k['staff']} {part}: left out by eye: {dropped[k['staff']]}")
             continue
         if page is None or page[0] != k["page"]:
             page = (k["page"], compare.page_image(pdf, k["page"]))
@@ -463,6 +514,8 @@ def pairs(a):
     name = a.name or a.pairs
     (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
     print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
+    for row in notes:
+        print("  " + row)
     for row in bad[:8]:
         print("  check failed:", row)
 
@@ -658,8 +711,14 @@ def main():
     ap.add_argument("--philhar", type=Path, help="with --pairs: Philhar's lilypond/ folder")
     ap.add_argument("--quartets", help="with --pairs: the quartets to take staves from (Op33-1,...)")
     ap.add_argument("--musicxml", type=Path, help="with --pairs and --results: autopair.py --musicxml's score (OSSQ's)")
-    ap.add_argument("--drop", type=Path, help="with --musicxml: staves to leave out, checked by eye (lines: staff why)")
-    ap.add_argument("--max-unlike", type=float, help="with --musicxml: leave out a staff with a measure this unlike its bar")
+    ap.add_argument("--drop", type=Path, help="with --pairs: staves to leave out, checked by eye (lines: staff why)")
+    ap.add_argument("--max-unlike", type=float, help="with --pairs: leave out a staff with a measure this unlike its bar")
+    ap.add_argument("--min-pitch", type=float,
+                    help="with --philhar: leave out a staff where the reading names fewer than this share of the "
+                         "encoding's notes right (in the clef chosen)")
+    ap.add_argument("--clef-checks", action="store_true",
+                    help="with --philhar: leave out a staff whose clef may change on it (Philhar's changes, the reading "
+                         "wrote two, or a viola or cello note far off the staff)")
     ap.add_argument("--clef", choices=("encoding", "chosen"), default="encoding",
                     help="with --musicxml: keep a staff only where autopair.py's clef is the encoding's, "
                          "or write autopair.py's clef")

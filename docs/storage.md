@@ -87,6 +87,12 @@ space. `du` still counts them twice.
   the synthetic staves. `dataG213` is G. 213's three copies paired with
   OSSQ's encoding (`experiments/zeus/g213/README.md`). See
   `experiments/musvit/BRIEF.md`.
+- **`dataM2`:** Philhar's LilyPond pairings made again with the G. 213
+  pipeline and musvit-D4 (`experiments/zeus/philhar-repair/README.md`):
+  dataM's and dataT's sources re-paired, plus the full scores and copies
+  never paired before. One list per source, `samples.<source>.txt`; the
+  Madrid copies (dataT's role) are `samples.Op22-*-EMc.txt`. On Modal at
+  `/dataM2` in `musvit-staves`. Rebuild with `philhar-repair/build.sh`.
 - **`dataM4`, `dataW3`, `dataP3`, `dataG213-3` (2026-10-22):** the same
   sets, lists and options, from a full re-detection of all 57 paired
   sources (`detect.py`: each staff's ink threshold from its own lines and
@@ -106,6 +112,10 @@ space. `du` still counts them twice.
   `samples.S4-clef.txt`; on Modal at `/dataS4` in `musvit-staves`.
 - **`g213/`:** the Sibley scan of G. 213 (IMSLP 78818) and OSSQ's encoding
   of it, both downloadable again.
+- **`ms200/`:** F-Pn MS-200 (Op. 8 no. 4, a microfilm of two-page
+  openings) cut into single pages, and those pages with the film's grey
+  paper levelled to white, which detection needs; rebuilt from the archive
+  by the commands in `experiments/zeus/philhar-repair/README.md`.
 - **`data/`:** Zeus-format datasets: Dolores, OmniOMR, and each manuscript's
   staves.
 - **`renders/`:** pages rendered at 2,800 px, one folder per PDF (named for

@@ -52,9 +52,20 @@ half a bar the line breaks, whose other half this staff paired as the
 whole bar (G. 213, Berlin print, violin 1 p16-11/12, bar IV 129: the
 reading of the second half doubled it to a whole bar's length).
 
+With --neighbours-paired, a neighbour that paired none of its measures
+with a bar (an empty staff with a heading such as "Minuetto" or "Violino
+Primo", a title, a scrap of detection: read as one extra measure) puts no
+staff out: it holds no part of a bar the alignment placed. Found
+re-pairing Philhar's sources, where most of the staves --neighbours put
+out stood beside such a staff.
+
 With --short-ends, a staff is also put out when its first or last
 measure, paired with a whole bar, reads under 3/4 of the bar's length:
-half of a bar split across a line break, taken for the whole.
+half of a bar split across a line break, taken for the whole. With
+--long-ends, when it reads over 5/4 of it: the piece of a bar the line
+breaks read into the staff's first or last measure (found re-pairing
+Philhar's sources: Op. 2/2, D-Eu copy, p8-6 opens with the last four
+eighths of III 8, read as part of III 9).
 
 Each kept staff's clef is chosen as the one under which Zeus's notes
 (placed by its own staff positions) name the encoding's pitches most often.
@@ -310,9 +321,15 @@ def main():
     ap.add_argument("--neighbours", action="store_true",
                     help="a staff is also put out when the staff beside it begins or ends with a measure paired "
                          "with two bars or a run of rests (results/autopair-<source>[-any-count]-neighbours...json)")
+    ap.add_argument("--neighbours-paired", action="store_true",
+                    help="with --neighbours: only a neighbour that paired some measure with a bar puts a staff out "
+                         "(not an empty staff under a heading, read as an extra measure; results ...-neighbours-paired...)")
     ap.add_argument("--short-ends", action="store_true",
                     help="a staff is also put out when its first or last measure, paired with a whole bar, reads "
                          "under 3/4 of it (results/autopair-<source>[-any-count][-neighbours]-short-ends...json)")
+    ap.add_argument("--long-ends", action="store_true",
+                    help="a staff is also put out when its first or last measure, paired with a whole bar, reads "
+                         "over 5/4 of it (results ...-long-ends...)")
     ap.add_argument("--any-count", action="store_true",
                     help="keep a staff whatever number of bar boxes detection found on it (results/autopair-<source>-any-count.json)")
     a = ap.parse_args()
@@ -438,10 +455,14 @@ def main():
             # line breaks, whose other half the staff beside it paired as the whole bar: that
             # staff is suspect too
             step_of = {z: (step, js) for step, zs, js in path for z in zs}
+            # with --neighbours-paired, a neighbour none of whose measures paired with a bar (an empty
+            # staff under a heading, a title, a scrap of detection) puts no staff out by its extra measure
+            paired_any = {o for z, o in enumerate(owner) if step_of[z][0] != "extra"}
+            blank = lambda st: a.neighbours_paired and st not in paired_any
             for k in sorted(breaks):
-                if step_of[k + 1][0] in ("two", "rests", "extra"):
+                if step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1]):
                     out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
-                if step_of[k][0] in ("two", "rests", "extra"):
+                if step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k]):
                     out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
         if a.short_ends:
             # a staff's first or last measure paired with a whole bar but read much shorter than it:
@@ -455,6 +476,18 @@ def main():
                     step, js = step_of[z]
                     if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]]):
                         out_([o], f"an end measure shorter than its bar {list(bars[js[0]][0])}")
+        if a.long_ends:
+            # a staff's first or last measure paired with a whole bar but read much longer than it: the
+            # piece of a bar the line breaks (its other part on the staff beside it) read into it
+            ends_at = {}
+            for z, o in enumerate(owner):
+                ends_at.setdefault(o, [z, z])[1] = z
+            step_of = {z: (step, js) for step, zs, js in path for z in zs}
+            for o, (z0, z1) in ends_at.items():
+                for z in {z0, z1}:
+                    step, js = step_of[z]
+                    if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]]):
+                        out_([o], f"an end measure longer than its bar {list(bars[js[0]][0])}")
         for sid, n, s in mine:
             count = sum(1 for o in owner if o == sid)
             found = boxes(s, aspect[n])
@@ -512,7 +545,7 @@ def main():
     (HERE / "results").mkdir(exist_ok=True)
     by = "" if a.model == compare.MODEL else f"-{a.model.stem}"  # paired with another model's reading
     (HERE / "results" / f"autopair-{a.source}{'-any-count' if a.any_count else ''}{'-neighbours' if a.neighbours else ''}"
-                        f"{'-short-ends' if a.short_ends else ''}"
+                        f"{'-paired' if a.neighbours and a.neighbours_paired else ''}{'-short-ends' if a.short_ends else ''}{'-long-ends' if a.long_ends else ''}"
                         f"{by}.json").write_text(json.dumps(out, indent=1))
     print(json.dumps({"tally": tally, "clefs": clef_tally}, indent=1))
     print("\n".join(wrong))

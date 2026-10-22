@@ -1,0 +1,4526 @@
+{
+ "F-Pn_RES-507-2": [
+  {
+   "staff": "p5-9",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-1",
+     "I",
+     55
+    ],
+    [
+     "Op33-1",
+     "I",
+     60
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p6-21",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-1",
+     "I",
+     90
+    ],
+    [
+     "Op33-1",
+     "I",
+     91
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p8-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-1",
+     "II",
+     60
+    ],
+    [
+     "Op33-1",
+     "II",
+     65
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p9-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-2",
+     "I",
+     22
+    ],
+    [
+     "Op33-2",
+     "I",
+     27
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p9-6",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-2",
+     "I",
+     32
+    ],
+    [
+     "Op33-2",
+     "I",
+     37
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p13-7",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op33-3', 'I', 34]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "I",
+     34
+    ],
+    [
+     "Op33-3",
+     "I",
+     37
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p15-2",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op33-3', 'II', 7]",
+    "musvit-D3S-h96: beside a missed bar ['Op33-3', 'II', 8]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     5
+    ],
+    [
+     "Op33-3",
+     "II",
+     6
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p15-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     10
+    ],
+    [
+     "Op33-3",
+     "II",
+     11
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p15-6",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     14
+    ],
+    [
+     "Op33-3",
+     "II",
+     16
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p15-8",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     19
+    ],
+    [
+     "Op33-3",
+     "II",
+     22
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p15-11",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     33
+    ],
+    [
+     "Op33-3",
+     "II",
+     34
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p15-13",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     38
+    ],
+    [
+     "Op33-3",
+     "II",
+     39
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p15-16",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     44
+    ],
+    [
+     "Op33-3",
+     "II",
+     45
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p15-20",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     54
+    ],
+    [
+     "Op33-3",
+     "II",
+     54
+    ],
+    1
+   ]
+  },
+  {
+   "staff": "p16-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     74
+    ],
+    [
+     "Op33-3",
+     "II",
+     85
+    ],
+    12
+   ]
+  },
+  {
+   "staff": "p22-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-5",
+     "I",
+     56
+    ],
+    [
+     "Op33-5",
+     "I",
+     60
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p23-3",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op33-5', 'II', 21], ['Op33-5', 'II', 22]]",
+    "musvit-D3S-h96: beside a missed bar ['Op33-5', 'II', 23]",
+    "musvit-D3S-h96: beside a missed bar ['Op33-5', 'II', 24]",
+    "musvit-D3S-h96: beside a missed bar ['Op33-5', 'II', 25]",
+    "musvit-D3S-h96: beside a missed bar ['Op33-5', 'II', 29]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op33-5",
+     "II",
+     20
+    ],
+    [
+     "Op33-5",
+     "II",
+     28
+    ],
+    9
+   ]
+  },
+  {
+   "staff": "p25-4",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-6",
+     "I",
+     11
+    ],
+    [
+     "Op33-6",
+     "I",
+     13
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p26-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-6",
+     "I",
+     39
+    ],
+    [
+     "Op33-6",
+     "I",
+     42
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p37-7",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-2",
+     "I",
+     37
+    ],
+    [
+     "Op33-2",
+     "I",
+     42
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p38-6",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-2",
+     "I",
+     94
+    ],
+    [
+     "Op33-2",
+     "I",
+     99
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p39-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-2",
+     "II",
+     18
+    ],
+    [
+     "Op33-2",
+     "II",
+     20
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p51-8",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-5",
+     "II",
+     57
+    ],
+    [
+     "Op33-5",
+     "II",
+     62
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p87-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-1",
+     "II",
+     0
+    ],
+    [
+     "Op33-1",
+     "II",
+     6
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p95-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op33-3', 'II', 35]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-3",
+     "II",
+     35
+    ],
+    [
+     "Op33-3",
+     "II",
+     48
+    ],
+    14
+   ]
+  },
+  {
+   "staff": "p101-6",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-5",
+     "II",
+     56
+    ],
+    [
+     "Op33-5",
+     "II",
+     62
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p74-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-5",
+     "I",
+     55
+    ],
+    [
+     "Op33-5",
+     "I",
+     63
+    ],
+    9
+   ]
+  },
+  {
+   "staff": "p78-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op33-6",
+     "I",
+     45
+    ],
+    [
+     "Op33-6",
+     "I",
+     49
+    ],
+    5
+   ]
+  }
+ ],
+ "Op02-1-G159": [
+  {
+   "staff": "p10-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "I",
+     19
+    ],
+    [
+     "Op02-1",
+     "I",
+     23
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p11-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "I",
+     68
+    ],
+    [
+     "Op02-1",
+     "I",
+     73
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p15-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "III",
+     115
+    ],
+    [
+     "Op02-1",
+     "III",
+     121
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p15-7",
+   "not kept": [
+    "musvit-D3S-h96: extra at none",
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op02-1",
+     "III",
+     164
+    ],
+    [
+     "Op02-1",
+     "III",
+     174
+    ],
+    11
+   ]
+  },
+  {
+   "staff": "p18-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "I",
+     1
+    ],
+    [
+     "Op02-1",
+     "I",
+     6
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p22-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "III",
+     1
+    ],
+    [
+     "Op02-1",
+     "III",
+     5
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p23-5",
+   "not kept": [
+    "musvit-D3S-h96: extra at none",
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op02-1",
+     "III",
+     165
+    ],
+    [
+     "Op02-1",
+     "III",
+     174
+    ],
+    10
+   ]
+  },
+  {
+   "staff": "p26-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "I",
+     40
+    ],
+    [
+     "Op02-1",
+     "I",
+     46
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p28-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "III",
+     1
+    ],
+    [
+     "Op02-1",
+     "III",
+     6
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p4-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "I",
+     60
+    ],
+    [
+     "Op02-1",
+     "I",
+     65
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p5-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-1",
+     "II",
+     1
+    ],
+    [
+     "Op02-1",
+     "II",
+     5
+    ],
+    5
+   ]
+  }
+ ],
+ "Op02-2-G160": [
+  {
+   "staff": "p7-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "I",
+     49
+    ],
+    [
+     "Op02-2",
+     "I",
+     51
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p7-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "I",
+     62
+    ],
+    [
+     "Op02-2",
+     "I",
+     65
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p8-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "II",
+     0
+    ],
+    [
+     "Op02-2",
+     "II",
+     5
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p8-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "III",
+     0
+    ],
+    [
+     "Op02-2",
+     "III",
+     8
+    ],
+    9
+   ]
+  },
+  {
+   "staff": "p8-7",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "III",
+     19
+    ],
+    [
+     "Op02-2",
+     "III",
+     27
+    ],
+    9
+   ]
+  },
+  {
+   "staff": "p11-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "I",
+     44
+    ],
+    [
+     "Op02-2",
+     "I",
+     50
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p3-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-2",
+     "I",
+     32
+    ],
+    [
+     "Op02-2",
+     "I",
+     38
+    ],
+    7
+   ]
+  }
+ ],
+ "Op02-3-G161": [
+  {
+   "staff": "p11-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-3",
+     "I",
+     5
+    ],
+    [
+     "Op02-3",
+     "I",
+     10
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p15-6",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-3",
+     "I",
+     33
+    ],
+    [
+     "Op02-3",
+     "I",
+     36
+    ],
+    4
+   ]
+  }
+ ],
+ "Op02-4-G162": [
+  {
+   "staff": "p6-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     11
+    ],
+    [
+     "Op02-4",
+     "I",
+     16
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p10-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     21
+    ],
+    [
+     "Op02-4",
+     "I",
+     25
+    ],
+    5
+   ]
+  }
+ ],
+ "Op02-5-G163": [
+  {
+   "staff": "p8-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-5",
+     "III",
+     0
+    ],
+    [
+     "Op02-5",
+     "III",
+     5
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p10-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-5",
+     "I",
+     20
+    ],
+    [
+     "Op02-5",
+     "I",
+     23
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p15-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-5",
+     "I",
+     26
+    ],
+    [
+     "Op02-5",
+     "I",
+     33
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p16-6",
+   "not kept": [
+    "musvit-D3S-h96: extra at none"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op02-5",
+     "III",
+     0
+    ],
+    [
+     "Op02-5",
+     "III",
+     0
+    ],
+    1
+   ]
+  }
+ ],
+ "Op02-6-G164": [
+  {
+   "staff": "p4-1",
+   "not kept": [
+    "musvit-D3S-h96: extra at none"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-6",
+     "I",
+     134
+    ],
+    [
+     "Op02-6",
+     "I",
+     141
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p17-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-6",
+     "III",
+     1
+    ],
+    [
+     "Op02-6",
+     "III",
+     9
+    ],
+    9
+   ]
+  }
+ ],
+ "Op02-4-CZ-Pu-va": [
+  {
+   "staff": "p1-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     15
+    ],
+    [
+     "Op02-4",
+     "I",
+     19
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p2-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     59
+    ],
+    [
+     "Op02-4",
+     "I",
+     65
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p2-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     77
+    ],
+    [
+     "Op02-4",
+     "I",
+     84
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p2-6",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     91
+    ],
+    [
+     "Op02-4",
+     "I",
+     95
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p3-6",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "II",
+     41
+    ],
+    [
+     "Op02-4",
+     "II",
+     48
+    ],
+    8
+   ]
+  }
+ ],
+ "Op02-4-CZ-Pu-vc": [
+  {
+   "staff": "p2-7",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best pairs other bars: ['Op02-4', 'II', 28]..['Op02-4', 'II', 28] (1)"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op02-4",
+     "II",
+     28
+    ],
+    [
+     "Op02-4",
+     "II",
+     28
+    ],
+    1
+   ]
+  }
+ ],
+ "Op02-4-CZ-Pu-vn1": [
+  {
+   "staff": "p2-7",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     87
+    ],
+    [
+     "Op02-4",
+     "I",
+     93
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p3-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "II",
+     32
+    ],
+    [
+     "Op02-4",
+     "II",
+     38
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p4-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op02-4', 'II', 65]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "II",
+     64
+    ],
+    [
+     "Op02-4",
+     "II",
+     65
+    ],
+    2
+   ]
+  }
+ ],
+ "Op02-4-CZ-Pu-vn2": [
+  {
+   "staff": "p1-5",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     36
+    ],
+    [
+     "Op02-4",
+     "I",
+     41
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p2-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "I",
+     81
+    ],
+    [
+     "Op02-4",
+     "I",
+     87
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p4-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op02-4",
+     "II",
+     61
+    ],
+    [
+     "Op02-4",
+     "II",
+     65
+    ],
+    5
+   ]
+  }
+ ],
+ "Op22-1-G183": [
+  {
+   "staff": "p11-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-1', 'I', 4]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "I",
+     1
+    ],
+    [
+     "Op22-1",
+     "I",
+     4
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p5-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-1', 'II', 0]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "II",
+     0
+    ],
+    [
+     "Op22-1",
+     "II",
+     5
+    ],
+    6
+   ]
+  }
+ ],
+ "Op22-2-G184": [
+  {
+   "staff": "p13-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "II",
+     18
+    ],
+    [
+     "Op22-2",
+     "II",
+     23
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p4-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     50
+    ],
+    [
+     "Op22-2",
+     "I",
+     53
+    ],
+    4
+   ]
+  }
+ ],
+ "Op22-3-G185": [
+  {
+   "staff": "p15-8",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 168]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     168
+    ],
+    [
+     "Op22-3",
+     "II",
+     173
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p3-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'I', 9]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     8
+    ],
+    [
+     "Op22-3",
+     "I",
+     9
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p3-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'I', 10]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     10
+    ],
+    [
+     "Op22-3",
+     "I",
+     11
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p7-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 124]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     119
+    ],
+    [
+     "Op22-3",
+     "II",
+     124
+    ],
+    6
+   ]
+  }
+ ],
+ "Op22-4-G186": [],
+ "Op22-5-G187": [
+  {
+   "staff": "p14-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with rests"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-5",
+     "II",
+     49
+    ],
+    [
+     "Op22-5",
+     "II",
+     52
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p6-1",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op22-5', 'II', 39]",
+    "musvit-D3S-h96: beside a missed bar ['Op22-5', 'II', 40]",
+    "musvit-D3S-h96: beside a missed bar ['Op22-5', 'II', 41]",
+    "musvit-D3S-h96: beside a missed bar ['Op22-5', 'II', 42]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-5",
+     "II",
+     43
+    ],
+    [
+     "Op22-5",
+     "II",
+     47
+    ],
+    5
+   ]
+  }
+ ],
+ "Op22-6-G188": [],
+ "Op22-6-Vmbr153-va": [
+  {
+   "staff": "p37-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     81
+    ],
+    [
+     "Op22-6",
+     "II",
+     89
+    ],
+    9
+   ]
+  }
+ ],
+ "Op22-6-Vmbr153-vc": [
+  {
+   "staff": "p36-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     6
+    ],
+    [
+     "Op22-6",
+     "I",
+     12
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p37-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     42
+    ],
+    [
+     "Op22-6",
+     "I",
+     46
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p38-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'II', 21]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     14
+    ],
+    [
+     "Op22-6",
+     "II",
+     21
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p38-4",
+   "not kept": [
+    "musvit-D3S-h96: extra at none"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     22
+    ],
+    [
+     "Op22-6",
+     "II",
+     29
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p39-21",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     120
+    ],
+    [
+     "Op22-6",
+     "II",
+     122
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p39-23",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     126
+    ],
+    [
+     "Op22-6",
+     "II",
+     127
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p39-25",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op22-6', 'II', 131], ['Op22-6', 'II', 132]]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     130
+    ],
+    [
+     "Op22-6",
+     "II",
+     131
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p39-28",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'II', 136]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     136
+    ],
+    [
+     "Op22-6",
+     "II",
+     136
+    ],
+    1
+   ]
+  }
+ ],
+ "Op22-6-Vmbr153-vn1": [
+  {
+   "staff": "p38-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     15
+    ],
+    [
+     "Op22-6",
+     "II",
+     22
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p38-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'II', 38]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     38
+    ],
+    [
+     "Op22-6",
+     "II",
+     43
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p38-9",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'II', 63]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     63
+    ],
+    [
+     "Op22-6",
+     "II",
+     71
+    ],
+    9
+   ]
+  }
+ ],
+ "Op22-6-Vmbr153-vn2": [
+  {
+   "staff": "p34-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     2
+    ],
+    [
+     "Op22-6",
+     "I",
+     2
+    ],
+    1
+   ]
+  },
+  {
+   "staff": "p34-14",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-6', 'I', 20]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     20
+    ],
+    [
+     "Op22-6",
+     "I",
+     21
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p34-16",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'I', 24]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     24
+    ],
+    [
+     "Op22-6",
+     "I",
+     26
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p34-17",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     27
+    ],
+    [
+     "Op22-6",
+     "I",
+     28
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p36-0",
+   "not kept": [
+    "musvit-D3S-h96: extra at none"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     1
+    ],
+    [
+     "Op22-6",
+     "II",
+     4
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p36-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-6', 'II', 36]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     30
+    ],
+    [
+     "Op22-6",
+     "II",
+     36
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p36-9",
+   "not kept": [
+    "musvit-D3S-h96: extra at none"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     66
+    ],
+    [
+     "Op22-6",
+     "II",
+     71
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p37-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     86
+    ],
+    [
+     "Op22-6",
+     "II",
+     92
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p37-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     103
+    ],
+    [
+     "Op22-6",
+     "II",
+     113
+    ],
+    11
+   ]
+  }
+ ],
+ "Op22-Paris-va": [
+  {
+   "staff": "p11-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "II",
+     87
+    ],
+    [
+     "Op22-4",
+     "II",
+     88
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p14-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     4
+    ],
+    [
+     "Op22-2",
+     "I",
+     7
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p15-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 30]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     30
+    ],
+    [
+     "Op22-2",
+     "I",
+     33
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p22-6",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op22-6', 'II', 44], ['Op22-6', 'II', 45]]"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     37
+    ],
+    [
+     "Op22-6",
+     "II",
+     44
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p23-0",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op22-6', 'II', 76], ['Op22-6', 'II', 77]]"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     69
+    ],
+    [
+     "Op22-6",
+     "II",
+     76
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p26-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     7
+    ],
+    [
+     "Op22-3",
+     "I",
+     9
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p31-6",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     201
+    ],
+    [
+     "Op22-3",
+     "II",
+     201
+    ],
+    1
+   ]
+  }
+ ],
+ "Op22-Paris-vc": [
+  {
+   "staff": "p10-6",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     17
+    ],
+    [
+     "Op22-4",
+     "I",
+     19
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p11-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     29
+    ],
+    [
+     "Op22-4",
+     "I",
+     33
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p11-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     42
+    ],
+    [
+     "Op22-4",
+     "I",
+     44
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p16-8",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     23
+    ],
+    [
+     "Op22-2",
+     "I",
+     25
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p17-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 37]",
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 35]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     35
+    ],
+    [
+     "Op22-2",
+     "I",
+     37
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p17-7",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     51
+    ],
+    [
+     "Op22-2",
+     "I",
+     53
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p28-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     3
+    ],
+    [
+     "Op22-3",
+     "I",
+     6
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p32-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 132]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     127
+    ],
+    [
+     "Op22-3",
+     "II",
+     132
+    ],
+    6
+   ]
+  }
+ ],
+ "Op22-Paris-vn1": [
+  {
+   "staff": "p10-8",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     26
+    ],
+    [
+     "Op22-4",
+     "I",
+     28
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p11-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     41
+    ],
+    [
+     "Op22-4",
+     "I",
+     43
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p11-7",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra",
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     53
+    ],
+    [
+     "Op22-4",
+     "I",
+     56
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p17-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     36
+    ],
+    [
+     "Op22-2",
+     "I",
+     38
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p17-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     47
+    ],
+    [
+     "Op22-2",
+     "I",
+     48
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p23-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     48
+    ],
+    [
+     "Op22-6",
+     "I",
+     50
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p29-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     13
+    ],
+    [
+     "Op22-3",
+     "I",
+     15
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p32-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with rests"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     92
+    ],
+    [
+     "Op22-3",
+     "II",
+     99
+    ],
+    8
+   ]
+  }
+ ],
+ "Op22-Paris-vn2": [
+  {
+   "staff": "p8-7",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     32
+    ],
+    [
+     "Op22-4",
+     "I",
+     34
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p9-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     40
+    ],
+    [
+     "Op22-4",
+     "I",
+     42
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p9-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-4', 'I', 43]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-4",
+     "I",
+     43
+    ],
+    [
+     "Op22-4",
+     "I",
+     45
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p20-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     1
+    ],
+    [
+     "Op22-6",
+     "I",
+     7
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p23-7",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "II",
+     133
+    ],
+    [
+     "Op22-6",
+     "II",
+     136
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p27-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     18
+    ],
+    [
+     "Op22-3",
+     "I",
+     19
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p28-3",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with rests"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     18
+    ],
+    [
+     "Op22-3",
+     "II",
+     22
+    ],
+    5
+   ]
+  }
+ ],
+ "Op32-G201-206": [
+  {
+   "staff": "p6-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "II",
+     54
+    ],
+    [
+     "Op32-1",
+     "II",
+     56
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p7-6",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     28
+    ],
+    [
+     "Op32-1",
+     "IV",
+     33
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p8-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     46
+    ],
+    [
+     "Op32-1",
+     "IV",
+     51
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p8-2",
+   "not kept": [
+    "musvit-D3S-h96: 7 measures, 2 bar boxes, an end not one bar"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     57
+    ],
+    [
+     "Op32-1",
+     "IV",
+     63
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p11-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-2', 'II', 31]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     27
+    ],
+    [
+     "Op32-2",
+     "II",
+     31
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p12-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     41
+    ],
+    [
+     "Op32-2",
+     "II",
+     43
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p12-3",
+   "not kept": [
+    "musvit-D3S-h96: unlike [['Op32-2', 'II', 51]]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     53
+    ],
+    [
+     "Op32-2",
+     "II",
+     56
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p14-4",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 105]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 106]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 107]",
+    "musvit-D3S-h96: two at [['Op32-2', 'III', 108], ['Op32-2', 'III', 109]]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 111]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 112]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 113]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 114]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 115]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 116]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 117]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 118]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 119]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 120]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     101
+    ],
+    [
+     "Op32-2",
+     "III",
+     106
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p16-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     65
+    ],
+    [
+     "Op32-3",
+     "I",
+     72
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p16-3",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     83
+    ],
+    [
+     "Op32-3",
+     "I",
+     88
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p17-5",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "II",
+     27
+    ],
+    [
+     "Op32-3",
+     "II",
+     31
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p21-1",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     5
+    ],
+    [
+     "Op32-4",
+     "I",
+     9
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p22-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     56
+    ],
+    [
+     "Op32-4",
+     "I",
+     61
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p23-0",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 4]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "II",
+     5
+    ],
+    [
+     "Op32-4",
+     "II",
+     10
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p24-3",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 42]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 43]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 44]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 45]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 46]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 47]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "II",
+     48
+    ],
+    [
+     "Op32-4",
+     "II",
+     53
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p27-1",
+   "not kept": [
+    "musvit-D3S-h96: unlike [['Op32-5', 'I', 19]]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-5",
+     "I",
+     36
+    ],
+    [
+     "Op32-5",
+     "I",
+     39
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p29-0",
+   "not kept": [
+    "musvit-D3S-h96: unlike [['Op32-5', 'II', 16]]",
+    "musvit-D3S-h96: two at [['Op32-5', 'II', 18], ['Op32-5', 'II', 19]]",
+    "musvit-D3S-h96: two at [['Op32-5', 'II', 20], ['Op32-5', 'II', 21]]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-5",
+     "II",
+     41
+    ],
+    [
+     "Op32-5",
+     "II",
+     46
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p35-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "II",
+     5
+    ],
+    [
+     "Op32-6",
+     "II",
+     10
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p44-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "I",
+     83
+    ],
+    [
+     "Op32-1",
+     "I",
+     89
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p48-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     51
+    ],
+    [
+     "Op32-1",
+     "IV",
+     57
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p53-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     7
+    ],
+    [
+     "Op32-2",
+     "III",
+     16
+    ],
+    10
+   ]
+  },
+  {
+   "staff": "p53-6",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 50]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 51]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 52]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 53]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 54]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 55]",
+    "musvit-D3S-h96: two at [['Op32-2', 'III', 56], ['Op32-2', 'III', 57]]",
+    "musvit-D3S-h96: staff before ends with two",
+    "musvit-D3S-h96: 2 measures, 1 bar boxes, an end not one bar"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     57
+    ],
+    [
+     "Op32-2",
+     "III",
+     58
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p55-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     1
+    ],
+    [
+     "Op32-3",
+     "I",
+     7
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p55-1",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'I', 15]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'I', 16]",
+    "musvit-D3S-h96: two at [['Op32-3', 'I', 17], ['Op32-3', 'I', 18]]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'I', 19]",
+    "musvit-D3S-h96: next staff begins with two",
+    "musvit-D3S-h96: 8 measures, 2 bar boxes, an end not one bar"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     8
+    ],
+    [
+     "Op32-3",
+     "I",
+     15
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p56-2",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     86
+    ],
+    [
+     "Op32-3",
+     "I",
+     91
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p57-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "II",
+     1
+    ],
+    [
+     "Op32-3",
+     "II",
+     7
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p57-3",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op32-3', 'II', 21], ['Op32-3', 'II', 22]]",
+    "musvit-D3S-h96: two at [['Op32-3', 'II', 23], ['Op32-3', 'II', 24]]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'II', 25]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'II', 26]"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-3",
+     "II",
+     17
+    ],
+    [
+     "Op32-3",
+     "II",
+     22
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p60-5",
+   "not kept": [
+    "musvit-D3S-h96: unlike [['Op32-4', 'I', 54]]"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     48
+    ],
+    [
+     "Op32-4",
+     "I",
+     48
+    ],
+    1
+   ]
+  },
+  {
+   "staff": "p62-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "III",
+     1
+    ],
+    [
+     "Op32-4",
+     "III",
+     3
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p64-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "III",
+     39
+    ],
+    [
+     "Op32-4",
+     "III",
+     41
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p73-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-6', 'I', 35]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "I",
+     35
+    ],
+    [
+     "Op32-6",
+     "I",
+     42
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p77-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-6",
+     "IV",
+     73
+    ],
+    [
+     "Op32-6",
+     "IV",
+     82
+    ],
+    10
+   ]
+  },
+  {
+   "staff": "p87-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "III",
+     7
+    ],
+    [
+     "Op32-1",
+     "III",
+     14
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p87-5",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 13]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 14]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     15
+    ],
+    [
+     "Op32-1",
+     "IV",
+     20
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p88-5",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 91]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 92]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 93]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-1', 'IV', 94]",
+    "musvit-D3S-h96: two at [['Op32-1', 'IV', 95], ['Op32-1', 'IV', 96]]",
+    "musvit-D3S-h96: staff before ends with two",
+    "musvit-D3S-h96: 3 measures, 4 bar boxes, an end not one bar"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-1",
+     "IV",
+     96
+    ],
+    [
+     "Op32-1",
+     "IV",
+     98
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p89-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "I",
+     4
+    ],
+    [
+     "Op32-2",
+     "I",
+     10
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p92-1",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'II', 50]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     44
+    ],
+    [
+     "Op32-2",
+     "II",
+     49
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p93-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     1
+    ],
+    [
+     "Op32-2",
+     "III",
+     5
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p95-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     1
+    ],
+    [
+     "Op32-3",
+     "I",
+     5
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p95-4",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     27
+    ],
+    [
+     "Op32-3",
+     "I",
+     32
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p95-6",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op32-3', 'I', 45], ['Op32-3', 'I', 46]]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     46
+    ],
+    [
+     "Op32-3",
+     "I",
+     51
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p98-0",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-3', 'II', 35]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "II",
+     36
+    ],
+    [
+     "Op32-3",
+     "II",
+     45
+    ],
+    10
+   ]
+  },
+  {
+   "staff": "p98-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "II",
+     52
+    ],
+    [
+     "Op32-3",
+     "II",
+     57
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p101-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     8
+    ],
+    [
+     "Op32-4",
+     "I",
+     13
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p101-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     24
+    ],
+    [
+     "Op32-4",
+     "I",
+     29
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p101-9",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     44
+    ],
+    [
+     "Op32-4",
+     "I",
+     49
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p102-5",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two",
+    "musvit-D3S-h96: an end measure shorter than its bar ['Op32-4', 'I', 83]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     83
+    ],
+    [
+     "Op32-4",
+     "I",
+     83
+    ],
+    1
+   ]
+  },
+  {
+   "staff": "p103-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "II",
+     20
+    ],
+    [
+     "Op32-4",
+     "II",
+     25
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p103-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "II",
+     30
+    ],
+    [
+     "Op32-4",
+     "II",
+     34
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p104-3",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 48]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 49]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 50]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 51]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-4', 'II', 52]",
+    "musvit-D3S-h96: two at [['Op32-4', 'II', 54], ['Op32-4', 'II', 55]]",
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-4",
+     "II",
+     54
+    ],
+    [
+     "Op32-4",
+     "II",
+     59
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p107-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-5",
+     "I",
+     0
+    ],
+    [
+     "Op32-5",
+     "I",
+     3
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p107-3",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-5', 'I', 19]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-5', 'I', 20]",
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-5",
+     "I",
+     14
+    ],
+    [
+     "Op32-5",
+     "I",
+     18
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p110-7",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op32-5', 'III', 77]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-5",
+     "III",
+     77
+    ],
+    [
+     "Op32-5",
+     "III",
+     81
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p113-7",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "I",
+     60
+    ],
+    [
+     "Op32-6",
+     "I",
+     66
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p116-2",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "III",
+     22
+    ],
+    [
+     "Op32-6",
+     "III",
+     32
+    ],
+    11
+   ]
+  },
+  {
+   "staff": "p125-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "II",
+     1
+    ],
+    [
+     "Op32-1",
+     "II",
+     6
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p127-0",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-1",
+     "III",
+     1
+    ],
+    [
+     "Op32-1",
+     "III",
+     7
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p131-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     6
+    ],
+    [
+     "Op32-2",
+     "II",
+     11
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p132-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     54
+    ],
+    [
+     "Op32-2",
+     "II",
+     57
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p132-4",
+   "not kept": [
+    "musvit-D3S-h96: two at [['Op32-2', 'II', 58], ['Op32-2', 'III', 1]]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 2]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 3]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 4]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 5]",
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 6]",
+    "musvit-D3S-h96: next staff begins with two",
+    "musvit-D3S-h96: 1 measures, 2 bar boxes, an end not one bar"
+   ],
+   "same bars": false,
+   "old": [
+    [
+     "Op32-2",
+     "II",
+     58
+    ],
+    [
+     "Op32-2",
+     "II",
+     58
+    ],
+    1
+   ]
+  },
+  {
+   "staff": "p133-3",
+   "not kept": [
+    "musvit-D3S-h96: beside a missed bar ['Op32-2', 'III', 35]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     36
+    ],
+    [
+     "Op32-2",
+     "III",
+     42
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p134-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-2', 'III', 89]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     82
+    ],
+    [
+     "Op32-2",
+     "III",
+     89
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p134-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-2', 'III', 95]",
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-2', 'III', 90]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-2",
+     "III",
+     90
+    ],
+    [
+     "Op32-2",
+     "III",
+     95
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p136-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     83
+    ],
+    [
+     "Op32-3",
+     "I",
+     90
+    ],
+    8
+   ]
+  },
+  {
+   "staff": "p136-7",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-3",
+     "I",
+     110
+    ],
+    [
+     "Op32-3",
+     "I",
+     115
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p141-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-4",
+     "I",
+     1
+    ],
+    [
+     "Op32-4",
+     "I",
+     4
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p147-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-5",
+     "I",
+     4
+    ],
+    [
+     "Op32-5",
+     "I",
+     8
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p154-3",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "I",
+     88
+    ],
+    [
+     "Op32-6",
+     "I",
+     94
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p155-5",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op32-6",
+     "II",
+     37
+    ],
+    [
+     "Op32-6",
+     "II",
+     43
+    ],
+    7
+   ]
+  }
+ ],
+ "Op22-1-EMc": [
+  {
+   "staff": "p10-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-1', 'I', 4]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "I",
+     1
+    ],
+    [
+     "Op22-1",
+     "I",
+     4
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p12-3",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with two"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "II",
+     11
+    ],
+    [
+     "Op22-1",
+     "II",
+     15
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p27-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best chose clef alto"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "I",
+     67
+    ],
+    [
+     "Op22-1",
+     "I",
+     71
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p28-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-1', 'II', 0]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "II",
+     0
+    ],
+    [
+     "Op22-1",
+     "II",
+     5
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p4-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-1', 'II', 0]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-1",
+     "II",
+     0
+    ],
+    [
+     "Op22-1",
+     "II",
+     5
+    ],
+    6
+   ]
+  }
+ ],
+ "Op22-2-EMc": [
+  {
+   "staff": "p10-9",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 35]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     33
+    ],
+    [
+     "Op22-2",
+     "I",
+     35
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p18-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 12]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     10
+    ],
+    [
+     "Op22-2",
+     "I",
+     12
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p35-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-2', 'I', 44]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     44
+    ],
+    [
+     "Op22-2",
+     "I",
+     46
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p26-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     13
+    ],
+    [
+     "Op22-2",
+     "I",
+     15
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p26-9",
+   "not kept": [
+    "musvit-D3S-h96: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-2",
+     "I",
+     36
+    ],
+    [
+     "Op22-2",
+     "I",
+     39
+    ],
+    4
+   ]
+  }
+ ],
+ "Op22-3-EMc": [
+  {
+   "staff": "p12-4",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 33]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     33
+    ],
+    [
+     "Op22-3",
+     "II",
+     39
+    ],
+    7
+   ]
+  },
+  {
+   "staff": "p19-1",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     17
+    ],
+    [
+     "Op22-3",
+     "I",
+     18
+    ],
+    2
+   ]
+  },
+  {
+   "staff": "p19-3",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     22
+    ],
+    [
+     "Op22-3",
+     "I",
+     24
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p21-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure longer than its bar ['Op22-3', 'II', 109]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     109
+    ],
+    [
+     "Op22-3",
+     "II",
+     112
+    ],
+    4
+   ]
+  },
+  {
+   "staff": "p22-0",
+   "not kept": [
+    "musvit-D3S-h96: staff before ends with extra"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     129
+    ],
+    [
+     "Op22-3",
+     "II",
+     134
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p27-0",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best chose clef bass"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     12
+    ],
+    [
+     "Op22-3",
+     "I",
+     14
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p27-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'I', 18]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "I",
+     18
+    ],
+    [
+     "Op22-3",
+     "I",
+     20
+    ],
+    3
+   ]
+  },
+  {
+   "staff": "p30-1",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 124]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     119
+    ],
+    [
+     "Op22-3",
+     "II",
+     124
+    ],
+    6
+   ]
+  },
+  {
+   "staff": "p30-8",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best chose clef alto"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     160
+    ],
+    [
+     "Op22-3",
+     "II",
+     164
+    ],
+    5
+   ]
+  },
+  {
+   "staff": "p31-2",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best chose clef bass"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-3",
+     "II",
+     180
+    ],
+    [
+     "Op22-3",
+     "II",
+     184
+    ],
+    5
+   ]
+  }
+ ],
+ "Op22-4-EMc": [],
+ "Op22-6-EMc": [
+  {
+   "staff": "p3-5",
+   "not kept": [
+    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-6', 'I', 71]"
+   ],
+   "same bars": true,
+   "old": [
+    [
+     "Op22-6",
+     "I",
+     71
+    ],
+    [
+     "Op22-6",
+     "I",
+     74
+    ],
+    4
+   ]
+  }
+ ]
+}

@@ -32,6 +32,23 @@ page), detected with the image's corners as the paper's, where
 find_page_corners took a dark band inside the page for its edge and cut
 the staves short (the Sibley scan of G. 213, page 1).
 
+--score-layout: score pages by their ruling instead of by gaps, for full
+scores whose sparse staves (a few rests) fail detection's empty-staff test,
+which leaves a system three staves and loses all four; or whose systems
+are spaced like their staves. Score pages are then detected with the
+empty-staff test off, so every ruled staff is found; a staff less than half
+within the page's median left and right ends is dropped (the edge of the
+facing page), and so is a stub under a tenth of that width (a title), and
+with --score-margin, a "staff" whose middle lies that near the image's top
+or bottom (a library's heading or footer band). The
+layout says, for a page with so many ruled staves, which of them (0 from
+the top) make each system: "10:0-3,5-8|1-4,6-9;14:0-3,5-8,10-13" (several
+layouts for one count separated by |). The staves no system takes must be
+empty (under SEPARATOR_INK between their lines); of the layouts that pass,
+the one with the least ink on them is taken; a page with another count, or
+no layout that passes, is left out and logged. Without --score-layout
+nothing changes.
+
 Writes auto/<name>.json: {n: {part, systems}}, each staff with its "part".
 """
 
@@ -81,6 +98,64 @@ def systems(staves: list[dict]) -> list[list[dict]]:
     return out
 
 
+SEPARATOR_INK = 0.01  # a ruled staff between systems: less ink than this between its lines
+
+
+def staff_ink(g, s: dict) -> float:
+    """Share of dark pixels (< 120) on the middle row of each of a staff's
+    spaces, along its bend from its left end to its right (as detect.inner_ink,
+    on the page)."""
+    import numpy as np
+    H, W = g.shape
+    gap = (s["bottom"] - s["top"]) / 4
+    xs = np.arange(int(s["left"] * W), int(s["right"] * W), 2)
+    if not len(xs):
+        return 0.0
+    hits = 0
+    for x in xs:
+        y0 = s["top"] + labels.bend_at(s, x / W)
+        for i in range(4):
+            y = int(round((y0 + (i + 0.5) * gap) * H))
+            hits += 0 <= y < H and g[y, x] < 120
+    return hits / (4 * len(xs))
+
+
+def score_layout(spec: str) -> dict[int, list[list[list[int]]]]:
+    """"10:0-3,5-8|1-4,6-9;14:..." -> {10: [[[0,1,2,3],[5,6,7,8]], [[1,..],[6,..]]], 14: ...}."""
+    out = {}
+    for item in spec.split(";"):
+        count, _, alts = item.partition(":")
+        out[int(count)] = [[list(range(int(r.split("-")[0]), int(r.split("-")[1]) + 1)) for r in alt.split(",")]
+                           for alt in alts.split("|")]
+    return out
+
+
+def by_layout(staves: list[dict], g, layouts: dict, margin: float = 0.0) -> tuple[list[list[dict]], str]:
+    """A score page's systems by its ruling (--score-layout), and what was decided."""
+    import statistics
+    lo = statistics.median(s["left"] for s in staves) if staves else 0
+    hi = statistics.median(s["right"] for s in staves) if staves else 0
+    inside = lambda s: max(0.0, min(s["right"], hi) - max(s["left"], lo))
+    mid = lambda s: (s["top"] + s["bottom"]) / 2
+    ruled = [s for s in staves if inside(s) >= 0.5 * (s["right"] - s["left"])
+             and s["right"] - s["left"] >= 0.1 * (hi - lo) and margin <= mid(s) <= 1 - margin]
+    note = f"{len(ruled)} ruled" + (f" ({len(staves) - len(ruled)} dropped: beside the page, a stub, or in the margin)"
+                                    if len(ruled) < len(staves) else "")
+    if len(ruled) not in layouts:
+        return [], note + ", no layout for that count"
+    ink = [staff_ink(g, s) for s in ruled]
+    passing = []
+    for alt in layouts[len(ruled)]:
+        taken = {i for sy in alt for i in sy}
+        sep = [ink[i] for i in range(len(ruled)) if i not in taken]
+        if max(sep, default=0.0) < SEPARATOR_INK:
+            passing.append((sum(sep), alt))
+    if not passing:
+        return [], note + ", separators inked: " + " ".join(f"{1000 * v:.0f}" for v in ink)
+    _, alt = min(passing, key=lambda p: p[0])
+    return [[ruled[i] for i in sy] for sy in alt], note + f", systems {alt}"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -89,6 +164,10 @@ def main():
     ap.add_argument("--name", help="with --pdf: what to call it")
     ap.add_argument("--pages", help="with --pdf: pages and their part, 5-31:vn1,... (or :score)")
     ap.add_argument("--whole-page", default="", help="pages (1,3-4) whose paper is the whole image")
+    ap.add_argument("--score-layout", help="score pages' systems by their ruling: 10:0-3,5-8|1-4,6-9;14:...")
+    ap.add_argument("--score-margin", type=float, default=0.0,
+                    help="with --score-layout: drop a staff whose middle is this near the image's top or bottom "
+                         "(a library's heading or footer band)")
     a = ap.parse_args()
     edition = a.edition.resolve()
     cache = cache_dir()
@@ -129,7 +208,28 @@ def main():
     out = {"source": name, "pdf": str(pdf), "filter_pages": model["pages"], "pages": {}}
     whole = set(page_map(a.whole_page.replace(",", ":x,") + ":x")) if a.whole_page else set()
     for n, part in sorted(parts.items()):
-        d = src.detect(rel, n, corners=[[0, 0], [1, 0], [1, 1], [0, 1]] if n in whole else None)
+        corners = [[0, 0], [1, 0], [1, 1], [0, 1]] if n in whole else None
+        if part == "score" and a.score_layout:
+            import detect
+            import numpy as np
+            keep, detect.EMPTY_INK = detect.EMPTY_INK, -1.0  # every ruled staff, the empty ones too
+            try:
+                d = src.detect(rel, n, corners=corners)
+            finally:
+                detect.EMPTY_INK = keep
+            g = np.asarray(Image.open(src.render(rel, n)).convert("L"))
+            groups, note = by_layout(sorted(d["systems"], key=lambda s: s["top"]), g, score_layout(a.score_layout),
+                                     a.score_margin)
+            staves = [s for gr in groups for s in gr]
+            for k, s in enumerate(staves):
+                s["part"] = PARTS[k % 4]
+            if not staves:
+                print(f"  p{n} score: left out ({note})", flush=True)
+                continue
+            out["pages"][str(n)] = {"part": part, "systems": staves, "layout": note}
+            print(f"  p{n} {part}: {len(staves)} staves ({note})", flush=True)
+            continue
+        d = src.detect(rel, n, corners=corners)
         staves = sorted(d["systems"], key=lambda s: s["top"])
         if part == "score":
             groups = systems(staves)
