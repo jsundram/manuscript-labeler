@@ -50,7 +50,7 @@ def main():
     export = json.loads(pdf.with_name(pdf.stem + ".bars.json").read_text())
     staves: dict[str, list[dict]] = {}
     for b in export["bars"]:
-        if b["part"] in ("vn1", "vn2", "va", "vc") and (not a.movements or b["movement"] in a.movements):
+        if b["part"] in ("vn1", "vn2", "va", "vc", "va2") and (not a.movements or b["movement"] in a.movements):
             staves.setdefault(b["system"], []).append(b)
 
     import numpy as np

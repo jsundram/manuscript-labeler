@@ -50,7 +50,7 @@ def main():
     expected = structure.expected((a.edition / quartet / "Structure.ily").read_text())
     staves: dict[str, list] = {}
     for b in export["bars"]:
-        if b["part"] in ("vn1", "vn2", "va", "vc") and b["movement"] in a.movements:
+        if b["part"] in ("vn1", "vn2", "va", "vc", "va2") and b["movement"] in a.movements:
             staves.setdefault(b["system"], []).append(b)
     boxes = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
     last = {}  # each movement's last bar, which may be short

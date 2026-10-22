@@ -1,0 +1,22 @@
+training the bar-line filter without G223-KHM600
+  from 94 reviewed pages (3546 bar lines)
+  p2 va: 10 staves
+  p3 va: 10 staves
+  p4 va: 5 staves
+  p5 va: 5 staves
+  p8 vn1: 10 staves
+  p9 vn1: 10 staves
+  p10 vn1: 5 staves
+  p11 vn1: 6 staves
+  p14 vn2: 10 staves
+  p15 vn2: 10 staves
+  p16 vn2: 5 staves
+  p17 vn2: 5 staves
+  p20: left out staves [0] (--leave-out)
+  p20 vc: 9 staves
+  p21 vc: 12 staves
+  p22: left out staves [0] (--leave-out)
+  p22 vc: 5 staves
+  p23: left out staves [0] (--leave-out)
+  p23 vc: 5 staves
+wrote experiments/zeus/auto/G223-KHM600.json

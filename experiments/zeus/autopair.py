@@ -67,6 +67,15 @@ breaks read into the staff's first or last measure (found re-pairing
 Philhar's sources: Op. 2/2, D-Eu copy, p8-6 opens with the last four
 eighths of III 8, read as part of III 9).
 
+With --head-box, a staff is also put out when detection found more bar
+boxes on it than the reading has measures and its first box (from where
+the music starts to the first bar line) is under 0.6 of its median box,
+unless that first bar is a movement's pickup: part of a bar the line
+breaks, at the staff's head, that the reading dropped, leaving the staff
+paired one-to-one but its label short of the music shown (found pairing
+Schober's KHM 620, cello p2-2: it opens with the second half of I 14,
+whose first half the reading of p2-1 had stretched to a whole bar).
+
 Each kept staff's clef is chosen as the one under which Zeus's notes
 (placed by its own staff positions) name the encoding's pitches most often.
 
@@ -88,6 +97,15 @@ names them), and nothing is scored. Movements start where its bar numbers
 start again; a bar is (movement, its index there: 0, 1, ...), every
 <measure> one (a bar a repeat splits is two measures there, so none is
 split here).
+
+With --print-bars, the encoding is a printed edition's reading
+(experiments/print-omr/encode.py: BA 2676's G. 223, every measure the OSSQ
+reader read, by part and movement, pitches as written), and nothing is
+scored. A bar is (movement, measure number there), one per measure the
+print's reader read (a bar a repeat splits is two, a multi-bar rest one).
+Every measure is paired, agreed by the print's two readers or not, so the
+alignment has all of them to hold on to; dataset.py --print-bars keeps only
+staves whose bars the readers agree on.
 """
 
 import argparse
@@ -108,7 +126,7 @@ sys.path.insert(0, str(HERE / "ossq"))
 import mxl  # noqa: E402
 import structure  # noqa: E402
 
-PARTS = ("vn1", "vn2", "va", "vc")
+PARTS = ("vn1", "vn2", "va", "vc", "va2")  # va2: a quintet's second viola (MH 411)
 CLEFS = ("treble", "alto", "tenor", "bass")
 BAND = 60          # Zeus measures from the bar index the alignment may stray
 MAX_REST_RUN = 40  # bars a multi-bar rest may stand for
@@ -249,6 +267,17 @@ def boxes(s: dict, aspect: float) -> int:
     return len(xs) + (not xs or s["right"] - xs[-1] > 1.5 * gap)
 
 
+def head_box(s: dict, aspect: float) -> float:
+    """A staff's first bar box (where the music starts to the first bar
+    line, as boxes() finds them) as a share of its median box."""
+    import statistics
+    gap = (s["bottom"] - s["top"]) / 4 * aspect
+    xs = sorted((b["x0"] + b["x1"]) / 2 for b in s["barlines"] if (b["x0"] + b["x1"]) / 2 > s["start"] + gap)
+    edges = [s["start"]] + xs + ([s["right"]] if not xs or s["right"] - xs[-1] > 1.5 * gap else [])
+    w = [b - a for a, b in zip(edges, edges[1:])]
+    return w[0] / statistics.median(w[1:]) if len(w) > 1 else 1.0
+
+
 def truth_staves(export: dict) -> dict:
     """{system id: (page, middle, set of (movement, bar), its clefs)} from the bar export."""
     out = {}
@@ -308,6 +337,15 @@ def musicxml_encoding(path: Path, part: str):
     return [((roman[k],), {str(i): b["events"] for i, b in enumerate(bars)}) for k, bars in enumerate(mvts)], joins
 
 
+def print_encoding(path: Path, part: str):
+    """The same from a print's reading (print-omr/encode.py), bars as
+    (movement, measure number); each measure's events already as compared."""
+    doc = json.loads(path.read_text())
+    ev = lambda e: {**e, "pitches": tuple(sorted(e["pitches"])), "acc": tuple(sorted(e["acc"]))}
+    return [((mvt,), {str(m["measure"]): [ev(e) for e in m["events"]] for m in ms})
+            for mvt, ms in doc["parts"].get(part, {}).items()], set()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -315,6 +353,8 @@ def main():
     ap.add_argument("--philhar", type=Path, help="Philhar's lilypond/ folder: pair with these encodings")
     ap.add_argument("--quartets", help="with --philhar: the quartets in the source, in order (Op33-1,...)")
     ap.add_argument("--musicxml", type=Path, help="pair with this MusicXML score (OSSQ's) of the source's one quartet")
+    ap.add_argument("--print-bars", type=Path,
+                    help="pair with a print's reading (experiments/print-omr/encode.py's JSON) of the source's one quartet")
     ap.add_argument("--model", type=Path, default=compare.MODEL)
     ap.add_argument("--band", type=int, default=BAND, help="bars from the straight line the alignment may stray")
     ap.add_argument("--debug", nargs="*", default=[], help="staves (p7-6 ...) whose pairing to print")
@@ -330,11 +370,17 @@ def main():
     ap.add_argument("--long-ends", action="store_true",
                     help="a staff is also put out when its first or last measure, paired with a whole bar, reads "
                          "over 5/4 of it (results ...-long-ends...)")
+    ap.add_argument("--head-box", action="store_true",
+                    help="a staff is also put out when its bar boxes outnumber its measures and its first box is "
+                         "narrow (part of a bar the reading dropped; results ...-head-box...)")
     ap.add_argument("--any-count", action="store_true",
                     help="keep a staff whatever number of bar boxes detection found on it (results/autopair-<source>-any-count.json)")
     a = ap.parse_args()
     auto = json.loads((HERE / "auto" / f"{a.source}.json").read_text())
-    if a.musicxml:
+    if a.print_bars:
+        pdf, export = Path(auto["pdf"]), None
+        encoding = lambda part: print_encoding(a.print_bars, part)
+    elif a.musicxml:
         pdf, export = Path(auto["pdf"]), None
         encoding = lambda part: musicxml_encoding(a.musicxml, part)
     elif a.philhar:
@@ -386,7 +432,7 @@ def main():
             for k, (bar, evs) in enumerate(got):
                 # a multi-bar rest is one entry, up to the next bar there is
                 upto = int(got[k + 1][0]) if k + 1 < len(got) else int(bar) + 1
-                enc = evs if a.musicxml else compare.encoded(evs)
+                enc = evs if a.musicxml or a.print_bars else compare.encoded(evs)
                 bars.append([(*where, b) for b in range(int(bar), max(int(bar) + 1, upto))])
                 E.append(tokens(enc, steps_enc))
                 E_raw.append(enc)
@@ -488,9 +534,16 @@ def main():
                     step, js = step_of[z]
                     if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]]):
                         out_([o], f"an end measure longer than its bar {list(bars[js[0]][0])}")
+        first_bar = {}
+        for step, zs, js in path:
+            for z in zs:
+                if js:
+                    first_bar.setdefault(owner[z], bars[js[0]][0])
         for sid, n, s in mine:
             count = sum(1 for o in owner if o == sid)
             found = boxes(s, aspect[n])
+            if a.head_box and found > count and head_box(s, aspect[n]) < 0.6 and first_bar.get(sid, (0,))[-1] != 0:
+                out_([sid], "more bar boxes than measures, the first narrow: part of a bar at its head dropped")
             cy = (s["top"] + s["bottom"]) / 2
             match = [t for t in truth.values() if t[0] == n and abs(t[1] - cy) < 0.015]
             t = match[0] if match else None
@@ -546,6 +599,7 @@ def main():
     by = "" if a.model == compare.MODEL else f"-{a.model.stem}"  # paired with another model's reading
     (HERE / "results" / f"autopair-{a.source}{'-any-count' if a.any_count else ''}{'-neighbours' if a.neighbours else ''}"
                         f"{'-paired' if a.neighbours and a.neighbours_paired else ''}{'-short-ends' if a.short_ends else ''}{'-long-ends' if a.long_ends else ''}"
+                        f"{'-head-box' if a.head_box else ''}"
                         f"{by}.json").write_text(json.dumps(out, indent=1))
     print(json.dumps({"tally": tally, "clefs": clef_tally}, indent=1))
     print("\n".join(wrong))

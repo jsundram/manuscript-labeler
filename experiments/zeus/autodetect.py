@@ -49,6 +49,20 @@ the one with the least ink on them is taken; a page with another count, or
 no layout that passes, is left out and logged. Without --score-layout
 nothing changes.
 
+--score-parts: a score system's parts, top to bottom (default vn1,vn2,va,vc):
+"vn1,vn2,vc" for a trio's three-staff systems (the Montecassino op. 4
+score). Grouping by gaps then keeps systems of that many staves; with
+--score-layout, the staves of each system are dealt these parts in turn.
+
+--leave-out: staves to leave out, as page:index (0 the top staff detection
+found on the page), e.g. "20:0,22:0": a cue staff of another part (KHM 600's
+cello part opens three pages with a two-staff system, the first violin's
+cue above the cello).
+
+--max-staves: a parts page where detection found more staves than this is
+left out and logged: its staves are fragments (the Sibley op. 4 scan, where
+some pages still break each staff into pieces after levelling).
+
 Writes auto/<name>.json: {n: {part, systems}}, each staff with its "part".
 """
 
@@ -168,7 +182,13 @@ def main():
     ap.add_argument("--score-margin", type=float, default=0.0,
                     help="with --score-layout: drop a staff whose middle is this near the image's top or bottom "
                          "(a library's heading or footer band)")
+    ap.add_argument("--score-parts", default=",".join(PARTS),
+                    help="a score system's parts, top to bottom (vn1,vn2,vc for a trio)")
+    ap.add_argument("--max-staves", type=int, help="leave out a parts page with more staves than this (fragments)")
+    ap.add_argument("--leave-out", default="", help="staves to leave out, page:index from the top (20:0,22:0)")
     a = ap.parse_args()
+    leave_out = {tuple(map(int, x.split(":"))) for x in a.leave_out.split(",") if x}
+    score_parts = tuple(a.score_parts.split(","))
     edition = a.edition.resolve()
     cache = cache_dir()
     ed = server.Edition(edition, cache)
@@ -222,7 +242,7 @@ def main():
                                      a.score_margin)
             staves = [s for gr in groups for s in gr]
             for k, s in enumerate(staves):
-                s["part"] = PARTS[k % 4]
+                s["part"] = score_parts[k % len(score_parts)]
             if not staves:
                 print(f"  p{n} score: left out ({note})", flush=True)
                 continue
@@ -233,15 +253,22 @@ def main():
         staves = sorted(d["systems"], key=lambda s: s["top"])
         if part == "score":
             groups = systems(staves)
-            staves = [s for g in groups if len(g) == 4 for s in g]
+            staves = [s for g in groups if len(g) == len(score_parts) for s in g]
             for k, s in enumerate(staves):
-                s["part"] = PARTS[k % 4]
+                s["part"] = score_parts[k % len(score_parts)]
             if not staves:
-                print(f"  p{n} score: no system of 4 staves ({[len(g) for g in groups]})", flush=True)
+                print(f"  p{n} score: no system of {len(score_parts)} staves ({[len(g) for g in groups]})", flush=True)
                 continue
         else:
             for s in staves:
                 s["part"] = part
+        if a.max_staves and part != "score" and len(staves) > a.max_staves:
+            print(f"  p{n} {part}: left out ({len(staves)} staves, over --max-staves {a.max_staves})", flush=True)
+            continue
+        if any(p == n for p, _ in leave_out):
+            gone = [k for k in range(len(staves)) if (n, k) in leave_out]
+            staves = [s for k, s in enumerate(staves) if (n, k) not in leave_out]
+            print(f"  p{n}: left out staves {gone} (--leave-out)", flush=True)
         out["pages"][str(n)] = {"part": part, "systems": staves}
         print(f"  p{n} {part}: {len(staves)} staves", flush=True)
     dest = HERE / "auto" / f"{name}.json"

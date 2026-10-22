@@ -1,0 +1,17 @@
+Uninstalled 1 package in 924ms
+Installed 1 package in 133ms
+D-B_Mus.ms.2861: 299 staves kept of 392; left out: {'not plain': 55, 'a measure unlike its bar': 7, 'failed the check': 3, "Philhar's clef changes on the staff": 23, "few pitches as the encoding's": 2, 'notes far off the staff in the clef written': 1, 'left out by eye': 1, "a bar its durations don't fill": 1}
+  p4-4 vn1: a measure 0.75 from its bar
+  p4-11 vn1: a measure 0.667 from its bar
+  p7-2 vn1: a measure 0.75 from its bar
+  p9-5 vn1: a measure 0.643 from its bar
+  p10-3 vn1: a measure 0.667 from its bar
+  p12-11 vn1: a measure 0.667 from its bar
+  p16-4 vn1: a measure 0.667 from its bar
+  p29-4 vc: 8 of 21 pitches as the encoding's
+  p29-8 vc: 7 of 19 pitches as the encoding's
+  p32-8 vc: notes far off the staff in tenor
+  p37-5 vc: left out by eye: opens with a C clef and key before the bass clef the label writes alone
+  check failed: ('p13-0', 3, '<B4 G4>:8th B4:8th E5:8th E5:half', 'G4:8th B4:8th B4:8th E5:8th E5:half')
+  check failed: ('p13-2', 11, '<B4 G4>:8th B4:8th E5:8th E5:half', 'G4:8th B4:8th B4:8th E5:8th E5:half')
+  check failed: ('p13-6', 27, '<B4 G4>:8th B4:8th E5:8th E5:half', 'G4:8th B4:8th B4:8th E5:8th E5:half')

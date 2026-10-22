@@ -1,0 +1,12 @@
+training the bar-line filter without D-B_KHM-623
+  from 94 reviewed pages (3546 bar lines)
+  p2 vc: 10 staves
+  p3 vc: 6 staves
+  p4 vc: 8 staves
+  p6 vn1: 10 staves
+  p7 vn1: 8 staves
+  p8 vn1: 10 staves
+  p10 vn2: 10 staves
+  p11 vn2: 6 staves
+  p12 vn2: 8 staves
+wrote experiments/zeus/auto/D-B_KHM-623.json

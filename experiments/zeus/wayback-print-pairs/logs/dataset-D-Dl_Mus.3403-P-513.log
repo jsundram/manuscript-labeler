@@ -1,0 +1,13 @@
+Uninstalled 1 package in 986ms
+Installed 1 package in 144ms
+D-Dl_Mus.3403-P-513: 293 staves kept of 401; left out: {'a measure unlike its bar': 7, 'not plain': 97, 'the reading wrote two clefs': 1, 'notes far off the staff in the clef written': 1, "a bar its durations don't fill": 1, "few pitches as the encoding's": 1}
+  p16-2 vn1: a measure 0.55 from its bar
+  p22-3 vn1: a measure 0.562 from its bar
+  p26-2 vn1: a measure 0.667 from its bar
+  p27-2 vn1: chosen treble, read ['bass', 'treble']
+  p28-9 vn1: a measure 0.583 from its bar
+  p39-3 vn2: a measure 0.6 from its bar
+  p39-5 vn2: a measure 0.667 from its bar
+  p59-2 va: notes far off the staff in alto
+  p11-5 vc: a measure 0.667 from its bar
+  p65-3 va2: 1 of 3 pitches as the encoding's

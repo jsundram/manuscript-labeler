@@ -1,0 +1,111 @@
+training the bar-line filter without US-R_M351.B664M
+  from 94 reviewed pages (3546 bar lines)
+  p2 vn1: 6 staves
+  p3 vn1: 8 staves
+  p4 vn1: 5 staves
+  p5 vn1: 2 staves
+  p6 vn1: 9 staves
+  p7 vn1: 7 staves
+  p8 vn1: 10 staves
+  p9 vn1: 4 staves
+  p10 vn1: 10 staves
+  p11 vn1: 8 staves
+  p12 vn1: 7 staves
+  p13 vn1: 6 staves
+  p14 vn1: 10 staves
+  p15 vn1: 7 staves
+  p16 vn1: 8 staves
+  p17 vn1: 5 staves
+  p18 vn1: 11 staves
+  p19 vn1: 10 staves
+  p20 vn1: 10 staves
+  p21 vn1: 4 staves
+  p22 vn1: 6 staves
+  p23 vn1: 4 staves
+  p24 vn1: 10 staves
+  p25 vn1: 10 staves
+  p26 vn1: 12 staves
+  p27 vn1: 10 staves
+  p28 vn1: left out (20 staves, over --max-staves 12)
+  p29 vn1: 6 staves
+  p30 vn1: 10 staves
+  p31 vn1: 9 staves
+  p32 vn1: 10 staves
+  p33 vn1: 7 staves
+  p34 vn1: 10 staves
+  p35 vn1: 9 staves
+  p36 vn1: 7 staves
+  p37 vn1: 6 staves
+  p39 vn2: 10 staves
+  p40 vn2: 7 staves
+  p41 vn2: 3 staves
+  p42 vn2: 3 staves
+  p43 vn2: 7 staves
+  p44 vn2: 5 staves
+  p45 vn2: 3 staves
+  p46 vn2: 5 staves
+  p47 vn2: 7 staves
+  p48 vn2: 7 staves
+  p49 vn2: 7 staves
+  p50 vn2: 5 staves
+  p51 vn2: 8 staves
+  p52 vn2: 6 staves
+  p53 vn2: 5 staves
+  p54 vn2: 5 staves
+  p55 vn2: 10 staves
+  p56 vn2: 9 staves
+  p57 vn2: left out (14 staves, over --max-staves 12)
+  p58 vn2: 5 staves
+  p59 vn2: 7 staves
+  p60 vn2: 5 staves
+  p61 vn2: 9 staves
+  p62 vn2: 9 staves
+  p63 vn2: 10 staves
+  p64 vn2: 8 staves
+  p65 vn2: 7 staves
+  p66 vn2: 7 staves
+  p67 vn2: 10 staves
+  p68 vn2: 8 staves
+  p69 vn2: 8 staves
+  p70 vn2: 6 staves
+  p71 vn2: 10 staves
+  p72 vn2: 10 staves
+  p73 vn2: 7 staves
+  p74 vn2: 5 staves
+  p76 vc: 10 staves
+  p77 vc: 5 staves
+  p78 vc: 4 staves
+  p79 vc: left out (21 staves, over --max-staves 12)
+  p80 vc: left out (19 staves, over --max-staves 12)
+  p81 vc: left out (26 staves, over --max-staves 12)
+  p82 vc: left out (19 staves, over --max-staves 12)
+  p83 vc: 6 staves
+  p84 vc: 11 staves
+  p85 vc: 6 staves
+  p86 vc: 7 staves
+  p87 vc: 6 staves
+  p88 vc: 11 staves
+  p89 vc: 8 staves
+  p90 vc: left out (17 staves, over --max-staves 12)
+  p91 vc: left out (21 staves, over --max-staves 12)
+  p92 vc: left out (24 staves, over --max-staves 12)
+  p93 vc: 9 staves
+  p94 vc: left out (17 staves, over --max-staves 12)
+  p95 vc: 5 staves
+  p96 vc: left out (13 staves, over --max-staves 12)
+  p97 vc: 5 staves
+  p98 vc: 10 staves
+  p99 vc: 8 staves
+  p100 vc: 10 staves
+  p101 vc: left out (20 staves, over --max-staves 12)
+  p102 vc: 8 staves
+  p103 vc: 7 staves
+  p104 vc: 9 staves
+  p105 vc: 8 staves
+  p106 vc: 7 staves
+  p107 vc: left out (27 staves, over --max-staves 12)
+  p108 vc: left out (24 staves, over --max-staves 12)
+  p109 vc: 8 staves
+  p110 vc: left out (18 staves, over --max-staves 12)
+  p111 vc: 6 staves
+wrote experiments/zeus/auto/US-R_M351.B664M.json

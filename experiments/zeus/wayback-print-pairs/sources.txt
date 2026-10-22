@@ -1,0 +1,13 @@
+# group (W: Philhar's other works; P: the print's agreed bars)  source  pages (autodetect --pages)  quartets (autopair --quartets, in the source's order; "-" for the print)  pdf
+W D-B_KHM-620 2-4:vc,5-8:vn1,9-12:vn2 boccherini-G87 ~/Data/manuscript-labeler/philhar-mss/D-B_KHM-620/D-B_KHM-620.pdf
+W D-B_KHM-621 2-4:vc,5-7:vn1,9-11:vn2 boccherini-G88 ~/Data/manuscript-labeler/philhar-mss/D-B_KHM-621/D-B_KHM-621.pdf
+W D-B_KHM-622 2-4:vc,5-8:vn1,9-12:vn2 boccherini-G85 ~/Data/manuscript-labeler/philhar-mss/D-B_KHM-622/D-B_KHM-622.pdf
+W D-B_KHM-623 2-4:vc,6-8:vn1,10-12:vn2 boccherini-G83 ~/Data/manuscript-labeler/philhar-mss/D-B_KHM-623/D-B_KHM-623.pdf
+W D-B_KHM-624 2-4:vc,6-8:vn1,10-12:vn2 boccherini-G86 ~/Data/manuscript-labeler/philhar-mss/D-B_KHM-624/D-B_KHM-624.pdf
+W D-B_Mus.ms.2861 2-19:vn1,22-39:vc campioni-op7-1,campioni-op7-2,campioni-op7-3,campioni-op7-4,campioni-op7-5,campioni-op7-6 ~/Data/manuscript-labeler/philhar-mss/D-B_Mus.ms.2861/D-B_Mus.ms.2861.pdf
+W D-Dl_Mus.3403-P-513 2-14:vc,16-30:vn1,32-46:vn2,48-59:va,62-73:va2 haydn-m-MH411 ~/Data/manuscript-labeler/philhar-mss/D-Dl_Mus.3403-P-513/D-Dl_Mus.3403-P-513.pdf
+W US-R_M351.B664M 2-37:vn1,39-74:vn2,76-111:vc boccherini-G83,boccherini-G86,boccherini-G84,boccherini-G85,boccherini-G87,boccherini-G88 ~/Data/manuscript-labeler/philhar-mss/US-R_M351.B664M/US-R_M351.B664M-levels.pdf
+W unknown_IMSLP-PMLP122408 2-5:vn1,8-11:vc giardini-duo-F ~/Data/manuscript-labeler/philhar-mss/unknown_IMSLP-PMLP122408/unknown_IMSLP-PMLP122408.pdf
+# skipped (README): W I-MC_1-C-7 1-84:score boccherini-G83,boccherini-G86,boccherini-G87,boccherini-G84,boccherini-G88,boccherini-G85 ~/Data/manuscript-labeler/philhar-mss/I-MC_1-C-7/I-MC_1-C-7.pdf
+P G223-KHM600 2-5:va,8-11:vn1,14-17:vn2,20-23:vc - ~/Dropbox/Code/boccherini-sources/digitizations/G223/463060000_D-B/463060000_D-B.pdf
+P G223-RES507-10 2-4:vn1,6-8:vn2,10-12:va,14-16:vc - ~/Dropbox/Code/boccherini-sources/digitizations/G223/btv1b525026043/btv1b525026043.pdf

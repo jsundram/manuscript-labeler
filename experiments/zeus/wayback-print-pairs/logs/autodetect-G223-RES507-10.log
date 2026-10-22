@@ -1,0 +1,15 @@
+training the bar-line filter without G223-RES507-10
+  from 94 reviewed pages (3546 bar lines)
+  p2 vn1: 10 staves
+  p3 vn1: 10 staves
+  p4 vn1: 10 staves
+  p6 vn2: 10 staves
+  p7 vn2: 10 staves
+  p8 vn2: 10 staves
+  p10 va: 10 staves
+  p11 va: 10 staves
+  p12 va: 10 staves
+  p14 vc: 10 staves
+  p15 vc: 10 staves
+  p16 vc: 10 staves
+wrote experiments/zeus/auto/G223-RES507-10.json

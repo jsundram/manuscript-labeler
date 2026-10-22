@@ -481,7 +481,7 @@ def main():
     # the staves and their bar boxes, in reading order
     staves: dict[str, list[dict]] = {}
     for b in export["bars"]:
-        if b["part"] in ("vn1", "vn2", "va", "vc") and (not a.movements or b["movement"] in a.movements):
+        if b["part"] in ("vn1", "vn2", "va", "vc", "va2") and (not a.movements or b["movement"] in a.movements):
             staves.setdefault(b["system"], []).append(b)
     cache_file = HERE / "answers" / f"{a.source}-{a.model.name}.json"
     cache = json.loads(cache_file.read_text()) if cache_file.exists() else {}

@@ -1,0 +1,60 @@
+Uninstalled 1 package in 888ms
+Installed 1 package in 129ms
+G223-KHM600: 10 of the staves kept are cut to their first agreed bars
+G223-KHM600: 18 staves kept of 61; left out: {"a bar the print's readers don't agree on": 39, "the reading's key isn't the print's": 3, 'a measure unlike its bar': 1}
+  p8-0 vn1: cut after 4 of 11 bars (5 not agreed)
+  p8-1 vn1: cut after 5 of 13 bars (5 not agreed)
+  p8-2 vn1: 2 of 15 bars not agreed
+  p8-3 vn1: 4 of 15 bars not agreed
+  p8-5 vn1: 3 of 17 bars not agreed
+  p9-0 vn1: 3 of 14 bars not agreed
+  p9-3 vn1: 10 of 16 bars not agreed
+  p9-5 vn1: 3 of 15 bars not agreed
+  p9-7 vn1: key read 2, print 1
+  p10-0 vn1: 4 of 8 bars not agreed
+  p10-1 vn1: 2 of 7 bars not agreed
+  p10-2 vn1: 4 of 7 bars not agreed
+  p10-3 vn1: 2 of 7 bars not agreed
+  p11-1 vn1: 5 of 7 bars not agreed
+  p11-2 vn1: cut after 3 of 5 bars (2 not agreed)
+  p11-2 vn1: a measure 0.75 from its bar
+  p11-3 vn1: 1 of 6 bars not agreed
+  p11-4 vn1: 3 of 6 bars not agreed
+  p14-3 vn2: 10 of 17 bars not agreed
+  p14-9 vn2: 9 of 16 bars not agreed
+  p15-1 vn2: cut after 5 of 12 bars (2 not agreed)
+  p15-3 vn2: 2 of 12 bars not agreed
+  p15-8 vn2: cut after 7 of 15 bars (4 not agreed)
+  p15-8 vn2: key read 2, print 1
+  p16-1 vn2: 2 of 6 bars not agreed
+  p16-3 vn2: cut after 3 of 7 bars (2 not agreed)
+  p16-4 vn2: 1 of 3 bars not agreed
+  p17-0 vn2: cut after 4 of 8 bars (1 not agreed)
+  p17-1 vn2: cut after 5 of 7 bars (1 not agreed)
+  p17-1 vn2: key read -1, print -2
+  p17-2 vn2: 1 of 5 bars not agreed
+  p17-3 vn2: 3 of 8 bars not agreed
+  p2-0 va: cut after 4 of 14 bars (5 not agreed)
+  p2-3 va: 2 of 12 bars not agreed
+  p2-4 va: cut after 3 of 13 bars (4 not agreed)
+  p2-5 va: 7 of 14 bars not agreed
+  p2-6 va: 1 of 16 bars not agreed
+  p2-9 va: 1 of 15 bars not agreed
+  p3-1 va: 4 of 13 bars not agreed
+  p3-2 va: 3 of 14 bars not agreed
+  p4-0 va: 5 of 8 bars not agreed
+  p4-2 va: 3 of 8 bars not agreed
+  p4-3 va: 3 of 8 bars not agreed
+  p5-0 va: cut after 4 of 8 bars (1 not agreed)
+  p5-2 va: 4 of 7 bars not agreed
+  p5-3 va: 4 of 7 bars not agreed
+  p20-2 vc: 13 of 17 bars not agreed
+  p20-4 vc: 11 of 17 bars not agreed
+  p21-5 vc: 12 of 17 bars not agreed
+  p21-6 vc: 9 of 12 bars not agreed
+  p21-9 vc: 8 of 14 bars not agreed
+  p22-0 vc: cut after 3 of 8 bars (5 not agreed)
+  p22-2 vc: 3 of 9 bars not agreed
+  p22-3 vc: cut after 4 of 7 bars (1 not agreed)
+  p23-0 vc: 4 of 8 bars not agreed
+  p23-2 vc: 4 of 8 bars not agreed

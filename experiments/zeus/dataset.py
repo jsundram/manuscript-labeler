@@ -49,6 +49,9 @@ chose, the key and time Philhar's Trame.ily gives. With --clef-checks, a
 staff is left out where its clef may change on it: Philhar's clef changes
 within its bars, the reading wrote two clefs, or a viola or cello note
 lies more than 9 steps from the middle line in it.
+With --heads-only, only a staff that opens a movement is kept: for a copy
+that draws clef and key only there (the Giardini duet's copyist), where the
+label's clef and key would not be on the image.
 With --min-pitch, a staff is left out where the reading names fewer than
 that share of the encoding's notes right in the clef chosen: the pairing
 counts rhythm and steps, so a bar of the same rhythm elsewhere (a lone bar
@@ -58,6 +61,12 @@ staves autopair.py --musicxml kept, cut from that score (musicxml_pairs):
 
     uv run experiments/zeus/dataset.py <edition-repo> --pairs G213-Sibley --musicxml sq8454356_cleaned.musicxml \\
         --results experiments/zeus/results/autopair-G213-Sibley-musvit-D3S-h96.json --out DIR
+
+--pairs with --print-bars: the staves autopair.py --print-bars kept,
+labelled with a print's reading (print_pairs). See there.
+
+    uv run experiments/zeus/dataset.py <edition-repo> --pairs G223-KHM600 \\
+        --print-bars experiments/print-omr/G223/BA2676-G223.json --results RESULTS --out DIR
 """
 
 import argparse
@@ -468,6 +477,9 @@ def pairs(a):
             notes.append(f"{k['staff']} {part}: a measure {k['worst']} from its bar")
             continue
         evs, mk, exp, first = load(q, mvt, part)
+        if a.heads_only and k["bars"][0][2] != first:
+            left_out["no clef or key drawn (not a movement's first staff)"] += 1
+            continue
         if a.min_pitch is not None and "bar_clefs" in k:
             # the encoding's notes the reading names right in the clef chosen (autopair.py's "bar_clefs")
             n_notes = sum(1 for _, _, b in k["bars"] for e in compare.encoded(evs.get(str(b), [])) if e["pitches"])
@@ -498,7 +510,7 @@ def pairs(a):
         if lmx is None:
             left_out[why] += 1
             continue
-        if a.clef_checks and part in ("va", "vc") and any(
+        if a.clef_checks and part in ("va", "va2", "vc") and any(
                 abs(p) > 9 for m in compare.parse(lmx)[0] for e in m for p in e["pos"]):
             left_out["notes far off the staff in the clef written"] += 1
             notes.append(f"{k['staff']} {part}: notes far off the staff in {k['clef']}")
@@ -681,7 +693,7 @@ def musicxml_pairs(a):
         # the viola's and cello's clef changes, which OSSQ's score leaves out: a note more than 9
         # steps from the middle line in the clef written (past 2-3 ledger lines) says the copy
         # changed clef there
-        if part in ("va", "vc") and any(abs(p) > 9 for m in measures for e in m for p in e["pos"]):
+        if part in ("va", "va2", "vc") and any(abs(p) > 9 for m in measures for e in m for p in e["pos"]):
             left_out["notes far off the staff in the clef written"] += 1
             notes.append(f"{sid} {part}: notes far off the staff in {k['clef']}")
             continue
@@ -702,6 +714,261 @@ def musicxml_pairs(a):
         print("  check failed:", row)
 
 
+def save_cut(out: Path, sid: str, page, s: dict, lmx: str, bars: int):
+    """save(), the staff cut after its first `bars` bar boxes: at the bar line
+    that ends them (autopair.boxes' bar lines), 0.3 staff space past it."""
+    from PIL import Image
+    import io
+    H, W = page.shape[:2]
+    gap = (s["bottom"] - s["top"]) / 4 * H / W  # a staff space, in page widths
+    xs = sorted((b["x0"] + b["x1"]) / 2 for b in s["barlines"] if (b["x0"] + b["x1"]) / 2 > s["start"] + gap)
+    img = Image.open(io.BytesIO(compare.staff_crop(page, s))).convert("L")
+    x0 = int(max(0, s["left"] * W - gap * W))  # where staff_crop starts
+    img = img.crop((0, 0, min(img.width, int((xs[bars - 1] + 0.3 * gap) * W) - x0), img.height))
+    img.save(out / f"{sid}.jpg", quality=95)
+    (out / f"{sid}.lmx").write_text(lmx + "\n")
+
+
+PRINT_DROP = re.compile(r"^(key:.*|clef:.*|time|beats:.*|beat-type:.*|stem:.*|staff:\d+)$")
+
+
+def lmx_measures(lmx: str) -> list[list[str]]:
+    """An LMX's tokens, measure by measure (as compare.parse counts them)."""
+    out = []
+    for tok in lmx.split():
+        if tok == "measure":
+            out.append([])
+        elif out:
+            out[-1].append(tok)
+    return out
+
+
+def header(toks: list[str]) -> dict:
+    """The key, time and clef a measure's tokens write (LMX attributes)."""
+    h = {}
+    for i, tok in enumerate(toks):
+        if tok.startswith("key:fifths:"):
+            h["key"] = int(tok.split(":")[2])
+        elif tok == "time" and i + 2 < len(toks):
+            h["time"] = (toks[i + 1], toks[i + 2])
+        elif tok.startswith("clef:"):
+            h.setdefault("clefs", []).append(tok[5:])
+    return h
+
+
+def print_pairs(a):
+    """--pairs with --print-bars: the staves autopair.py --print-bars kept,
+    each labelled with the print's reading of its bars (print-omr/encode.py,
+    BA 2676). The print is not the manuscript, so a staff is kept only where
+    the print and the manuscript can be taken to agree:
+    - it is plain (every measure paired one to one), within one movement;
+    - every bar is one the print's two readers agree on ("use": the OSSQ
+      reader and Audiveris read it the same, and it isn't a lone bar rest).
+      A staff with any other bar is left out whole: a staff image can't be
+      cut to single bars cleanly (the dataset's unit is the staff, and a
+      piece from its middle has no clef or key). With --cut-agreed N, such
+      a staff is cut instead after its first bars, if they are agreed and
+      at least N: the image is cut at the bar line that ends them (0.3
+      staff space past it), so it keeps the staff's clef and key, and only
+      where detection's bar boxes on the staff are as many as the
+      reading's measures (measure k is box k). The checks below then look
+      at those bars only;
+    - no measure is further than --max-unlike from its bar (barring,
+      tremolos written out or abbreviated the other way);
+    - the manuscript's reading names at least --min-pitch of the print's
+      notes right in the clef chosen, and with --min-bar-pitch at least that
+      share in each bar with 3 or more notes (an octave, or other notes, in
+      one bar);
+    - the manuscript's reading wrote one clef, the one chosen; the print's
+      measures have no clef change inside them; a viola or cello note is no
+      more than 9 steps from the middle line in that clef;
+    - the key the manuscript's reading wrote is the print's, and it
+      wrote a time signature in the same measures as the print (the
+      movement's first, or where the print's reader wrote one).
+    With --heads-only, only a staff that opens a movement or section (a
+    time signature in its first measure, by the print and the reading) is
+    kept: for a copy that draws clef and key only there (Boccherini's
+    autograph parts, F-Po RES-507: the other staves open with a double
+    stroke), where the label's clef and key would not be on the image.
+    The label: the clef chosen, the print's key, the time where the
+    print's reading writes one (and at the movement's first measure), then
+    each bar's tokens as the print's reader wrote them (notes, rests,
+    chords, graces, accidentals, beams, ties, tuplets, slurs, articulation
+    and ornaments as printed), without its stems. Read back as compare.py
+    reads a reading, it must be the print's events, bar for bar. --drop
+    leaves out staves checked by eye."""
+    res = json.loads(a.results.read_text())
+    auto = json.loads((HERE / "auto" / f"{a.pairs}.json").read_text())
+    pdf = Path(auto["pdf"])
+    doc = json.loads(a.print_bars.read_text())
+    # the print's reader's LMX, per staff of each part's detection (auto/<prefix>-<part>.json)
+    run = doc["reader"].split(":")[1]
+    prefix = a.print_prefix
+    lmx_of = {}
+    for part in doc["parts"]:
+        ans = json.loads((HERE / "answers" / f"{prefix}-{part}-auto-musvit-{run}.json").read_text())
+        lmx_of[part] = {k.split(":")[0]: v for k, v in ans.items()}
+    # the manuscript's reading, per staff
+    ms_ans = json.loads((HERE / "answers" / f"{a.pairs}-auto-{a.reading}.json").read_text())
+    ms_lmx = {k.split(":")[0]: v for k, v in ms_ans.items()}
+    dropped = {}
+    if a.drop:
+        for line in a.drop.read_text().splitlines():
+            if line.strip() and not line.startswith("#"):
+                sid, _, why = line.strip().partition(" ")
+                dropped[sid] = why
+    out = a.out / a.pairs
+    out.mkdir(parents=True, exist_ok=True)
+    left_out, kept, bad, notes = Counter(), [], [], []
+    page, cuts = None, 0
+
+    def in_force(part, mvt, idx):
+        """The print's key and time in force at its measure idx of the movement
+        (its reader's tokens, from the movement's first measure), and whether
+        the reader wrote a time at idx."""
+        key = time = None
+        wrote_time = False
+        for k, m in enumerate(doc["parts"][part][mvt][:idx + 1]):
+            h = header(lmx_measures(lmx_of[part][f"p{m['page']}-{m['staff']}"])[m["m"]])
+            key = h.get("key", key)
+            time = h.get("time", time)
+            wrote_time = "time" in h
+        return key, time, wrote_time
+
+    import autopair
+    for k in res["kept"]:
+        part, sid = k["part"], k["staff"]
+        if not set(k.get("steps", {"one": 1})) <= {"one"}:
+            left_out["not plain"] += 1
+            continue
+        where = {b[0] for b in k["bars"]}
+        if len(where) > 1:
+            left_out["two movements"] += 1
+            continue
+        mvt = where.pop()
+        nums = [b[1] for b in k["bars"]]
+        if nums != list(range(nums[0], nums[-1] + 1)):
+            left_out["bars not consecutive"] += 1
+            continue
+        pm = doc["parts"][part][mvt][nums[0] - 1:nums[-1]]
+        assert [m["measure"] for m in pm] == nums
+        unused = sum(not m["use"] for m in pm)
+        cut = None  # with --cut-agreed: the staff's first `cut` bars only
+        if unused:
+            first = next(j for j, m in enumerate(pm) if not m["use"])
+            if a.cut_agreed and first >= a.cut_agreed and k["measures"] == k["bar_boxes"]:
+                cut = first
+                pm, nums = pm[:cut], nums[:cut]
+                notes.append(f"{sid} {part}: cut after {cut} of {len(k['bars'])} bars ({unused} not agreed)")
+            else:
+                left_out["a bar the print's readers don't agree on"] += 1
+                notes.append(f"{sid} {part}: {unused} of {len(pm)} bars not agreed")
+                continue
+        worst = k.get("worst", 0)
+        if cut is not None:  # the cut bars' own: the reading's measures against the print's
+            zm = compare.parse(ms_lmx[sid])[0][:cut]
+            worst = max(autopair.unlike(autopair.tokens(z, autopair.steps_zeus),
+                                        autopair.tokens(m["events"], autopair.steps_enc)) for z, m in zip(zm, pm))
+        if a.max_unlike is not None and worst > a.max_unlike:
+            left_out["a measure unlike its bar"] += 1
+            notes.append(f"{sid} {part}: a measure {worst:.2f} from its bar")
+            continue
+        clef = k["clef"]
+        n_notes = [sum(1 for e in m["events"] if e["pitches"]) for m in pm]
+        hits = [h[clef] for h in k["bar_clefs"]][:len(pm)]
+        if a.min_pitch is not None and sum(n_notes) and sum(hits) / sum(n_notes) < a.min_pitch:
+            left_out["few pitches as the print's"] += 1
+            notes.append(f"{sid} {part}: {sum(hits)} of {sum(n_notes)} pitches as the print's")
+            continue
+        if a.min_bar_pitch is not None and any(n >= 3 and h / n < a.min_bar_pitch for h, n in zip(hits, n_notes)):
+            left_out["a bar with few pitches as the print's"] += 1
+            notes.append(f"{sid} {part}: bar pitches {list(zip(hits, n_notes))}")
+            continue
+        read = {MXL_CLEF.get(c, c) for c in k.get("read_clefs", [])}
+        if read != {clef}:
+            left_out["the reading wrote another clef, or two"] += 1
+            notes.append(f"{sid} {part}: chosen {clef}, read {sorted(read)}")
+            continue
+        toks = [lmx_measures(lmx_of[part][f"p{m['page']}-{m['staff']}"])[m["m"]] for m in pm]
+        # the print's clefs over these bars: one at the head of each of its staves, the same throughout
+        pclefs = [header(t).get("clefs", []) for t in toks]
+        if any(len(c) > (pm[j]["m"] == 0) for j, c in enumerate(pclefs)) or len({x for c in pclefs for x in c}) > 1:
+            left_out["the print changes clef on the staff"] += 1
+            continue
+        heads = [in_force(part, mvt, n - 1) for n in nums]
+        if len({h[0] for h in heads}) > 1:
+            left_out["a key change on the staff"] += 1
+            continue
+        key = heads[0][0]
+        time_at = [j for j, (_, _, wrote) in enumerate(heads) if wrote or nums[j] == 1]
+        mine = lmx_measures(ms_lmx[sid])
+        if cut is not None and len(mine) == len(k["bars"]):
+            mine = mine[:cut]
+        if len(mine) != len(nums):
+            left_out["the reading's measures aren't the bars"] += 1
+            continue
+        ms_key = next((header(t)["key"] for t in mine if "key" in header(t)), None)
+        if ms_key is not None and ms_key != key:
+            left_out["the reading's key isn't the print's"] += 1
+            notes.append(f"{sid} {part}: key read {ms_key}, print {key}")
+            continue
+        if a.heads_only and 0 not in time_at:
+            left_out["no clef or key drawn (not a section's first staff)"] += 1
+            continue
+        if [j for j, t in enumerate(mine) if "time" in header(t)] != time_at:
+            left_out["the reading's time signatures aren't the print's"] += 1
+            notes.append(f"{sid} {part}: time read at {[j for j, t in enumerate(mine) if 'time' in header(t)]}, print at {time_at}")
+            continue
+        label = []
+        for j, t in enumerate(toks):
+            label.append("measure")
+            if j == 0:
+                label.append(f"key:fifths:{key}")
+            if j in time_at:
+                label += ["time", *heads[j][1]]
+            if j == 0:
+                label.append("clef:" + {v: c for c, v in MXL_CLEF.items()}[clef])
+            label += [x for x in t if not PRINT_DROP.match(x)]
+        lmx = " ".join(label)
+        # the check: read back, each bar is the print's events
+        measures, _ = compare.parse(lmx)
+        ok = len(measures) == len(pm)
+        for m, got in zip(pm, measures):
+            zs = [compare.zeus_event(e, e["zclef"]) for e in got]
+            want = [{**e, "pitches": tuple(sorted(e["pitches"])), "acc": tuple(sorted(e["acc"]))} for e in m["events"]]
+            if not (len(zs) == len(want) and all(map(compare.same, want, zs))):
+                ok = False
+                bad.append((sid, m["measure"], m["text"], " ".join(map(compare.text, zs))))
+        if not ok:
+            left_out["failed the check"] += 1
+            continue
+        if part in ("va", "va2", "vc") and any(abs(p) > 9 for m in measures for e in m for p in e["pos"]):
+            left_out["notes far off the staff in the clef written"] += 1
+            notes.append(f"{sid} {part}: notes far off the staff in {clef}")
+            continue
+        if sid in dropped:
+            left_out["left out by eye"] += 1
+            notes.append(f"{sid} {part}: left out by eye: {dropped[sid]}")
+            continue
+        if page is None or page[0] != k["page"]:
+            page = (k["page"], compare.page_image(pdf, k["page"]))
+        if cut is None:
+            save(out, sid, page[1], k["system"], lmx)
+        else:
+            save_cut(out, sid, page[1], k["system"], lmx, cut)
+        kept.append(f"{a.pairs}/{sid}")
+        cuts += cut is not None
+    name = a.name or a.pairs
+    (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + ("\n" if kept else ""))
+    if a.cut_agreed:
+        print(f"{a.pairs}: {cuts} of the staves kept are cut to their first agreed bars")
+    print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
+    for row in notes:
+        print("  " + row)
+    for row in bad[:20]:
+        print("  check failed:", row)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -711,6 +978,21 @@ def main():
     ap.add_argument("--philhar", type=Path, help="with --pairs: Philhar's lilypond/ folder")
     ap.add_argument("--quartets", help="with --pairs: the quartets to take staves from (Op33-1,...)")
     ap.add_argument("--musicxml", type=Path, help="with --pairs and --results: autopair.py --musicxml's score (OSSQ's)")
+    ap.add_argument("--print-bars", type=Path,
+                    help="with --pairs and --results: autopair.py --print-bars's print reading (print-omr/encode.py)")
+    ap.add_argument("--print-prefix", default="BA2676",
+                    help="with --print-bars: the print's detections, auto/<prefix>-<part>.json")
+    ap.add_argument("--reading", default="musvit-D3S-h96",
+                    help="with --print-bars: the manuscript's reading autopair.py paired (answers/<source>-auto-<this>.json)")
+    ap.add_argument("--heads-only", action="store_true",
+                    help="with --print-bars or --philhar: keep only staves that open a movement (or, with "
+                         "--print-bars, a section): a copy that draws clef and key only there")
+    ap.add_argument("--cut-agreed", type=int,
+                    help="with --print-bars: a staff with bars the print's readers don't agree on is cut after its first "
+                         "bars, if they are agreed and at least this many (where bar boxes are as many as measures)")
+    ap.add_argument("--min-bar-pitch", type=float,
+                    help="with --print-bars: leave out a staff with a bar of 3 or more notes where the reading names "
+                         "fewer than this share of the print's right")
     ap.add_argument("--drop", type=Path, help="with --pairs: staves to leave out, checked by eye (lines: staff why)")
     ap.add_argument("--max-unlike", type=float, help="with --pairs: leave out a staff with a measure this unlike its bar")
     ap.add_argument("--min-pitch", type=float,
@@ -727,6 +1009,8 @@ def main():
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--name")
     a = ap.parse_args()
+    if a.pairs and a.print_bars:
+        return print_pairs(a)
     if a.pairs and a.musicxml:
         return musicxml_pairs(a)
     if a.pairs:
@@ -738,7 +1022,7 @@ def main():
     export = json.loads(pdf.with_name(pdf.stem + ".bars.json").read_text())
     quartet = f"Op48-{export['source']['gerard'] - 225}"
     expected = structure.expected((a.edition / quartet / "Structure.ily").read_text())
-    parts = ("vn1", "vn2", "va", "vc")
+    parts = ("vn1", "vn2", "va", "vc", "va2")
     staves: dict[str, list] = {}
     for b in export["bars"]:
         if b["part"] in parts and b["movement"] in a.movements:

@@ -1,0 +1,75 @@
+Uninstalled 1 package in 976ms
+Installed 1 package in 129ms
+G223-RES507-10: 4 of the staves kept are cut to their first agreed bars
+G223-RES507-10: 4 staves kept of 64; left out: {"a bar the print's readers don't agree on": 45, "the reading's key isn't the print's": 6, "no clef or key drawn (not a section's first staff)": 2, 'a measure unlike its bar': 1, "the reading's time signatures aren't the print's": 1, 'not plain': 1, 'the reading wrote another clef, or two': 4}
+  p2-0 vn1: cut after 4 of 14 bars (5 not agreed)
+  p2-1 vn1: 5 of 15 bars not agreed
+  p2-2 vn1: cut after 8 of 15 bars (4 not agreed)
+  p2-2 vn1: key read 4, print 1
+  p2-3 vn1: cut after 4 of 13 bars (4 not agreed)
+  p2-3 vn1: key read 4, print 1
+  p2-4 vn1: 7 of 14 bars not agreed
+  p2-5 vn1: 3 of 13 bars not agreed
+  p2-6 vn1: cut after 3 of 13 bars (4 not agreed)
+  p2-7 vn1: 1 of 15 bars not agreed
+  p2-8 vn1: cut after 7 of 13 bars (2 not agreed)
+  p2-8 vn1: key read 4, print 1
+  p2-9 vn1: 6 of 13 bars not agreed
+  p3-5 vn1: 3 of 17 bars not agreed
+  p3-6 vn1: key read 4, print 1
+  p3-7 vn1: a measure 0.75 from its bar
+  p4-0 vn1: 4 of 8 bars not agreed
+  p4-2 vn1: 6 of 10 bars not agreed
+  p4-5 vn1: cut after 3 of 7 bars (4 not agreed)
+  p4-5 vn1: time read at [], print at [0]
+  p4-6 vn1: 5 of 8 bars not agreed
+  p4-7 vn1: 3 of 6 bars not agreed
+  p4-8 vn1: cut after 4 of 8 bars (1 not agreed)
+  p4-8 vn1: key read 0, print -2
+  p6-4 vn2: 9 of 14 bars not agreed
+  p6-5 vn2: 8 of 12 bars not agreed
+  p6-7 vn2: 9 of 12 bars not agreed
+  p6-8 vn2: 7 of 12 bars not agreed
+  p6-9 vn2: 8 of 14 bars not agreed
+  p7-1 vn2: 11 of 17 bars not agreed
+  p7-3 vn2: 1 of 16 bars not agreed
+  p7-4 vn2: cut after 7 of 17 bars (2 not agreed)
+  p8-3 vn2: 3 of 7 bars not agreed
+  p8-4 vn2: 1 of 7 bars not agreed
+  p8-6 vn2: 2 of 7 bars not agreed
+  p8-7 vn2: 4 of 9 bars not agreed
+  p8-8 vn2: 1 of 3 bars not agreed
+  p10-0 va: cut after 4 of 11 bars (5 not agreed)
+  p10-1 va: cut after 5 of 14 bars (4 not agreed)
+  p10-1 va: chosen alto, read ['treble']
+  p10-5 va: 5 of 13 bars not agreed
+  p10-8 va: 4 of 15 bars not agreed
+  p10-9 va: 7 of 14 bars not agreed
+  p11-2 va: 7 of 17 bars not agreed
+  p11-3 va: chosen alto, read ['treble']
+  p11-8 va: 1 of 18 bars not agreed
+  p12-0 va: 4 of 7 bars not agreed
+  p12-1 va: 1 of 9 bars not agreed
+  p12-2 va: 4 of 9 bars not agreed
+  p12-3 va: 2 of 9 bars not agreed
+  p12-4 va: cut after 4 of 6 bars (1 not agreed)
+  p12-5 va: chosen alto, read ['treble']
+  p12-6 va: 4 of 7 bars not agreed
+  p14-0 vc: 10 of 11 bars not agreed
+  p14-1 vc: 13 of 14 bars not agreed
+  p14-2 vc: 10 of 14 bars not agreed
+  p14-3 vc: 11 of 13 bars not agreed
+  p14-4 vc: 11 of 11 bars not agreed
+  p14-5 vc: 9 of 13 bars not agreed
+  p14-6 vc: 7 of 12 bars not agreed
+  p15-6 vc: 11 of 14 bars not agreed
+  p15-8 vc: 10 of 16 bars not agreed
+  p16-0 vc: cut after 3 of 8 bars (5 not agreed)
+  p16-2 vc: 2 of 10 bars not agreed
+  p16-3 vc: 1 of 6 bars not agreed
+  p16-4 vc: 4 of 6 bars not agreed
+  p16-5 vc: cut after 3 of 8 bars (1 not agreed)
+  p16-5 vc: key read 1, print -2
+  p16-6 vc: cut after 6 of 8 bars (1 not agreed)
+  p16-6 vc: chosen bass, read ['treble']
+  p16-7 vc: 5 of 8 bars not agreed

@@ -97,6 +97,15 @@ space. `du` still counts them twice.
   never paired before. One list per source, `samples.<source>.txt`; the
   Madrid copies (dataT's role) are `samples.Op22-*-EMc.txt`. On Modal at
   `/dataM2` in `musvit-staves`. Rebuild with `philhar-repair/build.sh`.
+- **`dataW`:** Philhar's other string works (Boccherini's op. 4 trios,
+  Campioni's op. 7 duos, the Giardini duet, M. Haydn's MH 411) paired
+  with their manuscripts, `experiments/zeus/wayback-print-pairs/README.md`.
+  One list per source, `samples.<source>.txt`. On Modal at `/dataW` in
+  `musvit-staves`. Rebuild with `wayback-print-pairs/build.sh`.
+- **`dataP`:** G. 223's two manuscripts (KHM 600, F-Po RES-507 (10))
+  labelled with the bars of the Bärenreiter print that two OMR readers
+  agree on (same README). One list per source; some staves are cut after
+  their first bars. On Modal at `/dataP` in `musvit-staves`.
 - **`dataM4`, `dataW3`, `dataP3`, `dataG213-3` (2026-10-22):** the same
   sets, lists and options, from a full re-detection of all 57 paired
   sources (`detect.py`: each staff's ink threshold from its own lines and
