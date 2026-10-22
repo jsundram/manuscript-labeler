@@ -431,6 +431,24 @@ def philhar_structure(key_time: dict) -> dict:
             "changes": [{"bar": b, "on_bar_line": True, "key": k, "time": t} for b, (k, t) in ch[1:]]}
 
 
+class LeftOut(Counter):
+    """Why staves were left out: the counts, and each staff's reason in
+    `why` (for the staff `staff` names when its count is added), written
+    beside the list as left_out.<name>.json for the labeler's pairing view."""
+
+    def __init__(self):
+        super().__init__()
+        self.staff, self.why = None, {}
+
+    def __setitem__(self, key, value):
+        super().__setitem__(key, value)
+        if self.staff is not None:
+            self.why[self.staff] = key
+
+    def write(self, out: Path, name: str):
+        (out / f"left_out.{name}.json").write_text(json.dumps(self.why, indent=1, sort_keys=True) + "\n")
+
+
 def pairs(a):
     """--pairs: the staves autopair.py kept on an unlabelled source, every
     measure one bar (its "plain" staves), with Philhar's encoding."""
@@ -458,9 +476,10 @@ def pairs(a):
                 dropped[sid] = why
     out = a.out / a.pairs
     out.mkdir(parents=True, exist_ok=True)
-    left_out, kept, bad, notes = Counter(), [], [], []
+    left_out, kept, bad, notes = LeftOut(), [], [], []
     page = None
     for k in res["kept"]:
+        left_out.staff = k["staff"]
         where = {tuple(b[:2]) for b in k["bars"]}
         if not k["plain"]:
             left_out["not plain"] += 1
@@ -524,6 +543,7 @@ def pairs(a):
         save(out, k["staff"], page[1], k["system"], lmx)
         kept.append(f"{a.pairs}/{k['staff']}")
     name = a.name or a.pairs
+    left_out.write(a.out, name)
     (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
     print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
     for row in notes:
@@ -578,10 +598,11 @@ def musicxml_pairs(a):
                 dropped[sid] = why
     out = a.out / a.pairs
     out.mkdir(parents=True, exist_ok=True)
-    left_out, kept, bad, notes = Counter(), [], [], []
+    left_out, kept, bad, notes = LeftOut(), [], [], []
     page = None
     for k in res["kept"]:
         part, sid = k["part"], k["staff"]
+        left_out.staff = sid
         where = {b[0] for b in k["bars"]}
         if not set(k.get("steps", {"one": 1})) <= {"one", "join"}:
             left_out["not plain"] += 1
@@ -706,6 +727,7 @@ def musicxml_pairs(a):
         save(out, sid, page[1], k["system"], lmx)
         kept.append(f"{a.pairs}/{sid}")
     name = a.name or a.pairs
+    left_out.write(a.out, name)
     (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + "\n")
     print(f"{a.pairs}: {len(kept)} staves kept of {len(res['kept'])}; left out: {dict(left_out)}")
     for row in notes:
@@ -819,7 +841,7 @@ def print_pairs(a):
                 dropped[sid] = why
     out = a.out / a.pairs
     out.mkdir(parents=True, exist_ok=True)
-    left_out, kept, bad, notes = Counter(), [], [], []
+    left_out, kept, bad, notes = LeftOut(), [], [], []
     page, cuts = None, 0
 
     def in_force(part, mvt, idx):
@@ -838,6 +860,7 @@ def print_pairs(a):
     import autopair
     for k in res["kept"]:
         part, sid = k["part"], k["staff"]
+        left_out.staff = sid
         if not set(k.get("steps", {"one": 1})) <= {"one"}:
             left_out["not plain"] += 1
             continue
@@ -959,6 +982,7 @@ def print_pairs(a):
         kept.append(f"{a.pairs}/{sid}")
         cuts += cut is not None
     name = a.name or a.pairs
+    left_out.write(a.out, name)
     (a.out / f"samples.{name}.txt").write_text("\n".join(kept) + ("\n" if kept else ""))
     if a.cut_agreed:
         print(f"{a.pairs}: {cuts} of the staves kept are cut to their first agreed bars")
