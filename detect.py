@@ -1152,10 +1152,14 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
         # the right end, before the bar-line search and the vote, so they
         # cover all of it. A start must leave room for music before the end
         # (one at the far end of the line, past its music, isn't the
-        # staff's), an end room for music after the start.
+        # staff's), an end room for music after the start, and no music on
+        # past it, as SHORT_SPAN's test reads it (yolo26n put sure ends
+        # mid-line: Paris vc p18 at 0.29, its music on to 0.91).
         start_ok = ("left" in told and "start" in told
                     and told["start"] < max(right, told.get("right", right)) - START_ROOM * gap)
-        took_right = "right" in told and told["right"] > (told["start"] if start_ok else start) + START_ROOM * gap
+        took_right = ("right" in told and told["right"] > (told["start"] if start_ok else start) + START_ROOM * gap
+                      and not (ink and inner_ink(band, local, int(told["right"] + PAST_MARGIN * gap), right)
+                               >= PAST_INK * ink))
         if took_right:
             right = int(min(paper[1], told["right"]))
         if start_ok and told["start"] < right - START_ROOM * gap:
