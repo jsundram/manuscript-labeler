@@ -115,7 +115,8 @@ def main():
             why.append(f"twin {t} not plain")
         elif not same_place:
             why.append(f"twin {t}'s ends elsewhere: {[round(x, 3) for x in gA[sid]]} vs {[round(x, 3) for x in gB[t]]}")
-        not_kept.append({"staff": sid, "part": k["part"], "why": why, "bars": k.get("bars", [])})
+        not_kept.append({"staff": sid, "part": k["part"], "why": why, "bars": k.get("bars", []),
+                         "boxes": k.get("boxes", [])})
     # no bar on two staves
     held = Counter((k["part"], tuple(b)) for k in kept for b in k["bars"])
     plain = lambda k: set(k.get("steps", {"one": 1})) <= {"one", "join"}
@@ -124,7 +125,7 @@ def main():
     for k in twice:
         kept.remove(k)
         shared = [b for b in k["bars"] if held[(k["part"], tuple(b))] > 1]
-        not_kept.append({"staff": k["staff"], "part": k["part"], "bars": k["bars"],
+        not_kept.append({"staff": k["staff"], "part": k["part"], "bars": k["bars"], "boxes": k.get("boxes", []),
                          "why": [f"bar {shared[0]} also on another kept staff (was {k['how']}: {k['confirmed']})"]})
     # a twin-kept staff takes its own detection's staff (system) for the crop
     auto = json.loads((ZEUS / "auto" / f"{a.first}.json").read_text())

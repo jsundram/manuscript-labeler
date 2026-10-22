@@ -43,7 +43,8 @@ def main():
             why = ([f"{r2}: {w}" for w in bn[k["staff"]]["why"]] if k["staff"] in bn else
                    [f"{r2} pairs other bars: {o['bars'][0]}..{o['bars'][-1]} ({len(o['bars'])})"] if o["bars"] != k["bars"] else
                    [f"{r2} chose clef {o['clef']}"])
-            not_kept.append({"staff": k["staff"], "part": k["part"], "page": k["page"], "bars": k["bars"], "why": why})
+            not_kept.append({"staff": k["staff"], "part": k["part"], "page": k["page"], "bars": k["bars"], "why": why,
+                             "boxes": k.get("boxes", [])})
         out = {"source": src, "readers": [r1, r2], "kept": kept, "not kept": not_kept}
         (ZEUS / "results" / f"autopair-{src}-both.json").write_text(json.dumps(out, indent=1))
         print(f"{src}: {r1} kept {len(A['kept'])}, {r2} kept {len(B['kept'])}, both (same bars, clef) {len(kept)}")

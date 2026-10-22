@@ -257,6 +257,34 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
     return out[::-1]
 
 
+def box_bars(path: list[tuple], bars: list[list[tuple]], breaks: set[int], uncounted: set[tuple]) -> dict[int, dict]:
+    """What each Zeus measure (a bar box) holds, for numbering a staff's bar
+    lines: {measure: {"bars", "count", "join", "continues", "ends_movement"}}.
+    `count`: the bars the box's closing bar line counts, each bar counted
+    once: a pickup, or the second half of a bar a repeat splits (a MusicXML
+    score's X1 ...: `uncounted`), counts 0; a bar split in two counts at its
+    first half, except where that half ends a staff ("continues": the bar
+    runs on to the next staff, no bar line there). `ends_movement`: the box
+    holding the end of its movement's last bar. `join`: one measure for a
+    bar a repeat splits, its two halves (a repeat bar line between them)."""
+    out, last = {}, {}
+    for j, bs in enumerate(bars):
+        for b in bs:
+            last[b[:-1]] = b  # the movement's last bar, in order
+    ends = set(last.values())
+    for step, zs, js in path:
+        held = [b for j in js for b in bars[j]]
+        each = step == "rests" and len(zs) > 1 and len(held) == len(zs)  # a bar rest for each bar of a multi-bar rest
+        per = [[b] for b in held] if each else [held] * len(zs)
+        payer = 1 if step == "split" and zs[0] in breaks else 0
+        for k, (z, bs) in enumerate(zip(zs, per)):
+            c = sum(b not in uncounted for b in bs) if each or k == payer else 0
+            out[z] = {"bars": [list(b) for b in bs], "count": c, "join": step == "join",
+                      "continues": step == "split" and k == 0 and z in breaks,
+                      "ends_movement": bool(set(bs) & ends) and k == len(zs) - 1}
+    return out
+
+
 # -- the staves ------------------------------------------------------------------------
 
 def boxes(s: dict, aspect: float) -> int:
@@ -335,6 +363,14 @@ def musicxml_encoding(path: Path, part: str):
     joins = {(roman[k], i - 1) for k, bars in enumerate(mvts) for i, b in enumerate(bars)
              if i and not (b["number"] or "").isdigit()}
     return [((roman[k],), {str(i): b["events"] for i, b in enumerate(bars)}) for k, bars in enumerate(mvts)], joins
+
+
+def musicxml_uncounted(path: Path, part: str) -> set[tuple]:
+    """The bars of musicxml_encoding that count none: a pickup (numbered 0)
+    and the second half of a bar a repeat splits (X1, X2 ...)."""
+    roman = ["I", "II", "III", "IV", "V", "VI"]
+    return {(roman[k], i) for k, bars in enumerate(mxl.movements(path)[part]) for i, b in enumerate(bars)
+            if not (b["number"] or "").isdigit() or b["number"] == "0"}
 
 
 def print_encoding(path: Path, part: str):
@@ -450,6 +486,10 @@ def main():
         if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
             halves, joins = set(), halves
         path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
+        # a pickup counts no bar: bar 0 (in MusicXML, by its number: its bars are by index)
+        uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
+                     else {b for bs in bars for b in bs if b[-1] == 0})
+        box = box_bars(path, bars, breaks, uncounted)
         for step, zs, js in path:
             if any(owner[z] in a.debug for z in zs):
                 print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
@@ -570,7 +610,8 @@ def main():
                 if count != found and not (a.any_count and all(ends.get(sid, [False]))):
                     reasons.append(f"{count} measures, {found} bar boxes" + (", an end not one bar" if a.any_count else ""))
                 not_kept.append({"staff": sid, "part": part, "page": n, "why": reasons, "bars": sorted(got),
-                                 "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs)))})
+                                 "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
+                                 "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box]})
                 continue
             # the clef under which Zeus's notes name the encoding's pitches most often
             # (and bar by bar, for a clef the encoding doesn't have: "bar_clefs", each one-to-one
@@ -586,6 +627,7 @@ def main():
             kept.append({"staff": sid, "part": part, "page": n, "system": s, "clef": best, "bars": sorted(got),
                          "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
                          "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
+                         "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
                          "bar_clefs": by_bar, "read_clefs": compare.parse(cache[keys[sid]])[1],
                          "worst": round(max((unlike(Z[z], E[j]) for z, j in pairs[sid]), default=0.0), 3)})
             if t is not None and len(t[3]) == 1:
