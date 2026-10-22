@@ -44,8 +44,12 @@ Zeus's, must equal the encoding bar for bar.
 
 --pairs takes the staves autopair.py kept on a source nobody labelled
 (results/autopair-<name>.json), with Philhar's encoding (philhar.py):
-only its plain staves (every measure one bar), in the clef autopair.py
-chose, the key and time Philhar's Trame.ily gives. With --clef-checks, a
+its plain staves (every measure one bar), and those whose other measures
+are halves of a split bar (staff_boxes: a bar split across a line break,
+cut where autopair.py found the readings fit; a bar a repeat splits, cut
+where the movement's pickup starts), each half labelled with its part of
+the bar; in the clef autopair.py chose, the key and time Philhar's
+Trame.ily gives. With --clef-checks, a
 staff is left out where its clef may change on it: Philhar's clef changes
 within its bars, the reading wrote two clefs, or a viola or cello note
 lies more than 9 steps from the middle line in it.
@@ -449,6 +453,56 @@ class LeftOut(Counter):
         (out / f"left_out.{name}.json").write_text(json.dumps(self.why, indent=1, sort_keys=True) + "\n")
 
 
+def labellable(k: dict) -> bool:
+    """Whether a staff autopair.py kept can be labelled (staff_boxes): every
+    measure one bar ("plain"), or the others a bar split across a line break
+    that the pairing cut ("halves") or a bar a repeat splits, each half its
+    own measure ("irregular"). A pairing from before autopair.py named its
+    irregular measures names none, and counts only if plain."""
+    if k["plain"]:
+        return True
+    return ("halves" in k or "irregular" in k) and set(k.get("irregular", [])) <= {"a bar a repeat splits"}
+
+
+def staff_boxes(k: dict, part: str, mv: str, evs: dict, split_bars: set) -> tuple[list[dict] | None, dict | str]:
+    """A kept staff's bar boxes for build(), and where its split bars are cut
+    ({bar: onset}, box_events: a count-0 box holds the bar from the cut on,
+    a count-1 box what comes before); or (None, why it can't be labelled).
+    A plain staff: a box per bar. Else from autopair's boxes (a box per
+    measure the reader read): a bar split across a line break, cut where the
+    pairing put it ("halves"); a bar a repeat splits (Philhar's split bars),
+    cut where the movement's pickup starts, as the labels' split bars are,
+    its two halves two boxes, or one half opening or closing the staff."""
+    box = lambda b, count: {"part": part, "movement": mv, "bar": b, "count": count, "clefs": [k["clef"]]}
+    if k["plain"]:
+        return [box(b, 1) for _, _, b in k["bars"]], {}
+    halves = {h["bar"][-1]: h for h in k.get("halves", [])}
+    pick = [Fraction(e["pos"]) for e in evs.get("0", []) if e["grace"] == "0"]
+    upbeat = min(pick) if pick else False  # box_events leaves a staff out where it is False
+    measures = k.get("boxes") or []
+    out, cuts = [], {}
+    for i, m in enumerate(measures):
+        if len(m["bars"]) != 1:
+            return None, "a multi-bar rest"
+        b = m["bars"][0][-1]
+        if b in halves:
+            cuts[b] = Fraction(halves[b]["cut"])
+            out.append(box(b, 1 if halves[b]["half"] == "first" else 0))
+        elif b in split_bars:
+            both = sum(1 for x in measures if x["bars"] == m["bars"]) == 2
+            if both or i in (0, len(measures) - 1):
+                cuts[b] = upbeat
+                # both halves: autopair's boxes count the first; one half: the staff's last, or its first
+                out.append(box(b, m["count"] if both else 1 if i == len(measures) - 1 else 0))
+            else:
+                return None, "a split bar that can't be cut"  # one half alone inside the staff
+        else:
+            out.append(box(b, 1))
+    if not out:
+        return None, "no bar boxes from the pairing"
+    return out, cuts
+
+
 def pairs(a):
     """--pairs: the staves autopair.py kept on an unlabelled source, every
     measure one bar (its "plain" staves), with Philhar's encoding."""
@@ -465,7 +519,7 @@ def pairs(a):
                                 "--json"], capture_output=True, text=True, check=True, env=env)
             d = json.loads(r.stdout)
             loaded[(q, mvt, part)] = (d["bars"], marks(d["bars"]), philhar_structure(d["key_time"]),
-                                      min(int(k) for k in d["bars"]))
+                                      min(int(k) for k in d["bars"]), set(d.get("split", [])))
         return loaded[(q, mvt, part)]
 
     dropped = {}
@@ -481,8 +535,12 @@ def pairs(a):
     for k in res["kept"]:
         left_out.staff = k["staff"]
         where = {tuple(b[:2]) for b in k["bars"]}
-        if not k["plain"]:
-            left_out["not plain"] += 1
+        # not plain, and kept: a bar split across a line break (autopair's "halves", cut where the
+        # pairing found the readings fit it best) or a bar a repeat splits (Philhar's split bars: cut
+        # where the upbeat starts, box_events), each half labelled with its part of the bar; any other
+        # measure not one bar (a multi-bar rest) leaves the staff out
+        if not labellable(k):
+            left_out["; ".join(sorted(set(k.get("irregular", [])) - {"a bar a repeat splits"})) or "not plain"] += 1
             continue
         if len(where) > 1:
             left_out["two movements"] += 1
@@ -495,13 +553,18 @@ def pairs(a):
             left_out["a measure unlike its bar"] += 1
             notes.append(f"{k['staff']} {part}: a measure {k['worst']} from its bar")
             continue
-        evs, mk, exp, first = load(q, mvt, part)
+        evs, mk, exp, first, split_bars = load(q, mvt, part)
+        boxes, cuts = staff_boxes(k, part, f"{q}-{mvt}", evs, split_bars)
+        if boxes is None:
+            left_out[cuts] += 1
+            continue
         if a.heads_only and k["bars"][0][2] != first:
             left_out["no clef or key drawn (not a movement's first staff)"] += 1
             continue
         if a.min_pitch is not None and "bar_clefs" in k:
             # the encoding's notes the reading names right in the clef chosen (autopair.py's "bar_clefs")
-            n_notes = sum(1 for _, _, b in k["bars"] for e in compare.encoded(evs.get(str(b), [])) if e["pitches"])
+            n_notes = sum(1 for _, _, b in k["bars"] if b not in cuts  # (bar_clefs: the one-to-one bars)
+                          for e in compare.encoded(evs.get(str(b), [])) if e["pitches"])
             hits = sum(h[k["clef"]] for h in k["bar_clefs"])
             if n_notes and hits / n_notes < a.min_pitch:
                 left_out["few pitches as the encoding's"] += 1
@@ -524,8 +587,7 @@ def pairs(a):
                 notes.append(f"{k['staff']} {part}: chosen {k['clef']}, read {sorted(read)}")
                 continue
         mv = f"{q}-{mvt}"
-        boxes = [{"part": part, "movement": mv, "bar": b, "count": 1, "clefs": [k["clef"]]} for _, _, b in k["bars"]]
-        lmx, why = build(boxes, evs, mk, exp, {(part, mv, first, 1)}, {}, bad, k["staff"])
+        lmx, why = build(boxes, evs, mk, exp, {(part, mv, first, 1)}, cuts, bad, k["staff"])
         if lmx is None:
             left_out[why] += 1
             continue

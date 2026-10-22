@@ -1050,7 +1050,7 @@ function tryBox(s) {
   else {
     const stale = t.version !== S.version ? ' <span class="muted">(you changed the page since: try again)</span>' : '';
     const use = t.status !== 'paired' ? ''
-      : !t.plain ? ' · but not every measure is one bar (a bar crossing the line break, or a multi-bar rest): not into a training set yet'
+      : !t.labelled ? ` · but ${t.irregular?.filter(w => w !== 'a bar a repeat splits').join(', ') || 'a measure isn’t one bar'}: not into a training set yet`
         : t.worst > 0.5 ? ' · but a measure is far from its bar: not into a training set'
           : ' · would go into a training set, if its clef and pitch checks pass';
     what = `<p>Now: <b class="pairtag ${t.status === 'paired' ? 'set' : 'unpaired'}">${t.status === 'paired' ? 'pairs' : 'still unpaired'}</b>${t.bars ? ` · ${esc(t.bars)}` : ''}${esc(use)}${stale}</p>`

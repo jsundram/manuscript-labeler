@@ -4,6 +4,29 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-22: Bars that cross a line
+
+[Write-up](2026-10-22-split-bars/)
+
+**Context.** In the new pairing view the editor saw that "bars that cross
+lines cause both lines to be unpaired", and asked for the fix.
+
+**Question.** Why does a bar broken across two lines keep both out, and
+can each line get its part of it?
+
+**Finding.** Two causes: the set builder took only plain staves, so a
+correctly paired half-bar was left out (blue); and where the reading
+mangled the half-bar, the boundary rules put out both lines (red). The
+first is fixed: the score's bar is cut where the two readings fit its
+halves best, and each line labelled with its part; bars a repeat splits
+too, where each half is its own measure. +304 staves, +1,748 bars.
+
+**Why a report.** The sets change, and the red half is the next pool to
+recover.
+
+**What followed.** dataM5 and dataW4 built; the labeler's pairing view
+reads them. Not yet trained on or uploaded.
+
 ## 2026-10-22: Re-detecting the paired manuscripts
 
 [Write-up](2026-10-22-redetection/)

@@ -42,6 +42,14 @@ paired with one bar, not a run of rests). Keeping a staff depends on counts, and
 Zeus read its notes right, so the kept staves aren't just the ones Zeus
 already reads well. A bar rest is never half of a split bar.
 
+A bar split across a line break is cut where it fits the readings best:
+of the onsets in the encoding's bar, the one whose halves are least
+unlike the measures either side of the break (break_cut, at most
+BREAK_FIT). A kept staff lists such halves ("halves": the bar, which
+half, the cut), so the dataset can label its part of the bar, and names
+any other measure that isn't one bar ("irregular": a multi-bar rest, a
+bar a repeat splits, a split no cut fits ...).
+
 With --neighbours, a staff is also put out when the staff beside it
 begins or ends with a measure paired with two bars or with a run of rest
 bars: the reading may have dropped this staff's last (or first) bar,
@@ -192,6 +200,27 @@ def unlike(a: list[tuple], b: list[tuple]) -> float:
             cur[j] = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + sub)
         prev = cur
     return prev[m] / max(n, m)
+
+
+BREAK_FIT = 0.5  # a split bar's halves at most this unlike the readings either side of the line break, on average
+
+
+def break_cut(z0: list[tuple], z1: list[tuple], evs: list[dict]) -> tuple[Fraction, float] | None:
+    """Where a bar split across a line break is cut: the onset in the bar
+    (its encoded events, `evs`) whose halves are most like the reading's
+    two measures, the end of one staff (z0) and the start of the next (z1).
+    A grace note goes with the note it leads into. (cut, how unlike the
+    halves are, on average), or None where no cut fits within BREAK_FIT or
+    the events have no onsets (a print's reading)."""
+    if not evs or any("onset" not in e for e in evs):
+        return None
+    best = None
+    for c in sorted({e["onset"] for e in evs if not e["grace"]} - {min(e["onset"] for e in evs)}):
+        first, second = [e for e in evs if e["onset"] < c], [e for e in evs if e["onset"] >= c]
+        fit = (unlike(z0, tokens(first, steps_enc)) + unlike(z1, tokens(second, steps_enc))) / 2
+        if best is None or fit < best[1]:
+            best = (c, round(fit, 3))
+    return best if best and best[1] <= BREAK_FIT else None
 
 
 def rest_bar(tok: list[tuple]) -> bool:
@@ -500,12 +529,33 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 why[st].append(reason)
     pairs = defaultdict(list)  # staff -> [(zeus measure, bar index)] paired one to one
     plain = defaultdict(lambda: True)  # every measure one bar, none split by a repeat
+    # a bar split across a line break, cut where the two staves' readings fit its halves best
+    # (break_cut): staff -> its halves; and the staves not plain for any other reason
+    halves_of, other = defaultdict(list), defaultdict(set)  # other: staff -> what else isn't one bar
     last_owner = None
     for step, zs, js in path:
         staves_here = {owner[z] for z in zs}
         if step != "one" or any(len(bars[j]) > 1 or j in halves for j in js):
             for st in staves_here:
                 plain[st] = False
+            at_break = step == "split" and zs[0] in breaks and js[0] not in halves and len(bars[js[0]]) == 1
+            cut = break_cut(Z[zs[0]], Z[zs[1]], E_raw[js[0]]) if at_break else None
+            if cut is None:
+                # a bar a repeat splits is one entry of E: its halves two measures ("split"), or read as
+                # one ("one"; "join" with --musicxml, two entries). Only the first can be labelled
+                # (dataset.staff_boxes)
+                what = ("a bar split across the line break that no cut fits" if at_break
+                        else "a multi-bar rest" if step == "rests" or any(len(bars[j]) > 1 for j in js)
+                        else "a bar a repeat splits" if step == "split"
+                        else "a bar a repeat splits, read as one measure" if step in ("one", "join")
+                        else {"two": "a measure read as two bars", "extra": "a measure with no bar",
+                              "missed": "a bar with no measure"}.get(step, step))
+                for st in staves_here:
+                    other[st].add(what)
+            else:
+                c, fit = cut
+                for z, half in zip(zs, ("first", "second")):
+                    halves_of[owner[z]].append({"bar": list(bars[js[0]][0]), "half": half, "cut": str(c), "fit": fit})
         for z in zs:
             held[owner[z]].update(b for j in js for b in bars[j])
         if step in ("extra", "two"):
@@ -629,6 +679,8 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
         best = max(score, key=score.get)
         kept.append({"staff": sid, "part": part, "page": n, "system": s, "clef": best, "bars": sorted(got),
                      "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
+                     **({"halves": halves_of[sid]} if halves_of[sid] else {}),
+                     **({"irregular": sorted(other[sid])} if sid in other else {}),
                      "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
                      "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
                      "bar_clefs": by_bar, "read_clefs": compare.parse(lmx[sid])[1],

@@ -23,7 +23,7 @@ from pathlib import Path
 
 ZEUS = Path(__file__).resolve().parent / "experiments" / "zeus"
 # the newest staff sets (docs/storage.md)
-SETS = ("dataM4", "dataW3", "dataP3", "dataG213-3")
+SETS = ("dataM5", "dataW4", "dataP4", "dataG213-4")
 # the pairing a set was built from, most final first: G. 213's merge, the
 # two readers' merge (the older sources), then one reader's
 SOURCES_TTL = 10.0
@@ -123,8 +123,13 @@ REASONS = [
 ]
 # the set builder's (dataset.py), where they need it
 LEFT_OUT = {
-    "not plain": "Not every measure pairs with one bar (a bar crossing the line break, or a multi-bar rest): "
-                 "a training label can't hold part of a bar yet.",
+    "not plain": "Not every measure pairs with one bar (a multi-bar rest, or a split bar the pairing couldn't "
+                 "cut): a training label can't hold it yet.",
+    "a multi-bar rest": "It holds a multi-bar rest: a training label can't hold one yet.",
+    "a split bar that can't be cut": "It holds part of a bar split by a repeat, and the label can't say where "
+                                     "to cut it (the movement has no pickup, or the half is inside the staff).",
+    "a bar split across the line break that no cut fits": "A bar crosses the line break, and no cut of the "
+                                                          "score's bar fits the two lines' readings.",
 }
 
 

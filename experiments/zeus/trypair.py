@@ -46,6 +46,7 @@ LABELER = HERE.parents[1]
 sys.path[:0] = [str(HERE), str(LABELER), str(HERE.parent / "musvit")]
 import autopair  # noqa: E402
 import compare  # noqa: E402
+import dataset  # noqa: E402
 import pairing  # noqa: E402
 
 CACHE = Path.home() / ".cache" / "manuscript-labeler"
@@ -224,7 +225,10 @@ class Trier:
             status, k = verdict.get(sid, ("unknown", {}))
             out.append({"index": int(sid.split("-")[1]), "status": status, "bars": pairing.bars_text(k.get("bars") or []),
                         "why": pairing.explain(k.get("why", [])) if status == "unpaired" else [],
-                        "plain": k.get("plain"), "worst": k.get("worst")})
+                        "plain": k.get("plain"), "worst": k.get("worst"),
+                        # labelled as it is, or with a split bar's half (dataset.staff_boxes)
+                        "labelled": "plain" in k and dataset.labellable(k),
+                        "irregular": k.get("irregular", [])})
         return {"staves": out, "read": len(read), "window": [mine[0][0], mine[-1][0]], "took": round(time.time() - t0, 1)}
 
 
