@@ -1,0 +1,5143 @@
+{
+ "source": "Op02-4-CZ-Pu-vn2",
+ "tally": {
+  "staves": 31,
+  "staves kept": 12,
+  "bars on kept staves": 72,
+  "kept, bar boxes as many": 8
+ },
+ "clefs": {},
+ "kept but wrong": [],
+ "kept": [
+  {
+   "staff": "p1-0",
+   "part": "vn2",
+   "page": 1,
+   "system": {
+    "top": 0.11090047393364928,
+    "bottom": 0.15497630331753554,
+    "left": 0.07357142857142857,
+    "right": 0.8821428571428571,
+    "start": 0.1707142857142857,
+    "bend": [
+     -0.004739336492890996,
+     0.002369668246445498,
+     -0.001392784601992449,
+     -0.00206499661475965,
+     -0.0014218009478672985
+    ],
+    "barlines": [
+     {
+      "x0": 0.29914107142857144,
+      "x1": 0.3047875,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4752375,
+      "x1": 0.4815482142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5632982142857142,
+      "x1": 0.5702732142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6321642857142857,
+      "x1": 0.6374785714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6905821428571429,
+      "x1": 0.6965607142857142,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7990125,
+      "x1": 0.8059875,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8734392857142858,
+      "x1": 0.8794178571428571,
+      "kind": "single"
+     }
+    ],
+    "above": 8.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     1
+    ],
+    [
+     "Op02-4",
+     "I",
+     2
+    ],
+    [
+     "Op02-4",
+     "I",
+     3
+    ],
+    [
+     "Op02-4",
+     "I",
+     4
+    ],
+    [
+     "Op02-4",
+     "I",
+     5
+    ],
+    [
+     "Op02-4",
+     "I",
+     6
+    ],
+    [
+     "Op02-4",
+     "I",
+     7
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 13,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p2-1",
+   "part": "vn2",
+   "page": 2,
+   "system": {
+    "top": 0.19945105215004574,
+    "bottom": 0.24519670631290028,
+    "left": 0.07964285714285714,
+    "right": 0.9139285714285714,
+    "start": 0.13035714285714287,
+    "bend": [
+     -0.0013723696248856359,
+     0.0007095244319136568,
+     0.0,
+     0.00019605280355509827,
+     -0.0036596523330283625
+    ],
+    "barlines": [
+     {
+      "x0": 0.24982142857142858,
+      "x1": 0.25839285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.34589285714285717,
+      "x1": 0.35232142857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4808928571428571,
+      "x1": 0.48839285714285713,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6241071428571429,
+      "x1": 0.63375,
+      "kind": "single"
+     },
+     {
+      "x0": 0.90375,
+      "x1": 0.91125,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     62
+    ],
+    [
+     "Op02-4",
+     "I",
+     63
+    ],
+    [
+     "Op02-4",
+     "I",
+     64
+    ],
+    [
+     "Op02-4",
+     "I",
+     65
+    ],
+    [
+     "Op02-4",
+     "I",
+     66
+    ],
+    [
+     "Op02-4",
+     "I",
+     67
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       65
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       66
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       67
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p3-1",
+   "part": "vn2",
+   "page": 3,
+   "system": {
+    "top": 0.19804741980474197,
+    "bottom": 0.24453742445374244,
+    "left": 0.07571428571428572,
+    "right": 0.8689285714285714,
+    "start": 0.10535714285714286,
+    "bend": [
+     0.008833100883310088,
+     0.004143777455194082,
+     0.00046490004649000463,
+     -0.0038354253835425384,
+     -0.00046490004649000463
+    ],
+    "barlines": [
+     {
+      "x0": 0.1492857142857143,
+      "x1": 0.15607142857142858,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2105357142857143,
+      "x1": 0.21767857142857142,
+      "kind": "single"
+     },
+     {
+      "x0": 0.40017857142857144,
+      "x1": 0.4094642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6748214285714286,
+      "x1": 0.6830357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8594642857142857,
+      "x1": 0.8669642857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 3.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     11
+    ],
+    [
+     "Op02-4",
+     "II",
+     12
+    ],
+    [
+     "Op02-4",
+     "II",
+     13
+    ],
+    [
+     "Op02-4",
+     "II",
+     14
+    ],
+    [
+     "Op02-4",
+     "II",
+     15
+    ],
+    [
+     "Op02-4",
+     "II",
+     16
+    ],
+    [
+     "Op02-4",
+     "II",
+     17
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       17
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 12,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 12,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p3-3",
+   "part": "vn2",
+   "page": 3,
+   "system": {
+    "top": 0.400743840074384,
+    "bottom": 0.44723384472338445,
+    "left": 0.07428571428571429,
+    "right": 0.8717857142857143,
+    "start": 0.10821428571428572,
+    "bend": [
+     0.00790330079033008,
+     0.0010377233180580612,
+     -0.0001636637918765725,
+     -0.003925559066025274,
+     -0.002789400278940028
+    ],
+    "barlines": [
+     {
+      "x0": 0.20642857142857143,
+      "x1": 0.21535714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.42125,
+      "x1": 0.42910714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.53,
+      "x1": 0.5385714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7510714285714286,
+      "x1": 0.7596428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8573214285714286,
+      "x1": 0.8648214285714285,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     24
+    ],
+    [
+     "Op02-4",
+     "II",
+     25
+    ],
+    [
+     "Op02-4",
+     "II",
+     26
+    ],
+    [
+     "Op02-4",
+     "II",
+     27
+    ],
+    [
+     "Op02-4",
+     "II",
+     28
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p3-4",
+   "part": "vn2",
+   "page": 3,
+   "system": {
+    "top": 0.500697350069735,
+    "bottom": 0.5471873547187355,
+    "left": 0.07178571428571429,
+    "right": 0.9003571428571429,
+    "start": 0.12678571428571428,
+    "bend": [
+     0.011157601115760111,
+     0.0029601798878546846,
+     -0.0011100674579454803,
+     -0.0022865492082467663,
+     -0.0018596001859600185
+    ],
+    "barlines": [
+     {
+      "x0": 0.12089285714285715,
+      "x1": 0.12053571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2105357142857143,
+      "x1": 0.21982142857142858,
+      "kind": "single"
+     },
+     {
+      "x0": 0.30910714285714286,
+      "x1": 0.31875,
+      "kind": "single"
+     },
+     {
+      "x0": 0.38375,
+      "x1": 0.3923214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.44821428571428573,
+      "x1": 0.45607142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5044642857142857,
+      "x1": 0.5148214285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5567857142857143,
+      "x1": 0.5653571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6701785714285714,
+      "x1": 0.6773214285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7767857142857143,
+      "x1": 0.7864285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8898214285714285,
+      "x1": 0.8983928571428571,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     29
+    ],
+    [
+     "Op02-4",
+     "II",
+     30
+    ],
+    [
+     "Op02-4",
+     "II",
+     31
+    ],
+    [
+     "Op02-4",
+     "II",
+     32
+    ],
+    [
+     "Op02-4",
+     "II",
+     33
+    ],
+    [
+     "Op02-4",
+     "II",
+     34
+    ],
+    [
+     "Op02-4",
+     "II",
+     35
+    ],
+    [
+     "Op02-4",
+     "II",
+     36
+    ],
+    [
+     "Op02-4",
+     "II",
+     37
+    ]
+   ],
+   "plain": true,
+   "measures": 9,
+   "bar_boxes": 9,
+   "right": null,
+   "steps": {
+    "one": 9
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p3-6",
+   "part": "vn2",
+   "page": 3,
+   "system": {
+    "top": 0.7075778707577871,
+    "bottom": 0.7540678754067875,
+    "left": 0.06964285714285715,
+    "right": 0.9010714285714285,
+    "start": 0.1125,
+    "bend": [
+     0.00790330079033008,
+     0.0029886431560071274,
+     0.00042694902228674757,
+     -0.0022960369642975806,
+     -0.00046490004649000463
+    ],
+    "barlines": [
+     {
+      "x0": 0.1444642857142857,
+      "x1": 0.14839285714285713,
+      "kind": "single"
+     },
+     {
+      "x0": 0.32517857142857143,
+      "x1": 0.33375,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5201785714285714,
+      "x1": 0.5269642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6214285714285714,
+      "x1": 0.6275,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8041071428571429,
+      "x1": 0.8098214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     49
+    ],
+    [
+     "Op02-4",
+     "II",
+     50
+    ],
+    [
+     "Op02-4",
+     "II",
+     51
+    ],
+    [
+     "Op02-4",
+     "II",
+     52
+    ],
+    [
+     "Op02-4",
+     "II",
+     53
+    ],
+    [
+     "Op02-4",
+     "II",
+     54
+    ],
+    [
+     "Op02-4",
+     "II",
+     55
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 6,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 12,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 9,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
+  },
+  {
+   "staff": "p4-0",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.09825528007346189,
+    "bottom": 0.14416896235078053,
+    "left": 0.08678571428571429,
+    "right": 0.9310714285714285,
+    "start": 0.11785714285714285,
+    "bend": [
+     0.0013774104683195593,
+     -0.0030874608796686745,
+     0.0,
+     0.003017184835366659,
+     0.01147842056932966
+    ],
+    "barlines": [
+     {
+      "x0": 0.18017857142857144,
+      "x1": 0.18946428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.39571428571428574,
+      "x1": 0.40285714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5075,
+      "x1": 0.5164285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7398214285714285,
+      "x1": 0.7473214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     61
+    ],
+    [
+     "Op02-4",
+     "II",
+     62
+    ],
+    [
+     "Op02-4",
+     "II",
+     63
+    ],
+    [
+     "Op02-4",
+     "II",
+     64
+    ],
+    [
+     "Op02-4",
+     "II",
+     65
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       65
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p4-1",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.2033976124885216,
+    "bottom": 0.2493112947658402,
+    "left": 0.08821428571428572,
+    "right": 0.9103571428571429,
+    "start": 0.1475,
+    "bend": [
+     0.0,
+     -0.00037714810442082426,
+     0.0,
+     0.002618953917655221,
+     0.010560146923783287
+    ],
+    "barlines": [
+     {
+      "x0": 0.44589285714285715,
+      "x1": 0.4519642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5823214285714285,
+      "x1": 0.5898214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7407142857142858,
+      "x1": 0.7492857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9,
+      "x1": 0.9064285714285715,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     1
+    ],
+    [
+     "Op02-4",
+     "III",
+     2
+    ],
+    [
+     "Op02-4",
+     "III",
+     3
+    ],
+    [
+     "Op02-4",
+     "III",
+     4
+    ],
+    [
+     "Op02-4",
+     "III",
+     5
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
+   "staff": "p4-2",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.3007346189164371,
+    "bottom": 0.3466483011937557,
+    "left": 0.08964285714285715,
+    "right": 0.9082142857142858,
+    "start": 0.13714285714285715,
+    "bend": [
+     -0.0013774104683195593,
+     0.0007964618354228499,
+     0.0,
+     0.003335769569535828,
+     0.012396694214876033
+    ],
+    "barlines": [
+     {
+      "x0": 0.26535714285714285,
+      "x1": 0.27214285714285713,
+      "kind": "single"
+     },
+     {
+      "x0": 0.39732142857142855,
+      "x1": 0.4016071428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5071428571428571,
+      "x1": 0.5114285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6178571428571429,
+      "x1": 0.6242857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7041071428571428,
+      "x1": 0.71375,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7866071428571428,
+      "x1": 0.7941071428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8994642857142857,
+      "x1": 0.9048214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     6
+    ],
+    [
+     "Op02-4",
+     "III",
+     7
+    ],
+    [
+     "Op02-4",
+     "III",
+     8
+    ],
+    [
+     "Op02-4",
+     "III",
+     9
+    ],
+    [
+     "Op02-4",
+     "III",
+     10
+    ],
+    [
+     "Op02-4",
+     "III",
+     11
+    ],
+    [
+     "Op02-4",
+     "III",
+     12
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p4-3",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.4086317722681359,
+    "bottom": 0.45454545454545453,
+    "left": 0.08964285714285715,
+    "right": 0.9275,
+    "start": 0.14,
+    "bend": [
+     -0.005968778696051423,
+     -0.004352429677105004,
+     0.00010775660126307027,
+     0.004218905192931173,
+     0.009182736455463728
+    ],
+    "barlines": [
+     {
+      "x0": 0.30214285714285716,
+      "x1": 0.3082142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4957142857142857,
+      "x1": 0.5028571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6201785714285715,
+      "x1": 0.6248214285714285,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 1.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     13
+    ],
+    [
+     "Op02-4",
+     "III",
+     14
+    ],
+    [
+     "Op02-4",
+     "III",
+     15
+    ],
+    [
+     "Op02-4",
+     "III",
+     16
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.375
+  },
+  {
+   "staff": "p4-5",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.6088154269972452,
+    "bottom": 0.6547291092745638,
+    "left": 0.08928571428571429,
+    "right": 0.8967857142857143,
+    "start": 0.13964285714285715,
+    "bend": [
+     0.0027548209366391185,
+     -0.00042868387024229263,
+     -0.00013820955379401624,
+     0.006586036618504102,
+     0.014467494986975558
+    ],
+    "barlines": [
+     {
+      "x0": 0.27214285714285713,
+      "x1": 0.2785714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4042857142857143,
+      "x1": 0.4107142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5203571428571429,
+      "x1": 0.5267857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6133928571428572,
+      "x1": 0.61875,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7564285714285715,
+      "x1": 0.7628571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.885,
+      "x1": 0.8935714285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     23
+    ],
+    [
+     "Op02-4",
+     "III",
+     24
+    ],
+    [
+     "Op02-4",
+     "III",
+     25
+    ],
+    [
+     "Op02-4",
+     "III",
+     26
+    ],
+    [
+     "Op02-4",
+     "III",
+     27
+    ],
+    [
+     "Op02-4",
+     "III",
+     28
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 6,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p4-6",
+   "part": "vn2",
+   "page": 4,
+   "system": {
+    "top": 0.7125803489439853,
+    "bottom": 0.758494031221304,
+    "left": 0.08535714285714285,
+    "right": 0.9307142857142857,
+    "start": 0.13214285714285715,
+    "bend": [
+     -0.0013774104683195593,
+     -0.0011337868480725134,
+     -0.0009674668765578006,
+     0.004410993047356699,
+     0.009182736455463728
+    ],
+    "barlines": [
+     {
+      "x0": 0.1792857142857143,
+      "x1": 0.18785714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3394642857142857,
+      "x1": 0.34625,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6555357142857143,
+      "x1": 0.6605357142857143,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 8.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     29
+    ],
+    [
+     "Op02-4",
+     "III",
+     30
+    ],
+    [
+     "Op02-4",
+     "III",
+     31
+    ],
+    [
+     "Op02-4",
+     "III",
+     32
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  }
+ ],
+ "not kept": [
+  {
+   "staff": "p1-1",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "unlike [['Op02-4', 'I', 8]]",
+    "8 measures, 7 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     8
+    ],
+    [
+     "Op02-4",
+     "I",
+     9
+    ],
+    [
+     "Op02-4",
+     "I",
+     10
+    ],
+    [
+     "Op02-4",
+     "I",
+     11
+    ],
+    [
+     "Op02-4",
+     "I",
+     12
+    ],
+    [
+     "Op02-4",
+     "I",
+     13
+    ],
+    [
+     "Op02-4",
+     "I",
+     14
+    ],
+    [
+     "Op02-4",
+     "I",
+     15
+    ]
+   ],
+   "steps": {
+    "one": 7,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       15
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-2",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "8 measures, 4 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     15
+    ],
+    [
+     "Op02-4",
+     "I",
+     16
+    ],
+    [
+     "Op02-4",
+     "I",
+     17
+    ],
+    [
+     "Op02-4",
+     "I",
+     18
+    ],
+    [
+     "Op02-4",
+     "I",
+     19
+    ],
+    [
+     "Op02-4",
+     "I",
+     20
+    ],
+    [
+     "Op02-4",
+     "I",
+     21
+    ],
+    [
+     "Op02-4",
+     "I",
+     22
+    ]
+   ],
+   "steps": {
+    "split": 1,
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       17
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       18
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       19
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       20
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       21
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-3",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "two at [['Op02-4', 'I', 24], ['Op02-4', 'I', 25]]",
+    "an end measure longer than its bar ['Op02-4', 'I', 23]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     23
+    ],
+    [
+     "Op02-4",
+     "I",
+     24
+    ],
+    [
+     "Op02-4",
+     "I",
+     25
+    ],
+    [
+     "Op02-4",
+     "I",
+     26
+    ]
+   ],
+   "steps": {
+    "one": 2,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       24
+      ],
+      [
+       "Op02-4",
+       "I",
+       25
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-4",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "unlike [['Op02-4', 'I', 33]]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     27
+    ],
+    [
+     "Op02-4",
+     "I",
+     28
+    ],
+    [
+     "Op02-4",
+     "I",
+     29
+    ],
+    [
+     "Op02-4",
+     "I",
+     30
+    ],
+    [
+     "Op02-4",
+     "I",
+     31
+    ],
+    [
+     "Op02-4",
+     "I",
+     32
+    ],
+    [
+     "Op02-4",
+     "I",
+     33
+    ],
+    [
+     "Op02-4",
+     "I",
+     34
+    ],
+    [
+     "Op02-4",
+     "I",
+     35
+    ]
+   ],
+   "steps": {
+    "one": 9
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-5",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "next staff begins with extra"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     36
+    ],
+    [
+     "Op02-4",
+     "I",
+     37
+    ],
+    [
+     "Op02-4",
+     "I",
+     38
+    ],
+    [
+     "Op02-4",
+     "I",
+     39
+    ],
+    [
+     "Op02-4",
+     "I",
+     40
+    ],
+    [
+     "Op02-4",
+     "I",
+     41
+    ]
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-6",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "extra at none",
+    "6 measures, 5 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     42
+    ],
+    [
+     "Op02-4",
+     "I",
+     43
+    ],
+    [
+     "Op02-4",
+     "I",
+     44
+    ],
+    [
+     "Op02-4",
+     "I",
+     45
+    ],
+    [
+     "Op02-4",
+     "I",
+     46
+    ]
+   ],
+   "steps": {
+    "extra": 1,
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       46
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p1-7",
+   "part": "vn2",
+   "page": 1,
+   "why": [
+    "unlike [['Op02-4', 'I', 52]]",
+    "extra at none",
+    "9 measures, 7 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     47
+    ],
+    [
+     "Op02-4",
+     "I",
+     48
+    ],
+    [
+     "Op02-4",
+     "I",
+     49
+    ],
+    [
+     "Op02-4",
+     "I",
+     50
+    ],
+    [
+     "Op02-4",
+     "I",
+     51
+    ],
+    [
+     "Op02-4",
+     "I",
+     52
+    ],
+    [
+     "Op02-4",
+     "I",
+     53
+    ]
+   ],
+   "steps": {
+    "one": 7,
+    "extra": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       47
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-0",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "unlike [['Op02-4', 'I', 57]]",
+    "staff before ends with extra",
+    "an end measure shorter than its bar ['Op02-4', 'I', 54]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     54
+    ],
+    [
+     "Op02-4",
+     "I",
+     55
+    ],
+    [
+     "Op02-4",
+     "I",
+     56
+    ],
+    [
+     "Op02-4",
+     "I",
+     57
+    ],
+    [
+     "Op02-4",
+     "I",
+     58
+    ],
+    [
+     "Op02-4",
+     "I",
+     59
+    ],
+    [
+     "Op02-4",
+     "I",
+     60
+    ],
+    [
+     "Op02-4",
+     "I",
+     61
+    ]
+   ],
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       57
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       58
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       59
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-2",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "next staff begins with two"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     68
+    ],
+    [
+     "Op02-4",
+     "I",
+     69
+    ],
+    [
+     "Op02-4",
+     "I",
+     70
+    ],
+    [
+     "Op02-4",
+     "I",
+     71
+    ],
+    [
+     "Op02-4",
+     "I",
+     72
+    ],
+    [
+     "Op02-4",
+     "I",
+     73
+    ],
+    [
+     "Op02-4",
+     "I",
+     74
+    ]
+   ],
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       68
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       69
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       70
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       71
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       72
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       73
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       74
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-3",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "two at [['Op02-4', 'I', 75], ['Op02-4', 'I', 76]]",
+    "two at [['Op02-4', 'I', 77], ['Op02-4', 'I', 78]]",
+    "an end measure shorter than its bar ['Op02-4', 'I', 80]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     75
+    ],
+    [
+     "Op02-4",
+     "I",
+     76
+    ],
+    [
+     "Op02-4",
+     "I",
+     77
+    ],
+    [
+     "Op02-4",
+     "I",
+     78
+    ],
+    [
+     "Op02-4",
+     "I",
+     79
+    ],
+    [
+     "Op02-4",
+     "I",
+     80
+    ]
+   ],
+   "steps": {
+    "two": 2,
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       75
+      ],
+      [
+       "Op02-4",
+       "I",
+       76
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       77
+      ],
+      [
+       "Op02-4",
+       "I",
+       78
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       79
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       80
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-4",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "next staff begins with extra"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     81
+    ],
+    [
+     "Op02-4",
+     "I",
+     82
+    ],
+    [
+     "Op02-4",
+     "I",
+     83
+    ],
+    [
+     "Op02-4",
+     "I",
+     84
+    ],
+    [
+     "Op02-4",
+     "I",
+     85
+    ],
+    [
+     "Op02-4",
+     "I",
+     86
+    ],
+    [
+     "Op02-4",
+     "I",
+     87
+    ]
+   ],
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       81
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       82
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       83
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       84
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       85
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       86
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       87
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-5",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "extra at none"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     88
+    ],
+    [
+     "Op02-4",
+     "I",
+     89
+    ],
+    [
+     "Op02-4",
+     "I",
+     90
+    ],
+    [
+     "Op02-4",
+     "I",
+     91
+    ],
+    [
+     "Op02-4",
+     "I",
+     92
+    ]
+   ],
+   "steps": {
+    "extra": 1,
+    "one": 4,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       88
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       89
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       90
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       91
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       92
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-6",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "5 measures, 4 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     92
+    ],
+    [
+     "Op02-4",
+     "I",
+     93
+    ],
+    [
+     "Op02-4",
+     "I",
+     94
+    ],
+    [
+     "Op02-4",
+     "I",
+     95
+    ],
+    [
+     "Op02-4",
+     "I",
+     96
+    ]
+   ],
+   "steps": {
+    "split": 2,
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       92
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       93
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       94
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       95
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       96
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p2-7",
+   "part": "vn2",
+   "page": 2,
+   "why": [
+    "mis-measured: measured under half its page's median width, music past its ends"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     96
+    ],
+    [
+     "Op02-4",
+     "I",
+     97
+    ]
+   ],
+   "steps": {
+    "split": 1,
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       96
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       97
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ]
+  },
+  {
+   "staff": "p3-0",
+   "part": "vn2",
+   "page": 3,
+   "why": [
+    "an end measure shorter than its bar ['Op02-4', 'II', 1]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     1
+    ],
+    [
+     "Op02-4",
+     "II",
+     2
+    ],
+    [
+     "Op02-4",
+     "II",
+     3
+    ],
+    [
+     "Op02-4",
+     "II",
+     4
+    ],
+    [
+     "Op02-4",
+     "II",
+     5
+    ],
+    [
+     "Op02-4",
+     "II",
+     6
+    ],
+    [
+     "Op02-4",
+     "II",
+     7
+    ],
+    [
+     "Op02-4",
+     "II",
+     8
+    ],
+    [
+     "Op02-4",
+     "II",
+     9
+    ],
+    [
+     "Op02-4",
+     "II",
+     10
+    ]
+   ],
+   "steps": {
+    "one": 10
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p3-2",
+   "part": "vn2",
+   "page": 3,
+   "why": [
+    "unlike [['Op02-4', 'II', 21]]",
+    "unlike [['Op02-4', 'II', 22]]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     18
+    ],
+    [
+     "Op02-4",
+     "II",
+     19
+    ],
+    [
+     "Op02-4",
+     "II",
+     20
+    ],
+    [
+     "Op02-4",
+     "II",
+     21
+    ],
+    [
+     "Op02-4",
+     "II",
+     22
+    ],
+    [
+     "Op02-4",
+     "II",
+     23
+    ]
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       18
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       19
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       20
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       21
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p3-5",
+   "part": "vn2",
+   "page": 3,
+   "why": [
+    "unlike [['Op02-4', 'II', 39]]",
+    "unlike [['Op02-4', 'II', 40]]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     38
+    ],
+    [
+     "Op02-4",
+     "II",
+     39
+    ],
+    [
+     "Op02-4",
+     "II",
+     40
+    ],
+    [
+     "Op02-4",
+     "II",
+     41
+    ],
+    [
+     "Op02-4",
+     "II",
+     42
+    ],
+    [
+     "Op02-4",
+     "II",
+     43
+    ],
+    [
+     "Op02-4",
+     "II",
+     44
+    ],
+    [
+     "Op02-4",
+     "II",
+     45
+    ],
+    [
+     "Op02-4",
+     "II",
+     46
+    ],
+    [
+     "Op02-4",
+     "II",
+     47
+    ],
+    [
+     "Op02-4",
+     "II",
+     48
+    ]
+   ],
+   "steps": {
+    "one": 11
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       46
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       47
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p3-7",
+   "part": "vn2",
+   "page": 3,
+   "why": [
+    "extra at none"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     56
+    ],
+    [
+     "Op02-4",
+     "II",
+     57
+    ],
+    [
+     "Op02-4",
+     "II",
+     58
+    ],
+    [
+     "Op02-4",
+     "II",
+     59
+    ],
+    [
+     "Op02-4",
+     "II",
+     60
+    ]
+   ],
+   "steps": {
+    "one": 5,
+    "extra": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       57
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       58
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       59
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p4-4",
+   "part": "vn2",
+   "page": 4,
+   "why": [
+    "unlike [['Op02-4', 'III', 21]]",
+    "unlike [['Op02-4', 'III', 22]]"
+   ],
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     17
+    ],
+    [
+     "Op02-4",
+     "III",
+     18
+    ],
+    [
+     "Op02-4",
+     "III",
+     19
+    ],
+    [
+     "Op02-4",
+     "III",
+     20
+    ],
+    [
+     "Op02-4",
+     "III",
+     21
+    ],
+    [
+     "Op02-4",
+     "III",
+     22
+    ]
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       17
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       18
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       19
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       20
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       21
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  }
+ ]
+}
