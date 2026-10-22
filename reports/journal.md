@@ -4,6 +4,30 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-22: Re-detecting the paired manuscripts
+
+[Write-up](2026-10-22-redetection/)
+
+**Context.** The pairing kept 7,297 of 11,608 detected staves. The user:
+"reprocess and repair all paired manuscripts and harvest more bars", then
+"Are there other improvements to make before redetection? The point of the
+redetection is to get more bars for training or testing."
+
+**Question.** What in detection loses bars, and how many come back when
+it's fixed?
+
+**Finding.** Staves measured short (grey paper, faint ruling, lines off the
+trace, detector ends mid-line) and written staves missed in ruled slots.
+Fixed in detect.py; re-detected, re-read and re-paired: +520 staves, +3,122
+bars (+10%). Right ends on the reviewed staves within a space 47% → 59%.
+Most staves still left out are reading mistakes, not detection's.
+
+**Why a report.** The new sets replace the old ones for training, and the
+detection changes reach the labeler's own proposals.
+
+**What followed.** dataM4, dataW3, dataP3 and dataG213-3 built; not yet
+trained on or uploaded.
+
 ## 2026-10-20: Philhar's site, beyond the quartets
 
 [Notes](2026-10-20-philhar-site/)

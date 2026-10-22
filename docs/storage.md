@@ -87,6 +87,19 @@ space. `du` still counts them twice.
   the synthetic staves. `dataG213` is G. 213's three copies paired with
   OSSQ's encoding (`experiments/zeus/g213/README.md`). See
   `experiments/musvit/BRIEF.md`.
+- **`dataM4`, `dataW3`, `dataP3`, `dataG213-3` (2026-10-22):** the same
+  sets, lists and options, from a full re-detection of all 57 paired
+  sources (`detect.py`: each staff's ink threshold from its own lines and
+  spaces, short staves with music past their ends given the page's span, a
+  detector's end ignored where music runs on past it, ruled slots followed
+  along the neighbours' ruling). Every changed crop was read again
+  (7,544 staves with D3S-h96, 4,625 with C4-bocch-tf8-L) and every source
+  paired again; the short-staff rule now fires on 69 staves of the W and
+  G sources, against 275. Counts: dataM4 4,134 staves (23,900 bars),
+  against dataM3's 3,686 (21,294); dataW3 1,066 (7,415), against 999
+  (6,930); dataP3 21 (147), the same; dataG213-3 435 (2,440), against 430
+  (2,409). Crops changed, so a staff's image may differ from the earlier
+  sets'. Not yet on Modal.
 - **`dataS4`:** 3,970 synthetic staves that change clef inside the staff
   (cello bass to tenor or treble and back, viola alto to treble), drawn by
   `experiments/synth/gen_clefs.py` (README there). List
