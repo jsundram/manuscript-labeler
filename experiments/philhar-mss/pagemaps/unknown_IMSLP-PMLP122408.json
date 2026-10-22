@@ -1,0 +1,90 @@
+{
+ "source": "unknown_IMSLP-PMLP122408",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/unknown_IMSLP-PMLP122408/unknown_IMSLP-PMLP122408.pdf",
+ "pdf_sha256": "b7eae5ffe725e5bc56cfde3563e3738e009cbe79f3d699262cf1cee8f269c4a1",
+ "pdf_pages": 11,
+ "library": "not named (IMSLP upload by Zelenka, 2010)",
+ "rism": "none found (I-Gl M. (3) 22.7 has a different title)",
+ "layout": "parts",
+ "hand": "not named",
+ "date": "not given (IMSLP: manuscript)",
+ "works": {
+  "giardini-duo-F": "Duetto in F"
+ },
+ "order": [
+  "giardini-duo-F"
+ ],
+ "staves_estimate": 61,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "violin title page ('Violino')"
+  },
+  {
+   "pages": "2-5",
+   "part": "vn1"
+  },
+  {
+   "pages": "6",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "7",
+   "part": null,
+   "what": "cello title page: 'Duetto a Violoncello e Violino Del Sigr Felice Giardini, Violoncello'"
+  },
+  {
+   "pages": "8-11",
+   "part": "vc"
+  }
+ ],
+ "movements": [
+  {
+   "work": "giardini-duo-F",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "giardini-duo-F",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 3,
+   "staff": 2
+  },
+  {
+   "work": "giardini-duo-F",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "giardini-duo-F",
+   "part": "vc",
+   "mvt": "I",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "giardini-duo-F",
+   "part": "vc",
+   "mvt": "II",
+   "page": 9,
+   "staff": 2
+  },
+  {
+   "work": "giardini-duo-F",
+   "part": "vc",
+   "mvt": "III",
+   "page": 10,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-5:vn1,8-11:vc",
+ "notes": "A grey 150 dpi scan, cropped tight: the cello's 'Adagio' heading is cut off at the left edge (p. 9)."
+}

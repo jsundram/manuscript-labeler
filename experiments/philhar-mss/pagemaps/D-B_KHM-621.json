@@ -1,0 +1,119 @@
+{
+ "source": "D-B_KHM-621",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-B_KHM-621/D-B_KHM-621.pdf",
+ "pdf_sha256": "3a82dc6d676c25a96b09d24871a97186bce588d240a020f219d882a81ece2bad",
+ "pdf_pages": 13,
+ "library": "Staatsbibliothek zu Berlin",
+ "rism": "1001082803",
+ "layout": "parts",
+ "hand": "Copyist Schober (RISM); the hand of KHM 577 (Op. 32)",
+ "date": "ca. 1775-1800 (RISM)",
+ "works": {
+  "boccherini-G88": "G. 88 in F"
+ },
+ "order": [
+  "boccherini-G88"
+ ],
+ "staves_estimate": 80,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "cover and title (incipit on two staves)"
+  },
+  {
+   "pages": "2-4",
+   "part": "vc"
+  },
+  {
+   "pages": "5-7",
+   "part": "vn1"
+  },
+  {
+   "pages": "8",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "9-11",
+   "part": "vn2"
+  },
+  {
+   "pages": "12",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "13",
+   "part": null,
+   "what": "the vn1 cover with SBB's colour chart"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "II",
+   "page": 2,
+   "staff": 6
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "III",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 5,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 7,
+   "staff": 2
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 9,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 11,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-4:vc,5-7:vn1,9-11:vn2"
+}

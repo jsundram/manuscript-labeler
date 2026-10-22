@@ -1,0 +1,109 @@
+{
+ "source": "D-B_KHM-620",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-B_KHM-620/D-B_KHM-620.pdf",
+ "pdf_sha256": "a1b8e0ea494e7006a86a8d405b4f0dd2522bf0e9902c012a9af36485270539b5",
+ "pdf_pages": 13,
+ "library": "Staatsbibliothek zu Berlin",
+ "rism": "1001082801",
+ "layout": "parts",
+ "hand": "Copyist Schober (RISM); the hand of KHM 577 (Op. 32)",
+ "date": "ca. 1775-1800 (RISM)",
+ "works": {
+  "boccherini-G87": "G. 87 in D"
+ },
+ "order": [
+  "boccherini-G87"
+ ],
+ "staves_estimate": 94,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "cover and title (with an incipit on two staves)"
+  },
+  {
+   "pages": "2-4",
+   "part": "vc"
+  },
+  {
+   "pages": "5-8",
+   "part": "vn1"
+  },
+  {
+   "pages": "9-12",
+   "part": "vn2"
+  },
+  {
+   "pages": "13",
+   "part": null,
+   "what": "the vn1 cover with SBB's colour chart"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "II",
+   "page": 3,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "III",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 5,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 7,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 7,
+   "staff": 7
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 9,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 10,
+   "staff": 2
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 11,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-4:vc,5-8:vn1,9-12:vn2"
+}

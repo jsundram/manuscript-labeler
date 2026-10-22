@@ -1,0 +1,130 @@
+{
+ "source": "D-B_KHM-622",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-B_KHM-622/D-B_KHM-622.pdf",
+ "pdf_sha256": "c8a34c8878a3f90ef280e78e4587b5c6ee7e8b909c9f7951a41d49a191bdaad3",
+ "pdf_pages": 13,
+ "library": "Staatsbibliothek zu Berlin",
+ "rism": "1001082805",
+ "layout": "parts",
+ "hand": "Copyist Schober (RISM); the hand of KHM 577 (Op. 32)",
+ "date": "ca. 1775-1800 (RISM)",
+ "works": {
+  "boccherini-G85": "G. 85 in E"
+ },
+ "order": [
+  "boccherini-G85"
+ ],
+ "staves_estimate": 84,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "cover and title (incipit on two staves)"
+  },
+  {
+   "pages": "2-4",
+   "part": "vc"
+  },
+  {
+   "pages": "5-8",
+   "part": "vn1"
+  },
+  {
+   "pages": "9-12",
+   "part": "vn2"
+  },
+  {
+   "pages": "13",
+   "part": null,
+   "what": "the vn1 cover with SBB's colour chart"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "II",
+   "page": 2,
+   "staff": 9
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "III",
+   "page": 3,
+   "staff": 4
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "IV",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 5,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 7,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "IV",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 9,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 11,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "IV",
+   "page": 12,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-4:vc,5-8:vn1,9-12:vn2"
+}

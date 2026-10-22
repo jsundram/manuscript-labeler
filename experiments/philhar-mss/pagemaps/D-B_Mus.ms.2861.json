@@ -1,0 +1,320 @@
+{
+ "source": "D-B_Mus.ms.2861",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-B_Mus.ms.2861/D-B_Mus.ms.2861.pdf",
+ "pdf_sha256": "8b3b899ead0f750e9dec7b1929756b96c82e84f48bc4d539c9ebcc66118eddd0",
+ "pdf_pages": 41,
+ "library": "Staatsbibliothek zu Berlin",
+ "rism": "452007625",
+ "layout": "parts",
+ "hand": "not named (RISM, SBB)",
+ "date": "ca. 1780 (RISM)",
+ "works": {
+  "campioni-op7-1": "Duetto I",
+  "campioni-op7-2": "Duetto II",
+  "campioni-op7-3": "Duetto III",
+  "campioni-op7-4": "Duetto IV",
+  "campioni-op7-5": "Duetto V",
+  "campioni-op7-6": "Duetto VI"
+ },
+ "order": [
+  "campioni-op7-1",
+  "campioni-op7-2",
+  "campioni-op7-3",
+  "campioni-op7-4",
+  "campioni-op7-5",
+  "campioni-op7-6"
+ ],
+ "staves_estimate": 410,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "violin cover: 'Sei Duetti à Violino e Violoncello del Sig. Campioni'"
+  },
+  {
+   "pages": "2-19",
+   "part": "vn1"
+  },
+  {
+   "pages": "20",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "21",
+   "part": null,
+   "what": "cello cover"
+  },
+  {
+   "pages": "22-39",
+   "part": "vc"
+  },
+  {
+   "pages": "40",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "41",
+   "part": null,
+   "what": "SBB's colour chart"
+  }
+ ],
+ "movements": [
+  {
+   "work": "campioni-op7-1",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-1",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 3,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-1",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-1",
+   "part": "vc",
+   "mvt": "I",
+   "page": 22,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-1",
+   "part": "vc",
+   "mvt": "II",
+   "page": 23,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-1",
+   "part": "vc",
+   "mvt": "III",
+   "page": 24,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 5,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 7,
+   "staff": 2
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vc",
+   "mvt": "I",
+   "page": 25,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vc",
+   "mvt": "II",
+   "page": 26,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-2",
+   "part": "vc",
+   "mvt": "III",
+   "page": 27,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 9,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vc",
+   "mvt": "I",
+   "page": 28,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vc",
+   "mvt": "II",
+   "page": 29,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-3",
+   "part": "vc",
+   "mvt": "III",
+   "page": 30,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 11,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 12,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 13,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vc",
+   "mvt": "I",
+   "page": 31,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vc",
+   "mvt": "II",
+   "page": 32,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-4",
+   "part": "vc",
+   "mvt": "III",
+   "page": 33,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 14,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 15,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 16,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vc",
+   "mvt": "I",
+   "page": 34,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vc",
+   "mvt": "II",
+   "page": 35,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-5",
+   "part": "vc",
+   "mvt": "III",
+   "page": 36,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 17,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 18,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 19,
+   "staff": 7
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vc",
+   "mvt": "I",
+   "page": 37,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vc",
+   "mvt": "II",
+   "page": 38,
+   "staff": 1
+  },
+  {
+   "work": "campioni-op7-6",
+   "part": "vc",
+   "mvt": "III",
+   "page": 39,
+   "staff": 3
+  }
+ ],
+ "autodetect_pages": "2-19:vn1,22-39:vc",
+ "notes": "Each duet starts on a new page, headed 'Duetto I' ... 'VI'. Philhar's encoding mixes this copy with Bremner's print (London, ca. 1765); his comments mark 'BR:' and 'MS:' readings."
+}

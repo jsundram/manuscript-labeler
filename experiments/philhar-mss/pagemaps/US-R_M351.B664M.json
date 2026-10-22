@@ -1,0 +1,461 @@
+{
+ "source": "US-R_M351.B664M",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/US-R_M351.B664M/US-R_M351.B664M.pdf",
+ "pdf_sha256": "0cee8d5de6fd5924072ba5dc1e5256a495ee7e27c1341f13fd9d1b6e73f6b3d7",
+ "pdf_pages": 111,
+ "library": "Sibley Music Library, Eastman School (UR Research)",
+ "rism": "130195",
+ "layout": "parts",
+ "hand": "unknown copyist (Sibley)",
+ "date": "1766 (RISM: 1766p); ca. 1775 (Sibley, IMSLP)",
+ "works": {
+  "boccherini-G83": "Trio I",
+  "boccherini-G86": "Trio II",
+  "boccherini-G84": "Trio III",
+  "boccherini-G85": "Trio IV",
+  "boccherini-G87": "Trio V",
+  "boccherini-G88": "Trio VI"
+ },
+ "order": [
+  "boccherini-G83",
+  "boccherini-G86",
+  "boccherini-G84",
+  "boccherini-G85",
+  "boccherini-G87",
+  "boccherini-G88"
+ ],
+ "staves_estimate": 650,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "vn1 title: 'Violino Primo. Trij VI a Due Violini e Basso Del Sig. Luiggi Boccherini. Muta 2da'"
+  },
+  {
+   "pages": "2-37",
+   "part": "vn1"
+  },
+  {
+   "pages": "38",
+   "part": null,
+   "what": "vn2 title page"
+  },
+  {
+   "pages": "39-74",
+   "part": "vn2"
+  },
+  {
+   "pages": "75",
+   "part": null,
+   "what": "bass title page ('Basso')"
+  },
+  {
+   "pages": "76-111",
+   "part": "vc"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 12,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 14,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 16,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 18,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 20,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 22,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 24,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn1",
+   "mvt": "IV",
+   "page": 24,
+   "staff": 8
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 26,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 28,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 30,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 32,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 34,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 36,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 39,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 41,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 43,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 45,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 47,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 49,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 51,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 53,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 55,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 57,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 59,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 61,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vn2",
+   "mvt": "IV",
+   "page": 62,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 63,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 65,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 67,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 69,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 71,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 73,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "I",
+   "page": 76,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "II",
+   "page": 78,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "III",
+   "page": 80,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vc",
+   "mvt": "I",
+   "page": 82,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vc",
+   "mvt": "II",
+   "page": 84,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "vc",
+   "mvt": "III",
+   "page": 86,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vc",
+   "mvt": "I",
+   "page": 88,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vc",
+   "mvt": "II",
+   "page": 90,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "vc",
+   "mvt": "III",
+   "page": 92,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "I",
+   "page": 94,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "II",
+   "page": 96,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "III",
+   "page": 98,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "vc",
+   "mvt": "IV",
+   "page": 98,
+   "staff": 8
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "I",
+   "page": 100,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "II",
+   "page": 102,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "vc",
+   "mvt": "III",
+   "page": 104,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "I",
+   "page": 106,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "II",
+   "page": 108,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "vc",
+   "mvt": "III",
+   "page": 110,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-37:vn1,39-74:vn2,76-111:vc",
+ "notes": "The three 'manuscript' PDFs of UR Research's record, joined vn1, vn2, bass. The trios run in the copy's order (G. 83, 86, 84, 85, 87, 88), not Gerard's: give autopair --quartets in this order. Every movement starts a page, except G. 85's finale (Allegro), which starts on the minuet's page (staff 8) in vn1 and the bass. The bass part is headed 'Basso' and is the cello part (RISM: vlc; Philhar: Violoncelle); it mixes bass and tenor clef. Left out: the record's '(print)' files (the bound-with Venice print of G. 89-94) and colour covers. Some pages begin with empty ruled staves: staff numbers count staves with music."
+}

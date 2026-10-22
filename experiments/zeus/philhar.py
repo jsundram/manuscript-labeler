@@ -27,8 +27,9 @@ import tempfile
 from fractions import Fraction
 from pathlib import Path
 
-FILES = {"vn1": "01-V1", "vn2": "02-V2", "va": "03-A", "vc": "04-Vc"}
-ROMAN = ["I", "II", "III", "IV"]
+# va2: a quintet's second viola (M. Haydn's MH 411, in experiments/philhar-mss/adapt.py's layout)
+FILES = {"vn1": "01-V1", "vn2": "02-V2", "va": "03-A", "vc": "04-Vc", "va2": "05-A2"}
+ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 
 # bar lines drawn where a bar isn't over: a repeat sign inside a bar
 SPLITS = r'''

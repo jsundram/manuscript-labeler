@@ -1,0 +1,217 @@
+{
+ "source": "I-MC_1-C-7",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/I-MC_1-C-7/I-MC_1-C-7.pdf",
+ "pdf_sha256": "faad17421acc953fab7507ccce9ab0ec37784ccd0f658684fba22a67f6075b16",
+ "pdf_pages": 84,
+ "library": "Biblioteca statale del Monumento nazionale di Montecassino (Internet Culturale)",
+ "rism": "852015740 (set); 852015747-852015752 (1-C-7 g-l)",
+ "layout": "score (systems of 3 staves: vn1, vn2, vc)",
+ "hand": "not named",
+ "date": "1750-1799 (RISM)",
+ "works": {
+  "boccherini-G83": "Trio VII (1-C-7g)",
+  "boccherini-G86": "Trio VIII (1-C-7h)",
+  "boccherini-G87": "Trio IX (1-C-7i)",
+  "boccherini-G84": "Trio X (1-C-7j)",
+  "boccherini-G88": "Trio XI (1-C-7k)",
+  "boccherini-G85": "Trio XII (1-C-7l)"
+ },
+ "order": [
+  "boccherini-G83",
+  "boccherini-G86",
+  "boccherini-G87",
+  "boccherini-G84",
+  "boccherini-G88",
+  "boccherini-G85"
+ ],
+ "staves_estimate": 750,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1-11",
+   "part": "score",
+   "what": "Trio VII, G. 83 (f. 46v-51v)"
+  },
+  {
+   "pages": "12-23",
+   "part": "score",
+   "what": "Trio VIII, G. 86 (f. 52r-57v)"
+  },
+  {
+   "pages": "24-41",
+   "part": "score",
+   "what": "Trio IX, G. 87 (f. 58r-66v, system 2)"
+  },
+  {
+   "pages": "41-58",
+   "part": "score",
+   "what": "Trio X, G. 84 (f. 66v system 3 - 75r)"
+  },
+  {
+   "pages": "59-69",
+   "part": "score",
+   "what": "Trio XI, G. 88 (f. 75v-80v)"
+  },
+  {
+   "pages": "70-84",
+   "part": "score",
+   "what": "Trio XII, G. 85 (f. 81r-88r)"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G83",
+   "part": "score",
+   "mvt": "I",
+   "page": 1,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "score",
+   "mvt": "II",
+   "page": 7,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "score",
+   "mvt": "III",
+   "page": 8,
+   "staff": 4,
+   "system": 2
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "score",
+   "mvt": "I",
+   "page": 12,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "score",
+   "mvt": "II",
+   "page": 15,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G86",
+   "part": "score",
+   "mvt": "III",
+   "page": 21,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "score",
+   "mvt": "I",
+   "page": 24,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "score",
+   "mvt": "II",
+   "page": 31,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G87",
+   "part": "score",
+   "mvt": "III",
+   "page": 35,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "score",
+   "mvt": "I",
+   "page": 41,
+   "staff": 7,
+   "system": 3
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "score",
+   "mvt": "II",
+   "page": 47,
+   "staff": 7,
+   "system": 3
+  },
+  {
+   "work": "boccherini-G84",
+   "part": "score",
+   "mvt": "III",
+   "page": 50,
+   "staff": 4,
+   "system": 2
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "score",
+   "mvt": "I",
+   "page": 59,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "score",
+   "mvt": "II",
+   "page": 61,
+   "staff": 7,
+   "system": 3
+  },
+  {
+   "work": "boccherini-G88",
+   "part": "score",
+   "mvt": "III",
+   "page": 67,
+   "staff": 4,
+   "system": 2
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "score",
+   "mvt": "I",
+   "page": 70,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "score",
+   "mvt": "II",
+   "page": 75,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "score",
+   "mvt": "III",
+   "page": 78,
+   "staff": 1,
+   "system": 1
+  },
+  {
+   "work": "boccherini-G85",
+   "part": "score",
+   "mvt": "IV",
+   "page": 81,
+   "staff": 1,
+   "system": 1
+  }
+ ],
+ "autodetect_pages": "1-84:score",
+ "notes": "A score, three systems of three staves a page (about 9 staves). Internet Culturale serves it only at about 650 x 770 px (some 80 dpi), photographed open with the facing page's edge in frame. PDF page n is the volume's folio label in SOURCE.json. RISM's folio ranges hold, except that G. 87 ends and G. 84 begins on f. 66v (systems 2 and 3). G. 88's II and III starts are less sure (read at low resolution). autodetect's score mode takes systems of 4 staves only."
+}

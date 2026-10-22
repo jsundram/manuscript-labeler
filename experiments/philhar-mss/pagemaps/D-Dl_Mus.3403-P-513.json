@@ -1,0 +1,325 @@
+{
+ "source": "D-Dl_Mus.3403-P-513",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-Dl_Mus.3403-P-513/D-Dl_Mus.3403-P-513.pdf",
+ "pdf_sha256": "04adeda1a7e19343a20528f035d0b094eeac36a1d8d0d09b6f66daa00df1e71a",
+ "pdf_pages": 74,
+ "library": "SLUB Dresden",
+ "rism": "210044350",
+ "layout": "parts",
+ "hand": "not named; a Salzburg copy (title: 'von Robinig' crossed out, 'Weizner' added)",
+ "date": "ca. 1770-1800 (RISM); 1799 (SLUB)",
+ "works": {
+  "haydn-m-MH411": "Quintetto in F, MH 411"
+ },
+ "order": [
+  "haydn-m-MH411"
+ ],
+ "staves_estimate": 525,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "cover: 'Quintetto a 2 Violini 2 Viole e Violoncello Del Sigr Michele Haydn'"
+  },
+  {
+   "pages": "2-14",
+   "part": "vc"
+  },
+  {
+   "pages": "15",
+   "part": null,
+   "what": "vn1 title page"
+  },
+  {
+   "pages": "16-30",
+   "part": "vn1"
+  },
+  {
+   "pages": "31",
+   "part": null,
+   "what": "vn2 title page"
+  },
+  {
+   "pages": "32-46",
+   "part": "vn2"
+  },
+  {
+   "pages": "47",
+   "part": null,
+   "what": "va1 title page"
+  },
+  {
+   "pages": "48-59",
+   "part": "va"
+  },
+  {
+   "pages": "60",
+   "part": null,
+   "what": "blank ruled page"
+  },
+  {
+   "pages": "61",
+   "part": null,
+   "what": "va2 title page"
+  },
+  {
+   "pages": "62-73",
+   "part": "va2"
+  },
+  {
+   "pages": "74",
+   "part": null,
+   "what": "blank ruled page"
+  }
+ ],
+ "movements": [
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "II",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "III",
+   "page": 5,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "IV",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "V",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "VI",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vc",
+   "mvt": "VII",
+   "page": 14,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 16,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 20,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 22,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "IV",
+   "page": 23,
+   "staff": 3
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "V",
+   "page": 24,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "VI",
+   "page": 26,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn1",
+   "mvt": "VII",
+   "page": 30,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 32,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 36,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 38,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "IV",
+   "page": 39,
+   "staff": 2
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "V",
+   "page": 40,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "VI",
+   "page": 42,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "vn2",
+   "mvt": "VII",
+   "page": 46,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "I",
+   "page": 48,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "II",
+   "page": 50,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "III",
+   "page": 52,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "IV",
+   "page": 53,
+   "staff": 3
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "V",
+   "page": 54,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "VI",
+   "page": 56,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va",
+   "mvt": "VII",
+   "page": 59,
+   "staff": 4
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "I",
+   "page": 62,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "II",
+   "page": 64,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "III",
+   "page": 66,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "IV",
+   "page": 67,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "V",
+   "page": 68,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "VI",
+   "page": 70,
+   "staff": 1
+  },
+  {
+   "work": "haydn-m-MH411",
+   "part": "va2",
+   "mvt": "VII",
+   "page": 73,
+   "staff": 5
+  }
+ ],
+ "autodetect_pages": "2-14:vc,16-30:vn1,32-46:vn2,48-59:va,62-73:va2",
+ "notes": "Movements in Philhar's order: I Allegro aperto, II Menuetto-Trio, III Andante, IV Menuetto (Allegretto)-Trio, V Un poco allegretto with six variations, VI Finale: Rondo (Vivace assai), VII Marcia (Andantino). The parts agree with SLUB's manifest (vc 1-14, vn1 15-30, vn2 31-46, va1 47-60, va2 61-74). Single oblong pages, about 10 staves each. va = viola 1, va2 = viola 2."
+}

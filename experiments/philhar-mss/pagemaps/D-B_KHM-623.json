@@ -1,0 +1,120 @@
+{
+ "source": "D-B_KHM-623",
+ "pdf": "~/Data/manuscript-labeler/philhar-mss/D-B_KHM-623/D-B_KHM-623.pdf",
+ "pdf_sha256": "7bd32739df4f48e9ceb5fcc14d8e0156b1621ef537ef8f31cf8ebdd58332182a",
+ "pdf_pages": 13,
+ "library": "Staatsbibliothek zu Berlin",
+ "rism": "1001082806",
+ "layout": "parts",
+ "hand": "Copyist Schober (RISM); the hand of KHM 577 (Op. 32)",
+ "date": "ca. 1775-1800 (RISM)",
+ "works": {
+  "boccherini-G83": "G. 83 in E flat"
+ },
+ "order": [
+  "boccherini-G83"
+ ],
+ "staves_estimate": 76,
+ "staves_estimate_how": "counted by eye from contact sheets, +-15%",
+ "pages": [
+  {
+   "pages": "1",
+   "part": null,
+   "what": "cover and title (incipit on two staves)"
+  },
+  {
+   "pages": "2-4",
+   "part": "vc"
+  },
+  {
+   "pages": "5",
+   "part": null,
+   "what": "vn1 title page"
+  },
+  {
+   "pages": "6-8",
+   "part": "vn1"
+  },
+  {
+   "pages": "9",
+   "part": null,
+   "what": "vn2 title page"
+  },
+  {
+   "pages": "10-12",
+   "part": "vn2"
+  },
+  {
+   "pages": "13",
+   "part": null,
+   "what": "the vn1 cover with SBB's colour chart"
+  }
+ ],
+ "movements": [
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "I",
+   "page": 2,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "II",
+   "page": 3,
+   "staff": 4
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vc",
+   "mvt": "III",
+   "page": 4,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "I",
+   "page": 6,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "II",
+   "page": 7,
+   "staff": 4
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn1",
+   "mvt": "III",
+   "page": 8,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "I",
+   "page": 10,
+   "staff": 1
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "II",
+   "page": 11,
+   "staff": 4
+  },
+  {
+   "work": "boccherini-G83",
+   "part": "vn2",
+   "mvt": "III",
+   "page": 12,
+   "staff": 1
+  }
+ ],
+ "autodetect_pages": "2-4:vc,6-8:vn1,10-12:vn2",
+ "notes": "The cello's slow movement is headed 'Adagio assai', the violins' 'Largo assai' (Philhar: Largo assai)."
+}
