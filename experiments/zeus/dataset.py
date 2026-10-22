@@ -506,18 +506,15 @@ def staff_boxes(k: dict, part: str, mv: str, evs: dict, split_bars: set) -> tupl
 def pairs(a):
     """--pairs: the staves autopair.py kept on an unlabelled source, every
     measure one bar (its "plain" staves), with Philhar's encoding."""
-    import os
+    import philhar  # only --pairs needs it
     res = json.loads((a.results or HERE / "results" / f"autopair-{a.pairs}{'-any-count' if a.any_count else ''}.json").read_text())
     pdf = Path(json.loads((HERE / "auto" / f"{a.pairs}.json").read_text())["pdf"])
     allowed = set(a.quartets.split(","))
-    env = {k: v for k, v in os.environ.items() if k != "UV_PYTHON_INSTALL_DIR"}
     loaded = {}
 
     def load(q, mvt, part):
         if (q, mvt, part) not in loaded:
-            r = subprocess.run(["uv", "run", str(HERE / "philhar.py"), str(a.edition), str(a.philhar), q, part, mvt,
-                                "--json"], capture_output=True, text=True, check=True, env=env)
-            d = json.loads(r.stdout)
+            d = philhar.encoding(a.edition, a.philhar, q, part, mvt)
             loaded[(q, mvt, part)] = (d["bars"], marks(d["bars"]), philhar_structure(d["key_time"]),
                                       min(int(k) for k in d["bars"]), set(d.get("split", [])))
         return loaded[(q, mvt, part)]

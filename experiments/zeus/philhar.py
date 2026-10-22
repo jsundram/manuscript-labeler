@@ -17,10 +17,17 @@ It also says where a bar line falls inside a bar (a repeat with an
 upbeat): with --json, those bars are listed under "split"; and the key
 (in fifths) and time in force from each bar where they change, under
 "key_time".
+
+encoding() runs it once for each set of inputs (cache_key: Philhar's
+files for the quartet, this script, the edition's events.py, the part,
+the movement, LilyPond) and keeps its --json output in CACHE.
 """
 
+import hashlib
 import json
+import os
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -30,6 +37,7 @@ from pathlib import Path
 # va2: a quintet's second viola (M. Haydn's MH 411, in experiments/philhar-mss/adapt.py's layout)
 FILES = {"vn1": "01-V1", "vn2": "02-V2", "va": "03-A", "vc": "04-Vc", "va2": "05-A2"}
 ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
+CACHE = Path.home() / ".cache" / "manuscript-labeler" / "zeus" / "philhar"
 
 # bar lines drawn where a bar isn't over: a repeat sign inside a bar
 SPLITS = r'''
@@ -119,6 +127,38 @@ def read(edition: Path, quartet_dir: Path, part: str, mvt: str) -> tuple[dict, s
             bar -= 1
         split.add(bar)
     return events.parse(dump, m), split, changes
+
+
+def cache_key(edition: Path, quartet_dir: Path, part: str, mvt: str) -> str:
+    """A hash of everything a part's movement is read from: every file in
+    Philhar's quartet folder, this script, the edition's events.py (and the
+    facsimile.py it imports), the part and movement, and LilyPond (its path
+    and when it was installed)."""
+    h = hashlib.sha256(f"{part} {mvt}".encode())
+    lily = shutil.which("lilypond")
+    h.update(f"{lily} {Path(lily).resolve().stat().st_mtime if lily else ''}".encode())
+    scripts = edition / "scripts"
+    for f in [Path(__file__), scripts / "events.py", scripts / "facsimile.py",
+              *sorted(f for f in quartet_dir.rglob("*") if f.is_file())]:
+        h.update(f.name.encode() + b"\0" + (f.read_bytes() if f.exists() else b""))
+    return h.hexdigest()[:20]
+
+
+def encoding(edition: Path, lily: Path, quartet: str, part: str, mvt: str) -> dict:
+    """This script's --json output for a part's movement: from CACHE where
+    its inputs haven't changed (cache_key), else read with LilyPond (in its
+    own environment) and kept."""
+    f = CACHE / f"{quartet}.{part}.{mvt}.{cache_key(edition, lily / quartet, part, mvt)}.json"
+    if f.exists():
+        return json.loads(f.read_text())
+    r = subprocess.run(["uv", "run", str(Path(__file__).resolve()), str(edition), str(lily), quartet, part, mvt, "--json"],
+                       capture_output=True, text=True, check=True,
+                       env={k: v for k, v in os.environ.items() if k != "UV_PYTHON_INSTALL_DIR"})
+    f.parent.mkdir(parents=True, exist_ok=True)
+    tmp = f.with_suffix(f".{os.getpid()}.tmp")  # two runs may write the same one at once
+    tmp.write_text(r.stdout)
+    tmp.replace(f)
+    return json.loads(r.stdout)
 
 
 def main():

@@ -134,7 +134,6 @@ staves whose bars the readers agree on.
 import argparse
 import hashlib
 import json
-import os
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -435,10 +434,7 @@ def philhar_encoding(edition: Path, lily: Path, quartets: list[str], part: str):
     blocks, split_bars = [], set()
     for q in quartets:
         for mvt in philhar.movements(lily / q):
-            r = subprocess.run(["uv", "run", str(HERE / "philhar.py"), str(edition), str(lily), q, part, mvt, "--json"],
-                               capture_output=True, text=True, check=True,
-                               env={k: v for k, v in os.environ.items() if k != "UV_PYTHON_INSTALL_DIR"})
-            d = json.loads(r.stdout)
+            d = philhar.encoding(edition, lily, q, part, mvt)
             blocks.append(((q, mvt), d["bars"]))
             split_bars.update((q, mvt, b) for b in d["split"])
     return blocks, split_bars
