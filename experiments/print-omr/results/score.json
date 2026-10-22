@@ -1,0 +1,999 @@
+{
+ "score": {
+  "musvit:D3S-h96": {
+   "all": {
+    "bars": 4055,
+    "exact": 3133,
+    "exact, tremolos either way": 3206,
+    "rhythm": 3428,
+    "pitch": 3221,
+    "unread": 21,
+    "in multi-bar rests": 85
+   },
+   "G159": {
+    "bars": 1269,
+    "exact": 1065,
+    "exact, tremolos either way": 1094,
+    "rhythm": 1146,
+    "pitch": 1081,
+    "unread": 8,
+    "in multi-bar rests": 59
+   },
+   "G159 vn1": {
+    "bars": 322,
+    "exact": 291,
+    "exact, tremolos either way": 291,
+    "rhythm": 301,
+    "pitch": 295,
+    "unread": 1,
+    "in multi-bar rests": 10
+   },
+   "G159 I": {
+    "bars": 292,
+    "exact": 237,
+    "exact, tremolos either way": 239,
+    "rhythm": 258,
+    "pitch": 241,
+    "unread": 0
+   },
+   "vn1": {
+    "bars": 1021,
+    "exact": 801,
+    "exact, tremolos either way": 807,
+    "rhythm": 846,
+    "pitch": 843,
+    "unread": 2,
+    "in multi-bar rests": 14
+   },
+   "G159 II": {
+    "bars": 288,
+    "exact": 237,
+    "exact, tremolos either way": 261,
+    "rhythm": 247,
+    "pitch": 239,
+    "unread": 0,
+    "in multi-bar rests": 12
+   },
+   "G159 III": {
+    "bars": 689,
+    "exact": 591,
+    "exact, tremolos either way": 594,
+    "rhythm": 641,
+    "pitch": 601,
+    "unread": 8,
+    "in multi-bar rests": 47
+   },
+   "G159 vn2": {
+    "bars": 319,
+    "exact": 265,
+    "exact, tremolos either way": 273,
+    "rhythm": 281,
+    "pitch": 269,
+    "unread": 2,
+    "in multi-bar rests": 13
+   },
+   "vn2": {
+    "bars": 1016,
+    "exact": 816,
+    "exact, tremolos either way": 834,
+    "rhythm": 864,
+    "pitch": 833,
+    "unread": 5,
+    "in multi-bar rests": 19
+   },
+   "G159 va": {
+    "bars": 298,
+    "exact": 249,
+    "exact, tremolos either way": 257,
+    "rhythm": 279,
+    "pitch": 250,
+    "unread": 0,
+    "in multi-bar rests": 34
+   },
+   "va": {
+    "bars": 995,
+    "exact": 755,
+    "exact, tremolos either way": 779,
+    "rhythm": 850,
+    "pitch": 769,
+    "unread": 7,
+    "in multi-bar rests": 40
+   },
+   "G159 vc": {
+    "bars": 330,
+    "exact": 260,
+    "exact, tremolos either way": 273,
+    "rhythm": 285,
+    "pitch": 267,
+    "unread": 5,
+    "in multi-bar rests": 2
+   },
+   "vc": {
+    "bars": 1023,
+    "exact": 761,
+    "exact, tremolos either way": 786,
+    "rhythm": 868,
+    "pitch": 776,
+    "unread": 7,
+    "in multi-bar rests": 12
+   },
+   "G189": {
+    "bars": 786,
+    "exact": 487,
+    "exact, tremolos either way": 512,
+    "rhythm": 576,
+    "pitch": 521,
+    "unread": 2,
+    "in multi-bar rests": 6
+   },
+   "G189 vn1": {
+    "bars": 194,
+    "exact": 116,
+    "exact, tremolos either way": 122,
+    "rhythm": 126,
+    "pitch": 135,
+    "unread": 0,
+    "in multi-bar rests": 4
+   },
+   "G189 I": {
+    "bars": 268,
+    "exact": 106,
+    "exact, tremolos either way": 111,
+    "rhythm": 156,
+    "pitch": 121,
+    "unread": 0
+   },
+   "G189 II": {
+    "bars": 232,
+    "exact": 171,
+    "exact, tremolos either way": 177,
+    "rhythm": 187,
+    "pitch": 186,
+    "unread": 0
+   },
+   "G189 III": {
+    "bars": 286,
+    "exact": 210,
+    "exact, tremolos either way": 224,
+    "rhythm": 233,
+    "pitch": 214,
+    "unread": 2,
+    "in multi-bar rests": 6
+   },
+   "G189 vn2": {
+    "bars": 196,
+    "exact": 138,
+    "exact, tremolos either way": 142,
+    "rhythm": 151,
+    "pitch": 146,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G189 va": {
+    "bars": 198,
+    "exact": 99,
+    "exact, tremolos either way": 108,
+    "rhythm": 140,
+    "pitch": 103,
+    "unread": 2
+   },
+   "G189 vc": {
+    "bars": 198,
+    "exact": 134,
+    "exact, tremolos either way": 140,
+    "rhythm": 159,
+    "pitch": 137,
+    "unread": 0
+   },
+   "G213": {
+    "bars": 1264,
+    "exact": 893,
+    "exact, tremolos either way": 910,
+    "rhythm": 998,
+    "pitch": 921,
+    "unread": 11,
+    "in multi-bar rests": 8
+   },
+   "G213 vn1": {
+    "bars": 318,
+    "exact": 221,
+    "exact, tremolos either way": 221,
+    "rhythm": 243,
+    "pitch": 236,
+    "unread": 1
+   },
+   "G213 I": {
+    "bars": 372,
+    "exact": 191,
+    "exact, tremolos either way": 203,
+    "rhythm": 224,
+    "pitch": 202,
+    "unread": 4
+   },
+   "G213 II": {
+    "bars": 220,
+    "exact": 196,
+    "exact, tremolos either way": 196,
+    "rhythm": 204,
+    "pitch": 198,
+    "unread": 2,
+    "in multi-bar rests": 4
+   },
+   "G213 III": {
+    "bars": 116,
+    "exact": 84,
+    "exact, tremolos either way": 85,
+    "rhythm": 93,
+    "pitch": 90,
+    "unread": 0,
+    "in multi-bar rests": 4
+   },
+   "G213 IV": {
+    "bars": 556,
+    "exact": 422,
+    "exact, tremolos either way": 426,
+    "rhythm": 477,
+    "pitch": 431,
+    "unread": 5
+   },
+   "G213 vn2": {
+    "bars": 316,
+    "exact": 236,
+    "exact, tremolos either way": 241,
+    "rhythm": 252,
+    "pitch": 241,
+    "unread": 3,
+    "in multi-bar rests": 2
+   },
+   "G213 va": {
+    "bars": 312,
+    "exact": 228,
+    "exact, tremolos either way": 235,
+    "rhythm": 248,
+    "pitch": 234,
+    "unread": 5,
+    "in multi-bar rests": 6
+   },
+   "G213 vc": {
+    "bars": 318,
+    "exact": 208,
+    "exact, tremolos either way": 213,
+    "rhythm": 255,
+    "pitch": 210,
+    "unread": 2
+   },
+   "G228": {
+    "bars": 736,
+    "exact": 688,
+    "exact, tremolos either way": 690,
+    "rhythm": 708,
+    "pitch": 698,
+    "unread": 0,
+    "in multi-bar rests": 12
+   },
+   "G228 vn1": {
+    "bars": 187,
+    "exact": 173,
+    "exact, tremolos either way": 173,
+    "rhythm": 176,
+    "pitch": 177,
+    "unread": 0
+   },
+   "G228 I": {
+    "bars": 470,
+    "exact": 430,
+    "exact, tremolos either way": 432,
+    "rhythm": 447,
+    "pitch": 438,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G228 II": {
+    "bars": 266,
+    "exact": 258,
+    "exact, tremolos either way": 258,
+    "rhythm": 261,
+    "pitch": 260,
+    "unread": 0,
+    "in multi-bar rests": 10
+   },
+   "G228 vn2": {
+    "bars": 185,
+    "exact": 177,
+    "exact, tremolos either way": 178,
+    "rhythm": 180,
+    "pitch": 177,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G228 va": {
+    "bars": 187,
+    "exact": 179,
+    "exact, tremolos either way": 179,
+    "rhythm": 183,
+    "pitch": 182,
+    "unread": 0
+   },
+   "G228 vc": {
+    "bars": 177,
+    "exact": 159,
+    "exact, tremolos either way": 160,
+    "rhythm": 169,
+    "pitch": 162,
+    "unread": 0,
+    "in multi-bar rests": 10
+   }
+  },
+  "musvit:D3S-h96-ossq": {
+   "all": {
+    "bars": 4058,
+    "exact": 3349,
+    "exact, tremolos either way": 3439,
+    "rhythm": 3568,
+    "pitch": 3430,
+    "unread": 14,
+    "in multi-bar rests": 82
+   },
+   "G159": {
+    "bars": 1270,
+    "exact": 1134,
+    "exact, tremolos either way": 1170,
+    "rhythm": 1173,
+    "pitch": 1149,
+    "unread": 5,
+    "in multi-bar rests": 58
+   },
+   "G159 vn1": {
+    "bars": 322,
+    "exact": 303,
+    "exact, tremolos either way": 303,
+    "rhythm": 309,
+    "pitch": 308,
+    "unread": 0,
+    "in multi-bar rests": 10
+   },
+   "G159 I": {
+    "bars": 292,
+    "exact": 247,
+    "exact, tremolos either way": 250,
+    "rhythm": 270,
+    "pitch": 252,
+    "unread": 0
+   },
+   "vn1": {
+    "bars": 1021,
+    "exact": 867,
+    "exact, tremolos either way": 872,
+    "rhythm": 904,
+    "pitch": 914,
+    "unread": 0,
+    "in multi-bar rests": 14
+   },
+   "G159 II": {
+    "bars": 288,
+    "exact": 247,
+    "exact, tremolos either way": 272,
+    "rhythm": 251,
+    "pitch": 249,
+    "unread": 0,
+    "in multi-bar rests": 12
+   },
+   "G159 III": {
+    "bars": 690,
+    "exact": 640,
+    "exact, tremolos either way": 648,
+    "rhythm": 652,
+    "pitch": 648,
+    "unread": 5,
+    "in multi-bar rests": 46
+   },
+   "G159 vn2": {
+    "bars": 319,
+    "exact": 285,
+    "exact, tremolos either way": 298,
+    "rhythm": 293,
+    "pitch": 288,
+    "unread": 3,
+    "in multi-bar rests": 13
+   },
+   "vn2": {
+    "bars": 1018,
+    "exact": 876,
+    "exact, tremolos either way": 902,
+    "rhythm": 906,
+    "pitch": 885,
+    "unread": 7,
+    "in multi-bar rests": 17
+   },
+   "G159 va": {
+    "bars": 299,
+    "exact": 271,
+    "exact, tremolos either way": 280,
+    "rhythm": 280,
+    "pitch": 273,
+    "unread": 1,
+    "in multi-bar rests": 33
+   },
+   "va": {
+    "bars": 996,
+    "exact": 790,
+    "exact, tremolos either way": 821,
+    "rhythm": 865,
+    "pitch": 805,
+    "unread": 2,
+    "in multi-bar rests": 39
+   },
+   "G159 vc": {
+    "bars": 330,
+    "exact": 275,
+    "exact, tremolos either way": 289,
+    "rhythm": 291,
+    "pitch": 280,
+    "unread": 1,
+    "in multi-bar rests": 2
+   },
+   "vc": {
+    "bars": 1023,
+    "exact": 816,
+    "exact, tremolos either way": 844,
+    "rhythm": 893,
+    "pitch": 826,
+    "unread": 5,
+    "in multi-bar rests": 12
+   },
+   "G189": {
+    "bars": 786,
+    "exact": 533,
+    "exact, tremolos either way": 561,
+    "rhythm": 613,
+    "pitch": 562,
+    "unread": 2,
+    "in multi-bar rests": 6
+   },
+   "G189 vn1": {
+    "bars": 194,
+    "exact": 133,
+    "exact, tremolos either way": 138,
+    "rhythm": 145,
+    "pitch": 154,
+    "unread": 0,
+    "in multi-bar rests": 4
+   },
+   "G189 I": {
+    "bars": 268,
+    "exact": 138,
+    "exact, tremolos either way": 145,
+    "rhythm": 195,
+    "pitch": 146,
+    "unread": 0
+   },
+   "G189 II": {
+    "bars": 232,
+    "exact": 178,
+    "exact, tremolos either way": 182,
+    "rhythm": 185,
+    "pitch": 195,
+    "unread": 0
+   },
+   "G189 III": {
+    "bars": 286,
+    "exact": 217,
+    "exact, tremolos either way": 234,
+    "rhythm": 233,
+    "pitch": 221,
+    "unread": 2,
+    "in multi-bar rests": 6
+   },
+   "G189 vn2": {
+    "bars": 196,
+    "exact": 154,
+    "exact, tremolos either way": 160,
+    "rhythm": 163,
+    "pitch": 158,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G189 va": {
+    "bars": 198,
+    "exact": 100,
+    "exact, tremolos either way": 110,
+    "rhythm": 145,
+    "pitch": 104,
+    "unread": 1
+   },
+   "G189 vc": {
+    "bars": 198,
+    "exact": 146,
+    "exact, tremolos either way": 153,
+    "rhythm": 160,
+    "pitch": 146,
+    "unread": 1
+   },
+   "G213": {
+    "bars": 1266,
+    "exact": 984,
+    "exact, tremolos either way": 1008,
+    "rhythm": 1069,
+    "pitch": 1011,
+    "unread": 7,
+    "in multi-bar rests": 6
+   },
+   "G213 vn1": {
+    "bars": 318,
+    "exact": 260,
+    "exact, tremolos either way": 260,
+    "rhythm": 276,
+    "pitch": 275,
+    "unread": 0
+   },
+   "G213 I": {
+    "bars": 372,
+    "exact": 226,
+    "exact, tremolos either way": 242,
+    "rhythm": 258,
+    "pitch": 242,
+    "unread": 5
+   },
+   "G213 II": {
+    "bars": 222,
+    "exact": 207,
+    "exact, tremolos either way": 207,
+    "rhythm": 215,
+    "pitch": 208,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G213 III": {
+    "bars": 116,
+    "exact": 93,
+    "exact, tremolos either way": 94,
+    "rhythm": 95,
+    "pitch": 96,
+    "unread": 1,
+    "in multi-bar rests": 4
+   },
+   "G213 IV": {
+    "bars": 556,
+    "exact": 458,
+    "exact, tremolos either way": 465,
+    "rhythm": 501,
+    "pitch": 465,
+    "unread": 1
+   },
+   "G213 vn2": {
+    "bars": 318,
+    "exact": 256,
+    "exact, tremolos either way": 262,
+    "rhythm": 267,
+    "pitch": 258,
+    "unread": 4
+   },
+   "G213 va": {
+    "bars": 312,
+    "exact": 239,
+    "exact, tremolos either way": 251,
+    "rhythm": 257,
+    "pitch": 245,
+    "unread": 0,
+    "in multi-bar rests": 6
+   },
+   "G213 vc": {
+    "bars": 318,
+    "exact": 229,
+    "exact, tremolos either way": 235,
+    "rhythm": 269,
+    "pitch": 233,
+    "unread": 3
+   },
+   "G228": {
+    "bars": 736,
+    "exact": 698,
+    "exact, tremolos either way": 700,
+    "rhythm": 713,
+    "pitch": 708,
+    "unread": 0,
+    "in multi-bar rests": 12
+   },
+   "G228 vn1": {
+    "bars": 187,
+    "exact": 171,
+    "exact, tremolos either way": 171,
+    "rhythm": 174,
+    "pitch": 177,
+    "unread": 0
+   },
+   "G228 I": {
+    "bars": 470,
+    "exact": 435,
+    "exact, tremolos either way": 437,
+    "rhythm": 449,
+    "pitch": 445,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G228 II": {
+    "bars": 266,
+    "exact": 263,
+    "exact, tremolos either way": 263,
+    "rhythm": 264,
+    "pitch": 263,
+    "unread": 0,
+    "in multi-bar rests": 10
+   },
+   "G228 vn2": {
+    "bars": 185,
+    "exact": 181,
+    "exact, tremolos either way": 182,
+    "rhythm": 183,
+    "pitch": 181,
+    "unread": 0,
+    "in multi-bar rests": 2
+   },
+   "G228 va": {
+    "bars": 187,
+    "exact": 180,
+    "exact, tremolos either way": 180,
+    "rhythm": 183,
+    "pitch": 183,
+    "unread": 0
+   },
+   "G228 vc": {
+    "bars": 177,
+    "exact": 166,
+    "exact, tremolos either way": 167,
+    "rhythm": 173,
+    "pitch": 167,
+    "unread": 0,
+    "in multi-bar rests": 10
+   }
+  },
+  "mxl:audiveris": {
+   "all": {
+    "bars": 4103,
+    "exact": 2502,
+    "exact, tremolos either way": 2572,
+    "rhythm": 2605,
+    "pitch": 2766,
+    "unread": 67,
+    "in multi-bar rests": 37
+   },
+   "G159": {
+    "bars": 1296,
+    "exact": 777,
+    "exact, tremolos either way": 805,
+    "rhythm": 795,
+    "pitch": 874,
+    "unread": 32,
+    "in multi-bar rests": 32
+   },
+   "G159 vn1": {
+    "bars": 321,
+    "exact": 202,
+    "exact, tremolos either way": 202,
+    "rhythm": 204,
+    "pitch": 228,
+    "unread": 3,
+    "in multi-bar rests": 11
+   },
+   "G159 I": {
+    "bars": 292,
+    "exact": 152,
+    "exact, tremolos either way": 155,
+    "rhythm": 162,
+    "pitch": 172,
+    "unread": 6
+   },
+   "vn1": {
+    "bars": 1024,
+    "exact": 593,
+    "exact, tremolos either way": 596,
+    "rhythm": 610,
+    "pitch": 669,
+    "unread": 8,
+    "in multi-bar rests": 11
+   },
+   "G159 II": {
+    "in multi-bar rests": 11,
+    "bars": 289,
+    "exact": 162,
+    "exact, tremolos either way": 180,
+    "rhythm": 164,
+    "pitch": 182,
+    "unread": 5
+   },
+   "G159 III": {
+    "bars": 715,
+    "exact": 463,
+    "exact, tremolos either way": 470,
+    "rhythm": 469,
+    "pitch": 520,
+    "unread": 21,
+    "in multi-bar rests": 21
+   },
+   "G159 vn2": {
+    "bars": 321,
+    "exact": 213,
+    "exact, tremolos either way": 225,
+    "rhythm": 218,
+    "pitch": 237,
+    "unread": 8,
+    "in multi-bar rests": 11
+   },
+   "vn2": {
+    "bars": 1024,
+    "exact": 688,
+    "exact, tremolos either way": 705,
+    "rhythm": 714,
+    "pitch": 755,
+    "unread": 17,
+    "in multi-bar rests": 11
+   },
+   "G159 va": {
+    "bars": 322,
+    "exact": 206,
+    "exact, tremolos either way": 211,
+    "rhythm": 211,
+    "pitch": 220,
+    "unread": 12,
+    "in multi-bar rests": 10
+   },
+   "va": {
+    "bars": 1023,
+    "exact": 612,
+    "exact, tremolos either way": 637,
+    "rhythm": 653,
+    "pitch": 669,
+    "unread": 22,
+    "in multi-bar rests": 12
+   },
+   "G159 vc": {
+    "bars": 332,
+    "exact": 156,
+    "exact, tremolos either way": 167,
+    "rhythm": 162,
+    "pitch": 189,
+    "unread": 9
+   },
+   "vc": {
+    "bars": 1032,
+    "exact": 609,
+    "exact, tremolos either way": 634,
+    "rhythm": 628,
+    "pitch": 673,
+    "unread": 20,
+    "in multi-bar rests": 3
+   },
+   "G189": {
+    "bars": 792,
+    "exact": 431,
+    "exact, tremolos either way": 452,
+    "rhythm": 475,
+    "pitch": 480,
+    "unread": 8
+   },
+   "G189 vn1": {
+    "bars": 198,
+    "exact": 103,
+    "exact, tremolos either way": 106,
+    "rhythm": 108,
+    "pitch": 124,
+    "unread": 0
+   },
+   "G189 I": {
+    "bars": 268,
+    "exact": 101,
+    "exact, tremolos either way": 108,
+    "rhythm": 134,
+    "pitch": 121,
+    "unread": 3
+   },
+   "G189 II": {
+    "bars": 232,
+    "exact": 144,
+    "exact, tremolos either way": 148,
+    "rhythm": 146,
+    "pitch": 161,
+    "unread": 3
+   },
+   "G189 III": {
+    "bars": 292,
+    "exact": 186,
+    "exact, tremolos either way": 196,
+    "rhythm": 195,
+    "pitch": 198,
+    "unread": 2
+   },
+   "G189 vn2": {
+    "bars": 198,
+    "exact": 126,
+    "exact, tremolos either way": 128,
+    "rhythm": 134,
+    "pitch": 137,
+    "unread": 4
+   },
+   "G189 va": {
+    "bars": 198,
+    "exact": 83,
+    "exact, tremolos either way": 93,
+    "rhythm": 113,
+    "pitch": 92,
+    "unread": 1
+   },
+   "G189 vc": {
+    "bars": 198,
+    "exact": 119,
+    "exact, tremolos either way": 125,
+    "rhythm": 120,
+    "pitch": 127,
+    "unread": 3
+   },
+   "G213": {
+    "bars": 1270,
+    "exact": 725,
+    "exact, tremolos either way": 743,
+    "rhythm": 750,
+    "pitch": 823,
+    "unread": 18,
+    "in multi-bar rests": 2
+   },
+   "G213 vn1": {
+    "bars": 318,
+    "exact": 155,
+    "exact, tremolos either way": 155,
+    "rhythm": 163,
+    "pitch": 178,
+    "unread": 4
+   },
+   "G213 I": {
+    "bars": 372,
+    "exact": 120,
+    "exact, tremolos either way": 127,
+    "rhythm": 131,
+    "pitch": 177,
+    "unread": 9
+   },
+   "G213 II": {
+    "bars": 224,
+    "exact": 173,
+    "exact, tremolos either way": 174,
+    "rhythm": 177,
+    "pitch": 173,
+    "unread": 6
+   },
+   "G213 III": {
+    "bars": 118,
+    "exact": 62,
+    "exact, tremolos either way": 63,
+    "rhythm": 63,
+    "pitch": 73,
+    "unread": 2,
+    "in multi-bar rests": 2
+   },
+   "G213 IV": {
+    "bars": 556,
+    "exact": 370,
+    "exact, tremolos either way": 379,
+    "rhythm": 379,
+    "pitch": 400,
+    "unread": 1
+   },
+   "G213 vn2": {
+    "bars": 318,
+    "exact": 211,
+    "exact, tremolos either way": 213,
+    "rhythm": 217,
+    "pitch": 239,
+    "unread": 4
+   },
+   "G213 va": {
+    "bars": 316,
+    "exact": 169,
+    "exact, tremolos either way": 178,
+    "rhythm": 173,
+    "pitch": 199,
+    "unread": 7,
+    "in multi-bar rests": 2
+   },
+   "G213 vc": {
+    "bars": 318,
+    "exact": 190,
+    "exact, tremolos either way": 197,
+    "rhythm": 197,
+    "pitch": 207,
+    "unread": 3
+   },
+   "G228": {
+    "bars": 745,
+    "exact": 569,
+    "exact, tremolos either way": 572,
+    "rhythm": 585,
+    "pitch": 589,
+    "unread": 9,
+    "in multi-bar rests": 3
+   },
+   "G228 vn1": {
+    "bars": 187,
+    "exact": 133,
+    "exact, tremolos either way": 133,
+    "rhythm": 135,
+    "pitch": 139,
+    "unread": 1
+   },
+   "G228 I": {
+    "bars": 472,
+    "exact": 353,
+    "exact, tremolos either way": 355,
+    "rhythm": 363,
+    "pitch": 372,
+    "unread": 5
+   },
+   "G228 II": {
+    "bars": 273,
+    "exact": 216,
+    "exact, tremolos either way": 217,
+    "rhythm": 222,
+    "pitch": 217,
+    "unread": 4,
+    "in multi-bar rests": 3
+   },
+   "G228 vn2": {
+    "bars": 187,
+    "exact": 138,
+    "exact, tremolos either way": 139,
+    "rhythm": 145,
+    "pitch": 142,
+    "unread": 1
+   },
+   "G228 va": {
+    "bars": 187,
+    "exact": 154,
+    "exact, tremolos either way": 155,
+    "rhythm": 156,
+    "pitch": 158,
+    "unread": 2
+   },
+   "G228 vc": {
+    "bars": 184,
+    "exact": 144,
+    "exact, tremolos either way": 145,
+    "rhythm": 149,
+    "pitch": 150,
+    "unread": 5,
+    "in multi-bar rests": 3
+   }
+  }
+ },
+ "agreement": {
+  "musvit:D3S-h96 + musvit:D3S-h96-ossq": {
+   "encoded bars": 4140,
+   "agreed": 3342,
+   "agreed and right": 3110,
+   "agreed, filling the bar": 3208,
+   "agreed, filling the bar, and right": 3014,
+   "agreed, not paired with a bar": 44
+  },
+  "musvit:D3S-h96 + mxl:audiveris": {
+   "encoded bars": 4140,
+   "agreed": 2326,
+   "agreed and right": 2225,
+   "agreed, filling the bar": 2212,
+   "agreed, filling the bar, and right": 2134,
+   "agreed, not paired with a bar": 16
+  },
+  "musvit:D3S-h96-ossq + mxl:audiveris": {
+   "encoded bars": 4140,
+   "agreed": 2480,
+   "agreed and right": 2379,
+   "agreed, filling the bar": 2370,
+   "agreed, filling the bar, and right": 2283,
+   "agreed, not paired with a bar": 15
+  },
+  "musvit:D3S-h96 + musvit:D3S-h96-ossq + mxl:audiveris": {
+   "encoded bars": 4140,
+   "agreed": 2265,
+   "agreed and right": 2179,
+   "agreed, filling the bar": 2162,
+   "agreed, filling the bar, and right": 2092
+  }
+ }
+}

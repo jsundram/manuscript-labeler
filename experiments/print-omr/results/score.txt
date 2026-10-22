@@ -1,0 +1,19 @@
+musvit:D3S-h96: 4055 bars; exact 3133 (77.3%; tremolos either way 79.1%), rhythm 84.5%, pitch 79.4%; unread 21; in multi-bar rests 85
+   G. 159: exact 1065/1269 (83.9%), rhythm 90.3%, pitch 85.2%
+   G. 189: exact 487/786 (62.0%), rhythm 73.3%, pitch 66.3%
+   G. 213: exact 893/1264 (70.6%), rhythm 79.0%, pitch 72.9%
+   G. 228: exact 688/736 (93.5%), rhythm 96.2%, pitch 94.8%
+musvit:D3S-h96-ossq: 4058 bars; exact 3349 (82.5%; tremolos either way 84.7%), rhythm 87.9%, pitch 84.5%; unread 14; in multi-bar rests 82
+   G. 159: exact 1134/1270 (89.3%), rhythm 92.4%, pitch 90.5%
+   G. 189: exact 533/786 (67.8%), rhythm 78.0%, pitch 71.5%
+   G. 213: exact 984/1266 (77.7%), rhythm 84.4%, pitch 79.9%
+   G. 228: exact 698/736 (94.8%), rhythm 96.9%, pitch 96.2%
+mxl:audiveris: 4103 bars; exact 2502 (61.0%; tremolos either way 62.7%), rhythm 63.5%, pitch 67.4%; unread 67; in multi-bar rests 37
+   G. 159: exact 777/1296 (60.0%), rhythm 61.3%, pitch 67.4%
+   G. 189: exact 431/792 (54.4%), rhythm 60.0%, pitch 60.6%
+   G. 213: exact 725/1270 (57.1%), rhythm 59.1%, pitch 64.8%
+   G. 228: exact 569/745 (76.4%), rhythm 78.5%, pitch 79.1%
+musvit:D3S-h96 + musvit:D3S-h96-ossq: agreed 3342 of 4140 encoded bars (80.7%); right 3110 (93.1%); not paired with a bar 44; filling the bar: 3208 (77.5%), right 94.0%
+musvit:D3S-h96 + mxl:audiveris: agreed 2326 of 4140 encoded bars (56.2%); right 2225 (95.7%); not paired with a bar 16; filling the bar: 2212 (53.4%), right 96.5%
+musvit:D3S-h96-ossq + mxl:audiveris: agreed 2480 of 4140 encoded bars (59.9%); right 2379 (95.9%); not paired with a bar 15; filling the bar: 2370 (57.2%), right 96.3%
+musvit:D3S-h96 + musvit:D3S-h96-ossq + mxl:audiveris: agreed 2265 (54.7%); right 96.2%; filling the bar 2162 (52.2%), right 96.8%

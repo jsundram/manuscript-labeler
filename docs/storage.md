@@ -16,7 +16,7 @@ of these or should be deleted.
 **The registry:** `~/Data/registry.toml` lists every folder in `~/Data`,
 with the projects that rely on it; `~/Data/README.md` says how to add one.
 A dataset with no consumers can be deleted. This project is registered as a
-consumer of `musicorpus` and `openscore-quartets`, and of its own folder.
+consumer of `musicorpus` and `openscore-quartets`, of `ossq-omr` and BA 2676, and of its own folder.
 This file is the lasting record of those dependencies: when the labeler
 starts or stops relying on a dataset, change both this file and the
 registry.
@@ -26,7 +26,10 @@ registry.
 | `OMR/datasets/musicorpus` | MusiCorpus v1.0: Dolores and OmniOMR staves with their MusicXML (below) | 4.0 GB | LINDAT, link below | Test staves on Modal (`musvit-staves/public`) |
 | `OMR/datasets/openscore-quartets` | 102 classical quartets as MusicXML; CC0 | 15 MB | [OpenScore String Quartets](https://github.com/OpenScore/StringQuartets) | |
 | `OMR/datasets/ossq-omr` | OSSQ-OMR's metadata (scan URLs, splits) and, optionally, its IMSLP scans; made by `experiments/ossq/register_local.sh` | small (1 GB with scans) | [ossq-omr](https://github.com/MALerLab/ossq-omr) omr-dev 7a17e45; IMSLP | Staves on Modal (`musvit-staves/ossq`), scans and renders in `ossq-raw` |
+| `manuscript-labeler/imslp/barenreiter-ba2676` | Bärenreiter BA 2676, Boccherini's *Ausgewählte Streichquartette* (1952): four engraved parts and the covers; public domain per IMSLP. Its page map is `experiments/print-omr/pagemap.json` | 7 MB | IMSLP #370564–370568, a subscriber's browser download (captcha) | |
 | `manuscript-labeler/philhar-site` | Philhar's LilyPond zips for three manuscript-sourced works (M. Haydn MH 411, Campioni op. 7, Hofmann), with a README; CC BY-NC-SA | 7 MB | Wayback Machine captures of le-concert.pagesperso-orange.fr; see `reports/2026-10-20-philhar-site/` | |
+| `manuscript-labeler/experiments/print-omr` | BA 2676's pages at 300 dpi (`pages/`), the same cleaned for Audiveris (`clean/`), and Audiveris's MusicXML and logs (`audiveris/`) | 0.1 GB | `experiments/print-omr` (README, "Rerun") | |
+| `manuscript-labeler/tools/audiveris-5.11.0` | Audiveris 5.11.0 (AGPL-3.0), the macOS arm64 app taken out of its release .dmg, with its own Java | 0.2 GB | [GitHub release](https://github.com/Audiveris/audiveris/releases/tag/5.11.0) | |
 | `manuscript-labeler/zeus` | Staff sets, page renders, Zeus runs (below) | 16 GB | `experiments/zeus` and `experiments/synth` | Most staff sets on Modal (`musvit-staves`) |
 | `manuscript-labeler/musvit` | MuSViT's code (an unmodified clone of its GitHub repo), weights and runs | 2 GB | `experiments/musvit` | Readers as GitHub releases; runs on Modal (`musvit`) |
 | `manuscript-labeler/experiments/sam` | Segment Anything: training and test windows, trained decoders, scores | 0.6 GB | `experiments/synth/sam_*.py` | Later runs on Modal (`copyist-sam-runs`) |

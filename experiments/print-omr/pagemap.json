@@ -1,0 +1,1067 @@
+{
+ "edition": "Bärenreiter BA 2676, Boccherini, Ausgewählte Streichquartette, ed. Walter Upmeyer (1952)",
+ "source": "IMSLP #370564-370568",
+ "folder": "~/Data/manuscript-labeler/imslp/barenreiter-ba2676/",
+ "note": "Write pagemap.json: Bärenreiter BA 2676's quartets and movements, by PDF page, in each part. Read by eye from the scans (2026-10-20). PDF page n is printed page n+1 in every part (PDF 1 is the part's cover). A movement's range runs from the page it starts on to the page it ends on; a page can hold the end of one movement and the start of the next.",
+ "covers": "IMSLP370568-PMLP598459-Boccherini_Selected_String_Quartets_Covers.pdf (covers, German foreword)",
+ "parts": {
+  "vn1": {
+   "pdf": "IMSLP370564-PMLP598459-Boccherini_Str._Qu._op.2.1_Vl1.pdf",
+   "pdf_pages": 35
+  },
+  "vn2": {
+   "pdf": "IMSLP370565-PMLP598459-Boccherini_Str._Qu._op.2.1_Vl2.pdf",
+   "pdf_pages": 31
+  },
+  "va": {
+   "pdf": "IMSLP370566-PMLP598459-Boccherini_Str._Qu._op.2.1_Vla.pdf",
+   "pdf_pages": 30
+  },
+  "vc": {
+   "pdf": "IMSLP370567-PMLP598459-Boccherini_Str._Qu._op.2.1_Vc.pdf",
+   "pdf_pages": 30
+  }
+ },
+ "quartets": [
+  {
+   "no": "I",
+   "G": 159,
+   "title": "Quartetto c-moll, op. 1 Nr. 1 (1761)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      2,
+      4
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro commodo",
+       "pages": [
+        2,
+        2
+       ]
+      },
+      "II": {
+       "title": "Largo",
+       "pages": [
+        3,
+        3
+       ]
+      },
+      "III": {
+       "title": "Allegro",
+       "pages": [
+        3,
+        4
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      2,
+      4
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro commodo",
+       "pages": [
+        2,
+        2
+       ]
+      },
+      "II": {
+       "title": "Largo",
+       "pages": [
+        3,
+        3
+       ]
+      },
+      "III": {
+       "title": "Allegro",
+       "pages": [
+        3,
+        4
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      2,
+      4
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro commodo",
+       "pages": [
+        2,
+        2
+       ]
+      },
+      "II": {
+       "title": "Largo",
+       "pages": [
+        3,
+        3
+       ]
+      },
+      "III": {
+       "title": "Allegro",
+       "pages": [
+        3,
+        4
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      2,
+      4
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro commodo",
+       "pages": [
+        2,
+        2
+       ]
+      },
+      "II": {
+       "title": "Largo",
+       "pages": [
+        3,
+        3
+       ]
+      },
+      "III": {
+       "title": "Allegro",
+       "pages": [
+        3,
+        4
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "II",
+   "G": 189,
+   "title": "Quartetto D-dur, op. 24 Nr. 5 (1778)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      5,
+      8
+     ],
+     "movements": {
+      "I": {
+       "title": "Moderato",
+       "pages": [
+        5,
+        6
+       ]
+      },
+      "II": {
+       "title": "Grave",
+       "pages": [
+        7,
+        7
+       ]
+      },
+      "III": {
+       "title": "Allegro assai",
+       "pages": [
+        8,
+        8
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      5,
+      8
+     ],
+     "movements": {
+      "I": {
+       "title": "Moderato",
+       "pages": [
+        5,
+        6
+       ]
+      },
+      "II": {
+       "title": "Grave",
+       "pages": [
+        7,
+        7
+       ]
+      },
+      "III": {
+       "title": "Allegro assai",
+       "pages": [
+        7,
+        8
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      5,
+      8
+     ],
+     "movements": {
+      "I": {
+       "title": "Moderato",
+       "pages": [
+        5,
+        6
+       ]
+      },
+      "II": {
+       "title": "Grave",
+       "pages": [
+        7,
+        7
+       ]
+      },
+      "III": {
+       "title": "Allegro assai",
+       "pages": [
+        7,
+        8
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      5,
+      7
+     ],
+     "movements": {
+      "I": {
+       "title": "Moderato",
+       "pages": [
+        5,
+        6
+       ]
+      },
+      "II": {
+       "title": "Grave",
+       "pages": [
+        6,
+        6
+       ]
+      },
+      "III": {
+       "title": "Allegro assai",
+       "pages": [
+        7,
+        7
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "III",
+   "G": 214,
+   "title": "Quartetto c-moll, op. 41 (1788)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      9,
+      13
+     ],
+     "movements": {
+      "I": {
+       "title": "Prestissimo",
+       "pages": [
+        9,
+        11
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        11,
+        12
+       ]
+      },
+      "III": {
+       "title": "Flebile",
+       "pages": [
+        12,
+        12
+       ]
+      },
+      "IV": {
+       "title": "Prestissimo",
+       "pages": [
+        12,
+        13
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      9,
+      12
+     ],
+     "movements": {
+      "I": {
+       "title": "Prestissimo",
+       "pages": [
+        9,
+        10
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        11,
+        11
+       ]
+      },
+      "III": {
+       "title": "Flebile",
+       "pages": [
+        11,
+        12
+       ]
+      },
+      "IV": {
+       "title": "Prestissimo",
+       "pages": [
+        12,
+        12
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      9,
+      12
+     ],
+     "movements": {
+      "I": {
+       "title": "Prestissimo",
+       "pages": [
+        9,
+        10
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        11,
+        11
+       ]
+      },
+      "III": {
+       "title": "Flebile",
+       "pages": [
+        11,
+        11
+       ]
+      },
+      "IV": {
+       "title": "Prestissimo",
+       "pages": [
+        12,
+        12
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      8,
+      12
+     ],
+     "movements": {
+      "I": {
+       "title": "Prestissimo",
+       "pages": [
+        8,
+        10
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        10,
+        10
+       ]
+      },
+      "III": {
+       "title": "Flebile",
+       "pages": [
+        11,
+        11
+       ]
+      },
+      "IV": {
+       "title": "Prestissimo",
+       "pages": [
+        11,
+        12
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "IV",
+   "G": 213,
+   "title": "Quartetto A-dur, op. 39 (1787)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      14,
+      18
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro moderato",
+       "pages": [
+        14,
+        16
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        16,
+        16
+       ]
+      },
+      "III": {
+       "title": "Grave",
+       "pages": [
+        17,
+        17
+       ]
+      },
+      "IV": {
+       "title": "Allegro giusto",
+       "pages": [
+        17,
+        18
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      13,
+      16
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro moderato",
+       "pages": [
+        13,
+        14
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        14,
+        14
+       ]
+      },
+      "III": {
+       "title": "Grave",
+       "pages": [
+        15,
+        15
+       ]
+      },
+      "IV": {
+       "title": "Allegro giusto",
+       "pages": [
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      13,
+      16
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro moderato",
+       "pages": [
+        13,
+        14
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        14,
+        14
+       ]
+      },
+      "III": {
+       "title": "Grave",
+       "pages": [
+        15,
+        15
+       ]
+      },
+      "IV": {
+       "title": "Allegro giusto",
+       "pages": [
+        15,
+        16
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      13,
+      16
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegro moderato",
+       "pages": [
+        13,
+        14
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        14,
+        14
+       ]
+      },
+      "III": {
+       "title": "Grave",
+       "pages": [
+        15,
+        15
+       ]
+      },
+      "IV": {
+       "title": "Allegro giusto",
+       "pages": [
+        15,
+        16
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "V",
+   "G": 215,
+   "title": "Quartetto C-dur, op. 41 (1788)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      19,
+      24
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        19,
+        20
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        21,
+        22
+       ]
+      },
+      "III": {
+       "title": "Larghetto affettuoso",
+       "pages": [
+        22,
+        22
+       ]
+      },
+      "IV": {
+       "title": "Rondeau. Allegro moderato",
+       "pages": [
+        23,
+        24
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      17,
+      20
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        17,
+        18
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        18,
+        18
+       ]
+      },
+      "III": {
+       "title": "Larghetto affettuoso",
+       "pages": [
+        19,
+        19
+       ]
+      },
+      "IV": {
+       "title": "Rondeau. Allegro moderato",
+       "pages": [
+        19,
+        20
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      17,
+      20
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        17,
+        18
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        18,
+        18
+       ]
+      },
+      "III": {
+       "title": "Larghetto affettuoso",
+       "pages": [
+        19,
+        19
+       ]
+      },
+      "IV": {
+       "title": "Rondeau. Allegro moderato",
+       "pages": [
+        19,
+        20
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      17,
+      20
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        17,
+        18
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        18,
+        18
+       ]
+      },
+      "III": {
+       "title": "Larghetto affettuoso",
+       "pages": [
+        19,
+        19
+       ]
+      },
+      "IV": {
+       "title": "Rondeau. Allegro moderato",
+       "pages": [
+        19,
+        20
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "VI",
+   "G": 223,
+   "title": "Quartettino G-dur \"La Tiranna Spagnola\", op. 44 Nr. 4 (1792)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      25,
+      27
+     ],
+     "movements": {
+      "I": {
+       "title": "Presto",
+       "pages": [
+        25,
+        26
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        27,
+        27
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      21,
+      23
+     ],
+     "movements": {
+      "I": {
+       "title": "Presto",
+       "pages": [
+        21,
+        22
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        23,
+        23
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      21,
+      23
+     ],
+     "movements": {
+      "I": {
+       "title": "Presto",
+       "pages": [
+        21,
+        22
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        23,
+        23
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      21,
+      23
+     ],
+     "movements": {
+      "I": {
+       "title": "Presto",
+       "pages": [
+        21,
+        22
+       ]
+      },
+      "II": {
+       "title": "Tempo di Minuetto (Trio)",
+       "pages": [
+        23,
+        23
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "VII",
+   "G": 228,
+   "title": "Quartettino h-moll, op. 48 Nr. 2 (1794)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      28,
+      30
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        28,
+        30
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Con moto (Trio)",
+       "pages": [
+        30,
+        30
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      24,
+      26
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        24,
+        26
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Con moto (Trio)",
+       "pages": [
+        26,
+        26
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      24,
+      26
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        24,
+        26
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Con moto (Trio)",
+       "pages": [
+        26,
+        26
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      24,
+      26
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto moderato",
+       "pages": [
+        24,
+        26
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Con moto (Trio)",
+       "pages": [
+        26,
+        26
+       ]
+      }
+     }
+    }
+   }
+  },
+  {
+   "no": "VIII",
+   "G": 243,
+   "title": "Quartetto Es-dur, op. 58 Nr. 2 (1799)",
+   "parts": {
+    "vn1": {
+     "pages": [
+      31,
+      35
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto lento",
+       "pages": [
+        31,
+        32
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        32,
+        33
+       ]
+      },
+      "III": {
+       "title": "Larghetto",
+       "pages": [
+        33,
+        33
+       ]
+      },
+      "IV": {
+       "title": "Finale. Allegro vivo assai",
+       "pages": [
+        34,
+        35
+       ]
+      }
+     }
+    },
+    "vn2": {
+     "pages": [
+      27,
+      31
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto lento",
+       "pages": [
+        27,
+        28
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        28,
+        29
+       ]
+      },
+      "III": {
+       "title": "Larghetto",
+       "pages": [
+        29,
+        29
+       ]
+      },
+      "IV": {
+       "title": "Finale. Allegro vivo assai",
+       "pages": [
+        30,
+        31
+       ]
+      }
+     }
+    },
+    "va": {
+     "pages": [
+      27,
+      30
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto lento",
+       "pages": [
+        27,
+        28
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        28,
+        28
+       ]
+      },
+      "III": {
+       "title": "Larghetto",
+       "pages": [
+        29,
+        29
+       ]
+      },
+      "IV": {
+       "title": "Finale. Allegro vivo assai",
+       "pages": [
+        29,
+        30
+       ]
+      }
+     }
+    },
+    "vc": {
+     "pages": [
+      27,
+      30
+     ],
+     "movements": {
+      "I": {
+       "title": "Allegretto lento",
+       "pages": [
+        27,
+        28
+       ]
+      },
+      "II": {
+       "title": "Minuetto. Allegro (Trio)",
+       "pages": [
+        28,
+        28
+       ]
+      },
+      "III": {
+       "title": "Larghetto",
+       "pages": [
+        29,
+        29
+       ]
+      },
+      "IV": {
+       "title": "Finale. Allegro vivo assai",
+       "pages": [
+        29,
+        30
+       ]
+      }
+     }
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,2263 @@
+{
+ "note": "Every bar where all three readers agree but the encoding differs, looked at in the print; and the pair-agreed bars the three-way set doesn't hold (D4+Audiveris and OSSQ+Audiveris all of them, D4+OSSQ a random 24 of 146). 'edition': the print has what the readers wrote (the encoding differs, a tremolo is written out, or the scorer paired the measure with the wrong bar); 'omr': the readers are wrong, or it can't be told (counted against them).",
+ "three": [
+  {
+   "G": 159,
+   "part": "va",
+   "page": 3,
+   "staff": 3,
+   "m": 0,
+   "mvt": "II",
+   "bar": "28",
+   "enc": "gE4:8th D4:quarter rquarter rquarter",
+   "read": "D4:quarter rquarter rquarter",
+   "verdict": "edition",
+   "why": "print has no grace note"
+  },
+  {
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 11,
+   "m": 6,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest read as one bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vc",
+   "page": 2,
+   "staff": 10,
+   "m": 0,
+   "mvt": "I",
+   "bar": "57",
+   "enc": "G4:quarter. A4:16th G4:16th G4:16th F4:16th F4:16th E4:16th E4:8th r8th",
+   "read": "F4:quarter. A4:16th G4:16th G4:16th F4:16th F4:16th E4:16th E4:8th r8th",
+   "verdict": "omr",
+   "why": "unclear (tenor clef, first note)"
+  },
+  {
+   "G": 159,
+   "part": "vc",
+   "page": 4,
+   "staff": 8,
+   "m": 5,
+   "mvt": "III",
+   "bar": "128",
+   "enc": "B2:quarter B3:quarter B3:quarter B3:quarter",
+   "read": "B2:quarter B2:quarter B2:quarter B2:quarter",
+   "verdict": "edition",
+   "why": "print B2 x4, Philhar B2 B3 B3 B3"
+  },
+  {
+   "G": 159,
+   "part": "vc",
+   "page": 4,
+   "staff": 8,
+   "m": 6,
+   "mvt": "III",
+   "bar": "128",
+   "enc": "B2:quarter B3:quarter B3:quarter B3:quarter",
+   "read": "B2:quarter B2:quarter B2:quarter B2:quarter",
+   "verdict": "edition",
+   "why": "same"
+  },
+  {
+   "G": 159,
+   "part": "vn1",
+   "page": 2,
+   "staff": 7,
+   "m": 4,
+   "mvt": "I",
+   "bar": "45",
+   "enc": "D5:8th A4:quarter A4:quarter F4:8th G4:8th C4:8th",
+   "read": "D5:8th A4:quarter A4:8th A4:8th F4:8th G4:8th C4:8th",
+   "verdict": "edition",
+   "why": "print A 8th A 8th, Philhar A quarter"
+  },
+  {
+   "G": 159,
+   "part": "vn1",
+   "page": 2,
+   "staff": 9,
+   "m": 1,
+   "mvt": "I",
+   "bar": "54",
+   "enc": "C5:8th C5:quarter C5:8th B4:8th G5:8th D5:8th E5:8th",
+   "read": "C5:8th C5:quarter C5:8th B4:8th F5:8th D5:8th E5:8th",
+   "verdict": "omr",
+   "why": "unclear (pitch)"
+  },
+  {
+   "G": 159,
+   "part": "vn1",
+   "page": 2,
+   "staff": 9,
+   "m": 5,
+   "mvt": "I",
+   "bar": "58",
+   "enc": "rhalf <D4 G3>:8th <D4 G3>:16th <D4 G3>:16th D4:8th r8th",
+   "read": "rhalf <D4 G3>:8th <D4 G3>:16th. <D4 G3>:32nd <D4 G3>:8th r8th",
+   "verdict": "edition",
+   "why": "print dotted rhythm"
+  },
+  {
+   "G": 159,
+   "part": "vn1",
+   "page": 3,
+   "staff": 0,
+   "m": 1,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vn1",
+   "page": 3,
+   "staff": 3,
+   "m": 6,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 2,
+   "staff": 0,
+   "m": 0,
+   "mvt": "I",
+   "bar": "1",
+   "enc": "C4:8th E4:8th F4:8th E4:8th D4:quarter <C4 E4>:8th C5:8th",
+   "read": "C4:8th D4:8th F4:8th E4:8th D4:quarter <C4 E4>:8th C5:8th",
+   "verdict": "edition",
+   "why": "print D4, Philhar E4"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 3,
+   "staff": 8,
+   "m": 3,
+   "mvt": "III",
+   "bar": "4",
+   "enc": "G4:quarter r8th r16th B3:16th D4:8th. B3:16th G4:8th r16th B3:16th",
+   "read": "G4:quarter r8th r16th B3:16th D4:8th r16th B3:16th G4:8th r16th B3:16th",
+   "verdict": "edition",
+   "why": "print 8th + 16th rest, Philhar dotted 8th"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 3,
+   "staff": 9,
+   "m": 0,
+   "mvt": "III",
+   "bar": "6",
+   "enc": "F4:quarter r8th r16th A3:16th C4:8th. A3:16th F4:8th r16th A3:16th",
+   "read": "F4:quarter r8th r16th A3:16th C4:8th r16th A3:16th F4:8th r16th A3:16th",
+   "verdict": "edition",
+   "why": "same"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 3,
+   "staff": 11,
+   "m": 11,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 4,
+   "staff": 3,
+   "m": 4,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 4,
+   "staff": 8,
+   "m": 5,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 159,
+   "part": "vn2",
+   "page": 4,
+   "staff": 10,
+   "m": 7,
+   "mvt": "III",
+   "bar": "159",
+   "enc": "<G3 G4>:half rhalf",
+   "read": "<G3 G4>:half rhalf",
+   "verdict": "edition",
+   "why": "scoring: reading equals the bar"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 7,
+   "m": 3,
+   "mvt": "I",
+   "bar": "23",
+   "enc": "r16th C5:8th C5:16th C5:quarter rhalf",
+   "read": "r16th C4:8th C4:16th C4:8th r8th rhalf",
+   "verdict": "edition",
+   "why": "print 8th + rest, Philhar quarter (and the octave)"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 9,
+   "m": 0,
+   "mvt": "I",
+   "bar": "31",
+   "enc": "E5:16th E5:8th E5:8th E5:8th E5:16th E5:8th r8th r8th E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": "scoring: reading is bar 30 (octave)"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 1,
+   "m": 0,
+   "mvt": "I",
+   "bar": "35",
+   "enc": "A4:8th A4:32nd B4:32nd A4:32nd B4:32nd C5:16th C5:8th D5:16th E5:32nd D5:32nd C5:32nd D5:32nd E5:32nd D5:32nd C5:32nd D5:32nd E5:8th G4:32nd F4:32nd G4:32nd F4:32nd",
+   "read": "E4:32nd D4:32nd C4:32nd D4:32nd E4:32nd D4:32nd C4:32nd D4:32nd E4:8th G3:32nd F3:32nd G3:32nd F3:32nd",
+   "verdict": "omr",
+   "why": "measure cut short"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 8,
+   "m": 3,
+   "mvt": "I",
+   "bar": "58",
+   "enc": "A4:8th A4:8th A4:8th A4:8th A4:quarter r8th A4:32nd A4:32nd A4:32nd A4:32nd",
+   "read": "A3:8th A3:8th A3:8th A3:8th A3:8th r8th A3:32nd A3:32nd A3:32nd A3:32nd",
+   "verdict": "edition",
+   "why": "print five 8ths (and the octave)"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 7,
+   "staff": 5,
+   "m": 2,
+   "mvt": "II",
+   "bar": "30",
+   "enc": "A4:8th A3:quarter A3:8th A3:quarter A3:quarter",
+   "read": "A4:quarter A3:quarter A3:8th A3:quarter A3:8th",
+   "verdict": "edition",
+   "why": "print A4 quarter ... A3 8th"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 8,
+   "staff": 6,
+   "m": 1,
+   "mvt": "III",
+   "bar": "40",
+   "enc": "A3:8th A3:quarter G3:8th F3:8th F4:quarter F4:8th",
+   "read": "A3:8th A3:quarter G3:8th F3:quarter F4:quarter F4:8th",
+   "verdict": "omr",
+   "why": "quarter for 8th (bar overfull)"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 8,
+   "staff": 10,
+   "m": 3,
+   "mvt": "III",
+   "bar": "60",
+   "enc": "A3:8th A3:quarter A3:8th G3:8th G4:quarter G3:8th",
+   "read": "A3:8th A3:quarter A3:8th G3:quarter G4:quarter G3:8th",
+   "verdict": "omr",
+   "why": "quarter for 8th (bar overfull)"
+  },
+  {
+   "G": 189,
+   "part": "vc",
+   "page": 6,
+   "staff": 9,
+   "m": 9,
+   "mvt": "II",
+   "bar": "38",
+   "enc": "A2:half rhalf",
+   "read": "A2:half rhalf",
+   "verdict": "edition",
+   "why": "scoring"
+  },
+  {
+   "G": 189,
+   "part": "vc",
+   "page": 7,
+   "staff": 2,
+   "m": 4,
+   "mvt": "III",
+   "bar": "16",
+   "enc": "D2:half D4:16th E4:16th F4:8th E4:8th D4:8th",
+   "read": "D2:half",
+   "verdict": "omr",
+   "why": "upbeat after a repeat, tenor clef misread"
+  },
+  {
+   "G": 189,
+   "part": "vn1",
+   "page": 7,
+   "staff": 8,
+   "m": 3,
+   "mvt": "II",
+   "bar": "39",
+   "enc": "rhalf D5:half",
+   "read": "rhalf D5:half",
+   "verdict": "edition",
+   "why": "scoring"
+  },
+  {
+   "G": 189,
+   "part": "vn1",
+   "page": 7,
+   "staff": 8,
+   "m": 5,
+   "mvt": "II",
+   "bar": "41",
+   "enc": "F5:quarter. F5:16th. F5:32nd A5:8th A5:8th A5:8th A5:8th",
+   "read": "F5:quarter. F5:16th. G5:32nd A5:8th A5:8th A5:8th A5:8th",
+   "verdict": "edition",
+   "why": "print G5 32nd"
+  },
+  {
+   "G": 189,
+   "part": "vn1",
+   "page": 8,
+   "staff": 10,
+   "m": 0,
+   "mvt": "III",
+   "bar": "62",
+   "enc": "<D4 D5>:quarter rquarter rhalf",
+   "read": "<D4 D5 D6>:quarter rquarter rhalf",
+   "verdict": "edition",
+   "why": "print chord with D6"
+  },
+  {
+   "G": 189,
+   "part": "vn2",
+   "page": 6,
+   "staff": 2,
+   "m": 1,
+   "mvt": "I",
+   "bar": "41",
+   "enc": "D4:quarter D4:quarter C4:quarter C4:16th C5:32nd B4:32nd A4:16th G4:16th",
+   "read": "D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th C4:16th C4:16th C4:16th C4:16th C4:16th C5:32nd B4:32nd A4:16th G4:16th",
+   "verdict": "edition",
+   "why": "tremolo written out (two quarters)"
+  },
+  {
+   "G": 189,
+   "part": "vn2",
+   "page": 6,
+   "staff": 7,
+   "m": 1,
+   "mvt": "I",
+   "bar": "58",
+   "enc": "D5:quarter C5:quarter D5:16th A3:16th D4:16th F4:16th A4:16th D4:16th F4:16th A3:16th",
+   "read": "D5:16th D5:16th D5:16th D5:16th C5:16th C5:16th C5:16th C5:16th D5:16th A3:16th D4:16th F4:16th A4:16th F4:16th A4:16th A3:16th",
+   "verdict": "edition",
+   "why": "tremolo written out; arpeggio as printed"
+  },
+  {
+   "G": 189,
+   "part": "vn2",
+   "page": 7,
+   "staff": 4,
+   "m": 0,
+   "mvt": "II",
+   "bar": "23",
+   "enc": "<A4 A4>:half rquarter rquarter",
+   "read": "A4:half rhalf",
+   "verdict": "edition",
+   "why": "print half rest"
+  },
+  {
+   "G": 189,
+   "part": "vn2",
+   "page": 8,
+   "staff": 7,
+   "m": 1,
+   "mvt": "III",
+   "bar": "51",
+   "enc": "D5:half D5:quarter C5:quarter",
+   "read": "D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th D5:16th C5:16th C5:16th C5:16th C5:16th",
+   "verdict": "edition",
+   "why": "tremolo written out"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 13,
+   "staff": 7,
+   "m": 4,
+   "mvt": "I",
+   "bar": "40",
+   "enc": "r16th B3:16th B3:16th B3:16th C4:quarter C4:16th A3:16th A3:16th A3:16th A3:8th r8th",
+   "read": "r16th B3:16th B3:16th B3:16th C4:16th C4:16th C4:16th C4:16th C4:16th A3:16th A3:16th A3:16th A3:8th r8th",
+   "verdict": "edition",
+   "why": "tremolo written out"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 13,
+   "staff": 8,
+   "m": 3,
+   "mvt": "I",
+   "bar": "44",
+   "enc": "r16th E4:16th E4:16th E4:16th F4:quarter F4:16th D4:16th D4:16th D4:16th D4:8th r8th",
+   "read": "r16th E4:16th E4:16th E4:16th F4:16th F4:16th F4:16th F4:16th F4:16th D4:16th D4:16th D4:16th D4:8th r8th",
+   "verdict": "edition",
+   "why": "tremolo written out"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 13,
+   "staff": 10,
+   "m": 2,
+   "mvt": "I",
+   "bar": "51",
+   "enc": "G3:quarter r8th D4:8th E4:8th G3:quarter G3:8th",
+   "read": "G3:quarter r8th D4:8th E4:8th A3:quarter G3:8th",
+   "verdict": "edition",
+   "why": "print A3 quarter"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 14,
+   "staff": 1,
+   "m": 1,
+   "mvt": "I",
+   "bar": "63",
+   "enc": "r8th G3:quarter G3:8th G3:8th G3:8th G3:8th G3:8th",
+   "read": "r8th G3:quarter G3:quarter G3:8th G3:8th G3:8th",
+   "verdict": "edition",
+   "why": "print rest order"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 15,
+   "staff": 4,
+   "m": 0,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 213,
+   "part": "va",
+   "page": 16,
+   "staff": 2,
+   "m": 4,
+   "mvt": "IV",
+   "bar": "63",
+   "enc": "r8th F4:8th D4:8th B3:8th G3:8th rquarter r8th",
+   "read": "r8th F4:8th D4:8th B3:8th G3:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "print rest order"
+  },
+  {
+   "G": 213,
+   "part": "vc",
+   "page": 13,
+   "staff": 0,
+   "m": 5,
+   "mvt": "I",
+   "bar": "5",
+   "enc": "C3:8th C4:16th. C3:32nd B2:8th B3:8th A2:quarter rquarter",
+   "read": "A2:8th C4:16th. C3:32nd B2:8th B3:8th A2:quarter rquarter",
+   "verdict": "omr",
+   "why": "unclear (first note)"
+  },
+  {
+   "G": 213,
+   "part": "vn1",
+   "page": 18,
+   "staff": 6,
+   "m": 0,
+   "mvt": "IV",
+   "bar": "88",
+   "enc": "r8th r8th A4:8th r8th F5:8th r8th F5:8th. E5:32nd F5:32nd",
+   "read": "A5:8th r8th A4:8th r8th F5:8th r8th F5:8th. E5:32nd F5:32nd",
+   "verdict": "edition",
+   "why": "print A5 8th"
+  },
+  {
+   "G": 213,
+   "part": "vn1",
+   "page": 18,
+   "staff": 10,
+   "m": 5,
+   "mvt": "IV",
+   "bar": "116",
+   "enc": "A5:quarter rquarter A4:quarter. r8th",
+   "read": "A5:quarter rquarter A4:quarter. C5:8th",
+   "verdict": "edition",
+   "why": "print C#5 8th"
+  },
+  {
+   "G": 213,
+   "part": "vn2",
+   "page": 13,
+   "staff": 7,
+   "m": 0,
+   "mvt": "I",
+   "bar": "26",
+   "enc": "A4:quarter rquarter E4:16th F4:16th G4:16th F4:16th G4:16th F4:16th G4:16th E4:16th",
+   "read": "A4:quarter rquarter E4:16th F4:16th G4:16th F4:16th G4:16th F4:16th G4:16th F4:16th",
+   "verdict": "edition",
+   "why": "print F4"
+  },
+  {
+   "G": 213,
+   "part": "vn2",
+   "page": 14,
+   "staff": 11,
+   "m": 3,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 213,
+   "part": "vn2",
+   "page": 15,
+   "staff": 1,
+   "m": 3,
+   "mvt": "III",
+   "bar": "10",
+   "enc": "B4:8th r8th G4:8th r8th E4:8th r8th rquarter",
+   "read": "B4:8th r16th G4:16th G4:8th r8th E4:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "print 16th rest + 16th"
+  },
+  {
+   "G": 213,
+   "part": "vn2",
+   "page": 15,
+   "staff": 3,
+   "m": 0,
+   "mvt": "III",
+   "bar": "15",
+   "enc": "E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th D4:16th D4:16th D4:16th D4:16th D4:quarter",
+   "read": "E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th D4:16th",
+   "verdict": "edition",
+   "why": "tremolo written out"
+  },
+  {
+   "G": 228,
+   "part": "va",
+   "page": 25,
+   "staff": 0,
+   "m": 2,
+   "mvt": "I",
+   "bar": "51",
+   "enc": "r8th D4:quarter D4:8th",
+   "read": "rquarter D4:quarter D4:8th",
+   "verdict": "edition",
+   "why": "print quarter rest (overfull: a misprint)"
+  },
+  {
+   "G": 228,
+   "part": "va",
+   "page": 26,
+   "staff": 5,
+   "m": 6,
+   "mvt": "II",
+   "bar": "35",
+   "enc": "rquarter F4:quarter F4:quarter",
+   "read": "rquarter F4:quarter F4:quarter",
+   "verdict": "edition",
+   "why": "scoring (split bar)"
+  },
+  {
+   "G": 228,
+   "part": "va",
+   "page": 26,
+   "staff": 5,
+   "m": 7,
+   "mvt": "II",
+   "bar": "35",
+   "enc": "rquarter F4:quarter F4:quarter",
+   "read": "B3:half",
+   "verdict": "edition",
+   "why": "scoring (split bar)"
+  },
+  {
+   "G": 228,
+   "part": "va",
+   "page": 26,
+   "staff": 6,
+   "m": 0,
+   "mvt": "II",
+   "bar": "36",
+   "enc": "B3:half rquarter",
+   "read": "rquarter",
+   "verdict": "omr",
+   "why": "unclear (alignment at Trio)"
+  },
+  {
+   "G": 228,
+   "part": "vc",
+   "page": 24,
+   "staff": 6,
+   "m": 4,
+   "mvt": "I",
+   "bar": "37",
+   "enc": "<D3 D4>:half",
+   "read": "D4:8th D4:8th D4:8th D4:8th",
+   "verdict": "edition",
+   "why": "print D4 8ths, no D3 (encoding follows the manuscript)"
+  },
+  {
+   "G": 228,
+   "part": "vc",
+   "page": 26,
+   "staff": 9,
+   "m": 1,
+   "mvt": null,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "G": 228,
+   "part": "vn1",
+   "page": 28,
+   "staff": 9,
+   "m": 4,
+   "mvt": "I",
+   "bar": "48",
+   "enc": "B5:quarter r8th B5:16th A5:16th G5:16th",
+   "read": "B5:quarter r16th B5:16th A5:16th G5:16th",
+   "verdict": "edition",
+   "why": "print 16th rest"
+  },
+  {
+   "G": 228,
+   "part": "vn1",
+   "page": 29,
+   "staff": 6,
+   "m": 2,
+   "mvt": "I",
+   "bar": "81",
+   "enc": "C5:16th C5:16th D5:32nd F5:32nd E5:32nd D5:32nd C5:16th C5:16th D5:32nd C5:32nd D5:32nd B4:32nd",
+   "read": "C5:16th C5:16th D5:32nd E5:32nd E5:32nd D5:32nd C5:16th C5:16th D5:32nd C5:32nd D5:32nd B4:32nd",
+   "verdict": "edition",
+   "why": "print E5"
+  },
+  {
+   "G": 228,
+   "part": "vn1",
+   "page": 29,
+   "staff": 10,
+   "m": 1,
+   "mvt": "I",
+   "bar": "99",
+   "enc": "C5:16th C5:16th C5:16th C5:16th C5:16th C5:16th D5:32nd F5:32nd D5:32nd F5:32nd",
+   "read": "C5:16th C5:16th C5:16th C5:16th C5:16th C5:16th D5:16th F5:16th D5:16th F5:16th",
+   "verdict": "omr",
+   "why": "16ths for 32nds (bar overfull)"
+  },
+  {
+   "G": 228,
+   "part": "vn1",
+   "page": 30,
+   "staff": 10,
+   "m": 3,
+   "mvt": "II",
+   "bar": "61",
+   "enc": "B4:16th G5:16th F5:16th E5:16th D5:16th B5:16th A5:16th G5:16th F5:8th F5:8th",
+   "read": "B4:16th G5:16th F5:16th E5:16th C5:16th B5:16th A5:16th G5:16th F5:8th F5:8th",
+   "verdict": "edition",
+   "why": "print C#5"
+  },
+  {
+   "G": 228,
+   "part": "vn2",
+   "page": 26,
+   "staff": 0,
+   "m": 3,
+   "mvt": "I",
+   "bar": "109",
+   "enc": "C4:16th E4:16th A4:16th G4:16th F4:16th E4:16th F4:16th G4:16th",
+   "read": "C4:16th D4:16th A4:16th G4:16th F4:16th E4:16th F4:16th G4:16th",
+   "verdict": "edition",
+   "why": "print D4"
+  },
+  {
+   "G": 228,
+   "part": "vn2",
+   "page": 26,
+   "staff": 8,
+   "m": 1,
+   "mvt": "II",
+   "bar": "44",
+   "enc": "F4:half A4:quarter",
+   "read": "F4:half",
+   "verdict": "edition",
+   "why": "scoring (split bar)"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 3,
+   "m": 0,
+   "mvt": "I",
+   "bar": "9",
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd E5:quarter. E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd E4:quarter. E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 5,
+   "m": 0,
+   "mvt": "I",
+   "bar": "13",
+   "enc": "D4:quarter. D4:8th E4:8th F4:8th G4:8th A4:8th",
+   "read": "D3:quarter. D3:8th E3:8th F3:8th G3:8th A3:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 5,
+   "m": 1,
+   "mvt": "I",
+   "bar": "14",
+   "enc": "G4:8th E4:8th r8th G4:8th A4:16th A4:16th A4:16th A4:16th A4:16th A4:16th C5:16th E5:16th",
+   "read": "G3:8th E3:8th r8th E3:8th A3:16th A3:16th A3:16th A3:16th A3:16th A3:16th C4:16th E4:16th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 6,
+   "m": 0,
+   "mvt": "I",
+   "bar": "16",
+   "enc": "F5:quarter r8th B4:8th B4:8th r8th rquarter",
+   "read": "F4:quarter r8th B3:8th B3:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 7,
+   "m": 0,
+   "mvt": "I",
+   "bar": "20",
+   "enc": "D5:half C5:8th r8th rquarter",
+   "read": "D4:half C4:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 7,
+   "m": 1,
+   "mvt": "I",
+   "bar": "21",
+   "enc": "<A4 E5>:quarter <A4 E5>:8th r8th rquarter r8th E5:8th",
+   "read": "<A3 E4>:quarter <A3 E4>:8th r8th rquarter r8th E4:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 8,
+   "m": 2,
+   "mvt": "I",
+   "bar": "27",
+   "enc": "E5:half D5:8th r8th rquarter",
+   "read": "E4:half D4:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 8,
+   "m": 3,
+   "mvt": "I",
+   "bar": "28",
+   "enc": "D5:8th r8th r8th D5:8th D5:8th D5:8th C5:8th D5:8th",
+   "read": "D4:8th r8th r8th D4:8th D4:8th D4:8th C4:8th D4:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 8,
+   "m": 4,
+   "mvt": "I",
+   "bar": "29",
+   "enc": "E5:8th E5:8th E5:8th E5:8th E5:quarter r8th E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "E4:8th E4:8th E4:8th E4:8th E4:quarter r8th E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 10,
+   "m": 1,
+   "mvt": "I",
+   "bar": "33",
+   "enc": "E5:16th E5:8th E5:8th E5:8th E5:16th E5:8th r8th r8th A4:32nd G4:32nd A4:32nd G4:32nd",
+   "read": "E4:16th E4:8th E4:8th E4:8th E4:16th E4:8th r8th r8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 0,
+   "m": 0,
+   "mvt": "I",
+   "bar": "33",
+   "enc": "E5:16th E5:8th E5:8th E5:8th E5:16th E5:8th r8th r8th A4:32nd G4:32nd A4:32nd G4:32nd",
+   "read": "A3:32nd G3:32nd A3:32nd G3:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 0,
+   "m": 1,
+   "mvt": "I",
+   "bar": "34",
+   "enc": "A4:8th A4:32nd B4:32nd A4:32nd B4:32nd C5:16th C5:8th D5:16th E5:32nd D5:32nd C5:32nd D5:32nd E5:32nd D5:32nd C5:32nd D5:32nd E5:8th A4:32nd G4:32nd A4:32nd G4:32nd",
+   "read": "A3:8th A3:32nd B3:32nd A3:32nd B3:32nd C4:16th C4:8th D4:16th E4:32nd D4:32nd C4:32nd D4:32nd E4:32nd D4:32nd C4:32nd D4:32nd E4:8th A3:32nd G3:32nd A3:32nd G3:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 3,
+   "m": 0,
+   "mvt": "I",
+   "bar": "40",
+   "enc": "B5:8th. F5:16th B5:8th r8th A5:8th. F5:16th A5:8th r8th",
+   "read": "B4:8th. F4:16th B4:8th r8th A4:8th. F4:16th A4:8th r8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 3,
+   "m": 2,
+   "mvt": "I",
+   "bar": "42",
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 4,
+   "m": 0,
+   "mvt": "I",
+   "bar": "42",
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 5,
+   "m": 1,
+   "mvt": "I",
+   "bar": "45",
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th B4:16th B4:16th A4:quarter rquarter",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th B3:16th B3:16th A3:quarter rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 7,
+   "m": 0,
+   "mvt": "I",
+   "bar": "50",
+   "enc": "<A4 D4>:quarter <A4 D4>:8th r8th rquarter r8th A4:8th",
+   "read": "<A3 D3>:quarter <A3 D3>:8th r8th rquarter r8th A3:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 7,
+   "m": 1,
+   "mvt": "I",
+   "bar": "51",
+   "enc": "B4:quarter B4:quarter A4:quarter G4:quarter",
+   "read": "B3:quarter B3:quarter A3:quarter G3:quarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 7,
+   "m": 2,
+   "mvt": "I",
+   "bar": "52",
+   "enc": "r16th F4:8th F4:16th F4:8th r8th rhalf",
+   "read": "r16th F3:8th F3:16th F3:8th r8th rhalf",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 7,
+   "m": 3,
+   "mvt": "I",
+   "bar": "53",
+   "enc": "r8th G4:8th r8th G4:8th r8th A4:8th A4:8th A4:8th",
+   "read": "r8th G3:8th r8th G3:8th r8th A3:8th A3:8th A3:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 7,
+   "m": 4,
+   "mvt": "I",
+   "bar": "54",
+   "enc": "D4:8th D5:8th A4:8th A4:8th D4:8th D5:8th A4:8th A4:8th",
+   "read": "D3:8th D4:8th A3:8th A3:8th D3:8th D4:8th A3:8th A3:8th",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 8,
+   "m": 0,
+   "mvt": "I",
+   "bar": "55",
+   "enc": "D4:8th D5:8th A4:8th A4:8th D4:8th r8th rquarter",
+   "read": "D3:8th D4:8th A3:8th A3:8th D3:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 8,
+   "m": 1,
+   "mvt": "I",
+   "bar": "56",
+   "enc": "A4:half G4:8th r8th rquarter",
+   "read": "A3:half G3:8th r8th rquarter",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 9,
+   "m": 0,
+   "mvt": "I",
+   "bar": "59",
+   "enc": "A4:16th A4:16th A4:32nd A4:32nd A4:32nd A4:32nd A4:16th A4:16th A4:32nd A4:32nd A4:32nd A4:32nd A4:16th A4:16th A4:32nd A4:32nd A4:32nd A4:32nd A4:16th A4:16th A4:32nd A4:32nd A4:32nd A4:32nd",
+   "read": "A3:16th A3:16th A3:32nd A3:32nd A3:32nd A3:32nd A3:16th A3:16th A3:32nd A3:32nd A3:32nd A3:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 9,
+   "m": 1,
+   "mvt": "I",
+   "bar": "60",
+   "enc": "A4:16th A4:8th A4:8th A4:8th A4:16th A4:8th r8th r8th A4:32nd A4:32nd A4:32nd A4:32nd",
+   "read": "A3:16th A3:8th A3:8th A3:8th A3:16th A3:8th r8th r8th A3:32nd A3:32nd A3:32nd A3:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 10,
+   "m": 2,
+   "mvt": "I",
+   "bar": "64",
+   "enc": "E5:16th E5:16th E5:32nd E5:32nd E5:32nd E5:32nd E5:16th E5:16th E5:32nd E5:32nd E5:32nd E5:32nd D5:quarter. D5:32nd D5:32nd D5:32nd D5:32nd",
+   "read": "E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd E4:16th E4:16th E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 11,
+   "m": 0,
+   "mvt": "I",
+   "bar": "64",
+   "enc": "E5:16th E5:16th E5:32nd E5:32nd E5:32nd E5:32nd E5:16th E5:16th E5:32nd E5:32nd E5:32nd E5:32nd D5:quarter. D5:32nd D5:32nd D5:32nd D5:32nd",
+   "read": "D4:quarter. D4:32nd D4:32nd D4:32nd D4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  },
+  {
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 11,
+   "m": 1,
+   "mvt": "I",
+   "bar": "65",
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd E5:quarter. E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd E4:quarter. E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": "G. 189 viola I: the print is an octave below Philhar's encoding throughout"
+  }
+ ],
+ "pairs": [
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vn1",
+   "page": 4,
+   "staff": 11,
+   "m": 6,
+   "bar": [
+    "III",
+    "165"
+   ],
+   "enc": "D5:quarter D5:quarter D5:quarter D5:quarter",
+   "read": "E5:quarter E5:quarter E5:quarter E5:8th F5:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 2,
+   "staff": 10,
+   "m": 5,
+   "bar": [
+    "II",
+    "1"
+   ],
+   "enc": "E3:half.",
+   "read": "G4:8th A4:16th F4:16th G4:8th G3:8th C4:8th C3:8th C3:8th r8th",
+   "verdict": "omr",
+   "why": "unclear"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 3,
+   "staff": 0,
+   "m": 0,
+   "bar": null,
+   "enc": null,
+   "read": "E3:8th E3:8th E3:8th E3:8th E3:8th",
+   "verdict": "omr",
+   "why": "five 8ths for six"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vc",
+   "page": 2,
+   "staff": 9,
+   "m": 1,
+   "bar": [
+    "I",
+    "52"
+   ],
+   "enc": "C3:8th r8th C3:8th C4:8th C4:8th D4:8th B3:8th B3:8th",
+   "read": "C3:8th C3:8th C4:quarter. D4:8th B3:8th B3:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vc",
+   "page": 2,
+   "staff": 11,
+   "m": 1,
+   "bar": [
+    "I",
+    "65"
+   ],
+   "enc": "B3:16th C4:16th B3:16th A3:16th B3:16th A3:16th G3:16th A3:16th G3:16th F3:16th G3:16th F3:16th E3:16th F3:16th E3:16th C3:16th D3:16th C3:16th D3:16th E3:16th D3:16th E3:16th F3:16th E3:16th",
+   "read": "B3:16th C4:16th B3:16th A3:16th B3:16th A3:16th G3:16th A3:16th G3:16th F3:16th G3:16th F3:16th E3:16th F3:16th E3:16th C3:16th D3:16th C3:16th",
+   "verdict": "omr",
+   "why": "measure cut short"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vn1",
+   "page": 7,
+   "staff": 10,
+   "m": 4,
+   "bar": [
+    "II",
+    "52"
+   ],
+   "enc": "A4:half A4:8th A4:8th A4:8th A4:8th",
+   "read": "A4:half A4:8th A4:8th A4:8th",
+   "verdict": "omr",
+   "why": "unclear (line break)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vn2",
+   "page": 8,
+   "staff": 1,
+   "m": 0,
+   "bar": [
+    "III",
+    "16"
+   ],
+   "enc": "<D4 D4>:half rhalf",
+   "read": "rhalf",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 2,
+   "m": 1,
+   "bar": [
+    "I",
+    "7"
+   ],
+   "enc": "A4:quarter A4:16th E5:16th G5:16th G5:16th A4:8th. F4:16th A4:8th A5:8th",
+   "read": "A3:quarter A3:16th E4:16th G4:16th G4:16th A3:8th. F3:16th A3:8th A4:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 4,
+   "m": 1,
+   "bar": [
+    "I",
+    "43"
+   ],
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn1",
+   "page": 18,
+   "staff": 3,
+   "m": 4,
+   "bar": [
+    "IV",
+    "75"
+   ],
+   "enc": "gA4:8th G4:half D5:8th C5:8th C5:8th B4:8th",
+   "read": "G4:half D5:8th C5:8th C5:8th B4:8th",
+   "verdict": "omr",
+   "why": "grace note dropped"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 13,
+   "staff": 10,
+   "m": 1,
+   "bar": [
+    "I",
+    "40"
+   ],
+   "enc": "F4:quarter F4:16th F4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:8th r8th",
+   "read": "F4:16th F4:16th F4:16th F4:16th F4:16th F4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:16th E4:8th r8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 14,
+   "staff": 5,
+   "m": 0,
+   "bar": [
+    "I",
+    "73"
+   ],
+   "enc": "C4:16th C4:16th D4:16th B3:16th C4:16th D4:16th C4:16th B3:16th C4:16th C4:16th D4:16th B3:16th C4:16th D4:16th C4:16th B3:16th",
+   "read": "C4:16th C4:16th D4:16th B3:16th C4:16th D4:16th C4:16th B3:16th C4:16th C4:16th D4:16th B3:16th C4:16th D4:16th C4:16th B3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 16,
+   "staff": 0,
+   "m": 6,
+   "bar": [
+    "IV",
+    "51"
+   ],
+   "enc": "E4:8th F4:8th F4:8th G4:8th G4:8th F4:8th F4:8th E4:8th",
+   "read": "E4:8th F4:8th F4:8th G4:8th G4:8th F4:8th F4:8th E4:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vc",
+   "page": 14,
+   "staff": 2,
+   "m": 0,
+   "bar": [
+    "I",
+    "70"
+   ],
+   "enc": "E2:16th E3:16th E2:16th E2:16th E2:quarter E2:16th E3:16th E3:16th E3:16th E3:quarter",
+   "read": "E2:16th E3:16th E2:16th E2:16th E2:16th E2:16th E2:16th E2:16th E2:16th E3:16th E3:16th E3:16th E3:16th E3:16th E3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "mxl:audiveris"
+   ],
+   "G": 228,
+   "part": "vc",
+   "page": 26,
+   "staff": 7,
+   "m": 4,
+   "bar": [
+    "II",
+    "44"
+   ],
+   "enc": "rquarter rquarter rquarter",
+   "read": "rquarter rquarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vn2",
+   "page": 4,
+   "staff": 10,
+   "m": 6,
+   "bar": [
+    "III",
+    "159"
+   ],
+   "enc": "<G3 G4>:half rhalf",
+   "read": "G4:8th G4:8th G4:8th G4:8th G4:8th G4:8th G4:8th G4:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 3,
+   "staff": 12,
+   "m": 4,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vc",
+   "page": 2,
+   "staff": 8,
+   "m": 5,
+   "bar": [
+    "I",
+    "50"
+   ],
+   "enc": "B2:8th B2:8th C3:8th C3:8th C3:half",
+   "read": "B2:8th B2:8th C3:8th C3:8th C3:8th C3:8th C3:8th C3:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 159,
+   "part": "vc",
+   "page": 4,
+   "staff": 13,
+   "m": 5,
+   "bar": [
+    "III",
+    "183"
+   ],
+   "enc": "<C2 C4 E3 G2>:half <C2 C4 E3 G2>:half",
+   "read": "F2:quarter rquarter <D3 G2>:quarter rquarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vn1",
+   "page": 6,
+   "staff": 4,
+   "m": 1,
+   "bar": [
+    "I",
+    "48"
+   ],
+   "enc": "G4:32nd E4:32nd G4:32nd C5:32nd C5:32nd G4:32nd C5:32nd E5:32nd E5:32nd D5:32nd C5:32nd B4:32nd A4:32nd G4:32nd F4:32nd E4:32nd F4:32nd D4:32nd F4:32nd A4:32nd D5:8th rquarter",
+   "read": "G4:32nd E4:32nd G4:32nd C5:32nd C5:32nd A4:32nd C5:32nd E5:32nd E5:32nd D5:32nd C5:32nd B4:32nd A4:32nd G4:32nd F4:32nd E4:32nd F4:32nd D4:32nd F4:32nd A4:32nd D5:8th rquarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vn1",
+   "page": 8,
+   "staff": 1,
+   "m": 4,
+   "bar": [
+    "III",
+    "12"
+   ],
+   "enc": "G4:8th F4:8th F4:quarter <D4 D5>:8th. E5:16th E5:8th. D5:32nd E5:32nd",
+   "read": "G4:8th F4:8th F4:quarter D5:8th. D4:8th E5:16th E5:8th. D5:32nd E5:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vn1",
+   "page": 8,
+   "staff": 6,
+   "m": 4,
+   "bar": [
+    "III",
+    "44"
+   ],
+   "enc": "A4:quarter rquarter <D4 D5>:8th. E5:16th E5:8th. D5:32nd E5:32nd",
+   "read": "A4:quarter rquarter D5:8th. D4:8th E5:16th E5:8th. D5:32nd E5:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 4,
+   "m": 0,
+   "bar": [
+    "I",
+    "11"
+   ],
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd E5:quarter. E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd E4:quarter. E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 6,
+   "m": 2,
+   "bar": [
+    "I",
+    "18"
+   ],
+   "enc": "D5:half C5:16th C5:8th C5:16th C5:8th r8th",
+   "read": "D4:half C4:16th C4:8th C4:16th C4:8th r8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 8,
+   "m": 0,
+   "bar": [
+    "I",
+    "26"
+   ],
+   "enc": "E6:8th E5:quarter E5:8th E5:8th r8th rquarter",
+   "read": "E5:whole",
+   "verdict": "omr",
+   "why": "unclear"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 0,
+   "m": 2,
+   "bar": [
+    "I",
+    "35"
+   ],
+   "enc": "A4:8th A4:32nd B4:32nd A4:32nd B4:32nd C5:16th C5:8th D5:16th E5:32nd D5:32nd C5:32nd D5:32nd E5:32nd D5:32nd C5:32nd D5:32nd E5:8th G4:32nd F4:32nd G4:32nd F4:32nd",
+   "read": "A3:8th A3:32nd B3:32nd A3:32nd B3:32nd C4:16th C4:8th D4:16th",
+   "verdict": "omr",
+   "why": "measure cut short"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 6,
+   "m": 0,
+   "bar": [
+    "I",
+    "46"
+   ],
+   "enc": "<C5 E4>:16th <C5 E4>:8th <C5 E4>:8th <C5 E4>:8th <C5 E4>:16th <D4 D5>:8th r16th D5:16th C5:16th B4:16th A4:16th G4:16th",
+   "read": "<C4 E3>:16th <C4 E3>:8th <C4 E3>:8th <C4 E3>:8th <C4 E3>:16th <D3 D4>:8th r16th D4:16th C4:16th B3:16th A3:16th G3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 10,
+   "m": 1,
+   "bar": [
+    "I",
+    "63"
+   ],
+   "enc": "D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd D5:16th D5:16th D5:32nd D5:32nd D5:32nd D5:32nd E5:quarter. E5:32nd E5:32nd E5:32nd E5:32nd",
+   "read": "D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd D4:16th D4:16th D4:32nd D4:32nd D4:32nd D4:32nd E4:quarter. E4:32nd E4:32nd E4:32nd E4:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 8,
+   "staff": 11,
+   "m": 6,
+   "bar": [
+    "III",
+    "72"
+   ],
+   "enc": "D3:half",
+   "read": "F3:8th F4:8th G3:8th G4:8th A3:8th A4:8th A3:8th A4:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 189,
+   "part": "vc",
+   "page": 6,
+   "staff": 9,
+   "m": 8,
+   "bar": [
+    "II",
+    "38"
+   ],
+   "enc": "A2:half rhalf",
+   "read": "A2:half rhalf",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn1",
+   "page": 14,
+   "staff": 12,
+   "m": 1,
+   "bar": [
+    "I",
+    "36"
+   ],
+   "enc": "B5:32nd B4:32nd C5:32nd D5:32nd E5:32nd F5:32nd G5:32nd A5:32nd B5:16th E5:16th G5:16th B5:16th D6:16th D5:16th D5:quarter",
+   "read": "G5:32nd B4:32nd C5:32nd D5:32nd E5:32nd F5:32nd G5:32nd A5:32nd B5:16th E5:16th G5:16th B5:16th D6:16th D5:16th D5:quarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn1",
+   "page": 17,
+   "staff": 10,
+   "m": 5,
+   "bar": [
+    "IV",
+    "32"
+   ],
+   "enc": "E5:8th B5:8th F5:8th B5:8th E5:8th B5:8th F5:quarter gE5:16th gF5:16th",
+   "read": "E5:8th B5:8th F5:8th B5:8th E5:8th B5:8th F5:8th. E5:32nd F5:32nd",
+   "verdict": "omr",
+   "why": "small notes read as normal 32nds"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 13,
+   "staff": 4,
+   "m": 0,
+   "bar": [
+    "I",
+    "17"
+   ],
+   "enc": "E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd G4:32nd G4:32nd G4:32nd G4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:quarter A4:quarter",
+   "read": "A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 13,
+   "staff": 5,
+   "m": 0,
+   "bar": [
+    "I",
+    "19"
+   ],
+   "enc": "E4:quarter G4:32nd G4:32nd G4:32nd G4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:quarter A4:quarter",
+   "read": "E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd E4:32nd G4:32nd G4:32nd G4:32nd G4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd A4:32nd",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 14,
+   "staff": 11,
+   "m": 4,
+   "bar": [
+    "II",
+    "39"
+   ],
+   "enc": "r8th. A4:16th F4:8th. A4:16th D4:8th. F4:16th",
+   "read": "r8th r16th A4:16th F4:8th. A4:16th D4:8th. F4:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 13,
+   "staff": 2,
+   "m": 0,
+   "bar": [
+    "I",
+    "12"
+   ],
+   "enc": "B3:16th B3:16th B3:16th B3:16th B3:quarter B3:8th r8th rquarter",
+   "read": "B3:16th B3:16th B3:16th B3:16th B3:16th B3:16th B3:16th B3:16th B3:8th r8th rquarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96-ossq",
+    "mxl:audiveris"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 14,
+   "staff": 6,
+   "m": 4,
+   "bar": [
+    "I",
+    "91"
+   ],
+   "enc": "r16th A4:16th F4:16th D4:16th E4:16th E4:16th E3:16th E4:16th A3:8th A3:16th. A3:32nd A3:8th r8th",
+   "read": "r16th A4:16th F4:16th D4:16th E4:16th E4:16th E3:16th E4:16th A3:8th A3:16th. A3:32nd A3:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "vn1",
+   "page": 17,
+   "staff": 8,
+   "m": 4,
+   "bar": [
+    "IV",
+    "19"
+   ],
+   "enc": "F5:8th A5:8th F5:8th D5:8th F5:8th D5:8th B4:8th D5:8th B4:8th F4:8th A4:8th F4:8th",
+   "read": "F5:8th A5:8th F5:8th D5:8th F5:8th D5:8th B4:8th D5:8th B4:8th F4:8th B4:8th F4:8th",
+   "verdict": "omr",
+   "why": "unclear (triplet pitch)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 189,
+   "part": "vn1",
+   "page": 7,
+   "staff": 4,
+   "m": 1,
+   "bar": [
+    "II",
+    "16"
+   ],
+   "enc": "C4:quarter. F5:32nd G5:32nd F5:32nd G5:32nd gF5:16th G5:half",
+   "read": "C4:quarter. F5:32nd G5:32nd F5:32nd G5:32nd gF5:8th G5:half",
+   "verdict": "omr",
+   "why": "grace 8th for 16th"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 14,
+   "staff": 10,
+   "m": 3,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "vn2",
+   "page": 4,
+   "staff": 3,
+   "m": 0,
+   "bar": [
+    "III",
+    "77"
+   ],
+   "enc": "gA5:16th G5:quarter rquarter rquarter r8th r16th B3:16th",
+   "read": "gA5:8th G5:quarter rquarter rquarter r8th r16th B3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 1,
+   "m": 9,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 228,
+   "part": "va",
+   "page": 25,
+   "staff": 3,
+   "m": 5,
+   "bar": [
+    "I",
+    "74"
+   ],
+   "enc": "C4:quarter B3:8th r8th",
+   "read": "C4:quarter B3:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 12,
+   "m": 7,
+   "bar": [
+    "III",
+    "184"
+   ],
+   "enc": "<C5 E4 G3>:half rhalf",
+   "read": "<C5 G3>:half rhalf",
+   "verdict": "omr",
+   "why": "unclear (chord)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "vn2",
+   "page": 15,
+   "staff": 8,
+   "m": 1,
+   "bar": [
+    "IV",
+    "15"
+   ],
+   "enc": "D4:half <B4 F5>:quarter F5:8th. B4:8th F5:16th",
+   "read": "D4:half <B4 F5>:quarter <B4 F5>:8th. <B4 F5>:16th",
+   "verdict": "omr",
+   "why": "two voices merged wrong"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 2,
+   "staff": 9,
+   "m": 5,
+   "bar": [
+    "I",
+    "65"
+   ],
+   "enc": "rhalf <C3 E4 G3>:quarter rquarter",
+   "read": "rhalf <C3 C3 E4>:quarter rquarter",
+   "verdict": "omr",
+   "why": "chord pitch"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "vc",
+   "page": 16,
+   "staff": 11,
+   "m": 3,
+   "bar": [
+    "IV",
+    "136"
+   ],
+   "enc": "A2:half",
+   "read": "G2:8th r8th D2:8th D3:8th E2:8th E3:8th E2:8th E3:8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 5,
+   "staff": 4,
+   "m": 1,
+   "bar": [
+    "I",
+    "12"
+   ],
+   "enc": "E5:16th C6:16th E5:32nd E5:32nd E5:32nd E5:32nd E5:16th C6:16th E5:32nd E5:32nd E5:32nd E5:32nd D5:quarter D5:8th r8th",
+   "read": "E4:16th C5:16th E4:32nd E4:32nd E4:32nd E4:32nd E4:16th C5:16th E4:32nd E4:32nd E4:32nd E4:32nd D4:quarter D4:8th r8th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "vn2",
+   "page": 2,
+   "staff": 10,
+   "m": 3,
+   "bar": [
+    "I",
+    "60"
+   ],
+   "enc": "D4:8th E4:16th D4:16th D4:16th C4:16th C4:16th B3:16th C4:8th <E4 G3>:16th. <E4 G3>:32nd <E4 G3>:8th r8th",
+   "read": "D4:8th E4:16th D4:16th D4:16th C4:16th C4:16th B3:16th C4:8th <B3 E4>:16th. <B3 E4>:32nd <B3 E4>:8th r8th",
+   "verdict": "omr",
+   "why": "chord pitch (G3 read B3)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 9,
+   "m": 1,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 16,
+   "staff": 5,
+   "m": 3,
+   "bar": [
+    "IV",
+    "83"
+   ],
+   "enc": "<A4 D4>:quarter <A4 D4>:8th. <A4 D4>:16th <A4 D4>:quarter D4:quarter",
+   "read": "<A4 D4>:quarter <A4 F4>:8th. <A4 F4>:16th <A4 D4>:quarter D4:quarter",
+   "verdict": "omr",
+   "why": "unclear (chord)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 15,
+   "staff": 6,
+   "m": 0,
+   "bar": [
+    "IV",
+    "1"
+   ],
+   "enc": "A3:half A3:quarter A3:quarter",
+   "read": "R",
+   "verdict": "omr",
+   "why": "half rest read as bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 1,
+   "m": 4,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 189,
+   "part": "va",
+   "page": 6,
+   "staff": 3,
+   "m": 1,
+   "bar": [
+    "I",
+    "41"
+   ],
+   "enc": "G5:16th A5:16th G5:16th B5:16th C6:16th B5:16th D6:16th C6:16th B5:16th A5:16th G5:16th F5:16th F5:quarter E5:16th E5:8th E5:16th",
+   "read": "G4:16th A4:16th G4:16th B4:16th C5:16th B4:16th D5:16th C5:16th B4:16th A4:16th G4:16th F4:16th F4:quarter E4:16th E4:8th E4:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 4,
+   "staff": 11,
+   "m": 2,
+   "bar": null,
+   "enc": null,
+   "read": "R",
+   "verdict": "omr",
+   "why": "multi-bar rest"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 15,
+   "staff": 6,
+   "m": 1,
+   "bar": [
+    "IV",
+    "1"
+   ],
+   "enc": "A3:half A3:quarter A3:quarter",
+   "read": "A3:half A3:quarter A3:quarter",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "vn1",
+   "page": 3,
+   "staff": 8,
+   "m": 0,
+   "bar": [
+    "III",
+    "6"
+   ],
+   "enc": "F4:quarter r8th r16th A3:16th C4:8th. A3:16th F4:8th r16th A3:16th",
+   "read": "F4:quarter r8th r16th A3:16th C4:8th r16th A3:16th F4:8th r16th A3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "va",
+   "page": 15,
+   "staff": 1,
+   "m": 4,
+   "bar": [
+    "III",
+    "11"
+   ],
+   "enc": "G3:16th E3:16th G3:16th E3:16th G3:16th E3:16th G3:16th E3:16th A3:16th F3:16th A3:16th F3:16th A3:16th F3:16th A3:16th F3:16th",
+   "read": "G3:16th E3:16th G3:16th E3:16th G3:16th E3:16th G3:16th E3:16th A3:16th F3:16th A3:16th F3:16th A3:16th F3:16th",
+   "verdict": "edition",
+   "why": ""
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 189,
+   "part": "vc",
+   "page": 7,
+   "staff": 2,
+   "m": 3,
+   "bar": [
+    "III",
+    "15"
+   ],
+   "enc": "<D3 D3>:8th. E3:16th E3:8th. D3:32nd E3:32nd F3:8th D3:8th A3:8th A2:8th",
+   "read": "D3:8th. E3:16th <D3 E3>:8th. D3:32nd E3:32nd F3:8th D3:8th A3:8th A2:8th",
+   "verdict": "omr",
+   "why": "grace read into a chord"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 159,
+   "part": "va",
+   "page": 2,
+   "staff": 10,
+   "m": 0,
+   "bar": [
+    "I",
+    "68"
+   ],
+   "enc": "C4:quarter. A4:8th G4:8th A4:16th F4:16th G4:8th G3:8th",
+   "read": "C4:quarter. G4:8th G4:8th A4:16th F4:16th G4:8th G3:8th",
+   "verdict": "omr",
+   "why": "unclear (pitch)"
+  },
+  {
+   "pair": [
+    "musvit:D3S-h96",
+    "musvit:D3S-h96-ossq"
+   ],
+   "G": 213,
+   "part": "vc",
+   "page": 14,
+   "staff": 3,
+   "m": 3,
+   "bar": [
+    "I",
+    "77"
+   ],
+   "enc": "G3:8th A3:8th G3:8th A3:8th G3:8th A3:8th G3:8th A3:8th",
+   "read": "C3:8th D3:8th C3:8th D3:8th C3:8th D3:8th C3:8th D3:8th",
+   "verdict": "omr",
+   "why": "tenor clef missed"
+  }
+ ]
+}
