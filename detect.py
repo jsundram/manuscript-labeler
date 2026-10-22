@@ -251,15 +251,34 @@ def staff_extent(g: np.ndarray, staff: dict, paper: tuple[int, int] | None = Non
     whose ruling before the clef is too faint to see) can hide the lines
     from the window test, so the staff reaches back over ink just left of
     it (gaps under REACH_GAP spaces), up to REACH_BACK spaces.
+
+    Ink is darker than halfway from the staff's lines to its spaces (their
+    medians over its middle three fifths): the ruling's grey varies from
+    source to source. A fixed 175 took grey paper's spaces for ink (Op. 32,
+    lines ~90, spaces ~175) and missed faint brown ruling (the Paris copies,
+    lines ~172, spaces ~230), where only the fallback to the whole paper,
+    when no column passed, had kept the staves whole. And the lines may lie
+    up to half a space off where the staff was traced: on a staff dense with
+    ink the trace can drift by that much towards an end. Either way the
+    staff came out short, sometimes a clef's width long.
     """
     h, w = g.shape
     lo, hi = paper if paper else (0, w)
-    ink = g < 175
+    if hi - lo < 5:  # corners that leave no paper here
+        return lo, hi
     lines = [min(h - 1, max(0, y)) for y in staff["lines"]]
-    on = np.stack([ink[max(0, y - 1): y + 2].any(axis=0) for y in lines]).mean(axis=0)
-    mids = [(a + b) // 2 for a, b in zip(lines, lines[1:])]
-    off = ink[mids].mean(axis=0)
-    col = (on >= 0.8) & (off <= 0.5)
+    gap = staff["gap"]
+    mid = slice(lo + (hi - lo) // 5, hi - (hi - lo) // 5)
+    on_line = np.median([g[max(0, y - 1):y + 2, mid].min(axis=0) for y in lines])
+    in_space = np.median([g[(a + b) // 2, mid] for a, b in zip(lines, lines[1:])])
+    ink = g < (on_line + in_space) / 2
+    col = np.zeros(w, bool)
+    shift = max(1, int(gap / 2))
+    for dy in range(-shift, shift + 1):
+        ys = [min(h - 2, max(1, y + dy)) for y in lines]
+        on = np.stack([ink[y - 1: y + 2].any(axis=0) for y in ys]).mean(axis=0)
+        off = ink[[(a + b) // 2 for a, b in zip(ys, ys[1:])]].mean(axis=0)
+        col |= (on >= 0.8) & (off <= 0.5)
     col[:lo] = False
     col[hi:] = False
     # notes and clefs hide the lines locally; judge by windows of 4 spaces
@@ -268,8 +287,8 @@ def staff_extent(g: np.ndarray, staff: dict, paper: tuple[int, int] | None = Non
     xs = np.flatnonzero(cover >= 0.35)
     if len(xs) == 0:
         return lo, hi
-    left, right = int(max(lo, xs[0] - k // 2)), int(min(hi, xs[-1] + k // 2))
-    gap = staff["gap"]
+    # the right end where the lines last pass, not the window's reach past it
+    left, right = int(max(lo, xs[0] - k // 2)), int(min(hi, np.flatnonzero(col[:xs[-1] + k // 2 + 1])[-1] + 1))
     rows = g[max(0, int(lines[0] - gap)):int(lines[-1] + gap) + 1] < 120
     # ink, but not a scanner border (dark the whole way down)
     dark = rows.any(axis=0) & (rows.mean(axis=0) < 0.8)
@@ -515,6 +534,10 @@ EDGE_REACH = 0.08     # image widths (heights) in from the border to look for th
 EDGE_STEP = 4.0       # grey levels over 3 px: the paper's edge on a light backing
 CLEF_REACH = 4.0      # how far (spaces) a clef may stick out left of the ruled lines
 CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy stroke may be
+SHORT_SPAN = 0.5      # a staff measured under this share of the page's span is suspect
+PAST_MARGIN = 8.0     # spaces past a short staff's end before looking for its music there
+PAST_INK = 0.25       # music past the end: this share of the written staves' median ink
+LINE_END = 3.0        # spaces at a staff's right end (its ruling's last 1, and staff_extent's window) not read as music
 REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
 REACH_GAP = 4.0       # ...across gaps narrower than this
 SNAP_REACH = 1.0      # snapping a hand-placed bar line looks this many spaces either side
@@ -1083,6 +1106,18 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     written = [m[6] for m in sure if m[6] >= WRITTEN_INK]
     ink = float(np.median(written)) if written else 0.0
     for st, band, local, left, right, paper, inside in measured:
+        # A staff measured under SHORT_SPAN of the page's span, with music
+        # on past its ends, takes the span: staff_extent stopped early (the
+        # trace off its lines, a few columns matched by chance; Paris and
+        # Sibley copies). Ink from PAST_MARGIN spaces out (clear of a closing
+        # bar line, repeat dots, "fine"), at least PAST_INK of the written
+        # staves' median. Where the music then stops, the trim below ends it.
+        past = int(PAST_MARGIN * st["gap"])
+        if span and ink and right - left < SHORT_SPAN * (span[1] - span[0]) and max(
+                inner_ink(band, local, right + past, span[1]),
+                inner_ink(band, local, span[0], left - past)) >= PAST_INK * ink:
+            left, right = max(paper[0], min(left, span[0])), min(paper[1], max(right, span[1]))
+            inside = inner_ink(band, local, left, right)
         if staves is None and inside < EMPTY_INK:
             continue  # an empty ruled staff (text above or below doesn't count)
         if st.get("ruled") and span and inner_ink(band, local, *span) < RULED_INK * ink:
@@ -1155,8 +1190,9 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
                 # Ink between the staff lines that stops for good well before
                 # the ruled end (a movement ending mid-line, text such as "da
                 # capo" above or below it, a flourish): end the staff there.
+                # (not at the ruling's own ends, which curl into the spaces)
                 mids = [(a + b) // 2 for a, b in zip(local["lines"], local["lines"][1:])]
-                inner = (seen[mids, tail:right] < 120).any(axis=0)
+                inner = (seen[mids, tail:max(tail, right - int(gap * LINE_END))] < 120).any(axis=0)
                 on = np.flatnonzero(inner)
                 end = tail + (int(on[-1]) + 1 if len(on) else 0)
                 # (Limiting this to short tails, for fear of cutting music

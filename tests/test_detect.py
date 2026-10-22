@@ -82,6 +82,21 @@ def test_a_dense_staff_in_a_ruled_slot_is_found(tmp_path, page, top):
     assert any(abs(s["top"] - top) < 0.01 for s in detect.detect_page(img))
 
 
+@needs(OP32)
+def test_staves_on_grey_paper_reach_across(tmp_path):
+    # Op. 32 p. 138: grey paper (~155 between the lines), and two staves
+    # traced half a space off towards an end. Every staff is ruled and
+    # written across the page; with a fixed ink threshold four came out
+    # short, two of them a clef's width.
+    g = detect._gray(render(OP32, 138, tmp_path))
+    w = g.shape[1]
+    for st in detect.find_staves(g):
+        band, y0 = detect.straighten(g, st)
+        local = {**st, "top": st["top"] - y0, "bottom": st["bottom"] - y0, "lines": [y - y0 for y in st["lines"]]}
+        left, right = detect.staff_extent(band, local)
+        assert right - left > 0.75 * w, f"staff at {st['top']}: {left}-{right}"
+
+
 # (pdf, fixture, at least this share found, at most this many false).
 # 2026-10-02: KHM 602 pp. 2, 3, 6: 179 of 194 found, 3 false (the second
 # copyist, staggered key signatures); KHM 603, one or two pages per part:
