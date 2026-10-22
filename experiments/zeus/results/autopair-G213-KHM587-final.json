@@ -15180,6 +15180,159 @@
    "confirmed": "bar boxes"
   },
   {
+   "staff": "p22-3",
+   "part": "vn2",
+   "page": 22,
+   "system": {
+    "top": 0.34973970657832465,
+    "bottom": 0.3852342640795078,
+    "left": 0.12964285714285714,
+    "right": 0.945,
+    "start": 0.18785714285714286,
+    "bend": [
+     -0.000473260766682442,
+     0.0008245844480717181,
+     0.0005360402561403028,
+     0.002758675642523907,
+     -0.000946521533364884
+    ],
+    "barlines": [
+     {
+      "x0": 0.42723214285714284,
+      "x1": 0.4266964285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6124107142857143,
+      "x1": 0.6140178571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8338392857142857,
+      "x1": 0.8354464285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "I",
+     13
+    ],
+    [
+     "I",
+     14
+    ],
+    [
+     "I",
+     15
+    ],
+    [
+     "I",
+     16
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "I",
+      16
+     ],
+     "half": "first",
+     "cut": "2",
+     "fit": 0.269
+    }
+   ],
+   "steps": {
+    "one": 3,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "I",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "I",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "I",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "I",
+       16
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0,
+   "how": "own",
+   "confirmed": "bar boxes"
+  },
+  {
    "staff": "p22-6",
    "part": "vn2",
    "page": 22,
@@ -32707,78 +32860,10 @@
    ]
   },
   {
-   "staff": "p22-3",
-   "part": "vn2",
-   "why": [
-    "extra at none"
-   ],
-   "bars": [
-    [
-     "I",
-     13
-    ],
-    [
-     "I",
-     14
-    ],
-    [
-     "I",
-     15
-    ]
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "I",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "I",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "I",
-       15
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p22-4",
    "part": "vn2",
    "why": [
-    "unlike [['I', 18]]",
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['I', 16]"
+    "unlike [['I', 18]]"
    ],
    "bars": [
     [

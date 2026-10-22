@@ -2,9 +2,9 @@
  "source": "Op02-5-G163",
  "tally": {
   "staves": 121,
-  "staves kept": 102,
-  "bars on kept staves": 796,
-  "kept, bar boxes as many": 82
+  "staves kept": 103,
+  "bars on kept staves": 800,
+  "kept, bar boxes as many": 83
  },
  "clefs": {},
  "kept but wrong": [],
@@ -21551,6 +21551,171 @@
    "worst": 0.0
   },
   {
+   "staff": "p15-2",
+   "part": "vc",
+   "page": 15,
+   "system": {
+    "top": 0.24464374688589935,
+    "bottom": 0.2825112107623318,
+    "left": 0.1125,
+    "right": 0.9232142857142858,
+    "start": 0.16071428571428573,
+    "bend": [
+     0.003487792725460887,
+     0.001993024414549078,
+     0.0004779191198153448,
+     -0.0061799009588887985,
+     -0.017438963627304436
+    ],
+    "barlines": [
+     {
+      "x0": 0.2710214285714286,
+      "x1": 0.2718357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5439285714285714,
+      "x1": 0.5439285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7582142857142857,
+      "x1": 0.7582142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9185214285714286,
+      "x1": 0.9193357142857143,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "tenor",
+   "bars": [
+    [
+     "Op02-5",
+     "I",
+     13
+    ],
+    [
+     "Op02-5",
+     "I",
+     14
+    ],
+    [
+     "Op02-5",
+     "I",
+     15
+    ],
+    [
+     "Op02-5",
+     "I",
+     16
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      13
+     ],
+     "half": "second",
+     "cut": "5/8",
+     "fit": 0.388
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-5",
+       "I",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-5",
+       "I",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-5",
+       "I",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-5",
+       "I",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 11,
+     "tenor": 20,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 12,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 7,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C4"
+   ],
+   "worst": 0.156
+  },
+  {
    "staff": "p15-3",
    "part": "vc",
    "page": 15,
@@ -28080,8 +28245,7 @@
    "part": "vc",
    "page": 15,
    "why": [
-    "unlike [['Op02-5', 'I', 6]]",
-    "extra at none"
+    "unlike [['Op02-5', 'I', 6]]"
    ],
    "bars": [
     [
@@ -28123,11 +28287,16 @@
      "Op02-5",
      "I",
      12
+    ],
+    [
+     "Op02-5",
+     "I",
+     13
     ]
    ],
    "steps": {
     "one": 8,
-    "extra": 1
+    "split": 1
    },
    "boxes": [
     {
@@ -28235,49 +28404,6 @@
      "ends_movement": false
     },
     {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p15-2",
-   "part": "vc",
-   "page": 15,
-   "why": [
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['Op02-5', 'I', 13]"
-   ],
-   "bars": [
-    [
-     "Op02-5",
-     "I",
-     13
-    ],
-    [
-     "Op02-5",
-     "I",
-     14
-    ],
-    [
-     "Op02-5",
-     "I",
-     15
-    ],
-    [
-     "Op02-5",
-     "I",
-     16
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
      "bars": [
       [
        "Op02-5",
@@ -28285,48 +28411,9 @@
        13
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-5",
-       "I",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-5",
-       "I",
-       15
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-5",
-       "I",
-       16
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]

@@ -19474,7 +19474,6 @@
    "part": "vn2",
    "page": 8,
    "why": [
-    "musvit-D3S-h96: extra at none",
     "musvit-D3S-h96: 5 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -19497,12 +19496,16 @@
      "Op22-4",
      "I",
      20
+    ],
+    [
+     "Op22-4",
+     "I",
+     21
     ]
    ],
    "steps": {
-    "split": 1,
-    "one": 3,
-    "extra": 1
+    "split": 2,
+    "one": 3
    },
    "boxes": [
     {
@@ -19558,10 +19561,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       21
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -19572,9 +19581,8 @@
    "page": 8,
    "why": [
     "musvit-D3S-h96: unlike [['Op22-4', 'I', 25]]",
-    "musvit-D3S-h96: staff before ends with extra",
     "musvit-D3S-h96: an end measure shorter than its bar ['Op22-4', 'I', 25]",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op22-4', 'I', 21]"
+    "musvit-D3S-h96: 6 measures, 5 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -19604,8 +19612,8 @@
     ]
    ],
    "steps": {
-    "one": 4,
-    "split": 1
+    "split": 2,
+    "one": 3
    },
    "boxes": [
     {
@@ -19849,7 +19857,6 @@
    "part": "vn2",
    "page": 9,
    "why": [
-    "musvit-D3S-h96: extra at none",
     "musvit-D3S-h96: staff before ends with extra"
    ],
    "bars": [
@@ -19867,11 +19874,16 @@
      "Op22-4",
      "I",
      45
+    ],
+    [
+     "Op22-4",
+     "I",
+     46
     ]
    ],
    "steps": {
     "one": 3,
-    "extra": 1
+    "split": 1
    },
    "boxes": [
     {
@@ -19914,10 +19926,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       46
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -19927,7 +19945,6 @@
    "part": "vn2",
    "page": 9,
    "why": [
-    "musvit-D3S-h96: staff before ends with extra",
     "musvit-D3S-h96: 4 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -19953,8 +19970,8 @@
     ]
    ],
    "steps": {
-    "one": 3,
-    "split": 1
+    "split": 2,
+    "one": 2
    },
    "boxes": [
     {
@@ -20100,90 +20117,11 @@
    ]
   },
   {
-   "staff": "p9-5",
-   "part": "vn2",
-   "page": 9,
-   "why": [
-    "musvit-D3S-h96: extra at none"
-   ],
-   "bars": [
-    [
-     "Op22-4",
-     "I",
-     53
-    ],
-    [
-     "Op22-4",
-     "I",
-     54
-    ],
-    [
-     "Op22-4",
-     "I",
-     55
-    ]
-   ],
-   "steps": {
-    "one": 3,
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       53
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       54
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       55
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p9-6",
    "part": "vn2",
    "page": 9,
    "why": [
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: next staff begins with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op22-4', 'I', 56]"
+    "musvit-D3S-h96: next staff begins with extra"
    ],
    "bars": [
     [
@@ -20208,7 +20146,8 @@
     ]
    ],
    "steps": {
-    "one": 4
+    "split": 1,
+    "one": 3
    },
    "boxes": [
     {
@@ -22677,6 +22616,91 @@
        "Op22-4",
        "I",
        37
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p9-5",
+   "part": "vn2",
+   "page": 9,
+   "bars": [
+    [
+     "Op22-4",
+     "I",
+     53
+    ],
+    [
+     "Op22-4",
+     "I",
+     54
+    ],
+    [
+     "Op22-4",
+     "I",
+     55
+    ],
+    [
+     "Op22-4",
+     "I",
+     56
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best: extra at none",
+    "musvit-C4-bocch-tf8-L-best: 5 measures, 4 bar boxes, an end not one bar"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       56
       ]
      ],
      "count": 0,

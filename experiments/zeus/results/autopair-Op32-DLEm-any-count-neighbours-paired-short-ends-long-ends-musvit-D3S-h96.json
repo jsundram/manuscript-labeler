@@ -42018,9 +42018,7 @@
    "part": "vc",
    "page": 18,
    "why": [
-    "staff before ends with two",
-    "next staff begins with extra",
-    "an end measure shorter than its bar ['Op32-4', 'I', 35]"
+    "staff before ends with two"
    ],
    "bars": [
     [
@@ -42045,7 +42043,8 @@
     ]
    ],
    "steps": {
-    "one": 4
+    "one": 3,
+    "split": 1
    },
    "boxes": [
     {
@@ -42095,9 +42094,9 @@
        35
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -42107,10 +42106,14 @@
    "part": "vc",
    "page": 18,
    "why": [
-    "extra at none",
     "4 measures, 5 bar boxes, an end not one bar"
    ],
    "bars": [
+    [
+     "Op32-4",
+     "I",
+     35
+    ],
     [
      "Op32-4",
      "I",
@@ -42128,13 +42131,19 @@
     ]
    ],
    "steps": {
-    "extra": 1,
+    "split": 1,
     "one": 3
    },
    "boxes": [
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       35
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false

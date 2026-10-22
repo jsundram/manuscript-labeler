@@ -65238,7 +65238,6 @@
    "page": 14,
    "why": [
     "extra at none",
-    "next staff begins with extra",
     "10 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -65290,7 +65289,8 @@
    ],
    "steps": {
     "extra": 1,
-    "one": 9
+    "one": 8,
+    "split": 1
    },
    "boxes": [
     {
@@ -65412,9 +65412,9 @@
        63
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -65424,10 +65424,14 @@
    "part": "vn1",
    "page": 14,
    "why": [
-    "extra at none",
     "9 measures, 2 bar boxes, an end not one bar"
    ],
    "bars": [
+    [
+     "boccherini-G84",
+     "I",
+     63
+    ],
     [
      "boccherini-G84",
      "I",
@@ -65462,16 +65466,27 @@
      "boccherini-G84",
      "I",
      70
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     71
     ]
    ],
    "steps": {
-    "extra": 2,
+    "split": 2,
     "one": 7
    },
    "boxes": [
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       63
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -65568,10 +65583,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       71
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -65581,8 +65602,6 @@
    "part": "vn1",
    "page": 14,
    "why": [
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['boccherini-G84', 'I', 71]",
     "8 measures, 5 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -65628,8 +65647,8 @@
     ]
    ],
    "steps": {
-    "one": 7,
-    "split": 1
+    "split": 2,
+    "one": 6
    },
    "boxes": [
     {
@@ -71501,7 +71520,6 @@
    "page": 25,
    "why": [
     "unlike [['boccherini-G85', 'IV', 15]]",
-    "extra at none",
     "an end measure shorter than its bar ['boccherini-G85', 'IV', 15]",
     "6 measures, 4 bar boxes, an end not one bar"
    ],
@@ -71530,11 +71548,16 @@
      "boccherini-G85",
      "IV",
      19
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     20
     ]
    ],
    "steps": {
     "one": 5,
-    "extra": 1
+    "split": 1
    },
    "boxes": [
     {
@@ -71603,10 +71626,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       20
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -71616,8 +71645,7 @@
    "part": "vn1",
    "page": 25,
    "why": [
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['boccherini-G85', 'IV', 20]"
+    "6 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -71652,7 +71680,8 @@
     ]
    ],
    "steps": {
-    "one": 6
+    "split": 1,
+    "one": 5
    },
    "boxes": [
     {
@@ -100330,7 +100359,6 @@
    "part": "vc",
    "page": 98,
    "why": [
-    "extra at none",
     "6 measures, 2 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -100358,11 +100386,16 @@
      "boccherini-G85",
      "IV",
      5
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     6
     ]
    ],
    "steps": {
     "one": 5,
-    "extra": 1
+    "split": 1
    },
    "boxes": [
     {
@@ -100431,10 +100464,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       6
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -100444,8 +100483,7 @@
    "part": "vc",
    "page": 98,
    "why": [
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['boccherini-G85', 'IV', 6]"
+    "7 measures, 2 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -100485,7 +100523,8 @@
     ]
    ],
    "steps": {
-    "one": 7
+    "split": 1,
+    "one": 6
    },
    "boxes": [
     {

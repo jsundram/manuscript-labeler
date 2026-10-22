@@ -2,9 +2,9 @@
  "source": "Op02-4-CZ-Pu-vn1",
  "tally": {
   "staves": 32,
-  "staves kept": 14,
-  "bars on kept staves": 78,
-  "kept, bar boxes as many": 10
+  "staves kept": 15,
+  "bars on kept staves": 84,
+  "kept, bar boxes as many": 11
  },
  "clefs": {},
  "kept but wrong": [],
@@ -2716,6 +2716,229 @@
    "worst": 0.278
   },
   {
+   "staff": "p4-1",
+   "part": "vn1",
+   "page": 4,
+   "system": {
+    "top": 0.20844811753902662,
+    "bottom": 0.25436179981634527,
+    "left": 0.08928571428571429,
+    "right": 0.9082142857142858,
+    "start": 0.12142857142857143,
+    "bend": [
+     0.0013774104683195593,
+     -0.0006699649556792457,
+     0.0002459661550570604,
+     -0.003069891868593161,
+     0.0032139577594123047
+    ],
+    "barlines": [
+     {
+      "x0": 0.24357142857142858,
+      "x1": 0.25214285714285717,
+      "kind": "single"
+     },
+     {
+      "x0": 0.42928571428571427,
+      "x1": 0.44,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6096428571428572,
+      "x1": 0.6178571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6617857142857143,
+      "x1": 0.6714285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8405357142857143,
+      "x1": 0.8466071428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8967857142857143,
+      "x1": 0.9053571428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 3.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     58
+    ],
+    [
+     "Op02-4",
+     "II",
+     59
+    ],
+    [
+     "Op02-4",
+     "II",
+     60
+    ],
+    [
+     "Op02-4",
+     "II",
+     61
+    ],
+    [
+     "Op02-4",
+     "II",
+     62
+    ],
+    [
+     "Op02-4",
+     "II",
+     63
+    ]
+   ],
+   "plain": false,
+   "measures": 6,
+   "bar_boxes": 6,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-4",
+      "II",
+      58
+     ],
+     "half": "second",
+     "cut": "5/16",
+     "fit": 0.357
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       58
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       59
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 9,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.091
+  },
+  {
    "staff": "p4-2",
    "part": "vn1",
    "page": 4,
@@ -4335,7 +4558,6 @@
    "part": "vn1",
    "page": 4,
    "why": [
-    "extra at none",
     "6 measures, 5 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -4363,11 +4585,16 @@
      "Op02-4",
      "II",
      57
+    ],
+    [
+     "Op02-4",
+     "II",
+     58
     ]
    ],
    "steps": {
     "one": 5,
-    "extra": 1
+    "split": 1
    },
    "boxes": [
     {
@@ -4436,59 +4663,6 @@
      "ends_movement": false
     },
     {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p4-1",
-   "part": "vn1",
-   "page": 4,
-   "why": [
-    "staff before ends with extra",
-    "an end measure shorter than its bar ['Op02-4', 'II', 58]"
-   ],
-   "bars": [
-    [
-     "Op02-4",
-     "II",
-     58
-    ],
-    [
-     "Op02-4",
-     "II",
-     59
-    ],
-    [
-     "Op02-4",
-     "II",
-     60
-    ],
-    [
-     "Op02-4",
-     "II",
-     61
-    ],
-    [
-     "Op02-4",
-     "II",
-     62
-    ],
-    [
-     "Op02-4",
-     "II",
-     63
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
      "bars": [
       [
        "Op02-4",
@@ -4496,74 +4670,9 @@
        58
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       59
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       60
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       61
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       62
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]

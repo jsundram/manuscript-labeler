@@ -4385,6 +4385,196 @@
    ],
    "worst": 0.0,
    "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p39-8",
+   "part": "vn1",
+   "page": 39,
+   "system": {
+    "top": 0.7575757575757576,
+    "bottom": 0.7933884297520661,
+    "left": 0.10142857142857142,
+    "right": 0.7317857142857143,
+    "start": 0.12964285714285714,
+    "bend": [
+     -0.0009182736455463728,
+     -0.0021902700474129024,
+     0.0005668934240363088,
+     0.003039438916062267,
+     0.0010869361518711785
+    ],
+    "barlines": [
+     {
+      "x0": 0.206525,
+      "x1": 0.206525,
+      "kind": "single"
+     },
+     {
+      "x0": 0.38014000000000003,
+      "x1": 0.38014000000000003,
+      "kind": "single"
+     },
+     {
+      "x0": 0.46673499999999996,
+      "x1": 0.46673499999999996,
+      "kind": "single"
+     },
+     {
+      "x0": 0.592735,
+      "x1": 0.592735,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 3.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op22-6",
+     "II",
+     132
+    ],
+    [
+     "Op22-6",
+     "II",
+     133
+    ],
+    [
+     "Op22-6",
+     "II",
+     134
+    ],
+    [
+     "Op22-6",
+     "II",
+     135
+    ],
+    [
+     "Op22-6",
+     "II",
+     136
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op22-6",
+      "II",
+      132
+     ],
+     "half": "second",
+     "cut": "1/4",
+     "fit": 0.333
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       132
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       133
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       134
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       135
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       136
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
   }
  ],
  "not kept": [
@@ -5262,11 +5452,17 @@
      "Op22-6",
      "II",
      125
+    ],
+    [
+     "Op22-6",
+     "II",
+     126
     ]
    ],
    "steps": {
     "one": 7,
-    "extra": 2
+    "extra": 1,
+    "split": 1
    },
    "boxes": [
     {
@@ -5368,61 +5564,6 @@
      "ends_movement": false
     },
     {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p39-7",
-   "part": "vn1",
-   "page": 39,
-   "why": [
-    "musvit-D3S-h96: extra at none",
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op22-6', 'II', 126]"
-   ],
-   "bars": [
-    [
-     "Op22-6",
-     "II",
-     126
-    ],
-    [
-     "Op22-6",
-     "II",
-     127
-    ],
-    [
-     "Op22-6",
-     "II",
-     128
-    ],
-    [
-     "Op22-6",
-     "II",
-     129
-    ],
-    [
-     "Op22-6",
-     "II",
-     130
-    ],
-    [
-     "Op22-6",
-     "II",
-     131
-    ]
-   ],
-   "steps": {
-    "one": 6,
-    "extra": 1
-   },
-   "boxes": [
-    {
      "bars": [
       [
        "Op22-6",
@@ -5430,188 +5571,10 @@
        126
       ]
      ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       127
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       128
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       129
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       130
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       131
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p39-8",
-   "part": "vn1",
-   "page": 39,
-   "why": [
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op22-6', 'II', 132]"
-   ],
-   "bars": [
-    [
-     "Op22-6",
-     "II",
-     132
-    ],
-    [
-     "Op22-6",
-     "II",
-     133
-    ],
-    [
-     "Op22-6",
-     "II",
-     134
-    ],
-    [
-     "Op22-6",
-     "II",
-     135
-    ],
-    [
-     "Op22-6",
-     "II",
-     136
-    ]
-   ],
-   "steps": {
-    "one": 5
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       132
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       133
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       134
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       135
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       136
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   },
@@ -6129,6 +6092,144 @@
      "count": 1,
      "join": false,
      "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p39-7",
+   "part": "vn1",
+   "page": 39,
+   "bars": [
+    [
+     "Op22-6",
+     "II",
+     126
+    ],
+    [
+     "Op22-6",
+     "II",
+     127
+    ],
+    [
+     "Op22-6",
+     "II",
+     128
+    ],
+    [
+     "Op22-6",
+     "II",
+     129
+    ],
+    [
+     "Op22-6",
+     "II",
+     130
+    ],
+    [
+     "Op22-6",
+     "II",
+     131
+    ],
+    [
+     "Op22-6",
+     "II",
+     132
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best: extra at none"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       126
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       127
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       128
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       129
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       130
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       131
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       132
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
      "ends_movement": false
     }
    ]

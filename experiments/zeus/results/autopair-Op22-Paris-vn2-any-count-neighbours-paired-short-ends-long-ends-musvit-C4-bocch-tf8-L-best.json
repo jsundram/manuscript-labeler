@@ -19950,7 +19950,6 @@
    "part": "vn2",
    "page": 8,
    "why": [
-    "extra at none",
     "5 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -19973,12 +19972,16 @@
      "Op22-4",
      "I",
      20
+    ],
+    [
+     "Op22-4",
+     "I",
+     21
     ]
    ],
    "steps": {
-    "split": 1,
-    "one": 3,
-    "extra": 1
+    "split": 2,
+    "one": 3
    },
    "boxes": [
     {
@@ -20034,10 +20037,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       21
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -20048,9 +20057,7 @@
    "page": 8,
    "why": [
     "unlike [['Op22-4', 'I', 25]]",
-    "staff before ends with extra",
-    "next staff begins with two",
-    "an end measure shorter than its bar ['Op22-4', 'I', 21]"
+    "next staff begins with two"
    ],
    "bars": [
     [
@@ -20080,7 +20087,8 @@
     ]
    ],
    "steps": {
-    "one": 5
+    "split": 1,
+    "one": 4
    },
    "boxes": [
     {

@@ -60301,6 +60301,391 @@
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
+   "staff": "p61-7",
+   "part": "vn2",
+   "page": 61,
+   "system": {
+    "top": 0.7969995311767464,
+    "bottom": 0.8321612751992499,
+    "left": 0.11892857142857143,
+    "right": 0.935,
+    "start": 0.15071428571428572,
+    "bend": [
+     0.0046882325363338025,
+     0.0038056010027076544,
+     0.0003420496187223153,
+     0.00037553699398188816,
+     -0.0009376465072667605
+    ],
+    "barlines": [
+     {
+      "x0": 0.2872767857142857,
+      "x1": 0.28486607142857145,
+      "kind": "single"
+     },
+     {
+      "x0": 0.43464285714285716,
+      "x1": 0.43464285714285716,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6420982142857142,
+      "x1": 0.6429017857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7936160714285714,
+      "x1": 0.7928125,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 7.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op32-4",
+     "I",
+     48
+    ],
+    [
+     "Op32-4",
+     "I",
+     49
+    ],
+    [
+     "Op32-4",
+     "I",
+     50
+    ],
+    [
+     "Op32-4",
+     "I",
+     51
+    ],
+    [
+     "Op32-4",
+     "I",
+     52
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op32-4",
+      "I",
+      52
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.292
+    }
+   ],
+   "steps": {
+    "one": 4,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       52
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.25,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p62-0",
+   "part": "vn2",
+   "page": 62,
+   "system": {
+    "top": 0.12801133679735474,
+    "bottom": 0.1643835616438356,
+    "left": 0.03571428571428571,
+    "right": 0.8353571428571429,
+    "start": 0.06392857142857143,
+    "bend": [
+     -0.000944733112895607,
+     -0.0005229772589243424,
+     -0.0001494220739783797,
+     -0.0011194605381122694,
+     -0.0051960321209258385
+    ],
+    "barlines": [
+     {
+      "x0": 0.18730892857142858,
+      "x1": 0.18483392857142855,
+      "kind": "single"
+     },
+     {
+      "x0": 0.35255535714285713,
+      "x1": 0.35173035714285716,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5264839285714286,
+      "x1": 0.5256589285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6987660714285715,
+      "x1": 0.6940910714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8307696428571429,
+      "x1": 0.8299446428571428,
+      "kind": "single"
+     }
+    ],
+    "above": 5.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op32-4",
+     "I",
+     52
+    ],
+    [
+     "Op32-4",
+     "I",
+     53
+    ],
+    [
+     "Op32-4",
+     "I",
+     54
+    ],
+    [
+     "Op32-4",
+     "I",
+     55
+    ],
+    [
+     "Op32-4",
+     "I",
+     56
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op32-4",
+      "I",
+      52
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.292
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-4",
+       "I",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 13,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.2,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
    "staff": "p62-1",
    "part": "vn2",
    "page": 62,
@@ -99950,6 +100335,532 @@
     "C3"
    ],
    "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p107-5",
+   "part": "va",
+   "page": 107,
+   "system": {
+    "top": 0.5678085405912717,
+    "bottom": 0.6039418113561709,
+    "left": 0.13607142857142857,
+    "right": 0.9160714285714285,
+    "start": 0.18607142857142858,
+    "bend": [
+     0.004692632566870014,
+     0.003744529252339136,
+     -0.00023942002892199176,
+     0.0011923117440312543,
+     0.0004692632566870014
+    ],
+    "barlines": [
+     {
+      "x0": 0.3437071428571429,
+      "x1": 0.34700714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5346428571428572,
+      "x1": 0.5346428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7956589285714285,
+      "x1": 0.7964839285714287,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9115392857142857,
+      "x1": 0.9098892857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 2.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op32-5",
+     "I",
+     22
+    ],
+    [
+     "Op32-5",
+     "I",
+     23
+    ],
+    [
+     "Op32-5",
+     "I",
+     24
+    ],
+    [
+     "Op32-5",
+     "I",
+     25
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op32-5",
+      "I",
+      22
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.212
+    },
+    {
+     "bar": [
+      "Op32-5",
+      "I",
+      25
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.0
+    }
+   ],
+   "steps": {
+    "split": 2,
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       25
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 7,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 9,
+     "tenor": 1,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.083,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p108-0",
+   "part": "va",
+   "page": 108,
+   "system": {
+    "top": 0.190253045923149,
+    "bottom": 0.22586691658856609,
+    "left": 0.045714285714285714,
+    "right": 0.8610714285714286,
+    "start": 0.08321428571428571,
+    "bend": [
+     0.0009372071227741331,
+     0.0016323422527398915,
+     0.0,
+     -0.0020611384197540233,
+     -0.0014536273740986445
+    ],
+    "barlines": [
+     {
+      "x0": 0.25107142857142856,
+      "x1": 0.25107142857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.40663571428571427,
+      "x1": 0.40907857142857146,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5748,
+      "x1": 0.5780571428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7703571428571429,
+      "x1": 0.7703571428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 8.0,
+    "below": 3.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op32-5",
+     "I",
+     29
+    ],
+    [
+     "Op32-5",
+     "I",
+     30
+    ],
+    [
+     "Op32-5",
+     "I",
+     31
+    ],
+    [
+     "Op32-5",
+     "I",
+     32
+    ],
+    [
+     "Op32-5",
+     "I",
+     33
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 5,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op32-5",
+      "I",
+      33
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.25
+    }
+   ],
+   "steps": {
+    "one": 4,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       33
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 5,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p108-1",
+   "part": "va",
+   "page": 108,
+   "system": {
+    "top": 0.267572633552015,
+    "bottom": 0.30318650421743204,
+    "left": 0.04928571428571429,
+    "right": 0.8464285714285714,
+    "start": 0.10357142857142858,
+    "bend": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "barlines": [
+     {
+      "x0": 0.26985000000000003,
+      "x1": 0.2722928571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4781142857142857,
+      "x1": 0.47974285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6769928571428571,
+      "x1": 0.6794357142857144,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8414785714285714,
+      "x1": 0.8406642857142858,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 1.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op32-5",
+     "I",
+     33
+    ],
+    [
+     "Op32-5",
+     "I",
+     34
+    ],
+    [
+     "Op32-5",
+     "I",
+     35
+    ],
+    [
+     "Op32-5",
+     "I",
+     36
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op32-5",
+      "I",
+      33
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.25
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "I",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 8,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.5,
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
@@ -176514,207 +177425,6 @@
    ]
   },
   {
-   "staff": "p61-7",
-   "part": "vn2",
-   "page": 61,
-   "why": [
-    "musvit-D3S-h96: extra at none"
-   ],
-   "bars": [
-    [
-     "Op32-4",
-     "I",
-     48
-    ],
-    [
-     "Op32-4",
-     "I",
-     49
-    ],
-    [
-     "Op32-4",
-     "I",
-     50
-    ],
-    [
-     "Op32-4",
-     "I",
-     51
-    ]
-   ],
-   "steps": {
-    "one": 4,
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       48
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       49
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       50
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       51
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p62-0",
-   "part": "vn2",
-   "page": 62,
-   "why": [
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op32-4', 'I', 52]"
-   ],
-   "bars": [
-    [
-     "Op32-4",
-     "I",
-     52
-    ],
-    [
-     "Op32-4",
-     "I",
-     53
-    ],
-    [
-     "Op32-4",
-     "I",
-     54
-    ],
-    [
-     "Op32-4",
-     "I",
-     55
-    ],
-    [
-     "Op32-4",
-     "I",
-     56
-    ]
-   ],
-   "steps": {
-    "one": 5
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       53
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       54
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       55
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-4",
-       "I",
-       56
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p62-3",
    "part": "vn2",
    "page": 62,
@@ -180426,143 +181136,11 @@
    ]
   },
   {
-   "staff": "p73-1",
-   "part": "vn2",
-   "page": 73,
-   "why": [
-    "musvit-D3S-h96: extra at none"
-   ],
-   "bars": [
-    [
-     "Op32-6",
-     "I",
-     8
-    ],
-    [
-     "Op32-6",
-     "I",
-     9
-    ],
-    [
-     "Op32-6",
-     "I",
-     10
-    ],
-    [
-     "Op32-6",
-     "I",
-     11
-    ],
-    [
-     "Op32-6",
-     "I",
-     12
-    ],
-    [
-     "Op32-6",
-     "I",
-     13
-    ]
-   ],
-   "steps": {
-    "one": 6,
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       10
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       11
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       12
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-6",
-       "I",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p73-2",
    "part": "vn2",
    "page": 73,
    "why": [
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op32-6', 'I', 14]"
+    "musvit-D3S-h96: 7 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -180602,7 +181180,8 @@
     ]
    ],
    "steps": {
-    "one": 7
+    "split": 1,
+    "one": 6
    },
    "boxes": [
     {
@@ -203904,7 +204483,7 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: next staff begins with extra"
+    "musvit-C4-bocch-tf8-L-best: 6 measures, 5 bar boxes, an end not one bar"
    ],
    "boxes": [
     {
@@ -205697,6 +206276,145 @@
      "join": false,
      "continues": false,
      "ends_movement": true
+    }
+   ]
+  },
+  {
+   "staff": "p73-1",
+   "part": "vn2",
+   "page": 73,
+   "bars": [
+    [
+     "Op32-6",
+     "I",
+     8
+    ],
+    [
+     "Op32-6",
+     "I",
+     9
+    ],
+    [
+     "Op32-6",
+     "I",
+     10
+    ],
+    [
+     "Op32-6",
+     "I",
+     11
+    ],
+    [
+     "Op32-6",
+     "I",
+     12
+    ],
+    [
+     "Op32-6",
+     "I",
+     13
+    ],
+    [
+     "Op32-6",
+     "I",
+     14
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best: extra at none",
+    "musvit-C4-bocch-tf8-L-best: 9 measures, 7 bar boxes, an end not one bar"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-6",
+       "I",
+       14
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
     }
    ]
   },
@@ -207546,7 +208264,6 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: extra at none",
     "musvit-C4-bocch-tf8-L-best: 4 measures, 5 bar boxes, an end not one bar"
    ],
    "boxes": [
@@ -207613,278 +208330,6 @@
      "count": 0,
      "join": false,
      "continues": true,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p107-5",
-   "part": "va",
-   "page": 107,
-   "bars": [
-    [
-     "Op32-5",
-     "I",
-     22
-    ],
-    [
-     "Op32-5",
-     "I",
-     23
-    ],
-    [
-     "Op32-5",
-     "I",
-     24
-    ],
-    [
-     "Op32-5",
-     "I",
-     25
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: staff before ends with extra",
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-5', 'I', 22]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       22
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       23
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       25
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": true,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p108-0",
-   "part": "va",
-   "page": 108,
-   "bars": [
-    [
-     "Op32-5",
-     "I",
-     29
-    ],
-    [
-     "Op32-5",
-     "I",
-     30
-    ],
-    [
-     "Op32-5",
-     "I",
-     31
-    ],
-    [
-     "Op32-5",
-     "I",
-     32
-    ],
-    [
-     "Op32-5",
-     "I",
-     33
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: extra at none"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       33
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": true,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p108-1",
-   "part": "va",
-   "page": 108,
-   "bars": [
-    [
-     "Op32-5",
-     "I",
-     33
-    ],
-    [
-     "Op32-5",
-     "I",
-     34
-    ],
-    [
-     "Op32-5",
-     "I",
-     35
-    ],
-    [
-     "Op32-5",
-     "I",
-     36
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: staff before ends with extra",
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op32-5', 'I', 33]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       34
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "I",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
      "ends_movement": false
     }
    ]

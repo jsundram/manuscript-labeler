@@ -2,9 +2,9 @@
  "source": "Op08-4-MS200",
  "tally": {
   "staves": 264,
-  "staves kept": 136,
-  "bars on kept staves": 646,
-  "kept, bar boxes as many": 63
+  "staves kept": 137,
+  "bars on kept staves": 650,
+  "kept, bar boxes as many": 64
  },
  "clefs": {},
  "kept but wrong": [],
@@ -5250,6 +5250,166 @@
     "G2"
    ],
    "worst": 0.25
+  },
+  {
+   "staff": "p20-4",
+   "part": "vn1",
+   "page": 20,
+   "system": {
+    "top": 0.375,
+    "bottom": 0.40214285714285714,
+    "left": 0.047080979284369114,
+    "right": 0.7387005649717514,
+    "start": 0.1068738229755179,
+    "bend": [
+     0.005357142857142857,
+     0.003743967181467188,
+     0.0017857142857142857,
+     -0.0014285714285714286,
+     -0.002857142857142857
+    ],
+    "barlines": [
+     {
+      "x0": 0.3050847457627119,
+      "x1": 0.3050847457627119,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5018832391713748,
+      "x1": 0.5018832391713748,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6892655367231638,
+      "x1": 0.6892655367231638,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 4.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op08-4",
+     "III",
+     69
+    ],
+    [
+     "Op08-4",
+     "III",
+     70
+    ],
+    [
+     "Op08-4",
+     "III",
+     71
+    ],
+    [
+     "Op08-4",
+     "III",
+     72
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op08-4",
+      "III",
+      72
+     ],
+     "half": "first",
+     "cut": "1/4",
+     "fit": 0.375
+    }
+   ],
+   "steps": {
+    "one": 3,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op08-4",
+       "III",
+       69
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op08-4",
+       "III",
+       70
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op08-4",
+       "III",
+       71
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op08-4",
+       "III",
+       72
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
   },
   {
    "staff": "p1-9",
@@ -25897,103 +26057,19 @@
    ]
   },
   {
-   "staff": "p20-4",
-   "part": "vn1",
-   "page": 20,
-   "why": [
-    "next staff begins with extra",
-    "an end measure shorter than its bar ['Op08-4', 'III', 72]"
-   ],
-   "bars": [
-    [
-     "Op08-4",
-     "III",
-     69
-    ],
-    [
-     "Op08-4",
-     "III",
-     70
-    ],
-    [
-     "Op08-4",
-     "III",
-     71
-    ],
-    [
-     "Op08-4",
-     "III",
-     72
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op08-4",
-       "III",
-       69
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op08-4",
-       "III",
-       70
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op08-4",
-       "III",
-       71
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op08-4",
-       "III",
-       72
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p20-8",
    "part": "vn1",
    "page": 20,
    "why": [
-    "extra at none",
     "unlike [['Op08-4', 'III', 73]]",
     "next staff begins with extra"
    ],
    "bars": [
+    [
+     "Op08-4",
+     "III",
+     72
+    ],
     [
      "Op08-4",
      "III",
@@ -26011,13 +26087,19 @@
     ]
    ],
    "steps": {
-    "extra": 1,
+    "split": 1,
     "one": 3
    },
    "boxes": [
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "Op08-4",
+       "III",
+       72
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false

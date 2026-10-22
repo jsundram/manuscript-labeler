@@ -10682,6 +10682,165 @@
    "confirmed": "bar boxes"
   },
   {
+   "staff": "p16-12",
+   "part": "vn1",
+   "page": 16,
+   "system": {
+    "top": 0.7892857142857143,
+    "bottom": 0.8132142857142857,
+    "left": 0.13498098859315588,
+    "right": 0.9591254752851711,
+    "start": 0.18203422053231938,
+    "bend": [
+     0.004285714285714286,
+     0.0007384169884169621,
+     0.00025510204081634976,
+     -0.003394071914480037,
+     -0.0025
+    ],
+    "barlines": [
+     {
+      "x0": 0.2885052281368821,
+      "x1": 0.2856392585551331,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47053469581749047,
+      "x1": 0.46957937262357413,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6768084600760457,
+      "x1": 0.6758531368821292,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9543726235741445,
+      "x1": 0.9543726235741445,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "IV",
+     131
+    ],
+    [
+     "IV",
+     132
+    ],
+    [
+     "IV",
+     133
+    ],
+    [
+     "IV",
+     134
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "IV",
+      131
+     ],
+     "half": "second",
+     "cut": "2",
+     "fit": 0.167
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "IV",
+       131
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       132
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       133
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       134
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0,
+   "how": "own+twin",
+   "confirmed": "its reading and twin p5-12 pair the same bars",
+   "twin": "p5-12"
+  },
+  {
    "staff": "p16-13",
    "part": "vn1",
    "page": 16,
@@ -41233,82 +41392,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p16-12",
-   "part": "vn1",
-   "why": [
-    "staff before ends with extra",
-    "twin p5-12 not kept"
-   ],
-   "bars": [
-    [
-     "IV",
-     131
-    ],
-    [
-     "IV",
-     132
-    ],
-    [
-     "IV",
-     133
-    ],
-    [
-     "IV",
-     134
-    ]
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "IV",
-       131
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       132
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       133
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       134
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false

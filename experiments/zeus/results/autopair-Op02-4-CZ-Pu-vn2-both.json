@@ -2829,11 +2829,17 @@
      "Op02-4",
      "I",
      53
+    ],
+    [
+     "Op02-4",
+     "I",
+     54
     ]
    ],
    "steps": {
     "one": 7,
-    "extra": 2
+    "extra": 1,
+    "split": 1
    },
    "boxes": [
     {
@@ -2935,10 +2941,16 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       54
+      ]
+     ],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -2949,8 +2961,7 @@
    "page": 2,
    "why": [
     "musvit-D3S-h96: unlike [['Op02-4', 'I', 57]]",
-    "musvit-D3S-h96: staff before ends with extra",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'I', 54]"
+    "musvit-D3S-h96: 8 measures, 7 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -2995,7 +3006,8 @@
     ]
    ],
    "steps": {
-    "one": 8
+    "split": 1,
+    "one": 7
    },
    "boxes": [
     {

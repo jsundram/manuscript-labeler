@@ -3727,8 +3727,7 @@
    "part": "vc",
    "page": 36,
    "why": [
-    "next staff begins with extra",
-    "an end measure shorter than its bar ['Op22-6', 'I', 12]"
+    "7 measures, 6 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -3768,7 +3767,8 @@
     ]
    ],
    "steps": {
-    "one": 7
+    "one": 6,
+    "split": 1
    },
    "boxes": [
     {
@@ -3857,9 +3857,9 @@
        12
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -3869,11 +3869,15 @@
    "part": "vc",
    "page": 36,
    "why": [
-    "extra at none",
     "unlike [['Op22-6', 'I', 14]]",
     "unlike [['Op22-6', 'I', 16]]"
    ],
    "bars": [
+    [
+     "Op22-6",
+     "I",
+     12
+    ],
     [
      "Op22-6",
      "I",
@@ -3901,13 +3905,19 @@
     ]
    ],
    "steps": {
-    "extra": 1,
+    "split": 1,
     "one": 5
    },
    "boxes": [
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "Op22-6",
+       "I",
+       12
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
