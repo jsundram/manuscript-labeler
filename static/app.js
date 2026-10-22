@@ -48,6 +48,9 @@ const S = {
   step: null,        // the open page's staves as the undo step under way began (followLastBarlines)
   carried: new WeakSet(),  // staves Apply Start Below set the right end of (this session)
   sources: [],
+  pairing: null,     // the automatic pairing of this source's staves (loadPairing), if it was paired
+  pairHit: null,     // the unpaired staff n or ⇧N last went to ({page, p})
+  showPairing: loadPref('pairing', true),  // p toggles it
   pdf: null,
   info: null,          // /api/source response minus labels
   doc: null,           // the labels document
@@ -929,6 +932,7 @@ function renderSourcePicker() {
   // the archive's manuscripts (server.py --archive) come after the edition's sources, under a heading
   $('#sourcelist').innerHTML = S.sources.map((s, i) =>
     (s.group === 'archive' && S.sources[i - 1]?.group !== 'archive' ? '<li class="group" role="presentation">Other manuscripts, from the archive</li>' : '') +
+    (s.group === 'paired' && S.sources[i - 1]?.group !== 'paired' ? '<li class="group" role="presentation">Paired manuscripts, outside the archive</li>' : '') +
     `<li role="option" tabindex="-1" data-pdf="${esc(s.pdf)}" aria-selected="${s.pdf === S.pdf}">${sourceItem(s)}</li>`).join('');
 }
 
@@ -966,6 +970,7 @@ async function loadSource(pdf, page) {
   const j = await getJSON(`/api/source?${q(pdf)}`);
   S.pdf = pdf;
   S.doc = j.labels;
+  await loadPairing(pdf);
   renderSourcePicker();
   S.step = null;
   S.etag = j.etag;
@@ -983,6 +988,86 @@ async function loadSource(pdf, page) {
   renderMeta();
   loadMarkTexts();
   await openPage(clamp(page || firstUnreviewed(), 1, S.numPages));
+}
+
+// ------------------------------------------------------------------ pairing
+
+// What the automatic pairing (pairing.py) made of a paired manuscript's
+// staves: in a training set (with its bars), paired but left out of the
+// sets, or unpaired and why. Drawn beside each staff's end; p hides it, n
+// and ⇧N go to the next and previous unpaired staff.
+const PAIR_TEXT = { set: 'in a training set', paired: 'paired, but left out of the training sets', unpaired: 'unpaired', none: 'not in the pairing' };
+
+async function loadPairing(pdf) {
+  S.pairing = null;
+  try {
+    const j = await getJSON(`/api/pairing?${q(pdf)}`);
+    if (j.sources.length && S.pdf === pdf) S.pairing = j;
+  } catch { /* no pairing: nothing to show */ }
+}
+
+// the pairing's staff at this staff's height on page n, if any
+function pairingOf(s, n = S.page) {
+  const c = (s.top + s.bottom) / 2, h = s.bottom - s.top;
+  let best = null, dist = 0.5 * h;
+  for (const p of S.pairing?.pages[n] || []) {
+    const d = Math.abs((p.top + p.bottom) / 2 - c);
+    if (d < dist) { best = p; dist = d; }
+  }
+  return best;
+}
+
+// a staff's pairing status on a page the pairing read ('none': no staff of
+// the pairing's there); null where it didn't read the page
+function pairStatus(s, n = S.page) {
+  if (!S.pairing?.pages[n]) return null;
+  return pairingOf(s, n)?.status || 'none';
+}
+
+function pairingNote(s) {
+  const st = pairStatus(s);
+  if (!st) return '';
+  const p = pairingOf(s);
+  const head = `<b class="pairtag ${st}">${PAIR_TEXT[st]}</b>`;
+  if (st === 'none') return `<p class="pairnote">Pairing: ${head}. Its detection had no staff here, or one elsewhere on the page.</p>`;
+  const why = st === 'unpaired' ? `<ul class="why">${p.why.slice(0, 5).map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '';
+  return `<p class="pairnote" title="${esc(p.source)} ${esc(p.id)}">Pairing: ${head}${p.bars ? ` · ${esc(p.bars)}` : ''}</p>${why}`;
+}
+
+function pairingSummary() {
+  if (!S.pairing) return '';
+  const n = { set: 0, paired: 0, unpaired: 0 };
+  for (const list of Object.values(S.pairing.pages)) for (const p of list) if (p.status in n) n[p.status]++;
+  return `${S.pairing.sources.join(', ')}: ${n.set} staves in training sets, ${n.paired} paired but left out, ${n.unpaired} unpaired`;
+}
+
+// the part the pairing gave a page's staves, if one (not a score page's)
+function pairedPart(n) {
+  const parts = new Set((S.pairing?.pages[n] || []).map((p) => p.part).filter(Boolean));
+  return parts.size === 1 && PARTS.includes([...parts][0]) ? [...parts][0] : null;  // (not the Haydn quintet's va2)
+}
+
+async function nextUnpaired(dir) {
+  if (!S.pairing) { flash('This source has no pairing.'); return; }
+  // from the selected staff (as the pairing placed it) or the last one gone to
+  // on this page, whichever is further on
+  const cur = S.sel?.t === 'sys' ? find(S.sel) : S.sel?.t === 'bl' ? systemOf(find(S.sel)) : null;
+  const mid = (p) => (p.top + p.bottom) / 2;
+  const marks = [cur && (pairingOf(cur) || cur), S.pairHit?.page === S.page && S.pairHit.p].filter(Boolean);
+  const at = marks.sort((x, y) => dir * (mid(y) - mid(x)))[0] || null;
+  const from = at ? mid(at) : dir > 0 ? -1 : 2;
+  for (let n = S.page; n >= 1 && n <= S.numPages; n += dir) {
+    const list = (S.pairing.pages[n] || []).filter((p) => p.status === 'unpaired').sort((a, b) => dir * (a.top - b.top));
+    const hit = list.find((p) => n !== S.page || (p !== at && dir * (mid(p) - from) > 1e-4));
+    if (!hit) continue;
+    if (n !== S.page) await openPage(n);
+    S.pairHit = { page: n, p: hit };
+    const s = pg()?.systems.find((x) => pairingOf(x) === hit);
+    if (s) { S.sel = { t: 'sys', id: s.id }; renderAll(); }
+    else flash(`An unpaired staff of the pairing's at ${Math.round(hit.top * 100)}% down this page has no staff here.`);
+    return;
+  }
+  flash(`No unpaired staff ${dir > 0 ? 'after' : 'before'} this one.`);
 }
 
 function firstUnreviewed() {
@@ -1230,7 +1315,7 @@ async function autoLabel(n, token) {
   try { ({ systems, corners, look } = await getJSON(`/api/detect?${q(S.pdf, n)}${room ? `&room=${room.toFixed(2)}` : ''}`)); }
   catch (e) { banner(`Detection failed on page ${n}: ${e.message}`); }
   const read = await reading;
-  const carried = await carriedPart(n);
+  const carried = pairedPart(n) || await carriedPart(n);  // the pairing knows a paired manuscript's parts
   if (token !== S.loadToken || S.doc.pages[n]) return;
   const music = systems.reduce((k, d) => k + d.barlines.length, 0) >= 2;
   const { kind, part } = firstGuess(read, music, look, carried);
@@ -1460,6 +1545,14 @@ function renderOverlay() {
     // the first bar's number before the staff, as in a printed part
     if (firstOnLine && !cue) {
       out.push(`<text class="lineno" x="${s.left * W - 0.8 * sp * H}" y="${(topAt(s, s.left) + 2 * sp) * H}" font-size="${2.4 * sp * H}">${esc(firstOnLine.bar)}</text>`);
+    }
+    // the pairing's verdict on this staff, beside its end
+    const ps = S.showPairing ? pairStatus(s) : null;
+    if (ps) {
+      const p = pairingOf(s), x = s.right * W + 0.7 * sp * H, y0 = topAt(s, s.right) * H, y1 = bottomAt(s, s.right) * H;
+      out.push(`<rect class="pair ${ps}" x="${x}" y="${y0}" width="${0.6 * sp * H}" height="${y1 - y0}"/>`);
+      const label = ps === 'unpaired' || ps === 'none' ? PAIR_TEXT[ps] : p.bars;
+      out.push(`<text class="pairtext ${ps}" x="${x + 1.1 * sp * H}" y="${(y0 + y1) / 2 + 0.5 * sp * H}" font-size="${1.4 * sp * H}">${esc(label)}</text>`);
     }
   }
   // a staff's own clef, key and time, small, under its start region; the
@@ -1706,6 +1799,7 @@ function renderMeta() {
     ['Bar lines', `${esc(S.info.barline_model || '')} · <a href="/static/models/index.html" target="_blank">model cards</a>`],
     ['Crops', S.info.crop_model],
     ['Claude', readerText(S.info.reader)],
+    ['Pairing', pairingSummary()],
   ];
   $('#meta').innerHTML = '<dl>' + rows.filter((r) => r[1]).map(([k, v]) =>
     `<dt>${k}</dt><dd>${k === 'RISM' || k === 'Online' || k === 'Bars from' || k === 'Bar lines' ? v : esc(v)}</dd>`).join('') + '</dl>' +
@@ -1794,6 +1888,7 @@ function renderInspector() {
   } else if (S.sel.t === 'sys') {
     el.innerHTML = `<h2>Staff ${item.auto ? '<span class="pill auto">auto</span>' : ''}</h2>
       <p>${item.barlines.length} bar lines</p>
+      ${pairingNote(item)}
       <label>Role <select data-f="role"${dis}>${options(['part', 'cue'], item.role || 'part', { part: 'part (counted)', cue: 'cue staff (not counted)' })}</select></label>
       <h3 title="What is written at this line's start, where it sets or changes something (each movement's first line: key and time). Leave the rest at —.">Written at its start</h3>
       ${sigMenus(item, dis, sigDefaults(item))}
@@ -1837,6 +1932,8 @@ function renderPages() {
         what += ' · ' + runs.map((r) => `${r.mvt} ${r.from}–${r.to}`).join(', ');
       }
     }
+    const unpaired = (S.pairing?.pages[n] || []).filter((x) => x.status === 'unpaired').length;
+    if (unpaired) what += ` <span class="unpaired" title="staves the pairing left unpaired (n: next)">· ${unpaired} unpaired</span>`;
     items.push(`<li data-page="${n}" class="${n === S.page ? 'current' : ''}"><span class="dot ${p ? p.status : ''}"></span><span class="n">${n}</span><span class="what">${what}</span></li>`);
   }
   $('#pages').innerHTML = items.join('');
@@ -2814,6 +2911,11 @@ document.addEventListener('keydown', (e) => {
   else if (k === 'h') { handled(); if (!e.repeat) { svg.classList.add('peek'); } }
   else if (k === '.' || k === 'PageDown') { handled(); openPage(S.page + 1); }
   else if (k === ',' || k === 'PageUp') { handled(); openPage(S.page - 1); }
+  else if (k === 'n' || k === 'N') { handled(); nextUnpaired(k === 'N' ? -1 : 1); }
+  else if (k === 'p') {
+    handled(); S.showPairing = !S.showPairing; savePref('pairing', S.showPairing); renderOverlay();
+    if (S.pairing) flash(S.showPairing ? 'Showing the pairing (p hides it).' : 'Pairing hidden (p shows it).');
+  }
   else if (k === 'f') { handled(); fitPage(); }
   else if (k === 'w') { handled(); fitWidth(); }
   else if (k === '+' || k === '=') { handled(); zoomAt(1 / 1.25, S.mouse.x * S.W, S.mouse.y * S.H); }

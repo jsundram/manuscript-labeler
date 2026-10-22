@@ -190,6 +190,18 @@ its path there, since the archive is read only. Its metadata comes from the
 folder's `metadata.json`, and its bars are counted against
 `data/<archive folder>/structure/G<n>/Structure.ily` when the work has one.
 
+A paired manuscript (one experiments/zeus paired with an encoding,
+`pairing.py`, 2026-10-22) not already listed is `paired:<its path from
+home>`, read only too, with its labels under `data/paired/` at that path.
+On any paired manuscript the labeler shows the pairing's verdict beside
+each staff's end: green, in a training set, with the encoding's bars
+(counted from 1, a pickup as bar 1); blue, paired but left out of the
+sets; red, unpaired (the selected staff's panel says why); grey, no staff
+of the pairing's there. The pages list counts each page's unpaired staves;
+`n` / `⇧N` go to the next and previous one, `p` hides the verdicts. A page
+detected fresh takes the part the pairing gave its staves. The pairing is
+shown, never saved: labels stay the editor's.
+
 ```json
 {
   "schema": 2,

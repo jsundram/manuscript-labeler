@@ -20,6 +20,11 @@ With --archive (the boccherini-sources archive), its manuscripts are listed
 too, after the edition's sources, as `archive:<path>`. The archive is never
 written to: their labels and bar exports go to data/<archive>/<pdf path>.
 
+The paired manuscripts (pairing.py: those experiments/zeus paired with an
+encoding) not already listed come last, as `paired:<path from home>`, read
+only too: labels in data/paired/<path from home>. /api/pairing says what
+the pairing made of each staff.
+
 Saving is atomic (temp file + rename), refuses to overwrite a file that
 changed since the editor loaded it, and keeps rolling backups in the cache
 directory (~/.cache/manuscript-labeler, or $MANUSCRIPT_LABELER_CACHE).
@@ -46,6 +51,7 @@ from urllib.parse import parse_qs, unquote, urlparse
 sys.path.insert(0, str(Path(__file__).parent))
 import crops  # noqa: E402
 import labels  # noqa: E402
+import pairing  # noqa: E402
 import reader  # noqa: E402
 import repo_pages  # noqa: E402
 import structure  # noqa: E402
@@ -57,6 +63,7 @@ JPEG_QUALITY = 90  # PNG at this size is ~7 MB and takes seconds to encode
 BACKUP_EVERY = 60  # seconds between backups of one file
 BACKUPS_KEPT = 100
 ARCHIVE = "archive:"  # a source from the scan archive (--archive), before its path there
+PAIRED = "paired:"  # a paired manuscript outside the edition and the archive (pairing.py), before its path from home
 OP48 = range(226, 232)  # the edition's own works: listed from the edition, not the archive
 PART_PDF = re.compile(r"\.(violin\d|viola|cello|basso|tenor|title|cover|v\d|va|vc)$", re.I)  # a part cut from a whole PDF
 
@@ -93,7 +100,13 @@ class Edition:
 
     def pdf(self, rel: str) -> Path:
         """Resolve a pdf path from the client, refusing anything outside the
-        edition (or, for `archive:…`, the archive)."""
+        edition (or, for `archive:…`, the archive; for `paired:…`, the
+        paired manuscripts)."""
+        if rel.startswith(PAIRED):
+            p = (Path.home() / rel[len(PAIRED):]).resolve()
+            if p not in self.paired():
+                raise LookupError(f"no such source: {rel}")
+            return p
         base, path = (self.archive, rel[len(ARCHIVE):]) if rel.startswith(ARCHIVE) and self.archive else (self.root, rel)
         p = (base / path).resolve()
         if p.suffix.lower() != ".pdf" or not p.is_file() or base not in p.parents:
@@ -103,23 +116,44 @@ class Edition:
     def archived(self, pdf: Path) -> bool:
         return self.archive is not None and self.archive in pdf.resolve().parents
 
+    def paired(self) -> dict[Path, list[str]]:
+        """The paired manuscripts' PDFs and their pairing sources (pairing.py),
+        but not those in a scan archive the server wasn't given (--archive):
+        their labels belong in the archive's data folder."""
+        return {p: v for p, v in pairing.sources().items()
+                if self.archived(p) or not any(q.name == "digitizations" for q in p.parents)}
+
+    def outside(self, pdf: Path) -> bool:
+        """Not in the edition: the archive's, or a paired manuscript's."""
+        return self.archived(pdf) or not pdf.resolve().is_relative_to(self.root)
+
     def rel(self, p: Path) -> str:
         if self.archived(p):
             return ARCHIVE + p.resolve().relative_to(self.archive).as_posix()
+        if not p.resolve().is_relative_to(self.root) and p.resolve() in self.paired():
+            return PAIRED + p.resolve().relative_to(Path.home()).as_posix()
         return p.relative_to(self.root).as_posix()
 
     def labels_path(self, pdf: Path) -> Path:
+        """data/<edition or archive>/<its path>.labels.json; a paired
+        manuscript's, data/paired/<its path from home>.labels.json."""
+        if not self.archived(pdf) and not pdf.resolve().is_relative_to(self.root):
+            return self.data / "paired" / pdf.resolve().relative_to(Path.home()).with_suffix(".labels.json")
         return labels.labels_path(pdf, self.data, self.archive if self.archived(pdf) else self.root)
 
     def bars_path(self, pdf: Path) -> Path:
-        """Next to the PDF in the edition; for the archive, next to its labels."""
-        if self.archived(pdf):
+        """Next to the PDF in the edition; for the archive or a paired
+        manuscript, next to its labels."""
+        if self.outside(pdf):
             lp = self.labels_path(pdf)
             return lp.with_name(lp.name.removesuffix(".labels.json") + ".bars.json")
         return pdf.with_name(pdf.stem + ".bars.json")
 
     def info(self, rel: str) -> dict:
         """labels.source_info, from the edition's sources/README.md or the archive's metadata.json."""
+        if rel.startswith(PAIRED):
+            pdf = self.pdf(rel)
+            return pairing.source_info(rel, pdf, self.paired()[pdf])
         if rel.startswith(ARCHIVE):
             m = self.pdf(rel).parent / "metadata.json"
             try:
@@ -132,6 +166,8 @@ class Edition:
     def structure_file(self, rel: str, work: str) -> Path | None:
         """The work's Structure.ily: the edition's; for an archive source of
         one work, data/<archive>/structure/G<n>/Structure.ily if there is one."""
+        if rel.startswith(PAIRED):
+            return None
         if not rel.startswith(ARCHIVE):
             return labels.structure_path(self.root, work)
         gs = re.findall(r"\d+", work)
@@ -174,6 +210,9 @@ class Edition:
     def list_sources(self) -> list[dict]:
         out = []
         pdfs = [(p, "edition") for p in sorted(self.root.glob("sources/**/*.pdf"))] + [(p, "archive") for p in self.archive_pdfs()]
+        # the paired manuscripts not listed yet (a part PDF in the archive, or one outside it)
+        listed = {p.resolve() for p, _ in pdfs}
+        pdfs += [(p, "paired") for p in sorted(self.paired(), key=lambda p: p.name) if p not in listed]
         for pdf, group in pdfs:
             rel = self.rel(pdf)
             info = self.info(rel)
@@ -218,7 +257,7 @@ class Edition:
         lp = self.labels_path(pdf)
         readonly = None
         old = labels.legacy_labels_path(pdf)
-        if not lp.exists() and not self.archived(pdf) and old.exists():
+        if not lp.exists() and not self.outside(pdf) and old.exists():
             # labelled before the labels moved here: copy them over (the
             # edition's file stays), or the source would open unlabelled and
             # its first save would overwrite its bar export
@@ -505,7 +544,7 @@ class Edition:
             staves = [st]
         try:  # a bad cache mustn't stop detection
             pdf = self.pdf(rel)
-            root, name = (pdf.parent, pdf.name) if self.archived(pdf) else (self.root, rel)  # as predict_barlines --pdf
+            root, name = (pdf.parent, pdf.name) if self.outside(pdf) else (self.root, rel)  # as predict_barlines --pdf
             preds = detections.page_predictions(root, name, page, self.cache)
             vote = detections.make_vote(preds, img.size[0], img.size[1]) if preds else None
             ends = detections.make_ends(preds, img.size[0], img.size[1]) if preds else None
@@ -839,6 +878,8 @@ class Handler(BaseHTTPRequestHandler):
                                                    ahead=q.get("ahead") == "1"))
             if path == "/api/activity":  # the Time panel: this source's time
                 return self.send_json(ed.activity_report(q["pdf"]))
+            if path == "/api/pairing":  # what the automatic pairing made of each staff (pairing.py)
+                return self.send_json(pairing.for_pdf(ed.pdf(q["pdf"]), ed.cache))
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
