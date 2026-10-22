@@ -225,7 +225,9 @@ class Edition:
                         statuses[p.get("status", "?")] = statuses.get(p.get("status", "?"), 0) + 1
                 except (ValueError, OSError):
                     statuses["unreadable"] = 1
-            out.append({**info, "pdf": rel, "group": group, "pages": self.num_pages(pdf), "statuses": statuses})
+            paired = pdf.resolve() in self.paired()
+            out.append({**info, "pdf": rel, "group": group, "pages": self.num_pages(pdf), "statuses": statuses,
+                        **({"pairing": pairing.summary(pdf, self.cache)} if paired else {})})
         return out
 
     def mark_texts(self) -> list[dict]:

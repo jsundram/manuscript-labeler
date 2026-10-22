@@ -196,8 +196,12 @@ home>`, read only too, with its labels under `data/paired/` at that path.
 On any paired manuscript the labeler shows the pairing's verdict beside
 each staff's end: green, in a training set, with the encoding's bars
 (counted from 1, a pickup as bar 1); blue, paired but left out of the
-sets; red, unpaired (the selected staff's panel says why); grey, no staff
-of the pairing's there. The pages list counts each page's unpaired staves;
+sets; red, unpaired; grey, no staff of the pairing's there. Clicking one
+selects its staff, whose panel says why, in plain words: the pairing's
+reasons for a red one, the set builder's (dataset.py's
+left_out.<source>.json) for a blue one. The source list gives a paired
+manuscript's unpaired staves in place of its pages reviewed. The pages
+list counts each page's unpaired staves;
 `n` / `⇧N` go to the next and previous one, `p` hides the verdicts. A page
 detected fresh takes the part the pairing gave its staves. The pairing is
 shown, never saved: labels stay the editor's.

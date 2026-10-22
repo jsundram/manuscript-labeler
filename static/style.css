@@ -215,12 +215,12 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 /* the handle the arrow keys move */
 .handle.active { fill: #ffd400; stroke: #d81b60; stroke-width: 3; }
 /* the automatic pairing's verdict beside each staff's end (pairing.py) */
-.pair { stroke: none; pointer-events: none; }
+.pair { stroke: none; cursor: pointer; }
 .pair.set { fill: var(--ok); }
 .pair.paired { fill: var(--accent); }
 .pair.unpaired { fill: var(--bad); }
 .pair.none { fill: var(--muted); }
-.pairtext { paint-order: stroke; stroke: #fff; stroke-width: 3px; vector-effect: non-scaling-stroke; pointer-events: none; }
+.pairtext { paint-order: stroke; stroke: #fff; stroke-width: 3px; vector-effect: non-scaling-stroke; cursor: pointer; }
 .pairtext.set { fill: var(--ok); }
 .pairtext.paired { fill: var(--accent); }
 .pairtext.unpaired { fill: var(--bad); font-weight: 700; }
@@ -231,7 +231,7 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .pairtag.none { color: var(--muted); }
 .pairnote { margin: 4px 0; }
 ul.why { margin: 0 0 6px; padding-left: 16px; color: var(--muted); font-size: 12px; }
-#pages .unpaired { color: var(--bad); }
+#pages .unpaired, #source .unpaired, #sourcelist .unpaired { color: var(--bad); }
 /* a bar much wider or narrower than its line's typical bar (missed / extra bar line?) */
 .oddbar { fill: rgba(217, 130, 43, .08); stroke: var(--auto); stroke-width: 2; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; pointer-events: none; }
 .runson { fill: none; stroke: var(--staff-line); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }

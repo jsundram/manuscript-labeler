@@ -60,6 +60,11 @@ def sources() -> dict[Path, list[str]]:
     return out
 
 
+def part_pages(source: str) -> set[str]:
+    """The pages the source's detections give a part (vn1 ...): the ones a staff can be tried on."""
+    return {n for n, p in _load(ZEUS / "auto" / f"{source}.json")["pages"].items() if p.get("part") != "score"}
+
+
 def results_file(source: str) -> Path | None:
     for r in RESULTS:
         p = ZEUS / "results" / f"autopair-{source}-{r}.json"
@@ -82,9 +87,98 @@ def bars_text(bars: list) -> str:
     return ", ".join(" ".join(map(str, h)) + (f" {a + 1}" if a == b else f" {a + 1}–{b + 1}") for h, a, b in runs)
 
 
+def _bars_in(text: str) -> str:
+    """The pairing's bar references in a reason, counted from 1 as the
+    labeler counts: "['Op32-1', 'II', 20]" -> "Op32-1 II 21"."""
+    one = re.compile(r"\[((?:'[^']*',\s*)+)(\d+)\]")
+    text = one.sub(lambda m: " ".join(re.findall(r"'([^']*)'", m.group(1))) + f" {int(m.group(2)) + 1}", text)
+    return re.sub(r"\[([^\[\]']*)\]", r"\1", text)  # a list of them
+
+
+# the pairing's reasons (autopair.py, g213/merge.py) in the editor's words
+REASONS = [
+    (r"next staff begins with (extra|two|rests)",
+     "The next line starts with part of a bar, or a measure the reading added or merged, so this line's last "
+     "bar may be the next line's. A bar crossing the line break puts out both lines."),
+    (r"staff before ends with (extra|two|rests)",
+     "The line before ends with part of a bar, or a measure the reading added or merged, so this line's first "
+     "bar may be the line before's. A bar crossing the line break puts out both lines."),
+    (r"an end measure shorter than its bar (.*)",
+     r"Its first or last measure reads shorter than bar \1: part of a bar crossing the line break, taken for the whole."),
+    (r"an end measure longer than its bar (.*)",
+     r"Its first or last measure reads longer than bar \1: part of the next or previous line's bar read into it."),
+    (r"(\d+) measures, (\d+) bar boxes.*",
+     r"The reading has \1 measures where detection found \2 bars on the line (a bar line missed or extra)."),
+    (r"extra at none", "The reading has a measure the score doesn't (a heading, or part of a bar read as a whole)."),
+    (r"extra at (.*)", r"The reading has a measure the score doesn't, at \1."),
+    (r"two at (.*)", r"One measure of the reading holds two bars, \1: a bar line it missed."),
+    (r"unlike (.*)", r"A measure is nothing like bar \1: the alignment may have slipped."),
+    (r"beside a missed bar (.*)", r"Bar \1 is on no line: next to it is a line detection or the reading missed, or cut short."),
+    (r"mis-measured.*", "The line was measured short, with music past its end."),
+    (r"below a mis-measured staff.*", "A line above it on this page was measured short."),
+    (r"more bar boxes than measures.*",
+     "Detection found more bars than the reading has measures, the first narrow: the reading dropped part of a "
+     "bar at the line's start."),
+    (r"twin (p\d+-\d+) not (kept|plain)", r"Its copy in the other manuscript (\1) wasn't paired cleanly."),
+]
+# the set builder's (dataset.py), where they need it
+LEFT_OUT = {
+    "not plain": "Not every measure pairs with one bar (a bar crossing the line break, or a multi-bar rest): "
+                 "a training label can't hold part of a bar yet.",
+}
+
+
+def explain(why: list[str]) -> list[str]:
+    """The reasons, without the reader's name, each once, in plain words."""
+    out = []
+    for w in why:
+        w = re.sub(r"^musvit-[\w.-]+: ", "", w)
+        for pat, plain in REASONS:
+            m = re.fullmatch(pat, w)
+            if m:
+                w = m.expand(plain)
+                break
+        w = _bars_in(w)
+        if w not in out:
+            out.append(w)
+    return out
+
+
+def _left_out(name: str, cache: Path) -> dict:
+    """{staff: why the set builder left it out} (dataset.py's left_out.<name>.json)."""
+    out = {}
+    for s in SETS:
+        f = cache / "zeus" / s / f"left_out.{name}.json"
+        if f.exists():
+            out.update(_load(f))
+    return out
+
+
+def summary(pdf: Path, cache: Path) -> dict:
+    """How many of the PDF's staves are in a set, paired, unpaired."""
+    n = {"set": 0, "paired": 0, "unpaired": 0}
+    for name in sources().get(Path(pdf).resolve(), []):
+        res = _load(results_file(name))
+        in_set = _in_sets(name, cache)
+        n["unpaired"] += len(res["not kept"])
+        for k in res["kept"]:
+            n["set" if k["staff"] in in_set else "paired"] += 1
+    return n
+
+
+def _in_sets(name: str, cache: Path) -> set:
+    out = set()
+    for s in SETS:
+        f = cache / "zeus" / s / f"samples.{name}.txt"
+        if f.exists():
+            out |= {x.split("/", 1)[1] for x in f.read_text().split() if x.startswith(name + "/")}
+    return out
+
+
 def for_pdf(pdf: Path, cache: Path) -> dict:
     """{"sources": [...], "pages": {n: [staff, ...]}}, each staff
-    {top, bottom, left, right, part, status, bars, why, source, id}."""
+    {top, bottom, left, right, part, status, bars, why, source, id}: `why`,
+    an unpaired staff's reasons, or why a paired one was left out of the sets."""
     names = sources().get(Path(pdf).resolve(), [])
     pages: dict[str, list] = {}
     for name in names:
@@ -92,11 +186,8 @@ def for_pdf(pdf: Path, cache: Path) -> dict:
         res = _load(results_file(name))
         kept = {k["staff"]: k for k in res["kept"]}
         out = {k["staff"]: k for k in res["not kept"]}
-        in_set = set()
-        for s in SETS:
-            f = cache / "zeus" / s / f"samples.{name}.txt"
-            if f.exists():
-                in_set |= {x.split("/", 1)[1] for x in f.read_text().split() if x.startswith(name + "/")}
+        in_set = _in_sets(name, cache)
+        left_out = _left_out(name, cache)
         for n, page in auto["pages"].items():
             for k, s in enumerate(sorted(page["systems"], key=lambda s: s["top"])):
                 sid = f"p{n}-{k}"
@@ -106,7 +197,8 @@ def for_pdf(pdf: Path, cache: Path) -> dict:
                     "top": s["top"], "bottom": s["bottom"], "left": s["left"], "right": s["right"],
                     "part": s.get("part", page.get("part")), "status": status, "source": name, "id": sid,
                     "bars": bars_text(entry.get("bars") or []) if entry else "",
-                    "why": entry.get("why", []) if status == "unpaired" else [],
+                    "why": explain(entry.get("why", [])) if status == "unpaired"
+                    else [LEFT_OUT.get(left_out[sid], left_out[sid])] if status == "paired" and sid in left_out else [],
                 })
     return {"sources": names, "pages": pages}
 

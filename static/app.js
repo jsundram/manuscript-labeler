@@ -923,7 +923,10 @@ const SOURCE_STATE = { reviewed: 'every page reviewed', edited: 'in progress', a
 function sourceItem(s) {
   const g = s.source.gerard ? `G${s.source.gerard} · ` : '';
   const st = sourceState(s);
-  return `<span class="dot ${st}" title="${SOURCE_STATE[st]}"></span><span class="what">${esc(g + s.source.siglum + ' ' + s.source.shelfmark)}</span><span class="muted">${s.statuses.reviewed || 0}/${s.pages}</span>`;
+  // a paired manuscript: its staves left to fix; else, its pages reviewed
+  const count = s.pairing ? `<span class="unpaired" title="staves the pairing left unpaired (${s.pairing.set} in training sets, ${s.pairing.paired} paired but left out)">${s.pairing.unpaired} unpaired</span>`
+    : `<span class="muted" title="pages reviewed of all its pages">${s.statuses.reviewed || 0}/${s.pages}</span>`;
+  return `<span class="dot ${st}" title="${SOURCE_STATE[st]}"></span><span class="what">${esc(g + s.source.siglum + ' ' + s.source.shelfmark)}</span>${count}`;
 }
 
 function renderSourcePicker() {
@@ -1030,7 +1033,7 @@ function pairingNote(s) {
   const p = pairingOf(s);
   const head = `<b class="pairtag ${st}">${PAIR_TEXT[st]}</b>`;
   if (st === 'none') return `<p class="pairnote">Pairing: ${head}. Its detection had no staff here, or one elsewhere on the page.</p>`;
-  const why = st === 'unpaired' ? `<ul class="why">${p.why.slice(0, 5).map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '';
+  const why = p.why?.length ? `<ul class="why">${p.why.slice(0, 5).map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '';
   return `<p class="pairnote" title="${esc(p.source)} ${esc(p.id)}">Pairing: ${head}${p.bars ? ` · ${esc(p.bars)}` : ''}</p>${why}`;
 }
 
@@ -1550,9 +1553,9 @@ function renderOverlay() {
     const ps = S.showPairing ? pairStatus(s) : null;
     if (ps) {
       const p = pairingOf(s), x = s.right * W + 0.7 * sp * H, y0 = topAt(s, s.right) * H, y1 = bottomAt(s, s.right) * H;
-      out.push(`<rect class="pair ${ps}" x="${x}" y="${y0}" width="${0.6 * sp * H}" height="${y1 - y0}"/>`);
+      out.push(`<rect class="pair ${ps}" data-pair="${s.id}" x="${x}" y="${y0}" width="${0.6 * sp * H}" height="${y1 - y0}"><title>Click: why</title></rect>`);
       const label = ps === 'unpaired' || ps === 'none' ? PAIR_TEXT[ps] : p.bars;
-      out.push(`<text class="pairtext ${ps}" x="${x + 1.1 * sp * H}" y="${(y0 + y1) / 2 + 0.5 * sp * H}" font-size="${1.4 * sp * H}">${esc(label)}</text>`);
+      out.push(`<text class="pairtext ${ps}" data-pair="${s.id}" x="${x + 1.1 * sp * H}" y="${(y0 + y1) / 2 + 0.5 * sp * H}" font-size="${1.4 * sp * H}">${esc(label)}<title>Click: why</title></text>`);
     }
   }
   // a staff's own clef, key and time, small, under its start region; the
@@ -2719,6 +2722,10 @@ svg.addEventListener('pointerdown', (e) => {
     // a click on a handle (no drag) makes it the one the arrow keys move;
     // clicking it again lets go
     S.drag.clickToggle = true;
+  } else if (t.pair) {  // a staff's pairing badge: select the staff, to read why (no dragging it from here)
+    S.sel = { t: 'sys', id: t.pair };
+    renderAll();
+    S.drag = { kind: 'pan', sx: e.clientX, sy: e.clientY, view: { ...S.view }, moved: false, keepSel: true };
   } else if (t.t === 'page') {
     S.sel = { t: 'page' };
     renderAll();
