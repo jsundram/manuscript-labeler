@@ -106,6 +106,30 @@ space. `du` still counts them twice.
   labelled with the bars of the Bärenreiter print that two OMR readers
   agree on (same README). One list per source; some staves are cut after
   their first bars. On Modal at `/dataP` in `musvit-staves`.
+- **`dataM3`, `dataW2`, `dataP2`, `dataG213-2` (2026-10-22):** dataM2,
+  dataW, dataP and dataG213 built again, with the same lists and options,
+  after three changes:
+  - detection's ruled-slot staves (`detect._ruled_gaps`) were spliced into
+    the sources where they were missing. That added 100 staves: Op32 71,
+    Paris va 8, vn2 6 and vn1 4, Sibley 5, KHM 587 5 and CZ-Pu cello 1.
+    Every old staff was kept as it was;
+  - autopair's alignment band is now 120 bars (it was 60);
+  - autopair now leaves out a mis-measured staff: one measured under half
+    its page's median width, with music past its ends. It also leaves out
+    every staff of that part below it on the page.
+
+  Counts: dataM3 3,686 staves (21,294 bars), against dataM2's 3,624
+  (20,838). dataW2 999 (6,930), against 1,013. dataP2 21, against 22.
+  dataG213-2 430, against 431. Every old staff still in a set has the same
+  image and label. 89 of dataM2's staves were left out, all but one by
+  the mis-measured rule, and so were 48 of dataW's and dataG213's. One of
+  the 89 is Op32 p33-3, labelled vn1 in alto clef, I 70-76: a wrong label
+  in dataM2. Same layout as before, one `samples.<source>.txt` per source.
+  On Modal at `/dataM3`, `/dataW2`, `/dataP2` and `/dataG213-2` in
+  `musvit-staves`. To rebuild, run `philhar-repair/build.sh`,
+  `wayback-print-pairs/build.sh pair|data` and the G. 213 README's loop
+  with the output folder renamed. They read the spliced detections in
+  `experiments/zeus/auto/` and the pairings in `results/`.
 - **`dataM4`, `dataW3`, `dataP3`, `dataG213-3` (2026-10-22):** the same
   sets, lists and options, from a full re-detection of all 57 paired
   sources (`detect.py`: each staff's ink threshold from its own lines and

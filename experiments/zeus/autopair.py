@@ -76,6 +76,21 @@ paired one-to-one but its label short of the music shown (found pairing
 Schober's KHM 620, cello p2-2: it opens with the second half of I 14,
 whose first half the reading of p2-1 had stretched to a whole bar).
 
+A mis-measured staff is never kept, nor is any staff of its part below it
+on the page: one measured under half its page's median staff width
+(detection's staff_extent stopping early, as on grey paper) with music past
+its measured ends (between the lines, from 8 staff spaces past them out to
+the page's median ends, at least 0.25 of the page's written staves' median
+ink). Its line
+holds more bars than its crop shows, and the alignment may hand them to the
+staves below (found on Op. 32's cello, p138: a fully written staff traced as
+a clef, whose bars went to the next two staves). A short staff with nothing
+past its ends (a movement ending mid-line) is left alone.
+
+The alignment may stray BAND (120) bars from the straight line through
+the part; at 60, Op. 32's long parts were held off their bars (vn1 pp.
+21-36) and movement ends out of reach.
+
 Each kept staff's clef is chosen as the one under which Zeus's notes
 (placed by its own staff positions) name the encoding's pitches most often.
 
@@ -128,8 +143,11 @@ import structure  # noqa: E402
 
 PARTS = ("vn1", "vn2", "va", "vc", "va2")  # va2: a quintet's second viola (MH 411)
 CLEFS = ("treble", "alto", "tenor", "bass")
-BAND = 60          # Zeus measures from the bar index the alignment may stray
+BAND = 120         # Zeus measures from the bar index the alignment may stray
 MAX_REST_RUN = 40  # bars a multi-bar rest may stand for
+SHORT = 0.5        # a staff measured under this share of its page's median width is short
+MIS_MARGIN = 8     # staff spaces past a short staff's measured end before looking for music there
+MIS_INK = 0.25     # music past the end: at least this share of the page's written staves' median ink
 UNLIKE = 0.75      # a measure further than this from its bar puts its staff out
 COST = {"split": 0.2, "rests": 0.1, "two": 0.6, "extra": 1.0, "missed": 1.0}
 
@@ -306,6 +324,50 @@ def head_box(s: dict, aspect: float) -> float:
     return w[0] / statistics.median(w[1:]) if len(w) > 1 else 1.0
 
 
+def space_ink(g, s: dict, x0: float, x1: float) -> float:
+    """Share of dark pixels (< 120) at the middle of each of a staff's spaces, along its bend, from x0 to x1
+    (page fractions): detect.inner_ink, on the page."""
+    import labels
+    H, W = g.shape[:2]
+    gap = (s["bottom"] - s["top"]) / 4
+    hits = n = 0
+    for x in range(max(0, int(x0 * W)), min(W, int(x1 * W)), 2):
+        y0 = s["top"] + labels.bend_at(s, x / W)
+        for i in range(4):
+            y = int(round((y0 + (i + 0.5) * gap) * H))
+            if 0 <= y < H:
+                hits += g[y, x] < 120
+                n += 1
+    return hits / n if n else 0.0
+
+
+def mis_measured(g, on_page: list) -> set:
+    """The page's staves (id, system) measured short (under SHORT of the page's median width) though music
+    runs on past a measured end: between the lines from MIS_MARGIN staff spaces past its right end to the
+    page's median right (or from the median left to as far before its left end), at least MIS_INK of the
+    page's written staves' median ink (written: at least detect.WRITTEN_INK). The margin clears a movement's
+    closing bar line, repeat dots or "fine"; on 8 staves viewed, 0.25 parted the 5 mis-measured from the
+    movement ends (0.43 and up against 0.07-0.12), all but one whose slanting blank staff the flat bend
+    past its end drifts onto the lines of (Op. 2/1, G159 p23-7)."""
+    import statistics
+    import detect
+    if not on_page:
+        return set()
+    lo = statistics.median(s["left"] for _, s in on_page)
+    hi = statistics.median(s["right"] for _, s in on_page)
+    med = statistics.median(s["right"] - s["left"] for _, s in on_page)
+    written = [v for v in (space_ink(g, s, s["left"], s["right"]) for _, s in on_page) if v >= detect.WRITTEN_INK]
+    ink = statistics.median(written) if written else 0.0
+    out = set()
+    H, W = g.shape[:2]
+    for sid, s in on_page:
+        past = MIS_MARGIN * (s["bottom"] - s["top"]) / 4 * H / W  # clear of a closing bar line, repeat dots, "fine"
+        if s["right"] - s["left"] < SHORT * med and ink and max(
+                space_ink(g, s, s["right"] + past, hi), space_ink(g, s, lo, s["left"] - past)) >= MIS_INK * ink:
+            out.add(sid)
+    return out
+
+
 def truth_staves(export: dict) -> dict:
     """{system id: (page, middle, set of (movement, bar), its clefs)} from the bar export."""
     out = {}
@@ -436,13 +498,17 @@ def main():
             staves.append((f"p{n}-{k}", s.get("part", p["part"]), int(n), s))
     cache_file = HERE / "answers" / f"{a.source}-auto-{a.model.name}.json"
     cache = json.loads(cache_file.read_text()) if cache_file.exists() else {}
-    keys, crops, aspect, page = {}, {}, {}, None
+    keys, crops, aspect, mismeasured = {}, {}, {}, set()
+    by_page = defaultdict(list)
     for sid, _, n, s in staves:
-        if page != n:
-            g, page = compare.page_image(pdf, n), n
-            aspect[n] = g.shape[0] / g.shape[1]
-        crops[sid] = compare.staff_crop(g, s)
-        keys[sid] = f"{sid}:{hashlib.sha1(crops[sid]).hexdigest()[:10]}"
+        by_page[n].append((sid, s))
+    for n, on_page in by_page.items():
+        g = compare.page_image(pdf, n)
+        aspect[n] = g.shape[0] / g.shape[1]
+        for sid, s in on_page:
+            crops[sid] = compare.staff_crop(g, s)
+            keys[sid] = f"{sid}:{hashlib.sha1(crops[sid]).hexdigest()[:10]}"
+        mismeasured |= mis_measured(g, on_page)
     todo = [sid for sid, *_ in staves if keys[sid] not in cache]
     if todo:
         from zeus import InferenceOptions, Zeus
@@ -579,6 +645,16 @@ def main():
             for z in zs:
                 if js:
                     first_bar.setdefault(owner[z], bars[js[0]][0])
+        # a mis-measured staff (mis_measured: measured short, music past its ends; staff_extent stopping
+        # early, as on grey paper) holds less than its line, and the alignment may hand the rest of its bars
+        # to the staves below it in the part (Op32 vc p138): it, and every staff of the part below it on the
+        # page, is put out
+        for pg in sorted({n for _, n, _ in mine}):
+            tops = [s["top"] for sid, n, s in mine if n == pg and sid in mismeasured]
+            for sid, n, s in mine:
+                if n == pg and tops and s["top"] >= min(tops):
+                    out_([sid], "mis-measured: measured under half its page's median width, music past its ends"
+                         if sid in mismeasured else "below a mis-measured staff on its page")
         for sid, n, s in mine:
             count = sum(1 for o in owner if o == sid)
             found = boxes(s, aspect[n])
