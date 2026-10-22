@@ -2242,6 +2242,9 @@
    "measures": 2,
    "bar_boxes": 2,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 2
    },
@@ -6312,6 +6315,9 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits"
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -7780,6 +7786,9 @@
    "measures": 2,
    "bar_boxes": 2,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 2
    },
@@ -11084,6 +11093,9 @@
    "measures": 4,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 4
    },
@@ -12586,6 +12598,9 @@
    "measures": 2,
    "bar_boxes": 2,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 2
    },
@@ -16717,6 +16732,9 @@
    "measures": 4,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 4
    },
@@ -18084,6 +18102,9 @@
    "measures": 1,
    "bar_boxes": 1,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 1
    },
@@ -19751,6 +19772,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },

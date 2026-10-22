@@ -3196,6 +3196,9 @@
    "measures": 10,
    "bar_boxes": 11,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },
@@ -10454,6 +10457,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      11
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.056
+    }
+   ],
    "steps": {
     "one": 4,
     "split": 1
@@ -10636,6 +10651,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      11
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.056
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 4
@@ -11040,6 +11067,18 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      29
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.083
+    }
+   ],
    "steps": {
     "one": 8,
     "split": 1
@@ -11288,6 +11327,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      29
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.083
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 3
@@ -15805,6 +15856,9 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },
@@ -17392,6 +17446,9 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },
@@ -18988,6 +19045,9 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8
    },
@@ -22037,6 +22097,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      37
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 5
@@ -26129,6 +26201,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },
@@ -27033,6 +27108,9 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8
    },
@@ -27631,6 +27709,9 @@
    "measures": 10,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8,
     "rests": 1
@@ -27982,6 +28063,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -28907,6 +28991,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      26
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.062
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 3
@@ -29055,6 +29151,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      33
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.458
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -29228,6 +29336,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      33
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.458
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 5
@@ -31042,6 +31162,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "II",
+      55
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.0
+    }
+   ],
    "steps": {
     "one": 4,
     "split": 1
@@ -32284,6 +32416,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },

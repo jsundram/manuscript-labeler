@@ -334,6 +334,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-4",
+      "I",
+      22
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.15
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 4

@@ -1464,6 +1464,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -4085,6 +4088,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -4366,6 +4372,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },
@@ -4588,6 +4597,9 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 4
    },
@@ -5776,6 +5788,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -6727,6 +6742,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },
@@ -8397,6 +8415,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -12233,6 +12254,9 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 5
    },
@@ -21382,6 +21406,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },
@@ -24055,6 +24082,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },
@@ -24524,6 +24554,9 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 7
    },

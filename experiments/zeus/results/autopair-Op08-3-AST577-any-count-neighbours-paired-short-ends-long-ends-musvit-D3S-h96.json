@@ -513,6 +513,9 @@
    "measures": 1,
    "bar_boxes": 1,
    "right": null,
+   "irregular": [
+    "a bar split across the line break that no cut fits"
+   ],
    "steps": {
     "split": 1
    },

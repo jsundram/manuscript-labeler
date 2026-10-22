@@ -129,6 +129,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },
@@ -1726,6 +1729,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 6
    },
@@ -3761,6 +3767,18 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op22-6",
+      "II",
+      57
+     ],
+     "half": "first",
+     "cut": "1/4",
+     "fit": 0.214
+    }
+   ],
    "steps": {
     "one": 7,
     "split": 1
@@ -4010,6 +4028,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op22-6",
+      "II",
+      57
+     ],
+     "half": "second",
+     "cut": "1/4",
+     "fit": 0.214
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 5

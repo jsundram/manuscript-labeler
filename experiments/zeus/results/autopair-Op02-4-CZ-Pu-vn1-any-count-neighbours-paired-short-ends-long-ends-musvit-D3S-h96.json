@@ -257,6 +257,18 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-4",
+      "I",
+      11
+     ],
+     "half": "first",
+     "cut": "3/8",
+     "fit": 0.454
+    }
+   ],
    "steps": {
     "one": 6,
     "split": 1
@@ -2531,6 +2543,9 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8
    },

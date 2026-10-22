@@ -3424,6 +3424,9 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },
@@ -4505,6 +4508,9 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },
@@ -16105,6 +16111,9 @@
    "measures": 9,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },

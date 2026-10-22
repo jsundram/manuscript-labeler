@@ -5758,6 +5758,28 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      6
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.339
+    },
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      12
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "split": 2,
     "one": 5
@@ -5992,6 +6014,18 @@
    "measures": 7,
    "bar_boxes": 7,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      12
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 6
@@ -11888,6 +11922,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      6
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.4
+    }
+   ],
    "steps": {
     "one": 5,
     "split": 1
@@ -12139,6 +12185,18 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      6
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.4
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 9
@@ -16729,6 +16787,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },
@@ -17086,6 +17147,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },

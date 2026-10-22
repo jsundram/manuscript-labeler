@@ -759,6 +759,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      22
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.1
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -922,6 +934,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      22
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.1
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 4
@@ -7249,6 +7273,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      4
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.225
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -7442,6 +7478,18 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      4
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.225
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 7
@@ -10278,6 +10326,9 @@
    "measures": 11,
    "bar_boxes": 12,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 11
    },
@@ -16626,6 +16677,9 @@
    "measures": 11,
    "bar_boxes": 11,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 11
    },
@@ -16987,6 +17041,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },
@@ -21180,6 +21237,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-5",
+      "I",
+      13
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.317
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 3
@@ -22549,6 +22618,9 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 9
    },

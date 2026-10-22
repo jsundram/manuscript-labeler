@@ -89,6 +89,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      11
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.229
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 4
@@ -458,6 +470,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      26
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.25
+    }
+   ],
    "steps": {
     "one": 5,
     "split": 1
@@ -1276,6 +1300,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      57
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.214
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -1567,6 +1603,9 @@
    "measures": 2,
    "bar_boxes": 3,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 2
    },
@@ -4895,6 +4934,9 @@
    "measures": 6,
    "bar_boxes": 7,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 6
    },
@@ -5096,6 +5138,18 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      36
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.062
+    }
+   ],
    "steps": {
     "one": 4,
     "split": 1
@@ -5288,6 +5342,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      36
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.062
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 5
@@ -5739,6 +5805,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      54
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.181
+    }
+   ],
    "steps": {
     "one": 5,
     "split": 1
@@ -5970,6 +6048,18 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G87",
+      "I",
+      54
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.181
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 7
@@ -6219,6 +6309,9 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 6
    },
@@ -12883,6 +12976,9 @@
    "measures": 8,
    "bar_boxes": 9,
    "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
    "steps": {
     "one": 8
    },

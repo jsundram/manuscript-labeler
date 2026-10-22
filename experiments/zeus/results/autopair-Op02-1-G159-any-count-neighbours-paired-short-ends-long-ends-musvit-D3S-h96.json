@@ -74,6 +74,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      4
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.25
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -247,6 +259,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      4
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.25
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 5
@@ -985,6 +1009,18 @@
    "measures": 6,
    "bar_boxes": 6,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      36
+     ],
+     "half": "first",
+     "cut": "3/8",
+     "fit": 0.208
+    }
+   ],
    "steps": {
     "one": 5,
     "split": 1
@@ -3178,6 +3214,9 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8
    },
@@ -11927,6 +11966,18 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      69
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.0
+    }
+   ],
    "steps": {
     "one": 8,
     "split": 1
@@ -14367,6 +14418,9 @@
    "measures": 14,
    "bar_boxes": 14,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 14
    },
@@ -16250,6 +16304,9 @@
    "measures": 13,
    "bar_boxes": 13,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 13
    },
@@ -17719,6 +17776,9 @@
    "measures": 13,
    "bar_boxes": 13,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 13
    },
@@ -20821,6 +20881,18 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      60
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.189
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 9
@@ -23222,6 +23294,9 @@
    "measures": 13,
    "bar_boxes": 12,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 11,
     "rests": 1
@@ -23720,6 +23795,9 @@
    "measures": 15,
    "bar_boxes": 15,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 15
    },
@@ -24187,6 +24265,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 10
    },
@@ -25922,6 +26003,9 @@
    "measures": 12,
    "bar_boxes": 13,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 12
    },
@@ -27476,6 +27560,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      30
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "one": 3,
     "split": 1
@@ -27629,6 +27725,18 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      30
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "split": 1,
     "one": 3
@@ -28314,6 +28422,28 @@
    "measures": 4,
    "bar_boxes": 4,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      69
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.068
+    },
+    {
+     "bar": [
+      "Op02-1",
+      "I",
+      72
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.071
+    }
+   ],
    "steps": {
     "split": 2,
     "one": 2
@@ -30490,6 +30620,9 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
    "steps": {
     "one": 8
    },

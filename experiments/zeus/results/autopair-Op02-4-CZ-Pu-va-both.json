@@ -1913,6 +1913,18 @@
    "measures": 8,
    "bar_boxes": 8,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-4",
+      "III",
+      31
+     ],
+     "half": "first",
+     "cut": "1/4",
+     "fit": 0.3
+    }
+   ],
    "steps": {
     "one": 7,
     "split": 1
