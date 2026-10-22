@@ -163,7 +163,65 @@ def find_staves(g: np.ndarray, strips: int = 24) -> list[dict]:
     for s in staves:
         if all(abs(s["top"] - k["top"]) > 3 * sc["gap"] for k in kept):
             kept.append(s)
-    return sorted(kept, key=lambda s: s["top"])
+    kept.sort(key=lambda s: s["top"])
+    return sorted(kept + _ruled_gaps(sc, kept), key=lambda s: s["top"])
+
+
+def _ruled_gaps(sc: dict, kept: list[dict], min_score: float = 0.12) -> list[dict]:
+    """Staves find_staves' threshold missed in the slots of a ruled page.
+    Paper ruled with evenly spaced staves leaves a gap between two found
+    staves some whole number of spacings long when one between them is dense
+    with ink (beams and runs over the lines score low). In each such slot,
+    the weaker staff there, if any looks like a staff at all. On KHM 587
+    this found the five staves the editor added by hand (pages 15 and 17)
+    and nothing else; on the 94 reviewed Op. 48 pages, nothing. Each is
+    marked "ruled": detect_page holds it to the page's other staves."""
+    if len(kept) < 3:
+        return []
+    gap = sc["gap"]
+    tops = [k["top"] for k in kept]
+    pitch = float(np.median(np.diff(tops)))
+    if pitch < 6 * gap:  # staves closer than a staff's height and a little: the gap was misread
+        return []
+    found = []
+    for a, b in zip(kept, kept[1:]):
+        k = round((b["top"] - a["top"]) / pitch)
+        if k < 2 or abs((b["top"] - a["top"]) / pitch - k) > 0.25:
+            continue
+        for j in range(1, k):
+            st = _between(sc, a, b, j / k)
+            if st and st["score"] >= min_score:
+                found.append({**st, "ruled": True})
+    return found
+
+
+def _between(sc: dict, a: dict, b: dict, frac: float) -> dict | None:
+    """The staff ruled `frac` of the way from staff a down to staff b, as
+    _trace gives staves: in each strip, the best row within half a space of
+    where the two staves' paths put it. A staff dense with ink scores low,
+    and a free trace from it wandered up to three spaces onto the beams (Op.
+    32 pp. 3, 14, 24: written staves in a slot, missed); the rastrum ruled
+    it parallel to its neighbours. None if clearly seen in fewer than three
+    strips."""
+    S, gap, xc, w, strips = sc["S"], sc["gap"], sc["xc"], sc["w"], sc["strips"]
+    path_y = lambda st: np.interp(xc, [p[0] for p in st["path"]], [p[1] for p in st["path"]])
+    want = path_y(a) + (path_y(b) - path_y(a)) * frac
+    r = max(1, int(gap / 2))
+    ys = []
+    for k, y in enumerate(want):
+        lo, hi = max(0, int(round(y)) - r), min(len(S), int(round(y)) + r + 1)
+        if hi <= lo:
+            return None
+        ys.append(lo + int(np.argmax(S[lo:hi, k])))
+    seen = S[ys, np.arange(strips)]
+    good = seen > max(0.05, 0.5 * float(np.median(seen)))
+    if good.sum() < 3:
+        return None
+    path = [(float(x), float(y)) for x, y, ok in zip(xc, ys, good) if ok]
+    top = int(round(np.interp(w / 2, [p[0] for p in path], [p[1] for p in path])))
+    lines = [top + int(round(i * gap)) for i in range(5)]
+    return {"top": lines[0], "bottom": lines[-1], "gap": gap, "lines": lines,
+            "path": path, "score": float(seen[good].mean())}
 
 
 def straighten(g: np.ndarray, staff: dict, pad_gaps: float = 4.0) -> tuple[np.ndarray, int]:
@@ -445,6 +503,8 @@ ATTACH_WIDTH = 0.85   # an ink run this wide crossing the stroke is a note head 
 ATTACH_ROWS = 0.25    # ... and this many rows of it means the stroke is a stem
 TAIL_BLANK = 8.0      # empty staff (spaces) after the last ink that ends a staff early
 EMPTY_INK = 0.01      # less ink than this between its lines: an empty staff, dropped
+RULED_INK = 0.1       # a staff found in a ruled slot has at least this share of the written staves' median ink
+WRITTEN_INK = 0.01    # at least this much ink between its lines: a staff with music (EMPTY_INK's default)
 START_ROOM = 4.0      # spaces a detector's music start must leave before the staff's right end
 GUTTER_REACH = 0.12   # page widths inward from the paper's outer edge to look for the binding
 GUTTER_STEP = 10.0    # grey levels: a binding is a step up at least this sharp, its page this much brighter
@@ -1002,15 +1062,31 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     g = _gray(img)
     h, w = g.shape
     corners = corners or find_page_corners(img)
-    found = []
+    found, measured = [], []
     for st in staves if staves is not None else find_staves(g):
         band, y0 = straighten(g, st)
         local = {**st, "top": st["top"] - y0, "bottom": st["bottom"] - y0,
                  "lines": [y - y0 for y in st["lines"]]}
         paper = paper_x(corners, (st["top"] + st["bottom"]) / 2 / h, w)
         left, right = staff_extent(band, local, paper)
-        if staves is None and inner_ink(band, local, left, right) < EMPTY_INK:
+        measured.append((st, band, local, left, right, paper, inner_ink(band, local, left, right)))
+    # A staff found in a ruled slot (_ruled_gaps) must have music on it: an
+    # empty one with ink showing through from the back passes the empty test,
+    # and the reader then writes notes on it. Its ink is taken across the
+    # span of the page's other staves, as its own measured span can be short
+    # (on grey paper staff_extent stops early, the old staves' too). Of the
+    # 115 found so on the paired sources, the 9 empty ones had at most 0.08
+    # of the written staves' median ink; written ones at least 0.14 (a few
+    # notes, then "fine"), the rest 0.23 or more.
+    sure = [m for m in measured if not m[0].get("ruled")]
+    span = (int(np.median([m[3] for m in sure])), int(np.median([m[4] for m in sure]))) if sure else None
+    written = [m[6] for m in sure if m[6] >= WRITTEN_INK]
+    ink = float(np.median(written)) if written else 0.0
+    for st, band, local, left, right, paper, inside in measured:
+        if staves is None and inside < EMPTY_INK:
             continue  # an empty ruled staff (text above or below doesn't count)
+        if st.get("ruled") and span and inner_ink(band, local, *span) < RULED_INK * ink:
+            continue
         clef, start, brace = music_start(band, local, left, right)
         found.append((st, band, local, left, right, clef, start, brace, paper))
 

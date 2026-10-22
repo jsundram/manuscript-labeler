@@ -26,6 +26,8 @@ FIXTURES = Path(__file__).parent / "fixtures"
 EDITION = Path.home() / "Dropbox/Code/boccherini-opus-48/sources"
 PDF = Path(os.environ.get("KHM602", EDITION / "G226/D-B_KHM-602.pdf"))
 PDF603 = Path(os.environ.get("KHM603", EDITION / "G227/D-B_KHM-603.pdf"))
+KHM587 = Path.home() / "Dropbox/Code/boccherini-sources/digitizations/G213/463058700_D-B/463058700_D-B.pdf"
+OP32 = Path.home() / "Dropbox/Code/boccherini-quartet-data/manuscripts/Boccherini G.201-206 - Opus 32, complete - Manuscript.pdf"
 pytestmark = pytest.mark.skipif(not shutil.which("pdftoppm"), reason="pdftoppm not available")
 
 
@@ -49,6 +51,35 @@ def test_first_viola_page_finds_all_ten_staves(tmp_path):
         assert s["right"] > 0.9
     # 10 lines, ~74 bars; detection is a proposal, so only a loose check
     assert 60 <= sum(len(s["barlines"]) for s in systems) <= 95
+
+
+@needs(KHM587)
+def test_staves_dense_with_ink_are_found_in_the_ruling(tmp_path):
+    # KHM 587 p. 15: three staves of runs and beams scored under the threshold;
+    # the editor added them by hand. The page is ruled with ten.
+    staves = detect.find_staves(detect._gray(render(KHM587, 15, tmp_path)))
+    assert len(staves) == 10
+
+
+@needs(OP32)
+def test_an_empty_staff_in_the_ruling_is_dropped(tmp_path):
+    # Op. 32 p. 20: an empty ruled staff between "adagio" and "Da capo", ink
+    # from the back showing through. Found in its slot, but no music on it.
+    img = render(OP32, 20, tmp_path)
+    h = img.size[1]
+    ruled = [s for s in detect.find_staves(detect._gray(img)) if s.get("ruled")]
+    assert len(ruled) == 1
+    tops = [s["top"] * h for s in detect.detect_page(img)]
+    assert all(abs(t - ruled[0]["top"]) > 2 * ruled[0]["gap"] for t in tops)
+
+
+@needs(OP32)
+@pytest.mark.parametrize("page, top", [(3, 0.417), (14, 0.58), (24, 0.417)])
+def test_a_dense_staff_in_a_ruled_slot_is_found(tmp_path, page, top):
+    # Op. 32: a written staff in a slot of the ruling, missed; a free trace
+    # from it wandered onto the beams, up to three spaces off the slot
+    img = render(OP32, page, tmp_path)
+    assert any(abs(s["top"] - top) < 0.01 for s in detect.detect_page(img))
 
 
 # (pdf, fixture, at least this share found, at most this many false).
