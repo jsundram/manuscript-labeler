@@ -50,6 +50,7 @@ const S = {
   sources: [],
   pairing: null,     // the automatic pairing of this source's staves (loadPairing), if it was paired
   pairHit: null,     // the unpaired staff n or ⇧N last went to ({page, p})
+  tried: {},         // "page:staff id" -> what the pairing's quick check said (tryPairing)
   showPairing: loadPref('pairing', true),  // p toggles it
   pdf: null,
   info: null,          // /api/source response minus labels
@@ -982,6 +983,7 @@ async function loadSource(pdf, page) {
   S.info = j;
   S.structureOpen = null;
   S.reads = {};
+  S.tried = {};
   S.version = S.savedVersion = 0;
   S.conflict = false;
   S.undo = []; S.redo = [];
@@ -1032,9 +1034,62 @@ function pairingNote(s) {
   if (!st) return '';
   const p = pairingOf(s);
   const head = `<b class="pairtag ${st}">${PAIR_TEXT[st]}</b>`;
-  if (st === 'none') return `<p class="pairnote">Pairing: ${head}. Its detection had no staff here, or one elsewhere on the page.</p>`;
+  if (st === 'none') return `<p class="pairnote">Pairing: ${head}. Its detection had no staff here, or one elsewhere on the page.</p>${tryBox(s)}`;
   const why = p.why?.length ? `<ul class="why">${p.why.slice(0, 5).map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '';
-  return `<p class="pairnote" title="${esc(p.source)} ${esc(p.id)}">Pairing: ${head}${p.bars ? ` · ${esc(p.bars)}` : ''}</p>${why}`;
+  return `<p class="pairnote" title="${esc(p.source)} ${esc(p.id)}">Pairing: ${head}${p.bars ? ` · ${esc(p.bars)}` : ''}</p>${why}${tryBox(s)}`;
+}
+
+// "Try pairing" and what it last said for this staff
+function tryBox(s) {
+  const t = S.tried[`${S.page}:${s.id}`];
+  const btn = `<button data-act="trypair"${t?.busy ? ' disabled' : ''} title="Would the pairing take this staff as it is now? Reads the staves you changed and aligns the lines around it with the score: a few seconds (the first try on a part also reads its score, up to a minute). Nothing is saved.">Try pairing (y)</button>`;
+  if (!t) return `<div class="trybox">${btn}</div>`;
+  let what;
+  if (t.busy) what = '<p class="muted">Trying…</p>';
+  else if (t.error) what = `<p class="pairtag unpaired">${esc(t.error)}</p>`;
+  else {
+    const stale = t.version !== S.version ? ' <span class="muted">(you changed the page since: try again)</span>' : '';
+    const use = t.status !== 'paired' ? ''
+      : !t.plain ? ' · but not every measure is one bar (a bar crossing the line break, or a multi-bar rest): not into a training set yet'
+        : t.worst > 0.5 ? ' · but a measure is far from its bar: not into a training set'
+          : ' · would go into a training set, if its clef and pitch checks pass';
+    what = `<p>Now: <b class="pairtag ${t.status === 'paired' ? 'set' : 'unpaired'}">${t.status === 'paired' ? 'pairs' : 'still unpaired'}</b>${t.bars ? ` · ${esc(t.bars)}` : ''}${esc(use)}${stale}</p>`
+      + (t.why?.length ? `<ul class="why">${t.why.slice(0, 5).map((w) => `<li>${esc(w)}</li>`).join('')}</ul>` : '')
+      + `<p class="muted">${t.read ? `${t.read} staves read, ` : ''}${t.took} s</p>`;
+  }
+  return `<div class="trybox">${btn}${what}</div>`;
+}
+
+// Would the pairing take this staff now, after the editor's fix? The
+// server's quick check (experiments/zeus/trypair.py): the page's staves as
+// they are here, the changed ones read, a window of the part aligned with
+// its score. The page's other staves in the window get their answer too:
+// a fix can free the staff beside it.
+async function tryPairing(s) {
+  if (!s || !pairStatus(s)) { flash('Only a staff on a paired page can be tried.'); return; }
+  const n = S.page;
+  const systems = pg().systems.filter((x) => (x.role || 'part') !== 'cue').sort((a, b) => a.top - b.top);
+  const staff = systems.indexOf(s);
+  if (staff < 0) { flash('A cue staff is never paired.'); return; }
+  const key = `${n}:${s.id}`, version = S.version;
+  S.tried[key] = { busy: true };
+  renderInspector();
+  try {
+    const res = await fetch('/api/trypair', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pdf: S.pdf, page: n, staff, systems }),
+    });
+    const j = await res.json();
+    if (!res.ok) throw new Error(j.error || res.statusText);
+    const by = new Map(j.staves.map((x) => [x.index, x]));
+    systems.forEach((x, i) => { if (by.has(i)) S.tried[`${n}:${x.id}`] = { ...by.get(i), took: j.took, read: j.read, version }; });
+    if (!by.has(staff)) S.tried[key] = { error: 'The check gave no answer for this staff.' };
+    const me = S.tried[key];
+    if (me.status) flash(me.status === 'paired' ? `It pairs: ${me.bars}.` : 'Still unpaired: see the panel.');
+  } catch (e) {
+    S.tried[key] = { error: `Couldn't try: ${e.message}` };
+  }
+  if (S.page === n) { renderInspector(); renderOverlay(); }
 }
 
 function pairingSummary() {
@@ -1554,7 +1609,9 @@ function renderOverlay() {
     if (ps) {
       const p = pairingOf(s), x = s.right * W + 0.7 * sp * H, y0 = topAt(s, s.right) * H, y1 = bottomAt(s, s.right) * H;
       out.push(`<rect class="pair ${ps}" data-pair="${s.id}" x="${x}" y="${y0}" width="${0.6 * sp * H}" height="${y1 - y0}"><title>Click: why</title></rect>`);
-      const label = ps === 'unpaired' || ps === 'none' ? PAIR_TEXT[ps] : p.bars;
+      const t = S.tried[`${S.page}:${s.id}`];
+      const label = (ps === 'unpaired' || ps === 'none' ? PAIR_TEXT[ps] : p.bars)
+        + (t?.status ? (t.status === 'paired' ? ' → pairs now' : ' → still unpaired') : '');
       out.push(`<text class="pairtext ${ps}" data-pair="${s.id}" x="${x + 1.1 * sp * H}" y="${(y0 + y1) / 2 + 0.5 * sp * H}" font-size="${1.4 * sp * H}">${esc(label)}<title>Click: why</title></text>`);
     }
   }
@@ -2919,6 +2976,7 @@ document.addEventListener('keydown', (e) => {
   else if (k === '.' || k === 'PageDown') { handled(); openPage(S.page + 1); }
   else if (k === ',' || k === 'PageUp') { handled(); openPage(S.page - 1); }
   else if (k === 'n' || k === 'N') { handled(); nextUnpaired(k === 'N' ? -1 : 1); }
+  else if (k === 'y') { handled(); tryPairing(S.sel?.t === 'sys' ? find(S.sel) : S.sel?.t === 'bl' ? systemOf(find(S.sel)) : null); }
   else if (k === 'p') {
     handled(); S.showPairing = !S.showPairing; savePref('pairing', S.showPairing); renderOverlay();
     if (S.pairing) flash(S.showPairing ? 'Showing the pairing (p hides it).' : 'Pairing hidden (p shows it).');
@@ -3012,6 +3070,7 @@ $('#inspector').addEventListener('click', (e) => {
   if (act === 'start-all' && item && S.sel.t === 'sys') applyStartToPage(item);
   if (act === 'snap' && item && S.sel.t === 'bl') snapBarline(item, systemOf(item), { undoable: true });
   if (act === 'read-mark' && item && S.sel.t === 'mark') readMark(S.page, item.id, { replace: true });
+  if (act === 'trypair' && item && S.sel.t === 'sys') tryPairing(item);
 });
 
 $('#inspector').addEventListener('change', (e) => {

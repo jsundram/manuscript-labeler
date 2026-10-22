@@ -444,6 +444,203 @@ def print_encoding(path: Path, part: str):
             for mvt, ms in doc["parts"].get(part, {}).items()], set()
 
 
+def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set, a, aspect: dict,
+          mismeasured: set, truth: dict, export: dict | None) -> dict:
+    """One part's staves paired with its encoding and judged: `mine`, its
+    staves [(id, page, system)] in reading order; `lmx`, their readings by
+    id; `blocks` and `split_bars`, its encoding (the *_encoding functions);
+    `a`, the options (main's); `aspect`, each page's height over width;
+    `mismeasured`, the staves mis_measured found. {"kept", "not kept",
+    "kept but wrong", "tally", "clefs"}, as main writes them."""
+    tally, wrong, clef_tally, kept, not_kept = Counter(), [], Counter(), [], []
+    # the encoding's bars, all movements in order; a bar a repeat splits
+    # (an upbeat follows) is where each such section ends
+    bars, E, E_raw = [], [], []
+    for where, by_bar in blocks:
+        got = sorted(by_bar.items(), key=lambda kv: int(kv[0]))
+        for k, (bar, evs) in enumerate(got):
+            # a multi-bar rest is one entry, up to the next bar there is
+            upto = int(got[k + 1][0]) if k + 1 < len(got) else int(bar) + 1
+            enc = evs if a.musicxml or a.print_bars else compare.encoded(evs)
+            bars.append([(*where, b) for b in range(int(bar), max(int(bar) + 1, upto))])
+            E.append(tokens(enc, steps_enc))
+            E_raw.append(enc)
+    # Zeus's measures, staff after staff
+    Z, Z_raw, owner = [], [], []
+    for sid, n, s in mine:
+        measures, _ = compare.parse(lmx[sid])
+        for ms in measures:
+            Z.append(tokens(ms, steps_zeus))
+            Z_raw.append(ms)
+            owner.append(sid)
+    breaks = {k for k in range(len(owner) - 1) if owner[k] != owner[k + 1]}
+    halves = {j for j, bs in enumerate(bars) if bs[0] in split_bars}
+    joins = set()
+    if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
+        halves, joins = set(), halves
+    path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
+    # a pickup counts no bar: bar 0 (in MusicXML, by its number: its bars are by index)
+    uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
+                 else {b for bs in bars for b in bs if b[-1] == 0})
+    box = box_bars(path, bars, breaks, uncounted)
+    for step, zs, js in path:
+        if any(owner[z] in a.debug for z in zs):
+            print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
+                  [round(unlike(Z[z], E[j]), 2) for z in zs for j in js])
+
+    # each staff's bars, and whether it holds up
+    held = defaultdict(set)
+    bad = set()
+    why = defaultdict(list)  # staff -> why it's put out (results' "not kept")
+
+    def out_(staves, reason):
+        for st in staves:
+            if st is not None:
+                bad.add(st)
+                why[st].append(reason)
+    pairs = defaultdict(list)  # staff -> [(zeus measure, bar index)] paired one to one
+    plain = defaultdict(lambda: True)  # every measure one bar, none split by a repeat
+    last_owner = None
+    for step, zs, js in path:
+        staves_here = {owner[z] for z in zs}
+        if step != "one" or any(len(bars[j]) > 1 or j in halves for j in js):
+            for st in staves_here:
+                plain[st] = False
+        for z in zs:
+            held[owner[z]].update(b for j in js for b in bars[j])
+        if step in ("extra", "two"):
+            out_(staves_here, f"{step} at {[list(bars[j][0]) for j in js] or 'none'}")
+        if step in ("one", "split", "join") and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
+            out_(staves_here, f"unlike {[list(bars[j][0]) for j in js]}")  # nothing like its bar: the pairing has slipped
+        if step == "missed":
+            # a bar no staff holds: the staves either side are suspect
+            nxt = next((owner[z] for st, zz, _ in path[path.index((step, zs, js)) + 1:] for z in zz), None)
+            out_([last_owner, nxt], f"beside a missed bar {list(bars[js[0]][0])}")
+        if step == "one":
+            pairs[owner[zs[0]]].append((zs[0], js[0]))
+        if zs:
+            last_owner = owner[zs[-1]]
+    # a staff's first and last measures each one bar, not a run of rests:
+    # its ends are anchored even where detection's bar boxes don't say so
+    ends = {}
+    for step, zs, js in path:
+        for z in zs:
+            one = step in ("one", "join") and all(len(bars[j]) == 1 for j in js)
+            ends.setdefault(owner[z], [one, one])[1] = one
+    if a.neighbours:
+        # a staff's end measure that stands for more than one bar (two bars, or a bar rest for
+        # a run of rest bars) may have taken a bar the staff beside it holds but its reading
+        # dropped (a bar rest at a line's end); an extra measure there may be half a bar the
+        # line breaks, whose other half the staff beside it paired as the whole bar: that
+        # staff is suspect too
+        step_of = {z: (step, js) for step, zs, js in path for z in zs}
+        # with --neighbours-paired, a neighbour none of whose measures paired with a bar (an empty
+        # staff under a heading, a title, a scrap of detection) puts no staff out by its extra measure
+        paired_any = {o for z, o in enumerate(owner) if step_of[z][0] != "extra"}
+        blank = lambda st: a.neighbours_paired and st not in paired_any
+        for k in sorted(breaks):
+            if step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1]):
+                out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
+            if step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k]):
+                out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
+    if a.short_ends:
+        # a staff's first or last measure paired with a whole bar but read much shorter than it:
+        # half of a bar the line breaks (the other half on the staff beside it, taken as extra)
+        ends_at = {}
+        for z, o in enumerate(owner):
+            ends_at.setdefault(o, [z, z])[1] = z
+        step_of = {z: (step, js) for step, zs, js in path for z in zs}
+        for o, (z0, z1) in ends_at.items():
+            for z in {z0, z1}:
+                step, js = step_of[z]
+                if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]]):
+                    out_([o], f"an end measure shorter than its bar {list(bars[js[0]][0])}")
+    if a.long_ends:
+        # a staff's first or last measure paired with a whole bar but read much longer than it: the
+        # piece of a bar the line breaks (its other part on the staff beside it) read into it
+        ends_at = {}
+        for z, o in enumerate(owner):
+            ends_at.setdefault(o, [z, z])[1] = z
+        step_of = {z: (step, js) for step, zs, js in path for z in zs}
+        for o, (z0, z1) in ends_at.items():
+            for z in {z0, z1}:
+                step, js = step_of[z]
+                if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]]):
+                    out_([o], f"an end measure longer than its bar {list(bars[js[0]][0])}")
+    first_bar = {}
+    for step, zs, js in path:
+        for z in zs:
+            if js:
+                first_bar.setdefault(owner[z], bars[js[0]][0])
+    # a mis-measured staff (mis_measured: measured short, music past its ends; staff_extent stopping
+    # early, as on grey paper) holds less than its line, and the alignment may hand the rest of its bars
+    # to the staves below it in the part (Op32 vc p138): it, and every staff of the part below it on the
+    # page, is put out
+    for pg in sorted({n for _, n, _ in mine}):
+        tops = [s["top"] for sid, n, s in mine if n == pg and sid in mismeasured]
+        for sid, n, s in mine:
+            if n == pg and tops and s["top"] >= min(tops):
+                out_([sid], "mis-measured: measured under half its page's median width, music past its ends"
+                     if sid in mismeasured else "below a mis-measured staff on its page")
+    for sid, n, s in mine:
+        count = sum(1 for o in owner if o == sid)
+        found = boxes(s, aspect[n])
+        if a.head_box and found > count and head_box(s, aspect[n]) < 0.6 and first_bar.get(sid, (0,))[-1] != 0:
+            out_([sid], "more bar boxes than measures, the first narrow: part of a bar at its head dropped")
+        cy = (s["top"] + s["bottom"]) / 2
+        match = [t for t in truth.values() if t[0] == n and abs(t[1] - cy) < 0.015]
+        t = match[0] if match else None
+        keep = count > 0 and sid not in bad and (count == found or (a.any_count and all(ends.get(sid, [False]))))
+        got = held[sid]
+        right = t is not None and got == t[2]
+        tally["staves"] += 1
+        tally["staves kept"] += keep
+        tally["bars on kept staves"] += len(got) if keep else 0
+        tally["kept, bar boxes as many"] += keep and count == found
+        if export:
+            tally["kept and right"] += keep and right
+            tally["kept, wrong"] += keep and not right
+            tally["not kept, would have been right"] += (not keep) and right
+            tally["bars on kept staves, right"] += len(got) if keep and right else 0
+            tally["no labelled staff here"] += t is None
+        if export and keep and not right:
+            wrong.append(f"{part} {sid}: paired {sorted(got)[:1]}..{sorted(got)[-1:]} ({len(got)}), labels "
+                         + (f"{sorted(t[2])[:1]}..{sorted(t[2])[-1:]} ({len(t[2])})" if t else "no staff"))
+        if not keep:
+            reasons = list(dict.fromkeys(why[sid]))
+            if count == 0:
+                reasons.append("nothing read")
+            if count != found and not (a.any_count and all(ends.get(sid, [False]))):
+                reasons.append(f"{count} measures, {found} bar boxes" + (", an end not one bar" if a.any_count else ""))
+            not_kept.append({"staff": sid, "part": part, "page": n, "why": reasons, "bars": sorted(got),
+                             "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
+                             "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box]})
+            continue
+        # the clef under which Zeus's notes name the encoding's pitches most often
+        # (and bar by bar, for a clef the encoding doesn't have: "bar_clefs", each one-to-one
+        # pair's hits under each clef; "read_clefs": the clefs the reading wrote; "worst": the
+        # most unlike of those pairs)
+        by_bar = [{clef: sum(1 for x, y in compare.align(E_raw[j], zev)
+                             if x is not None and y is not None and E_raw[j][x]["pitches"]
+                             and E_raw[j][x]["pitches"] == zev[y]["pitches"])
+                   for clef in CLEFS for zev in [[compare.zeus_event(e, clef) for e in Z_raw[z]]]}
+                  for z, j in pairs[sid]]
+        score = {clef: sum(h[clef] for h in by_bar) for clef in CLEFS}
+        best = max(score, key=score.get)
+        kept.append({"staff": sid, "part": part, "page": n, "system": s, "clef": best, "bars": sorted(got),
+                     "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
+                     "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
+                     "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
+                     "bar_clefs": by_bar, "read_clefs": compare.parse(lmx[sid])[1],
+                     "worst": round(max((unlike(Z[z], E[j]) for z, j in pairs[sid]), default=0.0), 3)})
+        if t is not None and len(t[3]) == 1:
+            clef_tally["clef chosen = labels'" if best == next(iter(t[3])) else "clef chosen wrong"] += 1
+    if export:
+        tally["labelled staves"] += len({b["system"] for b in export["bars"] if b["part"] == part})
+
+    return {"kept": kept, "not kept": not_kept, "kept but wrong": wrong, "tally": tally, "clefs": clef_tally}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -525,191 +722,13 @@ def main():
         mine = [(sid, n, s) for sid, pt, n, s in staves if pt == part]
         if not mine:
             continue
-        # the encoding's bars, all movements in order; a bar a repeat splits
-        # (an upbeat follows) is where each such section ends
-        blocks, split_bars = encoding(part)
-        bars, E, E_raw = [], [], []
-        for where, by_bar in blocks:
-            got = sorted(by_bar.items(), key=lambda kv: int(kv[0]))
-            for k, (bar, evs) in enumerate(got):
-                # a multi-bar rest is one entry, up to the next bar there is
-                upto = int(got[k + 1][0]) if k + 1 < len(got) else int(bar) + 1
-                enc = evs if a.musicxml or a.print_bars else compare.encoded(evs)
-                bars.append([(*where, b) for b in range(int(bar), max(int(bar) + 1, upto))])
-                E.append(tokens(enc, steps_enc))
-                E_raw.append(enc)
-        # Zeus's measures, staff after staff
-        Z, Z_raw, owner = [], [], []
-        for sid, n, s in mine:
-            measures, _ = compare.parse(cache[keys[sid]])
-            for ms in measures:
-                Z.append(tokens(ms, steps_zeus))
-                Z_raw.append(ms)
-                owner.append(sid)
-        breaks = {k for k in range(len(owner) - 1) if owner[k] != owner[k + 1]}
-        halves = {j for j, bs in enumerate(bars) if bs[0] in split_bars}
-        joins = set()
-        if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
-            halves, joins = set(), halves
-        path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
-        # a pickup counts no bar: bar 0 (in MusicXML, by its number: its bars are by index)
-        uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
-                     else {b for bs in bars for b in bs if b[-1] == 0})
-        box = box_bars(path, bars, breaks, uncounted)
-        for step, zs, js in path:
-            if any(owner[z] in a.debug for z in zs):
-                print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
-                      [round(unlike(Z[z], E[j]), 2) for z in zs for j in js])
-
-        # each staff's bars, and whether it holds up
-        held = defaultdict(set)
-        bad = set()
-        why = defaultdict(list)  # staff -> why it's put out (results' "not kept")
-
-        def out_(staves, reason):
-            for st in staves:
-                if st is not None:
-                    bad.add(st)
-                    why[st].append(reason)
-        pairs = defaultdict(list)  # staff -> [(zeus measure, bar index)] paired one to one
-        plain = defaultdict(lambda: True)  # every measure one bar, none split by a repeat
-        last_owner = None
-        for step, zs, js in path:
-            staves_here = {owner[z] for z in zs}
-            if step != "one" or any(len(bars[j]) > 1 or j in halves for j in js):
-                for st in staves_here:
-                    plain[st] = False
-            for z in zs:
-                held[owner[z]].update(b for j in js for b in bars[j])
-            if step in ("extra", "two"):
-                out_(staves_here, f"{step} at {[list(bars[j][0]) for j in js] or 'none'}")
-            if step in ("one", "split", "join") and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
-                out_(staves_here, f"unlike {[list(bars[j][0]) for j in js]}")  # nothing like its bar: the pairing has slipped
-            if step == "missed":
-                # a bar no staff holds: the staves either side are suspect
-                nxt = next((owner[z] for st, zz, _ in path[path.index((step, zs, js)) + 1:] for z in zz), None)
-                out_([last_owner, nxt], f"beside a missed bar {list(bars[js[0]][0])}")
-            if step == "one":
-                pairs[owner[zs[0]]].append((zs[0], js[0]))
-            if zs:
-                last_owner = owner[zs[-1]]
-        # a staff's first and last measures each one bar, not a run of rests:
-        # its ends are anchored even where detection's bar boxes don't say so
-        ends = {}
-        for step, zs, js in path:
-            for z in zs:
-                one = step in ("one", "join") and all(len(bars[j]) == 1 for j in js)
-                ends.setdefault(owner[z], [one, one])[1] = one
-        if a.neighbours:
-            # a staff's end measure that stands for more than one bar (two bars, or a bar rest for
-            # a run of rest bars) may have taken a bar the staff beside it holds but its reading
-            # dropped (a bar rest at a line's end); an extra measure there may be half a bar the
-            # line breaks, whose other half the staff beside it paired as the whole bar: that
-            # staff is suspect too
-            step_of = {z: (step, js) for step, zs, js in path for z in zs}
-            # with --neighbours-paired, a neighbour none of whose measures paired with a bar (an empty
-            # staff under a heading, a title, a scrap of detection) puts no staff out by its extra measure
-            paired_any = {o for z, o in enumerate(owner) if step_of[z][0] != "extra"}
-            blank = lambda st: a.neighbours_paired and st not in paired_any
-            for k in sorted(breaks):
-                if step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1]):
-                    out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
-                if step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k]):
-                    out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
-        if a.short_ends:
-            # a staff's first or last measure paired with a whole bar but read much shorter than it:
-            # half of a bar the line breaks (the other half on the staff beside it, taken as extra)
-            ends_at = {}
-            for z, o in enumerate(owner):
-                ends_at.setdefault(o, [z, z])[1] = z
-            step_of = {z: (step, js) for step, zs, js in path for z in zs}
-            for o, (z0, z1) in ends_at.items():
-                for z in {z0, z1}:
-                    step, js = step_of[z]
-                    if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]]):
-                        out_([o], f"an end measure shorter than its bar {list(bars[js[0]][0])}")
-        if a.long_ends:
-            # a staff's first or last measure paired with a whole bar but read much longer than it: the
-            # piece of a bar the line breaks (its other part on the staff beside it) read into it
-            ends_at = {}
-            for z, o in enumerate(owner):
-                ends_at.setdefault(o, [z, z])[1] = z
-            step_of = {z: (step, js) for step, zs, js in path for z in zs}
-            for o, (z0, z1) in ends_at.items():
-                for z in {z0, z1}:
-                    step, js = step_of[z]
-                    if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]]):
-                        out_([o], f"an end measure longer than its bar {list(bars[js[0]][0])}")
-        first_bar = {}
-        for step, zs, js in path:
-            for z in zs:
-                if js:
-                    first_bar.setdefault(owner[z], bars[js[0]][0])
-        # a mis-measured staff (mis_measured: measured short, music past its ends; staff_extent stopping
-        # early, as on grey paper) holds less than its line, and the alignment may hand the rest of its bars
-        # to the staves below it in the part (Op32 vc p138): it, and every staff of the part below it on the
-        # page, is put out
-        for pg in sorted({n for _, n, _ in mine}):
-            tops = [s["top"] for sid, n, s in mine if n == pg and sid in mismeasured]
-            for sid, n, s in mine:
-                if n == pg and tops and s["top"] >= min(tops):
-                    out_([sid], "mis-measured: measured under half its page's median width, music past its ends"
-                         if sid in mismeasured else "below a mis-measured staff on its page")
-        for sid, n, s in mine:
-            count = sum(1 for o in owner if o == sid)
-            found = boxes(s, aspect[n])
-            if a.head_box and found > count and head_box(s, aspect[n]) < 0.6 and first_bar.get(sid, (0,))[-1] != 0:
-                out_([sid], "more bar boxes than measures, the first narrow: part of a bar at its head dropped")
-            cy = (s["top"] + s["bottom"]) / 2
-            match = [t for t in truth.values() if t[0] == n and abs(t[1] - cy) < 0.015]
-            t = match[0] if match else None
-            keep = count > 0 and sid not in bad and (count == found or (a.any_count and all(ends.get(sid, [False]))))
-            got = held[sid]
-            right = t is not None and got == t[2]
-            tally["staves"] += 1
-            tally["staves kept"] += keep
-            tally["bars on kept staves"] += len(got) if keep else 0
-            tally["kept, bar boxes as many"] += keep and count == found
-            if export:
-                tally["kept and right"] += keep and right
-                tally["kept, wrong"] += keep and not right
-                tally["not kept, would have been right"] += (not keep) and right
-                tally["bars on kept staves, right"] += len(got) if keep and right else 0
-                tally["no labelled staff here"] += t is None
-            if export and keep and not right:
-                wrong.append(f"{part} {sid}: paired {sorted(got)[:1]}..{sorted(got)[-1:]} ({len(got)}), labels "
-                             + (f"{sorted(t[2])[:1]}..{sorted(t[2])[-1:]} ({len(t[2])})" if t else "no staff"))
-            if not keep:
-                reasons = list(dict.fromkeys(why[sid]))
-                if count == 0:
-                    reasons.append("nothing read")
-                if count != found and not (a.any_count and all(ends.get(sid, [False]))):
-                    reasons.append(f"{count} measures, {found} bar boxes" + (", an end not one bar" if a.any_count else ""))
-                not_kept.append({"staff": sid, "part": part, "page": n, "why": reasons, "bars": sorted(got),
-                                 "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
-                                 "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box]})
-                continue
-            # the clef under which Zeus's notes name the encoding's pitches most often
-            # (and bar by bar, for a clef the encoding doesn't have: "bar_clefs", each one-to-one
-            # pair's hits under each clef; "read_clefs": the clefs the reading wrote; "worst": the
-            # most unlike of those pairs)
-            by_bar = [{clef: sum(1 for x, y in compare.align(E_raw[j], zev)
-                                 if x is not None and y is not None and E_raw[j][x]["pitches"]
-                                 and E_raw[j][x]["pitches"] == zev[y]["pitches"])
-                       for clef in CLEFS for zev in [[compare.zeus_event(e, clef) for e in Z_raw[z]]]}
-                      for z, j in pairs[sid]]
-            score = {clef: sum(h[clef] for h in by_bar) for clef in CLEFS}
-            best = max(score, key=score.get)
-            kept.append({"staff": sid, "part": part, "page": n, "system": s, "clef": best, "bars": sorted(got),
-                         "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
-                         "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
-                         "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
-                         "bar_clefs": by_bar, "read_clefs": compare.parse(cache[keys[sid]])[1],
-                         "worst": round(max((unlike(Z[z], E[j]) for z, j in pairs[sid]), default=0.0), 3)})
-            if t is not None and len(t[3]) == 1:
-                clef_tally["clef chosen = labels'" if best == next(iter(t[3])) else "clef chosen wrong"] += 1
-        if export:
-            tally["labelled staves"] += len({b["system"] for b in export["bars"] if b["part"] == part})
+        got = judge(part, mine, {sid: cache[keys[sid]] for sid, _, _ in mine}, *encoding(part), a, aspect,
+                    mismeasured, truth, export)
+        kept += got["kept"]
+        not_kept += got["not kept"]
+        wrong += got["kept but wrong"]
+        tally.update(got["tally"])
+        clef_tally.update(got["clefs"])
 
     out = {"source": a.source, "tally": tally, "clefs": clef_tally, "kept but wrong": wrong, "kept": kept,
            "not kept": not_kept}

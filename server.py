@@ -95,6 +95,9 @@ class Edition:
         # Claude's readings of pages and marks (reader.py): on with an API key
         key = reader.api_key()
         self.reader = reader.Reader(cache / "claude", key) if key else None
+        # the pairing's quick check: a worker, started on first use (trypair)
+        self.trypair_worker = None
+        self.trypair_lock = threading.Lock()
 
     # -- paths ---------------------------------------------------------------
 
@@ -575,6 +578,52 @@ class Edition:
                 print(f"learned crops failed on {rel} p{page}: {type(e).__name__}: {e}", flush=True)
         return {"systems": systems, "corners": corners, "look": detect.page_look(img, corners)}
 
+    # -- the pairing's quick check (experiments/zeus/trypair.py) -------------
+
+    def trypair(self, rel: str, page: int, staff: int, systems: list[dict]) -> dict:
+        """Would the page's staff `staff` (from the top, of `systems`: the
+        page's staves as the editor has them now) pair? trypair.py's answer,
+        from a worker kept running: it holds the reader and the encodings."""
+        pdf = self.pdf(rel)
+        names = [n for n in self.paired().get(pdf, []) if str(page) in pairing.part_pages(n)]
+        if not names:
+            raise LookupError(f"page {page} wasn't paired")
+        req = json.dumps({"source": names[0], "page": page, "staff": staff, "systems": systems}) + "\n"
+        with self.trypair_lock:
+            w = self.trypair_start()
+            w.stdin.write(req)
+            w.stdin.flush()
+            line = w.stdout.readline()
+        if not line:
+            raise RuntimeError(f"the pairing check stopped (see {self.cache / 'trypair.log'})")
+        out = json.loads(line)
+        if "error" in out:
+            raise LookupError(out["error"])
+        return {"source": names[0], **out}
+
+    def trypair_start(self):
+        """The quick check's worker, started if it isn't running (under
+        trypair_lock); it loads the reader in the background once ready."""
+        w = self.trypair_worker
+        if w is None or w.poll() is not None:
+            log = open(self.cache / "trypair.log", "a")
+            w = self.trypair_worker = subprocess.Popen(
+                ["uv", "run", str(HERE / "experiments" / "zeus" / "trypair.py"), "--serve"],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=log, text=True)
+            if json.loads(w.stdout.readline() or "{}").get("ready") is not True:
+                raise RuntimeError(f"the pairing check didn't start (see {self.cache / 'trypair.log'})")
+        return w
+
+    def trypair_warm(self):
+        """Start the worker in the background (a paired manuscript was opened)."""
+        def go():
+            try:
+                with self.trypair_lock:
+                    self.trypair_start()
+            except Exception as e:
+                print(f"the pairing check didn't start: {type(e).__name__}: {e}", flush=True)
+        threading.Thread(target=go, daemon=True).start()
+
     # -- Claude's readings ---------------------------------------------------
 
     def reader_state(self, rel: str) -> dict:
@@ -881,7 +930,10 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/activity":  # the Time panel: this source's time
                 return self.send_json(ed.activity_report(q["pdf"]))
             if path == "/api/pairing":  # what the automatic pairing made of each staff (pairing.py)
-                return self.send_json(pairing.for_pdf(ed.pdf(q["pdf"]), ed.cache))
+                out = pairing.for_pdf(ed.pdf(q["pdf"]), ed.cache)
+                if out["sources"] and ed.trypair_worker is None:
+                    ed.trypair_warm()  # so a staff can be tried at once
+                return self.send_json(out)
             if path == "/api/bars":
                 return self.send_json(labels.bars_export(ed.load(q["pdf"])["labels"]))
             return self.error(HTTPStatus.NOT_FOUND, "not found")
@@ -894,7 +946,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path, q = self.route()
-        if path not in ("/api/structure", "/api/readmark", "/api/activity"):
+        if path not in ("/api/structure", "/api/readmark", "/api/activity", "/api/trypair"):
             return self.error(HTTPStatus.NOT_FOUND, "not found")
         try:
             n = int(self.headers.get("Content-Length", 0))
@@ -903,6 +955,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.send_json({"logged": self.edition.log_activity(body)})
             if path == "/api/readmark":
                 return self.send_json(self.edition.read_mark(body["pdf"], int(body["page"]), body["box"]))
+            if path == "/api/trypair":
+                return self.send_json(self.edition.trypair(body["pdf"], int(body["page"]), int(body["staff"]),
+                                                           body["systems"]))
             return self.send_json(self.edition.write_structure(
                 body["pdf"], body["movement"], body.get("answers", {}), self.headers.get("If-Match", ""),
                 body.get("shown", "")))
@@ -914,6 +969,8 @@ class Handler(BaseHTTPRequestHandler):
             return self.error(HTTPStatus.BAD_GATEWAY, f"Claude couldn't read it: {e}")
         except subprocess.CalledProcessError as e:
             return self.error(HTTPStatus.INTERNAL_SERVER_ERROR, f"{e.cmd[0]} failed: {e.stderr}")
+        except RuntimeError as e:
+            return self.error(HTTPStatus.INTERNAL_SERVER_ERROR, str(e))
 
     def do_PUT(self):
         path, q = self.route()

@@ -232,6 +232,8 @@ aside > section.grow { overflow-y: auto; min-height: 0; }
 .pairnote { margin: 4px 0; }
 ul.why { margin: 0 0 6px; padding-left: 16px; color: var(--muted); font-size: 12px; }
 #pages .unpaired, #source .unpaired, #sourcelist .unpaired { color: var(--bad); }
+.trybox { margin: 4px 0 8px; }
+.trybox p { margin: 4px 0; }
 /* a bar much wider or narrower than its line's typical bar (missed / extra bar line?) */
 .oddbar { fill: rgba(217, 130, 43, .08); stroke: var(--auto); stroke-width: 2; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; pointer-events: none; }
 .runson { fill: none; stroke: var(--staff-line); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; pointer-events: none; }

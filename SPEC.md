@@ -206,6 +206,22 @@ list counts each page's unpaired staves;
 detected fresh takes the part the pairing gave its staves. The pairing is
 shown, never saved: labels stay the editor's.
 
+After a fix, Try pairing (`y`, or the button in the staff's panel) asks
+whether the pairing would now take the staff (server.py /api/trypair, a
+worker running experiments/zeus/trypair.py, started when a paired
+manuscript opens). The page's staves as the editor has them stand in for
+the detections' on that page; a staff whose crop changed is read on the
+Mac with the released reader (musvit-D4, the pairing's D3S-h96); six
+staves either side, and the bars the pairing gave them, are aligned with
+the score by autopair.judge, with the source's options. About a second
+and a half, a read included; the first try on a part also parses its
+score (cached after). The page's other staves in the window get their
+answer too. On 300 staves tried as detected it gave the batch pairing's
+verdict on all 300. It uses one reader where the older sources' sets need
+two to agree, and its "would go into a training set" covers only the
+pairing's checks, not the set builder's clef and pitch checks. Nothing is
+saved.
+
 ```json
 {
   "schema": 2,
