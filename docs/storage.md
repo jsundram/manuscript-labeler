@@ -148,8 +148,8 @@ space. `du` still counts them twice.
   staff's line break cut where the two staves' readings fit the bar's
   halves best (autopair.py's "halves"), and each staff given its part of
   such a bar, or of a bar a repeat splits, by dataset.py (staff_boxes).
-  dataM5 4,331 staves (24,985 bars), against dataM4's 4,134 (23,900);
-  dataW4 1,173 (8,078), against 1,066 (7,415); dataP4 and dataG213-4 are
+  dataM5 4,344 staves (25,053 bars), against dataM4's 4,134 (23,900);
+  dataW4 1,190 (8,179), against 1,066 (7,415); dataP4 and dataG213-4 are
   dataP3 and dataG213-3 (the print's reading has no onsets to cut at;
   G. 213's MusicXML staves are labelled another way). See
   `reports/2026-10-22-split-bars/`. Not yet on Modal.

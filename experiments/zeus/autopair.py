@@ -48,7 +48,10 @@ unlike the measures either side of the break (break_cut, at most
 BREAK_FIT). A kept staff lists such halves ("halves": the bar, which
 half, the cut), so the dataset can label its part of the bar, and names
 any other measure that isn't one bar ("irregular": a multi-bar rest, a
-bar a repeat splits, a split no cut fits ...).
+bar a repeat splits, a split no cut fits ...). Where the alignment
+instead paired the bar whole with one staff's end measure and took the
+other's piece as extra (a reading of the piece as long as the bar, too
+long to split), the two are split where a cut fits (recut).
 
 With --neighbours, a staff is also put out when the staff beside it
 begins or ends with a measure paired with two bars or with a run of rest
@@ -220,6 +223,38 @@ def break_cut(z0: list[tuple], z1: list[tuple], evs: list[dict]) -> tuple[Fracti
         if best is None or fit < best[1]:
             best = (c, round(fit, 3))
     return best if best and best[1] <= BREAK_FIT else None
+
+
+def recut(path: list[tuple], Z: list[list[tuple]], E: list[list[tuple]], E_raw: list[list[dict]], breaks: set[int],
+          bars: list[list[tuple]], halves: set[int], owner: list[str]) -> list[tuple]:
+    """The path with a bar the line breaks split where the alignment paired
+    it whole with one staff's end measure and took the other staff's piece
+    of it as extra, the reading of one piece too long to split (as long as
+    the bar): a split, where break_cut finds a cut that fits both and the
+    measure paired whole reads more like its piece than like the bar. Not
+    where the extra measure's staff paired nothing else (a heading, a
+    title, a scrap of detection)."""
+    paired = {owner[z] for step, zs, _ in path if step != "extra" for z in zs}
+    out, i = [], 0
+    while i < len(path):
+        if i + 1 < len(path):
+            (s1, z1, j1), (s2, z2, j2) = path[i], path[i + 1]
+            if ({s1, s2} == {"extra", "one"} and len(z1) == len(z2) == 1 and z1[0] in breaks
+                    and z2[0] == z1[0] + 1):
+                j, extra = (j1 or j2)[0], (z1 if s1 == "extra" else z2)[0]
+                one = z2[0] if s2 == "one" else z1[0]
+                cut = (owner[extra] in paired and j not in halves and len(bars[j]) == 1
+                       and not (rest_bar(Z[z1[0]]) or rest_bar(Z[z2[0]])) and break_cut(Z[z1[0]], Z[z2[0]], E_raw[j]))
+                # and the measure paired with the whole bar is more like its piece than the whole: else
+                # it holds the whole bar, and the extra measure is something else (a second ending ...)
+                piece = cut and [e for e in E_raw[j] if (e["onset"] < cut[0]) == (one == z1[0])]
+                if cut and unlike(Z[one], tokens(piece, steps_enc)) < unlike(Z[one], E[j]):
+                    out.append(("split", z1 + z2, [j]))
+                    i += 2
+                    continue
+        out.append(path[i])
+        i += 1
+    return out
 
 
 def rest_bar(tok: list[tuple]) -> bool:
@@ -503,7 +538,8 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
     joins = set()
     if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
         halves, joins = set(), halves
-    path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
+    path = recut(align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins), Z, E, E_raw, breaks, bars, halves,
+                 owner)
     # a pickup counts no bar: bar 0 (in MusicXML, by its number: its bars are by index)
     uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
                  else {b for bs in bars for b in bs if b[-1] == 0})

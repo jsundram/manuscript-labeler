@@ -19,13 +19,17 @@ correctly paired half-bar was left out (blue); and where the reading
 mangled the half-bar, the boundary rules put out both lines (red). The
 first is fixed: the score's bar is cut where the two readings fit its
 halves best, and each line labelled with its part; bars a repeat splits
-too, where each half is its own measure. +304 staves, +1,748 bars.
+too, where each half is its own measure. +304 staves, +1,748 bars. For
+the second, a re-cut where the alignment paired the bar whole on one
+staff: +30 staves (169 bars); a looser first try was wrong three times in
+four, which showed most red staves aren't bars that cross a line.
 
 **Why a report.** The sets change, and the red half is the next pool to
 recover.
 
 **What followed.** dataM5 and dataW4 built; the labeler's pairing view
-reads them. Not yet trained on or uploaded.
+reads them. Not yet trained on or uploaded. Re-pairing made faster (45 to
+6 min): LilyPond's encoding cached, sources paired six at a time.
 
 ## 2026-10-22: Re-detecting the paired manuscripts
 
