@@ -213,9 +213,9 @@ def cmd_models(argv: list[str]) -> int:
         print(f"  licence: {m['licence']}")
         print(f"  trained on: " + "; ".join(f"{s} {' '.join(v)}" for s, v in m["trained_on"].items())
               + (f"; and {len(m.get('trained_on_other', []))} other sources" if m.get("trained_on_other") else ""))
-        for src, acc in m.get("accuracy", {}).items():
-            print(f"  held out, {src} {' '.join(acc['movements'])}: {acc['bars_exact']:.0%} of bars exact, "
-                  f"{acc['events_right']:.0%} of events right")
+        for src, acc in m.get("accuracy", {}).items():  # (a source held out whole names no movements)
+            print(f"  held out, {' '.join([src, *acc.get('movements', [])])}: {acc['bars_exact']:.0%} of bars exact"
+                  + (f", {acc['events_right']:.0%} of events right" if "events_right" in acc else ""))
         print(f"  trained at labeler {m['trained_at']}; sha256 {m['sha256'][:12]}…")
     return 0
 
