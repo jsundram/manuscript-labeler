@@ -4,6 +4,28 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-22: Boccherini 6k
+
+[Write-up](2026-10-22-boccherini-6k/)
+
+**Context.** The day's redetection and pairing fixes doubled the labelled
+staves (3,411 to 6,275); the editor asked to train on them, with a
+held-out manuscript in a new hand, the clef-change drawn stage, and more
+CPU workers.
+
+**Question.** Does twice the data make a better reader?
+
+**Finding.** Not on the clean test (277 of 347, a tie), but on a hand none
+of the training had, a third fewer symbol errors (16.2% to 10.3%); the
+same chain on the old data reads it worse. The clean test alone can no
+longer judge readers.
+
+**Why a report.** A training run, and a change in how readers must be
+compared.
+
+**What followed.** Not released yet; the editor to decide. The batch
+workers doubled the staves trained a second.
+
 ## 2026-10-22: Bar lines the reading missed
 
 [Write-up](2026-10-22-missed-bar-lines/)
