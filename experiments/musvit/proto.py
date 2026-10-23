@@ -534,6 +534,7 @@ def main():
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--batch-size", type=int, default=8)
+    ap.add_argument("--seed", type=int, default=0, help="for random and torch: another seed, another run of the same recipe")
     ap.add_argument("--workers", type=int, default=0,
                     help="processes building the next batches while the GPU trains (0: build each in turn)")
     ap.add_argument("--layers", type=int, default=4, help="the transformer decoder's layers")
@@ -583,8 +584,8 @@ def main():
     H = a.height
     assert 0 <= a.replay < 1 and (not a.replay or a.replay_from), "--replay is a share below 1, with --replay-from"
     readapt = False
-    random.seed(0)
-    torch.manual_seed(0)
+    random.seed(a.seed)
+    torch.manual_seed(a.seed)
 
     train = staves(a.train, a.limit)
     dev_items = train if a.overfit else staves(a.dev, a.dev_limit)
