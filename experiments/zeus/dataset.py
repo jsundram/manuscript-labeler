@@ -3,7 +3,7 @@
 # dependencies = [
 #   "zeus @ git+https://github.com/OmniOMR/zeus.git@c8569eb1c8b5bb24511de6a5e53ef2450de6206c",
 #   "tensorflow-macos==2.12.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
-#   "numpy", "pillow",
+#   "numpy", "pillow", "numba",
 # ]
 # [tool.uv]
 # override-dependencies = ["tensorflow; sys_platform != 'darwin' or platform_machine != 'arm64'"]

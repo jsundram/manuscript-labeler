@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["numpy", "pillow"]
+# dependencies = ["numpy", "pillow", "numba"]
 # ///
 """Bar by bar, how each staff autopair.py --musicxml kept reads against the
 bars it was paired with: the reader's measure and the encoding's bar, how

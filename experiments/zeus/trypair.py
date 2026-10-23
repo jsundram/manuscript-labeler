@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["torch", "transformers", "peft", "safetensors", "pillow", "numpy"]
+# dependencies = ["torch", "transformers", "peft", "safetensors", "pillow", "numpy", "numba"]
 # ///
 """Would this staff pair now? A quick check for the labeler (server.py
 /api/trypair): the editor fixes a staff of a paired manuscript, and asks

@@ -3,7 +3,7 @@
 # dependencies = [
 #   "zeus @ git+https://github.com/OmniOMR/zeus.git@c8569eb1c8b5bb24511de6a5e53ef2450de6206c",
 #   "tensorflow-macos==2.12.0; sys_platform == 'darwin' and platform_machine == 'arm64'",
-#   "numpy", "pillow",
+#   "numpy", "pillow", "numba",
 # ]
 # [tool.uv]
 # override-dependencies = ["tensorflow; sys_platform != 'darwin' or platform_machine != 'arm64'"]
@@ -143,6 +143,14 @@ from collections import Counter, defaultdict
 from fractions import Fraction
 from pathlib import Path
 
+import numpy as np
+
+try:
+    from numba import njit
+except ImportError:  # the same, in plain Python (slow): where numba isn't installed, as in the tests
+    def njit(**_):
+        return lambda f: f
+
 HERE = Path(__file__).resolve().parent
 sys.path[:0] = [str(HERE), str(HERE.parent.parent)]
 import compare  # noqa: E402
@@ -187,21 +195,47 @@ def tokens(events: list[dict], step) -> list[tuple]:
     return out
 
 
+_RHYTHMS, _STEPS = {}, {}
+
+
+def ids(tok: list[tuple]) -> tuple[np.ndarray, np.ndarray]:
+    """A measure's tokens as numbers, for _unlike: each one's rhythm (kind,
+    duration, dots, grace) and its step, numbered as first seen."""
+    return (np.array([_RHYTHMS.setdefault(t[:4], len(_RHYTHMS)) for t in tok], np.int64),
+            np.array([_STEPS.setdefault(t[4], len(_STEPS)) for t in tok], np.int64))
+
+
+def joined(a: tuple, b: tuple) -> tuple[np.ndarray, np.ndarray]:
+    """Two measures' ids as one."""
+    return np.concatenate((a[0], b[0])), np.concatenate((a[1], b[1]))
+
+
+@njit(cache=True)
+def _unlike(ar, as_, br, bs) -> float:
+    """unlike() on two measures' ids (rhythms, steps); compiled by numba."""
+    n, m = len(ar), len(br)
+    if n == 0 and m == 0:
+        return 0.0
+    prev, cur = np.arange(m + 1).astype(np.float64), np.zeros(m + 1)
+    for i in range(1, n + 1):
+        cur[0] = i
+        for j in range(1, m + 1):
+            same_rhythm, same_step = ar[i - 1] == br[j - 1], as_[i - 1] == bs[j - 1]
+            d = prev[j - 1] + (0.0 if same_rhythm and same_step else 0.5 if same_rhythm or same_step else 1.0)
+            if prev[j] + 1 < d:
+                d = prev[j] + 1
+            if cur[j - 1] + 1 < d:
+                d = cur[j - 1] + 1
+            cur[j] = d
+        prev, cur = cur, prev
+    return prev[m] / max(n, m)
+
+
 def unlike(a: list[tuple], b: list[tuple]) -> float:
     """0 (alike) to 1: edit distance, a substitution half-priced when the
-    rhythm or the step agrees."""
-    if not a and not b:
-        return 0.0
-    n, m = len(a), len(b)
-    prev = list(range(m + 1))
-    for i in range(1, n + 1):
-        cur = [i] + [0] * m
-        for j in range(1, m + 1):
-            x, y = a[i - 1], b[j - 1]
-            sub = 0 if x == y else 0.5 if (x[:4] == y[:4] or x[4] == y[4]) else 1
-            cur[j] = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + sub)
-        prev = cur
-    return prev[m] / max(n, m)
+    rhythm or the step agrees. (align, which compares the most, numbers the
+    measures once and calls _unlike.)"""
+    return _unlike(*ids(a), *ids(b))
 
 
 BREAK_FIT = 0.5  # a split bar's halves at most this unlike the readings either side of the line break, on average
@@ -298,6 +332,7 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
     lo = lambda i: max(0, int(i * m / max(n, 1)) - band)
     hi = lambda i: min(m, int(i * m / max(n, 1)) + band)
     zlen, elen = [length(z) for z in Z], [length(e) for e in E]
+    zi, ei = [ids(z) for z in Z], [ids(e) for e in E]
     rests_from = [0] * (m + 1)  # rest bars in a run starting at j
     for j in range(m - 1, -1, -1):
         rests_from[j] = rests_from[j + 1] + 1 if rest_bar(E[j]) else 0
@@ -312,9 +347,9 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                     cost[i2][j2] = c + add
                     back[i2][j2] = (i, j, step)
             if i < n and j < m:
-                go(i + 1, j + 1, unlike(Z[i], E[j]), "one")
+                go(i + 1, j + 1, _unlike(*zi[i], *ei[j]), "one")
                 if j + 1 < m:
-                    go(i + 1, j + 2, unlike(Z[i], E[j] + E[j + 1]) + COST["split" if j in joins else "two"],
+                    go(i + 1, j + 2, _unlike(*zi[i], *joined(ei[j], ei[j + 1])) + COST["split" if j in joins else "two"],
                        "join" if j in joins else "two")
                 if rest_bar(E[j]) and spans[j] > 1:
                     for k in range(2, spans[j] + 1):
@@ -325,7 +360,7 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                         go(i + 1, j + k, COST["rests"], "rests")
             if (i + 1 < n and j < m and (i in breaks or j in halves) and not (rest_bar(Z[i]) or rest_bar(Z[i + 1]))
                     and zlen[i] < elen[j] and zlen[i + 1] < elen[j]):
-                go(i + 2, j + 1, unlike(Z[i] + Z[i + 1], E[j]) + COST["split"], "split")
+                go(i + 2, j + 1, _unlike(*joined(zi[i], zi[i + 1]), *ei[j]) + COST["split"], "split")
             if i < n:
                 go(i + 1, j, COST["extra"], "extra")
             if j < m:
