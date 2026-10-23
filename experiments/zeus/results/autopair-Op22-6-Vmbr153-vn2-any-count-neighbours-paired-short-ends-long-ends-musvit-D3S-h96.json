@@ -3288,6 +3288,9 @@
    "measures": 10,
    "bar_boxes": 10,
    "right": null,
+   "written_out": [
+    63
+   ],
    "steps": {
     "one": 10
    },
@@ -3467,7 +3470,7 @@
      "bass": 0
     },
     {
-     "treble": 1,
+     "treble": 4,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -3488,7 +3491,7 @@
    "read_clefs": [
     "G2"
    ],
-   "worst": 0.75
+   "worst": 0.5
   },
   {
    "staff": "p37-0",

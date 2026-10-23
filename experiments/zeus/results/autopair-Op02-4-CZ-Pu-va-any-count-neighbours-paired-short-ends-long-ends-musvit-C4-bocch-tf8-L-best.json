@@ -121,6 +121,9 @@
      "fit": 0.214
     }
    ],
+   "written_out": [
+    22
+   ],
    "steps": {
     "split": 1,
     "one": 6
@@ -233,7 +236,7 @@
     },
     {
      "treble": 0,
-     "alto": 2,
+     "alto": 4,
      "tenor": 0,
      "bass": 0
     },
@@ -259,7 +262,7 @@
    "read_clefs": [
     "C3"
    ],
-   "worst": 0.7
+   "worst": 0.438
   },
   {
    "staff": "p2-1",

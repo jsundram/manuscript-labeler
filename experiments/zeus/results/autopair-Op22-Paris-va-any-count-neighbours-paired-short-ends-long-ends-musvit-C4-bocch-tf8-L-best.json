@@ -2,9 +2,9 @@
  "source": "Op22-Paris-va",
  "tally": {
   "staves": 133,
-  "staves kept": 91,
-  "bars on kept staves": 537,
-  "kept, bar boxes as many": 79
+  "staves kept": 92,
+  "bars on kept staves": 541,
+  "kept, bar boxes as many": 80
  },
  "clefs": {},
  "kept but wrong": [],
@@ -648,6 +648,171 @@
     "C3"
    ],
    "worst": 0.192
+  },
+  {
+   "staff": "p8-6",
+   "part": "va",
+   "page": 8,
+   "system": {
+    "top": 0.5969738651994498,
+    "bottom": 0.6354883081155434,
+    "left": 0.07392857142857143,
+    "right": 0.9014285714285715,
+    "start": 0.12214285714285714,
+    "bend": [
+     0.0,
+     0.0014842938550936598,
+     0.0007134903479961129,
+     -0.001348613723343552,
+     -0.001375515818431912
+    ],
+    "barlines": [
+     {
+      "x0": 0.2958857142857143,
+      "x1": 0.2976857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5154357142857143,
+      "x1": 0.5181357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6718642857142857,
+      "x1": 0.6745642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8954357142857142,
+      "x1": 0.8981357142857144,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op22-4",
+     "I",
+     20
+    ],
+    [
+     "Op22-4",
+     "I",
+     21
+    ],
+    [
+     "Op22-4",
+     "I",
+     22
+    ],
+    [
+     "Op22-4",
+     "I",
+     23
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
+   "written_out": [
+    20,
+    22
+   ],
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       20
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       21
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "I",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 8,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 9,
+     "tenor": 4,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 8,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 8,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.531
   },
   {
    "staff": "p9-0",
@@ -19348,94 +19513,6 @@
    ]
   },
   {
-   "staff": "p8-6",
-   "part": "va",
-   "page": 8,
-   "why": [
-    "unlike [['Op22-4', 'I', 20]]",
-    "unlike [['Op22-4', 'I', 22]]"
-   ],
-   "bars": [
-    [
-     "Op22-4",
-     "I",
-     20
-    ],
-    [
-     "Op22-4",
-     "I",
-     21
-    ],
-    [
-     "Op22-4",
-     "I",
-     22
-    ],
-    [
-     "Op22-4",
-     "I",
-     23
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       20
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       21
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       22
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "I",
-       23
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p8-7",
    "part": "va",
    "page": 8,
@@ -20591,7 +20668,6 @@
    "page": 16,
    "why": [
     "extra at none",
-    "unlike [['Op22-2', 'II', 10]]",
     "unlike [['Op22-2', 'II', 11]]"
    ],
    "bars": [

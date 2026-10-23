@@ -17147,8 +17147,6 @@
    "part": "va",
    "page": 8,
    "why": [
-    "musvit-D3S-h96: unlike [['Op22-4', 'I', 20]]",
-    "musvit-D3S-h96: unlike [['Op22-4', 'I', 22]]",
     "musvit-D3S-h96: an end measure shorter than its bar ['Op22-4', 'I', 20]"
    ],
    "bars": [
@@ -18769,8 +18767,7 @@
    "part": "va",
    "page": 16,
    "why": [
-    "musvit-D3S-h96: unlike [['Op22-2', 'II', 8]]",
-    "musvit-D3S-h96: unlike [['Op22-2', 'II', 10]]"
+    "musvit-D3S-h96: unlike [['Op22-2', 'II', 8]]"
    ],
    "bars": [
     [

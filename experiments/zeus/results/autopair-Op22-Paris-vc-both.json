@@ -21922,7 +21922,6 @@
    "part": "vc",
    "page": 16,
    "why": [
-    "musvit-D3S-h96: unlike [['Op22-2', 'I', 17]]",
     "musvit-D3S-h96: 3 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -22159,8 +22158,7 @@
    "part": "vc",
    "page": 17,
    "why": [
-    "musvit-D3S-h96: extra at none",
-    "musvit-D3S-h96: unlike [['Op22-2', 'I', 54]]"
+    "musvit-D3S-h96: extra at none"
    ],
    "bars": [
     [
@@ -22215,7 +22213,6 @@
    "part": "vc",
    "page": 17,
    "why": [
-    "musvit-D3S-h96: unlike [['Op22-2', 'I', 54]]",
     "musvit-D3S-h96: unlike [['Op22-2', 'I', 55]]"
    ],
    "bars": [

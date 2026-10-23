@@ -6068,6 +6068,9 @@
    "measures": 5,
    "bar_boxes": 1,
    "right": null,
+   "written_out": [
+    41
+   ],
    "steps": {
     "one": 5
    },
@@ -6152,7 +6155,7 @@
      "bass": 0
     },
     {
-     "treble": 3,
+     "treble": 8,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -6173,7 +6176,7 @@
    "read_clefs": [
     "C3"
    ],
-   "worst": 0.688
+   "worst": 0.417
   },
   {
    "staff": "p7-5",
@@ -7181,6 +7184,9 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "written_out": [
+    13
+   ],
    "steps": {
     "one": 5
    },
@@ -7265,7 +7271,7 @@
      "bass": 0
     },
     {
-     "treble": 2,
+     "treble": 7,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -7286,7 +7292,7 @@
    "read_clefs": [
     "G2"
    ],
-   "worst": 0.714
+   "worst": 0.458
   },
   {
    "staff": "p11-5",
@@ -7368,6 +7374,9 @@
    "measures": 5,
    "bar_boxes": 5,
    "right": null,
+   "written_out": [
+    16
+   ],
    "steps": {
     "one": 5
    },
@@ -7440,7 +7449,7 @@
    ],
    "bar_clefs": [
     {
-     "treble": 4,
+     "treble": 9,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -7473,7 +7482,7 @@
    "read_clefs": [
     "G2"
    ],
-   "worst": 0.722
+   "worst": 0.1
   },
   {
    "staff": "p12-1",

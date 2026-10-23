@@ -3587,8 +3587,8 @@
    "part": "vn2",
    "page": 2,
    "why": [
-    "next staff begins with extra",
-    "an end measure shorter than its bar ['Op02-4', 'I', 81]"
+    "an end measure shorter than its bar ['Op02-4', 'I', 81]",
+    "7 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -3628,7 +3628,8 @@
     ]
    ],
    "steps": {
-    "one": 7
+    "one": 6,
+    "split": 1
    },
    "boxes": [
     {
@@ -3717,9 +3718,9 @@
        87
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -3729,10 +3730,14 @@
    "part": "vn2",
    "page": 2,
    "why": [
-    "extra at none",
     "next staff begins with extra"
    ],
    "bars": [
+    [
+     "Op02-4",
+     "I",
+     87
+    ],
     [
      "Op02-4",
      "I",
@@ -3760,13 +3765,19 @@
     ]
    ],
    "steps": {
-    "extra": 1,
+    "split": 1,
     "one": 5
    },
    "boxes": [
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       87
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false

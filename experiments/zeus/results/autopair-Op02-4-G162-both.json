@@ -20623,7 +20623,6 @@
    "page": 3,
    "why": [
     "musvit-D3S-h96: two at [['Op02-4', 'I', 8], ['Op02-4', 'I', 9]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'I', 10]]",
     "musvit-D3S-h96: next staff begins with extra"
    ],
    "bars": [
@@ -20966,149 +20965,6 @@
        "Op02-4",
        "I",
        24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p3-6",
-   "part": "va",
-   "page": 3,
-   "why": [
-    "musvit-D3S-h96: unlike [['Op02-4', 'I', 52]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'I', 53]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'I', 54]]"
-   ],
-   "bars": [
-    [
-     "Op02-4",
-     "I",
-     48
-    ],
-    [
-     "Op02-4",
-     "I",
-     49
-    ],
-    [
-     "Op02-4",
-     "I",
-     50
-    ],
-    [
-     "Op02-4",
-     "I",
-     51
-    ],
-    [
-     "Op02-4",
-     "I",
-     52
-    ],
-    [
-     "Op02-4",
-     "I",
-     53
-    ],
-    [
-     "Op02-4",
-     "I",
-     54
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       48
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       49
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       50
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       51
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       53
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "I",
-       54
       ]
      ],
      "count": 1,
@@ -24147,6 +24003,145 @@
        "Op02-4",
        "I",
        6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p3-6",
+   "part": "va",
+   "page": 3,
+   "bars": [
+    [
+     "Op02-4",
+     "I",
+     48
+    ],
+    [
+     "Op02-4",
+     "I",
+     49
+    ],
+    [
+     "Op02-4",
+     "I",
+     50
+    ],
+    [
+     "Op02-4",
+     "I",
+     51
+    ],
+    [
+     "Op02-4",
+     "I",
+     52
+    ],
+    [
+     "Op02-4",
+     "I",
+     53
+    ],
+    [
+     "Op02-4",
+     "I",
+     54
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best: unlike [['Op02-4', 'I', 48]]",
+    "musvit-C4-bocch-tf8-L-best: unlike [['Op02-4', 'I', 49]]"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "I",
+       54
       ]
      ],
      "count": 1,

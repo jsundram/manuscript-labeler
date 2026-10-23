@@ -2,8 +2,8 @@
  "source": "Op33-3-G209-score",
  "tally": {
   "staves": 168,
-  "staves kept": 125,
-  "bars on kept staves": 616,
+  "staves kept": 126,
+  "bars on kept staves": 622,
   "kept, bar boxes as many": 61
  },
  "clefs": {},
@@ -17270,6 +17270,231 @@
    "worst": 0.75
   },
   {
+   "staff": "p20-2",
+   "part": "va",
+   "page": 20,
+   "system": {
+    "top": 0.25012683916793504,
+    "bottom": 0.2907153729071537,
+    "left": 0.0575,
+    "right": 0.9014285714285715,
+    "start": 0.07821428571428571,
+    "bend": [
+     -0.0045662100456621,
+     -0.002145911637105377,
+     0.0,
+     0.0015220700152207,
+     0.0010147133434804667
+    ],
+    "barlines": [
+     {
+      "x0": 0.21477499999999997,
+      "x1": 0.21477499999999997,
+      "kind": "single"
+     },
+     {
+      "x0": 0.35123499999999996,
+      "x1": 0.35123499999999996,
+      "kind": "single"
+     },
+     {
+      "x0": 0.49515000000000003,
+      "x1": 0.49515000000000003,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6293249999999999,
+      "x1": 0.6293249999999999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7614000000000001,
+      "x1": 0.7614000000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8452142857142857,
+      "x1": 0.8469285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8980349999999998,
+      "x1": 0.8980349999999998,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op33-3",
+     "II",
+     101
+    ],
+    [
+     "Op33-3",
+     "II",
+     102
+    ],
+    [
+     "Op33-3",
+     "II",
+     103
+    ],
+    [
+     "Op33-3",
+     "II",
+     104
+    ],
+    [
+     "Op33-3",
+     "II",
+     105
+    ],
+    [
+     "Op33-3",
+     "II",
+     106
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 7,
+   "right": null,
+   "written_out": [
+    105,
+    106
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       101
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       102
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       103
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       104
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       105
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       106
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 5,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.167
+  },
+  {
    "staff": "p21-6",
    "part": "va",
    "page": 21,
@@ -24554,129 +24779,6 @@
        "Op33-3",
        "II",
        100
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p20-2",
-   "part": "va",
-   "page": 20,
-   "why": [
-    "unlike [['Op33-3', 'II', 106]]"
-   ],
-   "bars": [
-    [
-     "Op33-3",
-     "II",
-     101
-    ],
-    [
-     "Op33-3",
-     "II",
-     102
-    ],
-    [
-     "Op33-3",
-     "II",
-     103
-    ],
-    [
-     "Op33-3",
-     "II",
-     104
-    ],
-    [
-     "Op33-3",
-     "II",
-     105
-    ],
-    [
-     "Op33-3",
-     "II",
-     106
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       101
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       102
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       103
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       104
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       105
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       106
       ]
      ],
      "count": 1,

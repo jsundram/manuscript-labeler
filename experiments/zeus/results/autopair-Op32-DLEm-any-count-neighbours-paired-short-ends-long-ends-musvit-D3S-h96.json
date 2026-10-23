@@ -10604,6 +10604,9 @@
    "measures": 4,
    "bar_boxes": 3,
    "right": null,
+   "written_out": [
+    28
+   ],
    "steps": {
     "one": 4
    },
@@ -10663,7 +10666,7 @@
    ],
    "bar_clefs": [
     {
-     "treble": 4,
+     "treble": 8,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -10690,7 +10693,7 @@
    "read_clefs": [
     "G2"
    ],
-   "worst": 0.562
+   "worst": 0.318
   },
   {
    "staff": "p18-13",
@@ -26482,7 +26485,6 @@
    "part": "vn1",
    "page": 20,
    "why": [
-    "unlike [['Op32-4', 'I', 72]]",
     "an end measure longer than its bar ['Op32-4', 'I', 77]"
    ],
    "bars": [

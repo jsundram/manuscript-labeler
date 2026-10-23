@@ -63981,6 +63981,9 @@
    "irregular": [
     "a multi-bar rest"
    ],
+   "written_out": [
+    10
+   ],
    "steps": {
     "one": 7,
     "rests": 1
@@ -64163,7 +64166,7 @@
     },
     {
      "treble": 0,
-     "alto": 3,
+     "alto": 6,
      "tenor": 0,
      "bass": 0
     }
@@ -64171,7 +64174,7 @@
    "read_clefs": [
     "C3"
    ],
-   "worst": 0.583
+   "worst": 0.167
   },
   {
    "staff": "p85-1",

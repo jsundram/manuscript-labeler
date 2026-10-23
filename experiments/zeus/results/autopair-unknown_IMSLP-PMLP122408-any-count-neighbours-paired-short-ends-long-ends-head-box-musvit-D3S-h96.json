@@ -2,9 +2,9 @@
  "source": "unknown_IMSLP-PMLP122408",
  "tally": {
   "staves": 58,
-  "staves kept": 37,
-  "bars on kept staves": 281,
-  "kept, bar boxes as many": 16
+  "staves kept": 39,
+  "bars on kept staves": 299,
+  "kept, bar boxes as many": 17
  },
  "clefs": {},
  "kept but wrong": [],
@@ -1181,6 +1181,10 @@
    "measures": 9,
    "bar_boxes": 9,
    "right": null,
+   "written_out": [
+    47,
+    49
+   ],
    "steps": {
     "one": 9
    },
@@ -1305,7 +1309,7 @@
    ],
    "bar_clefs": [
     {
-     "treble": 6,
+     "treble": 8,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -1317,7 +1321,7 @@
      "bass": 0
     },
     {
-     "treble": 5,
+     "treble": 7,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -6309,6 +6313,268 @@
    "worst": 0.25
   },
   {
+   "staff": "p8-8",
+   "part": "vc",
+   "page": 8,
+   "system": {
+    "top": 0.8015151515151515,
+    "bottom": 0.8398989898989899,
+    "left": 0.1,
+    "right": 0.8696428571428572,
+    "start": 0.1392857142857143,
+    "bend": [
+     -0.00101010101010101,
+     0.0007923623995052918,
+     0.0008761080189651923,
+     -0.0032506184291898506,
+     -0.000505050505050505
+    ],
+    "barlines": [
+     {
+      "x0": 0.20735,
+      "x1": 0.20979285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.30034285714285713,
+      "x1": 0.3025142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4528071428571428,
+      "x1": 0.4536214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7308214285714285,
+      "x1": 0.7348928571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8641857142857142,
+      "x1": 0.8658142857142858,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 2.0,
+    "part": "vc"
+   },
+   "clef": "tenor",
+   "bars": [
+    [
+     "giardini-duo-F",
+     "I",
+     62
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     63
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     64
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     65
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     66
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     67
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     68
+    ],
+    [
+     "giardini-duo-F",
+     "I",
+     69
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 5,
+   "right": null,
+   "written_out": [
+    67
+   ],
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       65
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       66
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       67
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       68
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "I",
+       69
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 3,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 6,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 13,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 7,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 5,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 11,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 2,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 1,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.286
+  },
+  {
    "staff": "p9-0",
    "part": "vc",
    "page": 9,
@@ -8400,6 +8666,337 @@
     "G2"
    ],
    "worst": 0.5
+  },
+  {
+   "staff": "p10-3",
+   "part": "vc",
+   "page": 10,
+   "system": {
+    "top": 0.44595959595959594,
+    "bottom": 0.48434343434343435,
+    "left": 0.10214285714285715,
+    "right": 0.8892857142857142,
+    "start": 0.1392857142857143,
+    "bend": [
+     -0.0015151515151515152,
+     -0.0003813646670789809,
+     0.0,
+     -0.000505050505050505,
+     0.0
+    ],
+    "barlines": [
+     {
+      "x0": 0.18632857142857143,
+      "x1": 0.18795714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.24275714285714287,
+      "x1": 0.2443857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3019928571428572,
+      "x1": 0.30443571428571425,
+      "kind": "single"
+     },
+     {
+      "x0": 0.35985,
+      "x1": 0.36229285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.44494999999999996,
+      "x1": 0.4457642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4999,
+      "x1": 0.5015285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5862785714285714,
+      "x1": 0.5887214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6851571428571429,
+      "x1": 0.6884142857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7937785714285714,
+      "x1": 0.7962214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "giardini-duo-F",
+     "III",
+     25
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     26
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     27
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     28
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     29
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     30
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     31
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     32
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     33
+    ],
+    [
+     "giardini-duo-F",
+     "III",
+     34
+    ]
+   ],
+   "plain": true,
+   "measures": 10,
+   "bar_boxes": 10,
+   "right": null,
+   "written_out": [
+    25,
+    27
+   ],
+   "steps": {
+    "one": 10
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "giardini-duo-F",
+       "III",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 4,
+     "tenor": 6,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 2,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 1,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.667
   },
   {
    "staff": "p10-6",
@@ -11351,165 +11948,6 @@
    ]
   },
   {
-   "staff": "p8-8",
-   "part": "vc",
-   "page": 8,
-   "why": [
-    "unlike [['giardini-duo-F', 'I', 67]]"
-   ],
-   "bars": [
-    [
-     "giardini-duo-F",
-     "I",
-     62
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     63
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     64
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     65
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     66
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     67
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     68
-    ],
-    [
-     "giardini-duo-F",
-     "I",
-     69
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       62
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       64
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       65
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       66
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       67
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       68
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "I",
-       69
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p8-9",
    "part": "vc",
    "page": 8,
@@ -11798,202 +12236,6 @@
      "join": false,
      "continues": false,
      "ends_movement": true
-    }
-   ]
-  },
-  {
-   "staff": "p10-3",
-   "part": "vc",
-   "page": 10,
-   "why": [
-    "unlike [['giardini-duo-F', 'III', 25]]",
-    "unlike [['giardini-duo-F', 'III', 27]]"
-   ],
-   "bars": [
-    [
-     "giardini-duo-F",
-     "III",
-     25
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     26
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     27
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     28
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     29
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     30
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     31
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     32
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     33
-    ],
-    [
-     "giardini-duo-F",
-     "III",
-     34
-    ]
-   ],
-   "steps": {
-    "one": 10
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       25
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       27
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       28
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "giardini-duo-F",
-       "III",
-       34
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
     }
    ]
   },
@@ -12405,7 +12647,6 @@
    "part": "vc",
    "page": 11,
    "why": [
-    "unlike [['giardini-duo-F', 'III', 90]]",
     "two at [['giardini-duo-F', 'III', 92], ['giardini-duo-F', 'III', 93]]",
     "two at [['giardini-duo-F', 'III', 94], ['giardini-duo-F', 'III', 95]]",
     "more bar boxes than measures, the first narrow: part of a bar at its head dropped"
