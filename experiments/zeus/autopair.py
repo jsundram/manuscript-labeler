@@ -318,7 +318,7 @@ def length(tok: list[tuple]) -> Fraction:
 # -- the alignment -------------------------------------------------------------------
 
 def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: list[int],
-          halves: set[int], band: int = BAND, joins: set[int] = frozenset()) -> list[tuple]:
+          halves: set[int], band: int = BAND, joins: set[int] = frozenset(), alt: list | None = None) -> list[tuple]:
     """[(op, zeus indices, bar indices)] in order, by least cost. `breaks`:
     the Zeus measures that end a staff, the only place a bar may split.
     `spans`: the bars each entry of E stands for (a multi-bar rest, more than one).
@@ -338,6 +338,10 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
     hi = lambda i: min(m, int(i * m / max(n, 1)) + band)
     zlen, elen = [length(z) for z in Z], [length(e) for e in E]
     zi, ei = [ids(z) for z in Z], [ids(e) for e in E]
+    # `alt`: a bar's other form, if it has one (its abbreviated notes written out): a measure is as like
+    # the bar as it is like either
+    ai = [ids(e) if e is not None else None for e in (alt or [None] * m)]
+    near = lambda z, j: min(_unlike(*z, *ei[j]), _unlike(*z, *ai[j])) if ai[j] is not None else _unlike(*z, *ei[j])
     rests_from = [0] * (m + 1)  # rest bars in a run starting at j
     for j in range(m - 1, -1, -1):
         rests_from[j] = rests_from[j + 1] + 1 if rest_bar(E[j]) else 0
@@ -352,7 +356,7 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                     cost[i2][j2] = c + add
                     back[i2][j2] = (i, j, step)
             if i < n and j < m:
-                go(i + 1, j + 1, _unlike(*zi[i], *ei[j]), "one")
+                go(i + 1, j + 1, near(zi[i], j), "one")
                 if j + 1 < m:
                     go(i + 1, j + 2, _unlike(*zi[i], *joined(ei[j], ei[j + 1])) + COST["split" if j in joins else "two"],
                        "join" if j in joins else "two")
@@ -365,7 +369,7 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                         go(i + 1, j + k, COST["rests"], "rests")
             if (i + 1 < n and j < m and (i in breaks or j in halves) and not (rest_bar(Z[i]) or rest_bar(Z[i + 1]))
                     and zlen[i] < elen[j] and zlen[i + 1] < elen[j]):
-                go(i + 2, j + 1, _unlike(*joined(zi[i], zi[i + 1]), *ei[j]) + COST["split"], "split")
+                go(i + 2, j + 1, near(joined(zi[i], zi[i + 1]), j) + COST["split"], "split")
             if i < n:
                 go(i + 1, j, COST["extra"], "extra")
             if j < m:
@@ -556,7 +560,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
     tally, wrong, clef_tally, kept, not_kept = Counter(), [], Counter(), [], []
     # the encoding's bars, all movements in order; a bar a repeat splits
     # (an upbeat follows) is where each such section ends
-    bars, E, E_raw = [], [], []
+    bars, E, E_raw, E_alt, E_raw_alt = [], [], [], [], []
     for where, by_bar in blocks:
         got = sorted(by_bar.items(), key=lambda kv: int(kv[0]))
         for k, (bar, evs) in enumerate(got):
@@ -566,6 +570,12 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
             bars.append([(*where, b) for b in range(int(bar), max(int(bar) + 1, upto))])
             E.append(tokens(enc, steps_enc))
             E_raw.append(enc)
+            # a bar with notes abbreviated by stem strokes (Philhar's c2.:8), written out too: a copyist
+            # may write either (philhar.written_out)
+            alt = (compare.encoded(philhar.written_out(evs)) if not (a.musicxml or a.print_bars)
+                   and any(e.get("tremolo") for e in evs) else None)
+            E_alt.append(tokens(alt, steps_enc) if alt is not None else None)
+            E_raw_alt.append(alt)
     # Zeus's measures, staff after staff
     Z, Z_raw, owner = [], [], []
     for sid, n, s in mine:
@@ -579,8 +589,24 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
     joins = set()
     if a.musicxml:  # a bar a repeat splits is two measures there: the reading may take them as one
         halves, joins = set(), halves
-    path = recut(align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins), Z, E, E_raw, breaks, bars, halves,
-                 owner)
+    # (the alignment sees each bar in one form: with both, bars of repeated notes, written out, were like
+    # too many measures, and a long part drifted off its bars: Rochester M351's trios)
+    path = align(Z, E, breaks, [len(b) for b in bars], halves, a.band, joins)
+    # then each bar in the form its measures are more like: written out, where the copyist wrote the notes out
+    written = set()
+    for step, zs, js in path:
+        if step in ("one", "split") and E_alt[js[0]] is not None:
+            z = sum((Z[x] for x in zs), [])
+            if unlike(z, E_alt[js[0]]) < unlike(z, E[js[0]]):
+                written.add(js[0])
+                E[js[0]], E_raw[js[0]] = E_alt[js[0]], E_raw_alt[js[0]]
+    path = recut(path, Z, E, E_raw, breaks, bars, halves, owner)
+    written_of = defaultdict(set)  # staff -> the bars it holds written out
+    for step, zs, js in path:
+        for j in js:
+            if step in ("one", "split") and j in written:
+                for z in zs:
+                    written_of[owner[z]].add(bars[j][0][-1])
     # a pickup counts no bar: bar 0 (in MusicXML, by its number: its bars are by index)
     uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
                  else {b for bs in bars for b in bs if b[-1] == 0})
@@ -767,6 +793,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                      "plain": plain[sid], "measures": count, "bar_boxes": found, "right": right if export else None,
                      **({"halves": halves_of[sid]} if halves_of[sid] else {}),
                      **({"irregular": sorted(other[sid])} if sid in other else {}),
+                     **({"written_out": sorted(written_of[sid])} if written_of[sid] else {}),
                      "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
                      "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
                      "bar_clefs": by_bar, "read_clefs": compare.parse(lmx[sid])[1],

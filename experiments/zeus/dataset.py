@@ -233,8 +233,13 @@ def note_elements(m: ET.Element, b: int, e: dict, mk: dict, measure_len: Fractio
                 sub(nt, "fermata")
             if "staccato" in e["art"]:
                 sub(sub(nt, "articulations"), "staccato")
+            orn = sub(nt, "ornaments") if "trill" in e["art"] or e.get("tremolo") else None
             if "trill" in e["art"]:
-                sub(sub(nt, "ornaments"), "trill-mark")
+                sub(orn, "trill-mark")
+            if e.get("tremolo") and h is not None:
+                # a note abbreviated by stem strokes, as the copyist wrote it (philhar.py's "tremolo": the
+                # value it stands for); its strokes, the flags or beams it has apart
+                sub(orn, "tremolo", str(max(1, (e["tremolo"].bit_length() - 1) - 2 - FLAGS.get(kind, 0))), type="single")
         if len(nt):
             n.append(nt)
     return length if e["grace"] == "0" else Fraction(0)
@@ -559,6 +564,9 @@ def pairs(a):
             notes.append(f"{k['staff']} {part}: a measure {k['worst']} from its bar")
             continue
         evs, mk, exp, first, split_bars = load(q, mvt, part)
+        if k.get("written_out"):  # bars the copyist wrote out where Philhar abbreviated (autopair's): labelled so
+            evs = {**evs, **{str(b): philhar.written_out(evs[str(b)]) for b in k["written_out"] if str(b) in evs}}
+            mk = marks(evs)
         boxes, cuts = staff_boxes(k, part, f"{q}-{mvt}", evs, split_bars)
         if boxes is None:
             left_out[cuts] += 1

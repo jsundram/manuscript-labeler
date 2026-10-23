@@ -14,7 +14,9 @@ parts. So events.py's engraver runs on them unchanged, with Trame.ily
 for Structure.ily and 'partie for 'part.
 
 It also says where a bar line falls inside a bar (a repeat with an
-upbeat): with --json, those bars are listed under "split"; and the key
+upbeat): with --json, those bars are listed under "split"; a note
+abbreviated with stem strokes (c2.:8, six eighths written as a dotted
+half) carries "tremolo", the value it stands for repeated; and the key
 (in fifths) and time in force from each bar where they change, under
 "key_time".
 
@@ -55,6 +57,12 @@ SPLITS = r'''
            (begin (set! last-kt kt)
                   (format splits "KT ~a ~a ~a~%%" (ly:context-property context 'currentBarNumber 1)
                           (ly:moment-main (ly:context-property context 'measurePosition)) kt)))))
+    ; a note abbreviated with stem strokes (c2.:8): where, and the value it stands for repeated (8: eighths)
+    (listeners
+     ((tremolo-event engraver ev)
+      (let ((m (ly:context-property context 'measurePosition)))
+        (format splits "TR ~a ~a ~a ~a~%%" (ly:context-property context 'currentBarNumber 1)
+                (ly:moment-main m) (ly:moment-grace m) (ly:event-property ev 'tremolo-type 0)))))
     (acknowledgers
      ((bar-line-interface engraver grob source)
       (let ((pos (ly:context-property context 'measurePosition)))
@@ -105,15 +113,22 @@ def run(events, quartet_dir: Path, part: str, mvt: str) -> tuple[str, str]:
         return out.read_text(), splits.read_text() if splits.exists() else ""
 
 
-def read(edition: Path, quartet_dir: Path, part: str, mvt: str) -> tuple[dict, set[int], dict]:
+def read(edition: Path, quartet_dir: Path, part: str, mvt: str) -> tuple[dict, set[int], dict, dict]:
     """({bar: events.Bar}, bars a bar line falls inside, {bar: (key in fifths, time)}
-    where the key or time changes, as in force from that bar)."""
+    where the key or time changes, as in force from that bar, {(bar, position, grace):
+    the value a note abbreviated with stem strokes stands for, repeated (8: eighths)})."""
     events = events_module(edition)
     m = measure(quartet_dir, mvt)
     dump, splits = run(events, quartet_dir, part, mvt)
-    split, changes = set(), {}
+    split, changes, tremolo = set(), {}, {}
     for line in splits.splitlines():
         f = line.split()
+        if f[0] == "TR":
+            bar, pos, grace = int(f[1]), Fraction(f[2]), Fraction(f[3])
+            if pos < 0:              # a pickup, as events.parse places it
+                bar, pos = bar - 1, pos + m
+            tremolo[(bar, pos, grace)] = int(f[4])
+            continue
         if f[0] == "KT":
             bar, pos = int(f[1]), Fraction(f[2])
             if pos < 0:
@@ -126,7 +141,42 @@ def read(edition: Path, quartet_dir: Path, part: str, mvt: str) -> tuple[dict, s
         if pos < 0:                  # inside a pickup: LilyPond's bar 1 at a negative position
             bar -= 1
         split.add(bar)
-    return events.parse(dump, m), split, changes
+    return events.parse(dump, m), split, changes, tremolo
+
+
+VALUES = {"breve": Fraction(2), "whole": Fraction(1), "half": Fraction(1, 2), "quarter": Fraction(1, 4),
+          "8th": Fraction(1, 8), "16th": Fraction(1, 16), "32nd": Fraction(1, 32), "64th": Fraction(1, 64)}  # events.py's names
+NAMES = {4: "quarter", 8: "8th", 16: "16th", 32: "32nd", 64: "64th"}
+
+
+def written_out(cols: list[dict]) -> list[dict]:
+    """A bar's events (--json's) with each note abbreviated by stem strokes
+    ("tremolo") written out as the notes it stands for: a dotted half with
+    :8, six eighths of its pitches, beamed together. Its slur, marks and
+    text go on the first, its tie on the last."""
+    out = []
+    for k, c in enumerate(cols):
+        t = c.get("tremolo")
+        if not t or c["kind"] != "note" or t not in NAMES:
+            out.append(c)
+            continue
+        dur = c["dur"] or ""
+        length = VALUES[dur.rstrip(".")] * (2 - Fraction(1, 2 ** dur.count(".")))
+        n = int(length * t)
+        # in a tuplet the note lasts less than it's written: its notes share its span (to the next in its voice)
+        nxt = next((Fraction(x["pos"]) for x in cols[k + 1:] if x["voice"] == c["voice"] and x["grace"] == "0"), None)
+        step = (nxt - Fraction(c["pos"])) / n if nxt is not None else Fraction(1, t)
+        for i in range(n):
+            e = {k: v for k, v in c.items() if k != "tremolo"}
+            e.update(label=f"{c['label']}.{i}", pos=str(Fraction(c["pos"]) + i * step), dur=NAMES[t],
+                     beam=(["start"] if i == 0 else []) + (["stop"] if i == n - 1 else []),
+                     tup=c["tup"] if i == 0 else [])  # (a "stop" closes the group before its event, a "start" opens one)
+            if i:
+                e.update(slur=[], slur_to=[], dyn=None, hair=[], text=None, art=[])
+            if i < n - 1:
+                e.update(tie=False, tie_to=None)
+            out.append(e)
+    return out
 
 
 def cache_key(edition: Path, quartet_dir: Path, part: str, mvt: str) -> str:
@@ -166,10 +216,15 @@ def main():
         sys.exit(__doc__)
     edition, lily = Path(sys.argv[1]), Path(sys.argv[2])
     quartet, part, mvt = sys.argv[3], sys.argv[4].lower(), sys.argv[5]
-    bars, split, changes = read(edition, lily / quartet, part, mvt)
+    bars, split, changes, tremolo = read(edition, lily / quartet, part, mvt)
     if "--json" in sys.argv[6:]:
         events = events_module(edition)
-        print(json.dumps({"bars": events.to_json(bars), "split": sorted(split),
+        out = events.to_json(bars)
+        for (bar, pos, grace), t in tremolo.items():  # on the note it abbreviates: "tremolo", the value repeated
+            for c in out.get(str(bar), []):
+                if c["kind"] == "note" and Fraction(c["pos"]) == pos and Fraction(c["grace"]) == grace:
+                    c["tremolo"] = t
+        print(json.dumps({"bars": out, "split": sorted(split),
                           "key_time": {str(b): list(kt) for b, kt in sorted(changes.items())}}, indent=1))
         return
     for num in sorted(bars):
