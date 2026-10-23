@@ -15,10 +15,11 @@ CPU workers.
 
 **Question.** Does twice the data make a better reader?
 
-**Finding.** Not on the clean test (277 of 347, a tie), but on a hand none
-of the training had, a third fewer symbol errors (16.2% to 10.3%); the
-same chain on the old data reads it worse. The clean test alone can no
-longer judge readers.
+**Finding.** No. The clean test ties (277 of 347). On a held-out hand,
+symbol errors fell by a third, but the editor's question (why only 48
+staves exact?) showed that was beams: in notes and rhythm D4 reads it
+better, because the new reader miscounts bars on more staves. Held-out
+scores must compare notes and rhythm bar by bar, as the clean test does.
 
 **Why a report.** A training run, and a change in how readers must be
 compared.
