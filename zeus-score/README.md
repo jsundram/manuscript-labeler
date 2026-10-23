@@ -30,7 +30,7 @@ earlier readers.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.4.0#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.4.1#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
@@ -48,7 +48,7 @@ is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.4.0#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.4.1#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 
