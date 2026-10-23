@@ -204,8 +204,9 @@ def cut_all(chunk: int = 10):
 
 
 @app.local_entrypoint()
-def main(args: str, gpu: str = "L4"):
+def main(args: str, gpu: str = "L4", cpu: float = 0):
+    """cpu: cores to reserve for the run (0: Modal's default), for proto.py's --workers."""
     argv = shlex.split(args)
     # a resumable run is retried after a failure or preemption, and picks up from its last pass
     retries = modal.Retries(max_retries=2, initial_delay=30.0) if "--resume" in argv else None
-    train.with_options(gpu=gpu, retries=retries).remote(argv)
+    train.with_options(gpu=gpu, retries=retries, **({"cpu": cpu} if cpu else {})).remote(argv)

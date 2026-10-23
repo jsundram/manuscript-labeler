@@ -143,6 +143,20 @@ def batch(items, vocab, augment=False):
     return x, mask, y_in, y_out
 
 
+class Batches(torch.utils.data.Dataset):
+    """A pass's batches (batch()), for a DataLoader whose worker processes
+    build them while the GPU trains on the last (--workers)."""
+
+    def __init__(self, chunks, vocab, augment):
+        self.chunks, self.vocab, self.augment = chunks, vocab, augment
+
+    def __len__(self):
+        return len(self.chunks)
+
+    def __getitem__(self, k):
+        return batch(self.chunks[k], self.vocab, augment=self.augment)
+
+
 class LSTMHead(nn.Module):
     """A decoder after Zeus's: LSTMs over the symbols written so far, with
     attention to the encoder's patches. Zeus feeds each step's attention
@@ -520,6 +534,8 @@ def main():
     ap.add_argument("--epochs", type=int, default=20)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--batch-size", type=int, default=8)
+    ap.add_argument("--workers", type=int, default=0,
+                    help="processes building the next batches while the GPU trains (0: build each in turn)")
     ap.add_argument("--layers", type=int, default=4, help="the transformer decoder's layers")
     ap.add_argument("--decoder", choices=["transformer", "lstm", "zeus"], default="transformer",
                     help="a new run's decoder (LSTMHead; ZeusHead)")
@@ -697,8 +713,11 @@ def main():
         chunks = [by_width[k: k + a.batch_size] for k in range(0, len(by_width), a.batch_size)]
         random.shuffle(chunks)
         t0, total = time.time(), 0.0
-        for chunk in chunks:
-            x, mask, y_in, y_out = batch(chunk, vocab, augment=not a.overfit)
+        # each worker seeds its own random from torch's, drawn from the main process's state
+        built = (torch.utils.data.DataLoader(Batches(chunks, vocab, not a.overfit), batch_size=None,
+                                             num_workers=a.workers, prefetch_factor=4)
+                 if a.workers else (batch(chunk, vocab, augment=not a.overfit) for chunk in chunks))
+        for x, mask, y_in, y_out in built:
             x, mask, y_in, y_out = (t.to(a.device) for t in (x, mask, y_in, y_out))
             with autocast():
                 logits = model.decode(model.encode(x), mask, y_in)
