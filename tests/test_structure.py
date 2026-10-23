@@ -106,6 +106,12 @@ def test_only_the_template_is_replaced():
       \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
       \mark \markup { \italic "Minuetto da capo" } }"""
     assert structure.is_template(minuet, "II")
+    # and as the template now writes it, with the edition's da capo macros (Op48-6)
+    minuet = r"""\tag #'mvtII { \time 3/4 \key c \major \tempo "Minuetto" \repeat volta 2 { s2.*1 }
+      \repeat volta 2 { s2.*1 } \daCapoEnd \key c \minor \tempo "Trio" \repeat volta 2 { s2.*1 }
+      \repeat volta 2 { s2.*1 } \daCapo "Minuetto da capo" }"""
+    assert structure.is_template(minuet, "II")
+    assert not structure.is_template(minuet.replace("s2.*1 }", "s2.*8 }", 1), "II")  # a counted half is real
 
 
 def test_parts_that_differ_are_named_and_nothing_is_offered():

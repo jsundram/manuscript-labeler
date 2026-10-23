@@ -277,7 +277,8 @@ def check(text: str, movement: str, want: dict) -> list[str]:
 
 ALLOWED = re.compile(r"""\\time\s+\d+\s*/\s*\d+|\\key\s+[a-z]+\s*\\(?:major|minor)|\\(?:tempo|sectionLabel)\s+"[^"]*"|\\repeat\s+volta\s+\d+"""
                      r"""|\\bar\s+"[^"]*"|\\(?:numeric|default)TimeSignature|s\d+\.*\s*\*\s*1(?![\d/])|[{}\s]"""
-                     r"""|\\once|\\override\s+[\w.-]+\s*=\s*#?[\w-]+|\\mark\b""")  # a "da capo" mark
+                     r"""|\\once|\\override\s+[\w.-]+\s*=\s*#?[\w-]+|\\mark\b"""  # a "da capo" mark
+                     r'|\\daCapoEnd\b|\\daCapo\s+"[^"]*"')  # the template's Minuet and Trio (common/style.ily)
 
 
 def block_text(text: str, movement: str) -> str | None:
