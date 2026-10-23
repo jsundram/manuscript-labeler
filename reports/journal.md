@@ -4,6 +4,47 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-23: musvit-D5
+
+[Write-up](2026-10-23-musvit-d5/)
+
+**Context.** Boccherini 6k tied D4 and miscounted bars on Dresden; the
+editor asked for the variants (fewer steps, Op. 48 weighted up), then a
+repeat of D4's own recipe ("I'm very curious"), then Op. 48 ×3 on D4's
+drawn stage, twice.
+
+**Question.** Did the new data make the reader worse, and which reader is
+best?
+
+**Finding.** No: D4's own recipe, run again, miscounts as the new readers
+do (20 against 8); single runs can't rank readers this close. Every
+Boccherini 6k reader cuts beam errors fivefold. Op. 48 ×3 from Drawn 11k
+is as good as D4 on notes and better at the edition's flags.
+
+**Why a report.** A release, and the evidence that runs need repeating.
+
+**What followed.** Released as musvit-D5 (seed 1, the editor's pick),
+zeus-score 1.4.0's default.
+
+## 2026-10-23: Bar lines counted on the paired manuscripts
+
+[Write-up](2026-10-23-bar-line-counts/)
+
+**Context.** Detection's bar counts disagreed with 28% of the training
+labels; the editor asked whether the pairing was showing wrong labels, and
+how much more data would make the bar-line filter 5–10% better.
+
+**Question.** Who is wrong where they disagree, and does more data help?
+
+**Finding.** The labels were right every time looked at (6 of 6). The
+filter's count accuracy is flat from 27 to 111 reviewed pages (77%);
+training on the paired counts adds 1 point. Stems and the open last box
+are the errors to fix.
+
+**Why a report.** It decides where the bar-line effort goes.
+
+**What followed.** Nothing yet: rules for stems and the last box are next.
+
 ## 2026-10-22: Boccherini 6k
 
 [Write-up](2026-10-22-boccherini-6k/)

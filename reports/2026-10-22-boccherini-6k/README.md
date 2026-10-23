@@ -427,6 +427,11 @@ The question the traded bars raise: did the new sets teach these errors? Three c
 
 So what changed is the mix, not the labels' accuracy: more of other copyists' figures (sextuplets, other hands' beams), nothing new for the clean test's figures, and the same recipe (24 passes, now twice the steps, training loss to 0.003 with no held-out signal to stop on, as the practice exam is in training). Untested: whether fewer passes (D4's number of steps), or Op. 48's own labels weighted up, keeps the gains without the losses.
 
+**Follow-up** (reports/2026-10-23-musvit-d5): a second run of D4's own recipe
+miscounts 20 Dresden staves, not 8, so D4's count was luck and the new data
+didn't make counting worse; Op. 48 ×3 from Drawn 11k, released as musvit-D5,
+matches D4 on notes with a fifth of its beam errors.
+
 ## What it means
 
 The scaling guess (from 1,508, 2,892 and 3,411 staves: about +10 bars of

@@ -1,0 +1,92 @@
+✓ Initialized. View run at 
+https://modal.com/apps/jsundram/main/ap-kAJrSIyQidbh3UWHmGrVpt
+✓ Created objects.
+├── ✓ Uploaded 
+│   /Users/jsundram/Dropbox/Code/manuscript-labeler/experiments/musvit/modal_app
+│   .py
+├── ✓ Uploaded 
+│   /Users/jsundram/Dropbox/Code/manuscript-labeler/experiments/musvit/pretrain.
+│   py
+├── ✓ Uploaded 
+│   /Users/jsundram/Dropbox/Code/manuscript-labeler/experiments/zeus/compare.py
+├── ✓ Uploaded /Users/jsundram/Dropbox/Code/manuscript-labeler/detect.py
+├── ✓ Uploaded /Users/jsundram/Dropbox/Code/manuscript-labeler/labels.py
+├── ✓ Uploaded 
+│   /Users/jsundram/Dropbox/Code/manuscript-labeler/experiments/musvit/proto.py
+├── ✓ Created Function cut_pages.
+├── ✓ Created Function page_counts.
+├── ✓ Created Function train.
+├── ✓ Created Function read.
+├── ✓ Created Function read_samples.
+├── ✓ Created Function read_nbest.
+└── ✓ Created Function pretrain.
+Volume mounted at /staves is using 85.5% of available inodes (427347 out of 500000). If you reach the limit, creating new files will fail.
+copied 13645 files to /tmp/staves in 27 s
+7465 training staves, 147 dev, vocabulary 137, dev tokens unseen in training 0
+[transformers] You are using a model of type `vit_mae` to instantiate a model of type `vit`. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+
+[1ALoading weights:   0%|          | 0/198 [00:00<?, ?it/s]
+[1ALoading weights: 100%|██████████| 198/198 [00:00<00:00, 2239.47it/s]
+[transformers] [1mViTModel LOAD REPORT[0m from: /cache/weights/musvit
+Key                                                                     | Status     |  | 
+------------------------------------------------------------------------+------------+--+-
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_pred.bias                                               | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.weight  | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.o_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_after.bias    | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.q_proj.weight | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.v_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc2.weight          | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.attention.k_proj.bias   | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.mlp.fc1.bias            | UNEXPECTED |  | 
+decoder.decoder_layers.{0, 1, 2, 3, 4, 5, 6, 7}.layernorm_before.weight | UNEXPECTED |  | 
+decoder.decoder_norm.bias                                               | UNEXPECTED |  | 
+decoder.mask_token                                                      | UNEXPECTED |  | 
+decoder.decoder_embed.bias                                              | UNEXPECTED |  | 
+decoder.decoder_pred.weight                                             | UNEXPECTED |  | 
+decoder.decoder_pos_embed                                               | UNEXPECTED |  | 
+decoder.decoder_norm.weight                                             | UNEXPECTED |  | 
+decoder.decoder_embed.weight                                            | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:   can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+trainable parameters 19.3M of 108.1M on cuda
+epoch  1  loss 0.244     53 s
+epoch  2  loss 0.142     51 s
+epoch  3  loss 0.107     52 s
+epoch  4  loss 0.084     52 s
+epoch  5  loss 0.069     51 s
+epoch  6  loss 0.057     52 s
+epoch  7  loss 0.047     53 s
+epoch  8  loss 0.039     52 s
+epoch  9  loss 0.033     52 s
+epoch 10  loss 0.027     51 s
+epoch 11  loss 0.024     52 s
+epoch 12  loss 0.020     53 s
+epoch 13  loss 0.017     52 s
+epoch 14  loss 0.015     53 s
+epoch 15  loss 0.012     52 s
+epoch 16  loss 0.011     52 s
+epoch 17  loss 0.009     52 s
+epoch 18  loss 0.007     51 s
+epoch 19  loss 0.006     51 s
+epoch 20  loss 0.005     51 s
+epoch 21  loss 0.004     52 s
+epoch 22  loss 0.004     56 s
+epoch 23  loss 0.003     57 s
+epoch 24  loss 0.003     56 s  dev SER 0.001  exact 144/147  (runaways 0; SER cut at 2x 0.001)
+   D-B_KHM-602/p12s10
+     want measure key:fifths:-4 clef:G2 E4 voice:1 quarter natural chord G3 quarter E4 quarter chord G3 quarter E4 quarter chord G3 quarter measure E4 voice:1 half
+     got  measure key:fifths:-4 clef:G2 E4 voice:1 quarter natural chord G3 quarter E4 quarter chord G3 quarter E4 quarter chord G3 quarter measure E4 voice:1 half
+stopping at pass 24 (--stop-at); reader.pt is this pass
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/jsundram/main/ap-kAJrSIyQidbh3UWHmGrVpt
