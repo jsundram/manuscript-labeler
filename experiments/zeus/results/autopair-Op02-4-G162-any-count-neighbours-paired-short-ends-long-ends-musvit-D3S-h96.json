@@ -21160,7 +21160,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -21876,7 +21877,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -22275,7 +22277,7 @@
    "part": "va",
    "page": 4,
    "why": [
-    "two at [['Op02-4', 'II', 41], ['Op02-4', 'II', 42]]",
+    "unlike [['Op02-4', 'II', 41], ['Op02-4', 'II', 42]]",
     "below a mis-measured staff on its page"
    ],
    "bars": [
@@ -22444,7 +22446,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -23334,7 +23337,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [

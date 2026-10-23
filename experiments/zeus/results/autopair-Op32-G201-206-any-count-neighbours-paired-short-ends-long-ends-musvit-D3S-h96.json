@@ -2,8 +2,8 @@
  "source": "Op32-G201-206",
  "tally": {
   "staves": 1083,
-  "staves kept": 749,
-  "bars on kept staves": 5024,
+  "staves kept": 750,
+  "bars on kept staves": 5034,
   "kept, bar boxes as many": 573
  },
  "clefs": {},
@@ -35521,6 +35521,323 @@
     "G2"
    ],
    "worst": 0.3
+  },
+  {
+   "staff": "p31-4",
+   "part": "vn1",
+   "page": 31,
+   "system": {
+    "top": 0.3771888310459063,
+    "bottom": 0.41362991008045435,
+    "left": 0.1332142857142857,
+    "right": 0.9435714285714286,
+    "start": 0.1692857142857143,
+    "bend": [
+     0.003312825366777094,
+     0.0032222780262128317,
+     -0.000473260766682442,
+     0.000946521533364884,
+     -0.000473260766682442
+    ],
+    "barlines": [
+     {
+      "x0": 0.25406999999999996,
+      "x1": 0.25406999999999996,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3310566666666667,
+      "x1": 0.3310566666666667,
+      "kind": "single"
+     },
+     {
+      "x0": 0.44473499999999994,
+      "x1": 0.44473499999999994,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5441800000000001,
+      "x1": 0.5441800000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5649899999999999,
+      "x1": 0.5649899999999999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7479500000000001,
+      "x1": 0.7479500000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7865900000000001,
+      "x1": 0.7865900000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.84545,
+      "x1": 0.84545,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8623250000000001,
+      "x1": 0.8623250000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9400299999999999,
+      "x1": 0.9400299999999999,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 5.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op32-5",
+     "IV",
+     35
+    ],
+    [
+     "Op32-5",
+     "IV",
+     36
+    ],
+    [
+     "Op32-5",
+     "IV",
+     37
+    ],
+    [
+     "Op32-5",
+     "IV",
+     38
+    ],
+    [
+     "Op32-5",
+     "IV",
+     39
+    ],
+    [
+     "Op32-5",
+     "IV",
+     40
+    ],
+    [
+     "Op32-5",
+     "IV",
+     41
+    ],
+    [
+     "Op32-5",
+     "IV",
+     42
+    ],
+    [
+     "Op32-5",
+     "IV",
+     43
+    ],
+    [
+     "Op32-5",
+     "IV",
+     44
+    ]
+   ],
+   "plain": false,
+   "measures": 9,
+   "bar_boxes": 10,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 8,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       40
+      ],
+      [
+       "Op32-5",
+       "IV",
+       41
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op32-5",
+       "IV",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 1,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
   },
   {
    "staff": "p31-5",
@@ -175832,7 +176149,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -175909,7 +176227,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -175953,7 +176272,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -179918,7 +180238,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -180622,194 +180943,6 @@
    ]
   },
   {
-   "staff": "p31-4",
-   "part": "vn1",
-   "page": 31,
-   "why": [
-    "two at [['Op32-5', 'IV', 40], ['Op32-5', 'IV', 41]]"
-   ],
-   "bars": [
-    [
-     "Op32-5",
-     "IV",
-     35
-    ],
-    [
-     "Op32-5",
-     "IV",
-     36
-    ],
-    [
-     "Op32-5",
-     "IV",
-     37
-    ],
-    [
-     "Op32-5",
-     "IV",
-     38
-    ],
-    [
-     "Op32-5",
-     "IV",
-     39
-    ],
-    [
-     "Op32-5",
-     "IV",
-     40
-    ],
-    [
-     "Op32-5",
-     "IV",
-     41
-    ],
-    [
-     "Op32-5",
-     "IV",
-     42
-    ],
-    [
-     "Op32-5",
-     "IV",
-     43
-    ],
-    [
-     "Op32-5",
-     "IV",
-     44
-    ]
-   ],
-   "steps": {
-    "one": 8,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       40
-      ],
-      [
-       "Op32-5",
-       "IV",
-       41
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       42
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       43
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op32-5",
-       "IV",
-       44
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p31-9",
    "part": "vn1",
    "page": 31,
@@ -181089,7 +181222,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -181986,7 +182120,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182004,7 +182139,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -182105,7 +182241,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182188,7 +182325,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -182300,7 +182438,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182318,7 +182457,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182336,7 +182476,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182354,7 +182495,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182372,7 +182514,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182390,7 +182533,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -182448,7 +182592,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -182466,7 +182611,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     }
    ]
   },
@@ -182775,7 +182921,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     }
    ]
   },
@@ -182960,7 +183107,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183299,7 +183447,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183415,7 +183564,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183759,7 +183909,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -183838,7 +183989,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183856,7 +184008,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183874,7 +184027,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183892,7 +184046,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -183961,7 +184116,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183979,7 +184135,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -183997,7 +184154,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -184057,7 +184215,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -184075,7 +184234,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -184639,7 +184799,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -184657,7 +184818,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -184675,7 +184837,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -184693,7 +184856,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -184711,7 +184875,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -185336,7 +185501,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -185354,7 +185520,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -185372,7 +185539,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -185474,7 +185642,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -187010,7 +187179,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -187159,7 +187329,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -188297,7 +188468,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189047,8 +189219,8 @@
    "part": "vn2",
    "page": 60,
    "why": [
-    "two at [['Op32-4', 'I', 1], ['Op32-4', 'I', 2]]",
-    "two at [['Op32-4', 'I', 3], ['Op32-4', 'I', 4]]",
+    "unlike [['Op32-4', 'I', 1], ['Op32-4', 'I', 2]]",
+    "unlike [['Op32-4', 'I', 3], ['Op32-4', 'I', 4]]",
     "unlike [['Op32-4', 'I', 5]]",
     "an end measure shorter than its bar ['Op32-4', 'I', 5]",
     "an end measure longer than its bar ['Op32-4', 'I', 0]"
@@ -189119,7 +189291,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189137,7 +189310,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189240,7 +189414,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189351,7 +189526,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189369,7 +189545,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189387,7 +189564,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -189464,7 +189642,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189482,7 +189661,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189500,7 +189680,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -189518,7 +189699,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -190125,7 +190307,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -190262,7 +190445,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -190352,7 +190536,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -190370,7 +190555,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -190401,7 +190587,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -191938,7 +192125,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -191956,7 +192144,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -191974,7 +192163,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -191992,7 +192182,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192023,7 +192214,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192041,7 +192233,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192059,7 +192252,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -192188,7 +192382,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192206,7 +192401,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192224,7 +192420,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192242,7 +192439,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192260,7 +192458,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192278,7 +192477,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192296,7 +192496,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192314,7 +192515,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -192470,7 +192672,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192488,7 +192691,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192506,7 +192710,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192524,7 +192729,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192542,7 +192748,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192668,7 +192875,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192686,7 +192894,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -192730,7 +192939,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -194546,8 +194756,7 @@
    "part": "vn2",
    "page": 74,
    "why": [
-    "unlike [['Op32-6', 'I', 83]]",
-    "two at [['Op32-6', 'I', 84], ['Op32-6', 'I', 85]]"
+    "unlike [['Op32-6', 'I', 83]]"
    ],
    "bars": [
     [
@@ -194664,7 +194873,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -194968,7 +195178,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195004,7 +195215,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195022,7 +195234,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -195156,7 +195369,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195376,7 +195590,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195394,7 +195609,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195412,7 +195628,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195430,7 +195647,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195448,7 +195666,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195466,7 +195685,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195484,7 +195704,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -195557,7 +195778,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195575,7 +195797,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195593,7 +195816,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -195685,7 +195909,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195703,7 +195928,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195721,7 +195947,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195739,7 +195966,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195757,7 +195985,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -195863,7 +196092,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195881,7 +196111,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195899,7 +196130,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195917,7 +196149,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195935,7 +196168,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -195953,7 +196187,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -196081,7 +196316,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196099,7 +196335,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196117,7 +196354,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196135,7 +196373,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196153,7 +196392,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     },
     {
      "bars": [
@@ -196171,7 +196411,8 @@
      "count": 1,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196189,7 +196430,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196207,7 +196449,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -196376,7 +196619,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196394,7 +196638,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196412,7 +196657,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196599,7 +196845,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196617,7 +196864,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196764,7 +197012,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -196979,7 +197228,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -197114,7 +197364,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -197502,7 +197753,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -199309,7 +199561,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -201951,7 +202204,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -202909,7 +203163,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -202997,7 +203252,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -203719,7 +203975,6 @@
    "part": "va",
    "page": 110,
    "why": [
-    "two at [['Op32-5', 'III', 70], ['Op32-5', 'III', 71]]",
     "an end measure longer than its bar ['Op32-5', 'III', 76]"
    ],
    "bars": [
@@ -203816,7 +204071,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -205478,7 +205734,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -205496,7 +205753,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -209521,7 +209779,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -209539,7 +209798,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -209583,7 +209843,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -211642,7 +211903,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -211673,7 +211935,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -211756,7 +212019,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -212426,7 +212690,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -212444,7 +212709,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -215354,7 +215620,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },

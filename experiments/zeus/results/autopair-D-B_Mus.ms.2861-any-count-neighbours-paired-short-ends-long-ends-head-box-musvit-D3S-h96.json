@@ -2,9 +2,9 @@
  "source": "D-B_Mus.ms.2861",
  "tally": {
   "staves": 494,
-  "staves kept": 396,
-  "bars on kept staves": 1730,
-  "kept, bar boxes as many": 361
+  "staves kept": 401,
+  "bars on kept staves": 1750,
+  "kept, bar boxes as many": 363
  },
  "clefs": {},
  "kept but wrong": [],
@@ -8649,6 +8649,275 @@
    "worst": 0.0
   },
   {
+   "staff": "p6-8",
+   "part": "vn1",
+   "page": 6,
+   "system": {
+    "top": 0.53,
+    "bottom": 0.5557142857142857,
+    "left": 0.07473309608540925,
+    "right": 0.938908659549229,
+    "start": 0.10794780545670225,
+    "bend": [
+     -0.00035714285714285714,
+     -0.0013740920096852603,
+     0.00015133171912834443,
+     0.002734564164648938,
+     0.0014285714285714286
+    ],
+    "barlines": [
+     {
+      "x0": 0.20288000000000003,
+      "x1": 0.20288000000000003,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3672716488730724,
+      "x1": 0.36641755634638196,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4349703440094899,
+      "x1": 0.4345432977461447,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5141874258600238,
+      "x1": 0.5154685646500593,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6474614472123368,
+      "x1": 0.6508778173190986,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7418979833926452,
+      "x1": 0.7444602609727166,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9341637010676157,
+      "x1": 0.9341637010676157,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "campioni-op7-2",
+     "II",
+     54
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     55
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     56
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     57
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     58
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     59
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     60
+    ],
+    [
+     "campioni-op7-2",
+     "II",
+     61
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       57
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       58
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       59
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-2",
+       "II",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p6-10",
    "part": "vn1",
    "page": 6,
@@ -17281,6 +17550,318 @@
    "worst": 0.0
   },
   {
+   "staff": "p11-7",
+   "part": "vn1",
+   "page": 11,
+   "system": {
+    "top": 0.46714285714285714,
+    "bottom": 0.4928571428571429,
+    "left": 0.04730928444707274,
+    "right": 0.9036073329390893,
+    "start": 0.1023063276167948,
+    "bend": [
+     -0.00035714285714285714,
+     0.001569627851140467,
+     0.0001320528211284357,
+     0.0014765906362544812,
+     0.004285714285714286
+    ],
+    "barlines": [
+     {
+      "x0": 0.3417622708456534,
+      "x1": 0.3430396215257244,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5557539917208753,
+      "x1": 0.5566055588409226,
+      "kind": "single"
+     },
+     {
+      "x0": 0.898065,
+      "x1": 0.898065,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "campioni-op7-4",
+     "I",
+     22
+    ],
+    [
+     "campioni-op7-4",
+     "I",
+     23
+    ],
+    [
+     "campioni-op7-4",
+     "I",
+     24
+    ]
+   ],
+   "plain": true,
+   "measures": 3,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p11-8",
+   "part": "vn1",
+   "page": 11,
+   "system": {
+    "top": 0.5232142857142857,
+    "bottom": 0.5489285714285714,
+    "left": 0.04671791839148433,
+    "right": 0.9183914843287996,
+    "start": 0.10112359550561797,
+    "bend": [
+     0.0,
+     0.0010714285714285715,
+     -0.0010414165666266433,
+     0.002857142857142857,
+     0.0035714285714285713
+    ],
+    "barlines": [
+     {
+      "x0": 0.4443287995269072,
+      "x1": 0.4439030159668835,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9112477823772915,
+      "x1": 0.9125251330573625,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "campioni-op7-4",
+     "I",
+     25
+    ],
+    [
+     "campioni-op7-4",
+     "I",
+     26
+    ]
+   ],
+   "plain": false,
+   "measures": 1,
+   "bar_boxes": 2,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       25
+      ],
+      [
+       "campioni-op7-4",
+       "I",
+       26
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    }
+   ],
+   "bar_clefs": [],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p11-9",
+   "part": "vn1",
+   "page": 11,
+   "system": {
+    "top": 0.5778571428571428,
+    "bottom": 0.6035714285714285,
+    "left": 0.04967474866942637,
+    "right": 0.9272619751626257,
+    "start": 0.1017149615612064,
+    "bend": [
+     0.00035714285714285714,
+     -0.00015006002400964137,
+     0.0002911164465785987,
+     0.0020479204339963935,
+     0.0067857142857142855
+    ],
+    "barlines": [
+     {
+      "x0": 0.5476650000000001,
+      "x1": 0.5476650000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9098876404494382,
+      "x1": 0.9132939089296275,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "campioni-op7-4",
+     "I",
+     27
+    ],
+    [
+     "campioni-op7-4",
+     "I",
+     28
+    ]
+   ],
+   "plain": true,
+   "measures": 2,
+   "bar_boxes": 2,
+   "right": null,
+   "steps": {
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "I",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 15,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 19,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.1
+  },
+  {
    "staff": "p11-10",
    "part": "vn1",
    "page": 11,
@@ -18762,6 +19343,178 @@
     "G2"
    ],
    "worst": 0.143
+  },
+  {
+   "staff": "p12-10",
+   "part": "vn1",
+   "page": 12,
+   "system": {
+    "top": 0.635,
+    "bottom": 0.6607142857142857,
+    "left": 0.0830367734282325,
+    "right": 0.9478054567022538,
+    "start": 0.13048635824436536,
+    "bend": [
+     -0.0007142857142857143,
+     -0.0009140435835351062,
+     0.000326876513317172,
+     0.0025484261501210474,
+     0.0032142857142857142
+    ],
+    "barlines": [
+     {
+      "x0": 0.35463819691577697,
+      "x1": 0.3559193357058126,
+      "kind": "single"
+     },
+     {
+      "x0": 0.44461,
+      "x1": 0.44461,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5622301304863582,
+      "x1": 0.5635112692763938,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8148517200474495,
+      "x1": 0.8174139976275208,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9424673784104389,
+      "x1": 0.9424673784104389,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "campioni-op7-4",
+     "II",
+     32
+    ],
+    [
+     "campioni-op7-4",
+     "II",
+     33
+    ],
+    [
+     "campioni-op7-4",
+     "II",
+     34
+    ],
+    [
+     "campioni-op7-4",
+     "II",
+     35
+    ],
+    [
+     "campioni-op7-4",
+     "II",
+     36
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 5,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 3,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "II",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "II",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "II",
+       34
+      ],
+      [
+       "campioni-op7-4",
+       "II",
+       35
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "campioni-op7-4",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.222
   },
   {
    "staff": "p12-11",
@@ -68640,171 +69393,10 @@
    ]
   },
   {
-   "staff": "p6-8",
-   "part": "vn1",
-   "page": 6,
-   "why": [
-    "next staff begins with two"
-   ],
-   "bars": [
-    [
-     "campioni-op7-2",
-     "II",
-     54
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     55
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     56
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     57
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     58
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     59
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     60
-    ],
-    [
-     "campioni-op7-2",
-     "II",
-     61
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       54
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       55
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       56
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       57
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       58
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       59
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       60
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-2",
-       "II",
-       61
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p6-9",
    "part": "vn1",
    "page": 6,
    "why": [
-    "two at [['campioni-op7-2', 'II', 62], ['campioni-op7-2', 'II', 63]]",
-    "two at [['campioni-op7-2', 'II', 64], ['campioni-op7-2', 'II', 65]]",
     "an end measure shorter than its bar ['campioni-op7-2', 'II', 67]",
     "4 measures, 6 bar boxes, an end not one bar"
    ],
@@ -68861,7 +69453,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -68879,7 +69472,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -70890,170 +71484,6 @@
    ]
   },
   {
-   "staff": "p11-7",
-   "part": "vn1",
-   "page": 11,
-   "why": [
-    "next staff begins with two"
-   ],
-   "bars": [
-    [
-     "campioni-op7-4",
-     "I",
-     22
-    ],
-    [
-     "campioni-op7-4",
-     "I",
-     23
-    ],
-    [
-     "campioni-op7-4",
-     "I",
-     24
-    ]
-   ],
-   "steps": {
-    "one": 3
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       22
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       23
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p11-8",
-   "part": "vn1",
-   "page": 11,
-   "why": [
-    "two at [['campioni-op7-4', 'I', 25], ['campioni-op7-4', 'I', 26]]",
-    "1 measures, 2 bar boxes, an end not one bar"
-   ],
-   "bars": [
-    [
-     "campioni-op7-4",
-     "I",
-     25
-    ],
-    [
-     "campioni-op7-4",
-     "I",
-     26
-    ]
-   ],
-   "steps": {
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       25
-      ],
-      [
-       "campioni-op7-4",
-       "I",
-       26
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p11-9",
-   "part": "vn1",
-   "page": 11,
-   "why": [
-    "staff before ends with two"
-   ],
-   "bars": [
-    [
-     "campioni-op7-4",
-     "I",
-     27
-    ],
-    [
-     "campioni-op7-4",
-     "I",
-     28
-    ]
-   ],
-   "steps": {
-    "one": 2
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       27
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "I",
-       28
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p11-11",
    "part": "vn1",
    "page": 11,
@@ -71182,104 +71612,6 @@
        "campioni-op7-4",
        "II",
        6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p12-10",
-   "part": "vn1",
-   "page": 12,
-   "why": [
-    "two at [['campioni-op7-4', 'II', 34], ['campioni-op7-4', 'II', 35]]"
-   ],
-   "bars": [
-    [
-     "campioni-op7-4",
-     "II",
-     32
-    ],
-    [
-     "campioni-op7-4",
-     "II",
-     33
-    ],
-    [
-     "campioni-op7-4",
-     "II",
-     34
-    ],
-    [
-     "campioni-op7-4",
-     "II",
-     35
-    ],
-    [
-     "campioni-op7-4",
-     "II",
-     36
-    ]
-   ],
-   "steps": {
-    "one": 3,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "II",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "II",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "II",
-       34
-      ],
-      [
-       "campioni-op7-4",
-       "II",
-       35
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "campioni-op7-4",
-       "II",
-       36
       ]
      ],
      "count": 1,
@@ -71615,7 +71947,8 @@
      "count": 1,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     },
     {
      "bars": [
@@ -72073,7 +72406,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -72091,7 +72425,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -72663,7 +72998,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -72961,7 +73297,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     }
    ]
   },
@@ -73707,7 +74044,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -73894,7 +74232,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -73973,7 +74312,6 @@
    "part": "vc",
    "page": 29,
    "why": [
-    "two at [['campioni-op7-3', 'II', 25], ['campioni-op7-3', 'II', 26]]",
     "an end measure longer than its bar ['campioni-op7-3', 'II', 24]"
    ],
    "bars": [
@@ -74037,7 +74375,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -74915,7 +75254,8 @@
      "count": 1,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     },
     {
      "bars": [
@@ -76034,7 +76374,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     }
    ]
   }

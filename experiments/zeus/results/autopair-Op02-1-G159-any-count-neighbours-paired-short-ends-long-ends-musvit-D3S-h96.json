@@ -42035,7 +42035,7 @@
    "part": "vc",
    "page": 5,
    "why": [
-    "two at [['Op02-1', 'II', 10], ['Op02-1', 'II', 11]]"
+    "unlike [['Op02-1', 'II', 10], ['Op02-1', 'II', 11]]"
    ],
    "bars": [
     [
@@ -42147,7 +42147,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [

@@ -22117,7 +22117,7 @@
     "unlike [['boccherini-G85', 'I', 31]]",
     "unlike [['boccherini-G85', 'I', 33]]",
     "unlike [['boccherini-G85', 'I', 34]]",
-    "two at [['boccherini-G85', 'I', 35], ['boccherini-G85', 'I', 36]]"
+    "unlike [['boccherini-G85', 'I', 35], ['boccherini-G85', 'I', 36]]"
    ],
    "bars": [
     [
@@ -22270,7 +22270,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [

@@ -2,8 +2,8 @@
  "source": "Op22-Paris-vc",
  "tally": {
   "staves": 144,
-  "staves kept": 104,
-  "bars on kept staves": 604,
+  "staves kept": 105,
+  "bars on kept staves": 609,
   "kept, bar boxes as many": 95
  },
  "clefs": {},
@@ -21517,6 +21517,173 @@
     "F4"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p33-5",
+   "part": "vc",
+   "page": 33,
+   "system": {
+    "top": 0.5962085308056873,
+    "bottom": 0.6360189573459716,
+    "left": 0.11678571428571428,
+    "right": 0.9007142857142857,
+    "start": 0.1707142857142857,
+    "bend": [
+     0.00047393364928909954,
+     -0.0007338717477512683,
+     0.00035545023696682463,
+     0.0003312699487377406,
+     -0.0018957345971563982
+    ],
+    "barlines": [
+     {
+      "x0": 0.2668642857142857,
+      "x1": 0.2695642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3625785714285714,
+      "x1": 0.3652785714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47150714285714285,
+      "x1": 0.4742071428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5557142857142857,
+      "x1": 0.5557142857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "Op22-3",
+     "II",
+     197
+    ],
+    [
+     "Op22-3",
+     "II",
+     198
+    ],
+    [
+     "Op22-3",
+     "II",
+     199
+    ],
+    [
+     "Op22-3",
+     "II",
+     200
+    ],
+    [
+     "Op22-3",
+     "II",
+     201
+    ]
+   ],
+   "plain": false,
+   "measures": 4,
+   "bar_boxes": 5,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 3,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "II",
+       197
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "II",
+       198
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "II",
+       199
+      ],
+      [
+       "Op22-3",
+       "II",
+       200
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "II",
+       201
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.0
   }
  ],
  "not kept": [
@@ -21660,7 +21827,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -23373,7 +23541,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -23919,7 +24088,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -24262,7 +24432,8 @@
      "count": 5,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -24412,104 +24583,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p33-5",
-   "part": "vc",
-   "page": 33,
-   "why": [
-    "two at [['Op22-3', 'II', 199], ['Op22-3', 'II', 200]]"
-   ],
-   "bars": [
-    [
-     "Op22-3",
-     "II",
-     197
-    ],
-    [
-     "Op22-3",
-     "II",
-     198
-    ],
-    [
-     "Op22-3",
-     "II",
-     199
-    ],
-    [
-     "Op22-3",
-     "II",
-     200
-    ],
-    [
-     "Op22-3",
-     "II",
-     201
-    ]
-   ],
-   "steps": {
-    "one": 3,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "II",
-       197
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "II",
-       198
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "II",
-       199
-      ],
-      [
-       "Op22-3",
-       "II",
-       200
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "II",
-       201
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   }

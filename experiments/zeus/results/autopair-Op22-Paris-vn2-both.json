@@ -21444,7 +21444,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -22428,7 +22429,6 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: two at [['Op22-4', 'I', 26], ['Op22-4', 'I', 27]]",
     "musvit-C4-bocch-tf8-L-best: unlike [['Op22-4', 'I', 28]]",
     "musvit-C4-bocch-tf8-L-best: 2 measures, 3 bar boxes, an end not one bar"
    ],

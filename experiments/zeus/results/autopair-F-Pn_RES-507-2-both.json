@@ -20370,6 +20370,208 @@
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
+   "staff": "p21-3",
+   "part": "vn1",
+   "page": 21,
+   "system": {
+    "top": 0.25759840558046837,
+    "bottom": 0.29048330842052816,
+    "left": 0.19535714285714287,
+    "right": 0.9139285714285714,
+    "start": 0.21285714285714286,
+    "bend": [
+     0.0,
+     3.558972168836831e-05,
+     -3.050547573288712e-05,
+     0.0,
+     0.0
+    ],
+    "barlines": [
+     {
+      "x0": 0.23047499999999999,
+      "x1": 0.23047499999999999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.36785357142857145,
+      "x1": 0.3671464285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.501075,
+      "x1": 0.5017821428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6346428571428572,
+      "x1": 0.6346428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7876178571428571,
+      "x1": 0.7873821428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9105321428571428,
+      "x1": 0.9098250000000001,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op33-5",
+     "I",
+     5
+    ],
+    [
+     "Op33-5",
+     "I",
+     6
+    ],
+    [
+     "Op33-5",
+     "I",
+     7
+    ],
+    [
+     "Op33-5",
+     "I",
+     8
+    ],
+    [
+     "Op33-5",
+     "I",
+     9
+    ],
+    [
+     "Op33-5",
+     "I",
+     10
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 6,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "two": 1,
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "I",
+       5
+      ],
+      [
+       "Op33-5",
+       "I",
+       6
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "I",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "I",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "I",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "I",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
    "staff": "p21-4",
    "part": "vn1",
    "page": 21,
@@ -22151,6 +22353,319 @@
     },
     {
      "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p23-4",
+   "part": "vn1",
+   "page": 23,
+   "system": {
+    "top": 0.44294967613353264,
+    "bottom": 0.4813153961136024,
+    "left": 0.11428571428571428,
+    "right": 0.9128571428571428,
+    "start": 0.12357142857142857,
+    "bend": [
+     0.0,
+     -0.000996512207274539,
+     0.0007728053852333103,
+     0.0013117354565144294,
+     0.002491280518186348
+    ],
+    "barlines": [
+     {
+      "x0": 0.2196982142857143,
+      "x1": 0.2188732142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2907142857142857,
+      "x1": 0.2907142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.36392857142857143,
+      "x1": 0.36392857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4431589285714286,
+      "x1": 0.44398392857142854,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5185714285714286,
+      "x1": 0.5185714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5920875,
+      "x1": 0.5929125,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6664839285714286,
+      "x1": 0.6656589285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7317857142857143,
+      "x1": 0.7317857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8071982142857144,
+      "x1": 0.8063732142857142,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op33-5",
+     "II",
+     29
+    ],
+    [
+     "Op33-5",
+     "II",
+     30
+    ],
+    [
+     "Op33-5",
+     "II",
+     31
+    ],
+    [
+     "Op33-5",
+     "II",
+     32
+    ],
+    [
+     "Op33-5",
+     "II",
+     33
+    ],
+    [
+     "Op33-5",
+     "II",
+     34
+    ],
+    [
+     "Op33-5",
+     "II",
+     35
+    ],
+    [
+     "Op33-5",
+     "II",
+     36
+    ],
+    [
+     "Op33-5",
+     "II",
+     37
+    ],
+    [
+     "Op33-5",
+     "II",
+     38
+    ]
+   ],
+   "plain": false,
+   "measures": 9,
+   "bar_boxes": 10,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 8,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       36
+      ],
+      [
+       "Op33-5",
+       "II",
+       37
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "Op33-5",
+       "II",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 2,
      "alto": 0,
      "tenor": 0,
      "bass": 0
@@ -67820,6 +68335,355 @@
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
+   "staff": "p89-4",
+   "part": "va",
+   "page": 89,
+   "system": {
+    "top": 0.481555333998006,
+    "bottom": 0.5154536390827518,
+    "left": 0.014642857142857143,
+    "right": 0.9025,
+    "start": 0.055357142857142855,
+    "bend": [
+     -0.003988035892323031,
+     -0.0029910269192422734,
+     -0.00018312409709648073,
+     0.0016659206055303372,
+     0.0029910269192422734
+    ],
+    "barlines": [
+     {
+      "x0": 0.157745,
+      "x1": 0.157745,
+      "kind": "single"
+     },
+     {
+      "x0": 0.23535714285714285,
+      "x1": 0.23535714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.297435,
+      "x1": 0.297435,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3510785714285714,
+      "x1": 0.35035,
+      "kind": "single"
+     },
+     {
+      "x0": 0.40714285714285714,
+      "x1": 0.40714285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5143071428571429,
+      "x1": 0.5121214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5739428571428571,
+      "x1": 0.5724857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6250142857142857,
+      "x1": 0.6235571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6739428571428572,
+      "x1": 0.6724857142857144,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7743,
+      "x1": 0.7728428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8996714285714286,
+      "x1": 0.8967571428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 3.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op33-2",
+     "I",
+     35
+    ],
+    [
+     "Op33-2",
+     "I",
+     36
+    ],
+    [
+     "Op33-2",
+     "I",
+     37
+    ],
+    [
+     "Op33-2",
+     "I",
+     38
+    ],
+    [
+     "Op33-2",
+     "I",
+     39
+    ],
+    [
+     "Op33-2",
+     "I",
+     40
+    ],
+    [
+     "Op33-2",
+     "I",
+     41
+    ],
+    [
+     "Op33-2",
+     "I",
+     42
+    ],
+    [
+     "Op33-2",
+     "I",
+     43
+    ],
+    [
+     "Op33-2",
+     "I",
+     44
+    ]
+   ],
+   "plain": false,
+   "measures": 11,
+   "bar_boxes": 11,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits"
+   ],
+   "steps": {
+    "one": 9,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-2",
+       "I",
+       44
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
    "staff": "p89-5",
    "part": "va",
    "page": 89,
@@ -74309,6 +75173,455 @@
     {
      "treble": 0,
      "alto": 6,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p95-4",
+   "part": "va",
+   "page": 95,
+   "system": {
+    "top": 0.48753738783649053,
+    "bottom": 0.5214356929212363,
+    "left": 0.008571428571428572,
+    "right": 0.88,
+    "start": 0.05857142857142857,
+    "bend": [
+     -0.003988035892323031,
+     -0.002151708140883493,
+     -0.0010427899973548638,
+     0.0017956335076403328,
+     0.0029910269192422734
+    ],
+    "barlines": [
+     {
+      "x0": 0.14285714285714285,
+      "x1": 0.14285714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.22642857142857142,
+      "x1": 0.22642857142857142,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2807142857142857,
+      "x1": 0.2807142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.33107142857142857,
+      "x1": 0.33107142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.38642857142857145,
+      "x1": 0.38642857142857145,
+      "kind": "single"
+     },
+     {
+      "x0": 0.43964285714285717,
+      "x1": 0.43964285714285717,
+      "kind": "single"
+     },
+     {
+      "x0": 0.48857142857142855,
+      "x1": 0.48857142857142855,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5414285714285715,
+      "x1": 0.5414285714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5853571428571429,
+      "x1": 0.5853571428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6346428571428572,
+      "x1": 0.6346428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6907142857142857,
+      "x1": 0.6907142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7414285714285714,
+      "x1": 0.7414285714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7975,
+      "x1": 0.7975,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8767857142857143,
+      "x1": 0.8767857142857143,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 3.0,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op33-3",
+     "II",
+     35
+    ],
+    [
+     "Op33-3",
+     "II",
+     36
+    ],
+    [
+     "Op33-3",
+     "II",
+     37
+    ],
+    [
+     "Op33-3",
+     "II",
+     38
+    ],
+    [
+     "Op33-3",
+     "II",
+     39
+    ],
+    [
+     "Op33-3",
+     "II",
+     40
+    ],
+    [
+     "Op33-3",
+     "II",
+     41
+    ],
+    [
+     "Op33-3",
+     "II",
+     42
+    ],
+    [
+     "Op33-3",
+     "II",
+     43
+    ],
+    [
+     "Op33-3",
+     "II",
+     44
+    ],
+    [
+     "Op33-3",
+     "II",
+     45
+    ],
+    [
+     "Op33-3",
+     "II",
+     46
+    ],
+    [
+     "Op33-3",
+     "II",
+     47
+    ],
+    [
+     "Op33-3",
+     "II",
+     48
+    ]
+   ],
+   "plain": true,
+   "measures": 14,
+   "bar_boxes": 14,
+   "right": null,
+   "steps": {
+    "one": 14
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       46
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       47
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
      "tenor": 0,
      "bass": 0
     }
@@ -123522,7 +124835,6 @@
    "part": "vn1",
    "page": 21,
    "why": [
-    "musvit-D3S-h96: next staff begins with two",
     "musvit-D3S-h96: an end measure shorter than its bar ['Op33-5', 'I', 4]"
    ],
    "bars": [
@@ -123614,123 +124926,6 @@
        "Op33-5",
        "I",
        4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p21-3",
-   "part": "vn1",
-   "page": 21,
-   "why": [
-    "musvit-D3S-h96: two at [['Op33-5', 'I', 5], ['Op33-5', 'I', 6]]",
-    "musvit-D3S-h96: 5 measures, 6 bar boxes, an end not one bar"
-   ],
-   "bars": [
-    [
-     "Op33-5",
-     "I",
-     5
-    ],
-    [
-     "Op33-5",
-     "I",
-     6
-    ],
-    [
-     "Op33-5",
-     "I",
-     7
-    ],
-    [
-     "Op33-5",
-     "I",
-     8
-    ],
-    [
-     "Op33-5",
-     "I",
-     9
-    ],
-    [
-     "Op33-5",
-     "I",
-     10
-    ]
-   ],
-   "steps": {
-    "two": 1,
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "I",
-       5
-      ],
-      [
-       "Op33-5",
-       "I",
-       6
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "I",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "I",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "I",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "I",
-       10
       ]
      ],
      "count": 1,
@@ -123944,7 +125139,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -124795,194 +125991,6 @@
        "Op33-5",
        "I",
        60
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p23-4",
-   "part": "vn1",
-   "page": 23,
-   "why": [
-    "musvit-D3S-h96: two at [['Op33-5', 'II', 36], ['Op33-5', 'II', 37]]"
-   ],
-   "bars": [
-    [
-     "Op33-5",
-     "II",
-     29
-    ],
-    [
-     "Op33-5",
-     "II",
-     30
-    ],
-    [
-     "Op33-5",
-     "II",
-     31
-    ],
-    [
-     "Op33-5",
-     "II",
-     32
-    ],
-    [
-     "Op33-5",
-     "II",
-     33
-    ],
-    [
-     "Op33-5",
-     "II",
-     34
-    ],
-    [
-     "Op33-5",
-     "II",
-     35
-    ],
-    [
-     "Op33-5",
-     "II",
-     36
-    ],
-    [
-     "Op33-5",
-     "II",
-     37
-    ],
-    [
-     "Op33-5",
-     "II",
-     38
-    ]
-   ],
-   "steps": {
-    "one": 8,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       34
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       36
-      ],
-      [
-       "Op33-5",
-       "II",
-       37
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-5",
-       "II",
-       38
       ]
      ],
      "count": 1,
@@ -126644,168 +127652,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p43-4",
-   "part": "vn2",
-   "page": 43,
-   "why": [
-    "musvit-D3S-h96: two at [['Op33-3', 'II', 33], ['Op33-3', 'II', 34]]"
-   ],
-   "bars": [
-    [
-     "Op33-3",
-     "II",
-     31
-    ],
-    [
-     "Op33-3",
-     "II",
-     32
-    ],
-    [
-     "Op33-3",
-     "II",
-     33
-    ],
-    [
-     "Op33-3",
-     "II",
-     34
-    ],
-    [
-     "Op33-3",
-     "II",
-     35
-    ],
-    [
-     "Op33-3",
-     "II",
-     36
-    ],
-    [
-     "Op33-3",
-     "II",
-     37
-    ],
-    [
-     "Op33-3",
-     "II",
-     38
-    ],
-    [
-     "Op33-3",
-     "II",
-     39
-    ]
-   ],
-   "steps": {
-    "one": 6,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       33
-      ],
-      [
-       "Op33-3",
-       "II",
-       34
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       37
-      ],
-      [
-       "Op33-3",
-       "II",
-       38
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       39
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -128697,7 +129543,8 @@
      "count": 9,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -128831,7 +129678,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -129262,7 +130110,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -134987,6 +135836,166 @@
    ]
   },
   {
+   "staff": "p43-4",
+   "part": "vn2",
+   "page": 43,
+   "bars": [
+    [
+     "Op33-3",
+     "II",
+     31
+    ],
+    [
+     "Op33-3",
+     "II",
+     32
+    ],
+    [
+     "Op33-3",
+     "II",
+     33
+    ],
+    [
+     "Op33-3",
+     "II",
+     34
+    ],
+    [
+     "Op33-3",
+     "II",
+     35
+    ],
+    [
+     "Op33-3",
+     "II",
+     36
+    ],
+    [
+     "Op33-3",
+     "II",
+     37
+    ],
+    [
+     "Op33-3",
+     "II",
+     38
+    ],
+    [
+     "Op33-3",
+     "II",
+     39
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best: unlike [['Op33-3', 'II', 34]]",
+    "musvit-C4-bocch-tf8-L-best: unlike [['Op33-3', 'II', 35]]"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       33
+      ],
+      [
+       "Op33-3",
+       "II",
+       34
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       37
+      ],
+      [
+       "Op33-3",
+       "II",
+       38
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op33-3",
+       "II",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
    "staff": "p52-4",
    "part": "vn2",
    "page": 52,
@@ -135516,212 +136525,6 @@
    ]
   },
   {
-   "staff": "p89-4",
-   "part": "va",
-   "page": 89,
-   "bars": [
-    [
-     "Op33-2",
-     "I",
-     35
-    ],
-    [
-     "Op33-2",
-     "I",
-     36
-    ],
-    [
-     "Op33-2",
-     "I",
-     37
-    ],
-    [
-     "Op33-2",
-     "I",
-     38
-    ],
-    [
-     "Op33-2",
-     "I",
-     39
-    ],
-    [
-     "Op33-2",
-     "I",
-     40
-    ],
-    [
-     "Op33-2",
-     "I",
-     41
-    ],
-    [
-     "Op33-2",
-     "I",
-     42
-    ],
-    [
-     "Op33-2",
-     "I",
-     43
-    ],
-    [
-     "Op33-2",
-     "I",
-     44
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: two at [['Op33-2', 'I', 40], ['Op33-2', 'I', 41]]",
-    "musvit-C4-bocch-tf8-L-best: 10 measures, 11 bar boxes, an end not one bar"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       41
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       42
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       43
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       44
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-2",
-       "I",
-       44
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p90-4",
    "part": "va",
    "page": 90,
@@ -135874,270 +136677,6 @@
      "join": false,
      "continues": false,
      "ends_movement": true
-    }
-   ]
-  },
-  {
-   "staff": "p95-4",
-   "part": "va",
-   "page": 95,
-   "bars": [
-    [
-     "Op33-3",
-     "II",
-     35
-    ],
-    [
-     "Op33-3",
-     "II",
-     36
-    ],
-    [
-     "Op33-3",
-     "II",
-     37
-    ],
-    [
-     "Op33-3",
-     "II",
-     38
-    ],
-    [
-     "Op33-3",
-     "II",
-     39
-    ],
-    [
-     "Op33-3",
-     "II",
-     40
-    ],
-    [
-     "Op33-3",
-     "II",
-     41
-    ],
-    [
-     "Op33-3",
-     "II",
-     42
-    ],
-    [
-     "Op33-3",
-     "II",
-     43
-    ],
-    [
-     "Op33-3",
-     "II",
-     44
-    ],
-    [
-     "Op33-3",
-     "II",
-     45
-    ],
-    [
-     "Op33-3",
-     "II",
-     46
-    ],
-    [
-     "Op33-3",
-     "II",
-     47
-    ],
-    [
-     "Op33-3",
-     "II",
-     48
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: two at [['Op33-3', 'II', 36], ['Op33-3', 'II', 37]]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       41
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       42
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       43
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       44
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       45
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       46
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       47
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op33-3",
-       "II",
-       48
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
     }
    ]
   },

@@ -20313,8 +20313,7 @@
     "unlike [['Op02-6', 'I', 26]]",
     "unlike [['Op02-6', 'I', 27]]",
     "unlike [['Op02-6', 'I', 28]]",
-    "unlike [['Op02-6', 'I', 29]]",
-    "two at [['Op02-6', 'I', 30], ['Op02-6', 'I', 31]]"
+    "unlike [['Op02-6', 'I', 29]]"
    ],
    "bars": [
     [
@@ -20498,7 +20497,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -21361,7 +21361,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [

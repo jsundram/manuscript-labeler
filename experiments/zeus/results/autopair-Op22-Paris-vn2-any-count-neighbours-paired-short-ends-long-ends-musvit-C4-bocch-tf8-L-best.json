@@ -20056,8 +20056,7 @@
    "part": "vn2",
    "page": 8,
    "why": [
-    "unlike [['Op22-4', 'I', 25]]",
-    "next staff begins with two"
+    "unlike [['Op22-4', 'I', 25]]"
    ],
    "bars": [
     [
@@ -20163,7 +20162,6 @@
    "part": "vn2",
    "page": 8,
    "why": [
-    "two at [['Op22-4', 'I', 26], ['Op22-4', 'I', 27]]",
     "unlike [['Op22-4', 'I', 28]]",
     "2 measures, 3 bar boxes, an end not one bar"
    ],
@@ -20205,7 +20203,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -22585,7 +22584,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [

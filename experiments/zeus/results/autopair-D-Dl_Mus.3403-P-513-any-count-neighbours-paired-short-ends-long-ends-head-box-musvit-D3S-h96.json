@@ -2,9 +2,9 @@
  "source": "D-Dl_Mus.3403-P-513",
  "tally": {
   "staves": 587,
-  "staves kept": 390,
-  "bars on kept staves": 3386,
-  "kept, bar boxes as many": 339
+  "staves kept": 397,
+  "bars on kept staves": 3465,
+  "kept, bar boxes as many": 340
  },
  "clefs": {},
  "kept but wrong": [],
@@ -7345,6 +7345,207 @@
     "G2"
    ],
    "worst": 0.3
+  },
+  {
+   "staff": "p23-3",
+   "part": "vn1",
+   "page": 23,
+   "system": {
+    "top": 0.3420523138832998,
+    "bottom": 0.3762575452716298,
+    "left": 0.08392857142857142,
+    "right": 0.8221428571428572,
+    "start": 0.11714285714285715,
+    "bend": [
+     0.0005030181086519115,
+     0.001838839157393336,
+     0.0005030181086519115,
+     -0.0002861557097687948,
+     -0.003428735679382438
+    ],
+    "barlines": [
+     {
+      "x0": 0.38746428571428576,
+      "x1": 0.3911071428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.45344500000000004,
+      "x1": 0.45344500000000004,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5339142857142857,
+      "x1": 0.5353714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6157142857142858,
+      "x1": 0.6157142857142858,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7256857142857143,
+      "x1": 0.7286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8164,
+      "x1": 0.8193142857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "IV",
+     0
+    ],
+    [
+     "haydn-m-MH411",
+     "IV",
+     1
+    ],
+    [
+     "haydn-m-MH411",
+     "IV",
+     2
+    ],
+    [
+     "haydn-m-MH411",
+     "IV",
+     3
+    ],
+    [
+     "haydn-m-MH411",
+     "IV",
+     4
+    ],
+    [
+     "haydn-m-MH411",
+     "IV",
+     5
+    ]
+   ],
+   "plain": false,
+   "measures": 5,
+   "bar_boxes": 6,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 4,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "IV",
+       0
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "IV",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "IV",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "IV",
+       3
+      ],
+      [
+       "haydn-m-MH411",
+       "IV",
+       4
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "IV",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.125
   },
   {
    "staff": "p23-4",
@@ -45898,6 +46099,405 @@
    "worst": 0.25
   },
   {
+   "staff": "p45-5",
+   "part": "vn2",
+   "page": 45,
+   "system": {
+    "top": 0.5261569416498993,
+    "bottom": 0.5658953722334004,
+    "left": 0.0875,
+    "right": 0.7739285714285714,
+    "start": 0.1125,
+    "bend": [
+     0.002012072434607646,
+     -0.0014346281772266135,
+     0.0002617747300127271,
+     -0.0002720404056994985,
+     -0.0008315197306287096
+    ],
+    "barlines": [
+     {
+      "x0": 0.17425,
+      "x1": 0.17425,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2158732142857143,
+      "x1": 0.21841249999999998,
+      "kind": "single"
+     },
+     {
+      "x0": 0.2566535714285714,
+      "x1": 0.2583464285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.32201071428571426,
+      "x1": 0.3237035714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3890875,
+      "x1": 0.3916267857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.42635499999999993,
+      "x1": 0.42635499999999993,
+      "kind": "single"
+     },
+     {
+      "x0": 0.46491,
+      "x1": 0.46491,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5019446428571428,
+      "x1": 0.5044839285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5533071428571429,
+      "x1": 0.5566928571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5984100000000001,
+      "x1": 0.5984100000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.651885,
+      "x1": 0.651885,
+      "kind": "single"
+     },
+     {
+      "x0": 0.69716,
+      "x1": 0.69716,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "VI",
+     424
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     425
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     426
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     427
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     428
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     429
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     430
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     431
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     432
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     433
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     434
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     435
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     436
+    ]
+   ],
+   "plain": false,
+   "measures": 12,
+   "bar_boxes": 13,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 11,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       424
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       425
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       426
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       427
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       428
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       429
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       430
+      ],
+      [
+       "haydn-m-MH411",
+       "VI",
+       431
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       432
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       433
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       434
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       435
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       436
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p46-0",
    "part": "vn2",
    "page": 46,
@@ -60741,6 +61341,848 @@
    "worst": 0.167
   },
   {
+   "staff": "p56-2",
+   "part": "va",
+   "page": 56,
+   "system": {
+    "top": 0.2686116700201207,
+    "bottom": 0.30331991951710263,
+    "left": 0.15392857142857144,
+    "right": 0.8889285714285714,
+    "start": 0.17821428571428571,
+    "bend": [
+     -0.005030181086519115,
+     -0.0011625877715271148,
+     0.0003387672976635124,
+     0.004344947234426983,
+     0.0029051862193569837
+    ],
+    "barlines": [
+     {
+      "x0": 0.229165,
+      "x1": 0.229165,
+      "kind": "single"
+     },
+     {
+      "x0": 0.28638,
+      "x1": 0.28638,
+      "kind": "single"
+     },
+     {
+      "x0": 0.338985,
+      "x1": 0.338985,
+      "kind": "single"
+     },
+     {
+      "x0": 0.38905500000000004,
+      "x1": 0.38905500000000004,
+      "kind": "single"
+     },
+     {
+      "x0": 0.45857999999999993,
+      "x1": 0.45857999999999993,
+      "kind": "single"
+     },
+     {
+      "x0": 0.54315,
+      "x1": 0.54315,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6014,
+      "x1": 0.6014,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6681892857142857,
+      "x1": 0.6696678571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7285900000000001,
+      "x1": 0.7285900000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7506642857142858,
+      "x1": 0.7536214285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.788005,
+      "x1": 0.788005,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8356350000000001,
+      "x1": 0.8356350000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8741232142857143,
+      "x1": 0.8837339285714285,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "VI",
+     26
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     27
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     28
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     29
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     30
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     31
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     32
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     33
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     34
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     35
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     36
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     37
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     38
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     39
+    ]
+   ],
+   "plain": false,
+   "measures": 13,
+   "bar_boxes": 14,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 12,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       38
+      ],
+      [
+       "haydn-m-MH411",
+       "VI",
+       39
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 5,
+     "tenor": 2,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.167
+  },
+  {
+   "staff": "p56-3",
+   "part": "va",
+   "page": 56,
+   "system": {
+    "top": 0.35261569416498995,
+    "bottom": 0.3873239436619718,
+    "left": 0.1525,
+    "right": 0.91,
+    "start": 0.18,
+    "bend": [
+     -0.006539235412474849,
+     -0.0010240011497557014,
+     0.0007006323656222889,
+     0.00040421098016672275,
+     -0.0005030181086519115
+    ],
+    "barlines": [
+     {
+      "x0": 0.22476500000000005,
+      "x1": 0.22476500000000005,
+      "kind": "single"
+     },
+     {
+      "x0": 0.28465500000000005,
+      "x1": 0.28465500000000005,
+      "kind": "single"
+     },
+     {
+      "x0": 0.311635,
+      "x1": 0.311635,
+      "kind": "single"
+     },
+     {
+      "x0": 0.36296,
+      "x1": 0.36296,
+      "kind": "single"
+     },
+     {
+      "x0": 0.414155,
+      "x1": 0.414155,
+      "kind": "single"
+     },
+     {
+      "x0": 0.46237500000000004,
+      "x1": 0.46237500000000004,
+      "kind": "single"
+     },
+     {
+      "x0": 0.509715,
+      "x1": 0.509715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.56138,
+      "x1": 0.56138,
+      "kind": "single"
+     },
+     {
+      "x0": 0.60999,
+      "x1": 0.60999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.69255,
+      "x1": 0.69255,
+      "kind": "single"
+     },
+     {
+      "x0": 0.78496,
+      "x1": 0.78496,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8991375,
+      "x1": 0.9008625,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 3.0,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "VI",
+     40
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     41
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     42
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     43
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     44
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     45
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     46
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     47
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     48
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     49
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     50
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     51
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     52
+    ]
+   ],
+   "plain": true,
+   "measures": 13,
+   "bar_boxes": 13,
+   "right": null,
+   "steps": {
+    "one": 13
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       46
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       47
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       48
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 3,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 3,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 5,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 3,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.083
+  },
+  {
    "staff": "p56-4",
    "part": "va",
    "page": 56,
@@ -63987,6 +65429,352 @@
      "treble": 0,
      "alto": 2,
      "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p57-5",
+   "part": "va",
+   "page": 57,
+   "system": {
+    "top": 0.5231388329979879,
+    "bottom": 0.5573440643863179,
+    "left": 0.08607142857142858,
+    "right": 0.84,
+    "start": 0.10571428571428572,
+    "bend": [
+     -0.001006036217303823,
+     -0.00041447665585343693,
+     -0.00011035601363276363,
+     -0.0023431404755060513,
+     -0.002012072434607646
+    ],
+    "barlines": [
+     {
+      "x0": 0.16257,
+      "x1": 0.16257,
+      "kind": "single"
+     },
+     {
+      "x0": 0.21181428571428573,
+      "x1": 0.21497142857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.259865,
+      "x1": 0.259865,
+      "kind": "single"
+     },
+     {
+      "x0": 0.30600499999999997,
+      "x1": 0.30600499999999997,
+      "kind": "single"
+     },
+     {
+      "x0": 0.366625,
+      "x1": 0.366625,
+      "kind": "single"
+     },
+     {
+      "x0": 0.42105999999999993,
+      "x1": 0.42105999999999993,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47420499999999993,
+      "x1": 0.47420499999999993,
+      "kind": "single"
+     },
+     {
+      "x0": 0.52591,
+      "x1": 0.52591,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6431749999999999,
+      "x1": 0.6431749999999999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.74679,
+      "x1": 0.74679,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8362600000000001,
+      "x1": 0.8362600000000001,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 3.0,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "VI",
+     201
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     202
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     203
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     204
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     205
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     206
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     207
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     208
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     209
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     210
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     211
+    ]
+   ],
+   "plain": false,
+   "measures": 10,
+   "bar_boxes": 11,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 9,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       201
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       202
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       203
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       204
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       205
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       206
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       207
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       208
+      ],
+      [
+       "haydn-m-MH411",
+       "VI",
+       209
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       210
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       211
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 3,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 6,
+     "tenor": 3,
      "bass": 0
     }
    ],
@@ -70496,6 +72284,260 @@
     "F4"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p2-6",
+   "part": "vc",
+   "page": 2,
+   "system": {
+    "top": 0.5829979879275654,
+    "bottom": 0.6172032193158954,
+    "left": 0.12392857142857143,
+    "right": 0.9057142857142857,
+    "start": 0.1632142857142857,
+    "bend": [
+     0.001006036217303823,
+     0.0018414055763150004,
+     0.0,
+     -0.004542561491397417,
+     -0.006539235412474849
+    ],
+    "barlines": [
+     {
+      "x0": 0.281985,
+      "x1": 0.281985,
+      "kind": "single"
+     },
+     {
+      "x0": 0.35247142857142855,
+      "x1": 0.3553857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47574500000000003,
+      "x1": 0.47574500000000003,
+      "kind": "single"
+     },
+     {
+      "x0": 0.604295,
+      "x1": 0.604295,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6805800000000001,
+      "x1": 0.6805800000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7551749999999999,
+      "x1": 0.7551749999999999,
+      "kind": "single"
+     },
+     {
+      "x0": 0.828385,
+      "x1": 0.828385,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 3.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "I",
+     49
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     50
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     51
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     52
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     53
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     54
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     55
+    ],
+    [
+     "haydn-m-MH411",
+     "I",
+     56
+    ]
+   ],
+   "plain": false,
+   "measures": 7,
+   "bar_boxes": 8,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 6,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       49
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       53
+      ],
+      [
+       "haydn-m-MH411",
+       "I",
+       54
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "I",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 7
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 8
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 8
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.125
   },
   {
    "staff": "p2-7",
@@ -103985,6 +106027,439 @@
    "worst": 0.0
   },
   {
+   "staff": "p70-5",
+   "part": "va2",
+   "page": 70,
+   "system": {
+    "top": 0.5110663983903421,
+    "bottom": 0.545774647887324,
+    "left": 0.12714285714285714,
+    "right": 0.9089285714285714,
+    "start": 0.15035714285714286,
+    "bend": [
+     -0.007042253521126761,
+     -0.0017952100357245292,
+     -0.0009675399334784017,
+     0.0025150905432595573,
+     0.002012072434607646
+    ],
+    "barlines": [
+     {
+      "x0": 0.21258500000000002,
+      "x1": 0.21258500000000002,
+      "kind": "single"
+     },
+     {
+      "x0": 0.25865,
+      "x1": 0.25865,
+      "kind": "single"
+     },
+     {
+      "x0": 0.307525,
+      "x1": 0.307525,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3575,
+      "x1": 0.3575,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4097964285714286,
+      "x1": 0.411275,
+      "kind": "single"
+     },
+     {
+      "x0": 0.46983,
+      "x1": 0.46983,
+      "kind": "single"
+     },
+     {
+      "x0": 0.518495,
+      "x1": 0.518495,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5713357142857143,
+      "x1": 0.5733071428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6238660714285714,
+      "x1": 0.6275625,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6813910714285715,
+      "x1": 0.6836089285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7342482142857143,
+      "x1": 0.7364660714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.787844642857143,
+      "x1": 0.7885839285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.845475,
+      "x1": 0.845475,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9057017857142857,
+      "x1": 0.9064410714285713,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 2.0,
+    "part": "va2"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "haydn-m-MH411",
+     "VI",
+     71
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     72
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     73
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     74
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     75
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     76
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     77
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     78
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     79
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     80
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     81
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     82
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     83
+    ],
+    [
+     "haydn-m-MH411",
+     "VI",
+     84
+    ]
+   ],
+   "plain": false,
+   "measures": 13,
+   "bar_boxes": 14,
+   "right": null,
+   "irregular": [
+    "a bar line the reading missed"
+   ],
+   "steps": {
+    "one": 12,
+    "two": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       71
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       72
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       73
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       74
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       75
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       76
+      ],
+      [
+       "haydn-m-MH411",
+       "VI",
+       77
+      ]
+     ],
+     "count": 2,
+     "join": false,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       78
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       79
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       80
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       81
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       82
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       83
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "haydn-m-MH411",
+       "VI",
+       84
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.167
+  },
+  {
    "staff": "p70-6",
    "part": "va2",
    "page": 70,
@@ -116604,122 +119079,6 @@
    ]
   },
   {
-   "staff": "p23-3",
-   "part": "vn1",
-   "page": 23,
-   "why": [
-    "two at [['haydn-m-MH411', 'IV', 3], ['haydn-m-MH411', 'IV', 4]]"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "IV",
-     0
-    ],
-    [
-     "haydn-m-MH411",
-     "IV",
-     1
-    ],
-    [
-     "haydn-m-MH411",
-     "IV",
-     2
-    ],
-    [
-     "haydn-m-MH411",
-     "IV",
-     3
-    ],
-    [
-     "haydn-m-MH411",
-     "IV",
-     4
-    ],
-    [
-     "haydn-m-MH411",
-     "IV",
-     5
-    ]
-   ],
-   "steps": {
-    "one": 4,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "IV",
-       0
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "IV",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "IV",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "IV",
-       3
-      ],
-      [
-       "haydn-m-MH411",
-       "IV",
-       4
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "IV",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p23-7",
    "part": "vn1",
    "page": 23,
@@ -118695,7 +121054,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -119220,7 +121580,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -119403,7 +121764,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -119421,7 +121783,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -122492,7 +124855,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -122744,7 +125108,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -122800,7 +125165,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -122818,7 +125184,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": true
+     "ends_movement": true,
+     "two": true
     }
    ]
   },
@@ -123402,7 +125769,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     }
    ]
   },
@@ -123486,7 +125854,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -124766,248 +127135,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p45-5",
-   "part": "vn2",
-   "page": 45,
-   "why": [
-    "two at [['haydn-m-MH411', 'VI', 430], ['haydn-m-MH411', 'VI', 431]]"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "VI",
-     424
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     425
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     426
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     427
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     428
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     429
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     430
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     431
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     432
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     433
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     434
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     435
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     436
-    ]
-   ],
-   "steps": {
-    "one": 11,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       424
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       425
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       426
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       427
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       428
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       429
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       430
-      ],
-      [
-       "haydn-m-MH411",
-       "VI",
-       431
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       432
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       433
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       434
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       435
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       436
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   },
@@ -126873,516 +129000,6 @@
    ]
   },
   {
-   "staff": "p56-2",
-   "part": "va",
-   "page": 56,
-   "why": [
-    "two at [['haydn-m-MH411', 'VI', 38], ['haydn-m-MH411', 'VI', 39]]",
-    "13 measures, 14 bar boxes, an end not one bar"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "VI",
-     26
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     27
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     28
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     29
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     30
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     31
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     32
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     33
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     34
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     35
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     36
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     37
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     38
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     39
-    ]
-   ],
-   "steps": {
-    "one": 12,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       27
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       28
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       34
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       38
-      ],
-      [
-       "haydn-m-MH411",
-       "VI",
-       39
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p56-3",
-   "part": "va",
-   "page": 56,
-   "why": [
-    "staff before ends with two"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "VI",
-     40
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     41
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     42
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     43
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     44
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     45
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     46
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     47
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     48
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     49
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     50
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     51
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     52
-    ]
-   ],
-   "steps": {
-    "one": 13
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       41
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       42
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       43
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       44
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       45
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       46
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       47
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       48
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       49
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       50
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       51
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p56-9",
    "part": "va",
    "page": 56,
@@ -128114,7 +129731,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -128265,212 +129883,6 @@
        "haydn-m-MH411",
        "VI",
        200
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p57-5",
-   "part": "va",
-   "page": 57,
-   "why": [
-    "two at [['haydn-m-MH411', 'VI', 208], ['haydn-m-MH411', 'VI', 209]]"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "VI",
-     201
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     202
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     203
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     204
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     205
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     206
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     207
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     208
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     209
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     210
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     211
-    ]
-   ],
-   "steps": {
-    "one": 9,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       201
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       202
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       203
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       204
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       205
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       206
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       207
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       208
-      ],
-      [
-       "haydn-m-MH411",
-       "VI",
-       209
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       210
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       211
       ]
      ],
      "count": 1,
@@ -129095,7 +130507,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -130258,7 +131671,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -130670,158 +132084,6 @@
        "haydn-m-MH411",
        "I",
        38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p2-6",
-   "part": "vc",
-   "page": 2,
-   "why": [
-    "two at [['haydn-m-MH411', 'I', 53], ['haydn-m-MH411', 'I', 54]]"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "I",
-     49
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     50
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     51
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     52
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     53
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     54
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     55
-    ],
-    [
-     "haydn-m-MH411",
-     "I",
-     56
-    ]
-   ],
-   "steps": {
-    "one": 6,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       49
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       50
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       51
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       53
-      ],
-      [
-       "haydn-m-MH411",
-       "I",
-       54
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       55
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "I",
-       56
       ]
      ],
      "count": 1,
@@ -133928,7 +135190,6 @@
    "part": "vc",
    "page": 10,
    "why": [
-    "two at [['haydn-m-MH411', 'VI', 115], ['haydn-m-MH411', 'VI', 116]]",
     "more bar boxes than measures, the first narrow: part of a bar at its head dropped"
    ],
    "bars": [
@@ -134136,7 +135397,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -134498,7 +135760,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -138854,7 +140117,8 @@
      "count": 2,
      "join": false,
      "continues": false,
-     "ends_movement": false
+     "ends_movement": false,
+     "two": true
     },
     {
      "bars": [
@@ -139229,266 +140493,6 @@
        "haydn-m-MH411",
        "VI",
        26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p70-5",
-   "part": "va2",
-   "page": 70,
-   "why": [
-    "two at [['haydn-m-MH411', 'VI', 76], ['haydn-m-MH411', 'VI', 77]]"
-   ],
-   "bars": [
-    [
-     "haydn-m-MH411",
-     "VI",
-     71
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     72
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     73
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     74
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     75
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     76
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     77
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     78
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     79
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     80
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     81
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     82
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     83
-    ],
-    [
-     "haydn-m-MH411",
-     "VI",
-     84
-    ]
-   ],
-   "steps": {
-    "one": 12,
-    "two": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       71
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       72
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       73
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       74
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       75
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       76
-      ],
-      [
-       "haydn-m-MH411",
-       "VI",
-       77
-      ]
-     ],
-     "count": 2,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       78
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       79
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       80
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       81
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       82
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       83
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "haydn-m-MH411",
-       "VI",
-       84
       ]
      ],
      "count": 1,
