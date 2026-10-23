@@ -148,12 +148,14 @@ space. `du` still counts them twice.
   staff's line break cut where the two staves' readings fit the bar's
   halves best (autopair.py's "halves"), and each staff given its part of
   such a bar, or of a bar a repeat splits, by dataset.py (staff_boxes).
-  dataM5 4,371 staves (25,215 bars), against dataM4's 4,134 (23,900);
-  dataW4 1,206 (8,322), against 1,066 (7,415); dataP4 and dataG213-4 are
+  dataM5 4,469 staves (25,887 bars), against dataM4's 4,134 (23,900);
+  dataW4 1,226 (8,500), against 1,066 (7,415); dataP4 and dataG213-4 are
   dataP3 and dataG213-3 (the print's reading has no onsets to cut at;
   G. 213's MusicXML staves are labelled another way). See
-  `reports/2026-10-22-split-bars/` and `reports/2026-10-22-missed-bar-lines/`
-  (rebuilt in place for each). Not yet on Modal.
+  `reports/2026-10-22-split-bars/`, `reports/2026-10-22-missed-bar-lines/`
+  and `reports/2026-10-23-abbreviations/` (rebuilt in place for each; since
+  the last, labels carry stem-stroke tremolos). On Modal as trained for
+  musvit-D5 (before the abbreviations); not yet re-uploaded.
 - **`dataS4`:** 3,970 synthetic staves that change clef inside the staff
   (cello bass to tenor or treble and back, viola alto to treble), drawn by
   `experiments/synth/gen_clefs.py` (README there). List

@@ -4,6 +4,26 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-23: Abbreviated notes
+
+[Write-up](2026-10-23-abbreviations/)
+
+**Context.** The new data didn't make notes better; the editor wondered
+whether what didn't pair shares a systematic bias.
+
+**Question.** What do the staves put out for a measure unlike its bar
+have in common?
+
+**Finding.** Many are one bar where the copyist and Philhar's encoding
+abbreviate differently (six eighths, or a dotted half with a stroke); no
+label ever recorded the strokes. Labelling as the copyist wrote: +118
+staves, +850 bars, and 295 labels gain their strokes.
+
+**Why a report.** A bias in the training data, found and fixed.
+
+**What followed.** A rule keeping such staves on structure alone was tried
+and dropped. The next training run will be the first with stem strokes.
+
 ## 2026-10-23: musvit-D5
 
 [Write-up](2026-10-23-musvit-d5/)
