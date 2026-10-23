@@ -537,6 +537,7 @@ CLEF_FAR = 10.0       # ...and how far right of where they begin its heavy strok
 SHORT_SPAN = 0.5      # a staff measured under this share of the page's span is suspect
 PAST_MARGIN = 8.0     # spaces past a short staff's end before looking for its music there
 PAST_INK = 0.25       # music past the end: this share of the written staves' median ink
+NO_ROOM = 6.0         # spaces: a staff measured shorter has no room for a clef, let alone music
 LINE_END = 3.0        # spaces at a staff's right end (its ruling's last 1, and staff_extent's window) not read as music
 REACH_BACK = 12.0     # a staff reaches back over clef and key ink up to this far (spaces)...
 REACH_GAP = 4.0       # ...across gaps narrower than this
@@ -1106,6 +1107,15 @@ def detect_page(img: Image.Image, room: float | None = None, model: dict | None 
     written = [m[6] for m in sure if m[6] >= WRITTEN_INK]
     ink = float(np.median(written)) if written else 0.0
     for st, band, local, left, right, paper, inside in measured:
+        # A staff measured to almost nothing (under NO_ROOM spaces) takes the
+        # page's span outright: staff_extent stopped at once, and the music
+        # start, capped at its end, left a staff of no width, drawn as one bar
+        # (RES-507-16 p11, detected before 2026-10-22: a line ending mid-page,
+        # "Trio." before the clef, the facing page's edge). The trim below
+        # ends it where its music stops; an empty one is dropped.
+        if span and right - left < NO_ROOM * st["gap"]:
+            left, right = max(paper[0], span[0]), min(paper[1], span[1])
+            inside = inner_ink(band, local, left, right)
         # A staff measured under SHORT_SPAN of the page's span, with music
         # on past its ends, takes the span: staff_extent stopped early (the
         # trace off its lines, a few columns matched by chance; Paris and

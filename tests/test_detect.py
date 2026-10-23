@@ -27,6 +27,7 @@ EDITION = Path.home() / "Dropbox/Code/boccherini-opus-48/sources"
 PDF = Path(os.environ.get("KHM602", EDITION / "G226/D-B_KHM-602.pdf"))
 PDF603 = Path(os.environ.get("KHM603", EDITION / "G227/D-B_KHM-603.pdf"))
 KHM587 = Path.home() / "Dropbox/Code/boccherini-sources/digitizations/G213/463058700_D-B/463058700_D-B.pdf"
+RES507_16 = EDITION / "G229/F-Po_RES-507-16.pdf"
 OP32 = Path.home() / "Dropbox/Code/boccherini-quartet-data/manuscripts/Boccherini G.201-206 - Opus 32, complete - Manuscript.pdf"
 pytestmark = pytest.mark.skipif(not shutil.which("pdftoppm"), reason="pdftoppm not available")
 
@@ -200,3 +201,27 @@ def test_a_start_box_past_the_music_is_ignored(tmp_path):
     plain = detect.detect_page(img)
     told = detect.detect_page(img, ends=lambda st: {"left": 0.974 * w, "start": 0.998 * w})
     assert [(s["left"], s["start"]) for s in told] == [(s["left"], s["start"]) for s in plain]
+
+
+
+@needs(RES507_16)
+def test_no_staff_of_no_width(tmp_path, monkeypatch):
+    # RES-507-16 p11, detected before 2026-10-22, had three staves whose
+    # right end was their music start (a line ending mid-page, "Trio." before
+    # the clef, the facing page's edge), drawn as one bar. None now; and a
+    # staff measured to almost nothing takes the page's span, then ends where
+    # its music stops (the Minuet's last line, s4: a repeat sign at about 0.32),
+    # even where SHORT_SPAN's test for music past its end doesn't fire (off
+    # here: a sparse staff)
+    img = render(RES507_16, 11, tmp_path)
+    assert all(s["right"] - s["start"] > 0.05 for s in detect.detect_page(img))
+    extent, calls = detect.staff_extent, []
+
+    def short(band, local, paper=None):  # the fourth staff from the top measured 10 px long
+        left, right = extent(band, local, paper)
+        calls.append(1)
+        return (left, left + 10) if len(calls) == 4 else (left, right)
+    monkeypatch.setattr(detect, "staff_extent", short)
+    monkeypatch.setattr(detect, "PAST_INK", float("inf"))
+    s4 = next(s for s in detect.detect_page(img) if abs(s["top"] - 0.326) < 0.01)
+    assert 0.30 < s4["right"] < 0.42 and s4["right"] - s4["start"] > 0.1
