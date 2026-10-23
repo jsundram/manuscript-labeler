@@ -58,6 +58,11 @@ source named only by its PDF's file name that --trained-on doesn't list.
 Trained movements are named on stderr: the model has learned their reading,
 so it objects less there.
 
+`read` (a MuSViT reader only) gives the model's own reading of each staff
+instead, with each token's probability; with --against, each bar counted
+against our notes by compare.py's rules. `compare` counts two sets of our
+notes by the same rules. zeus-score/README.md describes both.
+
 --renders is where page renders are written and read (default the
 labeler's cache). The zeus-score package (zeus-score/) runs this file with
 a registry model's --model-name, --model-version and --trained-on.
@@ -260,6 +265,10 @@ class Zeus:
 
 def main(backend=None):
     backend = backend or Zeus
+    if sys.argv[1:2] == ["read"]:
+        return read_main(backend, sys.argv[2:])
+    if sys.argv[1:2] == ["compare"]:
+        return compare_main(sys.argv[2:])
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--pdf", type=Path, help="the manuscript")
     ap.add_argument("--bars", type=Path, help="its bar export from the labeler (default the PDF's .bars.json)")
@@ -368,6 +377,161 @@ def main(backend=None):
           f"({sum(bool(r['approximate']) for r in rows)} with approximate bars), left out {len(left_out)}")
 
 
+def source_args(ap) -> None:
+    """The manuscript and which of it: scoring's options, less the reading."""
+    ap.add_argument("--pdf", type=Path, help="the manuscript")
+    ap.add_argument("--bars", type=Path, help="its bar export from the labeler (default the PDF's .bars.json)")
+    ap.add_argument("--edition", type=Path, help="the Op. 48 edition: --source then finds the PDF and bar export")
+    ap.add_argument("--source", help="the source's name (default the PDF's); with --edition, its sources/G*/<source>")
+    ap.add_argument("--parts", nargs="+", help="default every part in the bar export")
+    ap.add_argument("--movements", nargs="+", help="default every movement in the bar export")
+
+
+def chosen_staves(a, export: dict) -> dict:
+    """{staff: its bar boxes} for --parts and --movements (every one in the
+    bar export by default), as compare.py takes them; sets a.movements."""
+    parts = a.parts or sorted({b["part"] for b in export["bars"]}, key=lambda p: (PARTS.index(p) if p in PARTS else len(PARTS), p))
+    if not a.movements:
+        a.movements = list(dict.fromkeys(b["movement"] for b in export["bars"] if b["part"] in parts))
+    staves: dict[str, list] = {}
+    for b in export["bars"]:
+        if b["part"] in parts and b["movement"] in a.movements:
+            staves.setdefault(b["system"], []).append(b)
+    return staves
+
+
+def bar_keys(staves: dict) -> tuple[set, set]:
+    """Every bar box's bar, and those with a clef change inside (where it
+    falls isn't known), which compare.py leaves uncompared."""
+    keys = {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs}
+    return keys, {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs if len(b["clefs"]) != 1}
+
+
+def notes_of(folder: Path, staves: dict) -> dict:
+    """{(part, movement, bar): encoded events} from DIR/<part>-<mvt>.json
+    (scoring's --events), for every part and movement the staves hold that
+    has a file."""
+    out = {}
+    for part, mvt in sorted({(b["part"], b["movement"]) for bs in staves.values() for b in bs}):
+        f = folder / f"{part}-{mvt}.json"
+        if f.exists():
+            for bar, evs in json.loads(f.read_text()).items():
+                out[(part, mvt, int(bar))] = compare.encoded(evs)
+    return out
+
+
+def bar_results(scored: dict) -> dict:
+    """The tally and rows of compare.score_bars or compare_notes, as written out."""
+    rows = [{k: r[k] for k in ("part", "movement", "bar", "exact", "rhythm", "pitch", "exact as written", "errors",
+                               "encoded", "zeus")} for r in scored["rows"]]
+    for r in rows:
+        r["ours"], r["read"] = r.pop("encoded"), r.pop("zeus")
+    return {"tally": {g: dict(t) for g, t in scored["tally"].items()}, "bars": rows}
+
+
+def labeler_commit(given: str | None) -> str | None:
+    if given is None and (LABELER / "tools" / "zeus_score.py").exists():  # a labeler checkout
+        head = subprocess.run(["git", "-C", str(LABELER), "rev-parse", "--short", "HEAD"], capture_output=True, text=True)
+        return head.stdout.strip() or None
+    return given
+
+
+def read_main(backend, argv: list[str]) -> None:
+    """`read`: the model's own reading of each staff, with each token's
+    probability; with --against, each bar counted against our notes by
+    compare.py's rules (the model card's)."""
+    ap = argparse.ArgumentParser(prog="zeus-score read", description=read_main.__doc__)
+    source_args(ap)
+    ap.add_argument("--against", type=Path, help="our notes, DIR/<part>-<mvt>.json (as scoring's --events), to count bars right")
+    ap.add_argument("--batch", type=int, default=1,
+                    help="staves read together, in order of width (1: each alone, so its reading doesn't depend on the others)")
+    ap.add_argument("--model", type=Path, default=MODEL)
+    ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--renders", type=Path, default=compare.RENDERS, help="where page renders are written and read")
+    ap.add_argument("--model-name")
+    ap.add_argument("--model-version")
+    ap.add_argument("--model-sha256")
+    ap.add_argument("--trained-on", type=json.loads)
+    ap.add_argument("--labeler-commit")
+    a = ap.parse_args(argv)
+    if not hasattr(backend, "read"):
+        sys.exit("zeus-score read: needs a MuSViT reader (a registry model whose engine is musvit)")
+    compare.RENDERS = a.renders
+    named = bool(a.source)
+    pdf, export, _, a.source = inputs(a, structure_needed=False)
+    staves = chosen_staves(a, export)
+
+    sids, jpegs, page = list(staves), [], None
+    for sid in sids:
+        s = export["systems"][sid]
+        if page is None or page[0] != s["page"]:
+            page = (s["page"], compare.page_image(pdf, s["page"]))
+        jpegs.append(staff_image(page[1], s))
+    model = backend(a.model)
+    read, decoding = model.read(jpegs, a.batch)
+
+    ours = notes_of(a.against, staves) if a.against else {}
+    scored = compare.score_bars(staves, {sid: " ".join(r["tokens"]) for sid, r in zip(sids, read)}, export, ours)
+    rows = []
+    for sid, r in zip(sids, read):
+        boxes, how = staves[sid], scored["pairing"][sid]
+        cuts = [k for k, t in enumerate(r["tokens"]) if t == "measure"]
+        measures = [r["tokens"][x:y] for x, y in zip([0] + cuts[1:], cuts[1:] + [len(r["tokens"])])] if cuts else [r["tokens"]]
+        lp = r["lp"]
+        rows.append({"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
+                     "bars": [[b["bar"], b["count"]] for b in boxes],
+                     "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
+                     "tokens": r["tokens"], "measures": measures,
+                     "paired": how is not None,
+                     "pairing": None if how is None else [{"bar": b["bar"], "count": b["count"], "how": kind, "measures": ms}
+                                                         for b, (kind, ms) in zip(boxes, how)],
+                     "ended": r["ended"], "lp": lp, "runner_up": r["runner_up"], "runner_up_lp": r["runner_up_lp"],
+                     "mean_lp": round(sum(lp) / len(lp), 4) if lp else None,
+                     "below_half": round(sum(x < -0.6931 for x in lp) / len(lp), 4) if lp else None})
+
+    model_info = {"name": a.model_name or a.model.name.removesuffix(".model"), "version": a.model_version,
+                  "sha256": a.model_sha256 or sha256(model.weights), "engine": model.engine}
+    out = {"format": 1, "command": "read", "model": model_info, "labeler_commit": labeler_commit(a.labeler_commit),
+           "decoding": decoding, "source": a.source, "movements": a.movements, "staves": rows}
+    if a.against:
+        out["against"] = {"notes": str(a.against), **bar_results(scored)}
+    learned = sorted({r["mvt"] for r in rows if r["trained"]})
+    if learned:
+        print(f"zeus_score: {model_info['name']} was trained on {a.source} {' '.join(learned)}: "
+              f"its reading there is of music it learned", file=sys.stderr)
+    a.out.parent.mkdir(parents=True, exist_ok=True)
+    a.out.write_text(json.dumps(out))
+    t = scored["tally"]["all"]
+    print(f"{a.source} {' '.join(a.movements)}: read {len(rows)} staves ({decoding['device']}, {decoding['precision']}, "
+          f"{decoding['batch']} at a time); {sum(not r['paired'] for r in rows)} whose measures don't pair with their "
+          f"bar boxes, {sum(not r['ended'] for r in rows)} that ran out of length"
+          + (f"; bars exact {t['bars exact']}/{t['bars']}" if a.against else ""))
+
+
+def compare_main(argv: list[str]) -> None:
+    """`compare`: two sets of our notes counted by compare.py's rules over
+    the bars a reading is compared on: --events against --against, taken as
+    right."""
+    ap = argparse.ArgumentParser(prog="zeus-score compare", description=compare_main.__doc__)
+    source_args(ap)
+    ap.add_argument("--events", type=Path, required=True, help="the notes to count, DIR/<part>-<mvt>.json")
+    ap.add_argument("--against", type=Path, required=True, help="the notes taken as right, DIR/<part>-<mvt>.json")
+    ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--labeler-commit")
+    a = ap.parse_args(argv)
+    _, export, _, a.source = inputs(a, structure_needed=False)
+    staves = chosen_staves(a, export)
+    keys, skip = bar_keys(staves)
+    scored = compare.compare_notes(keys, notes_of(a.events, staves), notes_of(a.against, staves), skip)
+    out = {"format": 1, "command": "compare", "labeler_commit": labeler_commit(a.labeler_commit), "source": a.source,
+           "movements": a.movements, "events": str(a.events), "against": str(a.against), **bar_results(scored)}
+    a.out.parent.mkdir(parents=True, exist_ok=True)
+    a.out.write_text(json.dumps(out))
+    t = scored["tally"]["all"]
+    print(f"{a.source} {' '.join(a.movements)}: bars exact {t['bars exact']}/{t['bars']}, "
+          f"{t['bars not compared']} not compared")
+
+
 def trained(trained_on: dict | None, source: str, named: bool, mvt: str) -> bool | None:
     """Was the model trained on this source's movement? None: not known."""
     if trained_on is None:
@@ -378,12 +542,13 @@ def trained(trained_on: dict | None, source: str, named: bool, mvt: str) -> bool
     return False if named else None
 
 
-def inputs(a) -> tuple[Path, dict, dict, str]:
+def inputs(a, structure_needed: bool = True) -> tuple[Path, dict, dict, str]:
     """The manuscript, its bar export, each movement's key and time, and the
     source's name: from --pdf, --bars and --structure, or, given --edition and
     --source, from the Op. 48 edition's layout (sources/G*/<source>.pdf and
-    .bars.json, Op48-<n>/Structure.ily); an explicit file wins."""
-    pdf, bars, struct = a.pdf, a.bars, a.structure
+    .bars.json, Op48-<n>/Structure.ily); an explicit file wins. Reading and
+    comparing don't need the key and time ({} then)."""
+    pdf, bars, struct = a.pdf, a.bars, getattr(a, "structure", None)
     if a.edition:
         if not a.source:
             sys.exit("zeus_score: --edition needs --source")
@@ -396,6 +561,8 @@ def inputs(a) -> tuple[Path, dict, dict, str]:
     if not bars.exists():
         sys.exit(f"zeus_score: no bar export {bars}")
     export = json.loads(bars.read_text())
+    if not structure_needed:
+        return pdf, export, {}, a.source or pdf.stem
     if struct is None and a.edition:
         struct = a.edition / f"Op48-{export['source']['gerard'] - 225}" / "Structure.ily"
     if struct is None:

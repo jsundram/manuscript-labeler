@@ -6,6 +6,14 @@ MuSViT reader (a registry entry's `engine`).
         [--bars M.bars.json] [--parts ...] [--movements ...] [--shifts 0 -1 1] \\
         [--model NAME[@VERSION] | --model PATH] [--renders DIR] [--cache DIR]
     zeus-score --edition DIR --source SRC ...   the Op. 48 edition's layout
+    zeus-score read --edition DIR --source SRC --out reading.json \\
+        [--movements ...] [--parts ...] [--against DIR] [--model NAME[@VERSION]]
+                                          a MuSViT reader's own reading of each staff,
+                                          with each token's probability; with
+                                          --against (our notes), each bar counted
+                                          as the model card counts it
+    zeus-score compare --edition DIR --source SRC --events A --against B --out FILE
+                                          two sets of our notes counted the same way
     zeus-score fetch [NAME[@VERSION]]     download a model (the default if none
                                           is named) and build the environment:
                                           the one step that needs the network
@@ -220,12 +228,26 @@ def cmd_models(argv: list[str]) -> int:
     return 0
 
 
+def cmd_compare(argv: list[str]) -> int:
+    """Two sets of notes compared: no model, in the default model's environment."""
+    eng = engine_of(find(None))
+    commit = labeler_commit()
+    code = uv(["compare", *argv, *(["--labeler-commit", commit] if commit else [])], offline=True, engine=eng)
+    if code and not env_built(eng).exists():
+        print("zeus-score: the scoring environment may not be built: run `zeus-score fetch` once, with the network",
+              file=sys.stderr)
+    return code
+
+
 def cmd_score(argv: list[str]) -> int:
+    """Scoring, and `read` (argv[0]): a model's run, in its engine's environment."""
     ap = argparse.ArgumentParser(prog="zeus-score", add_help=False)
     ap.add_argument("--model")
     ap.add_argument("--cache", type=Path, default=CACHE)
     ap.add_argument("-h", "--help", action="store_true")
     a, rest = ap.parse_known_args(argv)
+    if a.help and rest[:1] == ["read"]:
+        return uv([*rest, "--help"], offline=True, engine="musvit")
     if a.help:
         print(__doc__)
         print("The scoring options (tools/zeus_score.py's):\n", flush=True)
@@ -260,6 +282,8 @@ def main() -> None:
         sys.exit(cmd_fetch(argv[1:]))
     if argv and argv[0] == "models":
         sys.exit(cmd_models(argv[1:]))
+    if argv and argv[0] == "compare":
+        sys.exit(cmd_compare(argv[1:]))
     sys.exit(cmd_score(argv))
 
 

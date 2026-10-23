@@ -15,7 +15,9 @@ paired manuscripts were detected and paired again. The new staves are mostly
 other copyists' (Op. 32's, the Madrid copies', G. 213's three copies,
 Boccherini's trios and Campioni's Op. 7 from Philhar's site). On the clean
 test it gets 283 of 347 bars exact (82%), within the run-to-run noise of
-D4's 277 (a second run of D4's recipe gave 274). On a manuscript in a hand
+D4's 277 (a second run of D4's recipe gave 274). That was read 8 staves at a
+time on the Mac's GPU in half precision; `zeus-score read`'s default, one at
+a time on the CPU, also gives 283, with 6 of 66 staves read differently. On a manuscript in a hand
 and music none of its training had (Dresden Mus.3403, M. Haydn's MH 411,
 3,157 bars, labelled by pairing), 80.2% of bars are exact in notes and
 rhythm (D4 83.7%, its second run 81.6%), with a fifth of D4's beam errors

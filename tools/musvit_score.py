@@ -66,6 +66,29 @@ class Reader:
                             "best_lp": [round(float(lp[k, i]), 3) for k, i in enumerate(best)]})
         return out
 
+    def read(self, jpegs: list[bytes], batch: int) -> tuple[list[dict], dict]:
+        """The reader's own readings of the staves, greedy, `batch` at a time
+        in order of width (as in training; 1: each alone): per staff its
+        tokens, and per token and the end, its log-probability, the runner-up
+        and that one's; and how it was decoded."""
+        torch, v = self.torch, self.vocab
+        order = sorted(range(len(jpegs)), key=lambda k: proto.aspect((jpegs[k], [])))
+        out = [None] * len(jpegs)
+        for k in range(0, len(order), batch):
+            chunk = order[k: k + batch]
+            x, mask, _, _ = proto.batch([(jpegs[i], []) for i in chunk], v)
+            scores: list = []
+            with torch.no_grad():
+                mem = self.model.encode(x.to(self.device, self.dtype))
+                ids = self.model.read_cached(mem, mask.to(self.device), v[proto.BOS], v[proto.EOS], scores=scores)
+            for i, row, sc in zip(chunk, ids, scores):
+                out[i] = {"tokens": [self.inv[t] for t in row], "ended": len(sc) == len(row) + 1,
+                          "lp": [round(s[0], 3) for s in sc], "runner_up": [self.inv[s[1]] for s in sc],
+                          "runner_up_lp": [round(s[2], 3) for s in sc]}
+        precision = {torch.float16: "float16", torch.bfloat16: "bfloat16", torch.float32: "float32"}[self.dtype]
+        return out, {"method": "greedy", "beam": 1, "batch": batch, "batch_order": "by width",
+                     "device": self.device, "precision": precision, "max_tokens": proto.MAXLEN - 1}
+
 
 if __name__ == "__main__":
     engine.main(Reader)

@@ -30,7 +30,7 @@ earlier readers.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.4.1#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.5.0#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
@@ -48,13 +48,15 @@ is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.4.1#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.5.0#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 
 ## Commands
 
     zeus-score --pdf M.pdf --structure S.json --events DIR --out scores.json [options]
+    zeus-score read ... --out reading.json [--against DIR]   a MuSViT reader's own reading (below)
+    zeus-score compare ... --events A --against B --out FILE  two sets of notes counted the same way
     zeus-score fetch [NAME[@VERSION]]    a model (the default if none is named), and the environment
     zeus-score models [--json]           the registry: each model's version, licence, training data, accuracy
     zeus-score --help                    every option
@@ -237,6 +239,66 @@ Two refinements the edition makes (`scripts/differences.py`, `objections`):
   the note before.
 
 It also keeps only each bar's strongest objection of each kind.
+
+## A reader's own reading (`read`, `compare`)
+
+Since 1.5.0. Scoring asks how likely the model finds *your* notes; `read`
+asks what the model itself reads there. It needs a MuSViT reader.
+
+    zeus-score read --edition DIR --source SRC --movements I --out reading.json \
+        [--parts ...] [--against DIR] [--model NAME[@VERSION]] [--batch 1] [--renders DIR]
+    zeus-score compare --edition DIR --source SRC --movements I \
+        --events A --against B --out comparison.json
+
+`read` takes scoring's options, less `--events`, `--shifts` and
+`--structure` (`--pdf` and `--bars` work as there). Each staff is cut as for
+scoring and read greedily. `--batch` is how many staves are read together,
+in order of width. It defaults to 1, each staff alone, so a staff's reading
+doesn't depend on which others were read with it. The model card's numbers
+were read 8 at a time on the Mac's GPU; one at a time, on the CPU as in a
+sandbox, gives the same 283 of 347 on the clean test, with 6 of 66 staves
+read differently.
+
+Its output: `format` (1), `command` ("read"), `model`, `labeler_commit`,
+`source`, `movements`, and `decoding` (`method` "greedy", `beam`, `batch`,
+`batch_order`, `device`, `precision`, `max_tokens`). Readings differ a
+little by device and precision, so compare readings made the same way.
+Then per staff, in `staves`:
+
+- `sid`, `part`, `mvt`, `bars` and `trained`, as in the scores file;
+- `tokens`: the reading, LMX, and `measures`: the same split at each
+  `measure`;
+- `paired`, and `pairing`: per bar box, `bar`, `count`, `how` and the
+  `measures` it was made from. A reading can miss or add a bar line, read a
+  repeat-split bar whole, or run past the staff's end, so measures and
+  boxes don't always match one to one. `how` is "one" (one measure),
+  "merge" (two measures, an added bar line), "split" (one measure for two
+  boxes, a missed one), "whole" (a split bar read whole, all of it in its
+  first box), or "rests" (bar rests for an N-bar rest). The pairing is
+  compare.py's, made from the labels' time signatures only. `paired` is
+  false, and `pairing` null, where no pairing fits; that staff's bars
+  count as wrong;
+- `ended`: false if the reading ran out of length before it ended (a
+  runaway);
+- `lp`, `runner_up`, `runner_up_lp`: per token, and one more for the end,
+  its log-probability, the likeliest other token and that one's;
+- `mean_lp` and `below_half`: the mean of `lp`, and the share of `lp`
+  below a probability of 0.5. A staff the model fits poorly shows a lower
+  mean and a larger share.
+
+With `--against DIR` (your notes, as scoring's `--events`), `against` adds
+each bar counted as the model card counts it (`experiments/zeus/compare.py`):
+notes, rests, durations, dots and grace notes, pitches named in the labels'
+clef, accidentals apart, beams and slurs not compared. Per bar in `bars`:
+`part`, `movement`, `bar`, `exact`, `rhythm`, `pitch`, `exact as written`
+(in the reading's own clefs), `errors`, and both sides as text (`ours`,
+`read`). `tally` sums them for "all", each part and each movement. A bar
+with a clef change inside it isn't compared ("bars not compared").
+
+`compare` counts one set of your notes (`--events`) against another
+(`--against`, taken as right) by the same rules, over the same bars, with
+the same `tally` and `bars`. Use it to put another reading, such as a
+person's, on the same scale as the model's.
 
 ## The registry
 

@@ -336,11 +336,14 @@ class Reader(nn.Module):
         return out
 
     @torch.no_grad()
-    def read_cached(self, mem, mask, bos, eos, maxlen=MAXLEN):
+    def read_cached(self, mem, mask, bos, eos, maxlen=MAXLEN, scores: list | None = None):
         """The transformer decoder's greedy reading, one position a step: each
         layer keeps the keys and values of the image (made once) and of the
         symbols so far, so a symbol costs one position, not the whole
-        prefix. The same arithmetic as decode() (pre-norm layers), in eval."""
+        prefix. The same arithmetic as decode() (pre-norm layers), in eval.
+        `scores`, if given, gets each reading's (log-probability, runner-up,
+        its log-probability) per symbol written, the end (EOS) included; the
+        symbols chosen are the same either way."""
         import torch.nn.functional as F
         mask = self.fit_mask(mem, mask)
         b, d = mem.shape[0], mem.shape[-1]
@@ -359,6 +362,7 @@ class Reader(nn.Module):
                       heads(F.linear(mem, l.multihead_attn.in_proj_weight[2 * d:], l.multihead_attn.in_proj_bias[2 * d:])))
                      for l in layers]
         past = [[None, None] for _ in layers]
+        steps = []
         tok = torch.full((b,), bos, device=mem.device)
         ys, done = [], torch.zeros(b, dtype=torch.bool, device=mem.device)
         for t in range(maxlen - 1):
@@ -372,12 +376,23 @@ class Reader(nn.Module):
                     q = F.linear(l.norm2(h), l.multihead_attn.in_proj_weight[:d], l.multihead_attn.in_proj_bias[:d])
                     h = h + l.multihead_attn.out_proj(joined(F.scaled_dot_product_attention(heads(q), ck, cv, attn_mask=see)))
                     h = h + l.linear2(l.activation(l.linear1(l.norm3(h))))
-                tok = self.out(self.decoder.norm(h[:, 0])).argmax(-1)
+                logits = self.out(self.decoder.norm(h[:, 0]))
+                tok = logits.argmax(-1)
+            if scores is not None:
+                lp = torch.log_softmax(logits.float(), -1)
+                other = lp.scatter(-1, tok[:, None], float("-inf")).max(-1)
+                steps.append((lp.gather(-1, tok[:, None])[:, 0], other.indices, other.values))
             ys.append(tok)
             done |= tok == eos
             if done.all():
                 break
-        return [row[: row.index(eos)] if eos in row else row for row in torch.stack(ys, 1).tolist()]
+        rows = torch.stack(ys, 1).tolist()
+        if scores is not None:
+            got = [torch.stack(col, 1).tolist() for col in zip(*steps)]  # each (B, steps)
+            for k, row in enumerate(rows):
+                n = row.index(eos) + 1 if eos in row else len(row)
+                scores.append([(got[0][k][t], got[1][k][t], got[2][k][t]) for t in range(n)])
+        return [row[: row.index(eos)] if eos in row else row for row in rows]
 
 
 def load(run: str, file: str = "reader.pt"):

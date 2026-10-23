@@ -300,7 +300,7 @@ def bar_rest(ms: list[dict]) -> bool:
     return len(ms) == 1 and ms[0]["kind"] == "rest" and (ms[0]["bar_rest"] or ms[0]["dur_raw"] == "whole")
 
 
-def reconcile(measures: list[list[dict]], ends: list[Fraction], want: list[dict]):
+def reconcile(measures: list[list[dict]], ends: list[Fraction], want: list[dict], how: list | None = None):
     """Zeus's measures made one per bar box, where it read a different
     number, by their lengths against the time signature: a bar line it
     added (two measures, one box); one it missed (one measure, two boxes,
@@ -308,7 +308,8 @@ def reconcile(measures: list[list[dict]], ends: list[Fraction], want: list[dict]
     (one measure for both its boxes); an N-bar rest written as N bar rests;
     a stray measure dropped; whatever it read past the staff's last box (a
     runaway) dropped. None if no way gives every box a measure. Uses
-    nothing but the labels."""
+    nothing but the labels. `how`, if given, gets each box's way and the
+    measures it was made from: (kind, [measure index, ...])."""
     M, N = len(measures), len(want)
     rest = [bar_rest(ms) for ms in measures]
 
@@ -349,20 +350,26 @@ def reconcile(measures: list[list[dict]], ends: list[Fraction], want: list[dict]
     if not ends_at:
         return None
     i, j = min(ends_at)[1], N
-    out = []
+    out, made = [], []
     while (i, j) != (0, 0):
         kind, pi, pj = back[(i, j)]
         if kind in ("one", "rests"):
             out.append(measures[pi])
+            made.append((kind, list(range(pi, i))))
         elif kind == "merge":
             out.append(measures[pi] + measures[pi + 1])
+            made.append((kind, [pi, pi + 1]))
         elif kind == "whole":  # the bar is compared whole: all of it in its first box
             out += [[], measures[pi]]
+            made += [(kind, []), (kind, [pi])]
         elif kind == "split":
             cut = want[pj]["len"]
             out.append([e for e in measures[pi] if e["onset"] >= cut])
             out.append([e for e in measures[pi] if e["onset"] < cut])
+            made += [(kind, [pi]), (kind, [pi])]
         i, j = pi, pj
+    if how is not None:
+        how[:] = made[::-1]
     return out[::-1]
 
 
@@ -465,6 +472,155 @@ def what_differs(a: dict, b: dict) -> list[str]:
     return out
 
 
+def count_bar(tally: dict, key: tuple, enc: list[dict], zs: list[dict], ws: list[dict], clef_right: bool) -> dict:
+    """One bar compared: its row, and its counts added to the tally's "all",
+    its part's and its movement's. `ws` is the reading at the pitches it
+    wrote (in its own clefs)."""
+    part = key[0]
+    pairs = align(enc, zs)
+    rhythm = lambda es: [(e["kind"], e["dur"], e["dots"], e["grace"]) for e in es]
+    pitch = lambda es: [e["pitches"] for e in es if e["kind"] == "note"]
+    row = {"part": part, "movement": key[1], "bar": key[2], "encoded": " ".join(map(text, enc)),
+           "zeus": " ".join(map(text, zs)), "exact": len(enc) == len(zs) and all(map(same, enc, zs)),
+           "rhythm": rhythm(enc) == rhythm(zs), "pitch": pitch(enc) == pitch(zs), "errors": []}
+    row["exact as written"] = len(enc) == len(ws) and all(map(same, enc, ws))
+    row["clef right"] = clef_right
+    for g in ("all", part, key[1]):
+        t = tally[g]
+        t["bars"] += 1
+        t["bars exact"] += row["exact"]
+        t["bars exact as written"] += row["exact as written"]
+        t["bars right, clef apart"] += row["exact"] or row["exact as written"]
+        t["bars right in rhythm"] += row["rhythm"]
+        t["bars right in pitch"] += row["pitch"]
+        t["events"] += len(enc)
+    for i, j in pairs:
+        if i is None:
+            kinds = ["extra"]
+        elif j is None:
+            kinds = ["missed"]
+        elif same(enc[i], zs[j]):
+            kinds = ["right"]
+            if enc[i]["kind"] == "note":
+                for g in ("all", part, key[1]):
+                    tally[g]["notes right"] += 1
+                    tally[g]["accidental shown as encoded"] += enc[i]["acc"] == zs[j]["acc"]
+        else:
+            kinds = what_differs(enc[i], zs[j])
+        row["errors"] += [k for k in kinds if k != "right"]
+        for g in ("all", part, key[1]):
+            for k in kinds:
+                tally[g]["event: " + k] += 1
+    return row
+
+
+def compare_notes(keys, ours: dict, theirs: dict, skip=()) -> dict:
+    """Two sets of notes ({(part, movement, bar): encoded events}), as a
+    reading is compared with the encoding: `theirs` taken as right, over
+    the bars `keys`. Like score_bars, a bar in `skip` (a clef change inside
+    it) or not in `theirs` isn't compared, and a bar `ours` lacks counts as
+    wrong. The tally and rows as score_bars gives them."""
+    tally: dict[str, Counter] = defaultdict(Counter)
+    rows = []
+    for key in sorted(keys, key=lambda k: (k[1], k[0], k[2])):
+        if key in skip or key not in theirs:
+            for g in ("all", key[0], key[1]):
+                tally[g]["bars not compared"] += 1
+            continue
+        if key not in ours:
+            for g in ("all", key[0], key[1]):
+                tally[g]["bars"] += 1
+                tally[g]["bars unread"] += 1
+                tally[g]["events"] += len(theirs[key])
+                tally[g]["event: unread"] += len(theirs[key])
+            continue
+        rows.append(count_bar(tally, key, theirs[key], ours[key], ours[key], True))
+    return {"tally": tally, "rows": rows}
+
+
+def score_bars(staves: dict, readings: dict, export: dict, enc_bars: dict, as_read: bool = False) -> dict:
+    """Readings ({staff: LMX}) against the encoding ({(part, movement, bar):
+    encoded events}), bar by bar, as main() reports them: the tally (by
+    "all", part and movement), a row per bar compared, the staves whose
+    measures were made to pair with their boxes and those that couldn't
+    be, the clefs read, and each staff's pairing: per box, the way and the
+    measures it was made from (reconcile's `how`), or None if unpaired."""
+    # the time signature in force at each bar, from the labels
+    times, now = {}, {}
+    for b in export["bars"]:
+        pm = (b["part"], b["movement"])
+        now[pm] = b["signature"].get("time", now.get(pm, "4/4"))
+        times[(b["part"], b["movement"], b["bar"])] = now[pm]
+    all_boxes = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
+
+    # Zeus's events by bar (part, movement, number), where its measures pair with the boxes
+    zeus_bars: dict[tuple, list] = defaultdict(list)
+    written_bars: dict[tuple, list] = defaultdict(list)  # the same, at the pitches the reading wrote
+    clef_wrong: set = set()  # bars whose notes the reading put in a clef other than the labels'
+    clef_errors: Counter = Counter()  # (part, movement) -> runs of such bars, each one error
+    boxes_seen: Counter = Counter()
+    unpaired, reconciled, clef_read, pairing = [], [], Counter(), {}
+    for sid, boxes in staves.items():
+        ends: list = []
+        measures, clefs = parse(readings[sid], ends)
+        written = boxes[0]["clefs"][0] if boxes[0]["clefs"] else "?"
+        clef_read[(written, clefs[0] if clefs else "none")] += 1
+        if len(measures) != len(boxes):
+            how: list = []
+            made = None if as_read else reconcile(measures, ends, wanted(boxes, times, all_boxes), how)
+            if made is None:
+                unpaired.append((sid, boxes[0]["part"], len(boxes), len(measures)))
+                pairing[sid] = None
+                continue
+            reconciled.append((sid, boxes[0]["part"], len(boxes), len(measures)))
+            measures = made
+            pairing[sid] = how
+        else:
+            pairing[sid] = [("one", [k]) for k in range(len(boxes))]
+        in_wrong = False  # within a run of bars in the wrong clef
+        for b, ms in zip(boxes, measures):
+            key = (b["part"], b["movement"], b["bar"])
+            if len(b["clefs"]) != 1:  # a clef change inside the bar: where it falls isn't known
+                continue
+            boxes_seen[key] += 1
+            zeus_bars[key] += [zeus_event(e, b["clefs"][0]) for e in ms]
+            written_bars[key] += [zeus_event(e, e["zclef"] if e["zclef"] in MIDDLE else "G2") for e in ms]
+            notes = [e for e in ms if e["kind"] == "note"]
+            if not notes:  # a bar of rests says nothing about the clef
+                continue
+            wrong = any(MIDDLE.get(e["zclef"], "B4") != MIDDLE[b["clefs"][0]] for e in notes)
+            if wrong:
+                clef_wrong.add(key)
+                if not in_wrong:
+                    clef_errors[(b["part"], b["movement"])] += 1
+            in_wrong = wrong
+
+    # bars no reading could be compared on: a clef change inside the bar (where it falls isn't known)
+    clef_changes = {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs if len(b["clefs"]) != 1}
+    tally: dict[str, Counter] = defaultdict(Counter)
+    for (part, mvt), n in clef_errors.items():
+        for g in ("all", part, mvt):
+            tally[g]["clef errors"] += n
+    rows = []
+    for key, n in sorted(all_boxes.items(), key=lambda kv: (kv[0][1], kv[0][0], kv[0][2])):
+        part = key[0]
+        if key in clef_changes or key not in enc_bars:
+            for g in ("all", part, key[1]):
+                tally[g]["bars not compared"] += 1
+            continue
+        if boxes_seen[key] != n:  # Zeus's measures didn't pair with the boxes: a bar it didn't read
+            for g in ("all", part, key[1]):
+                tally[g]["bars"] += 1
+                tally[g]["bars unread"] += 1
+                tally[g]["events"] += len(enc_bars[key])
+                tally[g]["event: unread"] += len(enc_bars[key])
+            continue
+        rows.append(count_bar(tally, key, enc_bars[key], zeus_bars[key], written_bars[key], key not in clef_wrong))
+
+    return {"tally": tally, "rows": rows, "unpaired": unpaired, "reconciled": reconciled, "clef_read": clef_read,
+            "pairing": pairing}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("edition", type=Path)
@@ -505,51 +661,6 @@ def main():
     cache_file.parent.mkdir(exist_ok=True)
     cache_file.write_text(json.dumps(cache, indent=1, sort_keys=True))
 
-    # the time signature in force at each bar, from the labels
-    times, now = {}, {}
-    for b in export["bars"]:
-        pm = (b["part"], b["movement"])
-        now[pm] = b["signature"].get("time", now.get(pm, "4/4"))
-        times[(b["part"], b["movement"], b["bar"])] = now[pm]
-    all_boxes = Counter((b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs)
-
-    # Zeus's events by bar (part, movement, number), where its measures pair with the boxes
-    zeus_bars: dict[tuple, list] = defaultdict(list)
-    written_bars: dict[tuple, list] = defaultdict(list)  # the same, at the pitches the reading wrote
-    clef_wrong: set = set()  # bars whose notes the reading put in a clef other than the labels'
-    clef_errors: Counter = Counter()  # (part, movement) -> runs of such bars, each one error
-    boxes_seen: Counter = Counter()
-    unpaired, reconciled, clef_read = [], [], Counter()
-    for sid, boxes in staves.items():
-        ends: list = []
-        measures, clefs = parse(cache[keys[sid]], ends)
-        written = boxes[0]["clefs"][0] if boxes[0]["clefs"] else "?"
-        clef_read[(written, clefs[0] if clefs else "none")] += 1
-        if len(measures) != len(boxes):
-            made = None if a.as_read else reconcile(measures, ends, wanted(boxes, times, all_boxes))
-            if made is None:
-                unpaired.append((sid, boxes[0]["part"], len(boxes), len(measures)))
-                continue
-            reconciled.append((sid, boxes[0]["part"], len(boxes), len(measures)))
-            measures = made
-        in_wrong = False  # within a run of bars in the wrong clef
-        for b, ms in zip(boxes, measures):
-            key = (b["part"], b["movement"], b["bar"])
-            if len(b["clefs"]) != 1:  # a clef change inside the bar: where it falls isn't known
-                continue
-            boxes_seen[key] += 1
-            zeus_bars[key] += [zeus_event(e, b["clefs"][0]) for e in ms]
-            written_bars[key] += [zeus_event(e, e["zclef"] if e["zclef"] in MIDDLE else "G2") for e in ms]
-            notes = [e for e in ms if e["kind"] == "note"]
-            if not notes:  # a bar of rests says nothing about the clef
-                continue
-            wrong = any(MIDDLE.get(e["zclef"], "B4") != MIDDLE[b["clefs"][0]] for e in notes)
-            if wrong:
-                clef_wrong.add(key)
-                if not in_wrong:
-                    clef_errors[(b["part"], b["movement"])] += 1
-            in_wrong = wrong
-
     # the encoding
     enc_bars: dict[tuple, list] = {}
     for part, mvt in sorted({(b["part"], b["movement"]) for bs in staves.values() for b in bs}):
@@ -558,63 +669,8 @@ def main():
         for bar, evs in json.loads(r.stdout).items():
             enc_bars[(part, mvt, int(bar))] = encoded(evs)
 
-    # bars no reading could be compared on: a clef change inside the bar (where it falls isn't known)
-    clef_changes = {(b["part"], b["movement"], b["bar"]) for bs in staves.values() for b in bs if len(b["clefs"]) != 1}
-    tally: dict[str, Counter] = defaultdict(Counter)
-    for (part, mvt), n in clef_errors.items():
-        for g in ("all", part, mvt):
-            tally[g]["clef errors"] += n
-    rows = []
-    for key, n in sorted(all_boxes.items(), key=lambda kv: (kv[0][1], kv[0][0], kv[0][2])):
-        part = key[0]
-        if key in clef_changes or key not in enc_bars:
-            for g in ("all", part, key[1]):
-                tally[g]["bars not compared"] += 1
-            continue
-        if boxes_seen[key] != n:  # Zeus's measures didn't pair with the boxes: a bar it didn't read
-            for g in ("all", part, key[1]):
-                tally[g]["bars"] += 1
-                tally[g]["bars unread"] += 1
-                tally[g]["events"] += len(enc_bars[key])
-                tally[g]["event: unread"] += len(enc_bars[key])
-            continue
-        enc, zs = enc_bars[key], zeus_bars[key]
-        pairs = align(enc, zs)
-        rhythm = lambda es: [(e["kind"], e["dur"], e["dots"], e["grace"]) for e in es]
-        pitch = lambda es: [e["pitches"] for e in es if e["kind"] == "note"]
-        row = {"part": part, "movement": key[1], "bar": key[2], "encoded": " ".join(map(text, enc)),
-               "zeus": " ".join(map(text, zs)), "exact": len(enc) == len(zs) and all(map(same, enc, zs)),
-               "rhythm": rhythm(enc) == rhythm(zs), "pitch": pitch(enc) == pitch(zs), "errors": []}
-        ws = written_bars[key]
-        row["exact as written"] = len(enc) == len(ws) and all(map(same, enc, ws))
-        row["clef right"] = key not in clef_wrong
-        for g in ("all", part, key[1]):
-            t = tally[g]
-            t["bars"] += 1
-            t["bars exact"] += row["exact"]
-            t["bars exact as written"] += row["exact as written"]
-            t["bars right, clef apart"] += row["exact"] or row["exact as written"]
-            t["bars right in rhythm"] += row["rhythm"]
-            t["bars right in pitch"] += row["pitch"]
-            t["events"] += len(enc)
-        for i, j in pairs:
-            if i is None:
-                kinds = ["extra"]
-            elif j is None:
-                kinds = ["missed"]
-            elif same(enc[i], zs[j]):
-                kinds = ["right"]
-                if enc[i]["kind"] == "note":
-                    for g in ("all", part, key[1]):
-                        tally[g]["notes right"] += 1
-                        tally[g]["accidental shown as encoded"] += enc[i]["acc"] == zs[j]["acc"]
-            else:
-                kinds = what_differs(enc[i], zs[j])
-            row["errors"] += [k for k in kinds if k != "right"]
-            for g in ("all", part, key[1]):
-                for k in kinds:
-                    tally[g]["event: " + k] += 1
-        rows.append(row)
+    scored = score_bars(staves, {sid: cache[keys[sid]] for sid in staves}, export, enc_bars, a.as_read)
+    tally, rows, unpaired, reconciled, clef_read = (scored[k] for k in ("tally", "rows", "unpaired", "reconciled", "clef_read"))
 
     out = HERE / "results" / (f"{a.source}{'-' + '-'.join(a.movements) if a.movements else ''}-{a.model.name}"
                               f"{'-as-read' if a.as_read else ''}.json")
