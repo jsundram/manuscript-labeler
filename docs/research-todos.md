@@ -317,3 +317,118 @@ The flow:
 - **The change:** when a new manuscript's first pages are reviewed, start a short background fine-tune of YOLO26n from the existing weights. Then re-predict that manuscript's remaining pages and refresh the vote.
   - P7-4 suggests a handful of corrected pages gets most of the gain.
 - **To measure:** bar-line errors on the rest of the manuscript after one, two and five reviewed pages, against the stock weights. Also how long the fine-tune and re-prediction take on this Mac.
+
+## 15. Ideas from Legato 2
+
+*Added 22 Oct, from Yang, Zheng, Ebert and Smith, "LEGATO 2: Toward Multimodal Sheet Music Recognition and Understanding" ([arXiv 2607.05769](https://arxiv.org/abs/2607.05769), 7 Jul 2026).*
+
+> **Status, 22 Oct: not started.** The weights were requested on Hugging Face on 22 Oct and are waiting for approval.
+
+**What it is.**
+- A YOLOv8 finds each system on the page.
+- A vision-language model then reads the systems one at a time, in ABC:
+  - the image encoder is Llama-3.2-11B-Vision's, kept frozen;
+  - the decoder is smaller, trained from scratch (114M trainable parameters with the projection).
+- Each system's reading is conditioned on the ABC already written for the systems above it, cut to the last 1,024 tokens. Earlier images aren't used.
+- It was trained on synthetic printed pages only (PDMX-Synth). It has no handwriting in training or testing.
+- Results are page-level OMR-NED, against Audiveris:
+  - camera photos of OpenScore string quartets: 31.6 against 75.4;
+  - IMSLP piano scans: 34.2 against 71.5.
+- Reading system by system made its largest gain: on the camera quartets, Legato 1's 58.2 fell to 35.2.
+
+**Cautions from papers we've already read** (`docs/ismir2026-papers.md`):
+- **P12-5 ("Measure for Measure"):**
+  - A frozen Llama-Vision encoder did far worse than DINOv2 (38% MCR against about 6%).
+  - Their page-omr scored 6.38% MCR on the Sheet Music Benchmark, against LEGATO's 35.92%.
+  - Legato 2 doesn't compare itself with page-omr.
+- **P13-3 (OSSQ-OMR):** part-level input beat system-level, with no sign that the models used the other parts. That concerns parts read side by side, not the line before, so it doesn't rule out (a). It's still a reason to keep the hint small.
+
+### (a) The previous staff as a hint
+
+- **The idea:** put the previous staff's reading in front of the decoder, so it can carry the clef, key and time signature.
+- **Not the clef test again:** `experiments/zeus/clefread.py` forced Zeus to write only the labelled clef, and a wrong forced clef derailed the reading (item 7). Here the reader still reads the current clef freely. The hint is something it can learn to trust or ignore.
+- **What it can carry:** copyists rewrite the clef and key at every line, but not the time signature. So expect the gain mostly in time signatures and unclear clef shapes.
+- **Two variants:**
+  - the previous staff's whole reading, cut short as Legato 2 does;
+  - only the clef, key and time in force at its end.
+- **Training data:** staves are named by page and staff (`p3s4`), so the one before is easy to find. Some aren't kept, so there are gaps.
+- **Train on the reader's own readings of the previous staff**, not the encoding's, so training sees what reading will see.
+- **Test:** D1's recipe with and without the hint, scored on the clean test. It can't separate runs within about 4 points.
+
+### (b) Legato 2 on the printed test bed
+
+- **Where:** `experiments/print-omr`, Bärenreiter BA 2676 (4,140 encoded part-bars).
+- **How:** read its pages on Modal. Convert the ABC to MusicXML per page, which `readings.py` already reads for Audiveris.
+- **Measure:**
+  - bars exact alone (OSSQ reader 82.5%, Audiveris 61.0%);
+  - with the OSSQ reader: bars agreed, and the share right. Audiveris gives 60% of bars at 99.2%.
+  - whether it reads the cello's tenor clef, which the MuSViT readers miss and Audiveris gets.
+- **The open question:** Audiveris earns its place because its mistakes differ from MuSViT's. Legato 2 is also a neural reader trained on synthetic data, so its mistakes may not be independent.
+- **Run page-omr (P12-5) beside it.** It's the stronger printed-page reader on paper.
+
+### (c) Legato 2 as a manuscript reader
+
+- **First:** read the clean test as it is, after converting its ABC to compare.py's events.
+- **Then:** fine-tune it on our staves, with ABC targets converted from our encodings.
+- **The bar:** musvit-D3's 270 of 347.
+- **Check first:** its image tiling was built for whole systems. A staff is about 13 times wider than it is tall.
+
+### (d) A repetition penalty when reading
+
+- Legato 2 picks a repetition penalty (1.0, 1.1 or 1.2) and a beam size on its validation set.
+- Beam search didn't help us (`experiments/musvit/README.md`). A penalty might cut runaways.
+- It's a reading-time setting, so it can be tried on any saved model with no retraining. Score it on the practice exam.
+
+### (e) Train on jittered staff boxes
+
+- Legato 2 tested itself on deliberately damaged system boxes and stayed ahead of Audiveris (47.4).
+- **For us:** on new hands, detection is the limit (on Op. 32, staves landed wrong and thin bar lines were missed). Jittering each staff's crop edges in training may make the reader more forgiving.
+- It changes training, so run it alone against a run without it.
+
+### (f) Standard metrics for public tests
+
+- **OMR-NED** comes from the Sheet Music Benchmark paper (Martinez-Sevilla et al., ISMIR 2025, [arXiv 2506.10488](https://arxiv.org/abs/2506.10488)). Legato 2 and OSSQ-OMR report it.
+  - Report it on public tests (MusiCorpus test, OSSQ-OMR), so our numbers line up with the papers'.
+  - Use the paper's reworked musicdiff, not the stock one.
+- **MCR is the better second number** (P12-5, `mcr-metric`):
+  - It matched musicians' correction effort at ρ 0.64, against OMR-NED's 0.36.
+  - In OMR-NED, one wrong duration in mid-bar cost 15 operations.
+- **Keep bars exact for our decisions:**
+  - Pairing and the edition's flags work by the bar.
+  - Both metrics would count our encodings' conventions as errors: no stems, and tremolos written either way.
+
+## 16. Notation the training data leaves out, and drawn staves for what no set has
+
+Found on 2026-10-23 looking for a bias in the staves that didn't pair
+(reports/2026-10-23-abbreviations, reports/2026-10-23-musvit-d5). Each is a
+kind of notation the reader has never been taught, so it can't learn it from
+more of the same data. Bundle them, with the Op. 48 manuscripts below, into
+the next training run, two seeds (about $2).
+
+- **Multi-bar rests** (251 paired staves left out of the sets; dataset.py's
+  staff_boxes can't label one). The LMX vocabulary has a bar rest
+  (`rest:measure`) but no multi-bar rest with its number: decide how a label
+  writes one (N bar rests, or a new token with the reader's vocabulary
+  widened) before building.
+- **Clef changes within a staff** (182 left out: "Philhar's clef changes on
+  the staff"). LMX writes mid-staff clefs (the drawn clef-change staves,
+  dataS4, do); dataset.py would write the encoding's clef where it changes,
+  checked against the reading's clefs.
+- **A bar a repeat splits, read as one measure** (166 left out). The label
+  could be the whole bar with the repeat sign inside it, if LMX can write a
+  repeat bar line mid-measure; else leave out.
+- **Two-note tremolos** (`\repeat tremolo`, 15 passages in Philhar's files):
+  not recorded by philhar.py yet, unlike stem-stroke abbreviations.
+- **Drawn staves of figures no set has**, with experiments/synth's
+  copyist.py: first triplet 32nds after a 16th rest (no set's labels have a
+  triplet 32nd; musvit-D5 lost six clean-test bars on it, violin II
+  26–67). Find the others by comparing the clean test's and Dresden's
+  errors with the figures the training labels contain.
+- **Op. 48 No. 4 and No. 6 as training staves**: RES-507-16, Vma-1067-2 and
+  RES-507-18 are labelled, but their movements aren't encoded yet
+  (Op48-4/, Op48-6/ are the template). Once they are, build dataL3: the
+  edition's own hands, the most valuable staves.
+- **Bar-line detection on new hands** (reports/2026-10-23-bar-line-counts):
+  not more reviewed pages (flat from 27 to 111), but rules for stems that
+  cross the staff, and for the box count's open last box (a key change or
+  custos after the line's last bar line counted as a bar).
