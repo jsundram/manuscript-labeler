@@ -453,15 +453,20 @@ class LeftOut(Counter):
         (out / f"left_out.{name}.json").write_text(json.dumps(self.why, indent=1, sort_keys=True) + "\n")
 
 
+# the measures not one bar that a label can hold (autopair.py's "irregular")
+LABELLED = {"a bar a repeat splits", "a bar line the reading missed"}
+
+
 def labellable(k: dict) -> bool:
     """Whether a staff autopair.py kept can be labelled (staff_boxes): every
     measure one bar ("plain"), or the others a bar split across a line break
-    that the pairing cut ("halves") or a bar a repeat splits, each half its
-    own measure ("irregular"). A pairing from before autopair.py named its
+    that the pairing cut ("halves"), a bar a repeat splits, each half its
+    own measure, or two bars a measure holds where detection found the bar
+    line between them ("irregular": LABELLED). A pairing from before autopair.py named its
     irregular measures names none, and counts only if plain."""
     if k["plain"]:
         return True
-    return ("halves" in k or "irregular" in k) and set(k.get("irregular", [])) <= {"a bar a repeat splits"}
+    return ("halves" in k or "irregular" in k) and set(k.get("irregular", [])) <= LABELLED
 
 
 def staff_boxes(k: dict, part: str, mv: str, evs: dict, split_bars: set) -> tuple[list[dict] | None, dict | str]:
@@ -483,7 +488,10 @@ def staff_boxes(k: dict, part: str, mv: str, evs: dict, split_bars: set) -> tupl
     out, cuts = [], {}
     for i, m in enumerate(measures):
         if len(m["bars"]) != 1:
-            return None, "a multi-bar rest"
+            if not m.get("two"):
+                return None, "a multi-bar rest"
+            out += [box(b[-1], 1) for b in m["bars"]]  # two bars, a bar line the reading missed between
+            continue
         b = m["bars"][0][-1]
         if b in halves:
             cuts[b] = Fraction(halves[b]["cut"])
@@ -537,7 +545,7 @@ def pairs(a):
         # where the upbeat starts, box_events), each half labelled with its part of the bar; any other
         # measure not one bar (a multi-bar rest) leaves the staff out
         if not labellable(k):
-            left_out["; ".join(sorted(set(k.get("irregular", [])) - {"a bar a repeat splits"})) or "not plain"] += 1
+            left_out["; ".join(sorted(set(k.get("irregular", [])) - LABELLED)) or "not plain"] += 1
             continue
         if len(where) > 1:
             left_out["two movements"] += 1
@@ -560,7 +568,8 @@ def pairs(a):
             continue
         if a.min_pitch is not None and "bar_clefs" in k:
             # the encoding's notes the reading names right in the clef chosen (autopair.py's "bar_clefs")
-            n_notes = sum(1 for _, _, b in k["bars"] if b not in cuts  # (bar_clefs: the one-to-one bars)
+            twos = {b[-1] for m in k.get("boxes") or [] if m.get("two") for b in m["bars"]}
+            n_notes = sum(1 for _, _, b in k["bars"] if b not in cuts and b not in twos  # (bar_clefs: one-to-one bars)
                           for e in compare.encoded(evs.get(str(b), [])) if e["pitches"])
             hits = sum(h[k["clef"]] for h in k["bar_clefs"])
             if n_notes and hits / n_notes < a.min_pitch:

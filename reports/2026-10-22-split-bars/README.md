@@ -106,6 +106,20 @@ else (not a heading or a scrap of detection).
   quarters), Op. 22/6 Vmbr153 viola p36-2 (ends with II 14's first
   quarter). Tests: tests/test_split_bars.py.
 
+What the alignment did at each of the 9,914 line breaks (the paired
+manuscripts, D3S-h96's pairings, G. 213 aside; counted with a print
+added to autopair.py for one run, not committed):
+
+| at the break | breaks | share |
+|---|--:|--:|
+| a bar line: each staff's end measure one bar | 8,017 | 81% |
+| a bar crossing the line, split and cut | 564 | 6% |
+| one staff's measure the whole bar (it reads as the whole), the other's extra | 335 | 3% |
+| an extra measure beside a whole bar, no cut fitting | 272 | 3% |
+| a measure paired with two bars (a bar line the reader missed) | 465 | 5% |
+| a split on one side only, extras both sides, rests | ~250 | 3% |
+| re-cut (recut) | 9 | 0.1% |
+
 So most of the red staves are not bars that cross a line. What they are
 (second endings, headings read as measures, measures the reader merged)
 is the next question; detection's bar lines may tell a staff that ends
@@ -125,8 +139,9 @@ first run.
   the same, file for file.
 - **Sources paired six at a time** on the Mac's cores: the whole re-pair
   in 8.3 min with an empty cache, 5.7 min with it.
-- A faster pure-Python unlike gained only 23%; numba on it is the next
-  step if needed.
+- A faster pure-Python unlike gained only 23%; numba on it, and the
+  parallel pairer, came next: 3.6 min
+  ([Bar lines the reading missed](../2026-10-22-missed-bar-lines/)).
 
 ## Not done
 

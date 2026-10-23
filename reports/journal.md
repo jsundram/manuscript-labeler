@@ -4,6 +4,28 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-22: Bar lines the reading missed
+
+[Write-up](2026-10-22-missed-bar-lines/)
+
+**Context.** The line-break counts in the split-bar report showed 465
+breaks where a staff's end measure was paired with two bars; the editor
+asked for detection's bar lines to settle them, and for a faster re-pair
+(a parallel pairer, numba).
+
+**Question.** Where detection found the bar line the reader missed, can
+the staff and its neighbour be kept?
+
+**Finding.** Yes, but few qualify: +43 staves, +305 bars. On most such
+staves detection finds fewer bar lines than the reading, not more. A full
+re-pair takes 3.6 min, from 45.
+
+**Why a report.** The sets change again, and the speed-up changes how
+cheaply pairing ideas can be tried.
+
+**What followed.** Sets rebuilt in place. Better bar-line detection on
+these hands is the likely next lever for the red staves.
+
 ## 2026-10-22: Bars that cross a line
 
 [Write-up](2026-10-22-split-bars/)

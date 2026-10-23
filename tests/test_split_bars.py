@@ -117,3 +117,14 @@ def test_recut_not_a_whole_bar():
 def test_recut_not_into_a_staff_that_pairs_nothing():
     first_doubled = [note("C5", 0, "half"), note("E5", "1/2", "half")]
     assert recut(first_doubled, BAR5[2:], b_pairs_more=False)[0] == ("one", [0], [0])
+
+
+def test_a_bar_line_the_reading_missed():
+    """A measure paired with two bars, the bar line between them found by detection: a box for each bar."""
+    missed = "a bar line the reading missed"
+    two = {"bars": [["Op1-1", "I", 5], ["Op1-1", "I", 6]], "count": 2, "two": True}
+    k = kept([measure(4), two], irregular=[missed])
+    assert dataset.labellable(k)
+    boxes, cuts = dataset.staff_boxes(k, "vn1", "Op1-1", EVENTS, set())
+    assert [(b["bar"], b["count"]) for b in boxes] == [(4, 1), (5, 1), (6, 1)] and cuts == {}
+    assert not dataset.labellable(kept([measure(4), two], irregular=["a measure read as two bars"]))

@@ -63,6 +63,11 @@ half a bar the line breaks, whose other half this staff paired as the
 whole bar (G. 213, Berlin print, violin 1 p16-11/12, bar IV 129: the
 reading of the second half doubled it to a whole bar's length).
 
+A measure paired with two bars puts out neither, where detection found a
+bar box for every bar the staff's measures hold (its measures, and one
+more for each such measure): the reading missed a bar line detection
+found ("a bar line the reading missed"; the dataset labels each bar).
+
 With --neighbours-paired, a neighbour that paired none of its measures
 with a bar (an empty staff with a heading such as "Minuetto" or "Violino
 Primo", a title, a scrap of detection: read as one extra measure) puts no
@@ -397,7 +402,8 @@ def box_bars(path: list[tuple], bars: list[list[tuple]], breaks: set[int], uncou
             c = sum(b not in uncounted for b in bs) if each or k == payer else 0
             out[z] = {"bars": [list(b) for b in bs], "count": c, "join": step == "join",
                       "continues": step == "split" and k == 0 and z in breaks,
-                      "ends_movement": bool(set(bs) & ends) and k == len(zs) - 1}
+                      "ends_movement": bool(set(bs) & ends) and k == len(zs) - 1,
+                      **({"two": True} if step == "two" else {})}
     return out
 
 
@@ -579,6 +585,15 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
     uncounted = (musicxml_uncounted(a.musicxml, part) if a.musicxml
                  else {b for bs in bars for b in bs if b[-1] == 0})
     box = box_bars(path, bars, breaks, uncounted)
+    # a measure paired with two bars, on a staff where detection found a bar box for every bar the
+    # reading's measures hold (its measures, and one more for each such measure): a bar line the
+    # reading missed. The staff holds both bars, and the staff beside it lost none to it
+    twos = Counter(owner[zs[0]] for step, zs, js in path if step == "two" and all(len(bars[j]) == 1 for j in js))
+    n_measures, found_on = Counter(owner), {sid: boxes(s, aspect[n]) for sid, n, s in mine}
+    # (not with --musicxml: G. 213's merge takes a twin's one-bar pairing for a staff put out, and its
+    # dataset takes only one-bar measures)
+    seen = {sid for sid in twos if n_measures[sid] + twos[sid] == found_on[sid]} if not a.musicxml else set()
+    missed = lambda step, zs, js: step == "two" and owner[zs[0]] in seen and all(len(bars[j]) == 1 for j in js)
     for step, zs, js in path:
         if any(owner[z] in a.debug for z in zs):
             print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
@@ -612,6 +627,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 # one ("one"; "join" with --musicxml, two entries). Only the first can be labelled
                 # (dataset.staff_boxes)
                 what = ("a bar split across the line break that no cut fits" if at_break
+                        else "a bar line the reading missed" if missed(step, zs, js)
                         else "a multi-bar rest" if step == "rests" or any(len(bars[j]) > 1 for j in js)
                         else "a bar a repeat splits" if step == "split"
                         else "a bar a repeat splits, read as one measure" if step in ("one", "join")
@@ -625,9 +641,9 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                     halves_of[owner[z]].append({"bar": list(bars[js[0]][0]), "half": half, "cut": str(c), "fit": fit})
         for z in zs:
             held[owner[z]].update(b for j in js for b in bars[j])
-        if step in ("extra", "two"):
+        if step in ("extra", "two") and not missed(step, zs, js):
             out_(staves_here, f"{step} at {[list(bars[j][0]) for j in js] or 'none'}")
-        if step in ("one", "split", "join") and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
+        if (step in ("one", "split", "join") or missed(step, zs, js)) and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
             out_(staves_here, f"unlike {[list(bars[j][0]) for j in js]}")  # nothing like its bar: the pairing has slipped
         if step == "missed":
             # a bar no staff holds: the staves either side are suspect
@@ -656,9 +672,11 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
         paired_any = {o for z, o in enumerate(owner) if step_of[z][0] != "extra"}
         blank = lambda st: a.neighbours_paired and st not in paired_any
         for k in sorted(breaks):
-            if step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1]):
+            if (step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1])
+                    and not missed(step_of[k + 1][0], [k + 1], step_of[k + 1][1])):
                 out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
-            if step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k]):
+            if (step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k])
+                    and not missed(step_of[k][0], [k], step_of[k][1])):
                 out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
     if a.short_ends:
         # a staff's first or last measure paired with a whole bar but read much shorter than it:
@@ -707,7 +725,8 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
         cy = (s["top"] + s["bottom"]) / 2
         match = [t for t in truth.values() if t[0] == n and abs(t[1] - cy) < 0.015]
         t = match[0] if match else None
-        keep = count > 0 and sid not in bad and (count == found or (a.any_count and all(ends.get(sid, [False]))))
+        keep = count > 0 and sid not in bad and (count == found or sid in seen
+                                                 or (a.any_count and all(ends.get(sid, [False]))))
         got = held[sid]
         right = t is not None and got == t[2]
         tally["staves"] += 1
