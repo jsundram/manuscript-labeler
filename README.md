@@ -78,6 +78,10 @@ re-runs detection on the page and keeps your edits.
 - `static/`: the editor (plain HTML/JS/SVG, no build step).
 - `tools/score_barlines.py`: scores bar-line detection against your
   reviewed pages; run it before and after changing `detect.py`.
+- `tools/score_staves.py`: scores staff detection against your reviewed
+  pages (staves found, a line off, missed, extra; how sharp the lines come
+  out along the traced path); run it before and after changing how
+  `detect.py` finds or traces staves.
 - `tools/tune_barlines.py`: re-fits the bar-line thresholds to every
   reviewed page in an edition (`uv run tools/tune_barlines.py <edition>`).
 - `prototypes/`: scratch reading aids from the first hand transcription.
