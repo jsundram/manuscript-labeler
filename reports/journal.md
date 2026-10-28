@@ -4,6 +4,26 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-10-28: Staff tracing
+
+[Write-up](2026-10-28-staff-tracing/)
+
+**Context.** Flattening the curl out of the Harvard photographs needed a
+staff finder that follows a steep curl without slipping a line. Would its
+ideas help the labeler's?
+
+**Question.** Do they find more of the editors' staves, or follow the lines
+better, on the reviewed pages?
+
+**Finding.** Not here: every kept staff is already found and none is a line
+off. Two ideas did nothing; paying for changes of slope was mixed.
+
+**Why a report.** So the ideas aren't retried blind, and to say where they
+might pay: pages that curl, as the Harvard ones do.
+
+**What followed.** detect.py unchanged; tools/score_staves.py added as the
+baseline for the next change to staff finding.
+
 ## 2026-10-23: Abbreviated notes
 
 [Write-up](2026-10-23-abbreviations/)
