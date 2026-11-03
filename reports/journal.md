@@ -4,6 +4,28 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-03: Pairing recheck
+
+[Page](2026-11-03-pairing-recheck/)
+
+**Context.** The new pairing rules, found on Op. 48's answer key, kept 401
+more staves on the sources without labels, and those gained read worse.
+
+**Question.** Are the staves they gained right?
+
+**Finding.** Yes, as often as the rest: on 51 pages the editor fixed, 92%
+of kept staves have the right measures before and after, with 31 more kept.
+The pages the editor flagged gave two more rules (a repeat's first part read
+too long; a run-on bar the reader dropped) and showed what's left: the
+reader merging bars in dense passages and dropping the piece of a bar after
+the last bar line.
+
+**Why a report.** The fixed pages are the first answer key outside Op. 48;
+the scorer and the page say how to use them again.
+
+**What followed.** Both rules in autopair.py, every source re-paired. Next:
+read staves bar box by bar box; the score-system vote into detect.py.
+
 ## 2026-10-28: Staff tracing
 
 [Write-up](2026-10-28-staff-tracing/)

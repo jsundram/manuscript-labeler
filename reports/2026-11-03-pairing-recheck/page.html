@@ -1,0 +1,157 @@
+<meta charset="utf-8">
+<title>Pairing Recheck</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One column of cards: one staff each, the bars the pairing gave it, and one question. */
+:root {
+  --bg: #eef0ef; --paper: #fbfbf9; --fg: #1d2321; --muted: #5d6763; --rule: #cfd5d2;
+  --old: #8a6a2c; --old-bg: #f3ead6; --new: #1f6b62; --new-bg: #dcefeb;
+  --gain: #2c6a3f; --gain-bg: #dcefe0; --loss: #9a3b2f; --loss-bg: #f6e0dc;
+  --display: "Fraunces", Georgia, serif; --body: "IBM Plex Sans", system-ui, sans-serif; --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #161a19; --paper: #1f2422; --fg: #e3e8e5; --muted: #9aa6a1; --rule: #343c39;
+  --old: #d9b268; --old-bg: #3a3122; --new: #6fcabb; --new-bg: #1d3934;
+  --gain: #85cf9a; --gain-bg: #1f3826; --loss: #ee9b8c; --loss-bg: #432722; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #161a19; --paper: #1f2422; --fg: #e3e8e5; --muted: #9aa6a1; --rule: #343c39;
+  --old: #d9b268; --old-bg: #3a3122; --new: #6fcabb; --new-bg: #1d3934;
+  --gain: #85cf9a; --gain-bg: #1f3826; --loss: #ee9b8c; --loss-bg: #432722; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--body); }
+main { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 32px 64px; display: grid; gap: 28px; }
+h1 { font: 650 2rem/1.15 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 500 1.15rem/1.3 var(--display); margin: 0; text-wrap: balance; }
+p, ul { margin: 0; max-width: 72ch; }
+ul { padding-left: 1.2em; display: grid; gap: 4px; }
+header { display: grid; gap: 12px; }
+.lede { color: var(--muted); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: .9rem; }
+button { font: 500 .85rem var(--body); color: var(--fg); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
+button[aria-pressed="true"].ok { background: var(--gain-bg); border-color: var(--gain); color: var(--gain); }
+button[aria-pressed="true"].bad { background: var(--loss-bg); border-color: var(--loss); color: var(--loss); }
+button[aria-pressed="true"].unsure { background: var(--old-bg); border-color: var(--old); color: var(--old); }
+a { color: var(--new); }
+.card { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
+.head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.pill { font: 600 .72rem var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 99px; }
+.pill.gained { background: var(--gain-bg); color: var(--gain); }
+.pill.lost { background: var(--loss-bg); color: var(--loss); }
+.meta { color: var(--muted); font-size: .9rem; }
+.scroll { overflow-x: auto; }
+.scroll img { display: block; min-width: 640px; width: 100%; height: auto; border-radius: 4px; background: #fff; }
+.ask { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.ask .q { font-size: 1rem; }
+.bars { display: inline-flex; flex-wrap: wrap; gap: 4px; vertical-align: middle; }
+.chip { font: 500 .85rem/1 var(--mono); padding: 5px 7px; border-radius: 4px; white-space: nowrap; font-variant-numeric: tabular-nums; background: var(--new-bg); color: var(--new); }
+.chip.old { background: var(--old-bg); color: var(--old); }
+.verdict { display: flex; gap: 6px; margin-left: auto; }
+.history { font-size: .88rem; color: var(--muted); display: grid; gap: 2px; }
+.history b.in { color: var(--gain); font-weight: 600; }
+.history b.out { color: var(--loss); font-weight: 600; }
+textarea { width: 100%; box-sizing: border-box; font: .8rem var(--mono); background: var(--paper); color: var(--fg); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; }
+code { font: .85em var(--mono); }
+@media (max-width: 560px) { h1 { font-size: 1.55rem; } .verdict { margin-left: 0; } }
+</style>
+
+<main>
+  <header>
+    <h1>Pairing recheck</h1>
+    <p class="lede" id="lede"></p>
+    <p>Each card is <b>one staff</b> and <b>one question</b>: does this staff hold exactly these bars, in this order? Each box is one measure as the reader split it. <code>I 54 →</code> means the staff ends partway through bar 54. <code>I 53–54</code> means the reader read bars 53 and 54 as one measure.</p>
+    <ul>
+      <li><b>Gained</b> staves were left out before and are kept now. "Yes" means the new rules were right to keep it.</li>
+      <li><b>Lost</b> staves were kept before and are left out now. "Yes" means the new rules threw away a good staff.</li>
+    </ul>
+    <p class="lede">"Open in the labeler" goes to the page. It needs the labeler running on port 8050, with <code>--archive ~/Dropbox/Code/boccherini-sources</code> for archive sources. The labeler shows the new pairing.</p>
+    <div class="toolbar">
+      <span id="tally" class="meta"></span>
+      <button id="copy" type="button">Copy my verdicts</button>
+    </div>
+    <textarea id="out" rows="4" hidden readonly aria-label="Verdicts"></textarea>
+  </header>
+  <div id="cards" style="display:grid;gap:22px"></div>
+</main>
+
+<script>
+const DATA = /*DATA*/null;
+const KEY = 'pairing-recheck-verdicts-2';
+const WHY = {
+  'an end measure shorter than its bar': 'its first or last measure is shorter than the bar it was given. A bar split across the line break looks like this; the new rule accepts it when the staff across the break pairs cleanly',
+  'an end measure longer than its bar': 'its first or last measure is longer than the bar it was given. The new rule accepts it when the staff across the break pairs cleanly',
+  'below a mis-measured staff on its page': 'a staff above it on the same page was mis-measured, so the pairing distrusted the staves below it',
+  'mis-measured': 'its measured start or end doesn’t fit its music, for example music past the measured end',
+  'extra': 'the reader read a measure the score doesn’t have',
+};
+let verdicts = {};
+try { verdicts = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { verdicts = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(verdicts)); } catch {} };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const t = DATA.totals;
+const n = (k) => DATA.items.filter((i) => i.kind === k).length;
+document.getElementById('lede').textContent =
+  `On the sources outside Op. 48 (main reader only), the new pairing rules keep ${t.gained} staves the old rules left out, and drop ${t.lost} they kept. ` +
+  `There's no ground truth there, so here are ${n('gained')} of the gained and ${n('lost')} of the lost to check by eye.`;
+
+const chips = (ms, cls = '') => `<span class="bars">${ms.map((m) => `<span class="chip ${cls}">${esc(m)}</span>`).join('')}</span>`;
+const same = (a, b) => a && b && a.length === b.length && a.every((x, i) => x === b[i]);
+
+function history(it) {
+  const st = (d) => d.status === 'kept' ? '<b class="in">kept</b>' : '<b class="out">left out</b>';
+  const note = (it.kind === 'gained' ? it.old.why : it.new.why || [])?.[0] || '';
+  let s = `<div>Before: ${st(it.old)}. Now: ${st(it.new)}.</div>`;
+  s += `<div>${it.kind === 'gained' ? 'Left out before because' : 'Left out now because'} ${esc(WHY[it.reason] || it.reason)}.${note ? ` Pairing's note: <code>${esc(note)}</code>` : ''}</div>`;
+  const other = it.kind === 'gained' ? it.old.measures : it.new.measures;
+  const shown = it.kind === 'gained' ? it.new.measures : it.old.measures;
+  if (other && !same(other, shown)) s += `<div>${it.kind === 'gained' ? 'Before' : 'Now'}, it was given ${chips(other, 'old')}</div>`;
+  return s;
+}
+
+function card(it) {
+  const id = `${it.source}:${it.staff}`;
+  const v = verdicts[id];
+  const btn = (k, label) => `<button type="button" class="${k}" data-id="${esc(id)}" data-v="${k}" aria-pressed="${v === k}">${label}</button>`;
+  const ms = it.kind === 'gained' ? it.new.measures : it.old.measures;
+  return `<section class="card">
+    <div class="head">
+      <span class="pill ${it.kind}">${it.kind}</span>
+      <h2>${esc(it.work ? it.work + ' · ' : '')}${esc(it.part || '')}</h2>
+      <span class="meta">${esc(it.source)}, page ${it.page}, staff ${esc(it.staff)}</span>
+      <a href="${esc(it.link)}" target="_blank" rel="noopener">Open in the labeler</a>
+    </div>
+    <div class="scroll"><img src="${it.img.src}" width="${it.img.w}" height="${it.img.h}" alt="Staff ${esc(it.staff)}, page ${it.page}" loading="lazy"></div>
+    <div class="ask">
+      <span class="q">Does this staff hold exactly ${chips(ms || [])} ?</span>
+      <span class="verdict">${btn('ok', 'Yes')}${btn('bad', 'No')}${btn('unsure', 'Can’t tell')}</span>
+    </div>
+    <div class="history">${history(it)}</div>
+  </section>`;
+}
+
+const cards = document.getElementById('cards');
+cards.innerHTML = DATA.items.map(card).join('');
+function tally() {
+  const vs = DATA.items.map((i) => verdicts[`${i.source}:${i.staff}`]);
+  const c = (k) => vs.filter((v) => v === k).length;
+  document.getElementById('tally').textContent = `${c('ok')} yes, ${c('bad')} no, ${c('unsure')} can’t tell, ${vs.filter((v) => !v).length} to go`;
+}
+tally();
+cards.addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-v]');
+  if (!b) return;
+  const { id, v } = b.dataset;
+  verdicts[id] = verdicts[id] === v ? undefined : v;
+  save();
+  b.parentElement.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(verdicts[id] === x.dataset.v)));
+  tally();
+});
+document.getElementById('copy').addEventListener('click', () => {
+  const text = DATA.items.map((i) => `${i.kind} ${i.source} ${i.staff}: ${({ ok: 'yes', bad: 'no', unsure: "can't tell" })[verdicts[`${i.source}:${i.staff}`]] || '-'}`).join('\n');
+  const out = document.getElementById('out');
+  out.value = text; out.hidden = false;
+  navigator.clipboard?.writeText(text).then(() => { document.getElementById('copy').textContent = 'Copied'; }, () => { out.select(); });
+});
+</script>
