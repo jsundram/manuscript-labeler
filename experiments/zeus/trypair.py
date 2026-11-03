@@ -183,7 +183,7 @@ class Trier:
         lo, hi = max(0, at - WINDOW), min(len(staves), at + WINDOW + 1)
         mine = staves[lo:hi]
         # their readings: the batch's where the crop is the same, else read here
-        cache, lmx, crops, aspect, mis, todo = self.cache(source), {}, {}, {}, set(), {}
+        cache, lmx, crops, aspect, mis, todo = self.cache(source), {}, {}, {}, {}, {}
         pages = sorted({n for _, n, _ in mine})
         for n in pages:
             g = compare.page_image(pdf, n)

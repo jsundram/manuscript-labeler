@@ -82,6 +82,51 @@ half of a bar split across a line break, taken for the whole. With
 breaks read into the staff's first or last measure (found re-pairing
 Philhar's sources: Op. 2/2, D-Eu copy, p8-6 opens with the last four
 eighths of III 8, read as part of III 9).
+Neither, when the measure across the line break from it is one bar read
+as long as that bar: no piece of a bar the line breaks is there, so the
+length is a misread (a dot added, a half note read as a quarter) or half
+a bar a repeat splits. Of 12 staves Op. 48's sources put out so, all
+were right, and none came out wrong.
+
+Bars a double bar, "Fine" or the da capo's end cuts mid-bar count as
+bars a repeat splits: the next section's upbeat completes the bar before
+it (section_split_bars).
+
+Extra measures at a staff's end, after its pairing with a movement's last
+bar, are text read as music ("D.C. il Minuetto", "Dacapo il Menuetto
+fine") and count neither against the staff nor in its measures, when the
+part's next staff with notes starts on the next movement's first bar. A
+source longer than the encoding runs on in extras, and its next staff
+doesn't (Op. 48, 1067-4: without that test, 4 staves came out wrong).
+
+A measure the reading cut in two mid-staff (a bar line read at a clef
+change: RES 507-17 vc p18-4, I 36) pairs with its bar as a split when the
+pieces' lengths add up to the bar's and, joined, they read within 0.25 of
+it. Priced as a split (0.2), the alignment found cheaper wrong paths
+through the ends of 1067-2 and 1067-4, which run past the encoding; priced
+as a measure paired with two bars (0.6), it keeps 1 more staff of Op. 48's
+1,140 and none come out wrong. A measure paired with two bars is rarer than
+it looks: of Op. 48's 5, one was two bars read as one (its notes last both
+bars); two were a bar the reading never saw (its notes last one bar, and
+are that bar's), one cut off by the staff's measured end (507-18 p2-1).
+
+At a bar a repeat splits, the piece before the repeat may read as long as
+the whole bar (a dot too many: Op. 32 no. 2, vc I 24, its half and quarter
+read as a dotted half and a quarter, the upbeat after the repeat then an
+extra measure that put both staves out). The piece after it must still be
+shorter. On Op. 48: 8 more staves kept and right, one fewer wrong.
+
+A bar the line breaks whose first piece the reading has no measure for
+(run_ons): the staff's music runs on past its last bar line (detection's),
+its last measure paired with a whole bar and read about as long or longer,
+the next staff's first measure, paired with the next bar, read under 3/4 of
+it. The reader dropped the piece or read it into the measure before (G. 213,
+KHM 587 vn1 p14-8, p15-2), and the alignment took the rest for the whole
+bar. That measure becomes the bar's rest ("tail", cut where its reading
+fits the bar's end best) and the staff before holds the bar's first part, a
+box with no measure of the reading. On the editor's fixed pages of the
+sources without labels (51 pages, 333 staves), 2 more staves kept with the
+right measures and one fewer kept wrong; on Op. 48 it never applies.
 
 With --head-box, a staff is also put out when detection found more bar
 boxes on it than the reading has measures and its first box (from where
@@ -100,8 +145,13 @@ the page's median ends, at least 0.25 of the page's written staves' median
 ink). Its line
 holds more bars than its crop shows, and the alignment may hand them to the
 staves below (found on Op. 32's cello, p138: a fully written staff traced as
-a clef, whose bars went to the next two staves). A short staff with nothing
-past its ends (a movement ending mid-line) is left alone.
+a clef, whose bars went to the next two staves). That is only so when the
+ink is past its right end: ink only before its left end is a heading beside
+the page's first staff ("Quartettino 5°", a tempo), whose bars are all in
+its crop, so only that staff is put out (found on Op. 48, where the rule put
+out 20 staves read right below such headings: KHM 602, RES 507-14 and -17).
+A short staff with nothing past its ends (a movement ending mid-line) is left
+alone.
 
 The alignment may stray BAND (120) bars from the straight line through
 the part; at 60, Op. 32's long parts were held off their bars (vn1 pp.
@@ -142,6 +192,7 @@ staves whose bars the readers agree on.
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from collections import Counter, defaultdict
@@ -171,8 +222,12 @@ MAX_REST_RUN = 40  # bars a multi-bar rest may stand for
 SHORT = 0.5        # a staff measured under this share of its page's median width is short
 MIS_MARGIN = 8     # staff spaces past a short staff's measured end before looking for music there
 MIS_INK = 0.25     # music past the end: at least this share of the page's written staves' median ink
+LINE_STRETCH = 8   # staff spaces: music_ink finds the staff lines this far along at a time
+LINE_ROW = 0.6     # a row dark across this share of the stretch is a staff line
+PIECES_LIKE = 0.25  # two pieces that add up to a bar mid-staff pair with it only this near it
 UNLIKE = 0.75      # a measure further than this from its bar puts its staff out
-COST = {"split": 0.2, "rests": 0.1, "two": 0.6, "extra": 1.0, "missed": 1.0}
+RUN_ON = 0.75      # a staff's first measure under this share of its bar, music past the last bar line before: run_ons
+COST = {"split": 0.2, "pieces": 0.6, "rests": 0.1, "two": 0.6, "extra": 1.0, "missed": 1.0}
 
 
 # -- measures as compared ---------------------------------------------------------
@@ -252,13 +307,15 @@ def break_cut(z0: list[tuple], z1: list[tuple], evs: list[dict]) -> tuple[Fracti
     two measures, the end of one staff (z0) and the start of the next (z1).
     A grace note goes with the note it leads into. (cut, how unlike the
     halves are, on average), or None where no cut fits within BREAK_FIT or
-    the events have no onsets (a print's reading)."""
+    the events have no onsets (a print's reading). With z0 None (the reading
+    has no measure for the first piece: run_ons), by the second alone."""
     if not evs or any("onset" not in e for e in evs):
         return None
     best = None
     for c in sorted({e["onset"] for e in evs if not e["grace"]} - {min(e["onset"] for e in evs)}):
         first, second = [e for e in evs if e["onset"] < c], [e for e in evs if e["onset"] >= c]
-        fit = (unlike(z0, tokens(first, steps_enc)) + unlike(z1, tokens(second, steps_enc))) / 2
+        fit = (unlike(z1, tokens(second, steps_enc)) if z0 is None
+               else (unlike(z0, tokens(first, steps_enc)) + unlike(z1, tokens(second, steps_enc))) / 2)
         if best is None or fit < best[1]:
             best = (c, round(fit, 3))
     return best if best and best[1] <= BREAK_FIT else None
@@ -296,6 +353,38 @@ def recut(path: list[tuple], Z: list[list[tuple]], E: list[list[tuple]], E_raw: 
     return out
 
 
+def run_ons(path: list[tuple], Z: list[list[tuple]], E: list[list[tuple]], E_raw: list[list[dict]], breaks: set[int],
+            bars: list[list[tuple]], halves: set[int], owner: list[str], after: set[str]) -> tuple[list[tuple], dict]:
+    """The path with a bar the line breaks split where the reading has no
+    measure for its first piece: its staff's music runs on past its last bar
+    line (`after`, detection's), its last measure paired with a whole bar and
+    read about as long, or longer; the next staff's first measure, paired with
+    the next bar, reads much shorter than it. The reader dropped the piece, or
+    read it into the measure before (KHM 587 vn1 p14-8, p15-3), and the
+    alignment took the rest for the whole bar. That measure becomes the bar's
+    rest ("tail"), cut where break_cut finds its second part most like it.
+    Returns the path and {measure: (cut, fit)} for each tail."""
+    step_of = {z: (i, step, js) for i, (step, zs, js) in enumerate(path) for z in zs}
+    tails = {}
+    for k in sorted(breaks):
+        if owner[k] not in after or k not in step_of or k + 1 not in step_of:
+            continue
+        (_, s0, j0), (i1, s1, j1) = step_of[k], step_of[k + 1]
+        if s0 != "one" or s1 != "one" or len(path[i1][1]) != 1:
+            continue
+        j = j1[0]
+        if (j != j0[0] + 1 or len(bars[j]) != 1 or len(bars[j0[0]]) != 1 or j in halves
+                or bars[j][0][:-1] != bars[j0[0]][0][:-1]):
+            continue
+        if not (length(Z[k]) >= RUN_ON * length(E[j0[0]]) and 0 < length(Z[k + 1]) < RUN_ON * length(E[j])):
+            continue
+        cut = break_cut(None, Z[k + 1], E_raw[j])
+        if cut is not None:
+            path[i1] = ("tail", [k + 1], [j])
+            tails[k + 1] = cut
+    return path, tails
+
+
 def rest_bar(tok: list[tuple]) -> bool:
     return bool(tok) and all(t[0] == "rest" for t in tok) and any(t[1] == "bar" for t in tok)
 
@@ -320,7 +409,8 @@ def length(tok: list[tuple]) -> Fraction:
 def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: list[int],
           halves: set[int], band: int = BAND, joins: set[int] = frozenset(), alt: list | None = None) -> list[tuple]:
     """[(op, zeus indices, bar indices)] in order, by least cost. `breaks`:
-    the Zeus measures that end a staff, the only place a bar may split.
+    the Zeus measures that end a staff, where a bar may split freely
+    (elsewhere only into two pieces that add up to it).
     `spans`: the bars each entry of E stands for (a multi-bar rest, more than one).
     `halves`: the entries of E split by a repeat (Structure.ily), which
     may split anywhere. Neither half of a split may fill the bar alone.
@@ -367,9 +457,16 @@ def align(Z: list[list[tuple]], E: list[list[tuple]], breaks: set[int], spans: l
                 if rest_bar(Z[i]):
                     for k in range(2, min(rests_from[j], MAX_REST_RUN) + 1):
                         go(i + 1, j + k, COST["rests"], "rests")
-            if (i + 1 < n and j < m and (i in breaks or j in halves) and not (rest_bar(Z[i]) or rest_bar(Z[i + 1]))
-                    and zlen[i] < elen[j] and zlen[i + 1] < elen[j]):
-                go(i + 2, j + 1, near(joined(zi[i], zi[i + 1]), j) + COST["split"], "split")
+            # a bar split at a line break or a repeat; or anywhere, its two pieces adding up to it
+            # and joined as like it as a measure read whole ("split" too, priced as a "two")
+            # (before a repeat, the first piece may read as long as the bar: a dot too many, Op. 32 no. 2 vc I 24)
+            free = i in breaks or j in halves
+            first = i < n and j < m and (0 < zlen[i] <= elen[j] if j in halves else 0 < zlen[i] < elen[j])
+            if (i + 1 < n and j < m and (free or zlen[i] + zlen[i + 1] == elen[j])
+                    and not (rest_bar(Z[i]) or rest_bar(Z[i + 1])) and first and 0 < zlen[i + 1] < elen[j]):
+                d = near(joined(zi[i], zi[i + 1]), j)
+                if free or d <= PIECES_LIKE:
+                    go(i + 2, j + 1, d + COST["split" if free else "pieces"], "split")
             if i < n:
                 go(i + 1, j, COST["extra"], "extra")
             if j < m:
@@ -421,6 +518,15 @@ def boxes(s: dict, aspect: float) -> int:
     return len(xs) + (not xs or s["right"] - xs[-1] > 1.5 * gap)
 
 
+def music_after(s: dict, aspect: float) -> bool:
+    """Whether a staff runs on past its last bar line, as boxes() counts it:
+    more than 1.5 staff spaces of staff after it (detection ends a staff just
+    after its last bar line where the lines beyond are blank)."""
+    gap = (s["bottom"] - s["top"]) / 4 * aspect
+    xs = sorted((b["x0"] + b["x1"]) / 2 for b in s["barlines"] if (b["x0"] + b["x1"]) / 2 > s["start"] + gap)
+    return bool(xs) and s["right"] - xs[-1] > 1.5 * gap
+
+
 def head_box(s: dict, aspect: float) -> float:
     """A staff's first bar box (where the music starts to the first bar
     line, as boxes() finds them) as a share of its median box."""
@@ -449,30 +555,61 @@ def space_ink(g, s: dict, x0: float, x1: float) -> float:
     return hits / n if n else 0.0
 
 
-def mis_measured(g, on_page: list) -> set:
-    """The page's staves (id, system) measured short (under SHORT of the page's median width) though music
-    runs on past a measured end: between the lines from MIS_MARGIN staff spaces past its right end to the
-    page's median right (or from the median left to as far before its left end), at least MIS_INK of the
-    page's written staves' median ink (written: at least detect.WRITTEN_INK). The margin clears a movement's
-    closing bar line, repeat dots or "fine"; on 8 staves viewed, 0.25 parted the 5 mis-measured from the
-    movement ends (0.43 and up against 0.07-0.12), all but one whose slanting blank staff the flat bend
-    past its end drifts onto the lines of (Op. 2/1, G159 p23-7)."""
+def music_ink(g, s: dict, x0: float, x1: float) -> float:
+    """Share of dark pixels (< 120) off the staff lines, from half a space above a staff to half below, from
+    x0 to x1 (page fractions). The lines are found in the image, a stretch of LINE_STRETCH staff spaces at a
+    time: rows dark across at least LINE_ROW of it, and a row either side. space_ink's fixed rows, carried
+    on flat past a staff's measured end, drift onto the lines of a slanting blank staff after a movement's
+    end and read it as music (RES 507-16 va p15-3: 5 times a written staff's ink)."""
+    import labels
+    H, W = g.shape[:2]
+    gap = (s["bottom"] - s["top"]) / 4
+    wide = max(2, int(LINE_STRETCH * gap * H))
+    hits = n = 0
+    for xa in range(max(0, int(x0 * W)), min(W, int(x1 * W)), wide):
+        xb = min(xa + wide, int(x1 * W), W)
+        y0 = s["top"] + labels.bend_at(s, (xa + xb) / 2 / W)
+        ya, yb = max(0, int((y0 - gap / 2) * H)), min(H, int((y0 + 4.5 * gap) * H))
+        dark = g[ya:yb, xa:xb:2] < 120
+        if not dark.size:
+            continue
+        line = dark.mean(axis=1) >= LINE_ROW
+        line = line | np.roll(line, 1) | np.roll(line, -1)
+        hits += int(dark[~line].sum())
+        n += dark.size
+    return hits / n if n else 0.0
+
+
+def mis_measured(g, on_page: list) -> dict:
+    """{id: "right" or "left", the side the music runs on past}: the page's staves (id, system) measured
+    short (under SHORT of the page's median width) though music runs on past a measured end: off the lines
+    (music_ink) from MIS_MARGIN staff spaces past its right end to the page's median right (or from the
+    median left to as far before its left end), at least MIS_INK of the median music_ink of the page's
+    written staves (written: space_ink at least detect.WRITTEN_INK). The margin clears a movement's closing
+    bar line, repeat dots or "fine". Measured with space_ink, 75 staves were flagged across the editions;
+    of 21 viewed, 18 end a movement mid-line before blank staff, whose lines space_ink's flat rows drift
+    onto. music_ink puts 15 of those 18 under MIS_INK (0.00-0.24) and keeps the 3 with music past them
+    (0.38-0.55); still over it are blank staves with text across them (KHM 620 p10-9, "Segue Tempo di
+    Men:", 0.42), stains (Mus.ms.2861 p31-12, 0.29) or faint broken lines (Mus.3403 p20-5, 0.36)."""
     import statistics
     import detect
     if not on_page:
-        return set()
+        return {}
     lo = statistics.median(s["left"] for _, s in on_page)
     hi = statistics.median(s["right"] for _, s in on_page)
     med = statistics.median(s["right"] - s["left"] for _, s in on_page)
-    written = [v for v in (space_ink(g, s, s["left"], s["right"]) for _, s in on_page) if v >= detect.WRITTEN_INK]
+    written = [music_ink(g, s, s["left"], s["right"]) for _, s in on_page
+               if space_ink(g, s, s["left"], s["right"]) >= detect.WRITTEN_INK]
     ink = statistics.median(written) if written else 0.0
-    out = set()
+    out = {}
     H, W = g.shape[:2]
     for sid, s in on_page:
         past = MIS_MARGIN * (s["bottom"] - s["top"]) / 4 * H / W  # clear of a closing bar line, repeat dots, "fine"
-        if s["right"] - s["left"] < SHORT * med and ink and max(
-                space_ink(g, s, s["right"] + past, hi), space_ink(g, s, lo, s["left"] - past)) >= MIS_INK * ink:
-            out.add(sid)
+        if s["right"] - s["left"] < SHORT * med and ink:
+            if music_ink(g, s, s["right"] + past, hi) >= MIS_INK * ink:
+                out[sid] = "right"
+            elif music_ink(g, s, lo, s["left"] - past) >= MIS_INK * ink:
+                out[sid] = "left"
     return out
 
 
@@ -490,12 +627,37 @@ def truth_staves(export: dict) -> dict:
     return out
 
 
+SECTION_SIGNS = re.compile(r'\\bar\b|\\daCapoEnd\b|\\fine\b')
+
+
+def section_split_bars(text: str) -> set:
+    """{(movement, bar)}: bars a double bar, "Fine" or the da capo's end cuts mid-bar (Structure.ily), where
+    the next section's upbeat completes the bar before it: an entry of the encoding, written as two
+    measures, like a bar a repeat splits. Structure's segments end only at repeats (RES 507-16 vc p2-5: bar
+    I 52, a beat before "Fine" and the double bar and the upbeat after them, read as an extra measure and
+    the upbeat taken for the bar). Found by reading the skeleton up to each sign, its braces closed."""
+    import labels
+    music = labels._blank(text)
+    out = set()
+    for m in SECTION_SIGNS.finditer(music):
+        head = music[:m.start()]
+        depth = head.count("{") - head.count("}")
+        got = labels.parse_structure(head + "}" * depth)
+        if not got:
+            continue
+        mvt = list(got)[-1]
+        if got[mvt]["segments"] and got[mvt]["segments"][-1]["split"]:
+            out.add((mvt, got[mvt]["total"]))
+    return out
+
+
 def edition_encoding(edition: Path, quartet: str, movements: list[str], part: str):
     """The edition's bars for a part, all movements in order: ([bars each
     entry stands for, as (movement, bar)], [its events]), and the bars a
     repeat splits (Structure.ily)."""
-    split_bars = set()
-    for mvt, e in structure.expected((edition / quartet / "Structure.ily").read_text()).items():
+    text = (edition / quartet / "Structure.ily").read_text()
+    split_bars = section_split_bars(text)
+    for mvt, e in structure.expected(text).items():
         end = 0
         for seg in e["segments"]:
             end += seg["bars"]
@@ -550,7 +712,7 @@ def print_encoding(path: Path, part: str):
 
 
 def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set, a, aspect: dict,
-          mismeasured: set, truth: dict, export: dict | None) -> dict:
+          mismeasured: dict, truth: dict, export: dict | None) -> dict:
     """One part's staves paired with its encoding and judged: `mine`, its
     staves [(id, page, system)] in reading order; `lmx`, their readings by
     id; `blocks` and `split_bars`, its encoding (the *_encoding functions);
@@ -601,6 +763,12 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 written.add(js[0])
                 E[js[0]], E_raw[js[0]] = E_alt[js[0]], E_raw_alt[js[0]]
     path = recut(path, Z, E, E_raw, breaks, bars, halves, owner)
+    path, tails = run_ons(path, Z, E, E_raw, breaks, bars, halves, owner,
+                          {sid for sid, n, s in mine if music_after(s, aspect[n])})
+    # the staff a tail's bar runs on from: a box with no measure of the reading, the bar's first part
+    run_on_box = {owner[z - 1]: {"bars": [list(b) for b in bars[js[0]]], "count": 0, "join": False,
+                                 "continues": True, "ends_movement": False}
+                  for step, zs, js in path if step == "tail" for z in zs}
     written_of = defaultdict(set)  # staff -> the bars it holds written out
     for step, zs, js in path:
         for j in js:
@@ -625,6 +793,34 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
             print(owner[zs[0]], step, [" ".join(map(str, Z[z])) for z in zs], [bars[j] for j in js],
                   [round(unlike(Z[z], E[j]), 2) for z in zs for j in js])
 
+    # a staff's last measures after its pairing with a movement's last bar, none paired: a "D.C. il
+    # Minuetto" or "Dacapo il Menuetto fine" read as music (RES 507-16 vc p3-6, 1067-1 vn2 p12-7). No
+    # music is left for them to hold, so they count neither against the staff nor in its measures
+    last_of_mvt = {j for j in range(len(bars)) if j + 1 == len(bars) or bars[j + 1][0][:-1] != bars[j][-1][:-1]}
+    # So long as the next staff starts on the next movement's first bar: a source longer than the
+    # encoding (1067-4 vn1 p6-4: II 72 the encoding's last bar, 73-77 written on) runs on in extras
+    done, since = {}, defaultdict(list)  # staff -> the movement's last bar its pairing ends with; its extras since
+    step_at = {z: (step, js) for step, zs, js in path for z in zs}
+    for step, zs, js in path:
+        for z in zs:
+            if step != "extra":
+                done[owner[z]], since[owner[z]] = (js[-1] if js and js[-1] in last_of_mvt else None), []
+            elif done.get(owner[z]) is not None:
+                since[owner[z]].append(z)
+
+    # a blank staff: no measure paired, no note read (an empty staff after the movement, read as a rest:
+    # 507-16 vc p3-7). Staves of notes, none paired, are a source running on past the encoding (1067-4)
+    noted = {owner[z] for z in range(len(owner)) if step_at[z][0] != "extra" or any(e[0] == "note" for e in Z[z])}
+
+    def next_movement_begins(z, j):
+        nb = next((k for k in range(z + 1, len(owner)) if owner[k] in noted), None)
+        if nb is None:
+            return True
+        step, js = step_at[nb]
+        return step in ("one", "split") and js[0] == j + 1
+    trailing = {z for st, zs in since.items() if zs and done.get(st) is not None
+                and next_movement_begins(zs[-1], done[st]) for z in zs}
+
     # each staff's bars, and whether it holds up
     held = defaultdict(set)
     bad = set()
@@ -648,7 +844,15 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 plain[st] = False
             at_break = step == "split" and zs[0] in breaks and js[0] not in halves and len(bars[js[0]]) == 1
             cut = break_cut(Z[zs[0]], Z[zs[1]], E_raw[js[0]]) if at_break else None
-            if cut is None:
+            if step == "tail":
+                # the bar's first part on the staff before (run_ons), its rest here
+                c, fit = tails[zs[0]]
+                before = owner[zs[0] - 1]
+                plain[before] = False
+                held[before].update(bars[js[0]])
+                for st, half in ((before, "first"), (owner[zs[0]], "second")):
+                    halves_of[st].append({"bar": list(bars[js[0]][0]), "half": half, "cut": str(c), "fit": fit})
+            elif cut is None:
                 # a bar a repeat splits is one entry of E: its halves two measures ("split"), or read as
                 # one ("one"; "join" with --musicxml, two entries). Only the first can be labelled
                 # (dataset.staff_boxes)
@@ -667,7 +871,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                     halves_of[owner[z]].append({"bar": list(bars[js[0]][0]), "half": half, "cut": str(c), "fit": fit})
         for z in zs:
             held[owner[z]].update(b for j in js for b in bars[j])
-        if step in ("extra", "two") and not missed(step, zs, js):
+        if step in ("extra", "two") and not missed(step, zs, js) and not set(zs) <= trailing:
             out_(staves_here, f"{step} at {[list(bars[j][0]) for j in js] or 'none'}")
         if (step in ("one", "split", "join") or missed(step, zs, js)) and unlike(sum((Z[z] for z in zs), []), sum((E[j] for j in js), [])) > UNLIKE:
             out_(staves_here, f"unlike {[list(bars[j][0]) for j in js]}")  # nothing like its bar: the pairing has slipped
@@ -684,7 +888,9 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
     ends = {}
     for step, zs, js in path:
         for z in zs:
-            one = step in ("one", "join") and all(len(bars[j]) == 1 for j in js)
+            if z in trailing:
+                continue
+            one = step in ("one", "join", "tail") and all(len(bars[j]) == 1 for j in js)
             ends.setdefault(owner[z], [one, one])[1] = one
     if a.neighbours:
         # a staff's end measure that stands for more than one bar (two bars, or a bar rest for
@@ -701,9 +907,21 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
             if (step_of[k + 1][0] in ("two", "rests", "extra") and not blank(owner[k + 1])
                     and not missed(step_of[k + 1][0], [k + 1], step_of[k + 1][1])):
                 out_([owner[k]], f"next staff begins with {step_of[k + 1][0]}")
-            if (step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k])
+            if (step_of[k][0] in ("two", "rests", "extra") and not blank(owner[k]) and k not in trailing
                     and not missed(step_of[k][0], [k], step_of[k][1])):
                 out_([owner[k + 1]], f"staff before ends with {step_of[k][0]}")
+    def whole_across(z, z0, z1):
+        """Whether the measure across the line break from z (a staff's first, z0, or last, z1) is one
+        bar, read as long as it: then no piece of a bar the line breaks is there, and z's length is a
+        misread (a dot added, a half read as a quarter: RES 507-18 vn1 p3-2, vc p16-4), or half of a bar a
+        repeat splits (vc p16-1, II 8). A staff's first or last measure in the part has none."""
+        def whole(nb):
+            if not 0 <= nb < len(Z):
+                return True
+            step, js = step_of[nb]
+            return (step == "one" and len(bars[js[0]]) == 1 and js[0] not in halves
+                    and 0.75 * length(E[js[0]]) <= length(Z[nb]) <= 1.25 * length(E[js[0]]))
+        return (z != z0 or whole(z0 - 1)) and (z != z1 or whole(z1 + 1))
     if a.short_ends:
         # a staff's first or last measure paired with a whole bar but read much shorter than it:
         # half of a bar the line breaks (the other half on the staff beside it, taken as extra)
@@ -714,7 +932,8 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
         for o, (z0, z1) in ends_at.items():
             for z in {z0, z1}:
                 step, js = step_of[z]
-                if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]]):
+                if (step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) < 0.75 * length(E[js[0]])
+                        and not whole_across(z, z0, z1)):
                     out_([o], f"an end measure shorter than its bar {list(bars[js[0]][0])}")
     if a.long_ends:
         # a staff's first or last measure paired with a whole bar but read much longer than it: the
@@ -726,7 +945,9 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
         for o, (z0, z1) in ends_at.items():
             for z in {z0, z1}:
                 step, js = step_of[z]
-                if step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]]):
+                # (not where the bar after it runs on from this staff, its first part read into it: run_ons)
+                if (step == "one" and len(bars[js[0]]) == 1 and length(Z[z]) > 1.25 * length(E[js[0]])
+                        and not whole_across(z, z0, z1) and z + 1 not in tails):
                     out_([o], f"an end measure longer than its bar {list(bars[js[0]][0])}")
     first_bar = {}
     for step, zs, js in path:
@@ -735,16 +956,17 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 first_bar.setdefault(owner[z], bars[js[0]][0])
     # a mis-measured staff (mis_measured: measured short, music past its ends; staff_extent stopping
     # early, as on grey paper) holds less than its line, and the alignment may hand the rest of its bars
-    # to the staves below it in the part (Op32 vc p138): it, and every staff of the part below it on the
-    # page, is put out
+    # to the staves below it in the part (Op32 vc p138): it, and when its music runs on past its right
+    # end every staff of the part below it on the page, is put out (ink only before its left end is a
+    # heading beside the page's first staff, its bars all in its crop: RES 507-17 vn1 p2)
     for pg in sorted({n for _, n, _ in mine}):
-        tops = [s["top"] for sid, n, s in mine if n == pg and sid in mismeasured]
+        tops = [s["top"] for sid, n, s in mine if n == pg and mismeasured.get(sid) == "right"]
         for sid, n, s in mine:
-            if n == pg and tops and s["top"] >= min(tops):
+            if n == pg and (sid in mismeasured or tops and s["top"] >= min(tops)):
                 out_([sid], "mis-measured: measured under half its page's median width, music past its ends"
                      if sid in mismeasured else "below a mis-measured staff on its page")
     for sid, n, s in mine:
-        count = sum(1 for o in owner if o == sid)
+        count = sum(1 for z, o in enumerate(owner) if o == sid and z not in trailing) + (sid in run_on_box)
         found = boxes(s, aspect[n])
         if a.head_box and found > count and head_box(s, aspect[n]) < 0.6 and first_bar.get(sid, (0,))[-1] != 0:
             out_([sid], "more bar boxes than measures, the first narrow: part of a bar at its head dropped")
@@ -776,7 +998,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                 reasons.append(f"{count} measures, {found} bar boxes" + (", an end not one bar" if a.any_count else ""))
             not_kept.append({"staff": sid, "part": part, "page": n, "why": reasons, "bars": sorted(got),
                              "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
-                             "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box]})
+                             "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box] + ([run_on_box[sid]] if sid in run_on_box else [])})
             continue
         # the clef under which Zeus's notes name the encoding's pitches most often
         # (and bar by bar, for a clef the encoding doesn't have: "bar_clefs", each one-to-one
@@ -795,7 +1017,7 @@ def judge(part: str, mine: list[tuple], lmx: dict, blocks: list, split_bars: set
                      **({"irregular": sorted(other[sid])} if sid in other else {}),
                      **({"written_out": sorted(written_of[sid])} if written_of[sid] else {}),
                      "steps": dict(Counter(st for st, zs, _ in path if any(owner[z] == sid for z in zs))),
-                     "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box],
+                     "boxes": [box[z] for z, o in enumerate(owner) if o == sid and z in box] + ([run_on_box[sid]] if sid in run_on_box else []),
                      "bar_clefs": by_bar, "read_clefs": compare.parse(lmx[sid])[1],
                      "worst": round(max((unlike(Z[z], E[j]) for z, j in pairs[sid]), default=0.0), 3)})
         if t is not None and len(t[3]) == 1:
@@ -860,7 +1082,7 @@ def main():
             staves.append((f"p{n}-{k}", s.get("part", p["part"]), int(n), s))
     cache_file = HERE / "answers" / f"{a.source}-auto-{a.model.name}.json"
     cache = json.loads(cache_file.read_text()) if cache_file.exists() else {}
-    keys, crops, aspect, mismeasured = {}, {}, {}, set()
+    keys, crops, aspect, mismeasured = {}, {}, {}, {}
     by_page = defaultdict(list)
     for sid, _, n, s in staves:
         by_page[n].append((sid, s))

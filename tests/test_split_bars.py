@@ -1,7 +1,8 @@
 """experiments/zeus/dataset.py: which staves autopair.py kept can be
 labelled (labellable), and each staff's part of a bar split across a line
 break or by a repeat (staff_boxes, box_events); and autopair.py's re-cut
-of such a bar where the alignment paired it whole on one staff (recut)."""
+of such a bar where the alignment paired it whole on one staff (recut), or
+where the reading has no measure for its first piece (run_ons)."""
 
 import sys
 from fractions import Fraction
@@ -117,6 +118,36 @@ def test_recut_not_a_whole_bar():
 def test_recut_not_into_a_staff_that_pairs_nothing():
     first_doubled = [note("C5", 0, "half"), note("E5", "1/2", "half")]
     assert recut(first_doubled, BAR5[2:], b_pairs_more=False)[0] == ("one", [0], [0])
+
+
+# -- autopair.run_ons: a bar the line breaks, its first piece on staff A not read at all
+
+BAR7 = [note("D5", 0), note("F5", "1/4"), note("A5", "1/2"), note("C6", "3/4")]
+
+
+def run_ons(start_of_b, after=("A",)):
+    """Staff A ends with measure 0 (bar 5, read whole), its music running on
+    past its last bar line if A is in `after`; staff B opens with measure 1,
+    paired whole with bar 7."""
+    tok = lambda evs: autopair.tokens(evs, autopair.steps_enc)
+    Z = [tok(BAR5), tok(start_of_b)]
+    path = [("one", [0], [0]), ("one", [1], [1])]
+    return autopair.run_ons(path, Z, [tok(BAR5), tok(BAR7)], [BAR5, BAR7], {0}, [[("I", 5)], [("I", 7)]], set(),
+                            ["A", "B"], set(after))
+
+
+def test_run_on_a_bar_the_reading_dropped():
+    """B opens with the last half of bar 7, A runs on past its last bar line: B holds the bar's rest."""
+    path, tails = run_ons(BAR7[2:])
+    assert path == [("one", [0], [0]), ("tail", [1], [1])] and tails[1][0] == Fraction(1, 2)
+
+
+def test_run_on_not_without_music_after_the_last_bar_line():
+    assert run_ons(BAR7[2:], after=())[0][1] == ("one", [1], [1])
+
+
+def test_run_on_not_where_the_next_staff_opens_with_a_whole_bar():
+    assert run_ons(BAR7)[0][1] == ("one", [1], [1])
 
 
 def test_a_bar_line_the_reading_missed():
