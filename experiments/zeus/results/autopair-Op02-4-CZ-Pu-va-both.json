@@ -2084,6 +2084,109 @@
    ],
    "worst": 0.667,
    "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p4-6",
+   "part": "va",
+   "page": 4,
+   "system": {
+    "top": 0.717291857273559,
+    "bottom": 0.762580054894785,
+    "left": 0.08142857142857143,
+    "right": 0.78,
+    "start": 0.12607142857142858,
+    "bend": [
+     -0.0013723696248856359,
+     0.004359840917153735,
+     0.0006208338779244692,
+     -0.0018018186231491746,
+     -0.0009149130832570906
+    ],
+    "barlines": [
+     {
+      "x0": 0.2000357142857143,
+      "x1": 0.20710714285714285,
+      "kind": "single"
+     }
+    ],
+    "above": 4.5,
+    "below": 2.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op02-4",
+     "III",
+     31
+    ],
+    [
+     "Op02-4",
+     "III",
+     32
+    ]
+   ],
+   "plain": false,
+   "measures": 2,
+   "bar_boxes": 2,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op02-4",
+      "III",
+      31
+     ],
+     "half": "second",
+     "cut": "1/4",
+     "fit": 0.3
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "III",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
   }
  ],
  "not kept": [
@@ -2385,8 +2488,7 @@
    "part": "va",
    "page": 1,
    "why": [
-    "musvit-D3S-h96: unlike [['Op02-4', 'I', 31]]",
-    "musvit-D3S-h96: an end measure longer than its bar ['Op02-4', 'I', 26]"
+    "musvit-D3S-h96: unlike [['Op02-4', 'I', 31]]"
    ],
    "bars": [
     [
@@ -3238,8 +3340,7 @@
    "why": [
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 9]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 11]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'II', 12]]",
-    "musvit-D3S-h96: an end measure longer than its bar ['Op02-4', 'II', 8]"
+    "musvit-D3S-h96: unlike [['Op02-4', 'II', 12]]"
    ],
    "bars": [
     [
@@ -3849,8 +3950,7 @@
    "page": 4,
    "why": [
     "musvit-D3S-h96: unlike [['Op02-4', 'III', 21]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'III', 22]]",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'III', 23]"
+    "musvit-D3S-h96: unlike [['Op02-4', 'III', 22]]"
    ],
    "bars": [
     [
@@ -4531,7 +4631,8 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: extra at none"
+    "musvit-C4-bocch-tf8-L-best: extra at none",
+    "musvit-C4-bocch-tf8-L-best: 9 measures, 8 bar boxes, an end not one bar"
    ],
    "boxes": [
     {
@@ -4677,8 +4778,7 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: extra at none",
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op02-4', 'I', 85]"
+    "musvit-C4-bocch-tf8-L-best: extra at none"
    ],
    "boxes": [
     {
@@ -4860,54 +4960,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p4-6",
-   "part": "va",
-   "page": 4,
-   "bars": [
-    [
-     "Op02-4",
-     "III",
-     31
-    ],
-    [
-     "Op02-4",
-     "III",
-     32
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op02-4', 'III', 32]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "III",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "III",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   }

@@ -2,8 +2,8 @@
  "source": "Op22-6-Vmbr153-vn2",
  "tally": {
   "staves": 53,
-  "staves kept": 25,
-  "bars on kept staves": 134,
+  "staves kept": 26,
+  "bars on kept staves": 137,
   "kept, bar boxes as many": 15
  },
  "clefs": {},
@@ -242,6 +242,126 @@
     "G2"
    ],
    "worst": 0.75
+  },
+  {
+   "staff": "p34-17",
+   "part": "vn2",
+   "page": 34,
+   "system": {
+    "top": 0.5977808599167822,
+    "bottom": 0.6074895977808599,
+    "left": 0.10178571428571428,
+    "right": 0.9110714285714285,
+    "start": 0.11857142857142858,
+    "bend": [
+     0.0004623208506703652,
+     0.0013869625520110957,
+     0.0,
+     0.0009576646192458016,
+     0.0013869625520110957
+    ],
+    "barlines": [],
+    "above": 6.0,
+    "below": 2.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op22-6",
+     "I",
+     24
+    ],
+    [
+     "Op22-6",
+     "I",
+     25
+    ],
+    [
+     "Op22-6",
+     "I",
+     26
+    ]
+   ],
+   "plain": false,
+   "measures": 3,
+   "bar_boxes": 1,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op22-6",
+      "I",
+      24
+     ],
+     "half": "second",
+     "cut": "1/8",
+     "fit": 0.333
+    }
+   ],
+   "steps": {
+    "tail": 1,
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "I",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "I",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "I",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
   },
   {
    "staff": "p34-22",
@@ -5264,7 +5384,6 @@
    "part": "vn2",
    "page": 34,
    "why": [
-    "an end measure shorter than its bar ['Op22-6', 'I', 13]",
     "2 measures, 3 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -5492,8 +5611,7 @@
    "part": "vn2",
    "page": 34,
    "why": [
-    "unlike [['Op22-6', 'I', 19]]",
-    "an end measure shorter than its bar ['Op22-6', 'I', 20]"
+    "unlike [['Op22-6', 'I', 19]]"
    ],
    "bars": [
     [
@@ -5562,6 +5680,11 @@
      "Op22-6",
      "I",
      23
+    ],
+    [
+     "Op22-6",
+     "I",
+     24
     ]
    ],
    "steps": {
@@ -5606,37 +5729,7 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p34-17",
-   "part": "vn2",
-   "page": 34,
-   "why": [
-    "an end measure shorter than its bar ['Op22-6', 'I', 24]"
-   ],
-   "bars": [
-    [
-     "Op22-6",
-     "I",
-     24
-    ],
-    [
-     "Op22-6",
-     "I",
-     25
-    ],
-    [
-     "Op22-6",
-     "I",
-     26
-    ]
-   ],
-   "steps": {
-    "one": 3
-   },
-   "boxes": [
+    },
     {
      "bars": [
       [
@@ -5645,35 +5738,9 @@
        24
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "I",
-       25
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "I",
-       26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -5756,7 +5823,6 @@
    "why": [
     "extra at none",
     "unlike [['Op22-6', 'I', 30]]",
-    "an end measure shorter than its bar ['Op22-6', 'I', 30]",
     "3 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -6819,8 +6885,7 @@
    "part": "vn2",
    "page": 37,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['Op22-6', 'II', 126]"
+    "extra at none"
    ],
    "bars": [
     [

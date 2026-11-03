@@ -5711,6 +5711,136 @@
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
+   "staff": "p17-2",
+   "part": "vc",
+   "page": 17,
+   "system": {
+    "top": 0.24165120593692022,
+    "bottom": 0.28014842300556586,
+    "left": 0.10214285714285715,
+    "right": 0.9164285714285715,
+    "start": 0.14857142857142858,
+    "bend": [
+     0.0009276437847866419,
+     0.0013678012949150029,
+     0.0,
+     -0.0007335958502139174,
+     -0.002319109461966605
+    ],
+    "barlines": [
+     {
+      "x0": 0.4174125,
+      "x1": 0.41830178571428567,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7049125,
+      "x1": 0.7058017857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9111589285714286,
+      "x1": 0.9102696428571428,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "Op22-2",
+     "I",
+     35
+    ],
+    [
+     "Op22-2",
+     "I",
+     36
+    ],
+    [
+     "Op22-2",
+     "I",
+     37
+    ]
+   ],
+   "plain": true,
+   "measures": 3,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-2",
+       "I",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-2",
+       "I",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-2",
+       "I",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 16
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 9
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
    "staff": "p17-3",
    "part": "vc",
    "page": 17,
@@ -14968,6 +15098,114 @@
    "second_reader": "musvit-C4-bocch-tf8-L-best"
   },
   {
+   "staff": "p28-4",
+   "part": "vc",
+   "page": 28,
+   "system": {
+    "top": 0.5077211043518952,
+    "bottom": 0.5470285446888161,
+    "left": 0.11821428571428572,
+    "right": 0.9317857142857143,
+    "start": 0.16964285714285715,
+    "bend": [
+     0.004211511464670099,
+     0.0007472806623819023,
+     0.0007353432716091104,
+     -0.0014515867179815197,
+     -0.004679457182966776
+    ],
+    "barlines": [
+     {
+      "x0": 0.47686428571428574,
+      "x1": 0.4795642857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9261499999999999,
+      "x1": 0.9288500000000001,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "Op22-3",
+     "I",
+     8
+    ],
+    [
+     "Op22-3",
+     "I",
+     9
+    ]
+   ],
+   "plain": false,
+   "measures": 2,
+   "bar_boxes": 2,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "Op22-3",
+      "I",
+      8
+     ],
+     "half": "second",
+     "cut": "13/24",
+     "fit": 0.196
+    }
+   ],
+   "steps": {
+    "split": 1,
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 20
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.167,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
    "staff": "p28-5",
    "part": "vc",
    "page": 28,
@@ -23337,102 +23575,6 @@
    ]
   },
   {
-   "staff": "p29-4",
-   "part": "vc",
-   "page": 29,
-   "why": [
-    "musvit-D3S-h96: extra at none"
-   ],
-   "bars": [
-    [
-     "Op22-3",
-     "I",
-     22
-    ],
-    [
-     "Op22-3",
-     "I",
-     23
-    ],
-    [
-     "Op22-3",
-     "I",
-     24
-    ],
-    [
-     "Op22-3",
-     "I",
-     25
-    ]
-   ],
-   "steps": {
-    "split": 1,
-    "one": 3,
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       22
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       23
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       25
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
-    }
-   ]
-  },
-  {
    "staff": "p30-0",
    "part": "vc",
    "page": 30,
@@ -23788,73 +23930,6 @@
    ]
   },
   {
-   "staff": "p17-2",
-   "part": "vc",
-   "page": 17,
-   "bars": [
-    [
-     "Op22-2",
-     "I",
-     35
-    ],
-    [
-     "Op22-2",
-     "I",
-     36
-    ],
-    [
-     "Op22-2",
-     "I",
-     37
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 35]",
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-2', 'I', 37]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-2",
-       "I",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-2",
-       "I",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-2",
-       "I",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p19-8",
    "part": "vc",
    "page": 19,
@@ -23972,54 +24047,6 @@
      "join": false,
      "continues": false,
      "ends_movement": true
-    }
-   ]
-  },
-  {
-   "staff": "p28-4",
-   "part": "vc",
-   "page": 28,
-   "bars": [
-    [
-     "Op22-3",
-     "I",
-     8
-    ],
-    [
-     "Op22-3",
-     "I",
-     9
-    ]
-   ],
-   "why": [
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'I', 9]"
-   ],
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-3",
-       "I",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
     }
    ]
   },
@@ -24204,6 +24231,103 @@
    ]
   },
   {
+   "staff": "p29-4",
+   "part": "vc",
+   "page": 29,
+   "bars": [
+    [
+     "Op22-3",
+     "I",
+     22
+    ],
+    [
+     "Op22-3",
+     "I",
+     23
+    ],
+    [
+     "Op22-3",
+     "I",
+     24
+    ],
+    [
+     "Op22-3",
+     "I",
+     25
+    ]
+   ],
+   "why": [
+    "musvit-C4-bocch-tf8-L-best chose clef tenor"
+   ],
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       23
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-3",
+       "I",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ]
+  },
+  {
    "staff": "p32-2",
    "part": "vc",
    "page": 32,
@@ -24240,7 +24364,7 @@
     ]
    ],
    "why": [
-    "musvit-C4-bocch-tf8-L-best: an end measure shorter than its bar ['Op22-3', 'II', 132]"
+    "musvit-C4-bocch-tf8-L-best chose clef alto"
    ],
    "boxes": [
     {

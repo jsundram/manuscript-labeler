@@ -2,9 +2,9 @@
  "source": "US-R_M351.B664M",
  "tally": {
   "staves": 677,
-  "staves kept": 314,
-  "bars on kept staves": 1864,
-  "kept, bar boxes as many": 49
+  "staves kept": 345,
+  "bars on kept staves": 2066,
+  "kept, bar boxes as many": 55
  },
  "clefs": {},
  "kept but wrong": [],
@@ -814,12 +814,29 @@
      "boccherini-G83",
      "I",
      49
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     50
     ]
    ],
-   "plain": true,
-   "measures": 5,
+   "plain": false,
+   "measures": 6,
    "bar_boxes": 3,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G83",
+      "I",
+      50
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.286
+    }
+   ],
    "steps": {
     "one": 5
    },
@@ -888,6 +905,19 @@
      "join": false,
      "continues": false,
      "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       50
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
     }
    ],
    "bar_clefs": [
@@ -926,6 +956,246 @@
     "G2"
    ],
    "worst": 0.375
+  },
+  {
+   "staff": "p2-8",
+   "part": "vn1",
+   "page": 2,
+   "system": {
+    "top": 0.79478672985782,
+    "bottom": 0.8383886255924171,
+    "left": 0.07214285714285715,
+    "right": 0.9789285714285715,
+    "start": 0.10607142857142857,
+    "bend": [
+     0.002369668246445498,
+     0.0,
+     -0.0002563110552277739,
+     -0.0010869039558951631,
+     -0.005687203791469194
+    ],
+    "barlines": [],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G83",
+     "I",
+     50
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     51
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     52
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     53
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     54
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     55
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     56
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     57
+    ]
+   ],
+   "plain": false,
+   "measures": 8,
+   "bar_boxes": 1,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G83",
+      "I",
+      50
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.286
+    }
+   ],
+   "steps": {
+    "tail": 1,
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       50
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       51
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       57
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
   },
   {
    "staff": "p2-9",
@@ -1518,6 +1788,95 @@
    "worst": 0.15
   },
   {
+   "staff": "p3-7",
+   "part": "vn1",
+   "page": 3,
+   "system": {
+    "top": 0.6981042654028436,
+    "bottom": 0.7417061611374408,
+    "left": 0.025357142857142856,
+    "right": 0.4617857142857143,
+    "start": 0.07107142857142858,
+    "bend": [
+     -0.0014218009478672985,
+     -0.0018957345971563982,
+     -0.0018957345971563982,
+     -0.0018957345971563982,
+     -0.001595899023116316
+    ],
+    "barlines": [],
+    "above": 1.5,
+    "below": 4.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G83",
+     "I",
+     104
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     105
+    ]
+   ],
+   "plain": true,
+   "measures": 2,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       104
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       105
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.188
+  },
+  {
    "staff": "p4-1",
    "part": "vn1",
    "page": 4,
@@ -1653,108 +2012,6 @@
     "G2"
    ],
    "worst": 0.357
-  },
-  {
-   "staff": "p5-0",
-   "part": "vn1",
-   "page": 5,
-   "system": {
-    "top": 0.34312796208530805,
-    "bottom": 0.3872037914691943,
-    "left": 0.02892857142857143,
-    "right": 0.8167857142857143,
-    "start": 0.08357142857142857,
-    "bend": [
-     -0.0014218009478672985,
-     -0.0006311055227778227,
-     0.0,
-     0.0,
-     -0.005522777831511735
-    ],
-    "barlines": [
-     {
-      "x0": 0.28671964285714285,
-      "x1": 0.28970892857142855,
-      "kind": "single"
-     }
-    ],
-    "above": 4.0,
-    "below": 1.5,
-    "part": "vn1"
-   },
-   "clef": "treble",
-   "bars": [
-    [
-     "boccherini-G83",
-     "II",
-     13
-    ],
-    [
-     "boccherini-G83",
-     "II",
-     14
-    ]
-   ],
-   "plain": false,
-   "measures": 2,
-   "bar_boxes": 2,
-   "right": null,
-   "halves": [
-    {
-     "bar": [
-      "boccherini-G83",
-      "II",
-      13
-     ],
-     "half": "second",
-     "cut": "7/16",
-     "fit": 0.295
-    }
-   ],
-   "steps": {
-    "split": 1,
-    "one": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "II",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "II",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ],
-   "bar_clefs": [
-    {
-     "treble": 15,
-     "alto": 0,
-     "tenor": 0,
-     "bass": 0
-    }
-   ],
-   "read_clefs": [
-    "G2"
-   ],
-   "worst": 0.031
   },
   {
    "staff": "p6-0",
@@ -1968,6 +2225,149 @@
     "G2"
    ],
    "worst": 0.111
+  },
+  {
+   "staff": "p6-2",
+   "part": "vn1",
+   "page": 6,
+   "system": {
+    "top": 0.3014218009478673,
+    "bottom": 0.34454976303317536,
+    "left": 0.07714285714285714,
+    "right": 0.785,
+    "start": 0.12071428571428572,
+    "bend": [
+     0.00047393364928909954,
+     0.0006988103298191073,
+     0.0,
+     -0.0001958603346551715,
+     0.0
+    ],
+    "barlines": [
+     {
+      "x0": 0.43343000000000004,
+      "x1": 0.43343000000000004,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G83",
+     "III",
+     5
+    ],
+    [
+     "boccherini-G83",
+     "III",
+     6
+    ],
+    [
+     "boccherini-G83",
+     "III",
+     7
+    ],
+    [
+     "boccherini-G83",
+     "III",
+     8
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 2,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "III",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "III",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "III",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "III",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.333
   },
   {
    "staff": "p6-3",
@@ -7966,6 +8366,376 @@
    "worst": 0.0
   },
   {
+   "staff": "p14-5",
+   "part": "vn1",
+   "page": 14,
+   "system": {
+    "top": 0.5260663507109005,
+    "bottom": 0.5691943127962086,
+    "left": 0.061785714285714284,
+    "right": 0.9667857142857142,
+    "start": 0.10214285714285715,
+    "bend": [
+     -0.0009478672985781991,
+     -0.000684302156881743,
+     -4.3524518812308224e-05,
+     -0.0002974175452171522,
+     -0.0018957345971563982
+    ],
+    "barlines": [],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "I",
+     39
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     40
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     41
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     42
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     43
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     44
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     45
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       42
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       43
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       44
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
+  },
+  {
+   "staff": "p15-1",
+   "part": "vn1",
+   "page": 15,
+   "system": {
+    "top": 0.13507109004739337,
+    "bottom": 0.17819905213270143,
+    "left": 0.048928571428571425,
+    "right": 0.9310714285714285,
+    "start": 0.08571428571428572,
+    "bend": [
+     -0.002369668246445498,
+     -0.0022874552664667682,
+     0.0,
+     -0.0007326627333397764,
+     -0.005687203791469194
+    ],
+    "barlines": [],
+    "above": 3.0,
+    "below": 3.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "I",
+     84
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     85
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     86
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     87
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     88
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       84
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       85
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       86
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       87
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       88
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 4,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.615
+  },
+  {
    "staff": "p15-2",
    "part": "vn1",
    "page": 15,
@@ -10860,6 +11630,638 @@
    "worst": 0.125
   },
   {
+   "staff": "p18-7",
+   "part": "vn1",
+   "page": 18,
+   "system": {
+    "top": 0.6203791469194313,
+    "bottom": 0.6639810426540285,
+    "left": 0.060714285714285714,
+    "right": 0.9607142857142857,
+    "start": 0.09785714285714285,
+    "bend": [
+     0.0014218009478672985,
+     0.00029499951639422225,
+     0.0,
+     0.0,
+     -0.00047393364928909954
+    ],
+    "barlines": [
+     {
+      "x0": 0.6493714285714286,
+      "x1": 0.6513428571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9572928571428572,
+      "x1": 0.9566357142857143,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 2.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "III",
+     70
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     71
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     72
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     73
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     74
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     75
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     76
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     77
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     78
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     79
+    ]
+   ],
+   "plain": true,
+   "measures": 10,
+   "bar_boxes": 2,
+   "right": null,
+   "steps": {
+    "one": 10
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       70
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       71
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       72
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       73
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       74
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       75
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       76
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       77
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       78
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       79
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
+   "staff": "p18-8",
+   "part": "vn1",
+   "page": 18,
+   "system": {
+    "top": 0.7137440758293839,
+    "bottom": 0.7573459715639811,
+    "left": 0.06035714285714286,
+    "right": 0.9560714285714286,
+    "start": 0.09964285714285714,
+    "bend": [
+     0.0018957345971563982,
+     0.0,
+     -0.00034819615049814254,
+     6.286874939553239e-05,
+     0.00047393364928909954
+    ],
+    "barlines": [
+     {
+      "x0": 0.6733,
+      "x1": 0.6752714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7589285714285714,
+      "x1": 0.7589285714285714,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "III",
+     80
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     81
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     82
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     83
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     84
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     85
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     86
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     87
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     88
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     89
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     90
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     91
+    ]
+   ],
+   "plain": true,
+   "measures": 12,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 12
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       80
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       81
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       82
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       83
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       84
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       85
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       86
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       87
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       88
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       89
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       90
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       91
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.333
+  },
+  {
    "staff": "p18-9",
    "part": "vn1",
    "page": 18,
@@ -11989,6 +13391,394 @@
     "G2"
    ],
    "worst": 0.25
+  },
+  {
+   "staff": "p19-6",
+   "part": "vn1",
+   "page": 19,
+   "system": {
+    "top": 0.6132701421800948,
+    "bottom": 0.656872037914692,
+    "left": 0.04178571428571429,
+    "right": 0.9592857142857143,
+    "start": 0.09571428571428571,
+    "bend": [
+     -0.002369668246445498,
+     -0.0014218009478672985,
+     -0.00021520456523839565,
+     -0.0014218009478672985,
+     -0.002843601895734597
+    ],
+    "barlines": [
+     {
+      "x0": 0.4758,
+      "x1": 0.47777142857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9562071428571429,
+      "x1": 0.9552214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "III",
+     191
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     192
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     193
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     194
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     195
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     196
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     197
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     198
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     199
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     200
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     201
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     202
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     203
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     204
+    ]
+   ],
+   "plain": true,
+   "measures": 14,
+   "bar_boxes": 2,
+   "right": null,
+   "steps": {
+    "one": 14
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       191
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       192
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       193
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       194
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       195
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       196
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       197
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       198
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       199
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       200
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       201
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       202
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       203
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       204
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
   },
   {
    "staff": "p19-9",
@@ -14331,6 +16121,226 @@
     "G2"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p24-0",
+   "part": "vn1",
+   "page": 24,
+   "system": {
+    "top": 0.05829383886255924,
+    "bottom": 0.0938388625592417,
+    "left": 0.04964285714285714,
+    "right": 0.8685714285714285,
+    "start": 0.10678571428571429,
+    "bend": [
+     0.0,
+     0.0,
+     0.0,
+     0.0,
+     -7.254086468710404e-05
+    ],
+    "barlines": [
+     {
+      "x0": 0.27669642857142857,
+      "x1": 0.27830357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.36227678571428573,
+      "x1": 0.3620089285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 4.5,
+    "below": 4.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G85",
+     "III",
+     1
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     2
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     3
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     4
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     5
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     6
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     7
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
   },
   {
    "staff": "p24-1",
@@ -20423,6 +22433,130 @@
    "worst": 0.2
   },
   {
+   "staff": "p33-1",
+   "part": "vn1",
+   "page": 33,
+   "system": {
+    "top": 0.23412322274881517,
+    "bottom": 0.2777251184834123,
+    "left": 0.04642857142857143,
+    "right": 0.8253571428571429,
+    "start": 0.08571428571428572,
+    "bend": [
+     0.00047393364928909954,
+     -4.9569590869525365e-05,
+     0.00031434374697747333,
+     -0.0019719025050778565,
+     -0.006731792242963541
+    ],
+    "barlines": [
+     {
+      "x0": 0.23927999999999996,
+      "x1": 0.23927999999999996,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5025857142857143,
+      "x1": 0.5045571428571428,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 2.0,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G88",
+     "I",
+     45
+    ],
+    [
+     "boccherini-G88",
+     "I",
+     46
+    ],
+    [
+     "boccherini-G88",
+     "I",
+     47
+    ]
+   ],
+   "plain": true,
+   "measures": 3,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 3
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "I",
+       45
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "I",
+       46
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "I",
+       47
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 12,
+     "alto": 1,
+     "tenor": 1,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.333
+  },
+  {
    "staff": "p33-2",
    "part": "vn1",
    "page": 33,
@@ -21295,6 +23429,220 @@
     "G2"
    ],
    "worst": 0.571
+  },
+  {
+   "staff": "p34-5",
+   "part": "vn1",
+   "page": 34,
+   "system": {
+    "top": 0.5175355450236967,
+    "bottom": 0.5616113744075829,
+    "left": 0.046785714285714285,
+    "right": 0.96,
+    "start": 0.08642857142857142,
+    "bend": [
+     0.0014218009478672985,
+     -0.0009829287165102525,
+     9.188509527036861e-05,
+     5.682367733820748e-05,
+     0.0009478672985781991
+    ],
+    "barlines": [
+     {
+      "x0": 0.18639999999999998,
+      "x1": 0.1903857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47328928571428575,
+      "x1": 0.4752821428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8052910714285715,
+      "x1": 0.8082803571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8832892857142858,
+      "x1": 0.8852821428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.956795,
+      "x1": 0.956795,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 1.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G88",
+     "II",
+     35
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     36
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     37
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     38
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     39
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     40
+    ]
+   ],
+   "plain": false,
+   "measures": 6,
+   "bar_boxes": 5,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 12,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
   },
   {
    "staff": "p34-9",
@@ -23115,6 +25463,189 @@
     "G2"
    ],
    "worst": 0.625
+  },
+  {
+   "staff": "p36-2",
+   "part": "vn1",
+   "page": 36,
+   "system": {
+    "top": 0.3412322274881517,
+    "bottom": 0.381042654028436,
+    "left": 0.07642857142857143,
+    "right": 0.9682142857142857,
+    "start": 0.1125,
+    "bend": [
+     0.0009478672985781991,
+     -0.00047393364928909954,
+     0.0009478672985781991,
+     0.0009478672985781991,
+     -0.00047393364928909954
+    ],
+    "barlines": [
+     {
+      "x0": 0.6838357142857143,
+      "x1": 0.6847357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9647071428571428,
+      "x1": 0.9635071428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 2.5,
+    "part": "vn1"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G88",
+     "III",
+     5
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     6
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     7
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     8
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     9
+    ]
+   ],
+   "plain": false,
+   "measures": 6,
+   "bar_boxes": 2,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits"
+   ],
+   "steps": {
+    "one": 4,
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       8
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.2
   },
   {
    "staff": "p36-3",
@@ -25600,6 +28131,197 @@
     "G2"
    ],
    "worst": 0.125
+  },
+  {
+   "staff": "p40-4",
+   "part": "vn2",
+   "page": 40,
+   "system": {
+    "top": 0.4126534466477809,
+    "bottom": 0.45703493862134087,
+    "left": 0.029285714285714286,
+    "right": 0.9439285714285715,
+    "start": 0.08857142857142856,
+    "bend": [
+     0.0009442870632672333,
+     -0.0007479620743481572,
+     0.0004167389335337392,
+     -0.0009442870632672333,
+     -0.0056657223796034
+    ],
+    "barlines": [
+     {
+      "x0": 0.15795357142857142,
+      "x1": 0.160975,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G83",
+     "I",
+     89
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     90
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     91
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     92
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     93
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     94
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 2,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       89
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       90
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       91
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       92
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       93
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       94
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.438
   },
   {
    "staff": "p40-5",
@@ -29953,6 +32675,67 @@
    "worst": 0.25
   },
   {
+   "staff": "p49-0",
+   "part": "vn2",
+   "page": 49,
+   "system": {
+    "top": 0.1388101983002833,
+    "bottom": 0.182247403210576,
+    "left": 0.07214285714285715,
+    "right": 0.8932142857142857,
+    "start": 0.13357142857142856,
+    "bend": [
+     -0.0018885741265344666,
+     -0.001482675223063728,
+     -0.0004673257404944992,
+     -0.00041071669460985584,
+     -0.002360717658168083
+    ],
+    "barlines": [],
+    "above": 2.0,
+    "below": 1.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G86",
+     "II",
+     127
+    ]
+   ],
+   "plain": false,
+   "measures": 1,
+   "bar_boxes": 1,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits"
+   ],
+   "steps": {
+    "split": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       127
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.0
+  },
+  {
    "staff": "p49-1",
    "part": "vn2",
    "page": 49,
@@ -32169,6 +34952,231 @@
    "worst": 0.5
   },
   {
+   "staff": "p52-3",
+   "part": "vn2",
+   "page": 52,
+   "system": {
+    "top": 0.3232838589981447,
+    "bottom": 0.36595547309833026,
+    "left": 0.04535714285714286,
+    "right": 0.9407142857142857,
+    "start": 0.08428571428571428,
+    "bend": [
+     -0.00046382189239332097,
+     -0.0005076009995835101,
+     0.0,
+     0.0,
+     -0.002319109461966605
+    ],
+    "barlines": [
+     {
+      "x0": 0.630915,
+      "x1": 0.630915,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7776600000000001,
+      "x1": 0.7776600000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9365785714285715,
+      "x1": 0.9359214285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "I",
+     97
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     98
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     99
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     100
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     101
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     102
+    ],
+    [
+     "boccherini-G84",
+     "I",
+     103
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       97
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       98
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       99
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       100
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       101
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       102
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "I",
+       103
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
+  },
+  {
    "staff": "p52-4",
    "part": "vn2",
    "page": 52,
@@ -33389,6 +36397,143 @@
     "G2"
    ],
    "worst": 0.214
+  },
+  {
+   "staff": "p53-6",
+   "part": "vn2",
+   "page": 53,
+   "system": {
+    "top": 0.7045454545454546,
+    "bottom": 0.7472170686456401,
+    "left": 0.05892857142857143,
+    "right": 0.9692857142857143,
+    "start": 0.10607142857142857,
+    "bend": [
+     -0.0013914656771799629,
+     -0.0018085504145999944,
+     0.0003738972397864203,
+     0.00268235772973378,
+     0.0
+    ],
+    "barlines": [],
+    "above": 2.0,
+    "below": 4.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G84",
+     "II",
+     24
+    ],
+    [
+     "boccherini-G84",
+     "II",
+     25
+    ],
+    [
+     "boccherini-G84",
+     "II",
+     26
+    ],
+    [
+     "boccherini-G84",
+     "II",
+     27
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "II",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "II",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "II",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "II",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.417
   },
   {
    "staff": "p54-0",
@@ -36480,6 +39625,71 @@
    "worst": 0.375
   },
   {
+   "staff": "p61-8",
+   "part": "vn2",
+   "page": 61,
+   "system": {
+    "top": 0.8033395176252319,
+    "bottom": 0.8464749536178108,
+    "left": 0.06107142857142857,
+    "right": 0.9678571428571429,
+    "start": 0.10928571428571429,
+    "bend": [
+     -0.00046382189239332097,
+     0.0,
+     0.0,
+     -0.00046382189239332097,
+     -0.0013914656771799629
+    ],
+    "barlines": [],
+    "above": 2.5,
+    "below": 8.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G85",
+     "III",
+     64
+    ]
+   ],
+   "plain": true,
+   "measures": 1,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p62-0",
    "part": "vn2",
    "page": 62,
@@ -36528,12 +39738,29 @@
      "boccherini-G85",
      "IV",
      4
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     5
     ]
    ],
-   "plain": true,
-   "measures": 4,
+   "plain": false,
+   "measures": 5,
    "bar_boxes": 2,
    "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      5
+     ],
+     "half": "first",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
    "steps": {
     "one": 4
    },
@@ -36589,6 +39816,19 @@
      "join": false,
      "continues": false,
      "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       5
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
     }
    ],
    "bar_clefs": [
@@ -36621,6 +39861,257 @@
     "G2"
    ],
    "worst": 0.125
+  },
+  {
+   "staff": "p62-1",
+   "part": "vn2",
+   "page": 62,
+   "system": {
+    "top": 0.1507421150278293,
+    "bottom": 0.19341372912801486,
+    "left": 0.032857142857142856,
+    "right": 0.9321428571428572,
+    "start": 0.07678571428571429,
+    "bend": [
+     0.0018552875695732839,
+     0.0003928287455984147,
+     0.0,
+     0.0016588731967740634,
+     0.0009276437847866419
+    ],
+    "barlines": [
+     {
+      "x0": 0.7193714285714286,
+      "x1": 0.7213428571428572,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7970571428571429,
+      "x1": 0.7950857142857142,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G85",
+     "IV",
+     5
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     6
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     7
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     8
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     9
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     10
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     11
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     12
+    ]
+   ],
+   "plain": false,
+   "measures": 8,
+   "bar_boxes": 3,
+   "right": null,
+   "halves": [
+    {
+     "bar": [
+      "boccherini-G85",
+      "IV",
+      5
+     ],
+     "half": "second",
+     "cut": "1/2",
+     "fit": 0.167
+    }
+   ],
+   "steps": {
+    "tail": 1,
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 8,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 7,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.25
   },
   {
    "staff": "p62-2",
@@ -38788,6 +42279,183 @@
     "G2"
    ],
    "worst": 0.2
+  },
+  {
+   "staff": "p64-6",
+   "part": "vn2",
+   "page": 64,
+   "system": {
+    "top": 0.601113172541744,
+    "bottom": 0.6437847866419295,
+    "left": 0.03,
+    "right": 0.9242857142857143,
+    "start": 0.06464285714285714,
+    "bend": [
+     -0.0009276437847866419,
+     -0.00046382189239332097,
+     -0.0005348150391882537,
+     -0.0007099314679490102,
+     -0.00510204081632653
+    ],
+    "barlines": [
+     {
+      "x0": 0.32583500000000004,
+      "x1": 0.32583500000000004,
+      "kind": "single"
+     },
+     {
+      "x0": 0.44976,
+      "x1": 0.44976,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7226142857142857,
+      "x1": 0.7252428571428572,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G87",
+     "I",
+     59
+    ],
+    [
+     "boccherini-G87",
+     "I",
+     60
+    ],
+    [
+     "boccherini-G87",
+     "I",
+     61
+    ],
+    [
+     "boccherini-G87",
+     "I",
+     62
+    ],
+    [
+     "boccherini-G87",
+     "I",
+     63
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "I",
+       59
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "I",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "I",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "I",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "I",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 14,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 11,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.281
   },
   {
    "staff": "p65-3",
@@ -46130,6 +49798,207 @@
    "worst": 0.1
   },
   {
+   "staff": "p72-2",
+   "part": "vn2",
+   "page": 72,
+   "system": {
+    "top": 0.23840445269016697,
+    "bottom": 0.2815398886827458,
+    "left": 0.02035714285714286,
+    "right": 0.9092857142857143,
+    "start": 0.05964285714285714,
+    "bend": [
+     -0.002319109461966605,
+     0.0009868047404490681,
+     -0.00023427738442318284,
+     0.0,
+     -0.00463821892393321
+    ],
+    "barlines": [
+     {
+      "x0": 0.1702,
+      "x1": 0.1702,
+      "kind": "single"
+     },
+     {
+      "x0": 0.32058000000000003,
+      "x1": 0.32058000000000003,
+      "kind": "single"
+     },
+     {
+      "x0": 0.50809,
+      "x1": 0.50809,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.5,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G88",
+     "II",
+     61
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     62
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     63
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     64
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     65
+    ],
+    [
+     "boccherini-G88",
+     "II",
+     66
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       65
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "II",
+       66
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 5,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 4,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p72-3",
    "part": "vn2",
    "page": 72,
@@ -47191,6 +51060,207 @@
     "G2"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p73-3",
+   "part": "vn2",
+   "page": 73,
+   "system": {
+    "top": 0.4294990723562152,
+    "bottom": 0.4717068645640074,
+    "left": 0.06,
+    "right": 0.8828571428571429,
+    "start": 0.09607142857142857,
+    "bend": [
+     0.00046382189239332097,
+     0.00046382189239332097,
+     0.0007572602324788773,
+     0.00046382189239332097,
+     -0.0015381848472227674
+    ],
+    "barlines": [
+     {
+      "x0": 0.25426785714285716,
+      "x1": 0.25751785714285713,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5004375,
+      "x1": 0.5020625000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7110714285714286,
+      "x1": 0.7110714285714286,
+      "kind": "single"
+     }
+    ],
+    "above": 1.5,
+    "below": 3.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "boccherini-G88",
+     "III",
+     11
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     12
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     13
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     14
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     15
+    ],
+    [
+     "boccherini-G88",
+     "III",
+     16
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 10,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 6,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.25
   },
   {
    "staff": "p73-4",
@@ -49615,6 +53685,191 @@
     "F4"
    ],
    "worst": 0.333
+  },
+  {
+   "staff": "p84-0",
+   "part": "vc",
+   "page": 84,
+   "system": {
+    "top": 0.04748603351955307,
+    "bottom": 0.08612662942271881,
+    "left": 0.0725,
+    "right": 0.945,
+    "start": 0.13,
+    "bend": [
+     0.0004655493482309125,
+     0.0004655493482309125,
+     0.00023277467411545624,
+     -0.0022695530726256985,
+     -0.004655493482309125
+    ],
+    "barlines": [],
+    "above": 4.0,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G86",
+     "II",
+     0
+    ],
+    [
+     "boccherini-G86",
+     "II",
+     1
+    ],
+    [
+     "boccherini-G86",
+     "II",
+     2
+    ],
+    [
+     "boccherini-G86",
+     "II",
+     3
+    ],
+    [
+     "boccherini-G86",
+     "II",
+     4
+    ],
+    [
+     "boccherini-G86",
+     "II",
+     5
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       0
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "II",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.5
   },
   {
    "staff": "p84-1",
@@ -52313,6 +56568,178 @@
    "worst": 0.25
   },
   {
+   "staff": "p86-1",
+   "part": "vc",
+   "page": 86,
+   "system": {
+    "top": 0.2672253258845438,
+    "bottom": 0.30679702048417135,
+    "left": 0.08571428571428572,
+    "right": 0.8967857142857143,
+    "start": 0.15821428571428572,
+    "bend": [
+     0.002793296089385475,
+     0.0002529643142173157,
+     0.0,
+     2.018964010185944e-05,
+     -0.0007790825827537535
+    ],
+    "barlines": [
+     {
+      "x0": 0.38590178571428574,
+      "x1": 0.38802678571428567,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7015357142857143,
+      "x1": 0.70275,
+      "kind": "single"
+     }
+    ],
+    "above": 4.5,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G86",
+     "III",
+     1
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     2
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     3
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     4
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     5
+    ]
+   ],
+   "plain": true,
+   "measures": 5,
+   "bar_boxes": 3,
+   "right": null,
+   "steps": {
+    "one": 5
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p86-2",
    "part": "vc",
    "page": 86,
@@ -52522,6 +56949,207 @@
     "F4"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p86-3",
+   "part": "vc",
+   "page": 86,
+   "system": {
+    "top": 0.43249534450651766,
+    "bottom": 0.4720670391061452,
+    "left": 0.065,
+    "right": 0.9685714285714285,
+    "start": 0.10714285714285714,
+    "bend": [
+     0.0013966480446927375,
+     0.0,
+     0.0,
+     -0.0011947516436742489,
+     -0.0004655493482309125
+    ],
+    "barlines": [
+     {
+      "x0": 0.4137321428571429,
+      "x1": 0.4155535714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5867946428571429,
+      "x1": 0.5889196428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8719464285714285,
+      "x1": 0.8737678571428572,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 3.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G86",
+     "III",
+     12
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     13
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     14
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     15
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     16
+    ],
+    [
+     "boccherini-G86",
+     "III",
+     17
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G86",
+       "III",
+       17
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.2
   },
   {
    "staff": "p86-4",
@@ -54283,6 +58911,419 @@
      "alto": 0,
      "tenor": 0,
      "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.5
+  },
+  {
+   "staff": "p93-3",
+   "part": "vc",
+   "page": 93,
+   "system": {
+    "top": 0.31471135940409684,
+    "bottom": 0.3580074487895717,
+    "left": 0.03571428571428571,
+    "right": 0.9196428571428571,
+    "start": 0.08142857142857143,
+    "bend": [
+     0.00186219739292365,
+     -0.0005106791319880069,
+     -6.413179797059676e-05,
+     0.00186219739292365,
+     0.0004655493482309125
+    ],
+    "barlines": [
+     {
+      "x0": 0.17457678571428573,
+      "x1": 0.17756607142857142,
+      "kind": "single"
+     },
+     {
+      "x0": 0.34779107142857146,
+      "x1": 0.3507803571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5010714285714286,
+      "x1": 0.5010714285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5516446428571429,
+      "x1": 0.5526410714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6560714285714285,
+      "x1": 0.6560714285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8054321428571428,
+      "x1": 0.807425,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9180732142857143,
+      "x1": 0.9190696428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G84",
+     "III",
+     164
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     165
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     166
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     167
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     168
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     169
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     170
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     171
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     172
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     173
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     174
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     175
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     176
+    ],
+    [
+     "boccherini-G84",
+     "III",
+     177
+    ]
+   ],
+   "plain": true,
+   "measures": 14,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 14
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       164
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       165
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       166
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       167
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       168
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       169
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       170
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       171
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       172
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       173
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       174
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       175
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       176
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G84",
+       "III",
+       177
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
     }
    ],
    "read_clefs": [
@@ -56833,6 +61874,240 @@
    "worst": 0.0
   },
   {
+   "staff": "p98-6",
+   "part": "vc",
+   "page": 98,
+   "system": {
+    "top": 0.6052141527001862,
+    "bottom": 0.6485102420856611,
+    "left": 0.06857142857142857,
+    "right": 0.7185714285714285,
+    "start": 0.15464285714285714,
+    "bend": [
+     -0.0037243947858473,
+     -0.0021567286132330417,
+     0.0004655493482309125,
+     0.0008835936609280692,
+     0.001040360278189516
+    ],
+    "barlines": [
+     {
+      "x0": 0.21314821428571432,
+      "x1": 0.21613749999999998,
+      "kind": "single"
+     },
+     {
+      "x0": 0.31529107142857143,
+      "x1": 0.31828035714285713,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3687875,
+      "x1": 0.36978392857142856,
+      "kind": "single"
+     },
+     {
+      "x0": 0.48257500000000003,
+      "x1": 0.4845678571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5907892857142857,
+      "x1": 0.5927821428571428,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 2.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G85",
+     "III",
+     57
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     58
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     59
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     60
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     61
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     62
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     63
+    ],
+    [
+     "boccherini-G85",
+     "III",
+     64
+    ]
+   ],
+   "plain": false,
+   "measures": 6,
+   "bar_boxes": 6,
+   "right": null,
+   "irregular": [
+    "a multi-bar rest"
+   ],
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       57
+      ],
+      [
+       "boccherini-G85",
+       "III",
+       58
+      ],
+      [
+       "boccherini-G85",
+       "III",
+       59
+      ]
+     ],
+     "count": 3,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       60
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       61
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       62
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       63
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "III",
+       64
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p98-9",
    "part": "vc",
    "page": 98,
@@ -58166,6 +63441,1191 @@
     "F4"
    ],
    "worst": 0.433
+  },
+  {
+   "staff": "p102-3",
+   "part": "vc",
+   "page": 102,
+   "system": {
+    "top": 0.3365921787709497,
+    "bottom": 0.37988826815642457,
+    "left": 0.06964285714285715,
+    "right": 0.9607142857142857,
+    "start": 0.11714285714285715,
+    "bend": [
+     -0.0013966480446927375,
+     0.0007303899213316407,
+     -0.0008075856040740071,
+     -0.0010213582639759609,
+     -0.0037243947858473
+    ],
+    "barlines": [
+     {
+      "x0": 0.22050714285714285,
+      "x1": 0.22449285714285716,
+      "kind": "single"
+     },
+     {
+      "x0": 0.36386250000000003,
+      "x1": 0.36685178571428567,
+      "kind": "single"
+     },
+     {
+      "x0": 0.50265,
+      "x1": 0.5066357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6168607142857143,
+      "x1": 0.6188535714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7765035714285714,
+      "x1": 0.7784964285714285,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9557142857142857,
+      "x1": 0.9557142857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G87",
+     "II",
+     7
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     8
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     9
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     10
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     11
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     12
+    ]
+   ],
+   "plain": true,
+   "measures": 6,
+   "bar_boxes": 6,
+   "right": null,
+   "steps": {
+    "one": 6
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       8
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       12
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.0
+  },
+  {
+   "staff": "p102-4",
+   "part": "vc",
+   "page": 102,
+   "system": {
+    "top": 0.4292364990689013,
+    "bottom": 0.4725325884543762,
+    "left": 0.06964285714285715,
+    "right": 0.9671428571428572,
+    "start": 0.11392857142857143,
+    "bend": [
+     -0.00186219739292365,
+     -0.00021377265990195392,
+     -0.0009548512142287029,
+     -0.0023871280355717834,
+     -0.0037243947858473
+    ],
+    "barlines": [
+     {
+      "x0": 0.22114642857142858,
+      "x1": 0.2231392857142857,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3510053571428572,
+      "x1": 0.3539946428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4556482142857143,
+      "x1": 0.4586375,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5655071428571429,
+      "x1": 0.5694928571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6820767857142858,
+      "x1": 0.6850660714285715,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7843607142857143,
+      "x1": 0.7863535714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8932142857142857,
+      "x1": 0.8932142857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 2.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G87",
+     "II",
+     13
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     14
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     15
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     16
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     17
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     18
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     19
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     20
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 8,
+   "right": null,
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       15
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       16
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       17
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       18
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       19
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       20
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.125
+  },
+  {
+   "staff": "p102-5",
+   "part": "vc",
+   "page": 102,
+   "system": {
+    "top": 0.5195530726256983,
+    "bottom": 0.5628491620111732,
+    "left": 0.06285714285714286,
+    "right": 0.9607142857142857,
+    "start": 0.10928571428571429,
+    "bend": [
+     -0.0037243947858473,
+     0.0,
+     -0.0003895412913769032,
+     -0.001978584729981378,
+     -0.004189944134078212
+    ],
+    "barlines": [
+     {
+      "x0": 0.23828928571428573,
+      "x1": 0.24028214285714283,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3431482142857143,
+      "x1": 0.3461375,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4640285714285714,
+      "x1": 0.4666857142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5272928571428571,
+      "x1": 0.5312785714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7843607142857143,
+      "x1": 0.7863535714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9565821428571428,
+      "x1": 0.9559178571428572,
+      "kind": "single"
+     }
+    ],
+    "above": 2.5,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G87",
+     "II",
+     21
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     22
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     23
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     24
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     25
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     26
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     27
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 6,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       21
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       22
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       23
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       24
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       25
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       26
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       27
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.375
+  },
+  {
+   "staff": "p102-6",
+   "part": "vc",
+   "page": 102,
+   "system": {
+    "top": 0.6080074487895717,
+    "bottom": 0.6513035381750466,
+    "left": 0.06,
+    "right": 0.9560714285714286,
+    "start": 0.11571428571428571,
+    "bend": [
+     -0.0023277467411545625,
+     -0.00047148747767259227,
+     0.00021377265990195392,
+     -0.001517785885303894,
+     -0.0032588454376163874
+    ],
+    "barlines": [
+     {
+      "x0": 0.23764999999999997,
+      "x1": 0.2416357142857143,
+      "kind": "single"
+     },
+     {
+      "x0": 0.47921964285714286,
+      "x1": 0.48220892857142855,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6003035714285714,
+      "x1": 0.6036250000000001,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7512214285714286,
+      "x1": 0.7552071428571429,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G87",
+     "II",
+     28
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     29
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     30
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     31
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     32
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     33
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     34
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       32
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       33
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       34
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.167
+  },
+  {
+   "staff": "p102-7",
+   "part": "vc",
+   "page": 102,
+   "system": {
+    "top": 0.7043761638733705,
+    "bottom": 0.7476722532588455,
+    "left": 0.0575,
+    "right": 0.9553571428571429,
+    "start": 0.11857142857142858,
+    "bend": [
+     -0.0004655493482309125,
+     0.000931098696461825,
+     0.0,
+     -0.0013966480446927375,
+     -0.004189944134078212
+    ],
+    "barlines": [
+     {
+      "x0": 0.21457678571428573,
+      "x1": 0.2175660714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3318607142857143,
+      "x1": 0.3338535714285714,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5596428571428571,
+      "x1": 0.5596428571428571,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8261464285714286,
+      "x1": 0.8281392857142857,
+      "kind": "single"
+     }
+    ],
+    "above": 4.0,
+    "below": 3.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G87",
+     "II",
+     35
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     36
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     37
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     38
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     39
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     40
+    ],
+    [
+     "boccherini-G87",
+     "II",
+     41
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 5,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       35
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       36
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       37
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       38
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       39
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       40
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G87",
+       "II",
+       41
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.167
   },
   {
    "staff": "p103-1",
@@ -60972,6 +67432,74 @@
     "F4"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p111-5",
+   "part": "vc",
+   "page": 111,
+   "system": {
+    "top": 0.6955307262569832,
+    "bottom": 0.7383612662942272,
+    "left": 0.03,
+    "right": 0.9582142857142857,
+    "start": 0.07678571428571429,
+    "bend": [
+     -0.000931098696461825,
+     -0.00013895222893630182,
+     0.0,
+     -1.7814388325145185e-05,
+     -0.004189944134078212
+    ],
+    "barlines": [],
+    "above": 2.0,
+    "below": 8.0,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "boccherini-G88",
+     "III",
+     56
+    ]
+   ],
+   "plain": false,
+   "measures": 1,
+   "bar_boxes": 1,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
+   "steps": {
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G88",
+       "III",
+       56
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.333
   }
  ],
  "not kept": [
@@ -61371,165 +67899,6 @@
    ]
   },
   {
-   "staff": "p2-8",
-   "part": "vn1",
-   "page": 2,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G83', 'I', 50]"
-   ],
-   "bars": [
-    [
-     "boccherini-G83",
-     "I",
-     50
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     51
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     52
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     53
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     54
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     55
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     56
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     57
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       50
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       51
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       53
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       54
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       55
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       56
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       57
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p3-0",
    "part": "vn1",
    "page": 3,
@@ -61764,7 +68133,7 @@
    "part": "vn1",
    "page": 3,
    "why": [
-    "5 measures, 3 bar boxes, an end not one bar"
+    "two at [['boccherini-G83', 'I', 84], ['boccherini-G83', 'I', 85]]"
    ],
    "bars": [
     [
@@ -61791,11 +68160,16 @@
      "boccherini-G83",
      "I",
      85
+    ],
+    [
+     "boccherini-G83",
+     "I",
+     86
     ]
    ],
    "steps": {
     "one": 4,
-    "split": 1
+    "two": 1
    },
    "boxes": [
     {
@@ -61843,24 +68217,30 @@
        "boccherini-G83",
        "I",
        84
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
+      ],
       [
        "boccherini-G83",
        "I",
        85
       ]
      ],
-     "count": 0,
+     "count": 2,
      "join": false,
-     "continues": true,
+     "continues": false,
+     "ends_movement": false,
+     "two": true
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       86
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
      "ends_movement": false
     }
    ]
@@ -61870,20 +68250,10 @@
    "part": "vn1",
    "page": 3,
    "why": [
-    "unlike [['boccherini-G83', 'I', 89]]",
+    "extra at none",
     "8 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
-    [
-     "boccherini-G83",
-     "I",
-     85
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     86
-    ],
     [
      "boccherini-G83",
      "I",
@@ -61916,36 +68286,11 @@
     ]
    ],
    "steps": {
-    "split": 2,
-    "one": 6
+    "one": 4,
+    "extra": 1,
+    "split": 2
    },
    "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       85
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       86
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
     {
      "bars": [
       [
@@ -61955,6 +68300,13 @@
       ]
      ],
      "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [],
+     "count": 0,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -61994,6 +68346,19 @@
       ]
      ],
      "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "I",
+       90
+      ]
+     ],
+     "count": 0,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -62147,57 +68512,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p3-7",
-   "part": "vn1",
-   "page": 3,
-   "why": [
-    "mis-measured: measured under half its page's median width, music past its ends"
-   ],
-   "bars": [
-    [
-     "boccherini-G83",
-     "I",
-     104
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     105
-    ]
-   ],
-   "steps": {
-    "one": 2
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       104
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       105
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   },
@@ -62358,7 +68672,6 @@
    "part": "vn1",
    "page": 4,
    "why": [
-    "extra at none",
     "staff before ends with two",
     "an end measure shorter than its bar ['boccherini-G83', 'II', 11]",
     "4 measures, 1 bar boxes, an end not one bar"
@@ -62381,9 +68694,8 @@
     ]
    ],
    "steps": {
-    "one": 2,
-    "extra": 1,
-    "split": 1
+    "one": 1,
+    "split": 2
    },
    "boxes": [
     {
@@ -62413,7 +68725,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G83",
+       "II",
+       12
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
@@ -62435,12 +68753,81 @@
    ]
   },
   {
+   "staff": "p5-0",
+   "part": "vn1",
+   "page": 5,
+   "why": [
+    "3 measures, 2 bar boxes, an end not one bar"
+   ],
+   "bars": [
+    [
+     "boccherini-G83",
+     "II",
+     13
+    ],
+    [
+     "boccherini-G83",
+     "II",
+     14
+    ],
+    [
+     "boccherini-G83",
+     "II",
+     15
+    ]
+   ],
+   "steps": {
+    "split": 1,
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "II",
+       13
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "II",
+       14
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G83",
+       "II",
+       15
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
+    }
+   ]
+  },
+  {
    "staff": "p5-1",
    "part": "vn1",
    "page": 5,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['boccherini-G83', 'II', 15]"
+    "extra at none"
    ],
    "bars": [
     [
@@ -62455,7 +68842,7 @@
     ]
    ],
    "steps": {
-    "one": 1,
+    "tail": 1,
     "extra": 1,
     "split": 1
    },
@@ -62491,93 +68878,6 @@
      "count": 0,
      "join": false,
      "continues": true,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p6-2",
-   "part": "vn1",
-   "page": 6,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G83', 'III', 8]"
-   ],
-   "bars": [
-    [
-     "boccherini-G83",
-     "III",
-     5
-    ],
-    [
-     "boccherini-G83",
-     "III",
-     6
-    ],
-    [
-     "boccherini-G83",
-     "III",
-     7
-    ],
-    [
-     "boccherini-G83",
-     "III",
-     8
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "III",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "III",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "III",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "III",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
      "ends_movement": false
     }
    ]
@@ -63286,9 +69586,9 @@
     ]
    ],
    "steps": {
-    "split": 2,
-    "one": 2,
-    "extra": 2
+    "split": 3,
+    "one": 1,
+    "extra": 1
    },
    "boxes": [
     {
@@ -63338,7 +69638,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G86",
+       "I",
+       17
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
@@ -63364,7 +69670,6 @@
    "part": "vn1",
    "page": 8,
    "why": [
-    "extra at none",
     "6 measures, 3 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -63395,9 +69700,8 @@
     ]
    ],
    "steps": {
-    "split": 2,
-    "one": 3,
-    "extra": 1
+    "split": 3,
+    "one": 2
    },
    "boxes": [
     {
@@ -63453,7 +69757,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G86",
+       "I",
+       21
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
@@ -64372,7 +70682,6 @@
    "why": [
     "two at [['boccherini-G86', 'II', 95], ['boccherini-G86', 'II', 96]]",
     "two at [['boccherini-G86', 'II', 100], ['boccherini-G86', 'II', 101]]",
-    "an end measure longer than its bar ['boccherini-G86', 'II', 102]",
     "6 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -65780,147 +72089,6 @@
    ]
   },
   {
-   "staff": "p14-5",
-   "part": "vn1",
-   "page": 14,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G84', 'I', 45]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "I",
-     39
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     40
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     41
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     42
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     43
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     44
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     45
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       41
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       42
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       43
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       44
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       45
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p14-6",
    "part": "vn1",
    "page": 14,
@@ -66737,111 +72905,6 @@
        "boccherini-G84",
        "I",
        83
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p15-1",
-   "part": "vn1",
-   "page": 15,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G84', 'I', 84]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "I",
-     84
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     85
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     86
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     87
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     88
-    ]
-   ],
-   "steps": {
-    "one": 5
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       84
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       85
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       86
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       87
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       88
       ]
      ],
      "count": 1,
@@ -68105,432 +74168,6 @@
    ]
   },
   {
-   "staff": "p18-7",
-   "part": "vn1",
-   "page": 18,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G84', 'III', 70]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "III",
-     70
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     71
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     72
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     73
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     74
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     75
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     76
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     77
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     78
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     79
-    ]
-   ],
-   "steps": {
-    "one": 10
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       70
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       71
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       72
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       73
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       74
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       75
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       76
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       77
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       78
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       79
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p18-8",
-   "part": "vn1",
-   "page": 18,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G84', 'III', 91]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "III",
-     80
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     81
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     82
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     83
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     84
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     85
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     86
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     87
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     88
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     89
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     90
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     91
-    ]
-   ],
-   "steps": {
-    "one": 12
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       80
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       81
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       82
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       83
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       84
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       85
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       86
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       87
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       88
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       89
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       90
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       91
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p18-10",
    "part": "vn1",
    "page": 18,
@@ -68708,8 +74345,7 @@
    "page": 19,
    "why": [
     "two at [['boccherini-G84', 'III', 125], ['boccherini-G84', 'III', 126]]",
-    "staff before ends with two",
-    "an end measure longer than its bar ['boccherini-G84', 'III', 128]"
+    "staff before ends with two"
    ],
    "bars": [
     [
@@ -69630,273 +75266,6 @@
    ]
   },
   {
-   "staff": "p19-6",
-   "part": "vn1",
-   "page": 19,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G84', 'III', 204]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "III",
-     191
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     192
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     193
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     194
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     195
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     196
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     197
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     198
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     199
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     200
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     201
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     202
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     203
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     204
-    ]
-   ],
-   "steps": {
-    "one": 14
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       191
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       192
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       193
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       194
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       195
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       196
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       197
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       198
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       199
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       200
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       201
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       202
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       203
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       204
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p19-7",
    "part": "vn1",
    "page": 19,
@@ -70340,8 +75709,7 @@
    "part": "vn1",
    "page": 20,
    "why": [
-    "next staff begins with extra",
-    "an end measure shorter than its bar ['boccherini-G85', 'I', 1]"
+    "next staff begins with extra"
    ],
    "bars": [
     [
@@ -71552,148 +76920,6 @@
    ]
   },
   {
-   "staff": "p24-0",
-   "part": "vn1",
-   "page": 24,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G85', 'III', 1]",
-    "an end measure shorter than its bar ['boccherini-G85', 'III', 7]"
-   ],
-   "bars": [
-    [
-     "boccherini-G85",
-     "III",
-     1
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     2
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     3
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     4
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     5
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     6
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     7
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p24-2",
    "part": "vn1",
    "page": 24,
@@ -72317,6 +77543,11 @@
      "boccherini-G85",
      "IV",
      14
+    ],
+    [
+     "boccherini-G85",
+     "IV",
+     15
     ]
    ],
    "steps": {
@@ -72394,6 +77625,19 @@
      "join": false,
      "continues": false,
      "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "boccherini-G85",
+       "IV",
+       15
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
     }
    ]
   },
@@ -72402,8 +77646,6 @@
    "part": "vn1",
    "page": 25,
    "why": [
-    "unlike [['boccherini-G85', 'IV', 15]]",
-    "an end measure shorter than its bar ['boccherini-G85', 'IV', 15]",
     "6 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -72439,7 +77681,8 @@
     ]
    ],
    "steps": {
-    "one": 5,
+    "tail": 1,
+    "one": 4,
     "split": 1
    },
    "boxes": [
@@ -75964,75 +81207,6 @@
    ]
   },
   {
-   "staff": "p33-1",
-   "part": "vn1",
-   "page": 33,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G88', 'I', 47]"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "I",
-     45
-    ],
-    [
-     "boccherini-G88",
-     "I",
-     46
-    ],
-    [
-     "boccherini-G88",
-     "I",
-     47
-    ]
-   ],
-   "steps": {
-    "one": 3
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "I",
-       45
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "I",
-       46
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "I",
-       47
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p34-0",
    "part": "vn1",
    "page": 34,
@@ -76568,129 +81742,6 @@
    ]
   },
   {
-   "staff": "p34-5",
-   "part": "vn1",
-   "page": 34,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G88', 'II', 35]"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "II",
-     35
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     36
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     37
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     38
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     39
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     40
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p34-6",
    "part": "vn1",
    "page": 34,
@@ -77208,119 +82259,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p36-2",
-   "part": "vn1",
-   "page": 36,
-   "why": [
-    "extra at none"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "III",
-     5
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     6
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     7
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     8
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     9
-    ]
-   ],
-   "steps": {
-    "one": 5,
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       9
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -78590,129 +83528,6 @@
    ]
   },
   {
-   "staff": "p40-4",
-   "part": "vn2",
-   "page": 40,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G83', 'I', 94]"
-   ],
-   "bars": [
-    [
-     "boccherini-G83",
-     "I",
-     89
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     90
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     91
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     92
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     93
-    ],
-    [
-     "boccherini-G83",
-     "I",
-     94
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       89
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       90
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       91
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       92
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       93
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G83",
-       "I",
-       94
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p41-1",
    "part": "vn2",
    "page": 41,
@@ -79666,8 +84481,7 @@
    "part": "vn2",
    "page": 46,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['boccherini-G86', 'I', 26]"
+    "extra at none"
    ],
    "bars": [
     [
@@ -79744,7 +84558,6 @@
    "part": "vn2",
    "page": 46,
    "why": [
-    "extra at none",
     "4 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -79765,9 +84578,8 @@
     ]
    ],
    "steps": {
-    "one": 2,
-    "extra": 1,
-    "split": 1
+    "one": 1,
+    "split": 2
    },
    "boxes": [
     {
@@ -79797,7 +84609,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "boccherini-G86",
+       "I",
+       28
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
@@ -80807,7 +85625,7 @@
    "part": "vn2",
    "page": 48,
    "why": [
-    "an end measure longer than its bar ['boccherini-G86', 'II', 121]"
+    "7 measures, 2 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -80847,7 +85665,8 @@
     ]
    ],
    "steps": {
-    "one": 7
+    "one": 6,
+    "split": 1
    },
    "boxes": [
     {
@@ -80936,30 +85755,9 @@
        127
       ]
      ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
-    }
-   ]
-  },
-  {
-   "staff": "p49-0",
-   "part": "vn2",
-   "page": 49,
-   "why": [
-    "extra at none"
-   ],
-   "bars": [],
-   "steps": {
-    "extra": 1
-   },
-   "boxes": [
-    {
-     "bars": [],
      "count": 0,
      "join": false,
-     "continues": false,
+     "continues": true,
      "ends_movement": false
     }
    ]
@@ -81174,8 +85972,7 @@
    "part": "vn2",
    "page": 51,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['boccherini-G84', 'I', 7]"
+    "extra at none"
    ],
    "bars": [
     [
@@ -82444,147 +87241,6 @@
    ]
   },
   {
-   "staff": "p52-3",
-   "part": "vn2",
-   "page": 52,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G84', 'I', 97]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "I",
-     97
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     98
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     99
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     100
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     101
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     102
-    ],
-    [
-     "boccherini-G84",
-     "I",
-     103
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       97
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       98
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       99
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       100
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       101
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       102
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "I",
-       103
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p53-0",
    "part": "vn2",
    "page": 53,
@@ -82607,93 +87263,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p53-6",
-   "part": "vn2",
-   "page": 53,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G84', 'II', 24]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "II",
-     24
-    ],
-    [
-     "boccherini-G84",
-     "II",
-     25
-    ],
-    [
-     "boccherini-G84",
-     "II",
-     26
-    ],
-    [
-     "boccherini-G84",
-     "II",
-     27
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "II",
-       24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "II",
-       25
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "II",
-       26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "II",
-       27
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -83954,7 +88523,6 @@
    "why": [
     "two at [['boccherini-G84', 'III', 82], ['boccherini-G84', 'III', 83]]",
     "two at [['boccherini-G84', 'III', 87], ['boccherini-G84', 'III', 88]]",
-    "an end measure shorter than its bar ['boccherini-G84', 'III', 95]",
     "12 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -88375,198 +92943,6 @@
    ]
   },
   {
-   "staff": "p61-8",
-   "part": "vn2",
-   "page": 61,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G85', 'III', 64]"
-   ],
-   "bars": [
-    [
-     "boccherini-G85",
-     "III",
-     64
-    ]
-   ],
-   "steps": {
-    "one": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       64
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
-    }
-   ]
-  },
-  {
-   "staff": "p62-1",
-   "part": "vn2",
-   "page": 62,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G85', 'IV', 5]"
-   ],
-   "bars": [
-    [
-     "boccherini-G85",
-     "IV",
-     5
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     6
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     7
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     8
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     9
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     10
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     11
-    ],
-    [
-     "boccherini-G85",
-     "IV",
-     12
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       10
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       11
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "IV",
-       12
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p62-7",
    "part": "vn2",
    "page": 62,
@@ -89318,7 +93694,6 @@
    "page": 64,
    "why": [
     "extra at none",
-    "an end measure shorter than its bar ['boccherini-G87', 'I', 43]",
     "5 measures, 2 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -89679,111 +94054,6 @@
      "count": 0,
      "join": false,
      "continues": true,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p64-6",
-   "part": "vn2",
-   "page": 64,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G87', 'I', 63]"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "I",
-     59
-    ],
-    [
-     "boccherini-G87",
-     "I",
-     60
-    ],
-    [
-     "boccherini-G87",
-     "I",
-     61
-    ],
-    [
-     "boccherini-G87",
-     "I",
-     62
-    ],
-    [
-     "boccherini-G87",
-     "I",
-     63
-    ]
-   ],
-   "steps": {
-    "one": 5
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "I",
-       59
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "I",
-       60
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "I",
-       61
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "I",
-       62
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "I",
-       63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
      "ends_movement": false
     }
    ]
@@ -92442,129 +96712,6 @@
    ]
   },
   {
-   "staff": "p72-2",
-   "part": "vn2",
-   "page": 72,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G88', 'II', 66]"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "II",
-     61
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     62
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     63
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     64
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     65
-    ],
-    [
-     "boccherini-G88",
-     "II",
-     66
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       61
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       62
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       64
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       65
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "II",
-       66
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p72-5",
    "part": "vn2",
    "page": 72,
@@ -92983,129 +97130,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p73-3",
-   "part": "vn2",
-   "page": 73,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G88', 'III', 16]"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "III",
-     11
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     12
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     13
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     14
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     15
-    ],
-    [
-     "boccherini-G88",
-     "III",
-     16
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       11
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       12
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       15
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       16
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -95502,129 +99526,6 @@
    ]
   },
   {
-   "staff": "p84-0",
-   "part": "vc",
-   "page": 84,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G86', 'II', 0]"
-   ],
-   "bars": [
-    [
-     "boccherini-G86",
-     "II",
-     0
-    ],
-    [
-     "boccherini-G86",
-     "II",
-     1
-    ],
-    [
-     "boccherini-G86",
-     "II",
-     2
-    ],
-    [
-     "boccherini-G86",
-     "II",
-     3
-    ],
-    [
-     "boccherini-G86",
-     "II",
-     4
-    ],
-    [
-     "boccherini-G86",
-     "II",
-     5
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       0
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "II",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p84-2",
    "part": "vc",
    "page": 84,
@@ -96369,234 +100270,6 @@
     {
      "bars": [],
      "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p86-1",
-   "part": "vc",
-   "page": 86,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G86', 'III', 5]"
-   ],
-   "bars": [
-    [
-     "boccherini-G86",
-     "III",
-     1
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     2
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     3
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     4
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     5
-    ]
-   ],
-   "steps": {
-    "one": 5
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p86-3",
-   "part": "vc",
-   "page": 86,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G86', 'III', 12]"
-   ],
-   "bars": [
-    [
-     "boccherini-G86",
-     "III",
-     12
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     13
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     14
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     15
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     16
-    ],
-    [
-     "boccherini-G86",
-     "III",
-     17
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       12
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       15
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       16
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G86",
-       "III",
-       17
-      ]
-     ],
-     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -98779,273 +102452,6 @@
    ]
   },
   {
-   "staff": "p93-3",
-   "part": "vc",
-   "page": 93,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G84', 'III', 177]"
-   ],
-   "bars": [
-    [
-     "boccherini-G84",
-     "III",
-     164
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     165
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     166
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     167
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     168
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     169
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     170
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     171
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     172
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     173
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     174
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     175
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     176
-    ],
-    [
-     "boccherini-G84",
-     "III",
-     177
-    ]
-   ],
-   "steps": {
-    "one": 14
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       164
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       165
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       166
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       167
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       168
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       169
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       170
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       171
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       172
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       173
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       174
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       175
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       176
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G84",
-       "III",
-       177
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p93-4",
    "part": "vc",
    "page": 93,
@@ -100715,149 +104121,6 @@
    ]
   },
   {
-   "staff": "p98-6",
-   "part": "vc",
-   "page": 98,
-   "why": [
-    "an end measure shorter than its bar ['boccherini-G85', 'III', 64]"
-   ],
-   "bars": [
-    [
-     "boccherini-G85",
-     "III",
-     57
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     58
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     59
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     60
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     61
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     62
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     63
-    ],
-    [
-     "boccherini-G85",
-     "III",
-     64
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       57
-      ],
-      [
-       "boccherini-G85",
-       "III",
-       58
-      ],
-      [
-       "boccherini-G85",
-       "III",
-       59
-      ]
-     ],
-     "count": 3,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       60
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       61
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       62
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G85",
-       "III",
-       64
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
-    }
-   ]
-  },
-  {
    "staff": "p98-7",
    "part": "vc",
    "page": 98,
@@ -101758,7 +105021,6 @@
    "page": 99,
    "why": [
     "unlike [['boccherini-G87', 'I', 1]]",
-    "an end measure longer than its bar ['boccherini-G87', 'I', 0]",
     "2 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -101891,7 +105153,6 @@
    "part": "vc",
    "page": 100,
    "why": [
-    "an end measure shorter than its bar ['boccherini-G87', 'I', 12]",
     "5 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -102582,7 +105843,6 @@
     "two at [['boccherini-G87', 'I', 65], ['boccherini-G87', 'I', 66]]",
     "beside a missed bar ['boccherini-G87', 'I', 67]",
     "staff before ends with two",
-    "below a mis-measured staff on its page",
     "2 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -102657,8 +105917,7 @@
    "page": 102,
    "why": [
     "beside a missed bar ['boccherini-G87', 'I', 67]",
-    "staff before ends with two",
-    "below a mis-measured staff on its page"
+    "staff before ends with two"
    ],
    "bars": [
     [
@@ -102767,711 +106026,6 @@
        "boccherini-G87",
        "II",
        6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p102-3",
-   "part": "vc",
-   "page": 102,
-   "why": [
-    "below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "II",
-     7
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     8
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     9
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     10
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     11
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     12
-    ]
-   ],
-   "steps": {
-    "one": 6
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       8
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       10
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       11
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       12
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p102-4",
-   "part": "vc",
-   "page": 102,
-   "why": [
-    "below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "II",
-     13
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     14
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     15
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     16
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     17
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     18
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     19
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     20
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       13
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       14
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       15
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       16
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       17
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       18
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       19
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       20
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p102-5",
-   "part": "vc",
-   "page": 102,
-   "why": [
-    "below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "II",
-     21
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     22
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     23
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     24
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     25
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     26
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     27
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       21
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       22
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       23
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       24
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       25
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       26
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       27
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p102-6",
-   "part": "vc",
-   "page": 102,
-   "why": [
-    "below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "II",
-     28
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     29
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     30
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     31
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     32
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     33
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     34
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       28
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       32
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       33
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       34
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p102-7",
-   "part": "vc",
-   "page": 102,
-   "why": [
-    "below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "boccherini-G87",
-     "II",
-     35
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     36
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     37
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     38
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     39
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     40
-    ],
-    [
-     "boccherini-G87",
-     "II",
-     41
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       35
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       36
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       37
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       38
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       39
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       40
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "boccherini-G87",
-       "II",
-       41
       ]
      ],
      "count": 1,
@@ -107209,7 +109763,6 @@
     "beside a missed bar ['boccherini-G88', 'III', 33]",
     "beside a missed bar ['boccherini-G88', 'III', 34]",
     "staff before ends with two",
-    "an end measure shorter than its bar ['boccherini-G88', 'III', 37]",
     "4 measures, 3 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -107419,39 +109972,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p111-5",
-   "part": "vc",
-   "page": 111,
-   "why": [
-    "an end measure longer than its bar ['boccherini-G88', 'III', 56]"
-   ],
-   "bars": [
-    [
-     "boccherini-G88",
-     "III",
-     56
-    ]
-   ],
-   "steps": {
-    "one": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "boccherini-G88",
-       "III",
-       56
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   }

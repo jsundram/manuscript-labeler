@@ -22986,7 +22986,7 @@
    "part": "vn1",
    "page": 11,
    "why": [
-    "extra at none"
+    "7 measures, 6 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -23021,8 +23021,8 @@
     ]
    ],
    "steps": {
-    "one": 6,
-    "extra": 1
+    "split": 1,
+    "one": 5
    },
    "boxes": [
     {
@@ -23039,7 +23039,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op22-5",
+       "I",
+       64
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
@@ -23554,7 +23560,6 @@
    "part": "vn1",
    "page": 14,
    "why": [
-    "mis-measured: measured under half its page's median width, music past its ends",
     "2 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [

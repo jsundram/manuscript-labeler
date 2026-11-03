@@ -4020,8 +4020,7 @@
    "part": "va",
    "page": 1,
    "why": [
-    "unlike [['Op02-4', 'I', 31]]",
-    "an end measure longer than its bar ['Op02-4', 'I', 26]"
+    "unlike [['Op02-4', 'I', 31]]"
    ],
    "bars": [
     [
@@ -4873,8 +4872,7 @@
    "why": [
     "unlike [['Op02-4', 'II', 9]]",
     "unlike [['Op02-4', 'II', 11]]",
-    "unlike [['Op02-4', 'II', 12]]",
-    "an end measure longer than its bar ['Op02-4', 'II', 8]"
+    "unlike [['Op02-4', 'II', 12]]"
    ],
    "bars": [
     [
@@ -5484,8 +5482,7 @@
    "page": 4,
    "why": [
     "unlike [['Op02-4', 'III', 21]]",
-    "unlike [['Op02-4', 'III', 22]]",
-    "an end measure shorter than its bar ['Op02-4', 'III', 23]"
+    "unlike [['Op02-4', 'III', 22]]"
    ],
    "bars": [
     [

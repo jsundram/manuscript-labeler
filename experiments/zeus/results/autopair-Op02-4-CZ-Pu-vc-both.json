@@ -1073,6 +1073,247 @@
    ],
    "worst": 0.214,
    "second_reader": "musvit-C4-bocch-tf8-L-best"
+  },
+  {
+   "staff": "p2-4",
+   "part": "vc",
+   "page": 2,
+   "system": {
+    "top": 0.5042654028436019,
+    "bottom": 0.5511848341232227,
+    "left": 0.09857142857142857,
+    "right": 0.905,
+    "start": 0.17,
+    "bend": [
+     0.005213270142180095,
+     0.0018957345971563982,
+     -0.0001644259599574053,
+     -0.0011268014314730764,
+     -0.0018957345971563982
+    ],
+    "barlines": [
+     {
+      "x0": 0.41128750000000003,
+      "x1": 0.4187125,
+      "kind": "single"
+     },
+     {
+      "x0": 0.471125,
+      "x1": 0.48173214285714283,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5786250000000001,
+      "x1": 0.5892321428571429,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6773589285714285,
+      "x1": 0.6847839285714286,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7843178571428572,
+      "x1": 0.7906821428571428,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8846964285714286,
+      "x1": 0.8953035714285714,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "Op02-4",
+     "II",
+     1
+    ],
+    [
+     "Op02-4",
+     "II",
+     2
+    ],
+    [
+     "Op02-4",
+     "II",
+     3
+    ],
+    [
+     "Op02-4",
+     "II",
+     4
+    ],
+    [
+     "Op02-4",
+     "II",
+     5
+    ],
+    [
+     "Op02-4",
+     "II",
+     6
+    ],
+    [
+     "Op02-4",
+     "II",
+     7
+    ]
+   ],
+   "plain": true,
+   "measures": 7,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 7
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 4
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 6
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.0,
+   "second_reader": "musvit-C4-bocch-tf8-L-best"
   }
  ],
  "not kept": [
@@ -2352,7 +2593,6 @@
    "part": "vc",
    "page": 2,
    "why": [
-    "musvit-D3S-h96: mis-measured: measured under half its page's median width, music past its ends",
     "musvit-D3S-h96: 2 measures, 3 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -2401,147 +2641,6 @@
    ]
   },
   {
-   "staff": "p2-4",
-   "part": "vc",
-   "page": 2,
-   "why": [
-    "musvit-D3S-h96: below a mis-measured staff on its page"
-   ],
-   "bars": [
-    [
-     "Op02-4",
-     "II",
-     1
-    ],
-    [
-     "Op02-4",
-     "II",
-     2
-    ],
-    [
-     "Op02-4",
-     "II",
-     3
-    ],
-    [
-     "Op02-4",
-     "II",
-     4
-    ],
-    [
-     "Op02-4",
-     "II",
-     5
-    ],
-    [
-     "Op02-4",
-     "II",
-     6
-    ],
-    [
-     "Op02-4",
-     "II",
-     7
-    ]
-   ],
-   "steps": {
-    "one": 7
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-4",
-       "II",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p2-5",
    "part": "vc",
    "page": 2,
@@ -2552,8 +2651,7 @@
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 13]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 14]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 15]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'II', 18]]",
-    "musvit-D3S-h96: below a mis-measured staff on its page"
+    "musvit-D3S-h96: unlike [['Op02-4', 'II', 18]]"
    ],
    "bars": [
     [
@@ -2772,8 +2870,7 @@
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 22]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 23]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 24]]",
-    "musvit-D3S-h96: unlike [['Op02-4', 'II', 26]]",
-    "musvit-D3S-h96: below a mis-measured staff on its page"
+    "musvit-D3S-h96: unlike [['Op02-4', 'II', 26]]"
    ],
    "bars": [
     [
@@ -2985,8 +3082,7 @@
    "why": [
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 29]]",
     "musvit-D3S-h96: two at [['Op02-4', 'II', 32], ['Op02-4', 'II', 33]]",
-    "musvit-D3S-h96: two at [['Op02-4', 'II', 34], ['Op02-4', 'II', 35]]",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'II', 29]"
+    "musvit-D3S-h96: two at [['Op02-4', 'II', 34], ['Op02-4', 'II', 35]]"
    ],
    "bars": [
     [
@@ -3033,6 +3129,11 @@
      "Op02-4",
      "II",
      37
+    ],
+    [
+     "Op02-4",
+     "II",
+     38
     ]
    ],
    "steps": {
@@ -3142,6 +3243,19 @@
      "join": false,
      "continues": false,
      "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-4",
+       "II",
+       38
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": true,
+     "ends_movement": false
     }
    ]
   },
@@ -3159,7 +3273,6 @@
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 45]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 46]]",
     "musvit-D3S-h96: unlike [['Op02-4', 'II', 47]]",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'II', 38]",
     "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'II', 47]"
    ],
    "bars": [
@@ -3215,7 +3328,8 @@
     ]
    ],
    "steps": {
-    "one": 10
+    "tail": 1,
+    "one": 9
    },
    "boxes": [
     {
@@ -3915,7 +4029,6 @@
    "why": [
     "musvit-D3S-h96: unlike [['Op02-4', 'III', 11]]",
     "musvit-D3S-h96: two at [['Op02-4', 'III', 12], ['Op02-4', 'III', 13]]",
-    "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'III', 16]",
     "musvit-D3S-h96: an end measure shorter than its bar ['Op02-4', 'III', 10]"
    ],
    "bars": [
@@ -4219,8 +4332,7 @@
    "page": 3,
    "why": [
     "musvit-D3S-h96: staff before ends with two",
-    "musvit-D3S-h96: next staff begins with two",
-    "musvit-D3S-h96: mis-measured: measured under half its page's median width, music past its ends"
+    "musvit-D3S-h96: next staff begins with two"
    ],
    "bars": [
     [
@@ -4256,7 +4368,6 @@
     "musvit-D3S-h96: two at [['Op02-4', 'III', 27], ['Op02-4', 'III', 28]]",
     "musvit-D3S-h96: beside a missed bar ['Op02-4', 'III', 31]",
     "musvit-D3S-h96: beside a missed bar ['Op02-4', 'III', 32]",
-    "musvit-D3S-h96: below a mis-measured staff on its page",
     "musvit-D3S-h96: 3 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [

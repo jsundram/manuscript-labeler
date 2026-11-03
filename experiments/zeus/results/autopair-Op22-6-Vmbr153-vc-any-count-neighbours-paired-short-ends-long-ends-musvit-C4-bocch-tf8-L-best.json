@@ -2,9 +2,9 @@
  "source": "Op22-6-Vmbr153-vc",
  "tally": {
   "staves": 52,
-  "staves kept": 17,
-  "bars on kept staves": 105,
-  "kept, bar boxes as many": 11
+  "staves kept": 18,
+  "bars on kept staves": 106,
+  "kept, bar boxes as many": 12
  },
  "clefs": {},
  "kept but wrong": [],
@@ -3578,6 +3578,71 @@
     "G2"
    ],
    "worst": 0.75
+  },
+  {
+   "staff": "p39-29",
+   "part": "vc",
+   "page": 39,
+   "system": {
+    "top": 0.8660837551771744,
+    "bottom": 0.8757478140819144,
+    "left": 0.09107142857142857,
+    "right": 0.8910714285714286,
+    "start": 0.09642857142857143,
+    "bend": [
+     -0.0004601932811780948,
+     0.0006762023723432738,
+     -0.0002347924903970384,
+     0.0018407731247123793,
+     -0.0004601932811780948
+    ],
+    "barlines": [],
+    "above": 1.5,
+    "below": 1.5,
+    "part": "vc"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "Op22-6",
+     "II",
+     136
+    ]
+   ],
+   "plain": true,
+   "measures": 1,
+   "bar_boxes": 1,
+   "right": null,
+   "steps": {
+    "one": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-6",
+       "II",
+       136
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.75
   }
  ],
  "not kept": [
@@ -4638,7 +4703,6 @@
    "why": [
     "extra at none",
     "unlike [['Op22-6', 'I', 74]]",
-    "an end measure shorter than its bar ['Op22-6', 'I', 74]",
     "3 measures, 1 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -4689,7 +4753,6 @@
    "why": [
     "unlike [['Op22-6', 'II', 65]]",
     "unlike [['Op22-6', 'II', 66]]",
-    "an end measure longer than its bar ['Op22-6', 'II', 65]",
     "an end measure longer than its bar ['Op22-6', 'II', 66]"
    ],
    "bars": [
@@ -4794,9 +4857,7 @@
    "page": 39,
    "why": [
     "unlike [['Op22-6', 'II', 69]]",
-    "unlike [['Op22-6', 'II', 70]]",
-    "an end measure longer than its bar ['Op22-6', 'II', 69]",
-    "an end measure longer than its bar ['Op22-6', 'II', 70]"
+    "unlike [['Op22-6', 'II', 70]]"
    ],
    "bars": [
     [
@@ -4900,7 +4961,6 @@
    "why": [
     "extra at none",
     "next staff begins with extra",
-    "an end measure longer than its bar ['Op22-6', 'II', 73]",
     "3 measures, 4 bar boxes, an end not one bar"
    ],
    "bars": [
@@ -6073,39 +6133,6 @@
      "join": false,
      "continues": false,
      "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p39-29",
-   "part": "vc",
-   "page": 39,
-   "why": [
-    "an end measure longer than its bar ['Op22-6', 'II', 136]"
-   ],
-   "bars": [
-    [
-     "Op22-6",
-     "II",
-     136
-    ]
-   ],
-   "steps": {
-    "one": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-6",
-       "II",
-       136
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
     }
    ]
   }

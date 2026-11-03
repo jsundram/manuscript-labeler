@@ -21313,102 +21313,6 @@
    ],
    "worst": 0.0,
    "second_reader": "musvit-C4-bocch-tf8-L-best"
-  },
-  {
-   "staff": "p6-6",
-   "part": "vc",
-   "page": 6,
-   "system": {
-    "top": 0.685,
-    "bottom": 0.726,
-    "left": 0.06,
-    "right": 0.42607142857142855,
-    "start": 0.09321428571428571,
-    "bend": [
-     0.0015,
-     0.001815051020408191,
-     -7.908163265301483e-05,
-     -0.0008864795918367463,
-     0.00041836734693879405
-    ],
-    "barlines": [
-     {
-      "x0": 0.23909285714285716,
-      "x1": 0.23733571428571426,
-      "kind": "single"
-     }
-    ],
-    "above": 3.0,
-    "below": 3.0,
-    "part": "vc"
-   },
-   "clef": "bass",
-   "bars": [
-    [
-     "Op22-4",
-     "II",
-     87
-    ],
-    [
-     "Op22-4",
-     "II",
-     88
-    ]
-   ],
-   "plain": true,
-   "measures": 2,
-   "bar_boxes": 2,
-   "right": null,
-   "steps": {
-    "one": 2
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "II",
-       87
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op22-4",
-       "II",
-       88
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": true
-    }
-   ],
-   "bar_clefs": [
-    {
-     "treble": 0,
-     "alto": 0,
-     "tenor": 0,
-     "bass": 4
-    },
-    {
-     "treble": 0,
-     "alto": 0,
-     "tenor": 0,
-     "bass": 3
-    }
-   ],
-   "read_clefs": [
-    "F4"
-   ],
-   "worst": 0.0,
-   "second_reader": "musvit-C4-bocch-tf8-L-best"
   }
  ],
  "not kept": [
@@ -22107,6 +22011,57 @@
      "join": false,
      "continues": false,
      "ends_movement": false
+    }
+   ]
+  },
+  {
+   "staff": "p6-6",
+   "part": "vc",
+   "page": 6,
+   "why": [
+    "musvit-D3S-h96: mis-measured: measured under half its page's median width, music past its ends"
+   ],
+   "bars": [
+    [
+     "Op22-4",
+     "II",
+     87
+    ],
+    [
+     "Op22-4",
+     "II",
+     88
+    ]
+   ],
+   "steps": {
+    "one": 2
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "II",
+       87
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op22-4",
+       "II",
+       88
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": true
     }
    ]
   }

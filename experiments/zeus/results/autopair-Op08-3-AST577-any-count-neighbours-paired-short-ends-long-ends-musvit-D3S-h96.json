@@ -1126,8 +1126,7 @@
    "part": "va",
    "page": 2,
    "why": [
-    "unlike [['Op08-3', 'I', 29]]",
-    "an end measure shorter than its bar ['Op08-3', 'I', 29]"
+    "unlike [['Op08-3', 'I', 29]]"
    ],
    "bars": [
     [
@@ -4804,8 +4803,7 @@
    "part": "va",
    "page": 3,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['Op08-3', 'III', 54]"
+    "extra at none"
    ],
    "bars": [
     [

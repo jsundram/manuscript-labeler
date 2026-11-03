@@ -2,9 +2,9 @@
  "source": "Op02-1-MS202",
  "tally": {
   "staves": 276,
-  "staves kept": 206,
-  "bars on kept staves": 841,
-  "kept, bar boxes as many": 192
+  "staves kept": 208,
+  "bars on kept staves": 849,
+  "kept, bar boxes as many": 194
  },
  "clefs": {},
  "kept but wrong": [],
@@ -19521,6 +19521,159 @@
    "worst": 0.0
   },
   {
+   "staff": "p16-2",
+   "part": "va",
+   "page": 16,
+   "system": {
+    "top": 0.23535714285714285,
+    "bottom": 0.25821428571428573,
+    "left": 0.14076111875286565,
+    "right": 0.8601558917927556,
+    "start": 0.19073819348922513,
+    "bend": [
+     -0.0010714285714285715,
+     -0.0010714285714285715,
+     -0.00017040149393088606,
+     0.000830999066293186,
+     0.0025
+    ],
+    "barlines": [
+     {
+      "x0": 0.33837689133425036,
+      "x1": 0.33837689133425036,
+      "kind": "single"
+     },
+     {
+      "x0": 0.519486474094452,
+      "x1": 0.519486474094452,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6891334250343879,
+      "x1": 0.6891334250343879,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 2.0,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "Op02-1",
+     "II",
+     28
+    ],
+    [
+     "Op02-1",
+     "II",
+     29
+    ],
+    [
+     "Op02-1",
+     "II",
+     30
+    ],
+    [
+     "Op02-1",
+     "II",
+     31
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       28
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       29
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       30
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       31
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.25
+  },
+  {
    "staff": "p16-6",
    "part": "va",
    "page": 16,
@@ -27128,6 +27281,164 @@
    "worst": 0.611
   },
   {
+   "staff": "p18-3",
+   "part": "vc",
+   "page": 18,
+   "system": {
+    "top": 0.3003571428571429,
+    "bottom": 0.32321428571428573,
+    "left": 0.13269054178145087,
+    "right": 0.8700642791551882,
+    "start": 0.17355371900826447,
+    "bend": [
+     -0.00035714285714285714,
+     -0.0014285714285714286,
+     0.0001597744360902149,
+     0.0007542293233082578,
+     0.0010714285714285715
+    ],
+    "barlines": [
+     {
+      "x0": 0.33882460973370065,
+      "x1": 0.3379430670339761,
+      "kind": "single"
+     },
+     {
+      "x0": 0.516969696969697,
+      "x1": 0.5160881542699725,
+      "kind": "single"
+     },
+     {
+      "x0": 0.699265381083563,
+      "x1": 0.699265381083563,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8663911845730028,
+      "x1": 0.8663911845730028,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 3.0,
+    "part": "vc"
+   },
+   "clef": "tenor",
+   "bars": [
+    [
+     "Op02-1",
+     "II",
+     52
+    ],
+    [
+     "Op02-1",
+     "II",
+     53
+    ],
+    [
+     "Op02-1",
+     "II",
+     54
+    ],
+    [
+     "Op02-1",
+     "II",
+     55
+    ]
+   ],
+   "plain": true,
+   "measures": 4,
+   "bar_boxes": 4,
+   "right": null,
+   "steps": {
+    "one": 4
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       52
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       53
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       54
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "Op02-1",
+       "II",
+       55
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 8,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 9,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 9,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 5,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C4"
+   ],
+   "worst": 0.167
+  },
+  {
    "staff": "p18-7",
    "part": "vc",
    "page": 18,
@@ -32684,8 +32995,7 @@
    "why": [
     "unlike [['Op02-1', 'I', 70]]",
     "unlike [['Op02-1', 'I', 73]]",
-    "an end measure shorter than its bar ['Op02-1', 'I', 73]",
-    "an end measure shorter than its bar ['Op02-1', 'I', 70]"
+    "an end measure shorter than its bar ['Op02-1', 'I', 73]"
    ],
    "bars": [
     [
@@ -36193,93 +36503,6 @@
    ]
   },
   {
-   "staff": "p16-2",
-   "part": "va",
-   "page": 16,
-   "why": [
-    "an end measure shorter than its bar ['Op02-1', 'II', 28]"
-   ],
-   "bars": [
-    [
-     "Op02-1",
-     "II",
-     28
-    ],
-    [
-     "Op02-1",
-     "II",
-     29
-    ],
-    [
-     "Op02-1",
-     "II",
-     30
-    ],
-    [
-     "Op02-1",
-     "II",
-     31
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       28
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       29
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       30
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       31
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p21-6",
    "part": "va",
    "page": 21,
@@ -39024,93 +39247,6 @@
        "Op02-1",
        "II",
        7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p18-3",
-   "part": "vc",
-   "page": 18,
-   "why": [
-    "an end measure longer than its bar ['Op02-1', 'II', 55]"
-   ],
-   "bars": [
-    [
-     "Op02-1",
-     "II",
-     52
-    ],
-    [
-     "Op02-1",
-     "II",
-     53
-    ],
-    [
-     "Op02-1",
-     "II",
-     54
-    ],
-    [
-     "Op02-1",
-     "II",
-     55
-    ]
-   ],
-   "steps": {
-    "one": 4
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       52
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       53
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       54
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "Op02-1",
-       "II",
-       55
       ]
      ],
      "count": 1,

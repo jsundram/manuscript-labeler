@@ -2,9 +2,9 @@
  "source": "G213-Sibley",
  "tally": {
   "staves": 236,
-  "staves kept": 200,
-  "bars on kept staves": 1083,
-  "kept, bar boxes as many": 90
+  "staves kept": 204,
+  "bars on kept staves": 1119,
+  "kept, bar boxes as many": 91
  },
  "clefs": {},
  "kept but wrong": [],
@@ -12454,6 +12454,336 @@
    "worst": 0.409
   },
   {
+   "staff": "p7-10",
+   "part": "vn2",
+   "page": 7,
+   "system": {
+    "top": 0.6832142857142857,
+    "bottom": 0.7078571428571429,
+    "left": 0.013547415955845458,
+    "right": 0.9648770697441044,
+    "start": 0.09683893627696939,
+    "bend": [
+     0.002142857142857143,
+     0.0010714285714285715,
+     0.0,
+     0.0,
+     0.0007142857142857143
+    ],
+    "barlines": [
+     {
+      "x0": 0.22380080280983444,
+      "x1": 0.22276216758655293,
+      "kind": "single"
+     },
+     {
+      "x0": 0.30460110386352235,
+      "x1": 0.3025238334169593,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3793452082288008,
+      "x1": 0.37830657300551934,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5394229804315103,
+      "x1": 0.5373457099849474,
+      "kind": "single"
+     },
+     {
+      "x0": 0.6809182137481183,
+      "x1": 0.6788409433015554,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7436879076768691,
+      "x1": 0.7485348720521826,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8755644756648269,
+      "x1": 0.8755644756648269,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9573507275464125,
+      "x1": 0.9573507275464125,
+      "kind": "single"
+     }
+    ],
+    "above": 2.0,
+    "below": 4.0,
+    "part": "vn2"
+   },
+   "clef": "treble",
+   "bars": [
+    [
+     "II",
+     0
+    ],
+    [
+     "II",
+     1
+    ],
+    [
+     "II",
+     2
+    ],
+    [
+     "II",
+     3
+    ],
+    [
+     "II",
+     4
+    ],
+    [
+     "II",
+     5
+    ],
+    [
+     "II",
+     6
+    ],
+    [
+     "II",
+     7
+    ],
+    [
+     "II",
+     8
+    ],
+    [
+     "II",
+     9
+    ],
+    [
+     "II",
+     10
+    ],
+    [
+     "II",
+     11
+    ]
+   ],
+   "plain": false,
+   "measures": 11,
+   "bar_boxes": 8,
+   "right": null,
+   "irregular": [
+    "a bar a repeat splits, read as one measure"
+   ],
+   "steps": {
+    "one": 10,
+    "join": 1
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "II",
+       0
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       8
+      ],
+      [
+       "II",
+       9
+      ]
+     ],
+     "count": 1,
+     "join": true,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       10
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "II",
+       11
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 3,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 2,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 1,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "G2"
+   ],
+   "worst": 0.667
+  },
+  {
    "staff": "p7-11",
    "part": "vn2",
    "page": 7,
@@ -23575,6 +23905,259 @@
    "worst": 0.167
   },
   {
+   "staff": "p12-5",
+   "part": "va",
+   "page": 12,
+   "system": {
+    "top": 0.41214285714285714,
+    "bottom": 0.43857142857142856,
+    "left": 0.030607124937280482,
+    "right": 0.9653788258906172,
+    "start": 0.0868038133467135,
+    "bend": [
+     0.0,
+     -0.00039182939362798866,
+     -3.340184994864817e-05,
+     0.0004515306122449049,
+     0.0014285714285714286
+    ],
+    "barlines": [
+     {
+      "x0": 0.24541394882087306,
+      "x1": 0.24430005017561465,
+      "kind": "single"
+     },
+     {
+      "x0": 0.31315102860010036,
+      "x1": 0.31203712995484195,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3944355243351731,
+      "x1": 0.3933216256899147,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4781736076266934,
+      "x1": 0.4781736076266934,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5830958354239839,
+      "x1": 0.5819819367787256,
+      "kind": "single"
+     },
+     {
+      "x0": 0.7180130456598093,
+      "x1": 0.7180130456598093,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9584094330155544,
+      "x1": 0.9572955343702961,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 2.5,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "IV",
+     0
+    ],
+    [
+     "IV",
+     1
+    ],
+    [
+     "IV",
+     2
+    ],
+    [
+     "IV",
+     3
+    ],
+    [
+     "IV",
+     4
+    ],
+    [
+     "IV",
+     5
+    ],
+    [
+     "IV",
+     6
+    ],
+    [
+     "IV",
+     7
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "IV",
+       0
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 3,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p12-6",
    "part": "va",
    "page": 12,
@@ -25919,6 +26502,264 @@
     "C3"
    ],
    "worst": 0.0
+  },
+  {
+   "staff": "p13-4",
+   "part": "va",
+   "page": 13,
+   "system": {
+    "top": 0.3492857142857143,
+    "bottom": 0.375,
+    "left": 0.035122930255895635,
+    "right": 0.9683893627696939,
+    "start": 0.0682388359257401,
+    "bend": [
+     0.0010714285714285715,
+     0.0007142857142857143,
+     -4.3679342240474336e-05,
+     -0.0007142857142857143,
+     -0.0014285714285714286
+    ],
+    "barlines": [
+     {
+      "x0": 0.14751630707476165,
+      "x1": 0.14751630707476165,
+      "kind": "single"
+     },
+     {
+      "x0": 0.24393376818866033,
+      "x1": 0.24176618163572502,
+      "kind": "single"
+     },
+     {
+      "x0": 0.3046061214249875,
+      "x1": 0.3035223281485198,
+      "kind": "single"
+     },
+     {
+      "x0": 0.39542398394380335,
+      "x1": 0.39434019066733567,
+      "kind": "single"
+     },
+     {
+      "x0": 0.481726041144004,
+      "x1": 0.48064224786753634,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5911088810837932,
+      "x1": 0.5900250878073257,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8074460612142499,
+      "x1": 0.804194681384847,
+      "kind": "single"
+     },
+     {
+      "x0": 0.9654189663823382,
+      "x1": 0.9643351731058706,
+      "kind": "single"
+     }
+    ],
+    "above": 3.0,
+    "below": 4.0,
+    "part": "va"
+   },
+   "clef": "alto",
+   "bars": [
+    [
+     "IV",
+     92
+    ],
+    [
+     "IV",
+     93
+    ],
+    [
+     "IV",
+     94
+    ],
+    [
+     "IV",
+     95
+    ],
+    [
+     "IV",
+     96
+    ],
+    [
+     "IV",
+     97
+    ],
+    [
+     "IV",
+     98
+    ],
+    [
+     "IV",
+     99
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 8,
+   "right": null,
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "IV",
+       92
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       93
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       94
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       95
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       96
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       97
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       98
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       99
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 1,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 8,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 4,
+     "tenor": 0,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "C3"
+   ],
+   "worst": 0.714
   },
   {
    "staff": "p13-5",
@@ -32331,6 +33172,254 @@
    "worst": 0.167
   },
   {
+   "staff": "p16-6",
+   "part": "vc",
+   "page": 16,
+   "system": {
+    "top": 0.5003571428571428,
+    "bottom": 0.5260714285714285,
+    "left": 0.02007024586051179,
+    "right": 0.9739086803813347,
+    "start": 0.07375815353738083,
+    "bend": [
+     0.002142857142857143,
+     0.0004946043165467374,
+     0.0,
+     -0.0008852040816326833,
+     -0.0014285714285714286
+    ],
+    "barlines": [
+     {
+      "x0": 0.14948319116909184,
+      "x1": 0.15056698444555944,
+      "kind": "single"
+     },
+     {
+      "x0": 0.30615153035624687,
+      "x1": 0.3039839438033116,
+      "kind": "single"
+     },
+     {
+      "x0": 0.38033115905669845,
+      "x1": 0.38033115905669845,
+      "kind": "single"
+     },
+     {
+      "x0": 0.4661716006021074,
+      "x1": 0.4650878073256397,
+      "kind": "single"
+     },
+     {
+      "x0": 0.5690316106372303,
+      "x1": 0.5679478173607627,
+      "kind": "single"
+     },
+     {
+      "x0": 0.8001003512293026,
+      "x1": 0.7964877069744105,
+      "kind": "single"
+     }
+    ],
+    "above": 3.5,
+    "below": 2.5,
+    "part": "vc"
+   },
+   "clef": "bass",
+   "bars": [
+    [
+     "IV",
+     0
+    ],
+    [
+     "IV",
+     1
+    ],
+    [
+     "IV",
+     2
+    ],
+    [
+     "IV",
+     3
+    ],
+    [
+     "IV",
+     4
+    ],
+    [
+     "IV",
+     5
+    ],
+    [
+     "IV",
+     6
+    ],
+    [
+     "IV",
+     7
+    ]
+   ],
+   "plain": true,
+   "measures": 8,
+   "bar_boxes": 7,
+   "right": null,
+   "steps": {
+    "one": 8
+   },
+   "boxes": [
+    {
+     "bars": [
+      [
+       "IV",
+       0
+      ]
+     ],
+     "count": 0,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       1
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       2
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       3
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       4
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       5
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       6
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    },
+    {
+     "bars": [
+      [
+       "IV",
+       7
+      ]
+     ],
+     "count": 1,
+     "join": false,
+     "continues": false,
+     "ends_movement": false
+    }
+   ],
+   "bar_clefs": [
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 0
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 1
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 2
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 0,
+     "bass": 3
+    },
+    {
+     "treble": 0,
+     "alto": 0,
+     "tenor": 4,
+     "bass": 5
+    },
+    {
+     "treble": 0,
+     "alto": 2,
+     "tenor": 8,
+     "bass": 0
+    }
+   ],
+   "read_clefs": [
+    "F4"
+   ],
+   "worst": 0.5
+  },
+  {
    "staff": "p16-7",
    "part": "vc",
    "page": 16,
@@ -37257,206 +38346,6 @@
    ]
   },
   {
-   "staff": "p7-10",
-   "part": "vn2",
-   "page": 7,
-   "why": [
-    "an end measure shorter than its bar ['II', 0]"
-   ],
-   "bars": [
-    [
-     "II",
-     0
-    ],
-    [
-     "II",
-     1
-    ],
-    [
-     "II",
-     2
-    ],
-    [
-     "II",
-     3
-    ],
-    [
-     "II",
-     4
-    ],
-    [
-     "II",
-     5
-    ],
-    [
-     "II",
-     6
-    ],
-    [
-     "II",
-     7
-    ],
-    [
-     "II",
-     8
-    ],
-    [
-     "II",
-     9
-    ],
-    [
-     "II",
-     10
-    ],
-    [
-     "II",
-     11
-    ]
-   ],
-   "steps": {
-    "one": 10,
-    "join": 1
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "II",
-       0
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       8
-      ],
-      [
-       "II",
-       9
-      ]
-     ],
-     "count": 1,
-     "join": true,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       10
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "II",
-       11
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p8-1",
    "part": "vn2",
    "page": 8,
@@ -37768,8 +38657,7 @@
    "part": "va",
    "page": 10,
    "why": [
-    "staff before ends with two",
-    "an end measure shorter than its bar ['I', 24]"
+    "staff before ends with two"
    ],
    "bars": [
     [
@@ -38236,149 +39124,6 @@
    ]
   },
   {
-   "staff": "p12-5",
-   "part": "va",
-   "page": 12,
-   "why": [
-    "an end measure shorter than its bar ['IV', 0]"
-   ],
-   "bars": [
-    [
-     "IV",
-     0
-    ],
-    [
-     "IV",
-     1
-    ],
-    [
-     "IV",
-     2
-    ],
-    [
-     "IV",
-     3
-    ],
-    [
-     "IV",
-     4
-    ],
-    [
-     "IV",
-     5
-    ],
-    [
-     "IV",
-     6
-    ],
-    [
-     "IV",
-     7
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "IV",
-       0
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       7
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
    "staff": "p12-12",
    "part": "va",
    "page": 12,
@@ -38496,149 +39241,6 @@
       [
        "IV",
        63
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p13-4",
-   "part": "va",
-   "page": 13,
-   "why": [
-    "an end measure shorter than its bar ['IV', 99]"
-   ],
-   "bars": [
-    [
-     "IV",
-     92
-    ],
-    [
-     "IV",
-     93
-    ],
-    [
-     "IV",
-     94
-    ],
-    [
-     "IV",
-     95
-    ],
-    [
-     "IV",
-     96
-    ],
-    [
-     "IV",
-     97
-    ],
-    [
-     "IV",
-     98
-    ],
-    [
-     "IV",
-     99
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "IV",
-       92
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       93
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       94
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       95
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       96
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       97
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       98
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       99
       ]
      ],
      "count": 1,
@@ -38806,8 +39408,7 @@
    "part": "vc",
    "page": 14,
    "why": [
-    "extra at none",
-    "an end measure shorter than its bar ['I', 15]"
+    "4 measures, 3 bar boxes, an end not one bar"
    ],
    "bars": [
     [
@@ -38824,8 +39425,8 @@
     ]
    ],
    "steps": {
-    "one": 3,
-    "extra": 1
+    "one": 2,
+    "split": 1
    },
    "boxes": [
     {
@@ -38853,8 +39454,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
-     "count": 0,
+     "bars": [
+      [
+       "I",
+       15
+      ]
+     ],
+     "count": 1,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -38866,7 +39472,7 @@
        15
       ]
      ],
-     "count": 1,
+     "count": 0,
      "join": false,
      "continues": false,
      "ends_movement": false
@@ -39169,149 +39775,6 @@
       [
        "III",
        10
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    }
-   ]
-  },
-  {
-   "staff": "p16-6",
-   "part": "vc",
-   "page": 16,
-   "why": [
-    "an end measure shorter than its bar ['IV', 0]"
-   ],
-   "bars": [
-    [
-     "IV",
-     0
-    ],
-    [
-     "IV",
-     1
-    ],
-    [
-     "IV",
-     2
-    ],
-    [
-     "IV",
-     3
-    ],
-    [
-     "IV",
-     4
-    ],
-    [
-     "IV",
-     5
-    ],
-    [
-     "IV",
-     6
-    ],
-    [
-     "IV",
-     7
-    ]
-   ],
-   "steps": {
-    "one": 8
-   },
-   "boxes": [
-    {
-     "bars": [
-      [
-       "IV",
-       0
-      ]
-     ],
-     "count": 0,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       1
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       2
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       3
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       4
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       5
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       6
-      ]
-     ],
-     "count": 1,
-     "join": false,
-     "continues": false,
-     "ends_movement": false
-    },
-    {
-     "bars": [
-      [
-       "IV",
-       7
       ]
      ],
      "count": 1,

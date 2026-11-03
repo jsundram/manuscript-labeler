@@ -26102,7 +26102,6 @@
    "part": "va",
    "page": 4,
    "why": [
-    "extra at none",
     "next staff begins with extra"
    ],
    "bars": [
@@ -26143,8 +26142,8 @@
     ]
    ],
    "steps": {
-    "one": 7,
-    "extra": 1
+    "one": 6,
+    "split": 1
    },
    "boxes": [
     {
@@ -26226,7 +26225,13 @@
      "ends_movement": false
     },
     {
-     "bars": [],
+     "bars": [
+      [
+       "Op02-2",
+       "II",
+       11
+      ]
+     ],
      "count": 0,
      "join": false,
      "continues": false,
