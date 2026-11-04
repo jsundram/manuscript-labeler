@@ -117,3 +117,11 @@ edition's `/encode` gets its accuracy from what follows its reading:
 - two blind readers per kind of mark, and adjudication of their
   differences;
 - rules learned from corrections.
+
+**An open model, the same test (2026-11-03).** `--backend openai`, with
+Qwen3.6-27B served by `vllm_modal.py`, on all 284 bars of movement II:
+3% and 2% exact on two seeds (0 of the pilot's 10); `--ask rhythm`, the
+rhythm alone, 21% and 25% right. As the edition's reader
+(`agent_read.py`, scored by `score_agent_read.py`) it wrote no bar of
+Op48-4 I vn1 0-13 in 75 minutes. Write-up:
+[reports/2026-11-03-open-model-bars](../../reports/2026-11-03-open-model-bars/).

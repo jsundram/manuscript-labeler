@@ -4,6 +4,37 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-03: An open model reading bars
+
+[Write-up](2026-11-03-open-model-bars/)
+
+**Context.** The edition's Opus readers beat musvit-D5 on Op48-4 I (269
+of 290 bars exact against 231). Could an open model do the same, and be
+fine-tuned to do better?
+
+**Question.** Before building the edition's loop around one: does
+Qwen3.6-27B read a bar at all, shown it once, as the 9 October pilot asked
+Opus?
+
+**Finding.** No: 2-3% of KHM 602 II's bars exact, two seeds, against
+Zeus untrained at 45%.
+
+**A fairer test (2026-11-04).** The user pointed out that one look isn't
+how the edition's readers work: they zoom, engrave and compare, measure
+heads, and think. So Qwen was given the edition's reader prompt and tools
+on Op48-4 I violin I bars 0-13, from the readers' own starting files. It
+looked at every bar, then thought in circles (75 minutes, 317,000 output
+tokens, eight replies cut off at 32,768) and wrote none; the Opus reader
+wrote all 14 (12 exact) in about 117,000, thinking briefly between
+sharper looks. Asked for the rhythm alone, one look a bar, it did no
+better (21-25% against Zeus's 55%), so breaking the question down doesn't
+help this model.
+
+**What followed.** No fine-tune. bars.py keeps `--backend openai` and
+`--ask rhythm`, agent_read.py runs any open model as the edition's
+reader, and vllm_modal.py serves it. Next: Gemma 4's one look a bar,
+the cheap gate before the reader test.
+
 ## 2026-11-03: Pairing recheck
 
 [Page](2026-11-03-pairing-recheck/)
