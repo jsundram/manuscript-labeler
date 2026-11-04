@@ -245,12 +245,20 @@ def openai_content(blocks: list[dict]) -> list[dict]:
             for x in blocks]
 
 
+def sampling(model: str, thinking: bool) -> dict:
+    """The model card's sampling settings."""
+    if "gemma" in model.lower():
+        return {"temperature": 1.0, "top_p": 0.95, "top_k": 64}
+    return {"temperature": 0.6 if thinking else 0.7, "top_p": 0.95 if thinking else 0.8}  # Qwen's
+
+
 def ask_openai(client, model: str, thinking: bool, seed: int, pre: list[dict], context: str, jpeg: bytes) -> dict:
+    s = sampling(model, thinking)
     r = client.chat.completions.create(
         model=model, max_tokens=16000 if thinking else 4000, seed=seed,
-        temperature=0.6 if thinking else 0.7, top_p=0.95 if thinking else 0.8,  # Qwen's suggested sampling
+        temperature=s.pop("temperature"), top_p=s.pop("top_p"),
         response_format={"type": "json_schema", "json_schema": {"name": "bar", "schema": SCHEMA, "strict": True}},
-        extra_body={"chat_template_kwargs": {"enable_thinking": thinking}},
+        extra_body={"chat_template_kwargs": {"enable_thinking": thinking}, **s},
         messages=[{"role": "system", "content": PROMPT},
                   {"role": "user", "content": openai_content(pre) + [
                       {"type": "text", "text": f"Now this bar. {context}"},

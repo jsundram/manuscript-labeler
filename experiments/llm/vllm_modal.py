@@ -2,7 +2,7 @@
 OpenAI-style API, for bars.py --backend openai.
 
     VLLM_API_KEY=<key> modal deploy experiments/llm/vllm_modal.py
-    VLLM_MODEL=google/gemma-4-31b-it VLLM_GPU=H100 VLLM_API_KEY=<key> modal deploy ...
+    VLLM_MODEL=google/gemma-4-31B-it VLLM_GPU=H100 VLLM_API_KEY=<key> modal deploy ...
     VLLM_AGENT=1 VLLM_GPU=H100 VLLM_API_KEY=<key> modal deploy ...  # for agent_read.py
     modal app stop labeler-vllm                                  # when done
 
@@ -22,7 +22,8 @@ import modal
 
 MODEL = os.environ.get("VLLM_MODEL", "Qwen/Qwen3.6-27B-FP8")  # FP8 fits one 48 GB L40S
 GPU = os.environ.get("VLLM_GPU", "L40S")
-BASE = os.environ.get("VLLM_EXTRA", "--reasoning-parser qwen3" if "Qwen" in MODEL else "")  # thinking kept apart
+PARSER = "qwen3" if "Qwen" in MODEL else "gemma4" if "gemma-4" in MODEL else ""
+BASE = os.environ.get("VLLM_EXTRA", f"--reasoning-parser {PARSER}" if PARSER else "")  # thinking kept apart
 AGENT = os.environ.get("VLLM_AGENT", "")
 EXTRA = BASE + (" --enable-auto-tool-choice --tool-call-parser qwen3_coder" if AGENT else "")  # Qwen's tool calls
 # --max-num-seqs: vLLM's default of 256 needs more Mamba cache than one GPU leaves (2026-11-03)
