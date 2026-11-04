@@ -4,6 +4,26 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-04: Pairing with musvit-D5's readings
+
+[Write-up](2026-11-04-d5-pairing/)
+
+**Context.** The last two pairing rules, from the editor's fixed pages,
+kept only 21 more staves. Most staves the pairing leaves out are misread
+(a measure that isn't there, two bars read as one), and the pairing still
+read with D4.
+
+**Question.** Does reading with D5 keep more, and are the staves right?
+
+**Finding.** Yes: on KHM 587's staves D5 never trained on, 68 with the
+right measures against D4's 53; on Dresden (never in training) 458 kept
+against 421. Added to every source, except staves D5 trained on: 7,237 →
+7,976 kept, 88% of the added right on the fixed pages (92% before).
+
+**What followed.** add_reader.py writes each source's `plus-D5` results,
+which the labeler shows first; parallel_pair.py takes `--reader`. Next:
+reading a staff one bar box at a time.
+
 ## 2026-11-03: An open model reading bars
 
 [Write-up](2026-11-03-open-model-bars/)
