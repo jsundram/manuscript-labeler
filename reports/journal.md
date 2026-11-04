@@ -4,6 +4,25 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-04: Reading a staff one bar box at a time
+
+[Write-up](2026-11-04-bar-box-reading/)
+
+**Context.** Most staves the pairing leaves out are misread: a measure
+that isn't there, or two bars read as one. Claude had called reading each
+staff one bar box at a time the bigger lever, as detection finds 96% of a
+part's bar lines.
+
+**Question.** Read that way, does KHM 587 keep more staves?
+
+**Finding.** No: 123 kept against 171 for whole staves, and fewer even
+where detection is exactly right (107 against 149). The reader, trained on
+whole staves, reads a bar alone worse; a wrong staff start or a missed bar
+line goes into every piece.
+
+**What followed.** Dropped. read_boxes.py stays as the record; the next
+gains are a reader trained on the 739 staves D5 added.
+
 ## 2026-11-04: Pairing with musvit-D5's readings
 
 [Write-up](2026-11-04-d5-pairing/)
