@@ -4,6 +4,7 @@ OpenAI-style API, for bars.py --backend openai.
     VLLM_API_KEY=<key> modal deploy experiments/llm/vllm_modal.py
     VLLM_MODEL=google/gemma-4-31B-it VLLM_GPU=H100 VLLM_API_KEY=<key> modal deploy ...
     VLLM_AGENT=1 VLLM_GPU=H100 VLLM_API_KEY=<key> modal deploy ...  # for agent_read.py
+    VLLM_APP=labeler-glimmer VLLM_MODEL=meta-models/Muse-Glimmer-30B ...  # a second server beside the first
     modal app stop labeler-vllm                                  # when done
 
 The model's weights land in the hf-cache volume, so only the first start
@@ -22,10 +23,13 @@ import modal
 
 MODEL = os.environ.get("VLLM_MODEL", "Qwen/Qwen3.6-27B-FP8")  # FP8 fits one 48 GB L40S
 GPU = os.environ.get("VLLM_GPU", "L40S")
-PARSER = "qwen3" if "Qwen" in MODEL else "gemma4" if "gemma-4" in MODEL else ""
-BASE = os.environ.get("VLLM_EXTRA", f"--reasoning-parser {PARSER}" if PARSER else "")  # thinking kept apart
+APP = os.environ.get("VLLM_APP", "labeler-vllm")  # its URL: https://<workspace>--<app>-serve.<region>.modal.run
+# vLLM's parsers for each family's thinking and tool calls
+PARSERS = {"Qwen": ("qwen3", "qwen3_coder"), "gemma-4": ("gemma4", "gemma4"), "Muse-Glimmer": ("muse_glimmer", "muse_glimmer")}
+REASONING, TOOL_CALLS = next((p for k, p in PARSERS.items() if k in MODEL), ("", ""))
+BASE = os.environ.get("VLLM_EXTRA", f"--reasoning-parser {REASONING}" if REASONING else "")  # thinking kept apart
 AGENT = os.environ.get("VLLM_AGENT", "")
-EXTRA = BASE + (" --enable-auto-tool-choice --tool-call-parser qwen3_coder" if AGENT else "")  # Qwen's tool calls
+EXTRA = BASE + (f" --enable-auto-tool-choice --tool-call-parser {TOOL_CALLS}" if AGENT else "")
 # --max-num-seqs: vLLM's default of 256 needs more Mamba cache than one GPU leaves (2026-11-03)
 LIMITS = (["--max-model-len", "131072", "--limit-mm-per-prompt", '{"image": 1000}', "--max-num-seqs", "8"] if AGENT
           else ["--max-model-len", "32768", "--limit-mm-per-prompt", '{"image": 48}', "--max-num-seqs", "32"])
@@ -34,10 +38,10 @@ PORT = 8000
 image = (modal.Image.from_registry("nvidia/cuda:12.9.1-devel-ubuntu22.04", add_python="3.12")
          .entrypoint([])
          .uv_pip_install("vllm==0.33.0", "huggingface_hub")
-         .env({"VLLM_MODEL": MODEL, "VLLM_GPU": GPU, "VLLM_EXTRA": BASE, "VLLM_AGENT": AGENT}))
+         .env({"VLLM_MODEL": MODEL, "VLLM_GPU": GPU, "VLLM_EXTRA": BASE, "VLLM_AGENT": AGENT, "VLLM_APP": APP}))
 hf_cache = modal.Volume.from_name("hf-cache", create_if_missing=True)
 vllm_cache = modal.Volume.from_name("vllm-cache", create_if_missing=True)
-app = modal.App("labeler-vllm")
+app = modal.App(APP)
 
 
 @app.function(image=image, gpu=GPU, timeout=4 * 3600, scaledown_window=10 * 60,

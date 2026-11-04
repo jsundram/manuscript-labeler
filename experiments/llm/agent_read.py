@@ -24,7 +24,11 @@ about 1.15 million pixels). The model thinks before each turn.
 Run this inside Claude Code's sandbox: every command the model runs is then
 held to it. Python's own TLS (certifi) is used because the sandbox blocks
 the macOS certificate service. Each turn is logged to
-<edition-copy>/build/qwen/<part>-<chunk>.jsonl.
+<edition-copy>/build/<model>/<part>-<chunk>.jsonl.
+
+--thinking-budget caps each reply's thinking (vLLM ends the thinking there);
+--image-tokens sets Gemma 4's picture budget (its default, 280 tokens, would
+shrink a zoom below what Opus is shown).
 """
 
 import argparse
@@ -46,8 +50,12 @@ from PIL import Image
 MAX_SIDE, MAX_PIXELS = 2000, 1_150_000  # what Opus is shown (encode-status.md, "the two display limits")
 OUTPUT_LIMIT = 30_000  # characters of a command's output returned, as Claude Code's shell does
 IMAGES = {".png", ".jpg", ".jpeg", ".gif", ".webp"}
-# Qwen3.6's model card: thinking mode, and its image examples; at most 32,768 tokens a reply
-SAMPLING = {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "min_p": 0.0, "presence_penalty": 0.0}
+# Each model card's sampling for thinking; at most 32,768 tokens a reply
+SAMPLING = {"qwen": {"temperature": 1.0, "top_p": 0.95, "top_k": 20, "min_p": 0.0, "presence_penalty": 0.0},
+            "gemma": {"temperature": 1.0, "top_p": 0.95, "top_k": 64},
+            "glimmer": {"temperature": 1.0, "top_p": 0.95, "top_k": 64}}
+THINK = {"qwen": {"enable_thinking": True}, "gemma": {"enable_thinking": True},
+         "glimmer": {"reasoning_strength": "high"}}  # Glimmer's card: high for agentic tasks
 NUDGE = ("Your thinking reached the 32,768-token limit three times without acting. Act now on what you have "
          "seen: write the bars you have read with bars.py set and record them, then go on bar by bar.")
 
@@ -207,7 +215,19 @@ def main():
     ap.add_argument("--max-turns", type=int, default=400)
     ap.add_argument("--context", type=int, default=131072, help="the server's context length")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--thinking-budget", type=int, help="the most thinking tokens a reply")
+    ap.add_argument("--image-tokens", type=int, help="Gemma 4's picture budget (70-1120)")
+    ap.add_argument("--reasoning-strength", choices=["low", "medium", "high", "xhigh"],
+                    help="Muse Glimmer's own control of its thinking (its thinking budget doesn't take)")
     a = ap.parse_args()
+    family = next(k for k in SAMPLING if k in a.model.lower())
+    extra = {**SAMPLING[family], "chat_template_kwargs": THINK[family]}
+    if a.reasoning_strength:
+        extra["chat_template_kwargs"] = {"reasoning_strength": a.reasoning_strength}
+    if a.thinking_budget:
+        extra["thinking_token_budget"] = a.thinking_budget
+    if a.image_tokens:
+        extra["mm_processor_kwargs"] = {"max_soft_tokens": a.image_tokens}
     repo = a.repo.resolve()
     if Path.home() / "Dropbox" in repo.parents:
         raise SystemExit("agent_read: give it a copy of the edition, not the edition")
@@ -215,19 +235,20 @@ def main():
     ctx = ssl.create_default_context(cafile=certifi.where())
     system, task = prompts(repo, a.part, a.chunk)
     tools = Tools(repo)
-    log = repo / "build" / "qwen" / f"{a.part}-{a.chunk}.jsonl"
+    log = repo / "build" / a.model.split("/")[-1].lower() / f"{a.part}-{a.chunk}.jsonl"
     log.parent.mkdir(parents=True, exist_ok=True)
     messages = [{"role": "system", "content": system}, {"role": "user", "content": task}]
     with log.open("a") as f:
         f.write(json.dumps({"start": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": a.model, "seed": a.seed,
+                            "settings": extra,
                             "system": system, "task": task}) + "\n")
     t0, prompt_tokens, output_tokens, final, nudges = time.time(), 0, 0, None, 0
     for turn in range(1, a.max_turns + 1):
         t = time.time()
         for attempt in range(3):  # a reply cut off before it acts is asked again, with another seed
             r = chat(a.url, key, {"model": a.model, "messages": messages, "tools": TOOLS, "tool_choice": "auto",
-                                  "max_tokens": 32768, **SAMPLING, "seed": a.seed * 100_000 + turn * 10 + attempt,
-                                  "chat_template_kwargs": {"enable_thinking": True}}, ctx)
+                                  "max_tokens": 32768, **extra, "seed": a.seed * 100_000 + turn * 10 + attempt},
+                     ctx)
             m, u = r["choices"][0]["message"], r["usage"]
             prompt_tokens += u["prompt_tokens"]
             output_tokens += u["completion_tokens"]

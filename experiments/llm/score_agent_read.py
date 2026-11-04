@@ -6,9 +6,9 @@
 the Opus readers' first reading and musvit-D5's own reading of the same bars
 (the run's d5/ folder, from the edition's scripts/d5_measure.py).
 
-    uv run experiments/llm/score_agent_read.py <edition-copy> <edition> --part vn1 [--bars 0-13]
+    uv run experiments/llm/score_agent_read.py <edition-copy> <edition> --part vn1 [--bars 0-13] [--reader gemma]
 
-Writes <edition-copy>/build/qwen/score-<part>.json.
+Writes <edition-copy>/build/<reader>/score-<part>.json.
 """
 
 import argparse
@@ -29,12 +29,13 @@ def main():
     ap.add_argument("edition", type=Path)
     ap.add_argument("--part", required=True)
     ap.add_argument("--bars", help="first-last; default every bar of the part")
+    ap.add_argument("--reader", default="qwen", help="the open model's name in the tally")
     a = ap.parse_args()
     state = json.loads(next((a.copy / "build/encode").glob("*/state.json")).read_text())
     run, q, mvt = state["run"], state["quartet"], state["mvt"]
     source = Path(state["source"]["file"]).name.replace(".bars.json", "")
     d5 = a.edition / "build/encode" / run / "d5"
-    out = a.copy / "build/qwen"
+    out = a.copy / "build" / a.reader
     (out / "events").mkdir(parents=True, exist_ok=True)
     r = subprocess.run(["uv", "run", "--offline", str(a.copy / "scripts/events.py"), q, a.part, mvt, "--json"],
                        capture_output=True, text=True, check=True)
@@ -44,7 +45,7 @@ def main():
     subprocess.run([zeus, "compare", "--edition", str(a.edition), "--source", source, "--movements", mvt,
                     "--parts", a.part, "--events", str(out / "events"), "--against", str(d5 / "final"),
                     "--out", str(res)], check=True, capture_output=True, text=True)
-    readers = {"qwen": json.loads(res.read_text())["bars"],
+    readers = {a.reader: json.loads(res.read_text())["bars"],
                "opus": json.loads((d5 / "read-vs-final.json").read_text())["bars"],
                "d5": json.loads((d5 / "reading-vs-final.json").read_text())["against"]["bars"]}
     wanted = bar_range(a.bars) if a.bars else None

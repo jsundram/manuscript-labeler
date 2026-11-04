@@ -252,13 +252,19 @@ def sampling(model: str, thinking: bool) -> dict:
     return {"temperature": 0.6 if thinking else 0.7, "top_p": 0.95 if thinking else 0.8}  # Qwen's
 
 
-def ask_openai(client, model: str, thinking: bool, seed: int, pre: list[dict], context: str, jpeg: bytes) -> dict:
+def ask_openai(client, model: str, thinking: bool, seed: int, pre: list[dict], context: str, jpeg: bytes,
+               image_tokens: int | None = None) -> dict:
     s = sampling(model, thinking)
+    template = {"enable_thinking": thinking}
+    if "glimmer" in model.lower():  # no off switch: its lowest reasoning strength
+        template = {"reasoning_strength": "high" if thinking else "low"}
+    if image_tokens:  # Gemma 4's picture budget (70-1120 tokens; its default 280)
+        s["mm_processor_kwargs"] = {"max_soft_tokens": image_tokens}
     r = client.chat.completions.create(
-        model=model, max_tokens=16000 if thinking else 4000, seed=seed,
+        model=model, max_tokens=16000 if thinking or "glimmer" in model.lower() else 4000, seed=seed,
         temperature=s.pop("temperature"), top_p=s.pop("top_p"),
         response_format={"type": "json_schema", "json_schema": {"name": "bar", "schema": SCHEMA, "strict": True}},
-        extra_body={"chat_template_kwargs": {"enable_thinking": thinking}, **s},
+        extra_body={"chat_template_kwargs": template, **s},
         messages=[{"role": "system", "content": PROMPT},
                   {"role": "user", "content": openai_content(pre) + [
                       {"type": "text", "text": f"Now this bar. {context}"},
@@ -306,11 +312,13 @@ def main():
     ap.add_argument("--model", help="with --backend openai: the served model's name")
     ap.add_argument("--thinking", action="store_true", help="with --backend openai: let the model think first")
     ap.add_argument("--seed", type=int, default=0, help="with --backend openai: the sampling seed")
+    ap.add_argument("--image-tokens", type=int, help="with --backend openai: Gemma 4's picture budget")
+    ap.add_argument("--space-px", type=int, help="a staff space in the pictures sent, in px (default 40)")
     ap.add_argument("--ask", default="notes", choices=["notes", "rhythm"],
                     help="rhythm: ask only each event's kind and written value (scored on rhythm alone)")
     a = ap.parse_args()
-    global EFFORT, PROMPT, SCHEMA, RHYTHM
-    EFFORT = a.effort
+    global EFFORT, PROMPT, SCHEMA, RHYTHM, SPACE_PX
+    EFFORT, SPACE_PX = a.effort, a.space_px or SPACE_PX
     if a.ask == "rhythm":
         PROMPT, SCHEMA, RHYTHM = RHYTHM_PROMPT, RHYTHM_SCHEMA, True
 
@@ -319,7 +327,8 @@ def main():
     if a.backend == "anthropic":
         tag = hashlib.sha1(f"{MODEL}:{EFFORT}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}".encode()).hexdigest()[:10]
     else:
-        tag = hashlib.sha1(f"{a.model}:{a.thinking}:{a.seed}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}"
+        tokens = f":{a.image_tokens}" if a.image_tokens else ""  # the crops' scale is in pre's pictures
+        tag = hashlib.sha1(f"{a.model}{tokens}:{a.thinking}:{a.seed}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}"
                            .encode()).hexdigest()[:10]
     out = HERE / "answers" / f"bars-{tag}.json"
     done = json.loads(out.read_text()) if out.exists() else {}
@@ -338,7 +347,8 @@ def main():
         import os
         import openai
         client = openai.OpenAI(base_url=a.url, api_key=os.environ["VLLM_API_KEY"], max_retries=3, timeout=900.0)
-        asker = lambda b: ask_openai(client, a.model, a.thinking, a.seed, pre, test.context(b), test.image(b))
+        asker = lambda b: ask_openai(client, a.model, a.thinking, a.seed, pre, test.context(b), test.image(b),
+                                     a.image_tokens)
     lock = threading.Lock()
     failed = []
 

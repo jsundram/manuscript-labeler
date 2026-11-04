@@ -1,0 +1,12214 @@
+{
+ "va:II:1": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73515,
+   "output_tokens": 1218
+  }
+ },
+ "va:II:10": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73694,
+   "output_tokens": 1011
+  }
+ },
+ "va:II:11": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73330,
+   "output_tokens": 2060
+  }
+ },
+ "va:II:12": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 2094
+  }
+ },
+ "va:II:13": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73564,
+   "output_tokens": 2636
+  }
+ },
+ "va:II:14": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73330,
+   "output_tokens": 1475
+  }
+ },
+ "va:II:15": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73434,
+   "output_tokens": 703
+  }
+ },
+ "va:II:16": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73486,
+   "output_tokens": 924
+  }
+ },
+ "va:II:17": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73565,
+   "output_tokens": 668
+  }
+ },
+ "va:II:18": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73642,
+   "output_tokens": 1537
+  }
+ },
+ "va:II:19": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73798,
+   "output_tokens": 660
+  }
+ },
+ "va:II:2": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3",
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73440,
+   "output_tokens": 1138
+  }
+ },
+ "va:II:20": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73408,
+   "output_tokens": 938
+  }
+ },
+ "va:II:21": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73772,
+   "output_tokens": 1287
+  }
+ },
+ "va:II:22": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73356,
+   "output_tokens": 1112
+  }
+ },
+ "va:II:23": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73486,
+   "output_tokens": 2931
+  }
+ },
+ "va:II:24": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73512,
+   "output_tokens": 2250
+  }
+ },
+ "va:II:25": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73330,
+   "output_tokens": 789
+  }
+ },
+ "va:II:26": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73486,
+   "output_tokens": 604
+  }
+ },
+ "va:II:27": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73304,
+   "output_tokens": 437
+  }
+ },
+ "va:II:28": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73460,
+   "output_tokens": 818
+  }
+ },
+ "va:II:29": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 1587
+  }
+ },
+ "va:II:3": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73174,
+   "output_tokens": 1084
+  }
+ },
+ "va:II:30": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73382,
+   "output_tokens": 375
+  }
+ },
+ "va:II:31": {
+  "events": [
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G#3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 915
+  }
+ },
+ "va:II:32": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73720,
+   "output_tokens": 1231
+  }
+ },
+ "va:II:33": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73590,
+   "output_tokens": 1426
+  }
+ },
+ "va:II:34": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73408,
+   "output_tokens": 1850
+  }
+ },
+ "va:II:35": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73772,
+   "output_tokens": 463
+  }
+ },
+ "va:II:36": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3",
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74292,
+   "output_tokens": 1334
+  }
+ },
+ "va:II:37": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73382,
+   "output_tokens": 429
+  }
+ },
+ "va:II:4": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73668,
+   "output_tokens": 1475
+  }
+ },
+ "va:II:41": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73390,
+   "output_tokens": 603
+  }
+ },
+ "va:II:42": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73365,
+   "output_tokens": 1301
+  }
+ },
+ "va:II:43": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73746,
+   "output_tokens": 713
+  }
+ },
+ "va:II:44": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73615,
+   "output_tokens": 794
+  }
+ },
+ "va:II:45": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74318,
+   "output_tokens": 2654
+  }
+ },
+ "va:II:46": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74058,
+   "output_tokens": 1513
+  }
+ },
+ "va:II:47": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74240,
+   "output_tokens": 1345
+  }
+ },
+ "va:II:48": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73356,
+   "output_tokens": 2889
+  }
+ },
+ "va:II:49": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73512,
+   "output_tokens": 1349
+  }
+ },
+ "va:II:5": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73720,
+   "output_tokens": 1150
+  }
+ },
+ "va:II:50": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73564,
+   "output_tokens": 1576
+  }
+ },
+ "va:II:51": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73564,
+   "output_tokens": 1401
+  }
+ },
+ "va:II:52": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73928,
+   "output_tokens": 1363
+  }
+ },
+ "va:II:53": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73824,
+   "output_tokens": 1799
+  }
+ },
+ "va:II:54": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 830
+  }
+ },
+ "va:II:55": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73460,
+   "output_tokens": 1196
+  }
+ },
+ "va:II:56": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73356,
+   "output_tokens": 1623
+  }
+ },
+ "va:II:57": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73902,
+   "output_tokens": 1351
+  }
+ },
+ "va:II:58": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4",
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73122,
+   "output_tokens": 1622
+  }
+ },
+ "va:II:59": {
+  "events": [],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73200,
+   "output_tokens": 1127
+  }
+ },
+ "va:II:6": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73668,
+   "output_tokens": 1092
+  }
+ },
+ "va:II:60": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73226,
+   "output_tokens": 1457
+  }
+ },
+ "va:II:61": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 1004
+  }
+ },
+ "va:II:62": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73720,
+   "output_tokens": 1189
+  }
+ },
+ "va:II:63": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73876,
+   "output_tokens": 1079
+  }
+ },
+ "va:II:64": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73616,
+   "output_tokens": 1446
+  }
+ },
+ "va:II:65": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73590,
+   "output_tokens": 1657
+  }
+ },
+ "va:II:66": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73538,
+   "output_tokens": 1463
+  }
+ },
+ "va:II:67": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73512,
+   "output_tokens": 624
+  }
+ },
+ "va:II:68": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73512,
+   "output_tokens": 973
+  }
+ },
+ "va:II:69": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73408,
+   "output_tokens": 1624
+  }
+ },
+ "va:II:7": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73642,
+   "output_tokens": 862
+  }
+ },
+ "va:II:70": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73512,
+   "output_tokens": 1497
+  }
+ },
+ "va:II:71": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73720,
+   "output_tokens": 1307
+  }
+ },
+ "va:II:72": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73902,
+   "output_tokens": 1334
+  }
+ },
+ "va:II:8": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73746,
+   "output_tokens": 1626
+  }
+ },
+ "va:II:9": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73746,
+   "output_tokens": 1398
+  }
+ },
+ "vc:II:1": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73487,
+   "output_tokens": 1085
+  }
+ },
+ "vc:II:10": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73669,
+   "output_tokens": 2223
+  }
+ },
+ "vc:II:11": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73487,
+   "output_tokens": 2187
+  }
+ },
+ "vc:II:12": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73383,
+   "output_tokens": 1796
+  }
+ },
+ "vc:II:13": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 2516
+  }
+ },
+ "vc:II:14": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73316,
+   "output_tokens": 1742
+  }
+ },
+ "vc:II:15": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73331,
+   "output_tokens": 1955
+  }
+ },
+ "vc:II:16": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73616,
+   "output_tokens": 1968
+  }
+ },
+ "vc:II:17": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73391,
+   "output_tokens": 594
+  }
+ },
+ "vc:II:18": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73461,
+   "output_tokens": 455
+  }
+ },
+ "vc:II:19": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73241,
+   "output_tokens": 321
+  }
+ },
+ "vc:II:2": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73357,
+   "output_tokens": 1261
+  }
+ },
+ "vc:II:20": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73461,
+   "output_tokens": 1660
+  }
+ },
+ "vc:II:21": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 1148
+  }
+ },
+ "vc:II:22": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D#3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73383,
+   "output_tokens": 1318
+  }
+ },
+ "vc:II:23": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 1542
+  }
+ },
+ "vc:II:24": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 2319
+  }
+ },
+ "vc:II:25": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74267,
+   "output_tokens": 2712
+  }
+ },
+ "vc:II:26": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73331,
+   "output_tokens": 172
+  }
+ },
+ "vc:II:27": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73981,
+   "output_tokens": 1025
+  }
+ },
+ "vc:II:28": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73409,
+   "output_tokens": 211
+  }
+ },
+ "vc:II:29": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73747,
+   "output_tokens": 1735
+  }
+ },
+ "vc:II:3": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73591,
+   "output_tokens": 1799
+  }
+ },
+ "vc:II:30": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74449,
+   "output_tokens": 1590
+  }
+ },
+ "vc:II:31": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73851,
+   "output_tokens": 830
+  }
+ },
+ "vc:II:32": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73491,
+   "output_tokens": 1263
+  }
+ },
+ "vc:II:33": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73669,
+   "output_tokens": 1048
+  }
+ },
+ "vc:II:34": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73643,
+   "output_tokens": 1514
+  }
+ },
+ "vc:II:35": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73591,
+   "output_tokens": 1560
+  }
+ },
+ "vc:II:36": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74137,
+   "output_tokens": 1881
+  }
+ },
+ "vc:II:38": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73435,
+   "output_tokens": 1281
+  }
+ },
+ "vc:II:39": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73981,
+   "output_tokens": 1343
+  }
+ },
+ "vc:II:4": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73799,
+   "output_tokens": 1439
+  }
+ },
+ "vc:II:40": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73441,
+   "output_tokens": 1607
+  }
+ },
+ "vc:II:41": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73409,
+   "output_tokens": 1353
+  }
+ },
+ "vc:II:42": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73591,
+   "output_tokens": 449
+  }
+ },
+ "vc:II:43": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73441,
+   "output_tokens": 1770
+  }
+ },
+ "vc:II:44": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 1522
+  }
+ },
+ "vc:II:45": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73487,
+   "output_tokens": 1196
+  }
+ },
+ "vc:II:46": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73539,
+   "output_tokens": 1148
+  }
+ },
+ "vc:II:47": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73316,
+   "output_tokens": 1565
+  }
+ },
+ "vc:II:48": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74141,
+   "output_tokens": 2895
+  }
+ },
+ "vc:II:49": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73539,
+   "output_tokens": 1534
+  }
+ },
+ "vc:II:5": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73591,
+   "output_tokens": 1778
+  }
+ },
+ "vc:II:50": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73565,
+   "output_tokens": 1499
+  }
+ },
+ "vc:II:51": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73409,
+   "output_tokens": 1660
+  }
+ },
+ "vc:II:52": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Db3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 1701
+  }
+ },
+ "vc:II:53": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73641,
+   "output_tokens": 2683
+  }
+ },
+ "vc:II:54": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73565,
+   "output_tokens": 1315
+  }
+ },
+ "vc:II:55": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73487,
+   "output_tokens": 950
+  }
+ },
+ "vc:II:56": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73409,
+   "output_tokens": 616
+  }
+ },
+ "vc:II:57": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 611
+  }
+ },
+ "vc:II:58": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Gb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73466,
+   "output_tokens": 2968
+  }
+ },
+ "vc:II:59": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "B2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73491,
+   "output_tokens": 2171
+  }
+ },
+ "vc:II:6": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74007,
+   "output_tokens": 1293
+  }
+ },
+ "vc:II:60": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73591,
+   "output_tokens": 1469
+  }
+ },
+ "vc:II:61": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73617,
+   "output_tokens": 1396
+  }
+ },
+ "vc:II:62": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73539,
+   "output_tokens": 1040
+  }
+ },
+ "vc:II:63": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73516,
+   "output_tokens": 2454
+  }
+ },
+ "vc:II:64": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73391,
+   "output_tokens": 833
+  }
+ },
+ "vc:II:65": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73617,
+   "output_tokens": 1488
+  }
+ },
+ "vc:II:66": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 1359
+  }
+ },
+ "vc:II:67": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Gb2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Gb2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73409,
+   "output_tokens": 1187
+  }
+ },
+ "vc:II:68": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73747,
+   "output_tokens": 1463
+  }
+ },
+ "vc:II:69": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Gb2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73565,
+   "output_tokens": 1155
+  }
+ },
+ "vc:II:7": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73513,
+   "output_tokens": 808
+  }
+ },
+ "vc:II:70": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 1231
+  }
+ },
+ "vc:II:71": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73695,
+   "output_tokens": 1291
+  }
+ },
+ "vc:II:72": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G2"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74033,
+   "output_tokens": 1250
+  }
+ },
+ "vc:II:8": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73643,
+   "output_tokens": 1203
+  }
+ },
+ "vc:II:9": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A2"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73981,
+   "output_tokens": 2004
+  }
+ },
+ "vn1:II:1": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73418,
+   "output_tokens": 3022
+  }
+ },
+ "vn1:II:10": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73543,
+   "output_tokens": 861
+  }
+ },
+ "vn1:II:11": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73218,
+   "output_tokens": 382
+  }
+ },
+ "vn1:II:12": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "B4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73443,
+   "output_tokens": 1438
+  }
+ },
+ "vn1:II:13": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73718,
+   "output_tokens": 1570
+  }
+ },
+ "vn1:II:14": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73643,
+   "output_tokens": 2048
+  }
+ },
+ "vn1:II:15": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73668,
+   "output_tokens": 1640
+  }
+ },
+ "vn1:II:16": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73618,
+   "output_tokens": 3038
+  }
+ },
+ "vn1:II:17": {
+  "events": [
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E#4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73693,
+   "output_tokens": 1846
+  }
+ },
+ "vn1:II:18": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73293,
+   "output_tokens": 943
+  }
+ },
+ "vn1:II:19": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73443,
+   "output_tokens": 1812
+  }
+ },
+ "vn1:II:2": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73318,
+   "output_tokens": 931
+  }
+ },
+ "vn1:II:20": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73293,
+   "output_tokens": 870
+  }
+ },
+ "vn1:II:21": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73543,
+   "output_tokens": 1132
+  }
+ },
+ "vn1:II:22": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73368,
+   "output_tokens": 1433
+  }
+ },
+ "vn1:II:23": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73443,
+   "output_tokens": 2297
+  }
+ },
+ "vn1:II:24": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "B4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73568,
+   "output_tokens": 2337
+  }
+ },
+ "vn1:II:25": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73568,
+   "output_tokens": 1232
+  }
+ },
+ "vn1:II:26": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73843,
+   "output_tokens": 1443
+  }
+ },
+ "vn1:II:27": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73618,
+   "output_tokens": 1342
+  }
+ },
+ "vn1:II:28": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "F5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73593,
+   "output_tokens": 2037
+  }
+ },
+ "vn1:II:29": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73343,
+   "output_tokens": 1201
+  }
+ },
+ "vn1:II:3": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73443,
+   "output_tokens": 1866
+  }
+ },
+ "vn1:II:30": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73543,
+   "output_tokens": 1124
+  }
+ },
+ "vn1:II:31": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73693,
+   "output_tokens": 1207
+  }
+ },
+ "vn1:II:32": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73918,
+   "output_tokens": 1493
+  }
+ },
+ "vn1:II:33": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74418,
+   "output_tokens": 1246
+  }
+ },
+ "vn1:II:34": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74368,
+   "output_tokens": 1700
+  }
+ },
+ "vn1:II:35": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74768,
+   "output_tokens": 1402
+  }
+ },
+ "vn1:II:36": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "eighth",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74143,
+   "output_tokens": 2348
+  }
+ },
+ "vn1:II:37": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73193,
+   "output_tokens": 1359
+  }
+ },
+ "vn1:II:38": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73193,
+   "output_tokens": 930
+  }
+ },
+ "vn1:II:39": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74143,
+   "output_tokens": 1502
+  }
+ },
+ "vn1:II:4": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F#4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73543,
+   "output_tokens": 1322
+  }
+ },
+ "vn1:II:40": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73343,
+   "output_tokens": 1208
+  }
+ },
+ "vn1:II:41": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73843,
+   "output_tokens": 1210
+  }
+ },
+ "vn1:II:42": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73768,
+   "output_tokens": 1159
+  }
+ },
+ "vn1:II:43": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73968,
+   "output_tokens": 1258
+  }
+ },
+ "vn1:II:44": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73993,
+   "output_tokens": 2625
+  }
+ },
+ "vn1:II:45": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73643,
+   "output_tokens": 932
+  }
+ },
+ "vn1:II:46": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73493,
+   "output_tokens": 934
+  }
+ },
+ "vn1:II:48": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74343,
+   "output_tokens": 2976
+  }
+ },
+ "vn1:II:49": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74168,
+   "output_tokens": 2019
+  }
+ },
+ "vn1:II:5": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73693,
+   "output_tokens": 1921
+  }
+ },
+ "vn1:II:50": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74143,
+   "output_tokens": 2154
+  }
+ },
+ "vn1:II:51": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73743,
+   "output_tokens": 1311
+  }
+ },
+ "vn1:II:52": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74168,
+   "output_tokens": 1857
+  }
+ },
+ "vn1:II:53": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73293,
+   "output_tokens": 946
+  }
+ },
+ "vn1:II:54": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73693,
+   "output_tokens": 1750
+  }
+ },
+ "vn1:II:55": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73418,
+   "output_tokens": 1344
+  }
+ },
+ "vn1:II:56": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73793,
+   "output_tokens": 2630
+  }
+ },
+ "vn1:II:57": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74543,
+   "output_tokens": 1749
+  }
+ },
+ "vn1:II:58": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74043,
+   "output_tokens": 2581
+  }
+ },
+ "vn1:II:59": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73943,
+   "output_tokens": 4308
+  }
+ },
+ "vn1:II:6": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73393,
+   "output_tokens": 1663
+  }
+ },
+ "vn1:II:60": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73743,
+   "output_tokens": 978
+  }
+ },
+ "vn1:II:61": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73443,
+   "output_tokens": 763
+  }
+ },
+ "vn1:II:62": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73918,
+   "output_tokens": 2212
+  }
+ },
+ "vn1:II:63": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73418,
+   "output_tokens": 1462
+  }
+ },
+ "vn1:II:64": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73868,
+   "output_tokens": 2189
+  }
+ },
+ "vn1:II:65": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73493,
+   "output_tokens": 1040
+  }
+ },
+ "vn1:II:66": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73468,
+   "output_tokens": 1821
+  }
+ },
+ "vn1:II:67": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73918,
+   "output_tokens": 1610
+  }
+ },
+ "vn1:II:68": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73693,
+   "output_tokens": 1796
+  }
+ },
+ "vn1:II:69": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74018,
+   "output_tokens": 1045
+  }
+ },
+ "vn1:II:7": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73343,
+   "output_tokens": 732
+  }
+ },
+ "vn1:II:70": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74243,
+   "output_tokens": 1770
+  }
+ },
+ "vn1:II:71": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74468,
+   "output_tokens": 1286
+  }
+ },
+ "vn1:II:72": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74243,
+   "output_tokens": 1258
+  }
+ },
+ "vn1:II:8": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73718,
+   "output_tokens": 990
+  }
+ },
+ "vn1:II:9": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73543,
+   "output_tokens": 761
+  }
+ },
+ "vn2:II:1": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73643,
+   "output_tokens": 1443
+  }
+ },
+ "vn2:II:10": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73568,
+   "output_tokens": 1139
+  }
+ },
+ "vn2:II:11": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73593,
+   "output_tokens": 2056
+  }
+ },
+ "vn2:II:12": {
+  "events": [
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F#4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F#4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F#4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73983,
+   "output_tokens": 2643
+  }
+ },
+ "vn2:II:13": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73567,
+   "output_tokens": 932
+  }
+ },
+ "vn2:II:14": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73343,
+   "output_tokens": 1787
+  }
+ },
+ "vn2:II:15": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73463,
+   "output_tokens": 2262
+  }
+ },
+ "vn2:II:16": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73318,
+   "output_tokens": 785
+  }
+ },
+ "vn2:II:17": {
+  "events": [
+   {
+    "accidentals": [
+     "sharp"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F#4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73749,
+   "output_tokens": 1880
+  }
+ },
+ "vn2:II:18": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74425,
+   "output_tokens": 1845
+  }
+ },
+ "vn2:II:19": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73463,
+   "output_tokens": 1138
+  }
+ },
+ "vn2:II:2": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73118,
+   "output_tokens": 531
+  }
+ },
+ "vn2:II:20": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73068,
+   "output_tokens": 1045
+  }
+ },
+ "vn2:II:21": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73645,
+   "output_tokens": 1581
+  }
+ },
+ "vn2:II:22": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73619,
+   "output_tokens": 2509
+  }
+ },
+ "vn2:II:23": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73957,
+   "output_tokens": 1940
+  }
+ },
+ "vn2:II:24": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 822
+  }
+ },
+ "vn2:II:25": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73118,
+   "output_tokens": 635
+  }
+ },
+ "vn2:II:26": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73125,
+   "output_tokens": 465
+  }
+ },
+ "vn2:II:27": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73047,
+   "output_tokens": 993
+  }
+ },
+ "vn2:II:28": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73151,
+   "output_tokens": 980
+  }
+ },
+ "vn2:II:29": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73723,
+   "output_tokens": 1409
+  }
+ },
+ "vn2:II:3": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73318,
+   "output_tokens": 504
+  }
+ },
+ "vn2:II:30": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73518,
+   "output_tokens": 1532
+  }
+ },
+ "vn2:II:31": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73697,
+   "output_tokens": 495
+  }
+ },
+ "vn2:II:32": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73489,
+   "output_tokens": 1736
+  }
+ },
+ "vn2:II:33": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73619,
+   "output_tokens": 2134
+  }
+ },
+ "vn2:II:34": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73723,
+   "output_tokens": 1939
+  }
+ },
+ "vn2:II:35": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73619,
+   "output_tokens": 1587
+  }
+ },
+ "vn2:II:36": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73957,
+   "output_tokens": 1868
+  }
+ },
+ "vn2:II:37": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73463,
+   "output_tokens": 2094
+  }
+ },
+ "vn2:II:38": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73515,
+   "output_tokens": 1067
+  }
+ },
+ "vn2:II:39": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 1430
+  }
+ },
+ "vn2:II:4": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73368,
+   "output_tokens": 732
+  }
+ },
+ "vn2:II:40": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73359,
+   "output_tokens": 909
+  }
+ },
+ "vn2:II:41": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73593,
+   "output_tokens": 1814
+  }
+ },
+ "vn2:II:42": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73437,
+   "output_tokens": 1062
+  }
+ },
+ "vn2:II:43": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73255,
+   "output_tokens": 1542
+  }
+ },
+ "vn2:II:44": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73068,
+   "output_tokens": 847
+  }
+ },
+ "vn2:II:45": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74087,
+   "output_tokens": 1457
+  }
+ },
+ "vn2:II:46": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74035,
+   "output_tokens": 1792
+  }
+ },
+ "vn2:II:47": {
+  "events": [
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74217,
+   "output_tokens": 1737
+  }
+ },
+ "vn2:II:48": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73463,
+   "output_tokens": 823
+  }
+ },
+ "vn2:II:49": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "D4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73671,
+   "output_tokens": 3601
+  }
+ },
+ "vn2:II:5": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73618,
+   "output_tokens": 908
+  }
+ },
+ "vn2:II:50": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73518,
+   "output_tokens": 1339
+  }
+ },
+ "vn2:II:51": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73255,
+   "output_tokens": 364
+  }
+ },
+ "vn2:II:52": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73827,
+   "output_tokens": 1407
+  }
+ },
+ "vn2:II:53": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73853,
+   "output_tokens": 2746
+  }
+ },
+ "vn2:II:54": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73489,
+   "output_tokens": 379
+  }
+ },
+ "vn2:II:55": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73411,
+   "output_tokens": 1541
+  }
+ },
+ "vn2:II:56": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 72993,
+   "output_tokens": 1357
+  }
+ },
+ "vn2:II:57": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73593,
+   "output_tokens": 1199
+  }
+ },
+ "vn2:II:58": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73983,
+   "output_tokens": 2015
+  }
+ },
+ "vn2:II:59": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74061,
+   "output_tokens": 2946
+  }
+ },
+ "vn2:II:6": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73418,
+   "output_tokens": 1286
+  }
+ },
+ "vn2:II:60": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74659,
+   "output_tokens": 2679
+  }
+ },
+ "vn2:II:61": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73931,
+   "output_tokens": 1600
+  }
+ },
+ "vn2:II:62": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A3"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73541,
+   "output_tokens": 1090
+  }
+ },
+ "vn2:II:63": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "C4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73879,
+   "output_tokens": 887
+  }
+ },
+ "vn2:II:64": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Bb4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73463,
+   "output_tokens": 1737
+  }
+ },
+ "vn2:II:65": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73905,
+   "output_tokens": 1267
+  }
+ },
+ "vn2:II:66": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74009,
+   "output_tokens": 1881
+  }
+ },
+ "vn2:II:67": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73957,
+   "output_tokens": 1790
+  }
+ },
+ "vn2:II:68": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74035,
+   "output_tokens": 1659
+  }
+ },
+ "vn2:II:69": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "F4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74009,
+   "output_tokens": 1546
+  }
+ },
+ "vn2:II:7": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "G4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73418,
+   "output_tokens": 1359
+  }
+ },
+ "vn2:II:70": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   },
+   {
+    "accidentals": [
+     "flat"
+    ],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74035,
+   "output_tokens": 974
+  }
+ },
+ "vn2:II:71": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Db5"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Db5"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73749,
+   "output_tokens": 3017
+  }
+ },
+ "vn2:II:72": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Eb4",
+     "F4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "Ab4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 74009,
+   "output_tokens": 893
+  }
+ },
+ "vn2:II:8": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "A4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73368,
+   "output_tokens": 1576
+  }
+ },
+ "vn2:II:9": {
+  "events": [
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest",
+    "pitches": []
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   },
+   {
+    "accidentals": [],
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note",
+    "pitches": [
+     "E4"
+    ]
+   }
+  ],
+  "model": "meta-models/Muse-Glimmer-30B",
+  "usage": {
+   "input_tokens": 73918,
+   "output_tokens": 2032
+  }
+ }
+}
