@@ -1,12 +1,13 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["anthropic", "numpy", "pillow"]
+# dependencies = ["anthropic", "numpy", "openai", "pillow"]
 # ///
 """Can Claude read a bar's notes as the edition encodes them, taught by
 examples rather than fine-tuned? Scored as Zeus is (experiments/zeus/compare.py),
 on the same held-out bars.
 
     uv run experiments/llm/bars.py <edition-repo> [--limit N] [--workers 4] [--effort low] [--same-as ANSWERS]
+    uv run experiments/llm/bars.py <edition-repo> --backend openai --url URL --model NAME [--thinking] [--seed N]
 
 Each bar of KHM 602 movement II (Op48-1) is cut from its straightened
 staff, a little past its bar lines, scaled to about 40 px a staff space,
@@ -21,6 +22,11 @@ duration, dots, grace, accidentals shown), as structured output. Compared
 with scripts/events.py by compare.py's rules: letter and octave per note,
 durations, rests, graces. Answers are cached in answers/, so a rerun pays
 only for new bars.
+
+--backend openai asks an open model served by vLLM instead
+(vllm_modal.py; the key from VLLM_API_KEY): the same prompt, examples and
+bars, the schema enforced by vLLM's structured output. Its answers are
+sampled, so each --seed is a run of its own.
 """
 
 import argparse
@@ -83,6 +89,21 @@ SCHEMA = {
     "required": ["events"],
     "additionalProperties": False,
 }
+
+# --ask rhythm: the same bars and examples, asking only each event's kind and written value
+RHYTHM = False
+RHYTHM_PROMPT = PROMPT.replace(
+    "into its notes, as the edition encodes them.", "into its rhythm: the written value of each note and rest, "
+    "as the edition encodes them; not the pitches.").replace(
+    """- pitches: each head's pitch as letter, accidental in force and octave, scientific (middle C is C4): "Bb3", "F#5", "E4". Lowest first. Empty for a rest.
+""", "").replace(
+    """- accidentals: the accidental signs written before this event's heads ("sharp", "flat", "natural"), empty if none.
+""", "")
+RHYTHM_SCHEMA = json.loads(json.dumps(SCHEMA))
+_event = RHYTHM_SCHEMA["properties"]["events"]["items"]
+for k in ("pitches", "accidentals"):
+    del _event["properties"][k]
+    _event["required"].remove(k)
 
 KEYS = {0: "no sharps or flats"} | {k: f"{abs(k)} {'sharp' if k > 0 else 'flat'}{'s' if abs(k) > 1 else ''}"
                                     for k in range(-7, 8) if k}
@@ -153,6 +174,8 @@ class Source:
                         "pitches": sorted((n["pitch"] for n in e["notes"]), key=compare.num),
                         "duration": dur, "dots": (e["dur"] or "").count("."), "grace": e["grace"] != "0",
                         "accidentals": [n["acc"] for n in e["notes"] if n["acc"]]})
+        if RHYTHM:
+            out = [{k: v for k, v in e.items() if k not in ("pitches", "accidentals")} for e in out]
         return {"events": out}
 
 
@@ -215,6 +238,32 @@ def ask(client, pre: list[dict], context: str, jpeg: bytes) -> dict:
         return {"error": f"unusable answer (stopped: {r.stop_reason})", **paid}
 
 
+def openai_content(blocks: list[dict]) -> list[dict]:
+    """Anthropic content blocks as OpenAI chat content parts."""
+    return [{"type": "text", "text": x["text"]} if x["type"] == "text" else
+            {"type": "image_url", "image_url": {"url": f"data:{x['source']['media_type']};base64,{x['source']['data']}"}}
+            for x in blocks]
+
+
+def ask_openai(client, model: str, thinking: bool, seed: int, pre: list[dict], context: str, jpeg: bytes) -> dict:
+    r = client.chat.completions.create(
+        model=model, max_tokens=16000 if thinking else 4000, seed=seed,
+        temperature=0.6 if thinking else 0.7, top_p=0.95 if thinking else 0.8,  # Qwen's suggested sampling
+        response_format={"type": "json_schema", "json_schema": {"name": "bar", "schema": SCHEMA, "strict": True}},
+        extra_body={"chat_template_kwargs": {"enable_thinking": thinking}},
+        messages=[{"role": "system", "content": PROMPT},
+                  {"role": "user", "content": openai_content(pre) + [
+                      {"type": "text", "text": f"Now this bar. {context}"},
+                      {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,"
+                                                          + base64.standard_b64encode(jpeg).decode()}}]}])
+    c = r.choices[0]
+    paid = {"model": r.model, "usage": {"input_tokens": r.usage.prompt_tokens, "output_tokens": r.usage.completion_tokens}}
+    try:
+        return {**json.loads(c.message.content), **paid}
+    except (TypeError, ValueError):
+        return {"error": f"unusable answer (stopped: {c.finish_reason})", **paid}
+
+
 def dollars(answers) -> float:
     t = Counter()
     for a in answers:
@@ -232,9 +281,9 @@ def to_event(e: dict) -> dict:
         return {"kind": "rest", "pitches": (), "dur": "bar", "dots": 0, "grace": e["grace"], "acc": ()}
     if e["kind"] == "rest":
         return {"kind": "rest", "pitches": (), "dur": e["duration"], "dots": e["dots"], "grace": e["grace"], "acc": ()}
-    pitches = tuple(sorted(f"{p[0]}{p[-1]}" if p[-1].isdigit() else p for p in e["pitches"]))
+    pitches = tuple(sorted(f"{p[0]}{p[-1]}" if p[-1].isdigit() else p for p in e.get("pitches", [])))
     return {"kind": "note", "pitches": pitches, "dur": e["duration"], "dots": e["dots"], "grace": e["grace"],
-            "acc": tuple(sorted(e["accidentals"]))}
+            "acc": tuple(sorted(e.get("accidentals", [])))}
 
 
 def main():
@@ -244,14 +293,26 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--effort", default=reader.EFFORT, choices=["low", "medium", "high"])
     ap.add_argument("--same-as", help="ask only the bars answered in this answers file (a pilot's)")
+    ap.add_argument("--backend", default="anthropic", choices=["anthropic", "openai"])
+    ap.add_argument("--url", help="with --backend openai: the server's base URL, ending in /v1")
+    ap.add_argument("--model", help="with --backend openai: the served model's name")
+    ap.add_argument("--thinking", action="store_true", help="with --backend openai: let the model think first")
+    ap.add_argument("--seed", type=int, default=0, help="with --backend openai: the sampling seed")
+    ap.add_argument("--ask", default="notes", choices=["notes", "rhythm"],
+                    help="rhythm: ask only each event's kind and written value (scored on rhythm alone)")
     a = ap.parse_args()
-    import anthropic
-    global EFFORT
+    global EFFORT, PROMPT, SCHEMA, RHYTHM
     EFFORT = a.effort
+    if a.ask == "rhythm":
+        PROMPT, SCHEMA, RHYTHM = RHYTHM_PROMPT, RHYTHM_SCHEMA, True
 
     ex = examples(a.edition)
     pre = prefix(ex)
-    tag = hashlib.sha1(f"{MODEL}:{EFFORT}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}".encode()).hexdigest()[:10]
+    if a.backend == "anthropic":
+        tag = hashlib.sha1(f"{MODEL}:{EFFORT}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}".encode()).hexdigest()[:10]
+    else:
+        tag = hashlib.sha1(f"{a.model}:{a.thinking}:{a.seed}:{PROMPT}:{json.dumps(SCHEMA)}:{json.dumps(pre)}"
+                           .encode()).hexdigest()[:10]
     out = HERE / "answers" / f"bars-{tag}.json"
     done = json.loads(out.read_text()) if out.exists() else {}
     test = Source(a.edition, "D-B_KHM-602")
@@ -261,12 +322,20 @@ def main():
         pilot = set(json.loads(Path(a.same_as).read_text()))
         bars = [b for b in bars if key(b) in pilot]
     todo = [b for b in bars if key(b) not in done][: a.limit]
-    client = anthropic.Anthropic(api_key=reader.api_key(), max_retries=3, timeout=120.0)
+    if a.backend == "anthropic":
+        import anthropic
+        client = anthropic.Anthropic(api_key=reader.api_key(), max_retries=3, timeout=120.0)
+        asker = lambda b: ask(client, pre, test.context(b), test.image(b))
+    else:
+        import os
+        import openai
+        client = openai.OpenAI(base_url=a.url, api_key=os.environ["VLLM_API_KEY"], max_retries=3, timeout=900.0)
+        asker = lambda b: ask_openai(client, a.model, a.thinking, a.seed, pre, test.context(b), test.image(b))
     lock = threading.Lock()
     failed = []
 
     def one(b):
-        r = ask(client, pre, test.context(b), test.image(b))
+        r = asker(b)
         with lock:
             if "error" in r:  # not kept: a rerun asks again
                 failed.append((key(b), r["error"]))
@@ -313,8 +382,9 @@ def main():
     res.parent.mkdir(exist_ok=True)
     res.write_text(json.dumps({"tally": tally, "bars": rows}, indent=1))
     n = max(tally["bars"], 1)
-    print(f"{tally['bars']} bars of {len(bars)} answered, {dollars(done.values()):.2f} $ so far "
-          f"({dollars(done.values()) / max(len(done), 1) * 100:.1f} ¢ a bar)")
+    print(f"{tally['bars']} bars of {len(bars)} answered" + (
+        f", {dollars(done.values()):.2f} $ so far ({dollars(done.values()) / max(len(done), 1) * 100:.1f} ¢ a bar)"
+        if a.backend == "anthropic" else f" by {a.model} (thinking {'on' if a.thinking else 'off'}, seed {a.seed})"))
     print(f"  exact {tally['bars exact'] / n:.0%}, rhythm {tally['bars right in rhythm'] / n:.0%}, "
           f"pitch {tally['bars right in pitch'] / n:.0%}; events right {tally['event: right']}/{tally['events']}; "
           + ", ".join(f"{k[7:]} {v}" for k, v in sorted(tally.items()) if k.startswith("event: ") and k != "event: right"))

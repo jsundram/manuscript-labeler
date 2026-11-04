@@ -1,0 +1,9614 @@
+{
+ "va:II:1": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19531,
+   "output_tokens": 155
+  }
+ },
+ "va:II:10": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 79
+  }
+ },
+ "va:II:11": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19477,
+   "output_tokens": 53
+  }
+ },
+ "va:II:12": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 80
+  }
+ },
+ "va:II:13": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 79
+  }
+ },
+ "va:II:14": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19477,
+   "output_tokens": 53
+  }
+ },
+ "va:II:15": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 53
+  }
+ },
+ "va:II:16": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 53
+  }
+ },
+ "va:II:17": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19543,
+   "output_tokens": 155
+  }
+ },
+ "va:II:18": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19532,
+   "output_tokens": 105
+  }
+ },
+ "va:II:19": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19565,
+   "output_tokens": 186
+  }
+ },
+ "va:II:2": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19520,
+   "output_tokens": 77
+  }
+ },
+ "va:II:20": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 53
+  }
+ },
+ "va:II:21": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19565,
+   "output_tokens": 53
+  }
+ },
+ "va:II:22": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 79
+  }
+ },
+ "va:II:23": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 77
+  }
+ },
+ "va:II:24": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 77
+  }
+ },
+ "va:II:25": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19477,
+   "output_tokens": 53
+  }
+ },
+ "va:II:26": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 80
+  }
+ },
+ "va:II:27": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19477,
+   "output_tokens": 29
+  }
+ },
+ "va:II:28": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 79
+  }
+ },
+ "va:II:29": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 155
+  }
+ },
+ "va:II:3": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19454,
+   "output_tokens": 29
+  }
+ },
+ "va:II:30": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 29
+  }
+ },
+ "va:II:31": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 53
+  }
+ },
+ "va:II:32": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 79
+  }
+ },
+ "va:II:33": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19543,
+   "output_tokens": 79
+  }
+ },
+ "va:II:34": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 104
+  }
+ },
+ "va:II:35": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19565,
+   "output_tokens": 77
+  }
+ },
+ "va:II:36": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19664,
+   "output_tokens": 77
+  }
+ },
+ "va:II:37": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 30
+  }
+ },
+ "va:II:4": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19542,
+   "output_tokens": 77
+  }
+ },
+ "va:II:41": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 29
+  }
+ },
+ "va:II:42": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 79
+  }
+ },
+ "va:II:43": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 53
+  }
+ },
+ "va:II:44": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 53
+  }
+ },
+ "va:II:45": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19664,
+   "output_tokens": 263
+  }
+ },
+ "va:II:46": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19620,
+   "output_tokens": 317
+  }
+ },
+ "va:II:47": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19653,
+   "output_tokens": 317
+  }
+ },
+ "va:II:48": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 79
+  }
+ },
+ "va:II:49": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 78
+  }
+ },
+ "va:II:5": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19553,
+   "output_tokens": 155
+  }
+ },
+ "va:II:50": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 78
+  }
+ },
+ "va:II:51": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 77
+  }
+ },
+ "va:II:52": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19587,
+   "output_tokens": 53
+  }
+ },
+ "va:II:53": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19576,
+   "output_tokens": 155
+  }
+ },
+ "va:II:54": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 53
+  }
+ },
+ "va:II:55": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 77
+  }
+ },
+ "va:II:56": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 53
+  }
+ },
+ "va:II:57": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19587,
+   "output_tokens": 155
+  }
+ },
+ "va:II:58": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19444,
+   "output_tokens": 53
+  }
+ },
+ "va:II:59": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19455,
+   "output_tokens": 184
+  }
+ },
+ "va:II:6": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19542,
+   "output_tokens": 105
+  }
+ },
+ "va:II:60": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19455,
+   "output_tokens": 105
+  }
+ },
+ "va:II:61": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 53
+  }
+ },
+ "va:II:62": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 80
+  }
+ },
+ "va:II:63": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19587,
+   "output_tokens": 77
+  }
+ },
+ "va:II:64": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19532,
+   "output_tokens": 79
+  }
+ },
+ "va:II:65": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 77
+  }
+ },
+ "va:II:66": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19521,
+   "output_tokens": 79
+  }
+ },
+ "va:II:67": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 105
+  }
+ },
+ "va:II:68": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 80
+  }
+ },
+ "va:II:69": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19499,
+   "output_tokens": 79
+  }
+ },
+ "va:II:7": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19531,
+   "output_tokens": 53
+  }
+ },
+ "va:II:70": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 80
+  }
+ },
+ "va:II:71": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19554,
+   "output_tokens": 80
+  }
+ },
+ "va:II:72": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19587,
+   "output_tokens": 53
+  }
+ },
+ "va:II:8": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19553,
+   "output_tokens": 53
+  }
+ },
+ "va:II:9": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19553,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:1": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:10": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19544,
+   "output_tokens": 102
+  }
+ },
+ "vc:II:11": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:12": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:13": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:14": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:15": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19478,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:16": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19555,
+   "output_tokens": 159
+  }
+ },
+ "vc:II:17": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 29
+  }
+ },
+ "vc:II:18": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19500,
+   "output_tokens": 155
+  }
+ },
+ "vc:II:19": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19478,
+   "output_tokens": 29
+  }
+ },
+ "vc:II:2": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19488,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:20": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:21": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:22": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:23": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:24": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:25": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19655,
+   "output_tokens": 179
+  }
+ },
+ "vc:II:26": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19479,
+   "output_tokens": 30
+  }
+ },
+ "vc:II:27": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19600,
+   "output_tokens": 161
+  }
+ },
+ "vc:II:28": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "whole",
+    "grace": false,
+    "kind": "bar_rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19490,
+   "output_tokens": 30
+  }
+ },
+ "vc:II:29": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19556,
+   "output_tokens": 129
+  }
+ },
+ "vc:II:3": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19532,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:30": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19687,
+   "output_tokens": 183
+  }
+ },
+ "vc:II:31": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19577,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:32": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 105
+  }
+ },
+ "vc:II:33": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19544,
+   "output_tokens": 105
+  }
+ },
+ "vc:II:34": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19544,
+   "output_tokens": 103
+  }
+ },
+ "vc:II:35": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19544,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:36": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19632,
+   "output_tokens": 129
+  }
+ },
+ "vc:II:37": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:38": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19500,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:39": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19599,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:4": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19565,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:40": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:41": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19500,
+   "output_tokens": 105
+  }
+ },
+ "vc:II:42": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:43": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:44": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:45": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:46": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:47": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 105
+  }
+ },
+ "vc:II:48": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19654,
+   "output_tokens": 230
+  }
+ },
+ "vc:II:49": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 105
+  }
+ },
+ "vc:II:5": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19532,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:50": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:51": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19489,
+   "output_tokens": 104
+  }
+ },
+ "vc:II:52": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:53": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19555,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:54": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:55": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:56": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19500,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:57": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:58": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:59": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:6": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19609,
+   "output_tokens": 155
+  }
+ },
+ "vc:II:60": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 129
+  }
+ },
+ "vc:II:61": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:62": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:63": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 104
+  }
+ },
+ "vc:II:64": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:65": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:66": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19511,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:67": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19500,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:68": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19555,
+   "output_tokens": 80
+  }
+ },
+ "vc:II:69": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19522,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:7": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19510,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:70": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19533,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:71": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19555,
+   "output_tokens": 77
+  }
+ },
+ "vc:II:72": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19610,
+   "output_tokens": 79
+  }
+ },
+ "vc:II:8": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19532,
+   "output_tokens": 53
+  }
+ },
+ "vc:II:9": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19598,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:1": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19512,
+   "output_tokens": 157
+  }
+ },
+ "vn1:II:10": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:11": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19469,
+   "output_tokens": 29
+  }
+ },
+ "vn1:II:12": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 157
+  }
+ },
+ "vn1:II:13": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19568,
+   "output_tokens": 186
+  }
+ },
+ "vn1:II:14": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:15": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:16": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19546,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:17": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19568,
+   "output_tokens": 155
+  }
+ },
+ "vn1:II:18": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 53
+  }
+ },
+ "vn1:II:19": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 130
+  }
+ },
+ "vn1:II:2": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19490,
+   "output_tokens": 53
+  }
+ },
+ "vn1:II:20": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:21": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:22": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:23": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:24": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:25": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 155
+  }
+ },
+ "vn1:II:26": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19590,
+   "output_tokens": 159
+  }
+ },
+ "vn1:II:27": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 161
+  }
+ },
+ "vn1:II:28": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19546,
+   "output_tokens": 157
+  }
+ },
+ "vn1:II:29": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:3": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19512,
+   "output_tokens": 132
+  }
+ },
+ "vn1:II:30": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:31": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19568,
+   "output_tokens": 185
+  }
+ },
+ "vn1:II:32": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 316
+  }
+ },
+ "vn1:II:33": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19711,
+   "output_tokens": 317
+  }
+ },
+ "vn1:II:34": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19700,
+   "output_tokens": 317
+  }
+ },
+ "vn1:II:35": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19766,
+   "output_tokens": 317
+  }
+ },
+ "vn1:II:36": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19656,
+   "output_tokens": 183
+  }
+ },
+ "vn1:II:37": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19469,
+   "output_tokens": 53
+  }
+ },
+ "vn1:II:38": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19469,
+   "output_tokens": 29
+  }
+ },
+ "vn1:II:39": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19656,
+   "output_tokens": 206
+  }
+ },
+ "vn1:II:4": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19534,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:40": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 53
+  }
+ },
+ "vn1:II:41": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19590,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:42": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19579,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:43": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19623,
+   "output_tokens": 155
+  }
+ },
+ "vn1:II:44": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19623,
+   "output_tokens": 211
+  }
+ },
+ "vn1:II:45": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 80
+  }
+ },
+ "vn1:II:46": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 53
+  }
+ },
+ "vn1:II:48": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19689,
+   "output_tokens": 239
+  }
+ },
+ "vn1:II:49": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19656,
+   "output_tokens": 263
+  }
+ },
+ "vn1:II:5": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19567,
+   "output_tokens": 157
+  }
+ },
+ "vn1:II:50": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19656,
+   "output_tokens": 265
+  }
+ },
+ "vn1:II:51": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19568,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:52": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19656,
+   "output_tokens": 315
+  }
+ },
+ "vn1:II:53": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 132
+  }
+ },
+ "vn1:II:54": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 102
+  }
+ },
+ "vn1:II:55": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 79
+  }
+ },
+ "vn1:II:56": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19579,
+   "output_tokens": 103
+  }
+ },
+ "vn1:II:57": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19733,
+   "output_tokens": 263
+  }
+ },
+ "vn1:II:58": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19634,
+   "output_tokens": 184
+  }
+ },
+ "vn1:II:59": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 128
+  }
+ },
+ "vn1:II:6": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19501,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:60": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19568,
+   "output_tokens": 79
+  }
+ },
+ "vn1:II:61": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:62": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 315
+  }
+ },
+ "vn1:II:63": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 80
+  }
+ },
+ "vn1:II:64": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 185
+  }
+ },
+ "vn1:II:65": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 158
+  }
+ },
+ "vn1:II:66": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 131
+  }
+ },
+ "vn1:II:67": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 133
+  }
+ },
+ "vn1:II:68": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 211
+  }
+ },
+ "vn1:II:69": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19623,
+   "output_tokens": 317
+  }
+ },
+ "vn1:II:7": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19490,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:70": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19667,
+   "output_tokens": 263
+  }
+ },
+ "vn1:II:71": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19711,
+   "output_tokens": 317
+  }
+ },
+ "vn1:II:72": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19667,
+   "output_tokens": 159
+  }
+ },
+ "vn1:II:8": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19567,
+   "output_tokens": 77
+  }
+ },
+ "vn1:II:9": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19534,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:1": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19556,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:10": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:11": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:12": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 133
+  }
+ },
+ "vn2:II:13": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:14": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 105
+  }
+ },
+ "vn2:II:15": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:16": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:17": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:18": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19689,
+   "output_tokens": 317
+  }
+ },
+ "vn2:II:19": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 80
+  }
+ },
+ "vn2:II:2": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19446,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:20": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19447,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:21": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:22": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:23": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 158
+  }
+ },
+ "vn2:II:24": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 103
+  }
+ },
+ "vn2:II:25": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19458,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:26": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19447,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:27": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19425,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:28": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19447,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:29": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:3": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19490,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:30": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 129
+  }
+ },
+ "vn2:II:31": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19546,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:32": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:33": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:34": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:35": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:36": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:37": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 129
+  }
+ },
+ "vn2:II:38": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:39": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:4": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19501,
+   "output_tokens": 105
+  }
+ },
+ "vn2:II:40": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:41": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 105
+  }
+ },
+ "vn2:II:42": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:43": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19469,
+   "output_tokens": 159
+  }
+ },
+ "vn2:II:44": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19447,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:45": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19623,
+   "output_tokens": 291
+  }
+ },
+ "vn2:II:46": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 236
+  }
+ },
+ "vn2:II:47": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19645,
+   "output_tokens": 239
+  }
+ },
+ "vn2:II:48": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 103
+  }
+ },
+ "vn2:II:49": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19546,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:5": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19545,
+   "output_tokens": 105
+  }
+ },
+ "vn2:II:50": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:51": {
+  "events": [
+   {
+    "dots": 1,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19469,
+   "output_tokens": 29
+  }
+ },
+ "vn2:II:52": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19579,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:53": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 1,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "32nd",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19579,
+   "output_tokens": 158
+  }
+ },
+ "vn2:II:54": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19513,
+   "output_tokens": 53
+  }
+ },
+ "vn2:II:55": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19491,
+   "output_tokens": 79
+  }
+ },
+ "vn2:II:56": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19436,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:57": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19535,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:58": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:59": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19623,
+   "output_tokens": 158
+  }
+ },
+ "vn2:II:6": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19512,
+   "output_tokens": 129
+  }
+ },
+ "vn2:II:60": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19722,
+   "output_tokens": 256
+  }
+ },
+ "vn2:II:61": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19590,
+   "output_tokens": 129
+  }
+ },
+ "vn2:II:62": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19524,
+   "output_tokens": 103
+  }
+ },
+ "vn2:II:63": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19590,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:64": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19502,
+   "output_tokens": 79
+  }
+ },
+ "vn2:II:65": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19590,
+   "output_tokens": 129
+  }
+ },
+ "vn2:II:66": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:67": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19601,
+   "output_tokens": 155
+  }
+ },
+ "vn2:II:68": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": true,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 131
+  }
+ },
+ "vn2:II:69": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:7": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "half",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19512,
+   "output_tokens": 79
+  }
+ },
+ "vn2:II:70": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 101
+  }
+ },
+ "vn2:II:71": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19557,
+   "output_tokens": 77
+  }
+ },
+ "vn2:II:72": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19612,
+   "output_tokens": 78
+  }
+ },
+ "vn2:II:8": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "8th",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19501,
+   "output_tokens": 103
+  }
+ },
+ "vn2:II:9": {
+  "events": [
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "quarter",
+    "grace": false,
+    "kind": "rest"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   },
+   {
+    "dots": 0,
+    "duration": "16th",
+    "grace": false,
+    "kind": "note"
+   }
+  ],
+  "model": "Qwen/Qwen3.6-27B-FP8",
+  "usage": {
+   "input_tokens": 19611,
+   "output_tokens": 209
+  }
+ }
+}
