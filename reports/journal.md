@@ -52,8 +52,12 @@ help this model.
 
 **What followed.** No fine-tune. bars.py keeps `--backend openai` and
 `--ask rhythm`, agent_read.py runs any open model as the edition's
-reader, and vllm_modal.py serves it. Next: Gemma 4's one look a bar,
-the cheap gate before the reader test.
+reader, and vllm_modal.py serves it.
+
+**Gemma 4 (2026-11-04).** Gemma 4 31B was given the one-look test as a
+gate: 20% of bars exact before it got the reader test. It read 7% and
+6% exact (36% and 35% in rhythm), better than Qwen but under Zeus
+untrained, so the reader test wasn't run.
 
 ## 2026-11-03: Pairing recheck
 

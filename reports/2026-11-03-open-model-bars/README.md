@@ -1,4 +1,4 @@
-# An open model reading bars: Qwen3.6-27B, one look a bar and as the edition's reader
+# An open model reading bars: Qwen3.6-27B and Gemma 4, one look a bar and as the edition's reader
 
 **Question.** The edition's readers (Claude Opus 5.5 inside `/encode`)
 beat musvit-D5 on Op48-4 I: 269 of 290 bars exact against 231. Could an
@@ -14,7 +14,9 @@ against Zeus's 55%). Given the edition's reader prompt and tools for
 violin I bars 0-13 of Op48-4 I, it looked at every bar, then thought in
 circles for 75 minutes and 317,000 output tokens and never wrote one
 (Opus: 12 of the 14 exact, in about 117,000). Fine-tuning it isn't worth
-it on this evidence. Legato 2, when its weights arrive, would compete
+it on this evidence. Gemma 4 31B, shown each bar once, does better than
+Qwen but no better than Zeus untrained (7% and 6% exact, 36% and 35%
+right in rhythm), so it wasn't given the reader test. Legato 2, when its weights arrive, would compete
 with D5 as a reader, not take Opus's place: it reads, it doesn't think
 or use tools.
 
@@ -33,6 +35,8 @@ its answers held to the schema by vLLM's structured output.
 | Qwen3.6-27B, seed 1 | 284 | 8 (3%) | 74 (26%) | 12 (4%) |
 | Qwen3.6-27B, seed 2 | 284 | 7 (2%) | 68 (24%) | 13 (5%) |
 | Qwen, asked for the rhythm alone (`--ask rhythm`), seeds 1, 2 | 284 | | 61 (21%), 72 (25%) | |
+| Gemma 4 31B, seed 1 | 284 | 19 (7%) | 103 (36%) | 20 (7%) |
+| Gemma 4 31B, seed 2 | 284 | 16 (6%) | 100 (35%) | 17 (6%) |
 | Qwen, the pilot's 10 bars (va 1-10), each seed | 10 | 0 | 2, 3 | 0 |
 | Opus 5.5 one look, low / high effort (the pilot, rescored against today's notes) | 10 | 1, 1 | 5, 4 | 2, 3 |
 | Zeus untrained (ayce, 2026-10-11) | 284 | 127 (45%) | 155 (55%) | 176 (62%) |
@@ -42,6 +46,14 @@ pitch and 460 duration errors in seed 1, 175 extra events, 58 notes for
 rests. In the viola's first bars it reads the top of each double stop a
 third high (C4 for A3) and calls a bar rest a half note. Twelve of the 15
 exact bars, across both seeds, are the viola's.
+
+**Gemma 4 31B (2026-11-04).** The same run, with `google/gemma-4-31B-it`
+in bf16 on one H100, its model card's sampling (temperature 1.0, top_p
+0.95, top_k 64) and its default picture budget (280 tokens, more than a
+bar crop at 40 px a staff space needs). Of 1,012 events, 155 and 148 are
+right, nearly twice Qwen's, but it adds 253 events that aren't there and
+gets 634 pitches wrong. The gate set before the run was 20% exact for the
+reader test; at 6-7% it wasn't run.
 
 **Rhythm alone.** The same bars, examples and crops, the question cut to
 each event's kind, written value, dots and grace. It didn't help: a
@@ -108,8 +120,7 @@ sampling follow the model card.
 
 - **More chunks or parts.** With no bar written in the first chunk, the
   part (step 2 of the plan) and the four parts (step 3) weren't run.
-- **Gemma 4 31B.** `vllm_modal.py` serves it with `VLLM_MODEL` and
-  `VLLM_GPU` set; not run.
+- **Gemma 4 31B as the reader.** Not run: it failed the one-look gate.
 - **Faster decoding** (Qwen's built-in draft head, vLLM's MTP option),
   for any longer run: the model writes 73-76 tokens a second here, about
   60% of what an H100's memory speed allows.
@@ -129,4 +140,6 @@ be missing):
 - the reader and the rhythm-alone runs, sharing one H100: $7.13, about 2
   GPU-hours.
 
-Total about $10.90 (measured).
+- Gemma 4 one look a bar, both seeds: $1.13 on an H100, about 18 minutes.
+
+Total about $12.05 (measured).
