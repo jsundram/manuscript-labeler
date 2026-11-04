@@ -76,7 +76,22 @@ reader, and vllm_modal.py serves it.
 **Gemma 4 (2026-11-04).** Gemma 4 31B was given the one-look test as a
 gate: 20% of bars exact before it got the reader test. It read 7% and
 6% exact (36% and 35% in rhythm), better than Qwen but under Zeus
-untrained, so the reader test wasn't run.
+untrained. The gate was wrong: on the pilot's 10 bars Opus, shown each
+bar once, did no better than Gemma, so the reader test is the real one.
+
+**The reader test, Gemma and Muse Glimmer (2026-11-04).** Gemma (its
+thinking capped) and Meta's Muse Glimmer 30B were each run as the reader
+on the same 14 bars. Both wrote every bar; neither got one exact. Gemma
+looked at only 2 of the bars and wrote a falling sequence the music
+doesn't have; Glimmer looked at every bar and wrote one pitch repeated in
+eighths. Neither compared its engraving with the page. Glimmer shown each
+bar once did as Gemma did (7% and 4% exact), and bigger pictures helped
+neither model: the bar is plain at 40 px a staff space. The user asked
+whether these models are bad at music or set up wrong. Both: they see
+worse than Opus, and they don't keep to the procedure that makes Opus's
+reading right. The next tests would give them help of the usual kinds,
+the loop enforcing each bar's steps and D5's reading as a draft to
+correct, before any fine-tune.
 
 ## 2026-11-03: Pairing recheck
 

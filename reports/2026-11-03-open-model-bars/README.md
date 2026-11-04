@@ -1,4 +1,4 @@
-# An open model reading bars: Qwen3.6-27B and Gemma 4, one look a bar and as the edition's reader
+# An open model reading bars: Qwen3.6-27B, Gemma 4 and Muse Glimmer, one look a bar and as the edition's reader
 
 **Question.** The edition's readers (Claude Opus 5.5 inside `/encode`)
 beat musvit-D5 on Op48-4 I: 269 of 290 bars exact against 231. Could an
@@ -14,9 +14,17 @@ against Zeus's 55%). Given the edition's reader prompt and tools for
 violin I bars 0-13 of Op48-4 I, it looked at every bar, then thought in
 circles for 75 minutes and 317,000 output tokens and never wrote one
 (Opus: 12 of the 14 exact, in about 117,000). Fine-tuning it isn't worth
-it on this evidence. Gemma 4 31B, shown each bar once, does better than
-Qwen but no better than Zeus untrained (7% and 6% exact, 36% and 35%
-right in rhythm), so it wasn't given the reader test. Legato 2, when its weights arrive, would compete
+it on this evidence. Gemma 4 31B and Meta's Muse Glimmer 30B, shown each
+bar once, do better than Qwen but no better than Zeus untrained (4-7%
+exact, 33-38% right in rhythm), and bigger pictures don't help either.
+That alone wouldn't rule them out: on the pilot's 10 bars Opus, shown
+each bar once, did no better. But as the reader both wrote all 14 bars
+and got none exact. Neither did what the reader's instructions ask:
+Gemma looked at 2 of the 14 bars and wrote a made-up sequence; Glimmer
+looked at every bar, then wrote one pitch repeated in eighths, and never
+compared its engraving with the page. They fall short of Opus in seeing
+and, more, in following the procedure that makes Opus's reading right
+(section 3). Legato 2, when its weights arrive, would compete
 with D5 as a reader, not take Opus's place: it reads, it doesn't think
 or use tools.
 
@@ -37,6 +45,10 @@ its answers held to the schema by vLLM's structured output.
 | Qwen, asked for the rhythm alone (`--ask rhythm`), seeds 1, 2 | 284 | | 61 (21%), 72 (25%) | |
 | Gemma 4 31B, seed 1 | 284 | 19 (7%) | 103 (36%) | 20 (7%) |
 | Gemma 4 31B, seed 2 | 284 | 16 (6%) | 100 (35%) | 17 (6%) |
+| Gemma, 1,120 tokens a picture, seeds 1, 2 | 284 | 16, 16 (6%) | 77, 80 (27%, 28%) | 21, 19 |
+| Muse Glimmer 30B, seed 1 | 284 | 19 (7%) | 108 (38%) | 22 (8%) |
+| Muse Glimmer 30B, seed 2 | 284 | 12 (4%) | 95 (33%) | 14 (5%) |
+| Glimmer, crops at 80 px a staff space, seed 1 | 283 | 11 (4%) | 83 (29%) | 14 (5%) |
 | Qwen, the pilot's 10 bars (va 1-10), each seed | 10 | 0 | 2, 3 | 0 |
 | Opus 5.5 one look, low / high effort (the pilot, rescored against today's notes) | 10 | 1, 1 | 5, 4 | 2, 3 |
 | Zeus untrained (ayce, 2026-10-11) | 284 | 127 (45%) | 155 (55%) | 176 (62%) |
@@ -49,11 +61,48 @@ exact bars, across both seeds, are the viola's.
 
 **Gemma 4 31B (2026-11-04).** The same run, with `google/gemma-4-31B-it`
 in bf16 on one H100, its model card's sampling (temperature 1.0, top_p
-0.95, top_k 64) and its default picture budget (280 tokens, more than a
-bar crop at 40 px a staff space needs). Of 1,012 events, 155 and 148 are
-right, nearly twice Qwen's, but it adds 253 events that aren't there and
-gets 634 pitches wrong. The gate set before the run was 20% exact for the
-reader test; at 6-7% it wasn't run.
+0.95, top_k 64) and its default picture budget (280 tokens a picture;
+Gemma scales each picture to fill it, so a token covers about 30 px of a
+bar crop, three quarters of a staff space, where a pitch needs half a
+space). Of 1,012
+events, 155 and 148 are right, nearly twice Qwen's, but it adds 253
+events that aren't there and gets 634 pitches wrong.
+
+**Muse Glimmer 30B (2026-11-04).** Meta's open model
+(`meta-models/Muse-Glimmer-30B`, bf16 on one H100, vLLM's
+`muse_glimmer` parsers), with the same sampling as Gemma. It has no
+switch to turn thinking off, so it ran at its lowest reasoning strength,
+and took about an hour a seed. Of 1,012 events, 154 and 125 are right,
+level with Gemma; it adds far fewer events (57 against 253) but misses
+more (72 against 21), and still gets 574 pitches wrong.
+
+**Bigger pictures.** Two tests of whether the picture was too small.
+Gemma given its largest picture budget (1,120 tokens instead of 280)
+got no more bars exact and fewer right in rhythm (27-28% against
+35-36%), and added more events that aren't there (326 and 333). Glimmer
+given crops at 80 px a staff space instead of 40 did no better (seed 2
+was stopped: one seed was enough). Neither test adds detail: the crops
+are cut from page renders at about 16 px a staff space (the scan itself
+has about 24), so both sizes are enlarged copies of the same picture.
+But the bar is plain at 40 px (`bar-40-vs-80-px.jpg`: violin I bar 5,
+both sizes), so it isn't the picture that limits these models.
+
+**A gate that was wrong.** Before the run, 20% of bars exact was set as
+the gate for the reader test, and Gemma at 6-7% was first written up as
+failing it. But Opus would fail it too. On the pilot's 10 bars (viola
+1-10), shown each bar once:
+
+| reader | exact | rhythm right | pitch right |
+|---|---|---|---|
+| Opus 5.5, low / high effort | 1, 1 | 5, 4 | 2, 3 |
+| Gemma 4 31B, seeds 1, 2 | 1, 0 | 4, 4 | 1, 0 |
+| Qwen3.6-27B, seeds 1, 2 | 0, 0 | 2, 3 | 0, 0 |
+
+Ten bars can't rank them, but no general model reads a bar in one look;
+the edition's reader gets there with its tools (zooms to 100-150 px a
+staff space, a head check that measures noteheads, an engraving compared
+with the page). So one look says how well a model sees, not whether it
+can read as the edition's reader.
 
 **Rhythm alone.** The same bars, examples and crops, the question cut to
 each event's kind, written value, dots and grace. It didn't help: a
@@ -89,6 +138,8 @@ its readers.
 | Opus readers' first reading | 12 of 14 | about 117,000 | 135 | 3,900 tokens |
 | musvit-D5 | 12 of 14 | | | |
 | Qwen3.6-27B, in the same place | 0 (none written) | 317,000 in 75 minutes | 12 | 32,768 (cut off 8 times) |
+| Gemma 4 31B | 0 of 14 (none right in rhythm) | 31,600 in 26 minutes | 23 | |
+| Muse Glimmer 30B | 0 of 14 (1 right in rhythm) | 18,500 in 19 minutes | 92 | 1,832 |
 
 What it did: read the rules and the copyist notes, zoomed every bar at 50
 px a staff space and looked at each, in order. Then its thinking went in
@@ -116,11 +167,67 @@ after 8 turns: the loop took a reply cut off at 16,384 tokens of thinking
 for the final answer. The loop now asks again, and the reply length and
 sampling follow the model card.
 
+**Gemma 4 31B and Muse Glimmer 30B (2026-11-04).** The same run, with
+each model card's sampling. So that neither would think in circles as
+Qwen did, Gemma's thinking was capped at 4,096 tokens a reply (vLLM's
+`thinking_token_budget`) and Glimmer ran at medium reasoning strength (the
+cap isn't enforced for Glimmer). Gemma had its largest picture budget
+(1,120 tokens) and needed an H200 for the 128k context; Glimmer an H100.
+Both finished and wrote all 14 bars; neither got one exact.
+
+- **Gemma** zoomed five times but looked at only three pictures (bars 0
+  and 1, and one comparison for bar 0). It then wrote bars 1-13 as a
+  falling sequence (`c8 b c4 c4`, `b8 a b4 b4`, `a8 g a4 a4`...), some of
+  them too long for a 2/4 bar, while the music has no such sequence. Each
+  bar's record lists two pictures as looked at and no doubts. It ran
+  `compare.py` five times and never looked at what it made.
+- **Glimmer** read the rules, the plan, the copyist notes and
+  `Structure.ily`, zoomed every bar and looked at each of the 18
+  pictures. Then it wrote each bar as one pitch in eighth notes (`e8 e8
+  e8`, `g8 g8 g8`...), against dotted rhythms and quarters on the page.
+  It ran the head check once and never compared its engraving with the
+  page.
+
+Every turn is in `gemma-reader-vn1-0-13.jsonl.gz` and
+`glimmer-reader-vn1-0-13.jsonl.gz`; scored by `score_agent_read.py
+--reader gemma` and `--reader glimmer`.
+
+## 3. Why: seeing, and keeping to the procedure
+
+The three models fail in different ways. Qwen thought at length but never
+settled a doubt by looking again. Gemma skipped looking and wrote what it
+expected. Glimmer looked, then wrote filler and checked nothing. Opus's
+edge as the reader is less what it sees in one look (the pilot: no better
+than Gemma) than what it does next: it looks again, closer, compares its
+engraving with the page and fixes what disagrees.
+
+So the next tests would give an open model help of the usual kinds,
+rather than a bigger model or a bigger picture:
+- **the loop keeps the procedure**, not the model: for each bar, zoom,
+  read, compare, head check, revise, and a bar isn't taken until its
+  comparison has been looked at;
+- **D5's reading as the draft**: its notes engraved over the page, the
+  model asked only where they're wrong; checking is easier than reading,
+  and the aim is to beat D5;
+- **pitch names on the picture**: each staff line and space labelled, so
+  a pitch is read off rather than counted (about 60% of these models'
+  notes are the wrong pitch). Numbering each notehead as well would rely
+  on the head check's detector, which is a filter, not a verdict: on the
+  correct Op48-1 II it disagrees with the notes in 209 places;
+- **one of Opus's reader runs** (its calls, not its thinking) as an
+  example to follow;
+- **several readings and a vote.**
+
+Fine-tuning on Opus's reader runs would come after these: it teaches the
+procedure, not the seeing.
+
 ## What wasn't tried
 
 - **More chunks or parts.** With no bar written in the first chunk, the
   part (step 2 of the plan) and the four parts (step 3) weren't run.
-- **Gemma 4 31B as the reader.** Not run: it failed the one-look gate.
+- **The help in section 3,** for any of the models.
+- **Muse Spark Open** (Meta's 816B model): too large to serve on a GPU or
+  two.
 - **Faster decoding** (Qwen's built-in draft head, vLLM's MTP option),
   for any longer run: the model writes 73-76 tokens a second here, about
   60% of what an H100's memory speed allows.
@@ -140,6 +247,16 @@ be missing):
 - the reader and the rhythm-alone runs, sharing one H100: $7.13, about 2
   GPU-hours.
 
-- Gemma 4 one look a bar, both seeds: $1.13 on an H100, about 18 minutes.
+- Gemma 4 one look a bar, both seeds: $1.17 on an H100, about 18 minutes;
+- two Gemma starts that failed: $0.81 (on an H100 the 128k context
+  didn't fit; then the server refused a picture budget sent with each
+  request until started with `--trust-request-mm-kwargs`);
+- Gemma as the reader and at 1,120 tokens a picture, sharing one H200:
+  $2.57;
+- a first Glimmer server, replaced to change its reasoning settings:
+  $0.79;
+- Glimmer as the reader and one look a bar (40 px both seeds, 80 px
+  seed 1), sharing one H100 for about 6.7 hours: $27.27. Of that, about
+  $5.70 went on the 80 px second seed, stopped unfinished.
 
-Total about $12.05 (measured).
+Total about $43.50 (measured).

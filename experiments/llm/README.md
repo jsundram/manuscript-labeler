@@ -122,7 +122,10 @@ edition's `/encode` gets its accuracy from what follows its reading:
 Qwen3.6-27B served by `vllm_modal.py`, on all 284 bars of movement II:
 3% and 2% exact on two seeds (0 of the pilot's 10); `--ask rhythm`, the
 rhythm alone, 21% and 25% right. Gemma 4 31B (2026-11-04): 7% and 6%
-exact, 36% and 35% right in rhythm. As the edition's reader
-(`agent_read.py`, scored by `score_agent_read.py`) it wrote no bar of
-Op48-4 I vn1 0-13 in 75 minutes. Write-up:
+exact, 36% and 35% right in rhythm; Muse Glimmer 30B 7% and 4%, 38% and
+33%. `--image-tokens` (Gemma's picture budget) and `--space-px` (the crop
+scale) helped neither. As the edition's reader (`agent_read.py`, scored
+by `score_agent_read.py --reader <name>`) Qwen wrote no bar of Op48-4 I
+vn1 0-13 in 75 minutes; Gemma and Glimmer wrote all 14, none exact.
+Write-up:
 [reports/2026-11-03-open-model-bars](../../reports/2026-11-03-open-model-bars/).
