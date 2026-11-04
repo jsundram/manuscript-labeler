@@ -6,7 +6,10 @@ the options it was first paired with, one source per core. Pairing is CPU
 work in one process each, so it maps the sources' runs onto the cores and
 then runs the merges that wait on them.
 
-    uv run experiments/zeus/parallel_pair.py [--jobs N] [--groups M W G] [SOURCE ...]
+    uv run experiments/zeus/parallel_pair.py [--jobs N] [--groups M W G] [--reader R] [SOURCE ...]
+
+With --reader, every recipe runs with that reader's readings alone and no
+merges; add_reader.py then adds its staves to each source's pairing.
 
 The groups, and the recipes they repeat:
   M  philhar-repair/sources.txt: Philhar's quartet encodings, read by
@@ -56,10 +59,16 @@ def autopair(source: str, reader: str, *opts: str) -> list[str]:
             *opts, "--model", f"/nonexistent/{reader}"]
 
 
-def jobs(groups: set[str], only: set[str]) -> tuple[list[tuple[str, list[str]]], list[list[str]]]:
-    """(name, autopair command) for every run, and the merges to run after them, in order."""
+def jobs(groups: set[str], only: set[str], reader: str = D4) -> tuple[list[tuple[str, list[str]]], list[list[str]]]:
+    """(name, autopair command) for every run, and the merges to run after them, in order. Another
+    reader than D4 runs each recipe with it alone, and no merges (add_reader.py adds its staves)."""
     runs, after = [], []
     want = lambda s: not only or s in only
+    if reader != D4:
+        for name, cmd in jobs(groups, only)[0]:
+            if not name.endswith(C4):
+                runs.append((f"{name.removesuffix('-' + D4)}-{reader}", cmd[:-1] + [f"/nonexistent/{reader}"]))
+        return runs, after
     if "M" in groups:
         old = []
         for s, quartets, before in rows(HERE / "philhar-repair" / "sources.txt"):
@@ -104,8 +113,9 @@ def main():
     ap.add_argument("sources", nargs="*", help="only these sources (default: every one in the groups)")
     ap.add_argument("--jobs", type=int, default=max(1, (os.cpu_count() or 2) - 2), help="runs at once (default: cores - 2)")
     ap.add_argument("--groups", nargs="+", default=["M", "W", "G"], choices=["M", "W", "G"])
+    ap.add_argument("--reader", default=D4, help=f"the readings to pair (default {D4}); another reader runs alone, no merges")
     a = ap.parse_args()
-    runs, after = jobs(set(a.groups), set(a.sources))
+    runs, after = jobs(set(a.groups), set(a.sources), a.reader)
     if not runs:
         sys.exit("no source matched")
     LOGS.mkdir(parents=True, exist_ok=True)

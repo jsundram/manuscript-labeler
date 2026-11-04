@@ -24,10 +24,11 @@ from pathlib import Path
 ZEUS = Path(__file__).resolve().parent / "experiments" / "zeus"
 # the newest staff sets (docs/storage.md)
 SETS = ("dataM5", "dataW4", "dataP4", "dataG213-4")
-# the pairing a set was built from, most final first: G. 213's merge, the
-# two readers' merge (the older sources), then one reader's
+# the pairing a set was built from, most final first: D5's staves added to any
+# of the rest (experiments/zeus/add_reader.py), G. 213's merge, the two
+# readers' merge (the older sources), then one reader's
 SOURCES_TTL = 10.0
-RESULTS = ("final", "both",
+RESULTS = ("plus-D5", "final", "both",
            "any-count-neighbours-paired-short-ends-long-ends-head-box-musvit-D3S-h96",
            "any-count-neighbours-paired-short-ends-long-ends-musvit-D3S-h96")
 
