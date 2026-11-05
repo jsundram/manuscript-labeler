@@ -127,5 +127,11 @@ exact, 36% and 35% right in rhythm; Muse Glimmer 30B 7% and 4%, 38% and
 scale) helped neither. As the edition's reader (`agent_read.py`, scored
 by `score_agent_read.py --reader <name>`) Qwen wrote no bar of Op48-4 I
 vn1 0-13 in 75 minutes; Gemma and Glimmer wrote all 14, none exact.
-Write-up:
+Checking D5's reading instead (`d5_draft.py` writes it into an edition
+copy, `check_read.py` loops over the bars, `--examples` adds Opus's worked
+examples), Gemma fixed none of D5's wrong bars and broke right ones. The
+gate for any later model is `see_test.py`: closed questions about grace
+notes and double stops, one bar at a time, against Opus (`--model
+claude-opus-5-5`); `see_figure.py` draws every model's d′ beside D5's and
+the Opus readers'. Write-up:
 [reports/2026-11-03-open-model-bars](../../reports/2026-11-03-open-model-bars/).
