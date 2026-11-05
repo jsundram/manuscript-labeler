@@ -249,6 +249,8 @@ def box_events(box: dict, events: dict, split: dict) -> list[dict] | None:
     """The encoding's events in a bar box: the whole bar's, or, for one half
     of a split bar, those before or after its upbeat (graces go with the
     note they lead into). None if the cut isn't between two notes."""
+    if box.get("rests") or str(box["bar"]) not in events:
+        return covering_rest(box["bar"], events)
     evs = [e for e in events.get(str(box["bar"]), []) if e["kind"] in ("note", "rest", "mmrest")]
     cut = split.get(box["bar"])
     if cut is None:
@@ -260,6 +262,27 @@ def box_events(box: dict, events: dict, split: dict) -> list[dict] | None:
             for e in evs if e["grace"] == "0"):
         return None
     return [e for e in evs if (Fraction(e["pos"]) >= cut) == (box["count"] == 0)]
+
+
+def covering_rest(bar: int, events: dict) -> list[dict]:
+    """The bar rest a box of a multi-bar rest holds: one bar of the rest (Philhar's encoding writes the
+    rest in its first bar only, and leaves out the bars it covers), or the run of bar rests one sign
+    stands for (a box with "rests", dataset.staff_boxes). [] if no multi-bar rest covers the bar."""
+    have = [int(k) for k in events if int(k) <= bar]
+    first = str(max(have)) if have else None
+    if first is None or not any(e["kind"] == "mmrest" for e in events[first]) and first != str(bar):
+        return []
+    evs = [e for e in events[first] if e["kind"] in ("note", "rest", "mmrest")]
+    if any(e["kind"] == "note" for e in evs):
+        return []
+    return [{**evs[0], "kind": "mmrest", "pos": "0", "grace": "0"}] if evs else []
+
+
+def is_rest_run(bars: list[int], events: dict) -> bool:
+    """Whether every bar of a run holds only a bar rest: a multi-bar rest, as one sign or bar by bar."""
+    return all(covering_rest(b, events) or (str(b) in events and events[str(b)] and all(
+        e["kind"] in ("rest", "mmrest") for e in events[str(b)] if e["kind"] in ("note", "rest", "mmrest")))
+        for b in bars)
 
 
 def staff_part(boxes: list[dict], events: dict, mk: dict, exp: dict, first_of_mvt: set,
@@ -398,6 +421,19 @@ def encode(part: ET.Element) -> str:
     return " ".join(enc.output_tokens)
 
 
+def with_rest_counts(lmx: str, boxes: list[dict]) -> str:
+    """A multi-bar rest's count after its bar rest: `rest:measure multirest:N`. The lmx library writes
+    MusicXML's <multiple-rest> as nothing, so a box of one ("rests": N, staff_boxes) gets the token here."""
+    out, k = [], -1
+    for t in lmx.split():
+        out.append(t)
+        if t == "measure":
+            k += 1
+        elif t == "rest:measure" and 0 <= k < len(boxes) and boxes[k].get("rests"):
+            out.append(f"multirest:{boxes[k]['rests']}")
+    return " ".join(out)
+
+
 def build(boxes: list[dict], evs: dict, mk: dict, exp: dict, first_of_mvt: set, split: dict,
           bad: list, sid: str) -> tuple[str | None, str]:
     """A staff's LMX, checked, or None and why it's left out."""
@@ -411,10 +447,11 @@ def build(boxes: list[dict], evs: dict, mk: dict, exp: dict, first_of_mvt: set, 
     xml = staff_part(boxes, evs, mk, exp, first_of_mvt, split)
     if not fills(xml, boxes, exp, split, max(int(k) for k in evs)):
         return None, "a bar its durations don't fill"
-    lmx = encode(xml)
+    lmx = with_rest_counts(encode(xml), boxes)
     # the check: read back as compare.py reads Zeus, it is the encoding
     measures, _ = compare.parse(lmx)
-    ok = len(measures) == len(boxes)
+    ok = len(measures) == len(boxes) and all(
+        [e.get("bars", 1) for e in ms if e["kind"] == "rest"][:1] == [b["rests"]] for b, ms in zip(boxes, measures) if b.get("rests"))
     for b, ms in zip(boxes, measures):
         zs = [compare.zeus_event(e, b["clefs"][0]) for e in ms]
         enc = compare.encoded(box_events(b, evs, split))
@@ -459,7 +496,7 @@ class LeftOut(Counter):
 
 
 # the measures not one bar that a label can hold (autopair.py's "irregular")
-LABELLED = {"a bar a repeat splits", "a bar line the reading missed"}
+LABELLED = {"a bar a repeat splits", "a bar line the reading missed", "a multi-bar rest"}
 
 
 def labellable(k: dict) -> bool:
@@ -493,9 +530,13 @@ def staff_boxes(k: dict, part: str, mv: str, evs: dict, split_bars: set) -> tupl
     out, cuts = [], {}
     for i, m in enumerate(measures):
         if len(m["bars"]) != 1:
-            if not m.get("two"):
+            if m.get("two"):
+                out += [box(b[-1], 1) for b in m["bars"]]  # two bars, a bar line the reading missed between
+                continue
+            run = [b[-1] for b in m["bars"]]
+            if run != list(range(run[0], run[0] + len(run))) or not is_rest_run(run, evs):
                 return None, "a multi-bar rest"
-            out += [box(b[-1], 1) for b in m["bars"]]  # two bars, a bar line the reading missed between
+            out.append({**box(run[0], 1), "rests": len(run)})  # one sign for the run: one measure, its count
             continue
         b = m["bars"][0][-1]
         if b in halves:

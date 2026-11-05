@@ -222,6 +222,10 @@ def parse(lmx: str, ends: list | None = None) -> tuple[list[list[dict]], list[st
             if cur is not None and cur["kind"] == "rest":
                 cur["bar_rest"] = True
             continue
+        if t.startswith("multirest:"):  # after a bar rest: a multi-bar rest of that many bars (dataset.py)
+            if cur is not None and cur["kind"] == "rest":
+                cur["bars"] = int(t[10:])
+            continue
         m = PITCH.fullmatch(t)
         if m or t == "rest":
             pos = num(t) - num(MIDDLE.get(clef or "G2", "B4")) if m else None
