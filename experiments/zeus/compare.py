@@ -126,12 +126,13 @@ def page_image(pdf: Path, n: int, color: bool = False) -> np.ndarray:
     return np.asarray(Image.open(out).convert("RGB" if color else "L")).astype(np.float32)
 
 
-def staff_crop(g: np.ndarray, s: dict) -> bytes:
-    """The staff, straightened along its bend, as Zeus reads a staff."""
+def staff_crop(g: np.ndarray, s: dict, pad: float = 2.5) -> bytes:
+    """The staff, straightened along its bend, as Zeus reads a staff: `pad` staff spaces above and below
+    (the readers are trained on 2.5)."""
     H, W = g.shape[:2]
     sp = (s["bottom"] - s["top"]) / 4 * H
     x0, x1 = int(max(0, s["left"] * W - sp)), int(min(W, s["right"] * W + sp))
-    up, dn = int(2.5 * sp), int(2.5 * sp)
+    up, dn = int(pad * sp), int(pad * sp)
     h = int((s["bottom"] - s["top"]) * H) + up + dn
     out = np.full((h, x1 - x0, *g.shape[2:]), 255.0, np.float32)  # a colour page gives a colour crop
     for x in range(x0, x1):

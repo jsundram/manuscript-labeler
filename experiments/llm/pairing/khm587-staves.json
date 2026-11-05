@@ -1,0 +1,1247 @@
+[
+ {
+  "staff": "p4-9",
+  "part": "va",
+  "movement": "I",
+  "first": 70,
+  "last": 72,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   71,
+   72
+  ],
+  "kind": "left out",
+  "shift": 1,
+  "window": [
+   68,
+   76
+  ]
+ },
+ {
+  "staff": "p5-4",
+  "part": "va",
+  "movement": "I",
+  "first": 85,
+  "last": 87,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   85,
+   87
+  ],
+  "kind": "left out",
+  "shift": 2,
+  "window": [
+   84,
+   92
+  ]
+ },
+ {
+  "staff": "p5-5",
+  "part": "va",
+  "movement": "I",
+  "first": 87,
+  "last": 90,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   87,
+   90
+  ],
+  "kind": "left out",
+  "shift": 0,
+  "window": [
+   84,
+   92
+  ]
+ },
+ {
+  "staff": "p35-1",
+  "part": "vc",
+  "movement": "I",
+  "first": 60,
+  "last": 67,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   60,
+   67
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   56,
+   69
+  ]
+ },
+ {
+  "staff": "p35-2",
+  "part": "vc",
+  "movement": "I",
+  "first": 68,
+  "last": 74,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   68,
+   74
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   64,
+   76
+  ]
+ },
+ {
+  "staff": "p14-9",
+  "part": "vn1",
+  "movement": "I",
+  "first": 35,
+  "last": 40,
+  "editor": [
+   1,
+   1,
+   0,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   35,
+   40
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   30,
+   41
+  ]
+ },
+ {
+  "staff": "p15-0",
+  "part": "vn1",
+  "movement": "I",
+  "first": 40,
+  "last": 45,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   40,
+   45
+  ],
+  "kind": "left out",
+  "shift": 0,
+  "window": [
+   37,
+   48
+  ]
+ },
+ {
+  "staff": "p15-1",
+  "part": "vn1",
+  "movement": "I",
+  "first": 45,
+  "last": 49,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   45,
+   49
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   40,
+   50
+  ]
+ },
+ {
+  "staff": "p15-2",
+  "part": "vn1",
+  "movement": "I",
+  "first": 49,
+  "last": 56,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   49,
+   56
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   45,
+   58
+  ]
+ },
+ {
+  "staff": "p17-3",
+  "part": "vn1",
+  "movement": "III",
+  "first": 12,
+  "last": 17,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "III",
+   12,
+   17
+  ],
+  "kind": "left out",
+  "shift": 0,
+  "window": [
+   9,
+   20
+  ]
+ },
+ {
+  "staff": "p18-5",
+  "part": "vn1",
+  "movement": "IV",
+  "first": 38,
+  "last": 46,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   39,
+   46
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   34,
+   48
+  ]
+ },
+ {
+  "staff": "p19-1",
+  "part": "vn1",
+  "movement": "IV",
+  "first": 86,
+  "last": 92,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "IV",
+   86,
+   92
+  ],
+  "kind": "left out",
+  "shift": 0,
+  "window": [
+   83,
+   95
+  ]
+ },
+ {
+  "staff": "p22-4",
+  "part": "vn2",
+  "movement": "I",
+  "first": 16,
+  "last": 18,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   16,
+   18
+  ],
+  "kind": "left out",
+  "shift": 1,
+  "window": [
+   14,
+   22
+  ]
+ },
+ {
+  "staff": "p22-5",
+  "part": "vn2",
+  "movement": "I",
+  "first": 18,
+  "last": 20,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   18,
+   20
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   13,
+   21
+  ]
+ },
+ {
+  "staff": "p23-0",
+  "part": "vn2",
+  "movement": "I",
+  "first": 32,
+  "last": 33,
+  "editor": [
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   32,
+   33
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   27,
+   34
+  ]
+ },
+ {
+  "staff": "p23-1",
+  "part": "vn2",
+  "movement": "I",
+  "first": 34,
+  "last": 35,
+  "editor": [
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   33,
+   36
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   30,
+   37
+  ]
+ },
+ {
+  "staff": "p24-4",
+  "part": "vn2",
+  "movement": "I",
+  "first": 50,
+  "last": 52,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   50,
+   52
+  ],
+  "kind": "left out",
+  "shift": -1,
+  "window": [
+   46,
+   54
+  ]
+ },
+ {
+  "staff": "p24-5",
+  "part": "vn2",
+  "movement": "I",
+  "first": 52,
+  "last": 54,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   52,
+   54
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   47,
+   55
+  ]
+ },
+ {
+  "staff": "p24-6",
+  "part": "vn2",
+  "movement": "I",
+  "first": 54,
+  "last": 56,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   54,
+   56
+  ],
+  "kind": "left out",
+  "shift": 2,
+  "window": [
+   53,
+   61
+  ]
+ },
+ {
+  "staff": "p25-4",
+  "part": "vn2",
+  "movement": "I",
+  "first": 84,
+  "last": 87,
+  "editor": [
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   84,
+   87
+  ],
+  "kind": "left out",
+  "shift": 2,
+  "window": [
+   83,
+   92
+  ]
+ },
+ {
+  "staff": "p28-7",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 30,
+  "last": 32,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   30,
+   32
+  ],
+  "kind": "left out",
+  "shift": 2,
+  "window": [
+   29,
+   37
+  ]
+ },
+ {
+  "staff": "p28-8",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 33,
+  "last": 36,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   33,
+   36
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   28,
+   37
+  ]
+ },
+ {
+  "staff": "p31-1",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 113,
+  "last": 116,
+  "editor": [
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "IV",
+   113,
+   116
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   108,
+   117
+  ]
+ },
+ {
+  "staff": "p31-2",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 116,
+  "last": 120,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   116,
+   120
+  ],
+  "kind": "left out",
+  "shift": -2,
+  "window": [
+   111,
+   121
+  ]
+ },
+ {
+  "staff": "p14-1",
+  "part": "vn1",
+  "movement": "I",
+  "first": 6,
+  "last": 9,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   6,
+   9
+  ],
+  "kind": "kept",
+  "shift": -1,
+  "window": [
+   2,
+   11
+  ]
+ },
+ {
+  "staff": "p26-3",
+  "part": "vn2",
+  "movement": "II",
+  "first": 26,
+  "last": 33,
+  "editor": [
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "II",
+   26,
+   33
+  ],
+  "kind": "kept",
+  "shift": 2,
+  "window": [
+   25,
+   38
+  ]
+ },
+ {
+  "staff": "p30-9",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 98,
+  "last": 104,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   98,
+   104
+  ],
+  "kind": "kept",
+  "shift": 2,
+  "window": [
+   97,
+   109
+  ]
+ },
+ {
+  "staff": "p28-5",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 22,
+  "last": 25,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   22,
+   25
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   17,
+   26
+  ]
+ },
+ {
+  "staff": "p27-6",
+  "part": "vn2",
+  "movement": "III",
+  "first": 27,
+  "last": 29,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "III",
+   27,
+   29
+  ],
+  "kind": "kept",
+  "shift": 1,
+  "window": [
+   25,
+   29
+  ]
+ },
+ {
+  "staff": "p6-1",
+  "part": "va",
+  "movement": "II",
+  "first": 6,
+  "last": 13,
+  "editor": [
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "II",
+   6,
+   13
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   1,
+   14
+  ]
+ },
+ {
+  "staff": "p14-7",
+  "part": "vn1",
+  "movement": "I",
+  "first": 29,
+  "last": 31,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   29,
+   31
+  ],
+  "kind": "kept",
+  "shift": 0,
+  "window": [
+   26,
+   34
+  ]
+ },
+ {
+  "staff": "p8-9",
+  "part": "va",
+  "movement": "IV",
+  "first": 70,
+  "last": 76,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   70,
+   76
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   65,
+   77
+  ]
+ },
+ {
+  "staff": "p9-0",
+  "part": "va",
+  "movement": "IV",
+  "first": 77,
+  "last": 84,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   77,
+   84
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   72,
+   85
+  ]
+ },
+ {
+  "staff": "p25-1",
+  "part": "vn2",
+  "movement": "I",
+  "first": 71,
+  "last": 73,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   71,
+   73
+  ],
+  "kind": "kept",
+  "shift": 2,
+  "window": [
+   70,
+   78
+  ]
+ },
+ {
+  "staff": "p4-8",
+  "part": "va",
+  "movement": "I",
+  "first": 67,
+  "last": 70,
+  "editor": [
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   67,
+   70
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   62,
+   71
+  ]
+ },
+ {
+  "staff": "p27-1",
+  "part": "vn2",
+  "movement": "III",
+  "first": 5,
+  "last": 10,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "III",
+   5,
+   10
+  ],
+  "kind": "kept",
+  "shift": -1,
+  "window": [
+   1,
+   12
+  ]
+ },
+ {
+  "staff": "p2-4",
+  "part": "va",
+  "movement": "I",
+  "first": 14,
+  "last": 16,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   14,
+   16
+  ],
+  "kind": "kept",
+  "shift": -1,
+  "window": [
+   10,
+   18
+  ]
+ },
+ {
+  "staff": "p6-3",
+  "part": "va",
+  "movement": "II",
+  "first": 23,
+  "last": 25,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "II",
+   23,
+   25
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   18,
+   26
+  ]
+ },
+ {
+  "staff": "p7-4",
+  "part": "va",
+  "movement": "III",
+  "first": 18,
+  "last": 23,
+  "editor": [
+   1,
+   1,
+   2,
+   1,
+   1
+  ],
+  "proposal": [
+   "III",
+   18,
+   23
+  ],
+  "kind": "kept",
+  "shift": 1,
+  "window": [
+   16,
+   27
+  ]
+ },
+ {
+  "staff": "p24-3",
+  "part": "vn2",
+  "movement": "I",
+  "first": 48,
+  "last": 50,
+  "editor": [
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "I",
+   48,
+   50
+  ],
+  "kind": "kept",
+  "shift": -1,
+  "window": [
+   44,
+   52
+  ]
+ },
+ {
+  "staff": "p25-3",
+  "part": "vn2",
+  "movement": "I",
+  "first": 78,
+  "last": 83,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   78,
+   83
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   73,
+   84
+  ]
+ },
+ {
+  "staff": "p8-2",
+  "part": "va",
+  "movement": "IV",
+  "first": 17,
+  "last": 25,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   17,
+   25
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   12,
+   26
+  ]
+ },
+ {
+  "staff": "p31-5",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 132,
+  "last": 136,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   132,
+   136
+  ],
+  "kind": "kept",
+  "shift": 2,
+  "window": [
+   131,
+   138
+  ]
+ },
+ {
+  "staff": "p38-7",
+  "part": "vc",
+  "movement": "IV",
+  "first": 53,
+  "last": 59,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   53,
+   59
+  ],
+  "kind": "kept",
+  "shift": 1,
+  "window": [
+   51,
+   63
+  ]
+ },
+ {
+  "staff": "p4-2",
+  "part": "va",
+  "movement": "I",
+  "first": 45,
+  "last": 47,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   45,
+   47
+  ],
+  "kind": "kept",
+  "shift": 2,
+  "window": [
+   44,
+   52
+  ]
+ },
+ {
+  "staff": "p7-3",
+  "part": "va",
+  "movement": "III",
+  "first": 14,
+  "last": 17,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "III",
+   14,
+   17
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   9,
+   18
+  ]
+ },
+ {
+  "staff": "p2-3",
+  "part": "va",
+  "movement": "I",
+  "first": 11,
+  "last": 13,
+  "editor": [
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   11,
+   13
+  ],
+  "kind": "kept",
+  "shift": 0,
+  "window": [
+   8,
+   16
+  ]
+ },
+ {
+  "staff": "p22-2",
+  "part": "vn2",
+  "movement": "I",
+  "first": 9,
+  "last": 12,
+  "editor": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "I",
+   9,
+   12
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   4,
+   13
+  ]
+ },
+ {
+  "staff": "p30-6",
+  "part": "vn2",
+  "movement": "IV",
+  "first": 85,
+  "last": 89,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   "on"
+  ],
+  "proposal": [
+   "IV",
+   85,
+   89
+  ],
+  "kind": "kept",
+  "shift": -1,
+  "window": [
+   81,
+   91
+  ]
+ },
+ {
+  "staff": "p39-0",
+  "part": "vc",
+  "movement": "IV",
+  "first": 73,
+  "last": 81,
+  "editor": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "proposal": [
+   "IV",
+   73,
+   81
+  ],
+  "kind": "kept",
+  "shift": -2,
+  "window": [
+   68,
+   82
+  ]
+ }
+]
