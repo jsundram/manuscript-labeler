@@ -4,6 +4,32 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-05: Opus checks the pairing's left-out staves
+
+[Write-up](2026-11-05-opus-pairing-check/)
+
+**Context.** Re-reading with D5 added 739 staves. About 1,900 left-out
+staves still had a proposal from the pairing. On KHM 587, checking a
+proposal had beaten having Opus read the bars itself. The editor's Claude
+plan could pay for it through `claude -p`.
+
+**Question.** Shown a staff and the score's bars around it, can Opus tell
+a right proposal from a wrong one? And are the staves it accepts usable
+as labels?
+
+**Finding.** Opus accepted 1,017 of 1,895, and the editor found none of
+its accepts wrong. But the question counted a part bar at either end as
+right, and a label must know where each end is cut. 520 staves (2,945
+bars) could be added, where the neighbouring lines settle both ends.
+That question should have asked for the ends. Checking the new labels
+turned up two bad cuts in rules the pairing's own staves share.
+
+**What followed.** add_opus.py writes each source's `plus-opus` pairing,
+which the labeler shows first. The set builder labels multi-bar rests
+(`multirest:N`) and leaves out the two bad cuts. The staff sets will be
+rebuilt for the next training run. Possible next steps: recover more ends
+from Opus's working, and a crop check from the readings.
+
 ## 2026-11-04: Reading a staff one bar box at a time
 
 [Write-up](2026-11-04-bar-box-reading/)
