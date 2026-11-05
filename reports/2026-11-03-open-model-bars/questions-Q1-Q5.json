@@ -1,0 +1,5112 @@
+{
+ "Q1": {
+  "config": {
+   "features": "d5-L12",
+   "epochs": 8,
+   "lr": 0.0003,
+   "seed": 0
+  },
+  "log": [
+   {
+    "pass": 1,
+    "loss": 3.557511378130357,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.87,
+     "mae": 0.22826115787029266
+    },
+    "chord": {
+     "hits": 35,
+     "there": 41,
+     "false": 8,
+     "absent": 106,
+     "d": 2.43,
+     "mae": 0.6078059673309326
+    }
+   },
+   {
+    "pass": 2,
+    "loss": 0.04450294844525828,
+    "grace": {
+     "hits": 18,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.51,
+     "mae": 0.14923787117004395
+    },
+    "chord": {
+     "hits": 37,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 2.97,
+     "mae": 0.48483970761299133
+    }
+   },
+   {
+    "pass": 3,
+    "loss": -0.026064673163969102,
+    "grace": {
+     "hits": 19,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.68,
+     "mae": 0.10405613481998444
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.401554137468338
+    }
+   },
+   {
+    "pass": 4,
+    "loss": -0.05505565548176952,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.11780140548944473
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.43143799901008606
+    }
+   },
+   {
+    "pass": 5,
+    "loss": -0.06838005762442863,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.060163263231515884
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.4027489423751831
+    }
+   },
+   {
+    "pass": 6,
+    "loss": -0.07610819511789622,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.05850454419851303
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.44805607199668884
+    }
+   },
+   {
+    "pass": 7,
+    "loss": -0.076480111978453,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.05850755050778389
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.3871966302394867
+    }
+   },
+   {
+    "pass": 8,
+    "loss": -0.08568163284007758,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.04414840042591095
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.484091192483902
+    }
+   }
+  ],
+  "test": {
+   "rates": {
+    "grace": {
+     "hits": 14,
+     "there": 29,
+     "false": 0,
+     "absent": 75,
+     "d": 2.44
+    },
+    "chord": {
+     "hits": 26,
+     "there": 36,
+     "false": 0,
+     "absent": 68,
+     "d": 3.02
+    }
+   },
+   "bars": [
+    {
+     "part": "va",
+     "bar": 0,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 2,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 5,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 6,
+     "grace": 0.003,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 11,
+     "grace": 0.001,
+     "chord": 0.752,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 12,
+     "grace": 0.002,
+     "chord": 1.197,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 18,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 26,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 28,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 32,
+     "grace": 0.002,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 33,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 37,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 47,
+     "grace": 0.001,
+     "chord": 0.015,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 51,
+     "grace": 0.001,
+     "chord": 0.007,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 52,
+     "grace": 0.001,
+     "chord": 0.024,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 59,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 60,
+     "grace": 0.001,
+     "chord": 1.151,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 61,
+     "grace": 0.003,
+     "chord": 1.523,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 62,
+     "grace": 0.0,
+     "chord": 0.772,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 67,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 70,
+     "grace": 0.002,
+     "chord": 1.654,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 71,
+     "grace": 0.002,
+     "chord": 2.381,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 72,
+     "grace": 0.001,
+     "chord": 0.568,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 4,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 21,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 31,
+     "grace": 0.003,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 32,
+     "grace": 0.001,
+     "chord": 0.032,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 33,
+     "grace": 0.001,
+     "chord": 1.564,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 34,
+     "grace": 0.001,
+     "chord": 0.735,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 35,
+     "grace": 0.005,
+     "chord": 2.802,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 36,
+     "grace": 0.001,
+     "chord": 0.891,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 41,
+     "grace": 0.004,
+     "chord": 2.515,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 42,
+     "grace": 0.002,
+     "chord": 0.685,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 43,
+     "grace": 0.005,
+     "chord": 1.505,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 44,
+     "grace": 0.0,
+     "chord": 0.799,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 47,
+     "grace": 0.0,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 49,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 51,
+     "grace": 0.0,
+     "chord": 0.017,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 52,
+     "grace": 0.032,
+     "chord": 1.073,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 62,
+     "grace": 0.009,
+     "chord": 0.158,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 64,
+     "grace": 0.005,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 68,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 69,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.025,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 2,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 4,
+     "grace": 1.002,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 7,
+     "grace": 0.14,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 8,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 10,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 16,
+     "grace": 0.915,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 17,
+     "grace": 0.096,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 18,
+     "grace": 0.226,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 21,
+     "grace": 0.007,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 22,
+     "grace": 0.121,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 23,
+     "grace": 1.48,
+     "chord": 0.009,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 24,
+     "grace": 0.005,
+     "chord": 0.716,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 26,
+     "grace": 1.549,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 30,
+     "grace": 1.71,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 31,
+     "grace": 0.003,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 38,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 40,
+     "grace": 0.735,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 45,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 49,
+     "grace": 0.378,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 50,
+     "grace": 0.295,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 51,
+     "grace": 1.577,
+     "chord": 0.006,
+     "true_grace": 2,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 52,
+     "grace": 0.006,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 59,
+     "grace": 0.839,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 60,
+     "grace": 0.811,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 62,
+     "grace": 0.008,
+     "chord": 0.812,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 66,
+     "grace": 0.001,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 69,
+     "grace": 0.562,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 70,
+     "grace": 0.837,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 72,
+     "grace": 0.001,
+     "chord": 0.751,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 4,
+     "grace": 0.029,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 9,
+     "grace": 0.001,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 11,
+     "grace": 0.006,
+     "chord": 4.006,
+     "true_grace": 0,
+     "true_chord": 6
+    },
+    {
+     "part": "vn2",
+     "bar": 12,
+     "grace": 0.004,
+     "chord": 0.893,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 16,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 17,
+     "grace": 0.002,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 18,
+     "grace": 0.008,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 19,
+     "grace": 0.007,
+     "chord": 1.125,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 20,
+     "grace": 0.007,
+     "chord": 0.883,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 21,
+     "grace": 0.002,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 22,
+     "grace": 0.046,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 23,
+     "grace": 0.004,
+     "chord": 1.465,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 24,
+     "grace": 0.002,
+     "chord": 0.649,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 26,
+     "grace": 0.933,
+     "chord": 0.0,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 27,
+     "grace": 0.003,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 30,
+     "grace": 1.512,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 38,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 39,
+     "grace": 0.012,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 40,
+     "grace": 0.749,
+     "chord": 0.025,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 41,
+     "grace": 0.004,
+     "chord": 0.008,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 46,
+     "grace": 0.003,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 49,
+     "grace": 0.004,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 50,
+     "grace": 0.01,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 52,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 54,
+     "grace": 0.001,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 59,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 60,
+     "grace": 0.0,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 63,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 68,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    }
+   ]
+  }
+ },
+ "Q2": {
+  "config": {
+   "features": "d5-L6",
+   "epochs": 8,
+   "lr": 0.0003,
+   "seed": 0
+  },
+  "log": [
+   {
+    "pass": 1,
+    "loss": 3.388126879448505,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 46,
+     "absent": 125,
+     "d": 0.79,
+     "mae": 0.7593261003494263
+    },
+    "chord": {
+     "hits": 35,
+     "there": 41,
+     "false": 5,
+     "absent": 106,
+     "d": 2.65,
+     "mae": 0.592982828617096
+    }
+   },
+   {
+    "pass": 2,
+    "loss": 0.16139261141312036,
+    "grace": {
+     "hits": 14,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.99,
+     "mae": 0.22841878235340118
+    },
+    "chord": {
+     "hits": 38,
+     "there": 41,
+     "false": 5,
+     "absent": 106,
+     "d": 3.01,
+     "mae": 0.47150281071662903
+    }
+   },
+   {
+    "pass": 3,
+    "loss": 0.0356290795404115,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.87,
+     "mae": 0.17992660403251648
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 5,
+     "absent": 106,
+     "d": 3.43,
+     "mae": 0.41297051310539246
+    }
+   },
+   {
+    "pass": 4,
+    "loss": -0.00041758392909892184,
+    "grace": {
+     "hits": 14,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.99,
+     "mae": 0.14907227456569672
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 5,
+     "absent": 106,
+     "d": 3.43,
+     "mae": 0.4770315885543823
+    }
+   },
+   {
+    "pass": 5,
+    "loss": -0.023258694585224837,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.11,
+     "mae": 0.12067420780658722
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.3897499740123749
+    }
+   },
+   {
+    "pass": 6,
+    "loss": -0.034541217220411764,
+    "grace": {
+     "hits": 16,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.23,
+     "mae": 0.12339338660240173
+    },
+    "chord": {
+     "hits": 38,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.11,
+     "mae": 0.43871426582336426
+    }
+   },
+   {
+    "pass": 7,
+    "loss": -0.03845926993030658,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.11,
+     "mae": 0.11527398973703384
+    },
+    "chord": {
+     "hits": 38,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.11,
+     "mae": 0.4113315939903259
+    }
+   },
+   {
+    "pass": 8,
+    "loss": -0.05076813344121146,
+    "grace": {
+     "hits": 14,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.99,
+     "mae": 0.1641698181629181
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.4144879877567291
+    }
+   }
+  ],
+  "test": {
+   "rates": {
+    "grace": {
+     "hits": 12,
+     "there": 29,
+     "false": 0,
+     "absent": 75,
+     "d": 2.27
+    },
+    "chord": {
+     "hits": 26,
+     "there": 36,
+     "false": 0,
+     "absent": 68,
+     "d": 3.02
+    }
+   },
+   "bars": [
+    {
+     "part": "va",
+     "bar": 0,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 2,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 5,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 6,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 7,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 11,
+     "grace": 0.001,
+     "chord": 0.469,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 12,
+     "grace": 0.002,
+     "chord": 0.885,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 18,
+     "grace": 0.005,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 26,
+     "grace": 0.003,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 28,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 32,
+     "grace": 0.007,
+     "chord": 0.098,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 33,
+     "grace": 0.0,
+     "chord": 0.062,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 37,
+     "grace": 0.0,
+     "chord": 0.009,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 47,
+     "grace": 0.0,
+     "chord": 0.007,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 51,
+     "grace": 0.002,
+     "chord": 0.028,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 52,
+     "grace": 0.001,
+     "chord": 0.109,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 59,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 60,
+     "grace": 0.006,
+     "chord": 1.251,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 61,
+     "grace": 0.002,
+     "chord": 0.844,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 62,
+     "grace": 0.0,
+     "chord": 0.608,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 67,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 70,
+     "grace": 0.002,
+     "chord": 1.723,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 71,
+     "grace": 0.001,
+     "chord": 1.309,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 72,
+     "grace": 0.002,
+     "chord": 0.692,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 4,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 21,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 31,
+     "grace": 0.005,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 32,
+     "grace": 0.0,
+     "chord": 0.008,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 33,
+     "grace": 0.001,
+     "chord": 2.698,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 34,
+     "grace": 0.001,
+     "chord": 1.203,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 35,
+     "grace": 0.0,
+     "chord": 2.507,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 36,
+     "grace": 0.0,
+     "chord": 0.912,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 41,
+     "grace": 0.001,
+     "chord": 1.754,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 42,
+     "grace": 0.0,
+     "chord": 0.763,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 43,
+     "grace": 0.013,
+     "chord": 1.133,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 44,
+     "grace": 0.0,
+     "chord": 0.823,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 47,
+     "grace": 0.0,
+     "chord": 0.019,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 49,
+     "grace": 0.0,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 51,
+     "grace": 0.003,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 52,
+     "grace": 0.056,
+     "chord": 0.915,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 62,
+     "grace": 0.001,
+     "chord": 0.524,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 64,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 68,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 69,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.128,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 2,
+     "grace": 0.003,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 4,
+     "grace": 0.699,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 7,
+     "grace": 0.138,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 8,
+     "grace": 0.002,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 10,
+     "grace": 0.004,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 16,
+     "grace": 1.416,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 17,
+     "grace": 0.011,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 18,
+     "grace": 0.018,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 21,
+     "grace": 0.008,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 22,
+     "grace": 0.026,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 23,
+     "grace": 3.179,
+     "chord": 0.007,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 24,
+     "grace": 0.002,
+     "chord": 0.702,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 26,
+     "grace": 2.615,
+     "chord": 0.0,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 30,
+     "grace": 2.714,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 31,
+     "grace": 0.005,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 38,
+     "grace": 0.02,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 40,
+     "grace": 0.167,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 45,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 49,
+     "grace": 0.58,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 50,
+     "grace": 0.154,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 51,
+     "grace": 2.63,
+     "chord": 0.003,
+     "true_grace": 2,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 52,
+     "grace": 0.002,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 59,
+     "grace": 1.282,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 60,
+     "grace": 1.294,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 62,
+     "grace": 0.001,
+     "chord": 0.608,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 66,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 69,
+     "grace": 0.134,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 70,
+     "grace": 0.974,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 72,
+     "grace": 0.001,
+     "chord": 0.818,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 4,
+     "grace": 0.004,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 9,
+     "grace": 0.002,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 11,
+     "grace": 0.01,
+     "chord": 5.914,
+     "true_grace": 0,
+     "true_chord": 6
+    },
+    {
+     "part": "vn2",
+     "bar": 12,
+     "grace": 0.001,
+     "chord": 0.971,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 16,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 17,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 18,
+     "grace": 0.015,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 19,
+     "grace": 0.001,
+     "chord": 1.441,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 20,
+     "grace": 0.001,
+     "chord": 0.811,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 21,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 22,
+     "grace": 0.009,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 23,
+     "grace": 0.007,
+     "chord": 1.774,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 24,
+     "grace": 0.001,
+     "chord": 1.053,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 26,
+     "grace": 1.009,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 27,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 30,
+     "grace": 1.143,
+     "chord": 0.004,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 38,
+     "grace": 0.002,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 39,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 40,
+     "grace": 0.415,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 41,
+     "grace": 0.007,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 46,
+     "grace": 0.014,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 49,
+     "grace": 0.009,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 50,
+     "grace": 0.019,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 52,
+     "grace": 0.001,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 54,
+     "grace": 0.003,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 59,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 60,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 63,
+     "grace": 0.007,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 68,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    }
+   ]
+  }
+ },
+ "Q3": {
+  "config": {
+   "features": "musvit-L12",
+   "epochs": 8,
+   "lr": 0.0003,
+   "seed": 0
+  },
+  "log": [
+   {
+    "pass": 1,
+    "loss": 3.5830736720915124,
+    "grace": {
+     "hits": 12,
+     "there": 22,
+     "false": 38,
+     "absent": 125,
+     "d": 0.62,
+     "mae": 0.7334403991699219
+    },
+    "chord": {
+     "hits": 17,
+     "there": 41,
+     "false": 25,
+     "absent": 106,
+     "d": 0.5,
+     "mae": 1.1402664184570312
+    }
+   },
+   {
+    "pass": 2,
+    "loss": 0.5985367989377846,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 23,
+     "absent": 125,
+     "d": 1.34,
+     "mae": 0.5232690572738647
+    },
+    "chord": {
+     "hits": 26,
+     "there": 41,
+     "false": 19,
+     "absent": 106,
+     "d": 1.24,
+     "mae": 0.9524692893028259
+    }
+   },
+   {
+    "pass": 3,
+    "loss": 0.2973675393313766,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 1,
+     "absent": 125,
+     "d": 2.48,
+     "mae": 0.2921428680419922
+    },
+    "chord": {
+     "hits": 35,
+     "there": 41,
+     "false": 38,
+     "absent": 106,
+     "d": 1.38,
+     "mae": 0.9297344088554382
+    }
+   },
+   {
+    "pass": 4,
+    "loss": 0.20811991136822344,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 3,
+     "absent": 125,
+     "d": 2.13,
+     "mae": 0.2747502326965332
+    },
+    "chord": {
+     "hits": 37,
+     "there": 41,
+     "false": 38,
+     "absent": 106,
+     "d": 1.6,
+     "mae": 0.9374592304229736
+    }
+   },
+   {
+    "pass": 5,
+    "loss": 0.1507458315444909,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 2,
+     "absent": 125,
+     "d": 2.28,
+     "mae": 0.2524552345275879
+    },
+    "chord": {
+     "hits": 27,
+     "there": 41,
+     "false": 5,
+     "absent": 106,
+     "d": 2.03,
+     "mae": 0.7640421986579895
+    }
+   },
+   {
+    "pass": 6,
+    "loss": 0.11674887087461565,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 11,
+     "absent": 125,
+     "d": 1.78,
+     "mae": 0.29329848289489746
+    },
+    "chord": {
+     "hits": 26,
+     "there": 41,
+     "false": 7,
+     "absent": 106,
+     "d": 1.81,
+     "mae": 0.7259981632232666
+    }
+   },
+   {
+    "pass": 7,
+    "loss": 0.0914285577064137,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 1,
+     "absent": 125,
+     "d": 2.48,
+     "mae": 0.22854040563106537
+    },
+    "chord": {
+     "hits": 29,
+     "there": 41,
+     "false": 10,
+     "absent": 106,
+     "d": 1.82,
+     "mae": 0.7925441265106201
+    }
+   },
+   {
+    "pass": 8,
+    "loss": 0.07081308257434252,
+    "grace": {
+     "hits": 16,
+     "there": 22,
+     "false": 7,
+     "absent": 125,
+     "d": 2.13,
+     "mae": 0.2593981623649597
+    },
+    "chord": {
+     "hits": 31,
+     "there": 41,
+     "false": 11,
+     "absent": 106,
+     "d": 1.91,
+     "mae": 0.7362496256828308
+    }
+   }
+  ],
+  "test": {
+   "rates": {
+    "grace": {
+     "hits": 17,
+     "there": 29,
+     "false": 0,
+     "absent": 75,
+     "d": 2.69
+    },
+    "chord": {
+     "hits": 14,
+     "there": 36,
+     "false": 0,
+     "absent": 68,
+     "d": 2.17
+    }
+   },
+   "bars": [
+    {
+     "part": "va",
+     "bar": 0,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 2,
+     "grace": 0.002,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 5,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 6,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 7,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 11,
+     "grace": 0.003,
+     "chord": 1.18,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 12,
+     "grace": 0.014,
+     "chord": 0.97,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 18,
+     "grace": 0.002,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 26,
+     "grace": 0.002,
+     "chord": 0.012,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 28,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 32,
+     "grace": 0.003,
+     "chord": 0.017,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 33,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 37,
+     "grace": 0.001,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 47,
+     "grace": 0.001,
+     "chord": 0.013,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 51,
+     "grace": 0.007,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 52,
+     "grace": 0.007,
+     "chord": 0.634,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 59,
+     "grace": 0.008,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 60,
+     "grace": 0.017,
+     "chord": 0.082,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 61,
+     "grace": 0.007,
+     "chord": 0.8,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 62,
+     "grace": 0.002,
+     "chord": 0.187,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 67,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 70,
+     "grace": 0.347,
+     "chord": 0.093,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 71,
+     "grace": 0.006,
+     "chord": 1.556,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 72,
+     "grace": 0.004,
+     "chord": 0.517,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 4,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 21,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 31,
+     "grace": 0.004,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 32,
+     "grace": 0.001,
+     "chord": 0.052,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 33,
+     "grace": 0.031,
+     "chord": 0.014,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 34,
+     "grace": 0.003,
+     "chord": 0.017,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 35,
+     "grace": 0.001,
+     "chord": 0.251,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 36,
+     "grace": 0.001,
+     "chord": 0.091,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 41,
+     "grace": 0.002,
+     "chord": 0.388,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 42,
+     "grace": 0.001,
+     "chord": 0.019,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 43,
+     "grace": 0.006,
+     "chord": 0.028,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 44,
+     "grace": 0.004,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 47,
+     "grace": 0.005,
+     "chord": 0.01,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 49,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 51,
+     "grace": 0.001,
+     "chord": 0.143,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 52,
+     "grace": 0.009,
+     "chord": 1.397,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 62,
+     "grace": 0.005,
+     "chord": 0.857,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 64,
+     "grace": 0.007,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 68,
+     "grace": 0.003,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 69,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 72,
+     "grace": 0.001,
+     "chord": 0.369,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 2,
+     "grace": 0.01,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 4,
+     "grace": 1.695,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 7,
+     "grace": 0.043,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 8,
+     "grace": 0.014,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 10,
+     "grace": 0.01,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 16,
+     "grace": 1.294,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 17,
+     "grace": 0.1,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 18,
+     "grace": 0.122,
+     "chord": 0.02,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 21,
+     "grace": 0.023,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 22,
+     "grace": 0.058,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 23,
+     "grace": 0.501,
+     "chord": 0.022,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 24,
+     "grace": 0.016,
+     "chord": 0.908,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 26,
+     "grace": 1.957,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 30,
+     "grace": 2.827,
+     "chord": 0.002,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 31,
+     "grace": 0.009,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 38,
+     "grace": 0.031,
+     "chord": 0.011,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 40,
+     "grace": 0.723,
+     "chord": 0.009,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 45,
+     "grace": 0.004,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 49,
+     "grace": 0.608,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 50,
+     "grace": 0.45,
+     "chord": 0.005,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 51,
+     "grace": 0.892,
+     "chord": 0.005,
+     "true_grace": 2,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 52,
+     "grace": 0.003,
+     "chord": 0.028,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 59,
+     "grace": 0.591,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 60,
+     "grace": 2.853,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 62,
+     "grace": 0.002,
+     "chord": 1.391,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 66,
+     "grace": 0.06,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 69,
+     "grace": 0.751,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 70,
+     "grace": 0.537,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 72,
+     "grace": 0.014,
+     "chord": 0.066,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 4,
+     "grace": 0.533,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 9,
+     "grace": 0.002,
+     "chord": 0.017,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 11,
+     "grace": 0.007,
+     "chord": 3.989,
+     "true_grace": 0,
+     "true_chord": 6
+    },
+    {
+     "part": "vn2",
+     "bar": 12,
+     "grace": 0.004,
+     "chord": 1.274,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 16,
+     "grace": 0.008,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 17,
+     "grace": 0.018,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 18,
+     "grace": 0.088,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 19,
+     "grace": 0.008,
+     "chord": 0.302,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 20,
+     "grace": 0.007,
+     "chord": 0.118,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 21,
+     "grace": 0.012,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 22,
+     "grace": 0.143,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 23,
+     "grace": 0.021,
+     "chord": 0.624,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 24,
+     "grace": 0.003,
+     "chord": 0.773,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 26,
+     "grace": 1.628,
+     "chord": 0.003,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 27,
+     "grace": 0.201,
+     "chord": 0.021,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 30,
+     "grace": 1.875,
+     "chord": 0.004,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 38,
+     "grace": 0.007,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 39,
+     "grace": 0.008,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 40,
+     "grace": 0.217,
+     "chord": 0.24,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 41,
+     "grace": 0.006,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 46,
+     "grace": 0.007,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 49,
+     "grace": 1.151,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 50,
+     "grace": 1.067,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 52,
+     "grace": 0.051,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 54,
+     "grace": 0.009,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 59,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 60,
+     "grace": 0.007,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 63,
+     "grace": 0.003,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 68,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    }
+   ]
+  }
+ },
+ "Q4": {
+  "config": {
+   "features": "musvit-L6",
+   "epochs": 8,
+   "lr": 0.0003,
+   "seed": 0
+  },
+  "log": [
+   {
+    "pass": 1,
+    "loss": 3.4596428492529285,
+    "grace": {
+     "hits": 7,
+     "there": 22,
+     "false": 31,
+     "absent": 125,
+     "d": 0.22,
+     "mae": 0.7184252142906189
+    },
+    "chord": {
+     "hits": 11,
+     "there": 41,
+     "false": 17,
+     "absent": 106,
+     "d": 0.38,
+     "mae": 1.156500220298767
+    }
+   },
+   {
+    "pass": 2,
+    "loss": 0.7738031625747681,
+    "grace": {
+     "hits": 17,
+     "there": 22,
+     "false": 41,
+     "absent": 125,
+     "d": 1.15,
+     "mae": 0.738927960395813
+    },
+    "chord": {
+     "hits": 30,
+     "there": 41,
+     "false": 45,
+     "absent": 106,
+     "d": 0.79,
+     "mae": 1.1185091733932495
+    }
+   },
+   {
+    "pass": 3,
+    "loss": 0.4962852678841071,
+    "grace": {
+     "hits": 11,
+     "there": 22,
+     "false": 2,
+     "absent": 125,
+     "d": 2.06,
+     "mae": 0.3570367693901062
+    },
+    "chord": {
+     "hits": 35,
+     "there": 41,
+     "false": 37,
+     "absent": 106,
+     "d": 1.4,
+     "mae": 0.9796317219734192
+    }
+   },
+   {
+    "pass": 4,
+    "loss": 0.27180141917794487,
+    "grace": {
+     "hits": 12,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.76,
+     "mae": 0.27305617928504944
+    },
+    "chord": {
+     "hits": 37,
+     "there": 41,
+     "false": 48,
+     "absent": 106,
+     "d": 1.36,
+     "mae": 1.1049782037734985
+    }
+   },
+   {
+    "pass": 5,
+    "loss": 0.19970800123088736,
+    "grace": {
+     "hits": 14,
+     "there": 22,
+     "false": 1,
+     "absent": 125,
+     "d": 2.59,
+     "mae": 0.21117646992206573
+    },
+    "chord": {
+     "hits": 25,
+     "there": 41,
+     "false": 9,
+     "absent": 106,
+     "d": 1.62,
+     "mae": 0.7599037289619446
+    }
+   },
+   {
+    "pass": 6,
+    "loss": 0.15054816090173012,
+    "grace": {
+     "hits": 15,
+     "there": 22,
+     "false": 10,
+     "absent": 125,
+     "d": 1.83,
+     "mae": 0.26286375522613525
+    },
+    "chord": {
+     "hits": 23,
+     "there": 41,
+     "false": 7,
+     "absent": 106,
+     "d": 1.62,
+     "mae": 0.7174291610717773
+    }
+   },
+   {
+    "pass": 7,
+    "loss": 0.12158149402555797,
+    "grace": {
+     "hits": 12,
+     "there": 22,
+     "false": 1,
+     "absent": 125,
+     "d": 2.37,
+     "mae": 0.20717433094978333
+    },
+    "chord": {
+     "hits": 26,
+     "there": 41,
+     "false": 10,
+     "absent": 106,
+     "d": 1.63,
+     "mae": 0.7096350789070129
+    }
+   },
+   {
+    "pass": 8,
+    "loss": 0.08926795664265023,
+    "grace": {
+     "hits": 13,
+     "there": 22,
+     "false": 5,
+     "absent": 125,
+     "d": 1.93,
+     "mae": 0.23928223550319672
+    },
+    "chord": {
+     "hits": 31,
+     "there": 41,
+     "false": 21,
+     "absent": 106,
+     "d": 1.51,
+     "mae": 0.7790912389755249
+    }
+   }
+  ],
+  "test": {
+   "rates": {
+    "grace": {
+     "hits": 10,
+     "there": 29,
+     "false": 0,
+     "absent": 75,
+     "d": 2.09
+    },
+    "chord": {
+     "hits": 13,
+     "there": 36,
+     "false": 0,
+     "absent": 68,
+     "d": 2.1
+    }
+   },
+   "bars": [
+    {
+     "part": "va",
+     "bar": 0,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 2,
+     "grace": 0.003,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 5,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 6,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 7,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 11,
+     "grace": 0.001,
+     "chord": 0.821,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 12,
+     "grace": 0.019,
+     "chord": 0.788,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 18,
+     "grace": 0.002,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 26,
+     "grace": 0.001,
+     "chord": 0.008,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 28,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 32,
+     "grace": 0.001,
+     "chord": 0.018,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 33,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 37,
+     "grace": 0.001,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 47,
+     "grace": 0.001,
+     "chord": 0.031,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 51,
+     "grace": 0.002,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 52,
+     "grace": 0.014,
+     "chord": 0.477,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 59,
+     "grace": 0.006,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 60,
+     "grace": 0.01,
+     "chord": 0.072,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 61,
+     "grace": 0.019,
+     "chord": 1.451,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 62,
+     "grace": 0.001,
+     "chord": 0.137,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 67,
+     "grace": 0.007,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 70,
+     "grace": 0.027,
+     "chord": 0.118,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 71,
+     "grace": 0.004,
+     "chord": 2.365,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 72,
+     "grace": 0.011,
+     "chord": 0.099,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 4,
+     "grace": 0.001,
+     "chord": 0.016,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 21,
+     "grace": 0.002,
+     "chord": 0.019,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 31,
+     "grace": 0.003,
+     "chord": 0.024,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 32,
+     "grace": 0.002,
+     "chord": 0.1,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 33,
+     "grace": 0.003,
+     "chord": 0.085,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 34,
+     "grace": 0.001,
+     "chord": 0.153,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 35,
+     "grace": 0.0,
+     "chord": 0.53,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 36,
+     "grace": 0.0,
+     "chord": 0.355,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 41,
+     "grace": 0.001,
+     "chord": 0.582,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 42,
+     "grace": 0.0,
+     "chord": 0.051,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 43,
+     "grace": 0.012,
+     "chord": 0.066,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 44,
+     "grace": 0.002,
+     "chord": 0.064,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 47,
+     "grace": 0.002,
+     "chord": 0.081,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 49,
+     "grace": 0.001,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 51,
+     "grace": 0.001,
+     "chord": 0.01,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 52,
+     "grace": 0.012,
+     "chord": 0.66,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 62,
+     "grace": 0.009,
+     "chord": 0.882,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 64,
+     "grace": 0.028,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 68,
+     "grace": 0.008,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 69,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.371,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 2,
+     "grace": 0.007,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 4,
+     "grace": 0.802,
+     "chord": 0.005,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 7,
+     "grace": 0.013,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 8,
+     "grace": 0.009,
+     "chord": 0.02,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 10,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 16,
+     "grace": 0.374,
+     "chord": 0.006,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 17,
+     "grace": 0.043,
+     "chord": 0.01,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 18,
+     "grace": 0.199,
+     "chord": 0.059,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 21,
+     "grace": 0.017,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 22,
+     "grace": 0.017,
+     "chord": 0.012,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 23,
+     "grace": 0.312,
+     "chord": 0.05,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 24,
+     "grace": 0.018,
+     "chord": 0.881,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 26,
+     "grace": 1.34,
+     "chord": 0.002,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 30,
+     "grace": 3.067,
+     "chord": 0.006,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 31,
+     "grace": 0.007,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 38,
+     "grace": 0.019,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 40,
+     "grace": 1.052,
+     "chord": 0.07,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 45,
+     "grace": 0.001,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 49,
+     "grace": 0.125,
+     "chord": 0.003,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 50,
+     "grace": 0.202,
+     "chord": 0.005,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 51,
+     "grace": 1.241,
+     "chord": 0.023,
+     "true_grace": 2,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 52,
+     "grace": 0.005,
+     "chord": 0.009,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 59,
+     "grace": 0.312,
+     "chord": 0.006,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 60,
+     "grace": 2.262,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 62,
+     "grace": 0.001,
+     "chord": 0.729,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 66,
+     "grace": 0.022,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 69,
+     "grace": 0.034,
+     "chord": 0.006,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 70,
+     "grace": 0.036,
+     "chord": 0.005,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 72,
+     "grace": 0.001,
+     "chord": 0.093,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 4,
+     "grace": 0.013,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 9,
+     "grace": 0.037,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 11,
+     "grace": 0.01,
+     "chord": 4.377,
+     "true_grace": 0,
+     "true_chord": 6
+    },
+    {
+     "part": "vn2",
+     "bar": 12,
+     "grace": 0.002,
+     "chord": 0.829,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 16,
+     "grace": 0.007,
+     "chord": 0.009,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 17,
+     "grace": 0.018,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 18,
+     "grace": 0.109,
+     "chord": 0.004,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 19,
+     "grace": 0.007,
+     "chord": 0.636,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 20,
+     "grace": 0.035,
+     "chord": 0.161,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 21,
+     "grace": 0.002,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 22,
+     "grace": 0.008,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 23,
+     "grace": 0.004,
+     "chord": 0.462,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 24,
+     "grace": 0.004,
+     "chord": 0.176,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 26,
+     "grace": 0.715,
+     "chord": 0.003,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 27,
+     "grace": 0.011,
+     "chord": 0.084,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 30,
+     "grace": 1.308,
+     "chord": 0.005,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 38,
+     "grace": 0.004,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 39,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 40,
+     "grace": 0.203,
+     "chord": 0.081,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 41,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 46,
+     "grace": 0.002,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 49,
+     "grace": 1.998,
+     "chord": 0.002,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 50,
+     "grace": 0.764,
+     "chord": 0.008,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 52,
+     "grace": 0.035,
+     "chord": 0.007,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 54,
+     "grace": 0.01,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 59,
+     "grace": 0.004,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 60,
+     "grace": 0.003,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 63,
+     "grace": 0.005,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 68,
+     "grace": 0.002,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    }
+   ]
+  }
+ },
+ "Q5": {
+  "config": {
+   "features": "d5-L12+musvit-L12",
+   "epochs": 8,
+   "lr": 0.0003,
+   "seed": 0
+  },
+  "log": [
+   {
+    "pass": 1,
+    "loss": 3.3980046591585022,
+    "grace": {
+     "hits": 14,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 2.99,
+     "mae": 0.17973200976848602
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 9,
+     "absent": 106,
+     "d": 3.15,
+     "mae": 0.6078793406486511
+    }
+   },
+   {
+    "pass": 2,
+    "loss": 0.03176775785614912,
+    "grace": {
+     "hits": 18,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.51,
+     "mae": 0.12660452723503113
+    },
+    "chord": {
+     "hits": 38,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.11,
+     "mae": 0.4716488718986511
+    }
+   },
+   {
+    "pass": 3,
+    "loss": -0.026352517393897112,
+    "grace": {
+     "hits": 18,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.51,
+     "mae": 0.11149198561906815
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.43468040227890015
+    }
+   },
+   {
+    "pass": 4,
+    "loss": -0.05164998994053031,
+    "grace": {
+     "hits": 19,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.68,
+     "mae": 0.0867079496383667
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.43282371759414673
+    }
+   },
+   {
+    "pass": 5,
+    "loss": -0.06573982569243643,
+    "grace": {
+     "hits": 21,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 4.17,
+     "mae": 0.09656965732574463
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.44242241978645325
+    }
+   },
+   {
+    "pass": 6,
+    "loss": -0.07523316649482954,
+    "grace": {
+     "hits": 21,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 4.17,
+     "mae": 0.0912739485502243
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.42546892166137695
+    }
+   },
+   {
+    "pass": 7,
+    "loss": -0.07640924109183282,
+    "grace": {
+     "hits": 21,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 4.17,
+     "mae": 0.05516127496957779
+    },
+    "chord": {
+     "hits": 41,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.99,
+     "mae": 0.459470272064209
+    }
+   },
+   {
+    "pass": 8,
+    "loss": -0.08669034313841882,
+    "grace": {
+     "hits": 20,
+     "there": 22,
+     "false": 0,
+     "absent": 125,
+     "d": 3.89,
+     "mae": 0.11437799781560898
+    },
+    "chord": {
+     "hits": 40,
+     "there": 41,
+     "false": 4,
+     "absent": 106,
+     "d": 3.53,
+     "mae": 0.4615059792995453
+    }
+   }
+  ],
+  "test": {
+   "rates": {
+    "grace": {
+     "hits": 15,
+     "there": 29,
+     "false": 0,
+     "absent": 75,
+     "d": 2.52
+    },
+    "chord": {
+     "hits": 21,
+     "there": 36,
+     "false": 0,
+     "absent": 68,
+     "d": 2.65
+    }
+   },
+   "bars": [
+    {
+     "part": "va",
+     "bar": 0,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 2,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 5,
+     "grace": 0.0,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 6,
+     "grace": 0.001,
+     "chord": 0.002,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 11,
+     "grace": 0.001,
+     "chord": 0.633,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 12,
+     "grace": 0.001,
+     "chord": 0.939,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 18,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 26,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 28,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 32,
+     "grace": 0.002,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 33,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 37,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 47,
+     "grace": 0.001,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 51,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 52,
+     "grace": 0.001,
+     "chord": 0.139,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 59,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 60,
+     "grace": 0.001,
+     "chord": 1.113,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 61,
+     "grace": 0.002,
+     "chord": 1.547,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 62,
+     "grace": 0.0,
+     "chord": 0.853,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "va",
+     "bar": 67,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "va",
+     "bar": 70,
+     "grace": 0.002,
+     "chord": 1.419,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "va",
+     "bar": 71,
+     "grace": 0.001,
+     "chord": 1.974,
+     "true_grace": 0,
+     "true_chord": 4
+    },
+    {
+     "part": "va",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.395,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 4,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 7,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 21,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 31,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 32,
+     "grace": 0.0,
+     "chord": 0.007,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 33,
+     "grace": 0.0,
+     "chord": 0.55,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 34,
+     "grace": 0.0,
+     "chord": 0.182,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 35,
+     "grace": 0.002,
+     "chord": 1.275,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 36,
+     "grace": 0.001,
+     "chord": 0.454,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 41,
+     "grace": 0.002,
+     "chord": 2.12,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 42,
+     "grace": 0.001,
+     "chord": 0.399,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 43,
+     "grace": 0.001,
+     "chord": 0.744,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vc",
+     "bar": 44,
+     "grace": 0.0,
+     "chord": 0.389,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 47,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 49,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 51,
+     "grace": 0.0,
+     "chord": 0.009,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 52,
+     "grace": 0.014,
+     "chord": 1.002,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 62,
+     "grace": 0.01,
+     "chord": 0.24,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vc",
+     "bar": 64,
+     "grace": 0.003,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 68,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 69,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vc",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.006,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 2,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 4,
+     "grace": 1.135,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 7,
+     "grace": 0.115,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 8,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 10,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 16,
+     "grace": 1.028,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 17,
+     "grace": 0.091,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 18,
+     "grace": 0.274,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 21,
+     "grace": 0.007,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 22,
+     "grace": 0.107,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 23,
+     "grace": 1.741,
+     "chord": 0.004,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 24,
+     "grace": 0.002,
+     "chord": 0.915,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 26,
+     "grace": 1.335,
+     "chord": 0.0,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 30,
+     "grace": 1.965,
+     "chord": 0.001,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 31,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 38,
+     "grace": 0.001,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 40,
+     "grace": 0.828,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 45,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 49,
+     "grace": 0.501,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 50,
+     "grace": 0.351,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 51,
+     "grace": 1.756,
+     "chord": 0.003,
+     "true_grace": 2,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 52,
+     "grace": 0.003,
+     "chord": 0.001,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 59,
+     "grace": 0.861,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 60,
+     "grace": 0.994,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 62,
+     "grace": 0.006,
+     "chord": 0.896,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn1",
+     "bar": 66,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 69,
+     "grace": 0.585,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 70,
+     "grace": 0.981,
+     "chord": 0.001,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn1",
+     "bar": 72,
+     "grace": 0.0,
+     "chord": 0.841,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 4,
+     "grace": 0.057,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 9,
+     "grace": 0.001,
+     "chord": 0.004,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 11,
+     "grace": 0.005,
+     "chord": 4.226,
+     "true_grace": 0,
+     "true_chord": 6
+    },
+    {
+     "part": "vn2",
+     "bar": 12,
+     "grace": 0.001,
+     "chord": 0.933,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 16,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 17,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 18,
+     "grace": 0.006,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 19,
+     "grace": 0.004,
+     "chord": 1.282,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 20,
+     "grace": 0.002,
+     "chord": 0.696,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 21,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 22,
+     "grace": 0.036,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 23,
+     "grace": 0.002,
+     "chord": 1.217,
+     "true_grace": 0,
+     "true_chord": 2
+    },
+    {
+     "part": "vn2",
+     "bar": 24,
+     "grace": 0.001,
+     "chord": 0.694,
+     "true_grace": 0,
+     "true_chord": 1
+    },
+    {
+     "part": "vn2",
+     "bar": 26,
+     "grace": 1.083,
+     "chord": 0.0,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 27,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 30,
+     "grace": 1.701,
+     "chord": 0.0,
+     "true_grace": 2,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 38,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 39,
+     "grace": 0.003,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 40,
+     "grace": 1.01,
+     "chord": 0.008,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 41,
+     "grace": 0.006,
+     "chord": 0.005,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 46,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 49,
+     "grace": 0.003,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 50,
+     "grace": 0.007,
+     "chord": 0.0,
+     "true_grace": 1,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 52,
+     "grace": 0.001,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 54,
+     "grace": 0.001,
+     "chord": 0.003,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 59,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 60,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 63,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    },
+    {
+     "part": "vn2",
+     "bar": 68,
+     "grace": 0.0,
+     "chord": 0.0,
+     "true_grace": 0,
+     "true_chord": 0
+    }
+   ]
+  }
+ }
+}

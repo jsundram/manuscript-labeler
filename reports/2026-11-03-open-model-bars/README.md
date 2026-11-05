@@ -6,8 +6,9 @@ model that reads the edition's drafts. Could an open model do the
 readers' work, on our own GPUs, and later be fine-tuned for it? We tried
 three: Qwen3.6-27B, Gemma 4 31B and Meta's Muse Glimmer 30B.
 
-**Not these models. The limit is what they see, not how they reason or
-how we use them, and that can be measured in 15 minutes.** Asked one
+**Not these models. The limit is what they can report seeing, not how
+they reason or how we use them, and that can be measured in 15
+minutes.** Asked one
 closed question about one bar ("how many grace notes are in this
 bar?"), each of the three says yes about as often when there is none as
 when there is one (d′ between −0.4 and 0.4, where 0 is chance). Opus,
@@ -53,7 +54,18 @@ and the Opus readers' (with all their tools), counted the same way.*
    three open models' d′ is between −0.4 and 0.4: none can tell bars
    with these marks from bars without. Opus's is 1.2-1.4 in one look.
    They differ in leaning, not in seeing: Qwen says yes to nearly every
-   bar, Glimmer to about half, Gemma to two thirds (Figure 2).
+   bar, Glimmer to about half, Gemma to two thirds (Figure 2). This tests
+   the whole chat model, picture in and words out. It doesn't show that
+   the marks are missing from what the model's vision encoder computes.
+   The MuSViT paper ([arXiv 2606.31811](https://arxiv.org/html/2606.31811v1))
+   froze Qwen3-VL-8B's encoder and trained a small reader on it (two LSTM
+   layers and a CTC head, fitted to each corpus's labelled staves). Its
+   symbol error rate on single staves averaged 21.0 against MuSViT's
+   18.4. On full pages it was 51.0 against 16.4. On FMT, the one
+   handwritten corpus in modern notation, both were near 30. So Qwen's
+   encoder holds much of the music. What the chat model lacks is a way
+   to say what it sees, and getting that takes a trained head on labelled
+   staves, which is what D5 is, on a better encoder.
 5. **Reasoning is not the missing part.** Gemma's thinking was on and
    seldom reached its cap, and its longer answers were wrong more often
    (40 of 104 right in the longer half, 60 in the shorter). Qwen,
@@ -87,10 +99,34 @@ and the Opus readers' (with all their tools), counted the same way.*
   training that rewards getting most notes right learns little about
   them. Oversample staves with grace notes and double stops, or weight
   those tokens, and score each kind of mark by its hit rate and
-  false-alarm rate (or d′), not by bars exact. Synthetic staves could add
+  false-alarm rate (or d′), not by bars exact. Grace notes are a matter
+  of the hand (D5 finds all of KHM 603's). Every D5 variant misses about
+  half of the double stops on KHM 603, so they are the bigger target (section "D5's
+  design", below). Synthetic staves could add
   grace notes, but on this hand renders hurt Segment Anything
   ([2026-10-19](../2026-10-19-segment-anything/)), so mix them with real
   ones.
+- **Give MuSViT the reasoning loop, not a reasoner the eyes.** This
+  experiment began from Opus's reasoning, but what its procedure does is
+  propose a reading, ask narrow questions, look again, and keep what the
+  page confirms. MuSViT sees the marks better than any general model's
+  encoder; what it can't do is answer a question. Three ways to add
+  that, cheapest first:
+  1. *Propose and check:* D5 samples several readings of a bar; each is
+     engraved and the one that best matches the picture is kept. Beam
+     search with a bar-length penalty didn't help (most errors keep the
+     bar's length), so the check must look at the picture.
+  2. *Closed-question heads:* small heads on MuSViT's features trained to
+     answer the seeing test's questions (any grace note, how many heads
+     on a stem), from labels the encodings already give. A reasoner, open
+     or Opus, calls them as tools; `see_test.py` scores them by d′. They
+     are also the per-mark training D5 needs. **First tries (section 5): on D5's
+     encoder as good as D5's own reading and blind where D5 is; on the
+     pretrained encoder, 3 of D5's 11 missed grace-note bars found.**
+  3. *A bridge into a language model:* MuSViT in place of a
+     vision–language model's own encoder, with a trained projection
+     between them. The full answer, but the language half must learn
+     notation, which is a large project.
 - **Gate every new model with the seeing test first.** Legato 2 when its
   weights arrive, a later Gemma or Qwen, DeepSeek-OCR or any other: 15
   minutes and about $2 on a rented GPU, before anything bigger.
@@ -127,6 +163,53 @@ question. The dotted diagonal is chance; the grey curves are d′ 1, 2 and
 3. Up and to the left is better. A cautious reader sits low and left
 (Opus on grace notes); one that says yes to nearly everything, high and
 right (Qwen, Gemma), and on the diagonal it sees nothing.*
+
+## D5's design, and where its blind spots come from (2026-11-05)
+
+The MuSViT paper's staff-level comparison (lesson 4 above) and D5 are
+built differently:
+
+| | the paper's probe | musvit-D5 |
+|---|---|---|
+| encoder | frozen | MuSViT-Base, adapted (LoRA rank 64, attention and MLP) |
+| reader on top | 2 BiLSTM layers and a CTC head: one symbol per column, in one pass | an 8-layer transformer decoder writing LMX a token at a time, attending to the whole staff |
+| training | each corpus's own staves | Public 9k → Drawn 11k → Boccherini 6k (Op. 48 three times), staves 96 px high |
+
+The paper's probe is a fair way to compare encoders. It is a lower bound
+on what either encoder can do. We built Zeus's LSTM design on MuSViT
+ourselves, and it was our weakest reader (221 of the clean test's 347
+bars, against 263-265 for transformer decoders;
+`experiments/musvit/README.md`).
+
+Is D5's design what limits it on grace notes and double stops? The
+musvit readers' readings of the clean test (KHM 603 I, a copyist in
+training), counted as in the seeing test, say no:
+
+| readers | strips | bars with a grace note found | grace notes found | bars with a double stop found | double stops found |
+|---|---|---|---|---|---|
+| D3 and two siblings | 128 px | 22-24 of 24 | 29-32 of 34 | 15-19 of 28 | 27-32 of 53 |
+| D4, D5 and six siblings | 96 px | 24 of 24 | 31-34 of 34 | 14-18 of 28 | 23-33 of 53 |
+| C0, C2 (4-layer decoder) and C1, C4 (8-layer) | 128 px | 24 of 24 | 32-33 of 34 | 16-18 of 28 | 26-32 of 53 |
+
+Every reader has at most 1 false mark in about 320 bars without one.
+Counted from `experiments/zeus/results/D-B_KHM-603-I-musvit-*.json`.
+
+- **Grace notes depend on the hand, not the design.** On KHM 603 every
+  reader finds nearly all of them, at either strip height. The smaller
+  96 px strips cost nothing. The grace notes D5 misses on Op48-4 I are in
+  another copyist's hand (RES 507 (16)), with a small head on a stroke
+  that curls down. The fix is more staves of hands like that one.
+- **Double stops are a blind spot every variant shares.** Every variant
+  finds roughly half of them, at either height, with 4 or 8 decoder
+  layers, with or without the drawn stage. None of the design changes
+  tried moved it. It is most likely the training data: double stops
+  are few, and two-voice bars were left out of the first readers' training.
+  Oversampling them, weighting their tokens, or drawing staves full of
+  them are the untried levers.
+
+So D5's design is the best of those tried, judged on bars exact. It was
+never judged on rare marks. On the evidence here, data is the lever for
+both blind spots, not the design.
 
 ## 1. One look a bar (2026-11-03)
 
@@ -294,6 +377,92 @@ notes and 3 of 8 double stops, Opus in one look 1 of 11 and 5 of 8; but
 Gemma says so as often where there is nothing. Gemma's thinking reached
 its 2,048-token cap in 11 of 208 answers.
 
+## 5. Question heads on MuSViT's vectors (2026-11-05)
+
+`experiments/musvit/questions.py`. D5's encoder, frozen, ran once over
+the 6,392 staves D5 trained on. That took 17 minutes on the Mac, and its
+patch vectors are kept in `~/Data/manuscript-labeler/musvit/questions`.
+A small head gives each patch a count for each question: an MLP, then a
+convolution across columns. It is trained only on each staff's totals,
+read from the LMX, with no positions labelled: 4,060 grace notes and
+3,476 stems with two or more heads. A bar's answer is the sum over the
+columns inside its box. The test is the seeing test's 104 bars of RES
+507 (16), a copy no reader trained on; a count of 0.5 or more means yes.
+
+| | grace notes: there, said so | none there, said one | d′ | double stops: there, said so | none there, said one | d′ |
+|---|---|---|---|---|---|---|
+| question heads (Q1) | 14 of 29 | 0 of 75 | 2.44 | 26 of 36 | 0 of 68 | 3.02 |
+| D5's reading | 18 of 29 | 0 of 75 | 2.78 | 30 of 36 | 0 of 68 | 3.38 |
+| Opus, one look | 9 of 29 | 3 of 75 | 1.21 | 23 of 36 | 10 of 68 | 1.37 |
+
+- **The heads see what D5 sees, no more.** Their d′ is D5's within the
+  noise of 29 and 36 bars, and far above any general model's one look,
+  Opus's included. No bar without a mark scores above 0.03.
+- **They are blind where D5 is.** Of the 11 bars whose grace note D5
+  missed, the heads score none above 0.23; of the 6 double stops D5
+  missed, none above 0.03. "D5 or the heads" finds 18 of 29 and 30 of
+  36, exactly D5's own. The marks D5 misses aren't in its encoder's
+  vectors in a form a head can find. Asking differently doesn't recover
+  them; training the encoder on this hand would.
+- **They are cautious.** Every bar without a mark scores 0.03 or less,
+  and several bars with one score between 0.05 and 0.4. A threshold
+  chosen on the practice exam, not 0.5, would find more; it wasn't tuned
+  on the test.
+
+So the heads give a reasoner D5's seeing as answers to questions, with
+almost no false marks, but they don't add seeing. On D5's practice-exam
+staves (which D5 trained on, so flattering) a staff's answer has d′ 3.9
+(grace notes) and 4.0 (double stops).
+
+**Is D5's last layer the right place for them?** It is what D5's decoder
+reads, shaped by D5's training for transcription; detail the decoder
+didn't need may be gone there. The same heads were trained on two other
+sets of vectors: D5's encoder at its middle layer (6 of 12), and MuSViT
+as pretrained, before any reading was trained on it, at its last and
+middle layers.
+
+| head on | grace notes: there, said so | d′ | of D5's 11 misses, found | double stops: there, said so | d′ | of D5's 6 misses, found |
+|---|---|---|---|---|---|---|
+| D5, last layer (Q1) | 14 of 29 | 2.44 | 0 | 26 of 36 | 3.02 | 0 |
+| D5, middle layer (Q2) | 12 of 29 | 2.27 | 0 | 26 of 36 | 3.02 | 0 |
+| MuSViT pretrained, last layer (Q3) | 17 of 29 | 2.69 | 3 | 14 of 36 | 2.17 | 1 |
+| MuSViT pretrained, middle layer (Q4) | 10 of 29 | 2.09 | 2 | 13 of 36 | 2.10 | 0 |
+| D5 and MuSViT pretrained, last layers side by side (Q5) | 15 of 29 | 2.52 | 0 | 21 of 36 | 2.65 | 0 |
+
+None says a mark is there in any bar without one.
+
+- **The pretrained encoder keeps some grace notes D5's lost.** Its last
+  layer finds 3 of the 11 bars D5 missed (violin II 4, 49 and 50), and
+  its middle layer finds 2 of them; D5's encoder, at either layer,
+  finds none. With D5, the pretrained head finds 21 of 29 bars. D5's
+  training made its encoder drop some of what the pretraining kept.
+- **D5's training is what makes double stops visible.** On the
+  pretrained vectors a head finds 13-14 of 36, against 26 on D5's.
+- **D5's middle layer adds nothing.** Inside D5's encoder the grace notes
+  are lost by the middle layer already, or were never separated there.
+- **Most of D5's misses are seen by nothing.** Eight of the 11 grace-note
+  bars (violin I 17-22, violin II 16-21) score low on every head, and
+  Opus's one look missed them too. Only the Opus readers, zooming, found
+  them. There the information isn't in a 96 px strip in a form any of
+  these encoders keeps: new pixels (a closer crop) or training on this
+  hand are the remaining levers.
+
+**Both at once (Q5) is worse than either.** A head reading D5's and the
+pretrained encoder's last layers side by side finds 15 of 29 grace-note
+bars and 21 of 36 double stops, none of D5's misses, and no false marks.
+On the practice exam it is the best of all (d′ 4.2 and 4.0). The reason
+is the training staves: they are D5's own, so D5's vectors fit their
+labels almost perfectly, and a head given both leans on D5's and ignores
+the rest. The same bias flatters every head on D5's vectors here. A fair
+test of what an encoder keeps needs heads trained on staves D5 never
+saw: Dresden's 353, or KHM 587's.
+
+So D5's training traded some grace-note detail for much better double
+stops; the pretrained encoder keeps a little of that detail; and most of
+D5's misses (8 of 11) are kept by no encoder at 96 px. Those need new
+pixels, as the Opus readers got by zooming, or this hand's staves in
+training.
+
 ## Things that tripped us up
 
 - **The run's `d5/read/` is the Opus readers' first reading, not D5's.**
@@ -333,7 +502,10 @@ its 2,048-token cap in 11 of 208 answers.
   their training, and checking a draft isn't their task. The seeing test
   is the gate.
 - **Fine-tuning an open model on the edition's labels to see better.**
-  That is what D5 is; training D5 further is the direct route.
+  That is what D5 is; training D5 further is the direct route. A reader
+  on Qwen3-VL's encoder would be D5 with a weaker encoder: in the MuSViT
+  paper, MuSViT's features beat Qwen3-VL's on four of five staff corpora
+  and on full pages, even after both were fine-tuned (10.9 against 17.1).
 - **Fine-tuning on Opus's reader runs.** It would teach the procedure,
   and the procedure isn't the limit.
 - **Muse Spark Open** (Meta's 816B model): too large to serve on a GPU
@@ -347,7 +519,9 @@ its 2,048-token cap in 11 of 208 answers.
 - Code (`experiments/llm/`): `vllm_modal.py` (serving), `bars.py` (one
   look), `agent_read.py` and `score_agent_read.py` (as the reader),
   `d5_draft.py` and `check_read.py` (checking D5's draft), `see_test.py`
-  and `see_figure.py` (the seeing test and its figures).
+  and `see_figure.py` (the seeing test and its figures);
+  `experiments/musvit/questions.py` (question heads on D5's encoder; its
+  runs' logs and test answers in `questions-Q1-Q5.json`).
 - Logs here: the seeing test (`see-gemma`, `see-glimmer`, `see-qwen`
   without thinking, `see-qwen-thinking`, `see-opus`,
   `see-glimmer-no-count-line`, each `.jsonl.gz`); the readers' every
@@ -375,5 +549,6 @@ From `modal billing report` (hourly; summed over the runs' apps):
 | Qwen in the seeing test: thinking (189 of 208 answers cut off at 12,000 tokens; an L40S that never started, then an H200), then without | H200 | $5.40 |
 | Glimmer in the seeing test, three runs (answers unread, prose, then with the COUNT line) | H100 | $3.32 |
 | Opus in the seeing test (485,000 tokens in, 107,000 out) | API | $4.08 |
+| Question heads: two encoders' vectors for 6,392 staves (about 55 min), five heads trained (8 passes each) and tested | Mac (M1) | none |
 
 Total about $59.75: $55.67 on Modal (measured; the last hour may be short) and $4.08 of Opus API use.

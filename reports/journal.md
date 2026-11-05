@@ -122,6 +122,46 @@ specialist sees these marks better than a general model's one look, and
 Opus's procedure nearly triples what its one look sees. The marks are
 rare (grace notes 2% of notes), which matters for training D5 on them.
 
+**What "can't see" means (2026-11-05).** The user read the MuSViT paper
+and found Qwen3-VL only about 3 points of symbol error rate behind MuSViT
+on single staves, which our results didn't match. The paper tested
+something else: Qwen3-VL's vision encoder, frozen, under a small reader
+trained on each corpus's labelled staves. That measures what the encoder
+holds, not what the chat model can say. The report now says the open
+models can't report the marks, not that their encoders miss them, and
+that getting the marks out of an encoder takes a trained reader: D5, on
+the better encoder. The user then asked whether D5's design is the best
+for the problem. Its design choices were judged on bars exact, which rare
+marks barely move, so the musvit readers' clean-test readings were
+counted for grace notes and double stops. Every variant finds nearly all
+of KHM 603's grace notes and about half of its double stops, at 128 or
+96 px, with 4 or 8 decoder layers. The grace notes D5 misses belong to
+another hand, and the double stops are a gap no design change touched:
+both point to data, not the design.
+
+**Question heads (2026-11-05).** The experiment began from Opus's
+reasoning; the user asked how to give MuSViT, which sees better, a
+reasoning loop. The cheapest way: heads on D5's encoder that answer the
+seeing test's closed questions, for a reasoner to call. Trained on staff
+totals alone (no positions), on the Mac, they match D5's own reading on
+the 104 test bars (d′ 2.4 and 3.0 against 2.8 and 3.4, no false marks)
+and miss exactly the bars D5 misses. The heads make D5's seeing
+askable; they don't add seeing. The blind spots are in the encoder, for
+this hand: training it on this hand's staves is the fix.
+
+The user asked whether D5 is the right place for the heads: its last
+layer is shaped by its own training, so they may only echo it. Heads on
+D5's middle layer and on MuSViT as pretrained answered that. The
+pretrained encoder finds 3 of the 11 grace-note bars D5 missed (no false
+marks) but only 14 of 36 double stops; D5's middle layer adds nothing.
+D5's training sharpened double stops and dropped a few grace notes. Eight
+of the misses are seen by no encoder, nor by Opus in one look: those
+need new pixels or this hand in training.
+A head given both encoders at once did worse than either: the training
+staves are D5's own, so D5's vectors fit them best and the head leans on
+them. Every head here is trained where D5 can't be beaten; the fair test
+of what an encoder keeps trains on staves D5 never saw.
+
 ## 2026-11-03: Pairing recheck
 
 [Page](2026-11-03-pairing-recheck/)
