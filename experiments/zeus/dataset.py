@@ -612,6 +612,18 @@ def pairs(a):
         if boxes is None:
             left_out[cuts] += 1
             continue
+        # a bar a repeat splits where the time changes: the cut at the movement's pickup (staff_boxes) is
+        # the old time's, and the copy draws the new time at the repeat (RES 507-2 vc p75-8, Op33-5 II 62)
+        times = {c["bar"] for c in exp.get("changes", []) if c["time"] != compare.in_force(exp, "time", {
+            "bar": c["bar"] - 1, "count": 1})}
+        if any(b in split_bars and (b in times or b + 1 in times) for b in cuts):
+            left_out["a bar a repeat splits at a time change"] += 1
+            continue
+        # a movement's first bar split across a line break: a movement begins on its own line (US-R
+        # M351 p12-0/p12-1, G. 86 III 1)
+        if first in cuts and first not in split_bars:
+            left_out["a movement's first bar split across a line break"] += 1
+            continue
         if a.heads_only and k["bars"][0][2] != first:
             left_out["no clef or key drawn (not a movement's first staff)"] += 1
             continue
