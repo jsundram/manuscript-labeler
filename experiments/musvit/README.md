@@ -341,3 +341,13 @@ and the overnight run (many L40S runs at once), and about $5 on 2026-10-18
 `NEXT.md`: synthetic quartet staves (printed, then handwritten) aimed at new
 hands; a second clean test in a new hand; measure and retune the edition's
 flags with musvit-D3, then make it the default.
+
+## Question heads (questions.py, 2026-11-05)
+
+Closed questions (how many grace notes, how many stems with two or more
+heads) answered from a frozen encoder by a small head trained on staff
+totals from the LMX. On the seeing test's 104 bars of RES 507 (16), heads
+on musvit-D5's encoder answer as well as D5 reads and miss the same bars;
+on MuSViT as pretrained they find 3 of D5's 11 missed grace-note bars but
+far fewer double stops. Write-up:
+[reports/2026-11-03-open-model-bars](../../reports/2026-11-03-open-model-bars/), section 5.
