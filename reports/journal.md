@@ -93,6 +93,35 @@ reading right. The next tests would give them help of the usual kinds,
 the loop enforcing each bar's steps and D5's reading as a draft to
 correct, before any fine-tune.
 
+**Help, and the seeing test (2026-11-04).** The help was tried: D5's
+reading written into the note files as the draft, a loop that shows
+Gemma each bar with its pitch grid and engraving, asks what it sees and
+engraves its correction to look at again, and six worked examples in
+Opus's own words. On violin II bars 0-20 it fixed none of D5's 8 wrong
+bars and broke 5-6 of its right ones. The user asked whether Gemma's
+reasoning could be turned up: it wasn't capped, and its longer answers
+were wrong more often. What decided it was a test of seeing alone: one
+closed question a bar ("how many grace notes?", "how many stems carry
+two heads?"). Gemma says yes about two thirds of the time whether the
+mark is there or not; Opus, shown each bar once, rarely claims a mark
+that isn't there. The user wanted a conclusion that says when to
+consider a vision model, not that some things didn't work: when it passes
+that test. Even Opus finds few of the grace notes in one look, so the
+edition's gain from a better D5 is there: grace notes and the lower notes
+of double stops.
+
+**All the models on one scale (2026-11-04).** The user noticed the test
+had more bars without each mark than with it, so a reader that always
+says no scores well, and asked for every vision model compared side by
+side. The report now measures each by d′ (how well it tells bars with the
+mark from bars without, whatever its leaning to yes or no). Qwen and
+Glimmer took the seeing test too: like Gemma, at chance. D5's reading
+and the Opus readers' reading of the same bars, counted the same way,
+sit far above any model shown each bar once, Opus included: the
+specialist sees these marks better than a general model's one look, and
+Opus's procedure nearly triples what its one look sees. The marks are
+rare (grace notes 2% of notes), which matters for training D5 on them.
+
 ## 2026-11-03: Pairing recheck
 
 [Page](2026-11-03-pairing-recheck/)
