@@ -1,4 +1,4 @@
-# MuSViT readers D5, D4 and D3 (musvit-D5, 2026-10-23; musvit-D4, 2026-10-20; musvit-D3, 2026-10-18)
+# MuSViT readers D6, D5, D4 and D3 (musvit-D6, 2026-11-05; musvit-D5, 2026-10-23; musvit-D4, 2026-10-20; musvit-D3, 2026-10-18)
 
 A reader for Boccherini's copyists built on MuSViT, an image encoder
 pretrained on 9.7 million pages of printed music. It reads one staff at a time
@@ -8,7 +8,22 @@ gets 270 of 347 bars exact against Zeus J's 225. It was zeus-score's default
 from 1.2.0. Its flags for the edition, measured at the same floor,
 are as good as Zeus J's with a third fewer false ones.
 
-**musvit-D5, the default since 1.4.0,** is D4's recipe on about twice the
+**musvit-D6, the default since 1.6.0,** is D5's recipe with the Op. 48
+edition's movements finished since D5 added to the last stage: Op. 48 No. 4
+II (F-Po RES 507 (16), 32 staves) and No. 6 I and II (F-Po RES 507 (18), 89),
+counted three times in each pass as the edition's other staves are. On Op. 48
+No. 4 I in RES 507 (16), held out (a copyist D5 never trained on, whose grace
+notes it missed), it gets 244 of 290 bars exact against D5's 233 (+11, 95%
+interval +4 to +19), and reads two grace notes nothing else had found. On the
+clean test, 283 of 347, as D5 (92.9% of events right, D5 92.4%). On Dresden,
+78.5% of bars exact in notes and rhythm (D5 79.9%), the gap all in staves read
+with a bar too many or too few (22 against 18): on the staves both count
+right, 85.8% and 85.4%. Its flags for the edition, at the floor of 3: 106
+flagged, 94 real errors, 12 false (D5: 106, 95, 11). Double stops it reads no
+better than D5. How it was chosen:
+[reports/2026-11-05-musvit-d6](https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-11-05-musvit-d6).
+
+**musvit-D5, the default from 1.4.0 to 1.6.0,** is D4's recipe on about twice the
 data in its last stage: 6,275 staves against 3,411 (Op. 48's 595, from the
 edition's checked encoding, counted three times in each pass), after the
 paired manuscripts were detected and paired again. The new staves are mostly
@@ -40,7 +55,7 @@ as many errors with a third fewer false flags, at every floor from 2 to 8.
 How it was chosen:
 [reports/2026-10-20-synthetic-and-strip-height](https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-10-20-synthetic-and-strip-height).
 The rest of this card describes D3; D4 shares its data and training but for
-those two changes, and D5 shares D4's but for its larger last stage.
+those two changes, D5 shares D4's but for its larger last stage, and D6 D5's but for the edition's new movements.
 
 > **Licence: CC BY-NC-SA 4.0. Non-commercial use only; adaptations shared
 > alike.** The encoder adapts MuSViT's weights (PRAIG, University of
@@ -52,7 +67,7 @@ those two changes, and D5 shares D4's but for its larger last stage.
 
 A second model, **musvit-D1**, is the same recipe without the Madrid copies,
 KHM 602 II and Op. 48 No. 5 I. Those can still test it, so it is the
-reference for experiments; D5 is the one to use.
+reference for experiments; D6 is the one to use.
 
 If you use it, cite MuSViT:
 

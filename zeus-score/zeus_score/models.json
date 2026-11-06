@@ -33,9 +33,62 @@
    "card": "https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD.md"
   },
   {
+   "name": "musvit-D6",
+   "version": "2026-11-05",
+   "default": true,
+   "engine": "musvit",
+   "sha256": "388863c1968a7ce94e1c3dad2c3de5660c5e4ce6a23d686981cc986051c335b0",
+   "archive_sha256": "d0d0bb01c2db4d0d3fda4a1cacafe589d4bbe56e60c83e98043d60e00f5e1804",
+   "url": "https://github.com/jsundram/manuscript-labeler/releases/download/musvit-D6-2026-11-05/musvit-D6-2026-11-05.tar.gz",
+   "licence": "CC BY-NC-SA 4.0, non-commercial use only (adapted from MuSViT's weights; first trained on MusiCorpus)",
+   "base": "MuSViT (PRAIG/musvit, ViT-Base, MAE-pretrained on IMSLP), stage 1 on MusiCorpus (Dolores and OmniOMR train and validation); then 10,790 synthetic staves drawn in the copyists' hands (OpenScore quartets, CC0, and the training music); staves read 96 px high",
+   "trained_on": {
+    "D-B_KHM-602": ["I", "II"],
+    "D-B_KHM-603": ["II"],
+    "F-Po_RES-507-14": ["I", "II"],
+    "F-Pn_Vma-ms-1067-1": ["I", "II"],
+    "F-Po_RES-507-17": ["I", "II"],
+    "F-Pn_Vma-ms-1067-3": ["I", "II"],
+    "F-Po_RES-507-16": ["II"],
+    "F-Po_RES-507-18": ["I", "II"]
+   },
+   "trained_on_other": [
+    "D-B_KHM-620", "D-B_KHM-621", "D-B_KHM-622", "D-B_KHM-623", "D-B_KHM-624", "D-B_Mus.ms.2861",
+    "F-Pn_MS-1292-score", "F-Pn_RES-507-2", "G213-DB-Pleyel", "G213-KHM587", "G213-Sibley",
+    "G223-KHM600", "G223-RES507-10", "Op02-1-G159", "Op02-1-MS202", "Op02-1-SA3364", "Op02-2-G160",
+    "Op02-3-G161", "Op02-4-CZ-Pu-va", "Op02-4-CZ-Pu-vc", "Op02-4-CZ-Pu-vn1", "Op02-4-CZ-Pu-vn2",
+    "Op02-4-G162", "Op02-5-G163", "Op02-6-G164", "Op08-3-AST577", "Op08-4-MS200", "Op22-1-EMc",
+    "Op22-1-G183", "Op22-2-EMc", "Op22-2-G184", "Op22-3-EMc", "Op22-3-G185", "Op22-4-EMc",
+    "Op22-4-G186", "Op22-5-G187", "Op22-6-EMc", "Op22-6-G188", "Op22-6-Vmbr153-va", "Op22-6-Vmbr153-vc",
+    "Op22-6-Vmbr153-vn1", "Op22-6-Vmbr153-vn2", "Op22-Paris-va", "Op22-Paris-vc", "Op22-Paris-vn1",
+    "Op22-Paris-vn2", "Op32-DLEm", "Op32-G201-206", "Op33-1-G207-score", "Op33-2-G208-score",
+    "Op33-3-G209-score", "Op33-4-G210-score", "Op33-5-G211-score", "Op33-6-G212-score",
+    "US-R_M351.B664M", "unknown_IMSLP-PMLP122408"
+   ],
+   "trained_at": "985fc1a",
+   "accuracy": {
+    "D-B_KHM-603": {
+     "movements": ["I"],
+     "bars_exact": 0.816,
+     "events_right": 0.929,
+     "measure": "experiments/zeus/compare.py: bars whose every event matches the edition's encoding; 347 bars; read on a Mac (mps, half precision)"
+    },
+    "F-Po_RES-507-16": {
+     "movements": ["I"],
+     "bars_exact": 0.841,
+     "events_right": 0.953,
+     "measure": "experiments/zeus/compare.py, as the clean test; 290 bars, held out from training (its movement II is in it); read on a Mac (mps)"
+    },
+    "D-Dl_Mus.3403-P-513": {
+     "bars_exact": 0.785,
+     "measure": "experiments/musvit/held_out.py: bars whose notes and rhythm match the label (markings apart), a miscounted staff's bars all wrong; 354 staves, 3,172 bars, labelled by pairing, held out from training; read on a Mac (mps)"
+    }
+   },
+   "card": "https://github.com/jsundram/manuscript-labeler/blob/main/zeus-score/MODEL_CARD_MUSVIT.md"
+  },
+  {
    "name": "musvit-D5",
    "version": "2026-10-23",
-   "default": true,
    "engine": "musvit",
    "sha256": "aa5e681bc94e4ca0ed4a1697855746b4a0f3d589b7e59fd985a4e564275dc203",
    "archive_sha256": "4ae9750b6892fbb46ee06e04e63d0349b34c979c8defeebc2f8b542f2c5b0e96",
