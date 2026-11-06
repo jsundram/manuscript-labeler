@@ -1,0 +1,27 @@
+7828 training staves, 147 dev, vocabulary 137, dev tokens unseen in training 0
+trainable parameters 19.3M of 108.1M on cuda
+epoch  1  loss 0.238     58 s
+epoch  2  loss 0.138     56 s
+epoch  3  loss 0.104     56 s
+epoch  4  loss 0.083     54 s
+epoch  5  loss 0.067     53 s
+epoch  6  loss 0.055     56 s
+epoch  7  loss 0.046     54 s
+epoch  8  loss 0.038     59 s
+epoch  9  loss 0.032     59 s
+epoch 10  loss 0.027     57 s
+epoch 11  loss 0.024     57 s
+epoch 12  loss 0.019     54 s
+epoch 13  loss 0.017     57 s
+epoch 14  loss 0.014     57 s
+epoch 15  loss 0.011     55 s
+epoch 16  loss 0.010     56 s
+epoch 17  loss 0.009     61 s
+epoch 18  loss 0.007     53 s
+epoch 19  loss 0.006     53 s
+epoch 20  loss 0.005     54 s
+epoch 21  loss 0.004     53 s
+epoch 22  loss 0.004     53 s
+epoch 23  loss 0.003     54 s
+epoch 24  loss 0.003     54 s  dev SER 0.000  exact 146/147  (runaways 0; SER cut at 2x 0.000)
+stopping at pass 24 (--stop-at); reader.pt is this pass

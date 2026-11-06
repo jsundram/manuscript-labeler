@@ -4,6 +4,23 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-05: musvit-D6
+
+[Write-up](2026-11-05-musvit-d6/)
+
+Every test of the day pointed at data, so the user agreed it was time for
+D6, and asked what else to train into it. Two runs instead of two seeds,
+each answering its own question (the user found two seeds of one recipe
+wasteful for an effect this size): A adds the movements finished since D5
+(Op48-4 II, Op48-6), B also weights the rare-mark staves up and trains a
+count head beside the reader, so the encoder keeps what the question heads
+showed it dropping. Both read the held-out Op48-4 I better than D5 (244
+and 247 against 233), with the clean test unchanged. Most of it is the
+data: 32 staves of the copyist's other movement taught grace notes no
+question head had found. Midway the user asked whether all the newly
+encoded Boccherini was in: all but the Vma copies of the new music, whose
+bar boxes aren't reviewed yet.
+
 ## 2026-11-05: Opus checks the pairing's left-out staves
 
 [Write-up](2026-11-05-opus-pairing-check/)

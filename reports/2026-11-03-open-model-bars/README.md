@@ -95,7 +95,9 @@ and the Opus readers' (with all their tools), counted the same way.*
 
 ## Where to go next
 
-- **Train D5 on its blind spots.** Grace notes are about 2% of notes, so
+- **Train D5 on its blind spots.** Done as musvit-D6
+  ([2026-11-05-musvit-d6](../2026-11-05-musvit-d6/)): the new movements
+  alone took the held-out Op48-4 I from 233 to 244 bars exact. Grace notes are about 2% of notes, so
   training that rewards getting most notes right learns little about
   them. Oversample staves with grace notes and double stops, or weight
   those tokens, and score each kind of mark by its hit rate and
