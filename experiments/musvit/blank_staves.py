@@ -25,9 +25,12 @@ than N tokens). Reported as the false staves caught when no staff of
 music is lost, and at one lost in a hundred.
 
 `train` fits the head on every staff and writes it to blank_head.json
-beside this script (its scaling, weights and threshold): the threshold
-halfway between the highest-scoring staff of music and the lowest-scoring
-staff without, as `score` found them with each source left out. `serve`
+beside this script (its scaling, weights and threshold). The threshold,
+--threshold, is set to keep music: dropping a staff of music costs the
+editor more (the staff and its bar lines drawn again) than a false staff
+left (one delete). Each source left out, the highest-scoring staff of
+music, a line holding one half note (KHM 603 p15-7), scored 0.9636; at
+0.99, 37 of the 39 false staves are dropped and no staff of music. `serve`
 is the labeler's worker: JSON lines in, {pdf, page, systems}, each staff
 cut as `collect` cuts it, and out, {scores, blank}; detection drops the
 blank ones (server.Editor.detect).
@@ -160,16 +163,19 @@ def train(a):
     X = np.load(OUT / "features.npy")
     music = np.array([s["music"] for s in staves])
     loso = left_out(staves, X)
-    hi, lo = float(loso[music].max()), float(np.sort(loso[~music])[-int((loso[~music] > loso[music].max()).sum())])
+    hi = float(loso[music].max())
+    caught = int((loso[~music] > a.threshold).sum())
     sc, clf = fit(X, ~music)
     HEAD.write_text(json.dumps({
         "about": "experiments/musvit/blank_staves.py train: a staff not music when its score passes threshold",
         "reader": "musvit-D5 (" + __import__("questions").READER + "), last layer, mean and max over patches",
         "staves": len(staves), "not_music": int((~music).sum()),
-        "threshold": round((hi + lo) / 2, 4), "left_out": {"music_max": round(hi, 4), "caught_min": round(lo, 4)},
+        "threshold": a.threshold, "left_out": {"music_max": round(hi, 4), "caught": caught,
+                                                "lost": int((loso[music] > a.threshold).sum())},
         "mean": sc.mean_.round(6).tolist(), "scale": sc.scale_.round(6).tolist(),
         "coef": clf.coef_[0].round(6).tolist(), "intercept": float(clf.intercept_[0])}))
-    print(f"head -> {HEAD}: threshold {(hi + lo) / 2:.4f} (left out: music at most {hi:.4f}, caught from {lo:.4f})")
+    print(f"head -> {HEAD}: threshold {a.threshold} (left out: music at most {hi:.4f}; "
+          f"{caught} of {int((~music).sum())} not music caught)")
 
 
 def serve(a):
@@ -200,6 +206,7 @@ def serve(a):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("step", choices=("collect", "score", "train", "serve"))
+    ap.add_argument("--threshold", type=float, default=0.99, help="train: a staff scoring above it is dropped")
     a = ap.parse_args()
     {"collect": collect, "score": score, "train": train, "serve": serve}[a.step](a)
 
