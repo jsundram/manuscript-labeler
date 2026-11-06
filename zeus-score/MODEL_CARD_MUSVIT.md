@@ -1,4 +1,4 @@
-# MuSViT readers D6, D5, D4 and D3 (musvit-D6, 2026-11-05; musvit-D5, 2026-10-23; musvit-D4, 2026-10-20; musvit-D3, 2026-10-18)
+# MuSViT readers D6, D5, D4 and D3 (musvit-D6, 2026-11-06 and 2026-11-05; musvit-D5, 2026-10-23; musvit-D4, 2026-10-20; musvit-D3, 2026-10-18)
 
 A reader for Boccherini's copyists built on MuSViT, an image encoder
 pretrained on 9.7 million pages of printed music. It reads one staff at a time
@@ -20,7 +20,16 @@ clean test, 283 of 347, as D5 (92.9% of events right, D5 92.4%). On Dresden,
 with a bar too many or too few (22 against 18): on the staves both count
 right, 85.8% and 85.4%. Its flags for the edition, at the floor of 3: 106
 flagged, 94 real errors, 12 false (D5: 106, 95, 11). Double stops it reads no
-better than D5. How it was chosen:
+better than D5. **Its 2026-11-06 version, the default from 1.7.0,** is the
+same recipe retrained with Op. 48 No. 4's key corrected in its labels:
+`labels.py` read the edition's English note names as Dutch, so `\key ef
+\major` became four sharps, and the 2026-11-05 version learned to write
+them. The new one: 242 of 290 on Op. 48 No. 4 I (won 4 bars, lost 6), 283 of
+347 on the clean test, 81.1% on Dresden (15 miscounted staves, against 22),
+and at the edition's floor the same 94 corrections caught with 11 false
+flags. On a staff that shows no key (a copyist who writes it on a part's
+first staff only) it guesses one, usually two sharps; `zeus-score read
+--key` gives it Structure.ily's. How it was chosen:
 [reports/2026-11-05-musvit-d6](https://github.com/jsundram/manuscript-labeler/tree/main/reports/2026-11-05-musvit-d6).
 
 **musvit-D5, the default from 1.4.0 to 1.6.0,** is D4's recipe on about twice the

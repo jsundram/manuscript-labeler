@@ -16,10 +16,12 @@ on MuSViT (PRAIG's pretrained music encoder) that read the same staves into
 the same format, see [MODEL_CARD_MUSVIT.md](MODEL_CARD_MUSVIT.md).
 `musvit-D6`, the default since 1.6.0, is musvit-D5 trained also on the
 edition's movements finished since: on a held-out movement of one of their
-copies (Op. 48 No. 4 I, F-Po RES 507 (16)) it gets 84% of bars exact against
+copies (Op. 48 No. 4 I, F-Po RES 507 (16)) it gets 83% of bars exact against
 D5's 80%, and on the clean test 82%, as D5 (musvit-D4 80%, musvit-D3 78%,
 Zeus J 65%). On a manuscript in a copyist's hand none of its training had,
-it is within the run-to-run noise of D5 in notes and rhythm. Its flags for
+81% in notes and rhythm (D5 80%). Its 2026-11-06 version, the default from
+1.7.0, is retrained with Op. 48 No. 4's key corrected in its labels (the
+2026-11-05 version writes four sharps for its three flats). Its flags for
 the edition, at the flag floor of 3, catch 94 of 107 errors with 12 false
 (D5: 95, 11). Give `--model musvit-D5`, `--model musvit-D4`, `--model
 musvit-D3` or `--model J-lr1e5-e8` for the earlier readers.
@@ -32,7 +34,7 @@ musvit-D3` or `--model J-lr1e5-e8` for the earlier readers.
 
 ## Install
 
-    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.6.0#subdirectory=zeus-score"
+    uv tool install "git+https://github.com/jsundram/manuscript-labeler@zeus-score-v1.7.0#subdirectory=zeus-score"
     zeus-score fetch       # once, with the network
 
 `fetch` downloads the default model, checks its sha256, and builds the
@@ -50,7 +52,7 @@ is why the scoring runs in an environment of its own and not in yours. The
 package itself has no dependencies.
 
 To pin it in a project instead of installing it as a tool, depend on the same
-URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.6.0#subdirectory=zeus-score"`,
+URL. In a `pyproject.toml`, use `"zeus-score @ git+https://...@zeus-score-v1.7.0#subdirectory=zeus-score"`,
 then run `uv run zeus-score fetch` once and `uv run --offline zeus-score ...`
 after that.
 
