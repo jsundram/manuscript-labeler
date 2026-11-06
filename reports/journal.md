@@ -4,6 +4,23 @@ Newest first. Each entry says what prompted a report, the question it
 answers, what it concluded, and what was done about it. The reports
 themselves are listed in [index.md](index.md).
 
+## 2026-11-06: musvit-D6 in MCR, the key bug, and D6 again
+
+[Write-up](2026-11-05-musvit-d6/)
+
+The user asked whether the write-up could report the field's measures,
+and pointed to MCR (Hornbogen and Valentin, ISMIR 2026). Scored with the
+authors' package, D6 is 9.9% on the clean test. Op48-4 I scored far worse,
+and finding why found a bug: `labels.py` read the edition's English note
+names as Dutch, so E-flat major was four sharps in Op48-4's labels, and
+D6 had learned it. Fixed, D6 retrained on the corrected set and released
+again (zeus-score 1.7.0), as good on Op. 48 and a little better on
+Dresden. Most of what was left was guessing: this copyist writes the key
+on each part's first staff only, and the reader, reading a staff alone,
+guesses its commonest keys. Giving it Structure.ily's key halves its MCR
+there. The user also asked to try the paper's own model on our pages: it
+loops on every page (94%); handwriting is outside its training.
+
 ## 2026-11-05: musvit-D6
 
 [Write-up](2026-11-05-musvit-d6/)
