@@ -75,6 +75,38 @@ articulations too), so half a point there is style, not notes.
   (123 s a pass against 57). Its extra grace note (violin II 4) is the
   one the pretrained encoder's question head also found.
 
+## In the field's standard measure: symbol error rate
+
+OMR papers report symbol error rate (SER): the edits (insertions,
+deletions, substitutions) needed to turn a staff's output into its truth,
+over the truth's length, summed over the staves. The MuSViT paper reports
+it on its staff-level benchmarks. Here it is `proto.py --epochs 0` on each
+held-out set's staves, over every LMX token (notes, rests, durations, and
+beams, slurs, ties and articulations too):
+
+| held-out set | staves | musvit-D5 | musvit-D6 | staves exact, D5 → D6 |
+|---|---|---|---|---|
+| Op48-4 I, F-Po RES 507 (16) | 36 | 14.7% | **12.4%** | 0 → 1 |
+| Op48-2 I, D-B KHM 603 (the clean test) | 65 | 9.2% | 9.2% | 11 → 14 |
+| Dresden Mus.3403 | 354 | 9.6% | 10.2% | 44 → 39 |
+
+The same story as bars exact: better on the copyist it gained, the same
+elsewhere. Two cautions in comparing with published numbers:
+- **Different tokens and data.** These are LMX tokens on our copyists;
+  the MuSViT paper's are another encoding on other corpora (its nearest,
+  FMT, handwritten modern notation: about 30% with a probe head on a
+  frozen encoder). The numbers rank our readers; they don't place them
+  against the paper's.
+- **Markings count as much as notes,** and in the pairing's labels (Dresden)
+  they follow the encoding, not the copyist, so SER there rewards the
+  labels' style (reports/2026-10-22-boccherini-6k). Bars exact in notes
+  and rhythm, the measure-level rate this report leads with, is the one
+  that tracks the edition's work.
+
+Not computed: OMR-NED (the Sheet Music Benchmark's measure, which counts
+edits per kind of symbol on MusicXML); the LMX converts to MusicXML, so it
+could be.
+
 ## The release: musvit-D6 (run A)
 
 Checked as D5 was before its release:
