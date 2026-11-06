@@ -590,6 +590,10 @@ def main():
                     help="cosine: warmup then cosine over --epochs; wsd: warmup, hold, then decay over the last --decay "
                     "share, so a resumed run that hasn't begun decaying can be given more --epochs")
     ap.add_argument("--decay", type=float, default=0.2, help="wsd: the share of passes the learning rate decays over")
+    ap.add_argument("--count-loss", type=float, default=0,
+                    help="also train a small head on the decoder's memory to count each staff's grace notes and chord "
+                         "notes (from its LMX), its Poisson loss weighted this much: so the encoder keeps those marks "
+                         "(reports/2026-11-03-open-model-bars). Its weights go to counts.pt, not the reader's")
     ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
     a = ap.parse_args()
     global AMP, AUGMENT, COLOR, H
@@ -631,6 +635,7 @@ def main():
         (out / "config.json").write_text(json.dumps({"encoder": a.encoder, "layers": a.layers, "amp": a.amp,
                                                      "lora_r": a.lora_r, "lora_mlp": a.lora_mlp, "decoder": a.decoder,
                                                      "memory": a.memory, "color": a.color}
+                                                    | ({"count_loss": a.count_loss} if a.count_loss else {})
                                                     | ({"height": a.height} if a.height != 128 else {})
                                                     | ({"replay": a.replay, "replay_from": [str(f) for f in a.replay_from]}
                                                        if a.replay else {})))
@@ -652,17 +657,23 @@ def main():
         CACHE / "runs" / a.init / a.init_file, map_location="cpu")))
     unfrozen = set(model.unfreeze_top(a.unfreeze_top)) if a.epochs else set()
     model = model.to(a.device)
+    counter = None
+    if a.count_loss and a.epochs:  # on the memory the decoder reads; each memory position a count per mark
+        d_mem = model.project.out_features
+        counter = nn.Sequential(nn.LayerNorm(d_mem), nn.Linear(d_mem, 64), nn.GELU(), nn.Linear(64, 2), nn.Softplus()).to(a.device)
+        nn.init.constant_(counter[3].bias, -6.0)  # about 0.002 a position: a staff's first guess near 1, not hundreds
+        marks = torch.tensor([vocab.get("grace", -1), vocab.get("chord", -1)], device=a.device)
     if a.epochs:  # training follows --amp; scoring alone follows the run's config (load)
         AMP = a.amp and a.device == "cuda"
     if a.epochs == 0:
         ser, exact, shown, ser_capped, runaway = score(model, dev_items, vocab, a.device)
         print(f"{a.init}/{a.init_file}: dev SER {ser:.3f}  exact {exact}/{len(dev_items)}  (runaways {runaway}; SER cut at 2x {ser_capped:.3f})", flush=True)
         return
-    trainable = [p for p in model.parameters() if p.requires_grad]
+    trainable = [p for p in model.parameters() if p.requires_grad] + (list(counter.parameters()) if counter else [])
     print(f"trainable parameters {sum(p.numel() for p in trainable) / 1e6:.1f}M of {sum(p.numel() for p in model.parameters()) / 1e6:.1f}M on {a.device}", flush=True)
     named = dict(model.named_parameters())
     enc_own = [named[n] for n in unfrozen]
-    rest = [p for n, p in named.items() if p.requires_grad and n not in unfrozen]
+    rest = [p for n, p in named.items() if p.requires_grad and n not in unfrozen] + (list(counter.parameters()) if counter else [])
     opt = torch.optim.AdamW([{"params": rest, "lr": a.lr}] + ([{"params": enc_own, "lr": a.lr * a.encoder_lr}] if enc_own else []),
                             weight_decay=0.01)
     per_pass = math.ceil((len(train) + n_replay) / a.batch_size)
@@ -736,8 +747,16 @@ def main():
         for x, mask, y_in, y_out in built:
             x, mask, y_in, y_out = (t.to(a.device) for t in (x, mask, y_in, y_out))
             with autocast():
-                logits = model.decode(model.encode(x), mask, y_in)
+                mem = model.encode(x)
+                logits = model.decode(mem, mask, y_in)
                 loss = loss_fn(logits.reshape(-1, logits.shape[-1]).float(), y_out.reshape(-1))
+                if counter is not None:  # each staff's totals, summed over its image's positions (not CLS, not padding)
+                    seen = ~model.fit_mask(mem, mask)
+                    if mem.shape[1] == mask.shape[1]:  # patch memory: position 0 is CLS
+                        seen[:, 0] = False
+                    said = (counter(mem.float()) * seen[..., None]).sum(1)
+                    true = (y_out[..., None] == marks).sum(1).float()
+                    loss = loss + a.count_loss * nn.functional.poisson_nll_loss(said, true, log_input=False)
             opt.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(trainable, 1.0)
@@ -761,6 +780,8 @@ def main():
         (out / "log.json").write_text(json.dumps(log, indent=1))
         state = weights()
         torch.save(state, out / "reader.pt")
+        if counter is not None:
+            torch.save(counter.state_dict(), out / "counts.pt")
         stop = None
         if ser < best:
             best, since_best = ser, 0
