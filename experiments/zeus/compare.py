@@ -421,6 +421,25 @@ def in_force(exp: dict, field: str, box: dict):
     return v
 
 
+LMX_CLEF = {"treble": "clef:G2", "alto": "clef:C3", "tenor": "clef:C4", "bass": "clef:F4"}
+
+
+def opening(exp: dict, box: dict, starts_movement: bool, clef: bool = True) -> list[str]:
+    """The symbols a staff's label begins with, as dataset.py writes its
+    first measure: Structure.ily's key in force at its first bar box; with
+    `clef`, the time if the staff starts the movement, then the labels' clef
+    at the box's start (a change later in the staff is the reader's to
+    read). No clef in the labels: the key alone."""
+    out = ["measure", f"key:fifths:{in_force(exp, 'key', box)}"]
+    if not clef or not box["clefs"]:
+        return out
+    if starts_movement:
+        import structure
+        beats, beat_type = structure.meter(in_force(exp, "time", box))
+        out += ["time", f"beats:{beats}", f"beat-type:{beat_type}"]
+    return out + [LMX_CLEF[box["clefs"][0]]]
+
+
 def text(e: dict) -> str:
     if e["kind"] == "rest":
         return "R" if e["dur"] == "bar" else "r" + (e["dur"] or "?") + "." * e["dots"]

@@ -436,6 +436,15 @@ def labeler_commit(given: str | None) -> str | None:
     return given
 
 
+def given(start: list[str], tokens: list[str]) -> dict:
+    """The key and clef a reading was begun with ({"key_given": fifths or
+    None, "clef_given": "clef:C3" or None}): those of `start` it does begin
+    with (a symbol the reader has no word for isn't written for it)."""
+    held = start[:next((k for k, (s, t) in enumerate(zip(start, tokens)) if s != t), min(len(start), len(tokens)))]
+    key = next((int(t.split(":")[2]) for t in held if t.startswith("key:fifths:")), None)
+    return {"key_given": key, "clef_given": next((t for t in held if t.startswith("clef:")), None)}
+
+
 def read_main(backend, argv: list[str]) -> None:
     """`read`: the model's own reading of each staff, with each token's
     probability; with --against, each bar counted against our notes by
@@ -446,7 +455,10 @@ def read_main(backend, argv: list[str]) -> None:
     ap.add_argument("--key", action="store_true",
                     help="begin each reading with the key in force at its first bar (from --structure, or the edition's "
                          "Structure.ily), not the reader's guess: a staff the copyist began without one")
-    ap.add_argument("--structure", type=Path, help="with --key: each movement's key and time (as scoring's)")
+    ap.add_argument("--clef", action="store_true",
+                    help="--key, and then the clef the labels have at its first bar (after the time, on a movement's "
+                         "first staff), as the training labels begin; a clef change later on the staff is still the reader's")
+    ap.add_argument("--structure", type=Path, help="with --key or --clef: each movement's key and time (as scoring's)")
     ap.add_argument("--batch", type=int, default=1,
                     help="staves read together, in order of width (1: each alone, so its reading doesn't depend on the others)")
     ap.add_argument("--model", type=Path, default=MODEL)
@@ -458,6 +470,7 @@ def read_main(backend, argv: list[str]) -> None:
     ap.add_argument("--trained-on", type=json.loads)
     ap.add_argument("--labeler-commit")
     a = ap.parse_args(argv)
+    a.key = a.key or a.clef
     if not hasattr(backend, "read"):
         sys.exit("zeus-score read: needs a MuSViT reader (a registry model whose engine is musvit)")
     compare.RENDERS = a.renders
@@ -474,8 +487,13 @@ def read_main(backend, argv: list[str]) -> None:
             page = (s["page"], compare.page_image(pdf, s["page"]))
         jpegs.append(staff_image(page[1], s))
     model = backend(a.model)
-    keys = [compare.in_force(mvts[staves[sid][0]["movement"]], "key", staves[sid][0]) for sid in sids] if a.key else None
-    read, decoding = model.read(jpegs, a.batch, keys)
+    firsts = {}  # each part's first box of each movement, where the label writes the time
+    for b in export["bars"]:
+        firsts.setdefault((b["part"], b["movement"]), b)
+    starts = [compare.opening(mvts[b["movement"]], b, firsts[(b["part"], b["movement"])] is b, a.clef)
+              for b in (staves[sid][0] for sid in sids)] if a.key else None
+    read, decoding = model.read(jpegs, a.batch, starts)
+    decoding.update(key_given=a.key, clef_given=a.clef)
 
     ours = notes_of(a.against, staves) if a.against else {}
     scored = compare.score_bars(staves, {sid: " ".join(r["tokens"]) for sid, r in zip(sids, read)}, export, ours)
@@ -488,7 +506,7 @@ def read_main(backend, argv: list[str]) -> None:
         rows.append({"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
                      "bars": [[b["bar"], b["count"]] for b in boxes],
                      "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
-                     "key_given": keys[sids.index(sid)] if keys and r["tokens"][1:2] == [f"key:fifths:{keys[sids.index(sid)]}"] else None,
+                     **given(starts[sids.index(sid)] if starts else [], r["tokens"]),
                      "tokens": r["tokens"], "measures": measures,
                      "paired": how is not None,
                      "pairing": None if how is None else [{"bar": b["bar"], "count": b["count"], "how": kind, "measures": ms}

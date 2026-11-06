@@ -449,11 +449,22 @@ def for_reading(model, device: str):
     return model.half() if device == "mps" else model
 
 
+def known(tokens: list[str], vocab: dict) -> list[int]:
+    """The ids of the longest start of `tokens` the reader has words for."""
+    out = []
+    for t in tokens:
+        if t not in vocab:
+            break
+        out.append(vocab[t])
+    return out
+
+
 def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: int = 8,
                start: dict[str, str] | None = None) -> dict[str, str]:
     """Read staff crops (encoded images, by key) with a trained reader:
     the LMX for each, in width-sorted batches as in training. `start`, by
-    key, is LMX a staff's reading begins with (`measure key:fifths:-3`)."""
+    key, is LMX a staff's reading begins with (`measure key:fifths:-3`), as
+    far as the reader has words for it."""
     model, vocab = load(run, file)
     model = for_reading(model, device)
     dtype = next(model.parameters()).dtype
@@ -466,8 +477,7 @@ def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: in
         if start:
             with autocast():
                 mem = model.encode(x.to(device, dtype))
-            first = [[vocab[t] for t in start.get(key, "").split()] if all(t in vocab for t in start.get(key, "").split()) else []
-                     for _, key in chunk]
+            first = [known(start.get(key, "").split(), vocab) for _, key in chunk]
             got = model.read_cached(mem, mask.to(device), vocab[BOS], vocab[EOS], start=first)
         else:
             got = model.read(x.to(device, dtype), mask.to(device), vocab[BOS], vocab[EOS])

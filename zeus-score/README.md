@@ -250,7 +250,7 @@ Since 1.5.0. Scoring asks how likely the model finds *your* notes; `read`
 asks what the model itself reads there. It needs a MuSViT reader.
 
     zeus-score read --edition DIR --source SRC --movements I --out reading.json \
-        [--parts ...] [--against DIR] [--key [--structure S.ily]] [--model NAME[@VERSION]] [--batch 1] [--renders DIR]
+        [--parts ...] [--against DIR] [--key | --clef] [--structure S.ily] [--model NAME[@VERSION]] [--batch 1] [--renders DIR]
     zeus-score compare --edition DIR --source SRC --movements I \
         --events A --against B --out comparison.json
 
@@ -261,7 +261,15 @@ with the key in force at the staff's first bar, from `--structure` or the
 edition's Structure.ily, written for the reader rather than guessed. Use
 it where copyists write the key on a part's first staff only. In Op48-4 I's
 copy, only 4 of 36 staves have a key, and D6 guessed it wrong on 34;
-given the key, it reads the notes as before. `--batch` is how many staves are read together,
+given the key, it reads the notes as before. `--clef` (also 1.7.0) gives the key and
+then the clef the labels have at the staff's first bar (after the time, on
+a movement's first staff), as the training labels begin. A clef change
+holds across line breaks in the labels, so a line that opens in the tenor
+a change on the line before brought is given the tenor. Changes later on
+the staff are still the reader's to read. In Op48-4 I's copy, with the key
+alone, 27 of 36 staves open in the right clef and none of the 4 that change
+clef are read with their changes; with `--clef`, all 36 and 2 of the 4.
+`--batch` is how many staves are read together,
 in order of width. It defaults to 1, each staff alone, so a staff's reading
 doesn't depend on which others were read with it. The model card's numbers
 were read 8 at a time on the Mac's GPU; one at a time, on the CPU as in a
@@ -270,13 +278,15 @@ read differently.
 
 Its output: `format` (1), `command` ("read"), `model`, `labeler_commit`,
 `source`, `movements`, and `decoding` (`method` "greedy", `beam`, `batch`,
-`batch_order`, `key_given`, `device`, `precision`, `max_tokens`). Readings differ a
+`batch_order`, `key_given`, `clef_given`, `device`, `precision`, `max_tokens`). Readings differ a
 little by device and precision, so compare readings made the same way.
 Then per staff, in `staves`:
 
 - `sid`, `part`, `mvt`, `bars` and `trained`, as in the scores file;
 - `key_given`: with `--key`, the key (fifths) the reading was begun with;
   null without it, or where the reader has no token for that key;
+- `clef_given`: with `--clef`, the clef the reading was begun with
+  (`clef:C4`); null without it, or where the labels have no clef there;
 - `tokens`: the reading, LMX, and `measures`: the same split at each
   `measure`;
 - `paired`, and `pairing`: per bar box, `bar`, `count`, `how` and the
