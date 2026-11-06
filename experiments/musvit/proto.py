@@ -336,14 +336,17 @@ class Reader(nn.Module):
         return out
 
     @torch.no_grad()
-    def read_cached(self, mem, mask, bos, eos, maxlen=MAXLEN, scores: list | None = None):
+    def read_cached(self, mem, mask, bos, eos, maxlen=MAXLEN, scores: list | None = None,
+                    start: list[list[int]] | None = None):
         """The transformer decoder's greedy reading, one position a step: each
         layer keeps the keys and values of the image (made once) and of the
         symbols so far, so a symbol costs one position, not the whole
         prefix. The same arithmetic as decode() (pre-norm layers), in eval.
         `scores`, if given, gets each reading's (log-probability, runner-up,
         its log-probability) per symbol written, the end (EOS) included; the
-        symbols chosen are the same either way."""
+        symbols chosen are the same either way. `start`, if given, is each
+        reading's first symbols, written for it (a key it isn't to guess);
+        the reader goes on from them."""
         import torch.nn.functional as F
         mask = self.fit_mask(mem, mask)
         b, d = mem.shape[0], mem.shape[-1]
@@ -365,6 +368,8 @@ class Reader(nn.Module):
         steps = []
         tok = torch.full((b,), bos, device=mem.device)
         ys, done = [], torch.zeros(b, dtype=torch.bool, device=mem.device)
+        n = max(map(len, start or [[]]))
+        forced = torch.tensor([r + [-1] * (n - len(r)) for r in start], device=mem.device) if n else None
         for t in range(maxlen - 1):
             with autocast():
                 h = (self.embed(tok) + self.pos[t])[:, None]
@@ -378,6 +383,8 @@ class Reader(nn.Module):
                     h = h + l.linear2(l.activation(l.linear1(l.norm3(h))))
                 logits = self.out(self.decoder.norm(h[:, 0]))
                 tok = logits.argmax(-1)
+                if t < n:
+                    tok = torch.where(forced[:, t] >= 0, forced[:, t], tok)
             if scores is not None:
                 lp = torch.log_softmax(logits.float(), -1)
                 other = lp.scatter(-1, tok[:, None], float("-inf")).max(-1)
@@ -442,9 +449,11 @@ def for_reading(model, device: str):
     return model.half() if device == "mps" else model
 
 
-def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: int = 8) -> dict[str, str]:
+def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: int = 8,
+               start: dict[str, str] | None = None) -> dict[str, str]:
     """Read staff crops (encoded images, by key) with a trained reader:
-    the LMX for each, in width-sorted batches as in training."""
+    the LMX for each, in width-sorted batches as in training. `start`, by
+    key, is LMX a staff's reading begins with (`measure key:fifths:-3`)."""
     model, vocab = load(run, file)
     model = for_reading(model, device)
     dtype = next(model.parameters()).dtype
@@ -454,7 +463,15 @@ def read_crops(run: str, file: str, crops: dict[str, bytes], device: str, bs: in
     for k in range(0, len(items), bs):
         chunk = items[k: k + bs]
         x, mask, _, _ = batch([(png, []) for png, _ in chunk], vocab)
-        for (_, key), ids in zip(chunk, model.read(x.to(device, dtype), mask.to(device), vocab[BOS], vocab[EOS])):
+        if start:
+            with autocast():
+                mem = model.encode(x.to(device, dtype))
+            first = [[vocab[t] for t in start.get(key, "").split()] if all(t in vocab for t in start.get(key, "").split()) else []
+                     for _, key in chunk]
+            got = model.read_cached(mem, mask.to(device), vocab[BOS], vocab[EOS], start=first)
+        else:
+            got = model.read(x.to(device, dtype), mask.to(device), vocab[BOS], vocab[EOS])
+        for (_, key), ids in zip(chunk, got):
             out[key] = " ".join(inv[i] for i in ids)
     return out
 

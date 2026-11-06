@@ -65,10 +65,16 @@ def main():
     ap.add_argument("--rerank", type=float, default=0.0)
     ap.add_argument("--device", help="read here, on this torch device (mps, cpu), not on Modal")
     ap.add_argument("--color", action="store_true", help="hand the reader colour crops (a run trained with proto.py --color)")
+    ap.add_argument("--key", action="store_true",
+                    help="begin each reading with the key Structure.ily has in force at its first bar, not the reader's guess (--device only)")
     a = ap.parse_args()
     if a.beam and a.device:
         ap.error("--beam reads on Modal only")
+    if a.key and not a.device:
+        ap.error("--key reads here only (--device)")
     name = f"musvit-{a.run}" + ("" if a.file == "reader.pt" else f"-{Path(a.file).stem}") + (f"-{a.device}" if a.device else "")
+    if a.key:
+        name += "-key"
     if a.beam:
         name += f"-beam{a.beam}" + (f"-rr{a.rerank:g}" if a.rerank else "")
 
@@ -112,7 +118,16 @@ def main():
         import time
         import proto
         t0 = time.time()
-        cache.update(proto.read_crops(a.run, a.file, crops, a.device))
+        start = None
+        if a.key:  # the key in force at each staff's first bar, as dataset.py writes the label's
+            sys.path.insert(0, str(ZEUS.parent.parent))
+            import structure
+            exp = structure.expected((a.edition / f"Op48-{export['source']['gerard'] - 225}" / "Structure.ily").read_text())
+            start = {}
+            for sid in sids:
+                first = boxes[sid][0]
+                start[keys[sid]] = f"measure key:fifths:{compare.in_force(exp[first['movement']], 'key', first)}"
+        cache.update(proto.read_crops(a.run, a.file, crops, a.device, start=start))
         print(f"read in {time.time() - t0:.0f} s ({(time.time() - t0) / len(crops):.2f} s a staff)", flush=True)
     elif crops:
         import modal

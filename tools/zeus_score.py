@@ -443,6 +443,10 @@ def read_main(backend, argv: list[str]) -> None:
     ap = argparse.ArgumentParser(prog="zeus-score read", description=read_main.__doc__)
     source_args(ap)
     ap.add_argument("--against", type=Path, help="our notes, DIR/<part>-<mvt>.json (as scoring's --events), to count bars right")
+    ap.add_argument("--key", action="store_true",
+                    help="begin each reading with the key in force at its first bar (from --structure, or the edition's "
+                         "Structure.ily), not the reader's guess: a staff the copyist began without one")
+    ap.add_argument("--structure", type=Path, help="with --key: each movement's key and time (as scoring's)")
     ap.add_argument("--batch", type=int, default=1,
                     help="staves read together, in order of width (1: each alone, so its reading doesn't depend on the others)")
     ap.add_argument("--model", type=Path, default=MODEL)
@@ -458,8 +462,10 @@ def read_main(backend, argv: list[str]) -> None:
         sys.exit("zeus-score read: needs a MuSViT reader (a registry model whose engine is musvit)")
     compare.RENDERS = a.renders
     named = bool(a.source)
-    pdf, export, _, a.source = inputs(a, structure_needed=False)
+    pdf, export, mvts, a.source = inputs(a, structure_needed=a.key)
     staves = chosen_staves(a, export)
+    if a.key and (missing := sorted({b[0]["movement"] for b in staves.values()} - set(mvts))):
+        sys.exit(f"zeus-score read: the structure has no movement {' '.join(missing)}")
 
     sids, jpegs, page = list(staves), [], None
     for sid in sids:
@@ -468,7 +474,8 @@ def read_main(backend, argv: list[str]) -> None:
             page = (s["page"], compare.page_image(pdf, s["page"]))
         jpegs.append(staff_image(page[1], s))
     model = backend(a.model)
-    read, decoding = model.read(jpegs, a.batch)
+    keys = [compare.in_force(mvts[staves[sid][0]["movement"]], "key", staves[sid][0]) for sid in sids] if a.key else None
+    read, decoding = model.read(jpegs, a.batch, keys)
 
     ours = notes_of(a.against, staves) if a.against else {}
     scored = compare.score_bars(staves, {sid: " ".join(r["tokens"]) for sid, r in zip(sids, read)}, export, ours)
@@ -481,6 +488,7 @@ def read_main(backend, argv: list[str]) -> None:
         rows.append({"sid": sid, "part": boxes[0]["part"], "mvt": boxes[0]["movement"],
                      "bars": [[b["bar"], b["count"]] for b in boxes],
                      "trained": trained(a.trained_on, a.source, named, boxes[0]["movement"]),
+                     "key_given": keys[sids.index(sid)] if keys and r["tokens"][1:2] == [f"key:fifths:{keys[sids.index(sid)]}"] else None,
                      "tokens": r["tokens"], "measures": measures,
                      "paired": how is not None,
                      "pairing": None if how is None else [{"bar": b["bar"], "count": b["count"], "how": kind, "measures": ms}

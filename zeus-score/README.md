@@ -248,13 +248,18 @@ Since 1.5.0. Scoring asks how likely the model finds *your* notes; `read`
 asks what the model itself reads there. It needs a MuSViT reader.
 
     zeus-score read --edition DIR --source SRC --movements I --out reading.json \
-        [--parts ...] [--against DIR] [--model NAME[@VERSION]] [--batch 1] [--renders DIR]
+        [--parts ...] [--against DIR] [--key [--structure S.ily]] [--model NAME[@VERSION]] [--batch 1] [--renders DIR]
     zeus-score compare --edition DIR --source SRC --movements I \
         --events A --against B --out comparison.json
 
-`read` takes scoring's options, less `--events`, `--shifts` and
-`--structure` (`--pdf` and `--bars` work as there). Each staff is cut as for
-scoring and read greedily. `--batch` is how many staves are read together,
+`read` takes scoring's options, less `--events` and `--shifts` (`--pdf`,
+`--bars` and `--structure` work as there). Each staff is cut as for
+scoring and read greedily. With `--key` (since 1.7.0), each reading begins
+with the key in force at the staff's first bar, from `--structure` or the
+edition's Structure.ily, written for the reader rather than guessed. Use
+it where copyists write the key on a part's first staff only. In Op48-4 I's
+copy, only 4 of 36 staves have a key, and D6 guessed it wrong on 34;
+given the key, it reads the notes as before. `--batch` is how many staves are read together,
 in order of width. It defaults to 1, each staff alone, so a staff's reading
 doesn't depend on which others were read with it. The model card's numbers
 were read 8 at a time on the Mac's GPU; one at a time, on the CPU as in a
@@ -263,11 +268,13 @@ read differently.
 
 Its output: `format` (1), `command` ("read"), `model`, `labeler_commit`,
 `source`, `movements`, and `decoding` (`method` "greedy", `beam`, `batch`,
-`batch_order`, `device`, `precision`, `max_tokens`). Readings differ a
+`batch_order`, `key_given`, `device`, `precision`, `max_tokens`). Readings differ a
 little by device and precision, so compare readings made the same way.
 Then per staff, in `staves`:
 
 - `sid`, `part`, `mvt`, `bars` and `trained`, as in the scores file;
+- `key_given`: with `--key`, the key (fifths) the reading was begun with;
+  null without it, or where the reader has no token for that key;
 - `tokens`: the reading, LMX, and `measures`: the same split at each
   `measure`;
 - `paired`, and `pairing`: per bar box, `bar`, `count`, `how` and the
