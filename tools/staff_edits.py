@@ -172,8 +172,11 @@ def page_work(args):
         crops.propose(detect._gray(img), learned, model)
         for s, l in zip(systems, learned):
             s["learned_above"], s["learned_below"] = l["above"], l["below"]
+    # a cue staff is music the editor kept but doesn't count: no false staff, and not scored
+    pairs, _, false = match(page["systems"], systems)
     truth = [s for s in page["systems"] if (s.get("role") or "part") == "part"]
-    pairs, missed, false = match(truth, systems)
+    pairs = [(t, d) for t, d in pairs if (t.get("role") or "part") == "part"]
+    missed = len(truth) - len(pairs)
     return {"source": pdf.stem, "page": n, "staves": len(truth), "missed": missed, "false": false,
             "found": [compare(t, d, h / w) for t, d in pairs]}
 
