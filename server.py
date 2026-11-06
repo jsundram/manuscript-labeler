@@ -98,6 +98,11 @@ class Edition:
         # the pairing's quick check: a worker, started on first use (trypair)
         self.trypair_worker = None
         self.trypair_lock = threading.Lock()
+        # false staves: a worker reading each proposed staff with musvit-D5's encoder
+        # (experiments/musvit/blank_staves.py), started with the server; detection
+        # drops the staves it calls blank once it's ready, and goes without it before
+        self.blank_worker = None
+        self.blank_lock = threading.Lock()
 
     # -- paths ---------------------------------------------------------------
 
@@ -571,6 +576,8 @@ class Edition:
                     raise
                 print(f"cached predictions failed on {rel} p{page} ({'ends' if en else 'vote'}): "
                       f"{type(e).__name__}: {e}", flush=True)
+        if staves is None:  # (one staff the editor placed is kept whatever it holds)
+            systems = self.drop_blank(rel, page, systems)
         if self.crop_model is not None and staves is None:  # else crop_margins' rule (one staff: the rule)
             try:
                 crops.propose(detect._gray(img), systems, self.crop_model)
@@ -613,6 +620,48 @@ class Edition:
             if json.loads(w.stdout.readline() or "{}").get("ready") is not True:
                 raise RuntimeError(f"the pairing check didn't start (see {self.cache / 'trypair.log'})")
         return w
+
+    def blank_start(self):
+        """Start the false-staff worker in the background; detection uses it once it says it's ready."""
+        def go():
+            try:
+                log = open(self.cache / "blank_staves.log", "a")
+                w = subprocess.Popen(["uv", "run", str(HERE / "experiments" / "musvit" / "blank_staves.py"), "serve"],
+                                     stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=log, text=True)
+                if json.loads(w.stdout.readline() or "{}").get("ready") is not True:
+                    raise RuntimeError(f"see {self.cache / 'blank_staves.log'}")
+                self.blank_worker = w
+                print("false staves: musvit-D5's head ready", flush=True)
+            except Exception as e:
+                print(f"false staves: the worker didn't start ({type(e).__name__}: {e}); detection keeps every staff",
+                      flush=True)
+        threading.Thread(target=go, daemon=True).start()
+
+    def drop_blank(self, rel: str, page: int, systems: list[dict]) -> list[dict]:
+        """The proposed staves without those the worker calls blank (no music: an empty ruled staff, a
+        line of text). Without the worker, or if it fails, every staff."""
+        w = self.blank_worker
+        if w is None or w.poll() is not None or not systems:
+            return systems
+        req = json.dumps({"pdf": str(self.pdf(rel)), "page": page,
+                          "systems": [{k: s[k] for k in ("top", "bottom", "left", "right", "bend") if k in s}
+                                      for s in systems]}) + "\n"
+        try:
+            with self.blank_lock:
+                w.stdin.write(req)
+                w.stdin.flush()
+                out = json.loads(w.stdout.readline() or "{}")
+        except Exception as e:
+            print(f"false staves: {rel} p{page}: {type(e).__name__}: {e}", flush=True)
+            return systems
+        if "blank" not in out or len(out["blank"]) != len(systems):
+            print(f"false staves: {rel} p{page}: {out.get('error', 'no answer')}", flush=True)
+            return systems
+        kept = [s for s, b in zip(systems, out["blank"]) if not b]
+        if len(kept) < len(systems):
+            print(f"false staves: {rel} p{page}: dropped {len(systems) - len(kept)} of {len(systems)} "
+                  f"(scores {[x for x, b in zip(out['scores'], out['blank']) if b]})", flush=True)
+        return kept
 
     def trypair_warm(self):
         """Start the worker in the background (a paired manuscript was opened)."""
@@ -1007,6 +1056,7 @@ def main():
     Handler.edition = Edition(args.edition, cache, archive=args.archive)
     Handler.edition.train_model()
     Handler.edition.train_crops()
+    Handler.edition.blank_start()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     url = f"http://127.0.0.1:{args.port}/"
     print(f"Labeling {Handler.edition.root} at {url}  (Ctrl-C to stop)")
