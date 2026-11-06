@@ -21,6 +21,16 @@ guesses its commonest keys. Giving it Structure.ily's key halves its MCR
 there. The user also asked to try the paper's own model on our pages: it
 loops on every page (94%); handwriting is outside its training.
 
+Then the user asked for the clef to be given too, careful about clef
+changes. Each staff now begins as its training label does, key, time,
+then the labels' clef at its first bar; a change carries across line
+breaks in the labels, so a line opening in the tenor is given the tenor,
+and changes later on the staff are left to the reader. On Op48-4 I every
+opening clef is then right (36 of 36, against 27), 2 of the 4 staves that
+change clef keep their changes (none before), and MCR falls from 14.6%
+with the key alone to 8.0%. The clean test, whose copy draws every clef,
+reads the same.
+
 ## 2026-11-05: musvit-D6
 
 [Write-up](2026-11-05-musvit-d6/)

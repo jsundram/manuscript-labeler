@@ -240,6 +240,35 @@ noise of two runs of one recipe, which have differed by 12 miscounted
 staves), and without the wrong key. Released in D6-A's place as
 musvit-D6's new version.
 
+## The clef given: the labels', at each staff's start (2026-11-06)
+
+`read.py --clef` and `zeus-score read --clef` (1.7.0, its tag moved to take it in) begin each staff as its
+training label does: the key, the time on a movement's first staff, then
+the clef the labels have at the staff's first bar (`compare.opening`; all 359
+labelled staves of Op48-4, Op48-6 and two copies of Op48-1 begin that
+way). In the labels a clef change holds across line breaks, so a
+line that opens in the tenor a change on the line before brought is given
+the tenor (Op48-4 I's cello, bars 53 and 65). Changes later on the staff
+are left to the reader. D6-K (musvit-D6@2026-11-06):
+
+| | Op48-4 I: right opening clef | its 4 staves that change clef, read with the same changes | one-clef staves read with a change | MCR (36 staves) | bars exact |
+|---|---|---|---|---|---|
+| own reading | 26 of 36 | 0 | 0 | 28.0% | 242 |
+| key given | 27 | 0 | 0 | 14.6% | 243 |
+| **key and clef given** | **36** | **2** | 0 | **8.0%** | 240 |
+
+The clean test (Op48-2 I, whose copy draws every clef) reads the same
+with the clef given: 65 of 65 openings right before and after, 2 of its 3
+cello changes read in both, MCR 9.9% and 283 bars in both.
+
+Bars exact, which takes each note's place on the staff and names it in
+the labels' clef, can't see a wrong clef; of the three bars it loses, two
+are viola bars read with a note missed or added, nothing to do with the
+clef, and two cello bars (66, 71) on the line that opens in the tenor and
+changes back to the bass, a change the reader misses with or without the
+clef given. The changes it still misses (Op48-4 I's cello bars 61 and 66,
+Op48-2 I's bar 80) are what's left.
+
 ## The paper's model on our pages
 
 page-omr (Hornbogen and Valentin's reader, `tobiashornbogen/page-omr-a1-kern`,
@@ -345,9 +374,8 @@ At floor 3 the same errors caught, one false flag fewer. The edition's
   (F-Pn Vma-ms-1067-2 and -4, about 1,400 bars, once their bar boxes are
   reviewed: 141 of 716 and 0 of 1,013 are). Vma-ms-1067-2 I is Op48-4 I's
   music and stays out while that movement is the test.
-- **The clef, given as the key is.** With the key given, what's left of
-  Op48-4 I's MCR is staves read in a wrong clef; the labels' clef could
-  start the reading the same way.
+- **Clef changes inside the staff.** With the key and clef given, what's
+  left of Op48-4 I's clef errors is changes the reader misses (2 of 4).
 - **Op. 48's older sets** were built on 18 October; corrections to those
   encodings since aren't in training. A rebuild is a few minutes.
 
@@ -370,6 +398,8 @@ uv run experiments/zeus/mcr_score.py <zeus>/test-clean/samples.D-B_KHM-603-I.txt
 uv run experiments/zeus/dataset.py ... --out <zeus>/dataL4    # the three dataset.py lines again, keys fixed
 uv run experiments/zeus/mcr_score.py --label-signature <zeus>/dataL4/samples.F-Po_RES-507-16-I.txt --readings experiments/zeus/answers/F-Po_RES-507-16-musvit-{D5-B6k-d11-op48x3-s1,D6-A}-mps.json
 uv run experiments/musvit/read.py ~/Dropbox/Code/boccherini-opus-48 --run D6-A --source F-Po_RES-507-16 --movements I --device mps --key
+uv run experiments/musvit/read.py ~/Dropbox/Code/boccherini-opus-48 --run D6-K --source F-Po_RES-507-16 --movements I --device mps --clef   # and --source D-B_KHM-603
+uv run experiments/zeus/mcr_score.py <zeus>/dataL4/samples.F-Po_RES-507-16-I.txt --readings experiments/zeus/answers/F-Po_RES-507-16-musvit-D6-K-mps{,-key,-clef}.json
 modal volume put musvit-staves <zeus>/dataL4 /dataL4
 uv run experiments/musvit/drivers/train_d6.py --name D6-K --new dataL4
 uv run --with numpy --with pillow python reports/2026-11-05-musvit-d6/page-omr/pages.py <pages>
