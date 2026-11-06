@@ -91,7 +91,10 @@ beams, slurs, ties and articulations too):
 | Dresden Mus.3403 | 354 | 9.6% | 10.2% | 44 → 39 |
 
 The same story as bars exact: better on the copyist it gained, the same
-elsewhere. Two cautions in comparing with published numbers:
+elsewhere. (Op48-4 I's labels had the wrong key, below; D6, trained on
+Op48-4 II's, writes it on 13 staves and D5 on none, but that is 13 tokens
+of 5,761, at most 0.2 points of the 2.3. These are against the old
+labels.) Two cautions in comparing with published numbers:
 - **Different tokens and data.** These are LMX tokens on our copyists;
   the MuSViT paper's are another encoding on other corpora (its nearest,
   FMT, handwritten modern notation: about 30% with a probe head on a
@@ -106,6 +109,72 @@ elsewhere. Two cautions in comparing with published numbers:
 Not computed: OMR-NED (the Sheet Music Benchmark's measure, which counts
 edits per kind of symbol on MusicXML); the LMX converts to MusicXML, so it
 could be.
+
+## In correction effort: Musical Correction Rate (MCR)
+
+MCR is new at ISMIR 2026 (Hornbogen and Valentin, "Measure for Measure"),
+proposed because it tracks the work of correcting a reading better than
+SER or OMR-NED (their study of 46 pages). Each note is an event (pitch as
+MIDI, duration, onset, staff, grace, and its slurs, articulations and
+ornaments); measures are aligned, then the notes within them; a wrongly
+described note costs one per attribute that differs, an extra note 1 to
+delete, a missing one 2 to enter, over the cost of retyping from blank.
+0 is perfect. Scored here with the authors' package (`mcr-metric` 1.1.0,
+MIT) by `experiments/zeus/mcr_score.py`: each held-out staff's reading and
+its label, both turned from LMX into MusicXML by the lmx library. A
+reading lmx can't turn into MusicXML (a voice running past its bar; 2 or
+3 staves a reader) is scored as empty, the cost of retyping the staff.
+
+| reader | clean test (KHM 603 I, 65 staves) | without unconvertible readings and markings |
+|---|---|---|
+| musvit-D5 | 11.5% | 5.6% |
+| **musvit-D6** | **9.9%** | 5.5% |
+
+The paper's own model scores 9.91% zero-shot on OpenScore Quartets
+camera pages (printed music, whole pages, finding its own structure);
+D6 reads a staff at a time from the editor's crops and bar boxes, so the
+two numbers are not a ranking, only the same scale.
+
+**Op48-4 I: the labels had the wrong key, now fixed.** MCR compares
+pitch as MIDI, so a key signature or clef counts on every note it
+inflects. Looking at why Op48-4 I scored about 21% showed its labels'
+key was wrong: four sharps, where Structure.ily has `\key ef \major`
+(three flats). `labels.key_fifths` read LilyPond's Dutch note names only;
+the edition writes English ones (`ef`, `bf`, `fs`; `\language "english"`
+in its common/style.ily), and `ef` read as E. It now reads both (only
+`es` and `as` mean different notes in the two, and a Structure.ily that
+states `\language "english"` settles them). Of Op. 48 only No. 4 changes
+(I and II, four sharps to three flats). Of the built sets only `dataL3`
+had it: its rebuild, `dataL4`, differs in that one token on its 68
+Op48-4 staves and nothing else. So the 32 Op48-4 II staves D6 trained on
+said four sharps, and D6 writes four sharps on 13 of Op48-4 I's 36. The
+notes in those labels were right (LMX writes a pitch's letter and octave,
+and accidentals as printed), and compare.py, which scores pitch with the
+key apart, isn't affected: bars exact and the seeing test stand.
+zeus-score carries the same parser, so it writes the wrong key token for
+Op48-4 (a token, not the notes; key objections aren't among the
+edition's flag kinds).
+
+Scored against the corrected labels, Op48-4 I is mostly a test of
+guessing: this copy writes the clef and key on each part's first staff
+only (4 of the 36), and both readers get the key wrong on nearly every staff, and the clef on
+a quarter of them. `--label-signature` gives each reading the label's
+first key and clef (moving its notes to where they sit on the staff under
+that clef), to score the notes alone. Over the 34 staves both readers'
+readings turn into MusicXML:
+
+| reader | Op48-4 I, own key and clef | wrong key, wrong clef (of 36) | given the label's key and clef | clean test, either way |
+|---|---|---|---|---|
+| musvit-D5 | 27.2% | 32, 9 | 6.6% | 7.7% |
+| **musvit-D6** | 29.2% | 34, 8 | **5.6%** | **7.4%** |
+
+On the clean test the label's key and clef change nothing (that copy
+writes them on every staff). Over all 36 Op48-4 I staves, the
+unconvertible ones counted as empty, D6 scores 9.8% given the key and
+clef, D5 8.3%: D6 has two readings lmx can't convert, D5 one. A reader
+that guessed the key from the music before (the previous staff, or
+Structure.ily, which zeus-score already reads) would score close to the
+"given" column.
 
 ## The release: musvit-D6 (run A)
 
@@ -172,6 +241,9 @@ uv run experiments/musvit/read.py ~/Dropbox/Code/boccherini-opus-48 --run D6-A -
 uv run experiments/musvit/proto.py held-D6-A --init D6-A --epochs 0 --train <zeus>/dataW4/samples.D-Dl_Mus.3403-P-513.txt \
   --dev <the same> --device mps
 uv run experiments/musvit/held_out.py <zeus>/dataW4/samples.D-Dl_Mus.3403-P-513.txt --runs D5-B6k-d11-op48x3-s1 D6-A
+uv run experiments/zeus/mcr_score.py <zeus>/test-clean/samples.D-B_KHM-603-I.txt --readings experiments/zeus/answers/D-B_KHM-603-musvit-{D5-B6k-d11-op48x3-s1,D6-A}-mps.json
+uv run experiments/zeus/dataset.py ... --out <zeus>/dataL4    # the three dataset.py lines again, keys fixed
+uv run experiments/zeus/mcr_score.py --label-signature <zeus>/dataL4/samples.F-Po_RES-507-16-I.txt --readings experiments/zeus/answers/F-Po_RES-507-16-musvit-{D5-B6k-d11-op48x3-s1,D6-A}-mps.json
 uv run experiments/musvit/release.py D6-A reader.pt musvit-D6 2026-11-05 --out <dir> --licence <LICENSE> --notice <NOTICE.md>
 uv run reports/2026-10-20-clef-change-staves/flag_test_local.py <dir>/musvit-D6@2026-11-05 musvit-D6@2026-11-05 \
   388863c1968a7ce94e1c3dad2c3de5660c5e4ce6a23d686981cc986051c335b0 -- musvit-D6@2026-11-05 musvit-D5@2026-10-23
