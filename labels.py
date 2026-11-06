@@ -694,7 +694,7 @@ _TOKEN = re.compile(
     r"|(?P<unfold>\\repeat\s+(?:unfold|percent)\s+(?P<times>\d+)\s*\{)"
     r"|(?P<partial>\\partial\s+(?P<pdur>\d+)(?P<pdots>\.*)(?:\s*\*\s*(?P<pn>\d+)(?:\s*/\s*(?P<pm>\d+))?)?)"
     r"|(?P<time>\\time\s+(?P<tn>\d+)\s*/\s*(?P<td>\d+))"
-    r"|(?P<key>\\key\s+(?P<tonic>[a-g][a-z]*)\s*\\(?P<mode>major|minor))"
+    r"|(?P<key>\\key\s+(?P<tonic>[a-g][a-z-]*)\s*\\(?P<mode>major|minor))"
     r"|(?P<numeric>\\(?P<which>numeric|default)TimeSignature\b)"
     r"|(?P<heading>\\(?:tempo|sectionLabel)\b)"
     r"|(?P<grace>\\(?:grace|acciaccatura|appoggiatura|slashedGrace)\b)"
@@ -710,14 +710,28 @@ _COMMAND = re.compile(r"\\[A-Za-z-]+\s*")
 
 
 _FIFTHS = {"c": 0, "d": 2, "e": 4, "f": -1, "g": 1, "a": 3, "b": 5}
+# a note name's alteration, in semitones, after its letter
+_DUTCH = {"": 0, "is": 1, "isis": 2, "es": -1, "eses": -2}
+_ENGLISH = {"": 0, "s": 1, "ss": 2, "x": 2, "sharp": 1, "sharpsharp": 2, "f": -1, "ff": -2, "flat": -1, "flatflat": -2}
 
 
-def key_fifths(tonic: str, mode: str) -> int:
-    """A LilyPond key (Dutch note names: fis, bes, es, as) as its signature:
-    sharps > 0, flats < 0, as the labels record it (d major and b minor: 2)."""
-    rest = tonic[1:]  # is, isis (sharps); es, eses, and s, ses, sas after a vowel (as, es, asas, eses)
-    flats = rest.count("es") + rest.count("as") + rest.startswith("s")
-    n = _FIFTHS[tonic[0]] + 7 * (rest.count("is") - flats)
+def key_fifths(tonic: str, mode: str, language: str | None = None) -> int | None:
+    """A LilyPond key as its signature: sharps > 0, flats < 0, as the labels
+    record it (d major and b minor: 2); None for a name it doesn't know.
+
+    Dutch names (fis, bes, es, as: LilyPond's default) and English ones
+    (fs, bf, f-sharp, b-flat) both read. Only `es` and `as` (and their
+    doubles) are both: E- and A-flat in Dutch, E- and A-sharp in English,
+    so they are read as Dutch unless `language` is "english"."""
+    step, rest = tonic[0], tonic[1:]
+    if step not in _FIFTHS:
+        return None
+    dutch = _DUTCH.get({"s": "es", "ses": "eses", "sas": "eses"}.get(rest, rest) if step in "ae" else rest)
+    english = _ENGLISH.get(rest.lstrip("-"))
+    alter = english if language == "english" or dutch is None else dutch
+    if alter is None:
+        return None
+    n = _FIFTHS[step] + 7 * alter
     return n - 3 if mode == "minor" else n
 
 
@@ -900,10 +914,13 @@ def parse_structure(text: str) -> dict[str, dict]:
     one a bare `s` repeats. A segment's bars are those that begin in it.
     Without a \\time every spacer counts as its multiplier in bars.
     `bar_count` 0 in the labels matches: the pickup, and the upbeat that
-    completes a short bar.
+    completes a short bar. Keys read in the note names of the text's
+    \\language, if it has one (key_fifths).
     """
     music = _blank(text)
     out: dict[str, dict] = {}
+    lang = re.search(r'\\language\s+"', music)  # the name is in a string, blanked: read it from the text
+    language = re.match(r'[\w-]*', text[lang.end():]).group() if lang else None
     for m in re.finditer(r"\\tag\s+#'mvt(\w+)\s*\{", music):
         name = m.group(1)
         b = _Bars()
@@ -984,8 +1001,9 @@ def parse_structure(text: str) -> dict[str, dict]:
                 if b.started:
                     headed.add(b.begun)
             elif t.group("key"):
-                if t.group("tonic")[0] in _FIFTHS:
-                    emit(("signature", "key", key_fifths(t.group("tonic"), t.group("mode")), t.group("mode")))
+                k = key_fifths(t.group("tonic"), t.group("mode"), language)
+                if k is not None:
+                    emit(("signature", "key", k, t.group("mode")))
             elif t.group("unfold"):
                 depth += 1
                 stack.append({"times": int(t.group("times")), "events": []})

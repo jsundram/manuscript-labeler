@@ -370,6 +370,14 @@ def test_parse_structure_reads_key_and_time_as_written():
     assert labels.key_fifths("fis", "minor") == 3 and labels.key_fifths("aes", "major") == -4
     assert labels.key_fifths("eses", "major") == 4 - 14  # E double flat
     assert labels.key_fifths("asas", "major") == 3 - 14 and labels.key_fifths("fisis", "major") == 6 + 7
+    # English names (the Op. 48 edition's): ef is E-flat, not four sharps
+    assert labels.key_fifths("ef", "major") == -3 and labels.key_fifths("bf", "major") == -2
+    assert labels.key_fifths("fs", "minor") == 3 and labels.key_fifths("b-flat", "major") == -2
+    assert labels.key_fifths("es", "major") == -3 and labels.key_fifths("es", "major", "english") == 4 + 7
+    assert labels.key_fifths("h", "major") is None
+    eng = labels.parse_structure('\\language "english"\n\\tag #\'mvtI { \\time 2/4 \\key as \\minor s2*4 }')
+    assert eng["I"]["key"] == 3 + 7 - 3  # A-sharp minor: seven sharps
+    assert labels.parse_structure('% \\language "english"\n\\tag #\'mvtI { \\time 2/4 \\key as \\major s2 }')["I"]["key"] == -4
     # \numericTimeSignature applies from where it is written
     two = labels.parse_structure(r"""\tag #'mvtI { \time 4/4 s1 } \tag #'mvtII { \numericTimeSignature \time 4/4 s1 }""")
     assert (two["I"]["time"], two["II"]["time"]) == ("C", "4/4")
